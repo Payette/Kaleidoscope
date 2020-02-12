@@ -1,26 +1,81 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import BarChart from './BarChart';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      chartType: "allImpacts"
+    };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    }, () => {
+      console.log('new state: ', this.state);
+    });
+  }
+
+  updateDataAge(event) {
+    console.log('update data age', event.target.value, event);
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>LCA Tool</h1>
+
+          <form>
+            <p>CHART TYPE:</p>
+            <input type="radio" id="allImpacts" name="chartType" value="allImpacts" checked={this.state.chartType === "allImpacts"} onChange={this.handleInputChange} />
+            <label htmlFor="allImpacts">All Impacts</label>
+            <input type="radio" id="GWP" value="GWP" name="chartType" checked={this.state.chartType === "GWP"} onChange={this.handleInputChange} />
+            <label for="fGWP">Global Warming Potential</label>
+            <input type="radio" id="LCS" value="LCS" name="chartType" checked={this.state.chartType === "LCS"} onChange={this.handleInputChange} />
+            <label for="LCS">Life Cycle Stage</label>
+            <input type="radio" id="MB" value="MB" name="chartType" checked={this.state.chartType === "MB"} onChange={this.handleInputChange} />
+            <label for="MB">Material Breakdown</label>
+
+            <p>LIFESPAN:</p>
+            <input type="radio" id="tenY" name="lifeSpan" value="tenY" checked="checked" />
+            <label for="tenY">10 Year (No Mod D.)</label>
+            <input type="radio" id="sixty1" name="lifeSpan" value="sixty1" />
+            <label for="sixty1">60 Year (With Mod D)</label>
+            <input type="radio" id="sixty2" name="lifeSpan" value="sixty2" />
+            <label for="sixty2">60 Year (No Mod D)</label>
+
+            <p>BIOGENIC CARBON:</p>
+            <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked="checked" />
+            <label for="yBio">With Biogenic Carbon</label>
+            <input type="radio" id="nBio" name="biogenicCarbon" value="nBio" />
+            <label for="nBio">No Biogenic Carbon</label>
+
+        </form>
+
+        {this.state.chartType === "allImpacts" && <BarChart
+          width={800}
+          height={600}
+        />}
+
+        {/* this.state.chartType === "MB" && <BarChart
+          width={800}
+          height={600}
+        /> */}
+
+
+
+
+      </div>
+    );
+  }
 }
 
 export default App;
