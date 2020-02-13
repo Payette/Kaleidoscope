@@ -2,17 +2,15 @@ import React from 'react';
 import { Bar } from '@vx/shape';
 import { Group } from '@vx/group';
 import { GradientTealBlue } from '@vx/gradient';
-import { letterFrequency } from '@vx/mock-data';
 import { scaleBand, scaleLinear } from '@vx/scale';
-
-const data = letterFrequency.slice(5);
-console.log(letterFrequency);
 
 // accessors
 const x = d => d.letter;
 const y = d => +d.frequency * 100;
 
-export default ({ width, height }) => {
+export default ({ width, height, data }) => {
+  console.log(data);
+
   // bounds
   const xMax = width;
   const yMax = height - 120;

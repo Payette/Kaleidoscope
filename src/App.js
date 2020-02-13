@@ -1,15 +1,52 @@
 import React, { Component } from 'react';
 import './App.css';
 import BarChart from './BarChart';
+import { letterFrequency } from '@vx/mock-data';
+import Papa from 'papaparse';
+import dataGWP from './data/gwp.csv';
+import dataAllImpacts from './data/allimpacts.csv';
+
+const data = [
+  { letter: "a", frequency: 10 },
+  { letter: "b", frequency: 20 },
+  { letter: "c", frequency: 30 },
+  { letter: "d", frequency: 40 },
+  { letter: "e", frequency: 5 },
+  { letter: "f", frequency: 7 },
+  { letter: "g", frequency: 100 },
+  { letter: "h", frequency: 90 }
+];
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chartType: "allImpacts"
+      chartType: "allImpacts",
+      allImpactsData: []
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  componentDidMount() {
+    const self = this;
+
+    Papa.parse(dataAllImpacts, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: function(results, file) {
+         if(Array.isArray(results.data)) {
+           self.setState({
+             allImpactsData: results.data.map(d => {
+               return { letter: d.Variable, frequency: parseFloat(d.Attended) }
+             })
+           })
+         } else {
+           console.error('error trying to load file', results.errors);
+         }
+      }
+    });
   }
 
   handleInputChange(event) {
@@ -22,10 +59,6 @@ class App extends Component {
     }, () => {
       console.log('new state: ', this.state);
     });
-  }
-
-  updateDataAge(event) {
-    console.log('update data age', event.target.value, event);
   }
 
   render() {
@@ -61,6 +94,7 @@ class App extends Component {
         </form>
 
         {this.state.chartType === "allImpacts" && <BarChart
+          data={this.state.allImpactsData}
           width={800}
           height={600}
         />}

@@ -10,6 +10,7 @@
     "@vx/mock-data": "0.0.193",
     "@vx/scale": "0.0.193",
     "@vx/shape": "0.0.193",
+    "papaparse": "^5.1.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.1"
