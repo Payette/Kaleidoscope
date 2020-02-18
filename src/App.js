@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import HorizontalBarChart from './HorizontalBarChart';
+import StackedBarChart from './StackedBarChart';
 import LoadData from './data/LoadData';
 
 class App extends Component {
@@ -8,7 +9,9 @@ class App extends Component {
     super(props);
     this.state = {
       chartType: "allImpacts",
-      allImpactsData: []
+      allImpactsData: [],
+      gwpData: []
+
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -16,6 +19,7 @@ class App extends Component {
 
   componentDidMount() {
     LoadData.allImpactsData(data => this.setState({ allImpactsData: data }));
+    LoadData.gwpData(data => this.setState({ gwpData: data }));
   }
 
   handleInputChange(event) {
@@ -62,16 +66,17 @@ class App extends Component {
 
         </form>
 
-        {this.state.chartType === "allImpacts" && <HorizontalBarChart
+        {this.state.chartType === "allImpacts" && <StackedBarChart
           data={this.state.allImpactsData}
           width={800}
           height={600}
         />}
 
-        {/* this.state.chartType === "MB" && <BarChart
+        {this.state.chartType === "GWP" && <HorizontalBarChart
+          data={this.state.gwpData}
           width={800}
           height={600}
-        /> */}
+        />}
 
 
 
