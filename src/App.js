@@ -66,13 +66,13 @@ class App extends Component {
 
         </form>
 
-        {this.state.chartType === "allImpacts" && <StackedBarChart
+        {this.state.chartType === "allImpacts" && this.state.allImpactsData.length > 0 && <StackedBarChart
           data={this.state.allImpactsData}
           width={800}
           height={600}
         />}
 
-        {this.state.chartType === "GWP" && <HorizontalBarChart
+        {this.state.chartType === "GWP" && this.state.gwpData.length > 0 && <HorizontalBarChart
           data={this.state.gwpData}
           width={800}
           height={600}

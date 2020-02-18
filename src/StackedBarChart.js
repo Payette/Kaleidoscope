@@ -8,51 +8,11 @@ import { timeParse, timeFormat } from 'd3-time-format';
 import { withTooltip, Tooltip } from '@vx/tooltip';
 import { LegendOrdinal } from '@vx/legend';
 
-const purple1 = '#6c5efb';
-const purple2 = '#c998ff';
-const purple3 = '#a44afe';
-const bg = '#eaedff';
-
-const data = cityTemperature.slice(0, 12);
-console.log(data);
-const keys = Object.keys(data[0]).filter(d => d !== 'date');
-
-const totals = data.reduce((ret, cur) => {
-  const t = keys.reduce((dailyTotal, k) => {
-    dailyTotal += +cur[k];
-    return dailyTotal;
-  }, 0);
-  ret.push(t);
-  return ret;
-}, []);
-
-const parseDate = timeParse('%Y%m%d');
-const format = timeFormat('%b %d');
-const formatDate = date => format(parseDate(date));
-
-// accessors
-const y = d => d.date;
-
-// scales
-const xScale = scaleLinear({
-  domain: [0, Math.max(...totals)],
-  nice: true
-});
-const yScale = scaleBand({
-  domain: data.map(y),
-  padding: 0.2
-});
-const color = scaleOrdinal({
-  domain: keys,
-  range: [purple1, purple2, purple3]
-});
-
-let tooltipTimeout;
-
 export default withTooltip(
   ({
     width,
     height,
+    data,
     events = false,
     margin = {
       top: 40,
@@ -72,6 +32,47 @@ export default withTooltip(
     // bounds
     const xMax = width - margin.left - margin.right;
     const yMax = height - margin.top - margin.bottom;
+
+    const purple1 = '#6c5efb';
+    const purple2 = '#c998ff';
+    const purple3 = '#a44afe';
+    const bg = '#eaedff';
+
+    // const data = cityTemperature.slice(0, 12);
+    console.log(data);
+    const keys = Object.keys(data[0]).filter(d => d !== 'material');
+
+    const totals = data.reduce((ret, cur) => {
+      const t = keys.reduce((dailyTotal, k) => {
+        dailyTotal += +cur[k];
+        return dailyTotal;
+      }, 0);
+      ret.push(t);
+      return ret;
+    }, []);
+
+    const parseDate = timeParse('%Y%m%d');
+    const format = timeFormat('%b %d');
+    const formatDate = date => format(parseDate(date));
+
+    // accessors
+    const y = d => d.material;
+
+    // scales
+    const xScale = scaleLinear({
+      domain: [0, Math.max(...totals)],
+      nice: true
+    });
+    const yScale = scaleBand({
+      domain: data.map(y),
+      padding: 0.2
+    });
+    const color = scaleOrdinal({
+      domain: keys,
+      range: [purple1, purple2, purple3]
+    });
+
+    let tooltipTimeout;
 
     xScale.rangeRound([0, xMax]);
     yScale.rangeRound([yMax, 0]);
@@ -130,7 +131,7 @@ export default withTooltip(
               hideAxisLine={true}
               hideTicks={true}
               scale={yScale}
-              tickFormat={formatDate}
+              /* tickFormat={formatDate} */
               stroke={purple3}
               tickStroke={purple3}
               tickLabelProps={(value, index) => ({
@@ -178,9 +179,9 @@ export default withTooltip(
             <div style={{ color: color(tooltipData.key) }}>
               <strong>{tooltipData.key}</strong>
             </div>
-            <div>{tooltipData.bar.data[tooltipData.key]}℉</div>
+            <div>{tooltipData.bar.data[tooltipData.key]}</div>
             <div>
-              <small>{formatDate(y(tooltipData.bar.data))}</small>
+              <small>{y(tooltipData.bar.data)}</small>
             </div>
           </Tooltip>
         )}
