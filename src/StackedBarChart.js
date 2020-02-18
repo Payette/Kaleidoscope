@@ -16,7 +16,7 @@ export default withTooltip(
     events = false,
     margin = {
       top: 40,
-      left: 50,
+      left: 100,
       right: 40,
       bottom: 100
     },
@@ -38,8 +38,6 @@ export default withTooltip(
     const purple3 = '#a44afe';
     const bg = '#eaedff';
 
-    // const data = cityTemperature.slice(0, 12);
-    console.log(data);
     const keys = Object.keys(data[0]).filter(d => d !== 'material');
 
     const totals = data.reduce((ret, cur) => {

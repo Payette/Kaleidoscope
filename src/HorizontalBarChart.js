@@ -9,8 +9,6 @@ const categoryData = d => d.letter;
 const valueData = d => +d.frequency * 100;
 
 export default ({ width, height, data }) => {
-  console.log(data);
-
   // bounds
   const horizontalPadding = 60;
   const horizontalMax = width - 2*horizontalPadding;
