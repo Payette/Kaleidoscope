@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import BarChart from './BarChart';
+import HorizontalBarChart from './HorizontalBarChart';
 import LoadData from './data/LoadData';
 
 class App extends Component {
@@ -62,7 +62,7 @@ class App extends Component {
 
         </form>
 
-        {this.state.chartType === "allImpacts" && <BarChart
+        {this.state.chartType === "allImpacts" && <HorizontalBarChart
           data={this.state.allImpactsData}
           width={800}
           height={600}
