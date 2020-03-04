@@ -13,6 +13,7 @@ export default withTooltip(
     width,
     height,
     data,
+    xAxisLabel,
     events = false,
     margin = {
       top: 40,
@@ -144,11 +145,18 @@ export default withTooltip(
               scale={xScale}
               stroke={purple3}
               tickStroke={purple3}
+              hideAxisLine={true}
+              hideTicks={true}
+              label={xAxisLabel}
               tickLabelProps={(value, index) => ({
                 fill: purple3,
                 fontSize: 11,
                 textAnchor: 'middle'
               })}
+              labelProps={{
+                fontSize: 18,
+                fill: purple3
+              }}
             />
           </Group>
         </svg>
