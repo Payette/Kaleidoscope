@@ -3,6 +3,7 @@ import './App.css';
 import HorizontalBarChart from './HorizontalBarChart';
 import StackedBarChart from './StackedBarChart';
 import LoadData from './data/LoadData';
+import MaterialList from './MaterialList';
 
 class App extends Component {
   constructor(props) {
@@ -10,15 +11,22 @@ class App extends Component {
     this.state = {
       chartType: "allImpacts",
       allImpactsData: [],
-      gwpData: []
-
+      gwpData: [],
+      materials: [],
+      selectedMaterials: []
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   componentDidMount() {
-    LoadData.allImpactsData(data => this.setState({ allImpactsData: data }));
+    LoadData.allImpactsData(data => {
+      const materials = data.map(d => d.material);
+      this.setState({
+        allImpactsData: data,
+        materials: materials
+      });
+    });
     LoadData.gwpData(data => this.setState({ gwpData: data }));
   }
 
@@ -34,7 +42,15 @@ class App extends Component {
     });
   }
 
+  updateSelectedMaterials(newSelectedMaterials) {
+    this.setState({
+      selectedMaterials: newSelectedMaterials
+    })
+  }
+
   render() {
+    const allImpactsDataSelectedMaterialsOnly = this.state.allImpactsData.filter(d => this.state.selectedMaterials.includes(d.material));
+
     return (
       <div className="App">
         <h1>LCA Tool</h1>
@@ -64,11 +80,13 @@ class App extends Component {
             <input type="radio" id="nBio" name="biogenicCarbon" value="nBio" />
             <label for="nBio">No Biogenic Carbon</label>
 
+            {this.state.materials.length > 0 && <MaterialList materials={this.state.materials} updateSelectedMaterials={this.updateSelectedMaterials.bind(this)} />}
+
         </form>
 
         <div className="chartContainer">
-        {this.state.chartType === "allImpacts" && this.state.allImpactsData.length > 0 && <StackedBarChart
-          data={this.state.allImpactsData}
+        {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly.length > 0 && <StackedBarChart
+          data={allImpactsDataSelectedMaterialsOnly}
           height={600}
           xAxisLabel="kg CO2eq ??"
         />}
