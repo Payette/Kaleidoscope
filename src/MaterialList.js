@@ -6,9 +6,9 @@ export default class MaterialList extends PureComponent {
     super(props);
 
     this.state = {
-      items: props.materials.map(material => { return { label: material, id: material }}),
+      items: props.materials.map(material => { return { label: material, id: material }}).reverse(),
       isShiftDown: false,
-      selectedItems: [],
+      selectedItems: props.materials,
       lastSelectedItem: null
     };
 
@@ -24,6 +24,7 @@ export default class MaterialList extends PureComponent {
     document.addEventListener("keyup", this.handleKeyUp, false);
     document.addEventListener("keydown", this.handleKeyDown, false);
     this.listEl.addEventListener("selectstart", this.handleSelectStart, false);
+    this.props.updateSelectedMaterials(this.state.selectedItems);
   }
 
   componentWillUnmount() {

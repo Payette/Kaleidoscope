@@ -3,7 +3,6 @@ import {BarStackHorizontal} from '@vx/shape';
 import {Group} from '@vx/group';
 import {AxisBottom, AxisLeft} from '@vx/axis';
 import {scaleBand, scaleLinear, scaleOrdinal} from '@vx/scale';
-import {timeParse, timeFormat} from 'd3-time-format';
 import {withTooltip, Tooltip} from '@vx/tooltip';
 import {LegendOrdinal} from '@vx/legend';
 import {ParentSize} from '@vx/responsive';
