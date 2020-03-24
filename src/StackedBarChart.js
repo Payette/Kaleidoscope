@@ -2,7 +2,6 @@ import React from 'react';
 import {BarStackHorizontal} from '@vx/shape';
 import {Group} from '@vx/group';
 import {AxisBottom, AxisLeft} from '@vx/axis';
-import {cityTemperature} from '@vx/mock-data';
 import {scaleBand, scaleLinear, scaleOrdinal} from '@vx/scale';
 import {timeParse, timeFormat} from 'd3-time-format';
 import {withTooltip, Tooltip} from '@vx/tooltip';
@@ -10,8 +9,8 @@ import {LegendOrdinal} from '@vx/legend';
 import {ParentSize} from '@vx/responsive';
 
 export default withTooltip(({
-  height,
-  data,
+  barHeight,
+  selectedMaterials,
   xAxisLabel,
   events = false,
   margin = {
@@ -31,6 +30,8 @@ export default withTooltip(({
 
   // bounds
   // const xMax = width - margin.left - margin.right;
+  const headerFooterHeight = 160;
+  const height = headerFooterHeight + (barHeight * selectedMaterials.length);
   const yMax = height - margin.top - margin.bottom;
 
   const purple1 = '#6c5efb';
@@ -38,9 +39,9 @@ export default withTooltip(({
   const purple3 = '#a44afe';
   const bg = '#eaedff';
 
-  const keys = Object.keys(data[0]).filter(d => d !== 'material');
+  const keys = Object.keys(selectedMaterials[0]).filter(d => d !== 'material');
 
-  const totals = data.reduce((ret, cur) => {
+  const totals = selectedMaterials.reduce((ret, cur) => {
     const t = keys.reduce((dailyTotal, k) => {
       dailyTotal += + cur[k];
       return dailyTotal;
@@ -64,7 +65,7 @@ export default withTooltip(({
     ],
     nice: true
   });
-  const yScale = scaleBand({domain: data.map(y), padding: 0.2});
+  const yScale = scaleBand({domain: selectedMaterials.map(y), padding: 0.2});
   const color = scaleOrdinal({
     domain: keys,
     range: [purple1, purple2, purple3]
@@ -88,7 +89,7 @@ export default withTooltip(({
           <svg width={w} height={height}>
             <rect width={w} height={height} fill={bg} rx={14}/>
             <Group top={margin.top} left={margin.left}>
-              <BarStackHorizontal data={data} keys={keys} height={yMax} y={y} xScale={xScale} yScale={yScale} color={color}>
+              <BarStackHorizontal data={selectedMaterials} keys={keys} height={yMax} y={y} xScale={xScale} yScale={yScale} color={color}>
                 {
                   barStacks => {
                     return barStacks.map(barStack => {

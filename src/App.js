@@ -86,8 +86,9 @@ class App extends Component {
 
         <div className="chartContainer">
         {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly.length > 0 && <StackedBarChart
-          data={allImpactsDataSelectedMaterialsOnly}
-          height={600}
+          selectedMaterials={allImpactsDataSelectedMaterialsOnly}
+          allMaterials={this.state.allImpactsData}
+          barHeight={40}
           xAxisLabel="kg CO2eq ??"
         />}
 
