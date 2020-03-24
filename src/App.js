@@ -24,7 +24,8 @@ class App extends Component {
       const materials = data.map(d => d.material);
       this.setState({
         allImpactsData: data,
-        materials: materials
+        materials: materials,
+        selectedMaterials: materials
       });
     });
     LoadData.gwpData(data => this.setState({ gwpData: data }));
@@ -80,7 +81,12 @@ class App extends Component {
             <input type="radio" id="nBio" name="biogenicCarbon" value="nBio" />
             <label for="nBio">No Biogenic Carbon</label>
 
-            {this.state.materials.length > 0 && <MaterialList materials={this.state.materials} updateSelectedMaterials={this.updateSelectedMaterials.bind(this)} />}
+            {this.state.materials.length > 0 &&
+              <MaterialList
+                materials={this.state.materials}
+                updateSelectedMaterials={this.updateSelectedMaterials.bind(this)}
+                initialSelectedMaterials={this.state.selectedMaterials}
+              />}
 
         </form>
 

@@ -5,17 +5,15 @@ export default class MaterialList extends PureComponent {
   constructor(props) {
     super(props);
 
+    console.log(props.initialSelectedMaterials);
+
     this.state = {
       items: props.materials.map(material => { return { label: material, id: material }}).reverse(),
-      selectedItems: props.materials
+      selectedItems: props.initialSelectedMaterials
     };
 
     this.listEl = null;
     this.handleSelectItem = this.handleSelectItem.bind(this);
-  }
-
-  componentDidMount() {
-    this.props.updateSelectedMaterials(this.state.selectedItems);
   }
 
   handleSelectItem(e) {
@@ -26,8 +24,10 @@ export default class MaterialList extends PureComponent {
     this.props.updateSelectedMaterials(nextValue);
   }
 
-  // handleSelectAll(e) {
-  // }
+  handleSelectAll(e) {
+    this.setState({ selectedItems: this.props.materials });
+    this.props.updateSelectedMaterials(this.props.materials);
+  }
 
   getNextValue(value) {
     const { selectedItems } = this.state;
@@ -58,6 +58,11 @@ export default class MaterialList extends PureComponent {
   }
 
   render() {
-    return <ul ref={node => (this.listEl = node)}>{this.renderItems()}</ul>;
+    return (
+      <div>
+        <button onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
+        <ul ref={node => (this.listEl = node)}>{this.renderItems()}</ul>
+      </div>
+    )
   }
 }
