@@ -11,6 +11,7 @@ import {ParentSize} from '@vx/responsive';
 export default withTooltip(({
   barHeight,
   selectedMaterials,
+  allMaterials,
   xAxisLabel,
   events = false,
   margin = {
@@ -41,7 +42,7 @@ export default withTooltip(({
 
   const keys = Object.keys(selectedMaterials[0]).filter(d => d !== 'material');
 
-  const totals = selectedMaterials.reduce((ret, cur) => {
+  const allMaterialTotals = allMaterials.reduce((ret, cur) => {
     const t = keys.reduce((dailyTotal, k) => {
       dailyTotal += + cur[k];
       return dailyTotal;
@@ -50,10 +51,6 @@ export default withTooltip(({
     return ret;
   }, []);
 
-  const parseDate = timeParse('%Y%m%d');
-  const format = timeFormat('%b %d');
-  const formatDate = date => format(parseDate(date));
-
   // accessors
   const y = d => d.material;
 
@@ -61,7 +58,7 @@ export default withTooltip(({
   const xScale = scaleLinear({
     domain: [
       0,
-      Math.max(...totals)
+      Math.max(...allMaterialTotals)
     ],
     nice: true
   });
