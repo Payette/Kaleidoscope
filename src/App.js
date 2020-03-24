@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
 import HorizontalBarChart from './HorizontalBarChart';
 import StackedBarChart from './StackedBarChart';
 import LoadData from './data/LoadData';
 import MaterialList from './MaterialList';
+import './css/App.scss';
 
 class App extends Component {
   constructor(props) {

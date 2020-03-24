@@ -6,6 +6,7 @@ import {scaleBand, scaleLinear, scaleOrdinal} from '@vx/scale';
 import {withTooltip, Tooltip} from '@vx/tooltip';
 import {LegendOrdinal} from '@vx/legend';
 import {ParentSize} from '@vx/responsive';
+import styles from './css/StackedBarChart.module.scss';
 
 export default withTooltip(({
   barHeight,
@@ -78,7 +79,7 @@ export default withTooltip(({
         xScale.rangeRound([0, xMax]);
         // w = w- 100;
 
-        return (<div style={{
+        return (<div className={styles.container} style={{
             position: 'relative'
           }}>
 
@@ -135,14 +136,16 @@ export default withTooltip(({
                 backgroundColor: 'rgba(0,0,0,0.9)',
                 color: 'white'
               }}>
-              <div style={{
-                  color: color(tooltipData.key)
-                }}>
-                <strong>{tooltipData.key}</strong>
-              </div>
-              <div>{tooltipData.bar.data[tooltipData.key]}</div>
-              <div>
-                <small>{y(tooltipData.bar.data)}</small>
+              <div className={styles.tooltipContainer}>
+                <div style={{
+                    color: color(tooltipData.key)
+                  }}>
+                  <strong>{tooltipData.key}</strong>
+                </div>
+                <div>{tooltipData.bar.data[tooltipData.key]}</div>
+                <div>
+                  <small>{y(tooltipData.bar.data)}</small>
+                </div>
               </div>
             </Tooltip>)
           }

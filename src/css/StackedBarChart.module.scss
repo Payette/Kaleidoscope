@@ -1,0 +1,16 @@
+@use 'components' as *;
+@use 'constants' as *;
+
+.container {
+  font-family: $control-font;
+}
+.tooltipContainer {
+  min-width: 300px;
+  min-height: 300px;
+  border: solid 1px black;
+
+  small {
+    font-style: bold;
+    letter-spacing: 0.3em;
+  }
+}
