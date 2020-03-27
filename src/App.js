@@ -54,7 +54,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>LCA Tool</h1>
+          <h1>LCA Tool v1</h1>
 
           <form>
             <p>CHART TYPE:</p>
