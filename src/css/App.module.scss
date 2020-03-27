@@ -24,3 +24,14 @@
     }
   }
 }
+
+@media (min-width: 1200px) {
+  .sidebar {
+    position: absolute;
+    right: 0;
+    width: 300px;
+  }
+  .chartContainer {
+    margin-right: 316px;
+  }
+}

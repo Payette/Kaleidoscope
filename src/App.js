@@ -107,15 +107,18 @@ class App extends Component {
             </div>
 
             {this.state.materials.length > 0 &&
-              <MaterialList
-                materials={this.state.materials}
-                updateSelectedMaterials={this.updateSelectedMaterials.bind(this)}
-                initialSelectedMaterials={this.state.selectedMaterials}
-              />}
+              <div className={styles.sidebar}>
+                <MaterialList
+                  materials={this.state.materials}
+                  updateSelectedMaterials={this.updateSelectedMaterials.bind(this)}
+                  initialSelectedMaterials={this.state.selectedMaterials}
+                />
+              </div>
+             }
 
         </form>
 
-        <div className="chartContainer">
+        <div className={styles.chartContainer}>
         {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly.length > 0 && <StackedBarChart
           selectedMaterials={allImpactsDataSelectedMaterialsOnly}
           allMaterials={this.state.allImpactsData}
