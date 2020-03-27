@@ -54,8 +54,6 @@ class App extends Component {
 
     return (
       <div className="App">
-          <h1>LCA Tool v1</h1>
-
           <form>
             <p>CHART TYPE:</p>
             <input type="radio" id="allImpacts" name="chartType" value="allImpacts" checked={this.state.chartType === "allImpacts"} onChange={this.handleInputChange} />
