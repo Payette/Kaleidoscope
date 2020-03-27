@@ -1,0 +1,26 @@
+@use 'components' as *;
+@use 'constants' as *;
+
+.topcontrols {
+  @include containfloats;
+}
+
+.inputgroup {
+  float: left;
+  width: 20rem;
+  height: 10rem;
+  border: solid 1px $highlight2;
+  border-radius: 2px;
+  margin: 0 0.5rem 0 0;
+  padding: 0.5rem;
+
+  h3 {
+    margin: 0 0 0.5rem 0;
+  }
+  .inputitem {
+    margin-bottom: 0.5rem;
+    label {
+      margin-left: 0.5rem;
+    }
+  }
+}

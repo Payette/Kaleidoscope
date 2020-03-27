@@ -1,5 +1,6 @@
 /* https://codesandbox.io/s/multiselect-checkboxes-oennn */
 import React, { PureComponent } from "react";
+import styles from './css/MaterialList.module.scss';
 
 export default class MaterialList extends PureComponent {
   constructor(props) {
@@ -59,7 +60,7 @@ export default class MaterialList extends PureComponent {
 
   render() {
     return (
-      <div>
+      <div className={styles.container}>
         <button onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
         <ul ref={node => (this.listEl = node)}>{this.renderItems()}</ul>
       </div>
