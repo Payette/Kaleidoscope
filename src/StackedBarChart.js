@@ -6,6 +6,7 @@ import {scaleBand, scaleLinear, scaleOrdinal} from '@vx/scale';
 import {withTooltip, Tooltip} from '@vx/tooltip';
 import {LegendOrdinal} from '@vx/legend';
 import {ParentSize} from '@vx/responsive';
+import * as d3 from 'd3';
 import styles from './css/StackedBarChart.module.scss';
 
 export default withTooltip(({
@@ -28,19 +29,23 @@ export default withTooltip(({
   showTooltip
 }) => {
 
+  const selectedMaterialsGroupedByType = d3.nest()
+  .key(function(d) { return d.type })
+  .entries(selectedMaterials);
+  console.log(selectedMaterialsGroupedByType);
 
   // bounds
   // const xMax = width - margin.left - margin.right;
   const headerFooterHeight = 160;
-  const height = headerFooterHeight + (barHeight * selectedMaterials.length);
-  const yMax = height - margin.top - margin.bottom;
+  // const height = headerFooterHeight + (barHeight * selectedMaterials.length);
+  // const yMax = height - margin.top - margin.bottom;
 
   const purple1 = '#6c5efb';
   const purple2 = '#c998ff';
   const purple3 = '#a44afe';
   const bg = '#eaedff';
 
-  const keys = Object.keys(selectedMaterials[0]).filter(d => d !== 'material');
+  const keys = Object.keys(selectedMaterials[0]).filter(d => d !== 'material' && d !== 'type');
 
   const allMaterialTotals = allMaterials.reduce((ret, cur) => {
     const t = keys.reduce((dailyTotal, k) => {
@@ -62,7 +67,6 @@ export default withTooltip(({
     ],
     nice: true
   });
-  const yScale = scaleBand({domain: selectedMaterials.map(y), padding: 0.2});
   const color = scaleOrdinal({
     domain: keys,
     range: [purple1, purple2, purple3]
@@ -70,7 +74,7 @@ export default withTooltip(({
 
   let tooltipTimeout;
 
-  yScale.rangeRound([yMax, 0]);
+
 
   return (<ParentSize>
     {
@@ -78,43 +82,59 @@ export default withTooltip(({
         const xMax = w - margin.left - margin.right;
         xScale.rangeRound([0, xMax]);
         // w = w- 100;
+        var previousY = 0;
 
         return (<div className={styles.container} style={{
             position: 'relative'
           }}>
 
-          <svg width={w} height={height}>
-            <rect width={w} height={height} fill={bg} rx={14}/>
+          <svg width={w} height={800}>
+            <rect width={w} height={800} fill={bg} rx={14}/>
             <Group top={margin.top} left={margin.left}>
-              <BarStackHorizontal data={selectedMaterials} keys={keys} height={yMax} y={y} xScale={xScale} yScale={yScale} color={color}>
-                {
-                  barStacks => {
-                    return barStacks.map(barStack => {
-                      return barStack.bars.map(bar => {
-                        return (<rect key={`barstack-horizontal-${barStack.index}-${bar.index}`} x={bar.x} y={bar.y} width={bar.width} height={bar.height} fill={bar.color} onClick={event => {
-                            if (!events)
-                              return;
-                            alert(`clicked: ${JSON.stringify(bar)}`);
-                          }} onMouseLeave={event => {
-                            tooltipTimeout = setTimeout(() => {
-                              hideTooltip();
-                            }, 300);
-                          }} onMouseMove={event => {
-                            if (tooltipTimeout)
-                              clearTimeout(tooltipTimeout);
-                            const top = bar.y + margin.top;
-                            const left = bar.x + bar.width + margin.left;
-                            showTooltip({tooltipData: bar, tooltipTop: top, tooltipLeft: left});
-                          }}/>);
-                      });
-                    });
-                  }
-                }
-              </BarStackHorizontal>
-              <AxisLeft hideAxisLine={true} hideTicks={true} scale={yScale} /* tickFormat={formatDate} */
+              {selectedMaterialsGroupedByType.map(sm => {
+                const height = headerFooterHeight + (barHeight * sm.values.length);
+                const yMax = height - margin.top - margin.bottom;
+                const yScale = scaleBand({domain:  sm.values.map(y), padding: 0.2});
+                yScale.rangeRound([yMax, 0]);
+                const yOffset = previousY;
+                previousY += yMax;
 
-                stroke={purple3} tickStroke={purple3} tickLabelProps={(value, index) => ({fill: purple3, fontSize: 11, textAnchor: 'end', dy: '0.33em'})}/>
-              <AxisBottom top={yMax} scale={xScale} stroke={purple3} tickStroke={purple3} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({fill: purple3, fontSize: 11, textAnchor: 'middle'})} labelProps={{
+                return (
+                  <Group top={yOffset}>
+                    <text>{sm.key}</text>
+                    <BarStackHorizontal data={sm.values} keys={keys} height={yMax} y={y} xScale={xScale} yScale={yScale} color={color}>
+                    {
+                      barStacks => {
+                        return barStacks.map(barStack => {
+                          return barStack.bars.map(bar => {
+                            return (<rect key={`barstack-horizontal-${barStack.index}-${bar.index}`} x={bar.x} y={bar.y} width={bar.width} height={bar.height} fill={bar.color} onClick={event => {
+                                if (!events)
+                                  return;
+                                alert(`clicked: ${JSON.stringify(bar)}`);
+                              }} onMouseLeave={event => {
+                                tooltipTimeout = setTimeout(() => {
+                                  hideTooltip();
+                                }, 300);
+                              }} onMouseMove={event => {
+                                if (tooltipTimeout)
+                                  clearTimeout(tooltipTimeout);
+                                const top = bar.y + margin.top;
+                                const left = bar.x + bar.width + margin.left;
+                                showTooltip({tooltipData: bar, tooltipTop: top, tooltipLeft: left});
+                              }}/>);
+                          });
+                        });
+                      }
+                    }
+                  </BarStackHorizontal>
+                  <AxisLeft hideAxisLine={true} hideTicks={true} scale={yScale} /* tickFormat={formatDate} */
+
+                    stroke={purple3} tickStroke={purple3} tickLabelProps={(value, index) => ({fill: purple3, fontSize: 11, textAnchor: 'end', dy: '0.33em'})}/>
+                </Group>
+                )
+              })}
+
+              <AxisBottom top={700} scale={xScale} stroke={purple3} tickStroke={purple3} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({fill: purple3, fontSize: 11, textAnchor: 'middle'})} labelProps={{
                   fontSize: 18,
                   fill: purple3
                 }}/>

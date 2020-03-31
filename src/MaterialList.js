@@ -9,7 +9,7 @@ export default class MaterialList extends PureComponent {
     console.log(props.initialSelectedMaterials);
 
     this.state = {
-      items: props.materials.map(material => { return { label: material, id: material }}).reverse(),
+      items: props.materials.map(material => { return { label: material, id: material }}),
       selectedItems: props.initialSelectedMaterials
     };
 

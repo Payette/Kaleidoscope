@@ -17,6 +17,7 @@
     "@vx/shape": "0.0.193",
     "@vx/tooltip": "0.0.194",
     "d3-time-format": "^2.2.3",
+    "d3": "^5.9.2",
     "gh-pages": "^2.2.0",
     "papaparse": "^5.1.1",
     "react": "^16.12.0",
