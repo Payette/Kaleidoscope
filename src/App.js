@@ -23,6 +23,7 @@ class App extends Component {
   componentDidMount() {
     LoadData.allImpactsData(data => {
       const materials = data.map(d => d.material);
+      console.log(data, materials);
       this.setState({
         allImpactsData: data,
         materials: materials,

@@ -64,7 +64,7 @@ export default {
          resultData = resultData.sort((a, b) => {
            const orderA = metaData.materialOrdering[a.material] ? metaData.materialOrdering[a.material] : 1000;
            const orderB = metaData.materialOrdering[b.material] ? metaData.materialOrdering[b.material] : 1000;
-           return orderA < orderB ? 1 : -1;
+           return orderA < orderB ? -1 : 1;
          });
          cb(resultData);
        } else {

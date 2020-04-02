@@ -6,8 +6,6 @@ export default class MaterialList extends PureComponent {
   constructor(props) {
     super(props);
 
-    console.log(props.initialSelectedMaterials);
-
     this.state = {
       items: props.materials.map(material => { return { label: material, id: material }}),
       selectedItems: props.initialSelectedMaterials
