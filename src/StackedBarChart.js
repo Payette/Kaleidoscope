@@ -94,12 +94,15 @@ export default withTooltip(({
         // w = w- 100;
         var previousY = 0;
 
+        const chartHeight = (selectedMaterials.length * barHeight) + headerFooterHeight
+        + (selectedMaterialsGroupedByType.length * 20);
+
         return (<div className={styles.container} style={{
             position: 'relative'
           }}>
 
-          <svg width={w} height={800}>
-            <rect width={w} height={800} fill={bg} rx={14}/>
+          <svg width={w} height={chartHeight}>
+            <rect width={w} height={chartHeight} fill={bg} rx={14}/>
             <Group top={margin.top} left={margin.left}>
               {selectedMaterialsGroupedByType.map(sm => {
                 const height = headerFooterHeight + (barHeight * sm.values.length);
@@ -144,7 +147,7 @@ export default withTooltip(({
                 )
               })}
 
-              <AxisBottom top={700} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({fill: textColor, fontSize: 11, textAnchor: 'middle'})} labelProps={{
+              <AxisBottom top={(chartHeight - 100)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({fill: textColor, fontSize: 11, textAnchor: 'middle'})} labelProps={{
                   fontSize: 18,
                   fill: textColor
                 }}/>
