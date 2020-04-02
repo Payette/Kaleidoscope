@@ -10,20 +10,26 @@ const PAPAPARSE_CONFIG = {
 
 const metaData = {
   materialColors: {
-    Wood: '#ff0000',
-    Steel: '#ff0000',
-    Limestone1: '#ff0000',
-    Granite1: '#ff0000',
-    Zinc: '#ff0000',
-    FiberCement: '#ff0000',
-    PhenResin: '#ff0000',
-    Terracotta: '#ff0000',
-    ACM: '#ff0000',
-    GFRC: '#ff0000',
-    InsMetPanel: '#ff0000',
-    Brick: '#ff0000',
-    Limestone: '#ff0000',
-    Granite: '#ff0000'
+    Granite:"#f99f2d",
+    Limestone:"#febd2a",
+    Brick:"#ffd743",
+    InsMetPanel:"#ea5625",
+    GFRC:"#700000",
+    ACM:"#920000",
+    Terracotta:"#b00000",
+    PhenResin:"#c80000",
+    FiberCement:"#e20000",
+    Zinc:"#ff1515",
+    Granite1:"#ff1515",
+    Limestone1:"#ff6161",
+    Steel:"#ff8989",
+    Wood:"#ffb7b7"
+  },
+
+  impactColors: {
+    impact1:"#f99f2d",
+    impact2:"#febd2a",
+    impact3:"#ffd743",
   },
 
   materialOrdering: {

@@ -32,7 +32,11 @@ export default withTooltip(({
 
   const selectedMaterialsGroupedByType = d3.nest()
   .key(function(d) { return d.type })
-  .entries(selectedMaterials.reverse())
+  .entries(selectedMaterials.sort((a, b) => {
+    const orderA = metaData.materialOrdering[a.material] ? metaData.materialOrdering[a.material] : 1000;
+    const orderB = metaData.materialOrdering[b.material] ? metaData.materialOrdering[b.material] : 1000;
+    return orderA < orderB ? 1 : -1;
+  }))
   .sort((a, b) => {
     const orderA = metaData.typeOrdering[a.key] ? metaData.typeOrdering[a.key] : 1000;
     const orderB = metaData.typeOrdering[b.key] ? metaData.typeOrdering[b.key] : 1000;
