@@ -12,6 +12,7 @@ import styles from './css/StackedBarChart.module.scss';
 export default withTooltip(({
   barHeight,
   selectedMaterials,
+  metaData,
   allMaterials,
   xAxisLabel,
   events = false,
@@ -31,8 +32,12 @@ export default withTooltip(({
 
   const selectedMaterialsGroupedByType = d3.nest()
   .key(function(d) { return d.type })
-  .entries(selectedMaterials);
-  console.log(selectedMaterialsGroupedByType);
+  .entries(selectedMaterials)
+  .sort((a, b) => {
+    const orderA = metaData.typeOrdering[a.key] ? metaData.typeOrdering[a.key] : 1000;
+    const orderB = metaData.typeOrdering[b.key] ? metaData.typeOrdering[b.key] : 1000;
+    return orderA < orderB ? -1 : 1;
+  });
 
   // bounds
   // const xMax = width - margin.left - margin.right;
