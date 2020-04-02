@@ -41,8 +41,12 @@ export default class MaterialList extends PureComponent {
     const { items, selectedItems } = this.state;
     return items.map(item => {
       const { id, label } = item;
+
+      const materialColor = this.props.metaData.materialColors[id] ? this.props.metaData.materialColors[id] : '#000000';
+
       return (
-        <li key={id}>
+        <li key={id} className={styles.material}>
+          <div className={styles.materialGraphic} style={{backgroundColor: materialColor}}></div>
           <input
             onChange={this.handleSelectItem}
             type="checkbox"

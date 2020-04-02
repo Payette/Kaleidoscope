@@ -113,6 +113,7 @@ class App extends Component {
                   materials={this.state.materials}
                   updateSelectedMaterials={this.updateSelectedMaterials.bind(this)}
                   initialSelectedMaterials={this.state.selectedMaterials}
+                  metaData={LoadData.metaData}
                 />
               </div>
              }
