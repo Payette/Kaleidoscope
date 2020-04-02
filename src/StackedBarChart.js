@@ -49,10 +49,11 @@ export default withTooltip(({
   // const height = headerFooterHeight + (barHeight * selectedMaterials.length);
   // const yMax = height - margin.top - margin.bottom;
 
-  const purple1 = '#6c5efb';
-  const purple2 = '#c998ff';
-  const purple3 = '#a44afe';
-  const bg = '#eaedff';
+  const purple1 = "#f99f2d";
+  const purple2 = "#febd2a";
+  const purple3 = "#ffd743";
+  const textColor = "#000000";
+  const bg = '#ffffff';
 
   const keys = Object.keys(selectedMaterials[0]).filter(d => d !== 'material' && d !== 'type');
 
@@ -138,14 +139,14 @@ export default withTooltip(({
                   </BarStackHorizontal>
                   <AxisLeft hideAxisLine={true} hideTicks={true} scale={yScale} /* tickFormat={formatDate} */
 
-                    stroke={purple3} tickStroke={purple3} tickLabelProps={(value, index) => ({fill: purple3, fontSize: 11, textAnchor: 'end', dy: '0.33em'})}/>
+                    stroke={textColor} tickStroke={textColor} tickLabelProps={(value, index) => ({fill: textColor, fontSize: 11, textAnchor: 'end', dy: '0.33em'})}/>
                 </Group>
                 )
               })}
 
-              <AxisBottom top={700} scale={xScale} stroke={purple3} tickStroke={purple3} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({fill: purple3, fontSize: 11, textAnchor: 'middle'})} labelProps={{
+              <AxisBottom top={700} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({fill: textColor, fontSize: 11, textAnchor: 'middle'})} labelProps={{
                   fontSize: 18,
-                  fill: purple3
+                  fill: textColor
                 }}/>
             </Group>
           </svg>
