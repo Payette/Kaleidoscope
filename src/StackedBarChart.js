@@ -11,6 +11,7 @@ import * as d3 from 'd3';
 import styles from './css/StackedBarChart.module.scss';
 
 export default withTooltip(({
+  colorBy,
   barHeight,
   selectedMaterials,
   metaData,
@@ -82,6 +83,14 @@ export default withTooltip(({
     domain: keys,
     range: [purple1, purple2, purple3]
   });
+  // const color = d => {
+  // range: d => {
+  //   console.log('hmm', d);
+  //   return 'green';
+  // }
+  //   console.log(d);
+  //   return '#ff0000';
+  // }
 
   let tooltipTimeout;
 
@@ -120,7 +129,11 @@ export default withTooltip(({
                       barStacks => {
                         return barStacks.map(barStack => {
                           return barStack.bars.map(bar => {
-                            return (<rect key={`barstack-horizontal-${barStack.index}-${bar.index}`} x={bar.x} y={bar.y} width={bar.width} height={bar.height} fill={bar.color} onClick={event => {
+                            var barColor = bar.color;
+                            if(colorBy === "material" && bar.bar && bar.bar.data && bar.bar.data.material) {
+                              barColor = metaData.materialColors[bar.bar.data.material] || bar.color;
+                            }
+                            return (<rect key={`barstack-horizontal-${barStack.index}-${bar.index}`} x={bar.x} y={bar.y} width={bar.width} height={bar.height} fill={barColor} onClick={event => {
                                 if (!events)
                                   return;
                                 alert(`clicked: ${JSON.stringify(bar)}`);

@@ -86,7 +86,7 @@ export default {
       complete: function(results, file) {
        if(Array.isArray(results.data)) {
          const resultData = results.data.map(d => {
-           return { letter: d.Variable, frequency: parseFloat(d.Attended) }
+           return { material: d.material, type: d.type, value: parseFloat(d.value) }
          });
          cb(resultData);
        } else {

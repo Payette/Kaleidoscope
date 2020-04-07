@@ -53,6 +53,7 @@ class App extends Component {
 
   render() {
     const allImpactsDataSelectedMaterialsOnly = this.state.allImpactsData.filter(d => this.state.selectedMaterials.includes(d.material));
+    const gwpDataSelectedMaterialsOnly = this.state.gwpData.filter(d => this.state.selectedMaterials.includes(d.material));
 
     return (
       <div className="App">
@@ -129,10 +130,13 @@ class App extends Component {
           xAxisLabel="kg CO2eq ??"
         />}
 
-        {this.state.chartType === "GWP" && this.state.gwpData.length > 0 && <HorizontalBarChart
-          data={this.state.gwpData}
-          height={600}
-          xAxisLabel="kg CO2eq"
+        {this.state.chartType === "GWP" && this.state.gwpData.length > 0 && <StackedBarChart
+          selectedMaterials={gwpDataSelectedMaterialsOnly}
+          allMaterials={this.state.gwpData}
+          metaData={LoadData.metaData}
+          barHeight={40}
+          xAxisLabel="kg CO2eq ??"
+          colorBy="material"
         />}
         </div>
 
