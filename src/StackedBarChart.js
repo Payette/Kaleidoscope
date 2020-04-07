@@ -2,6 +2,7 @@ import React from 'react';
 import {BarStackHorizontal} from '@vx/shape';
 import {Group} from '@vx/group';
 import {AxisBottom, AxisLeft} from '@vx/axis';
+import { Text } from '@vx/text';
 import {scaleBand, scaleLinear, scaleOrdinal} from '@vx/scale';
 import {withTooltip, Tooltip} from '@vx/tooltip';
 import {LegendOrdinal} from '@vx/legend';
@@ -18,7 +19,7 @@ export default withTooltip(({
   events = false,
   margin = {
     top: 40,
-    left: 100,
+    left: 200,
     right: 40,
     bottom: 100
   },
@@ -114,7 +115,6 @@ export default withTooltip(({
 
                 return (
                   <Group top={yOffset}>
-                    <text>{sm.key}</text>
                     <BarStackHorizontal data={sm.values} keys={keys} height={yMax} y={y} xScale={xScale} yScale={yScale} color={color}>
                     {
                       barStacks => {
@@ -140,9 +140,14 @@ export default withTooltip(({
                       }
                     }
                   </BarStackHorizontal>
-                  <AxisLeft hideAxisLine={true} hideTicks={true} scale={yScale} /* tickFormat={formatDate} */
-
-                    stroke={textColor} tickStroke={textColor} tickLabelProps={(value, index) => ({fill: textColor, fontSize: 11, textAnchor: 'end', dy: '0.33em'})}/>
+                  <AxisLeft
+                    hideAxisLine={true} hideTicks={true} scale={yScale} /* tickFormat={formatDate} */
+                    stroke={textColor} tickStroke={textColor}
+                    tickLabelProps={(value, index) => ({fill: textColor, fontSize: 11, textAnchor: 'end', dy: '0.33em'})}
+                  />
+                  <Text
+                    dx={-margin.left}
+                  >{sm.key}</Text>
                 </Group>
                 )
               })}
