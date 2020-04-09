@@ -186,7 +186,6 @@ export default withTooltip(({
               justifyContent: 'center',
               fontSize: '14px'
             }}>
-            <LegendOrdinal scale={color} direction="row" labelMargin="0 15px 0 0"/>
           </div>
           {
             tooltipOpen && (<Tooltip top={tooltipTop} left={tooltipLeft} style={{

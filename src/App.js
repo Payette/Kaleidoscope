@@ -9,7 +9,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chartType: "allImpacts",
+      chartType: "GWP",
       allImpactsData: [],
       gwpData: [],
       materials: [],
@@ -61,12 +61,12 @@ class App extends Component {
               <div className={styles.inputgroup}>
                 <h3>CHART TYPE</h3>
                   <div className={styles.inputitem}>
-                    <input type="radio" id="allImpacts" name="chartType" value="allImpacts" checked={this.state.chartType === "allImpacts"} onChange={this.handleInputChange} />
-                    <label htmlFor="allImpacts">All Impacts</label>
-                  </div>
-                  <div className={styles.inputitem}>
                     <input type="radio" id="GWP" value="GWP" name="chartType" checked={this.state.chartType === "GWP"} onChange={this.handleInputChange} />
                     <label for="fGWP">Global Warming Potential</label>
+                  </div>
+                  <div className={styles.inputitem}>
+                    <input type="radio" id="allImpacts" name="chartType" value="allImpacts" checked={this.state.chartType === "allImpacts"} onChange={this.handleInputChange} />
+                    <label htmlFor="allImpacts">All Impacts</label>
                   </div>
                   <div className={styles.inputitem}>
                     <input type="radio" id="LCS" value="LCS" name="chartType" checked={this.state.chartType === "LCS"} onChange={this.handleInputChange} />
@@ -126,7 +126,7 @@ class App extends Component {
           allMaterials={this.state.allImpactsData}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="kg CO2eq ??"
+          xAxisLabel="% of Total"
         />}
 
         {this.state.chartType === "GWP" && this.state.gwpData.length > 0 && <StackedBarChart
@@ -134,7 +134,7 @@ class App extends Component {
           allMaterials={this.state.gwpData}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="kg CO2eq ??"
+          xAxisLabel="kg CO2eq"
           colorBy="material"
         />}
         </div>
