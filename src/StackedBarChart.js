@@ -20,7 +20,7 @@ export default withTooltip(({
   events = false,
   margin = {
     top: 40,
-    left: 200,
+    left: 220,
     right: 40,
     bottom: 100
   },
@@ -159,7 +159,11 @@ export default withTooltip(({
                     tickLabelProps={(value, index) => ({fill: textColor, fontSize: 11, textAnchor: 'end', dy: '0.33em'})}
                   />
                   <Text
-                    dx={-margin.left}
+                    textAnchor="start"
+                    verticalAnchor="start"
+                    fontSize={14}
+                    width={50}
+                    x={-margin.left + 8} y={(14/2 + barHeight * sm.values.length)/2}
                   >{sm.key}</Text>
                 </Group>
                 )

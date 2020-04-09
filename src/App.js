@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import HorizontalBarChart from './HorizontalBarChart';
 import StackedBarChart from './StackedBarChart';
 import LoadData from './data/LoadData';
 import MaterialList from './MaterialList';
