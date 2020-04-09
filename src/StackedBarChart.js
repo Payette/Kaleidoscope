@@ -33,6 +33,9 @@ export default withTooltip(({
   showTooltip
 }) => {
 
+  const toolTipWidth = 200;
+  const toolTipHeight = 200;
+
   const selectedMaterialsGroupedByType = d3.nest()
   .key(function(d) { return d.type })
   .entries(selectedMaterials.sort((a, b) => {
@@ -146,8 +149,8 @@ export default withTooltip(({
                               }} onMouseMove={event => {
                                 if (tooltipTimeout)
                                   clearTimeout(tooltipTimeout);
-                                const top = bar.y + margin.top;
-                                const left = bar.x + bar.width + margin.left;
+                                const top = bar.y + margin.top + barHeight + 10;
+                                const left = bar.x + bar.width/2 + margin.left - toolTipWidth/2;
                                 showTooltip({tooltipData: bar, tooltipTop: top, tooltipLeft: left});
                               }}/>);
                           });
@@ -190,6 +193,8 @@ export default withTooltip(({
           {
             tooltipOpen && (<Tooltip top={tooltipTop} left={tooltipLeft} style={{
                 minWidth: 60,
+                height: toolTipHeight,
+                width: toolTipWidth,
                 backgroundColor: 'rgba(0,0,0,0.9)',
                 color: 'white'
               }}>
