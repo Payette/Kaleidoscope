@@ -22,7 +22,8 @@ export default withTooltip(({
     top: 40,
     left: 220,
     right: 40,
-    bottom: 100
+    bottom: 100,
+    smallGap: 8
   },
   tooltipOpen,
   tooltipLeft,
@@ -124,6 +125,7 @@ export default withTooltip(({
 
                 return (
                   <Group top={yOffset}>
+                    <line x1={-margin.left+margin.smallGap} y1="0" x2={w-margin.left-2*margin.smallGap} y2="0" stroke="#C9CDF2" stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
                     <BarStackHorizontal data={sm.values} keys={keys} height={yMax} y={y} xScale={xScale} yScale={yScale} color={color}>
                     {
                       barStacks => {
@@ -163,12 +165,13 @@ export default withTooltip(({
                     verticalAnchor="start"
                     fontSize={14}
                     width={50}
-                    x={-margin.left + 8} y={(14/2 + barHeight * sm.values.length)/2}
+                    x={-margin.left + margin.smallGap} y={(barHeight * sm.values.length)/2}
                   >{sm.key}</Text>
                 </Group>
                 )
               })}
 
+              <line x1={-margin.left+margin.smallGap} y1={previousY} x2={w-margin.left-2*margin.smallGap} y2={previousY} stroke="#C9CDF2" stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
               <AxisBottom top={(chartHeight - 100)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({fill: textColor, fontSize: 11, textAnchor: 'middle'})} labelProps={{
                   fontSize: 18,
                   fill: textColor
