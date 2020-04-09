@@ -172,7 +172,7 @@ export default withTooltip(({
               })}
 
               <line x1={-margin.left+margin.smallGap} y1={previousY} x2={w-margin.left-2*margin.smallGap} y2={previousY} stroke="#C9CDF2" stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
-              <AxisBottom top={(chartHeight - 100)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({fill: textColor, fontSize: 11, textAnchor: 'middle'})} labelProps={{
+              <AxisBottom top={(previousY + 10)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({fill: textColor, fontSize: 11, textAnchor: 'middle'})} labelProps={{
                   fontSize: 18,
                   fill: textColor
                 }}/>
