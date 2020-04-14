@@ -4,7 +4,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "node-sass": "npm:sass@^1.23.7",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
@@ -16,11 +15,13 @@
     "@vx/scale": "0.0.193",
     "@vx/shape": "0.0.193",
     "@vx/tooltip": "0.0.194",
-    "d3-time-format": "^2.2.3",
     "d3": "^5.9.2",
+    "d3-time-format": "^2.2.3",
     "gh-pages": "^2.2.0",
+    "node-sass": "npm:sass@^1.23.7",
     "papaparse": "^5.1.1",
     "react": "^16.12.0",
+    "react-a11y-dialog": "^4.1.1",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.1"
   },

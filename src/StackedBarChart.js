@@ -149,7 +149,7 @@ export default withTooltip(({
                               }} onMouseMove={event => {
                                 if (tooltipTimeout)
                                   clearTimeout(tooltipTimeout);
-                                const top = bar.y + margin.top + barHeight + 10;
+                                const top = yOffset + bar.y + margin.top + barHeight + 10;
                                 const left = bar.x + bar.width/2 + margin.left - toolTipWidth/2;
                                 showTooltip({tooltipData: bar, tooltipTop: top, tooltipLeft: left});
                               }}/>);

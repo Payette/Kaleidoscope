@@ -1,6 +1,4 @@
-.container {
 
-}
 .material {
   margin-bottom: 0.5rem;
 }
@@ -8,4 +6,10 @@
   width: 15px; height: 15px;
   display: inline-block;
   margin-right: 10px;
+}
+.moreInformationButton {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  display: block;
 }

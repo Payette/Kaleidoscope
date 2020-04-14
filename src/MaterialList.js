@@ -1,6 +1,8 @@
 /* https://codesandbox.io/s/multiselect-checkboxes-oennn */
 import React, { PureComponent } from "react";
 import styles from './css/MaterialList.module.scss';
+import Dialog from 'react-a11y-dialog';
+import materialPopupMock from './images/popupmock.png';
 
 export default class MaterialList extends PureComponent {
   constructor(props) {
@@ -8,7 +10,8 @@ export default class MaterialList extends PureComponent {
 
     this.state = {
       items: props.materials.map(material => { return { label: material, id: material }}),
-      selectedItems: props.initialSelectedMaterials
+      selectedItems: props.initialSelectedMaterials,
+      materialPopup: {}
     };
 
     this.listEl = null;
@@ -37,6 +40,19 @@ export default class MaterialList extends PureComponent {
       : [...selectedItems, value];
   }
 
+  showMaterialsPopup(event, material) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.setState({
+      materialPopup: {
+        name: material.label
+      }
+    }, () => {
+      this.materialsDialogRef.show();
+    })    
+  } 
+
   renderItems() {
     const { items, selectedItems } = this.state;
     return items.map(item => {
@@ -55,6 +71,7 @@ export default class MaterialList extends PureComponent {
             id={`item-${id}`}
           />
           <label htmlFor={`item-${id}`}>{label}</label>
+          <button className={styles.moreInformationButton} onClick={event => this.showMaterialsPopup.bind(this)(event, item)}>More information</button>
         </li>
       );
     });
@@ -65,6 +82,23 @@ export default class MaterialList extends PureComponent {
       <div className={styles.container}>
         <button onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
         <ul ref={node => (this.listEl = node)}>{this.renderItems()}</ul>
+
+        <Dialog id="materialdetailsdialog"
+          appRoot="#root"
+          dialogRoot="#dialog-root"
+          dialogRef={(dialog) => (this.materialsDialogRef = dialog)}
+          title={this.state.materialPopup.name}
+          classNames={{
+            overlay: "dialog-overlay",
+            closeButton: "dialog-close",
+            element: "dialog-content",
+            base: "dialog"
+          }}
+          >
+            <p>
+              <img style={{maxWidth: "100%", maxHeight: "100%"}} src={materialPopupMock} alt={`${this.state.materialPopup.name} facade diagram`} />
+            </p>
+        </Dialog>
       </div>
     )
   }
