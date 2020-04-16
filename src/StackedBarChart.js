@@ -139,7 +139,6 @@ export default withTooltip(({
                             if(colorBy === "material" && bar.bar && bar.bar.data && bar.bar.data.material) {
                               barColor = metaData.materialColors[bar.bar.data.material] || bar.color;
                             }
-                            console.log(bar.width);
                             return (<rect key={`barstack-horizontal-${barStack.index}-${bar.index}`} x={bar.x} y={bar.y} width={bar.width} height={bar.height} fill={barColor} onClick={event => {
                                 if (!events)
                                   return;
