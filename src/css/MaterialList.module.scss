@@ -1,6 +1,12 @@
+@use 'components' as *;
+@use 'constants' as *;
 
+.container {
+  @include containfloats;
+}
 .material {
-  margin-bottom: 0.5rem;
+  float: left;
+  margin: 0 1rem 1rem 0;
 }
 .materialGraphic {
   width: 15px; height: 15px;
@@ -10,6 +16,23 @@
 .moreInformationButton {
   background: none;
   border: none;
+  padding: 0; margin: 0;
   text-decoration: underline;
   display: block;
+}
+.materialIcon {
+  width: 30px; height: 30px;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+@media (min-width: $breakpoint1) {
+  .material {
+    float: none;
+    margin: 0 0 1rem 0;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }

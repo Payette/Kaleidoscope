@@ -26,6 +26,23 @@ const metaData = {
     Wood:"#ffb7b7"
   },
 
+  materialIcons: {
+    Granite:"/images/granite.png",
+    Limestone:"/images/limestone.png",
+    Brick:"/images/brick.png",
+    InsMetPanel:"/images/insmetalpanel.png",
+    GFRC:"/images/gfrc.png",
+    ACM:"/images/acm.png",
+    Terracotta:"/images/terracotta.png",
+    PhenResin:"/images/phenresin.png",
+    FiberCement:"/images/fibercement.png",
+    Zinc:"/images/zinc.png",
+    Granite1:"/images/granite1.png",
+    Limestone1:"/images/limestone1.png",
+    Steel:"/images/steel.png",
+    Wood:"/images/wood.png"
+  },
+
   impactColors: {
     impact1:"#f99f2d",
     impact2:"#febd2a",

@@ -61,9 +61,11 @@ export default class MaterialList extends PureComponent {
       const { id, label } = item;
 
       const materialColor = this.props.metaData.materialColors[id] ? this.props.metaData.materialColors[id] : '#000000';
+      const materialIcon = this.props.metaData.materialIcons[id] ? this.props.metaData.materialIcons[id] : undefined;
 
       return (
         <li key={id} className={styles.material}>
+          {materialIcon && <img src={materialIcon} alt="material icon" className={styles.materialIcon}/>}
           <div className={styles.materialGraphic} style={{backgroundColor: materialColor}}></div>
           <input
             onChange={this.handleSelectItem}
@@ -81,9 +83,9 @@ export default class MaterialList extends PureComponent {
 
   render() {
     return (
-      <div className={styles.container}>
+      <div>
         <button onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
-        <ul ref={node => (this.listEl = node)}>{this.renderItems()}</ul>
+        <ul className={styles.container} ref={node => (this.listEl = node)}>{this.renderItems()}</ul>
 
         <Dialog id="materialdetailsdialog"
           appRoot="#root"
