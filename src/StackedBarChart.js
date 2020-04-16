@@ -103,7 +103,8 @@ export default withTooltip(({
   return (<ParentSize>
     {
       ({width: w}) => {
-        const xMax = w - margin.left - margin.right;
+        const width2 = Math.max(w, margin.left + margin.right + 1);
+        const xMax = width2 - margin.left - margin.right;
         xScale.rangeRound([0, xMax]);
         // w = w- 100;
         var previousY = 0;
@@ -115,8 +116,8 @@ export default withTooltip(({
             position: 'relative'
           }}>
 
-          <svg width={w} height={chartHeight}>
-            <rect width={w} height={chartHeight} fill={bg} rx={14}/>
+          <svg width={width2} height={chartHeight}>
+            <rect width={width2} height={chartHeight} fill={bg} rx={14}/>
             <Group top={margin.top} left={margin.left}>
               {selectedMaterialsGroupedByType.map(sm => {
                 const height = headerFooterHeight + (barHeight * sm.values.length);
@@ -128,7 +129,7 @@ export default withTooltip(({
 
                 return (
                   <Group top={yOffset}>
-                    <line x1={-margin.left+margin.smallGap} y1="0" x2={w-margin.left-2*margin.smallGap} y2="0" stroke="#C9CDF2" stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
+                    <line x1={-margin.left+margin.smallGap} y1="0" x2={width2-margin.left-2*margin.smallGap} y2="0" stroke="#C9CDF2" stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
                     <BarStackHorizontal data={sm.values} keys={keys} height={yMax} y={y} xScale={xScale} yScale={yScale} color={color}>
                     {
                       barStacks => {
@@ -138,6 +139,7 @@ export default withTooltip(({
                             if(colorBy === "material" && bar.bar && bar.bar.data && bar.bar.data.material) {
                               barColor = metaData.materialColors[bar.bar.data.material] || bar.color;
                             }
+                            console.log(bar.width);
                             return (<rect key={`barstack-horizontal-${barStack.index}-${bar.index}`} x={bar.x} y={bar.y} width={bar.width} height={bar.height} fill={barColor} onClick={event => {
                                 if (!events)
                                   return;
@@ -174,7 +176,7 @@ export default withTooltip(({
                 )
               })}
 
-              <line x1={-margin.left+margin.smallGap} y1={previousY} x2={w-margin.left-2*margin.smallGap} y2={previousY} stroke="#C9CDF2" stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
+              <line x1={-margin.left+margin.smallGap} y1={previousY} x2={width2-margin.left-2*margin.smallGap} y2={previousY} stroke="#C9CDF2" stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
               <AxisBottom top={(previousY + 10)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({fill: textColor, fontSize: 11, textAnchor: 'middle'})} labelProps={{
                   fontSize: 18,
                   fill: textColor
