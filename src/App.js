@@ -83,15 +83,15 @@ class App extends Component {
                 <h3>LIFESPAN</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="tenY" name="lifespan" value="tenY" checked={this.state.lifespan === "tenY"} onChange={this.handleInputChange} />
-                  <label for="tenY">10 Year (No Mod D.)</label>
+                  <label htmlFor="tenY">10 Year (No Mod D.)</label>
                 </div>
                 <div className={styles.inputitem}>
                   <input type="radio" id="sixty1" name="lifespan" value="sixty1" checked={this.state.lifespan === "sixty1"} onChange={this.handleInputChange} />
-                  <label for="sixty1">60 Year (With Mod D)</label>
+                  <label htmlFor="sixty1">60 Year (With Mod D)</label>
                 </div>
                 <div className={styles.inputitem}>
                   <input type="radio" id="sixty2" name="lifespan" value="sixty2" checked={this.state.lifespan === "sixty2"} onChange={this.handleInputChange} />
-                  <label for="sixty2">60 Year (No Mod D)</label>
+                  <label htmlFor="sixty2">60 Year (No Mod D)</label>
                 </div>
               </div>
 
@@ -99,11 +99,11 @@ class App extends Component {
                 <h3>BIOGENIC CARBON</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked={this.state.biogenicCarbon === "yBio"} onChange={this.handleInputChange} />
-                  <label for="yBio">With Biogenic Carbon</label>
+                  <label htmlFor="yBio">With Biogenic Carbon</label>
                 </div>
                 <div className={styles.inputitem}>
                   <input type="radio" id="nBio" name="biogenicCarbon" value="nBio" checked={this.state.biogenicCarbon === "nBio"} onChange={this.handleInputChange} />
-                  <label for="nBio">No Biogenic Carbon</label>
+                  <label htmlFor="nBio">No Biogenic Carbon</label>
                 </div>
               </div>
             </div>

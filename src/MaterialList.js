@@ -11,7 +11,9 @@ export default class MaterialList extends PureComponent {
     this.state = {
       items: props.materials.map(material => { return { label: material, id: material }}),
       selectedItems: props.initialSelectedMaterials,
-      materialPopup: {}
+      materialPopup: {
+        name: "Material"
+      }
     };
 
     this.listEl = null;
