@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useRef, useCallback } from 'react';
 import {BarStackHorizontal} from '@vx/shape';
 import {Group} from '@vx/group';
-import {AxisBottom, AxisLeft} from '@vx/axis';
+import {AxisBottom, AxisLeft, AxisTop} from '@vx/axis';
 import { Text } from '@vx/text';
 import {scaleBand, scaleLinear, scaleOrdinal} from '@vx/scale';
-import {withTooltip, Tooltip} from '@vx/tooltip';
+import {withTooltip, Tooltip, TooltipWithBounds} from '@vx/tooltip';
 import {LegendOrdinal} from '@vx/legend';
 import {ParentSize} from '@vx/responsive';
+import { localPoint } from '@vx/event';
 import * as d3 from 'd3';
 import styles from './css/StackedBarChart.module.scss';
+
+
+    
+
 
 export default withTooltip(({
   colorBy,
@@ -33,8 +38,8 @@ export default withTooltip(({
   showTooltip
 }) => {
 
-  const toolTipWidth = 200;
-  const toolTipHeight = 200;
+  const toolTipWidth = 300;
+  const toolTipHeight = 300;
 
   const selectedMaterialsGroupedByType = d3.nest()
   .key(function(d) { return d.type })
@@ -61,11 +66,11 @@ export default withTooltip(({
   const textColor = "#000000";
   const bg = '#ffffff';
 
-  const keys = Object.keys(selectedMaterials[0]).filter(d => d !== 'material' && d !== 'type');
+  const keys = Object.keys(selectedMaterials[0]).filter(d => d !== 'material' && d !== 'type' && d !== 'name' && d !== 'img');
 
   const allMaterialTotals = allMaterials.reduce((ret, cur) => {
     const t = keys.reduce((dailyTotal, k) => {
-      dailyTotal += + cur[k];
+      dailyTotal += + Math.abs(cur[k]);
       return dailyTotal;
     }, 0);
     ret.push(t);
@@ -74,6 +79,22 @@ export default withTooltip(({
 
   // accessors
   const y = d => d.material;
+  const getName = d => d.name;
+   const getType = d => d.type;
+   const getImg = d => d.img;
+  // console.log(getName);
+
+  let impactCol = [];
+
+  Object.values(metaData.impactColors).forEach(val =>{
+    impactCol.push(val)
+  })
+
+  let matCol = [];
+
+  Object.values(metaData.matColors).forEach(val =>{
+    matCol.push(val)
+  })
 
   // scales
   const xScale = scaleLinear({
@@ -83,21 +104,23 @@ export default withTooltip(({
     ],
     nice: true
   });
-  const color = scaleOrdinal({
+
+  let color = scaleOrdinal({
     domain: keys,
-    range: [purple1, purple2, purple3]
+    // range: [purple1, purple2, purple3],
+    range: impactCol
   });
-  // const color = d => {
-  // range: d => {
-  //   console.log('hmm', d);
-  //   return 'green';
-  // }
-  //   console.log(d);
-  //   return '#ff0000';
-  // }
+
+  if(xAxisLabel=="Materials"){
+  color = scaleOrdinal({
+    domain: keys,
+    // range: [purple1, purple2, purple3],
+    range: matCol
+  });
+}
+
 
   let tooltipTimeout;
-
 
 
   return (<ParentSize>
@@ -122,20 +145,23 @@ export default withTooltip(({
               {selectedMaterialsGroupedByType.map(sm => {
                 const height = headerFooterHeight + (barHeight * sm.values.length);
                 const yMax = height - margin.top - margin.bottom;
-                const yScale = scaleBand({domain:  sm.values.map(y), padding: 0.2});
+                const yScale = scaleBand({domain:  sm.values.map(getName), padding: 0.2});
                 yScale.rangeRound([yMax, 0]);
                 const yOffset = previousY;
                 previousY += yMax;
+                // console.log(sm.values[0].name)
 
                 return (
                   <Group top={yOffset}>
                     <line className={styles.groupLine} x1={-margin.left+margin.smallGap} y1="0" x2={width2-margin.left-2*margin.smallGap} y2="0" stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
-                    <BarStackHorizontal data={sm.values} keys={keys} height={yMax} y={y} xScale={xScale} yScale={yScale} color={color}>
+                    <BarStackHorizontal data={sm.values} keys={keys} height={yMax} y={getName} xScale={xScale} yScale={yScale} color={color} offset={'diverging'}>
                     {
+                      
                       barStacks => {
                         return barStacks.map(barStack => {
                           return barStack.bars.map(bar => {
                             var barColor = bar.color;
+                            // console.log(bar.bar.data.mName)
                             if(colorBy === "material" && bar.bar && bar.bar.data && bar.bar.data.material) {
                               barColor = metaData.materialColors[bar.bar.data.material] || bar.color;
                             }
@@ -152,7 +178,11 @@ export default withTooltip(({
                                   clearTimeout(tooltipTimeout);
                                 const top = yOffset + bar.y + margin.top + barHeight + 10;
                                 const left = bar.x + bar.width/2 + margin.left - toolTipWidth/2;
-                                showTooltip({tooltipData: bar, tooltipTop: top, tooltipLeft: left});
+                                let myX = localPoint(event.target.ownerSVGElement, event).x;
+                                let myY = localPoint(event.target.ownerSVGElement, event).y;
+                                // console.log(localPoint(event.target.ownerSVGElement, event));
+                                // console.log(getImg(bar.data));
+                                showTooltip({tooltipData: bar, tooltipTop: myY, tooltipLeft: myX});
                               }}/>);
                           });
                         });
@@ -162,7 +192,7 @@ export default withTooltip(({
                   <AxisLeft
                     hideAxisLine={true} hideTicks={true} scale={yScale} /* tickFormat={formatDate} */
                     stroke={textColor} tickStroke={textColor}
-                    tickLabelProps={(value, index) => ({fill: textColor, fontSize: 11, textAnchor: 'end', dy: '0.33em'})}
+                    tickLabelProps={(value, index) => ({fill: textColor, width: '200' , fontSize: 11, textAnchor: 'end', dy: '0.33em'})}
                   />
                   <Text
                     textAnchor="start"
@@ -178,37 +208,72 @@ export default withTooltip(({
               <line className={styles.groupLine} x1={-margin.left+margin.smallGap} y1={previousY} x2={width2-margin.left-2*margin.smallGap} y2={previousY} stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
               <AxisBottom top={(previousY + 10)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({fill: textColor, fontSize: 11, textAnchor: 'middle'})} labelProps={{
                   fontSize: 18,
+                  textAnchor: 'middle',
+                  fill: textColor
+                }}/>
+                <AxisTop  scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({fill: textColor, fontSize: 11, textAnchor: 'middle'})} labelProps={{
+                  fontSize: 18,
+                  textAnchor: 'middle',
                   fill: textColor
                 }}/>
             </Group>
           </svg>
-          <div style={{
-              position: 'absolute',
-              top: margin.top / 2 - 10,
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-              fontSize: '14px'
-            }}>
-          </div>
+          
           {
-            tooltipOpen && (<Tooltip top={tooltipTop} left={tooltipLeft} style={{
+            tooltipOpen && (<Tooltip top={tooltipTop} left={tooltipLeft} key={Math.random()} style={{
+              backgroundColor: 'rgba(255,255,255,0.0)',
+              color: 'black',
+              borderRadius: '0px',
+              boxShadow:"5px 5px rgba(200, 200, 200, .0)",
+              margin: 0,
+              padding: 0
+            }}>
+                 <span style={{color: "red", margin: 0, padding:0, top: 10}}>
+                 <img src={'./BlueTriangle.png'}></img>
+                  </span>
+
+                <div style={{
+                  position: 'absolute',
+                border: '3px solid deepskyblue',
+                boxShadow:"5px 5px rgba(200, 200, 200, .4)",
                 minWidth: 60,
-                height: toolTipHeight,
+                height: toolTipHeight+22,
                 width: toolTipWidth,
-                backgroundColor: 'rgba(0,0,0,0.9)',
-                color: 'white'
+                backgroundColor: 'rgba(255,255,255,0.8)',
+                color: 'black',
+                borderRadius: '0px',
+                margin: 0,
+                padding: 0,
+                top: 15
+
               }}>
+                 
+                  
               <div className={styles.tooltipContainer}>
                 <div style={{
-                    color: color(tooltipData.key)
+                    textTransform: 'uppercase',
+                    paddingBottom: 2
                   }}>
-                  <strong>{tooltipData.key}</strong>
+                  {getType(tooltipData.bar.data)} - 
                 </div>
-                <div>{tooltipData.bar.data[tooltipData.key]}</div>
-                <div>
-                  <small>{y(tooltipData.bar.data)}</small>
+                <div><strong>{getName(tooltipData.bar.data)}</strong></div>
+                <div className={styles.clearfix}>
+                  
+                  {/* <img className={styles.img2} src={'./Icon_FS.png'}></img> */}
+                  <img className={styles.img2} src={getImg(tooltipData.bar.data)}></img>
+                  
+                  <small>4" Granite Knife Edge Wall Section</small>
                 </div>
+                {/* <div >
+                  <small>4" granite veneer with knife edge</small>
+                  
+                  
+                  
+                </div>
+                <img src={'./Icon_FS.png'} alt="material icon" className={styles.materialIcon}></img> */}
+             
+                
+              </div>
               </div>
             </Tooltip>)
           }

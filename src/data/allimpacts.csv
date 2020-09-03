@@ -1,15 +1,17 @@
-material,type,impact1,impact2,impact3
-Wood,Rainscreen,100,20,40
-Steel,Rainscreen,200,50,20
-Limestone1,Rainscreen,300,30,70
-Granite1,Rainscreen,420,20,70
-Zinc,Rainscreen,340,100,10
-FiberCement,Rainscreen,280,10,200
-PhenResin,Rainscreen,300,50,20
-Terracotta,Rainscreen,600,20,0
-ACM,Rainscreen,650,20,30
-GFRC,Rainscreen,700,20,30
-InsMetPanel,Face Sealed,500,20,20
-Brick,Masonry Veneer,500,20,10
-Limestone,Masonry Veneer,600,20,10
-Granite,Masonry Veneer,800,20,0
+material,type,impact1,impact2,impact3,name,img
+Wood,Rainscreen,100,20,40,Wood,./images/granite.png
+Steel,Rainscreen,200,50,20,Formed Steel Panel,./images/granite.png
+Limestone1,Rainscreen,300,30,70,Limestone,./images/granite.png
+Granite1,Rainscreen,420,20,70,Granite,./images/granite.png
+Zinc,Rainscreen,340,100,10,Formed Zinc Panel,./images/granite.png
+FiberCement,Rainscreen,280,10,200,Fiber Cement,./images/granite.png
+PhenResin,Rainscreen,300,50,20,Phenolic Resin,./images/granite.png
+Terracotta,Rainscreen,600,20,0,Terracotta,./images/granite.png
+ACM,Rainscreen,650,20,30,Aluminum Composite Material (ACM),./images/granite.png
+GFRC,Rainscreen,700,20,30,Glass Fiber Reinfrced Concrete (GFRC),./images/granite.png
+UHPC,Rainscreen,600,30,30,Ultra-High Performance Concrete (fibreC),./images/granite.png
+Spandrel,Curtain Wall,600,30,30,Spandrel,./images/granite.png
+InsMetPanel,Face Sealed,500,20,20,Insulated Metal Panel,./images/granite.png
+Brick,Masonry Veneer,500,20,10,Brick,./images/granite.png
+Limestone,Masonry Veneer,600,20,10,Limestone,./images/granite.png
+Granite,Masonry Veneer,800,20,0,Granite,./images/granite.png

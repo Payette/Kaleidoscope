@@ -11,19 +11,33 @@
 .materialGraphic {
   width: 15px; height: 15px;
   display: inline-block;
-  margin-right: 10px;
+  margin-right: 0px;
 }
 .moreInformationButton {
   background: none;
   border: none;
-  padding: 0; margin: 0;
+  padding: 0;
+  margin-left: 1rem;
   text-decoration: underline;
-  display: block;
+  
+  // display: block;
 }
 .materialIcon {
   width: 30px; height: 30px;
   margin-bottom: 0.25rem;
   display: block;
+}
+
+.mLabel{
+  font-size: 10px;
+}
+
+.mButton{
+  font-size: 10px;
+  text-decoration: underline;
+  width: 96px;
+  height: 24px;
+  margin: 0px;
 }
 
 @media (min-width: $breakpoint1) {

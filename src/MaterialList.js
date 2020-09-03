@@ -3,6 +3,10 @@ import React, { PureComponent } from "react";
 import styles from './css/MaterialList.module.scss';
 import Dialog from 'react-a11y-dialog';
 import materialPopupMock from './images/popupmock.png';
+import { render } from 'react-dom'
+import Checkbox from './Checkbox'
+
+import 'pretty-checkbox'
 
 export default class MaterialList extends PureComponent {
   constructor(props) {
@@ -13,12 +17,18 @@ export default class MaterialList extends PureComponent {
       selectedItems: props.initialSelectedMaterials,
       materialPopup: {
         name: "Material"
-      }
+      },
+      checked: true
     };
 
     this.listEl = null;
     this.handleSelectItem = this.handleSelectItem.bind(this);
   }
+
+  // const [checked, setChecked] = React.useState(false);
+  // const hangleChange = React.useCallback(() => {
+  //   setChecked(prev => !prev)
+  // }, [])
 
   handleSelectItem(e) {
     const { value } = e.target;
@@ -55,27 +65,80 @@ export default class MaterialList extends PureComponent {
     })    
   } 
 
+  handleCheckboxChange = event => {
+    this.setState({ checked: event.target.checked })
+  }
+
+  
+
   renderItems() {
     const { items, selectedItems } = this.state;
     return items.map(item => {
       const { id, label } = item;
 
-      const materialColor = this.props.metaData.materialColors[id] ? this.props.metaData.materialColors[id] : '#000000';
+      let materialColor = '#ccc';
+      console.log(this.props.currentSel)
+
+      if(this.props.currentSel=="GWP"){
+        materialColor = this.props.metaData.materialColors[id] ? this.props.metaData.materialColors[id] : '#000000';
+      }
+
+      
       const materialIcon = this.props.metaData.materialIcons[id] ? this.props.metaData.materialIcons[id] : undefined;
+      const materialType = this.props.metaData.materialType[id] ? this.props.metaData.materialType[id] : undefined;
 
       return (
+        
         <li key={id} className={styles.material}>
-          {materialIcon && <img src={materialIcon} alt="material icon" className={styles.materialIcon}/>}
-          <div className={styles.materialGraphic} style={{backgroundColor: materialColor}}></div>
-          <input
+          
+          {/* <Checkbox state='checked'></Checkbox> */}
+          {/* {materialIcon && <img src={materialIcon} alt="material icon" className={styles.materialIcon}/>} */}
+          {/* <div className={styles.materialGraphic} style={{backgroundColor: materialColor}}></div> */}
+          {/* <section title=".squaredOne"> */}
+    {/* <!-- .squaredOne --> */}
+    {/* <div className={styles.squaredOne}>
+      <input type="checkbox" value="None" id="squaredOne" name="check" checked />
+      <label for="squaredOne"></label>
+    </div> */}
+    {/* <!-- end .squaredOne --> */}
+  {/* </section> */}
+
+  {/* <input
             onChange={this.handleSelectItem}
             type="checkbox"
             checked={selectedItems.includes(id)}
             value={id}
             id={`item-${id}`}
+            name="check"
+          /> */}
+
+{/* <div style={{ fontFamily: 'system-ui' }}> */}
+<label>
+          <Checkbox
+          caseStudyColor={materialColor}
+            onChange={this.handleSelectItem}
+            type="checkbox"
+            checked={selectedItems.includes(id)}
+            value={id}
+            id={`item-${id}`}
+            name="check"
+            
           />
-          <label htmlFor={`item-${id}`}>{label}</label>
-          <button className={styles.moreInformationButton} onClick={event => this.showMaterialsPopup.bind(this)(event, item)}>More information</button>
+          {/* <span style={{ marginLeft: 8 }}>Label Text</span> */}
+        </label>
+      {/* </div> */}
+
+
+    {/* <div className={styles.squaredOne}>
+      <input type="checkbox" value="None" id={styles.squaredOne} name="check" checked />
+      <label for={styles.squaredOne}></label>
+    </div> */}
+
+    
+          
+          {/* <label htmlFor={`item-${id}`}>{label}</label> */}
+          
+          <button className={styles.moreInformationButton} onClick={event => this.showMaterialsPopup.bind(this)(event, item)}><label className={styles.mLabel} htmlFor={`item-${id}`}>{materialType}</label></button>
         </li>
       );
     });
@@ -84,8 +147,19 @@ export default class MaterialList extends PureComponent {
   render() {
     return (
       <div>
-        <button onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
-        <ul className={styles.container} ref={node => (this.listEl = node)}>{this.renderItems()}</ul>
+        <div>
+          LEGEND:
+          <p>
+            something
+          </p>
+          <p>
+            something
+          </p>
+        </div>
+        
+        <ul className={styles.container} ref={node => (this.listEl = node)}>{this.renderItems()}
+        <button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
+        </ul>
 
         <Dialog id="materialdetailsdialog"
           appRoot="#root"
@@ -101,9 +175,11 @@ export default class MaterialList extends PureComponent {
           >
             <p>
               <img style={{maxWidth: "100%", maxHeight: "100%"}} src={materialPopupMock} alt={`${this.state.materialPopup.name} facade diagram`} />
+              Assumptions: Description of system
             </p>
         </Dialog>
       </div>
     )
   }
 }
+

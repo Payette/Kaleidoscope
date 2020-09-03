@@ -5,14 +5,50 @@
   font-family: $control-font;
 }
 .tooltipContainer {
-  border: solid 1px black;
+  // border: solid 1px black;
+  padding:15px;
 
   small {
-    font-style: bold;
-    letter-spacing: 0.3em;
+    // font-style: bold;
+    vertical-align: middle;
+    text-transform: uppercase;
+    bottom: 0px;
+    
   }
 }
 
 .groupLine {
   stroke: $highlight3;
 }
+
+.materialIcon {
+  width: 150px; height: 150px;
+  margin-bottom: 0.25rem;
+  display: inline-block;
+}
+
+
+// div {
+  // border: 3px solid #4CAF50;
+  // padding: 5px;
+// }
+
+// .img1 {
+//   float: right;
+// }
+
+.clearfix {
+  overflow: auto;
+  margin-right: 10px;
+  margin-top: 30px;
+}
+
+.img2 {
+  width: 180px; height: 250px;
+  margin-bottom: 0.25rem;
+  // display: inline-block;
+  float: right;
+  top: 0px;
+}
+
+

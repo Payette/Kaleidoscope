@@ -10,8 +10,26 @@
       content="Web site created using create-react-app"
     />
     <!-- auto resizing for iframe embedding -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="../src/js/bigfoot.js"></script> -->
+    
+    <!-- <script type="text/javascript">
+        $.bigfoot();
+    </script> -->
+    <link rel="stylesheet" type="text/css" href="bigfoot-default.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="checkbox.css"/> -->
+    <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/bigfoot/2.1.4/bigfoot.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.6.3/iframeResizer.contentWindow.min.js"></script>
+    <script>
+      // Footnote Options
+		$.bigfoot({
+        	activateOnHover: false,
+            deleteOnUnhover: false,
+            popoverDeleteDelay: 250,
+			buttonMarkup: "<div class=\"bigfoot-footnote__container\"> <button class=\"bigfoot-footnote__button\" rel=\"footnote\" id=\"{{SUP:data-footnote-backlink-ref}}\" data-footnote-number=\"{{FOOTNOTENUM}}\" data-footnote-identifier=\"{{FOOTNOTEID}}\" alt=\"See Footnote {{FOOTNOTENUM}}\" data-bigfoot-footnote=\"{{FOOTNOTECONTENT}}\">?</button></div>"
 
+        });
+    </script>
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -30,6 +48,8 @@
     <title>React App</title>
   </head>
   <body>
+
+
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <div id="dialog-root"></div>
