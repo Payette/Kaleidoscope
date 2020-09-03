@@ -10,6 +10,7 @@ import {ParentSize} from '@vx/responsive';
 import { localPoint } from '@vx/event';
 import * as d3 from 'd3';
 import styles from './css/StackedBarChart.module.scss';
+import { GridRows, GridColumns } from '@vx/grid';
 
 
     
@@ -120,6 +121,7 @@ export default withTooltip(({
     nice: true
   });
 
+
   let color = scaleOrdinal({
     domain: keys,
     // range: [purple1, purple2, purple3],
@@ -146,6 +148,7 @@ export default withTooltip(({
         xScale.rangeRound([0, xMax]);
         // w = w- 100;
         var previousY = 0;
+        
 
         const chartHeight = (selectedMaterials.length * barHeight) + headerFooterHeight
         + (selectedMaterialsGroupedByType.length * 20);
@@ -163,19 +166,26 @@ export default withTooltip(({
                 const yScale = scaleBand({domain:  sm.values.map(getName), padding: 0.2});
                 yScale.rangeRound([yMax, 0]);
                 const yOffset = previousY;
+                
                 previousY += yMax;
-                // console.log(sm.values[0].name)
+
+
+
 
                 return (
+                  
                   <Group top={yOffset}>
+                    
                     <line className={styles.groupLine} x1={-margin.left+margin.smallGap} y1="0" x2={width2-margin.left-2*margin.smallGap} y2="0" stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
                     <BarStackHorizontal data={sm.values} keys={keys} height={yMax} y={getName} xScale={xScale} yScale={yScale} color={color} offset={'diverging'}>
                     {
+                      
                       
                       barStacks => {
                         return barStacks.map(barStack => {
                           return barStack.bars.map(bar => {
                             var barColor = bar.color;
+                            
                             // console.log(bar.bar.data.mName)
                             if(colorBy === "material" && bar.bar && bar.bar.data && bar.bar.data.material) {
                               barColor = metaData.materialColors[bar.bar.data.material] || bar.color;
@@ -203,6 +213,7 @@ export default withTooltip(({
                         });
                       }
                     }
+                    
                   </BarStackHorizontal>
                   <AxisLeft
                     hideAxisLine={true} hideTicks={true} scale={yScale} /* tickFormat={formatDate} */
@@ -216,6 +227,7 @@ export default withTooltip(({
                     width={50}
                     x={-margin.left + margin.smallGap} y={(barHeight * sm.values.length)/2}
                   >{sm.key}</Text>
+                  <line className={styles.groupLine} x1={xScale(0)} y1="0" x2={xScale(0)} y2={20+(barHeight * sm.values.length)} stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
                 </Group>
                 )
               })}
