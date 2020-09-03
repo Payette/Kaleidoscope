@@ -68,10 +68,25 @@ export default withTooltip(({
 
   const keys = Object.keys(selectedMaterials[0]).filter(d => d !== 'material' && d !== 'type' && d !== 'name' && d !== 'img');
 
+  //console.log(allMaterials)
+
   const allMaterialTotals = allMaterials.reduce((ret, cur) => {
     const t = keys.reduce((dailyTotal, k) => {
-      dailyTotal += + Math.abs(cur[k]);
+      if(Math.abs(cur[k]) == (cur[k])){
+        dailyTotal += + Math.abs(cur[k]);
+      }
       return dailyTotal;
+    }, 0);
+    ret.push(t);
+    return ret;
+  }, []);
+
+  const allMaterialTotalsMin = allMaterials.reduce((ret, cur) => {
+    const t = keys.reduce((dailyTotal, k) => {
+      if(Math.abs(cur[k]) != (cur[k])){
+        dailyTotal += + Math.abs(cur[k]);
+      }
+      return dailyTotal * -1;
     }, 0);
     ret.push(t);
     return ret;
@@ -99,7 +114,7 @@ export default withTooltip(({
   // scales
   const xScale = scaleLinear({
     domain: [
-      0,
+      Math.min(...allMaterialTotalsMin),
       Math.max(...allMaterialTotals)
     ],
     nice: true

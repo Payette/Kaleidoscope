@@ -7,6 +7,7 @@ import { render } from 'react-dom'
 import Checkbox from './Checkbox'
 
 import 'pretty-checkbox'
+let myImg;
 
 export default class MaterialList extends PureComponent {
   constructor(props) {
@@ -52,9 +53,14 @@ export default class MaterialList extends PureComponent {
       : [...selectedItems, value];
   }
 
+  
+
   showMaterialsPopup(event, material) {
     event.preventDefault();
     event.stopPropagation();
+
+    console.log(material);
+    myImg = './images/' + material.id + '.png';
 
     this.setState({
       materialPopup: {
@@ -77,10 +83,9 @@ export default class MaterialList extends PureComponent {
       const { id, label } = item;
 
       let materialColor = '#ccc';
-      console.log(this.props.currentSel)
 
       if(this.props.currentSel=="GWP"){
-        materialColor = this.props.metaData.materialColors[id] ? this.props.metaData.materialColors[id] : '#000000';
+        materialColor = this.props.metaData.materialColors[id] ? this.props.metaData.materialColors[id] : '#CCCCCC';
       }
 
       
@@ -112,8 +117,8 @@ export default class MaterialList extends PureComponent {
             name="check"
           /> */}
 
-{/* <div style={{ fontFamily: 'system-ui' }}> */}
-<label>
+  {/* <div style={{ fontFamily: 'system-ui' }}> */}
+  <label>
           <Checkbox
           caseStudyColor={materialColor}
             onChange={this.handleSelectItem}
@@ -175,6 +180,7 @@ export default class MaterialList extends PureComponent {
           >
             <p>
               <img style={{maxWidth: "100%", maxHeight: "100%"}} src={materialPopupMock} alt={`${this.state.materialPopup.name} facade diagram`} />
+              <img src={myImg} alt="material icon" className={styles.materialIcon}/>
               Assumptions: Description of system
             </p>
         </Dialog>

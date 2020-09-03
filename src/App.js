@@ -341,11 +341,11 @@ class App extends Component {
                   <label htmlFor="tenY">10 Year (No Module D.)</label> <sup id="fnref:5"><a href="#fn:5" rel="footnote"></a></sup>
                 </div>
                 <div className={styles.inputitem}>
-                  <input type="radio" id="sixty1" name="lifespan" value="sixty1" checked={this.state.lifespan === "sixty1"} onChange={this.handleInputChange} />
+                  <input type="radio" id="sixty1" name="lifespan" value="sixty1" checked={this.state.lifespan === "sixty2"} onChange={this.handleInputChange} />
                   <label htmlFor="sixty1">60 Year (With Module D)</label> <sup id="fnref:6"><a href="#fn:6" rel="footnote"></a></sup>
                 </div>
                 <div className={styles.inputitem}>
-                  <input type="radio" id="sixty2" name="lifespan" value="sixty2" checked={this.state.lifespan === "sixty2"} onChange={this.handleInputChange} />
+                  <input type="radio" id="sixty2" name="lifespan" value="sixty2" checked={this.state.lifespan === "sixty1"} onChange={this.handleInputChange} />
                   <label htmlFor="sixty2">60 Year (No Module D)</label> <sup id="fnref:7"><a href="#fn:7" rel="footnote"></a></sup>
                 </div>
               </div>
@@ -353,11 +353,11 @@ class App extends Component {
               <div className={styles.inputgroup}>
                 <h3>BIOGENIC CARBON</h3>
                 <div className={styles.inputitem}>
-                  <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked={this.state.biogenicCarbon === "yBio"} onChange={this.handleInputChange} />
+                  <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked={this.state.biogenicCarbon === "nBio"} onChange={this.handleInputChange} />
                   <label htmlFor="yBio">With Biogenic Carbon</label> <sup id="fnref:8"><a href="#fn:8" rel="footnote"></a></sup>
                 </div>
                 <div className={styles.inputitem}>
-                  <input type="radio" id="nBio" name="biogenicCarbon" value="nBio" checked={this.state.biogenicCarbon === "nBio"} onChange={this.handleInputChange} />
+                  <input type="radio" id="nBio" name="biogenicCarbon" value="nBio" checked={this.state.biogenicCarbon === "yBio"} onChange={this.handleInputChange} />
                   <label htmlFor="nBio">No Biogenic Carbon</label> <sup id="fnref:9"><a href="#fn:9" rel="footnote"></a></sup>
                 </div>
               </div>
