@@ -341,11 +341,11 @@ class App extends Component {
                   <label htmlFor="tenY">10 Year (No Module D.)</label> <sup id="fnref:5"><a href="#fn:5" rel="footnote"></a></sup>
                 </div>
                 <div className={styles.inputitem}>
-                  <input type="radio" id="sixty1" name="lifespan" value="sixty2" checked={this.state.lifespan === "sixty2"} onChange={this.handleInputChange} />
+                  <input type="radio" id="sixty1" name="lifespan" value="sixty1" checked={this.state.lifespan === "sixty1"} onChange={this.handleInputChange} />
                   <label htmlFor="sixty1">60 Year (With Module D)</label> <sup id="fnref:6"><a href="#fn:6" rel="footnote"></a></sup>
                 </div>
                 <div className={styles.inputitem}>
-                  <input type="radio" id="sixty2" name="lifespan" value="sixty1" checked={this.state.lifespan === "sixty1"} onChange={this.handleInputChange} />
+                  <input type="radio" id="sixty2" name="lifespan" value="sixty2" checked={this.state.lifespan === "sixty2"} onChange={this.handleInputChange} />
                   <label htmlFor="sixty2">60 Year (No Module D)</label> <sup id="fnref:7"><a href="#fn:7" rel="footnote"></a></sup>
                 </div>
               </div>
@@ -377,6 +377,7 @@ class App extends Component {
              }
 
         </form>
+        <h2>GLOBAL WARMING POTENTIAL</h2>
         {/* GLOBAL WARMING POTENTIAL */}
         <div className={styles.chartContainer}>
         {this.state.chartType === "GWP" && this.state.gwpData.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" &&<StackedBarChart
@@ -384,7 +385,7 @@ class App extends Component {
           allMaterials={this.state.gwpData}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel=" Global Warming Potential (kgCO2eq/sf)"
+          xAxisLabel=" Global Warming Potential (kgCO&#x2082;eq/sf)"
           colorBy="material"
         />}
         {/* ALL IMPACTS*/}
@@ -425,7 +426,7 @@ class App extends Component {
           allMaterials={this.state.gwpData1}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel=" Global Warming Potential (kgCO2eq/sf)"
+          xAxisLabel=" Global Warming Potential (kgCO&#x2082;eq/sf)"
           colorBy="material"
         />}
         {/* ALL IMPACTS*/}
@@ -467,7 +468,7 @@ class App extends Component {
           allMaterials={this.state.gwpData2}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel=" Global Warming Potential (kgCO2eq/sf)"
+          xAxisLabel=" Global Warming Potential (kgCO&#x2082;eq/sf)"
           colorBy="material"
         />}
         {/* ALL IMPACTS*/}
@@ -504,28 +505,28 @@ class App extends Component {
 
         {/* GLOBAL WARMING POTENTIAL */}
 
-        {this.state.chartType === "GWP" && this.state.gwpData3.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" &&<StackedBarChart
-          selectedMaterials={gwpDataSelectedMaterialsOnly3}
-          allMaterials={this.state.gwpData3}
+        {this.state.chartType === "GWP" && this.state.gwpData4.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" &&<StackedBarChart
+          selectedMaterials={gwpDataSelectedMaterialsOnly4}
+          allMaterials={this.state.gwpData4}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel=" Global Warming Potential (kgCO2eq/sf)"
+          xAxisLabel=" Global Warming Potential (kgCO&#x2082;eq/sf)"
           colorBy="material"
         />}
         {/* ALL IMPACTS*/}
         
-        {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly3.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart
-          selectedMaterials={allImpactsDataSelectedMaterialsOnly3}
-          allMaterials={this.state.allImpactsData3}
+        {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly4.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart
+          selectedMaterials={allImpactsDataSelectedMaterialsOnly4}
+          allMaterials={this.state.allImpactsData4}
           metaData={LoadData.metaData}
           barHeight={40}
           xAxisLabel="% of Total"
         />}
         {/* LIFE CYCLE STAGE */}
         
-        {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly3.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart
-          selectedMaterials={lcsDataSelectedMaterialsOnly3}
-          allMaterials={this.state.lcsData3}
+        {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly4.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart
+          selectedMaterials={lcsDataSelectedMaterialsOnly4}
+          allMaterials={this.state.lcsData4}
           metaData={LoadData.metaData}
           barHeight={40}
           xAxisLabel="Life Cycle Stage"
@@ -544,37 +545,37 @@ class App extends Component {
 
         {/* GLOBAL WARMING POTENTIAL */}
 
-        {this.state.chartType === "GWP" && this.state.gwpData4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" &&<StackedBarChart
-          selectedMaterials={gwpDataSelectedMaterialsOnly4}
-          allMaterials={this.state.gwpData4}
+        {this.state.chartType === "GWP" && this.state.gwpData3.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" &&<StackedBarChart
+          selectedMaterials={gwpDataSelectedMaterialsOnly3}
+          allMaterials={this.state.gwpData3}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel=" Global Warming Potential (kgCO2eq/sf)"
+          xAxisLabel=" Global Warming Potential (kgCO&#x2082;eq/sf)"
           colorBy="material"
         />}
         {/* ALL IMPACTS*/}
         
-        {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
-          selectedMaterials={allImpactsDataSelectedMaterialsOnly4}
-          allMaterials={this.state.allImpactsData4}
+        {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly3.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
+          selectedMaterials={allImpactsDataSelectedMaterialsOnly3}
+          allMaterials={this.state.allImpactsData3}
           metaData={LoadData.metaData}
           barHeight={40}
           xAxisLabel="% of Total"
         />}
         {/* LIFE CYCLE STAGE */}
         
-        {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
-          selectedMaterials={lcsDataSelectedMaterialsOnly4}
-          allMaterials={this.state.lcsData4}
+        {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly3.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
+          selectedMaterials={lcsDataSelectedMaterialsOnly3}
+          allMaterials={this.state.lcsData3}
           metaData={LoadData.metaData}
           barHeight={40}
           xAxisLabel="Life Cycle Stage"
         />}
         {/* MATERIAL BREAKDOWN */}
        
-        {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
-          selectedMaterials={materialDataSelectedMaterialsOnly4}
-          allMaterials={this.state.materialData4}
+        {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly3.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
+          selectedMaterials={materialDataSelectedMaterialsOnly3}
+          allMaterials={this.state.materialData3}
           metaData={LoadData.metaData}
           barHeight={40}
           xAxisLabel="Materials"
@@ -591,7 +592,7 @@ class App extends Component {
           allMaterials={this.state.gwpData5}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel=" Global Warming Potential (kgCO2eq/sf)"
+          xAxisLabel=" Global Warming Potential (kgCO&#x2082;eq/sf)"
           colorBy="material"
         />}
         {/* ALL IMPACTS*/}
@@ -626,31 +627,32 @@ class App extends Component {
         <div className="footnotes">
         <ol>
           <li className="footnote" id="fn:1">
-					<p>Global Warming Potential. ASHRAE recommends using a temperature at 1 percentile of the year (where only 1% of hours are colder than this temperature). This value varies with the climate of the project and you can search for your climate's temperature to the right.<a href="#fnref:11" title="return to article"> ↩</a></p>
+					<p>Greenhouse gas emissions shown in equivalent units of carbon dioxide. Most impactful factor to reduce to meet climate change goals.</p>
 			</li>
             <li className="footnote" id="fn:2">
-            <p>A value represenintg one of the coldest expected outdoor temperatures during the annual occupancy period. ASHRAE recommends using a temperature at 1 percentile of the year (where only 1% of hours are colder than this temperature). This value varies with the climate of the project and you can search for your climate's temperature to the right.<a href="#fnref:11" title="return to article"> ↩</a></p>
+            <p>Weighted LCA normalized across all systems. Includes global warming potential, non-renewable energy demand, eutrophication, smog creation, acidification, and ozone depletion. See methodology below for more info.</p>
 			</li>
       <li className="footnote" id="fn:3">
-					<p>A value represenintg one of the coldest expected outdoor temperatures during the annual occupancy period. ASHRAE recommends using a temperature at 1 percentile of the year (where only 1% of hours are colder than this temperature). This value varies with the climate of the project and you can search for your climate's temperature to the right.<a href="#fnref:11" title="return to article"> ↩</a></p>
+					<p>Results broken into life cycle stage.</p>
 			</li>
             <li className="footnote" id="fn:4">
-            <p>A value represenintg one of the coldest expected outdoor temperatures during the annual occupancy period. ASHRAE recommends using a temperature at 1 percentile of the year (where only 1% of hours are colder than this temperature). This value varies with the climate of the project and you can search for your climate's temperature to the right.<a href="#fnref:11" title="return to article"> ↩</a></p>
+            <p>Global Warming Potential broken down into parts of the assembly: exterior finish, finish support, thermal insulation, and other.</p>
 			</li>
       <li className="footnote" id="fn:5">
-					<p>A value represenintg one of the coldest expected outdoor temperatures during the annual occupancy period. ASHRAE recommends using a temperature at 1 percentile of the year (where only 1% of hours are colder than this temperature). This value varies with the climate of the project and you can search for your climate's temperature to the right.<a href="#fnref:11" title="return to article"> ↩</a></p>
+					<p>Data adjusted for the time value of carbon. It does not include End of Life or Module D life cycle stage, which accounts for reuse potential beyond system boundary. See methodology below for more info.</p>
 			</li>
             <li className="footnote" id="fn:6">
-            <p>A value represenintg one of the coldest expected outdoor temperatures during the annual occupancy period. ASHRAE recommends using a temperature at 1 percentile of the year (where only 1% of hours are colder than this temperature). This value varies with the climate of the project and you can search for your climate's temperature to the right.<a href="#fnref:11" title="return to article"> ↩</a></p>
+            <p>Data included Module D life cycle stage, which accounts for reuse potential beyond system boundary.</p>
 			</li>
       <li className="footnote" id="fn:7">
-					<p>A value represenintg one of the coldest expected outdoor temperatures during the annual occupancy period. ASHRAE recommends using a temperature at 1 percentile of the year (where only 1% of hours are colder than this temperature). This value varies with the climate of the project and you can search for your climate's temperature to the right.<a href="#fnref:11" title="return to article"> ↩</a></p>
+					<p>Data does not include Module D life cycle stage, which accounts for reuse potential beyond system boundary. See methodology below for more info.</p>
 			</li>
             <li className="footnote" id="fn:8">
-            <p>A value represenintg one of the coldest expected outdoor temperatures during the annual occupancy period. ASHRAE recommends using a temperature at 1 percentile of the year (where only 1% of hours are colder than this temperature). This value varies with the climate of the project and you can search for your climate's temperature to the right.<a href="#fnref:11" title="return to article"> ↩</a></p>
+            <p>Takes into account carbon that is sequestered from the atmosphere during biomass growth. If this option is chosen, it represents FSC or sustainable forestry. </p>
 			</li>
       <li className="footnote" id="fn:9">
-					<p>A value represenintg one of the coldest expected outdoor temperatures during the annual occupancy period. ASHRAE recommends using a temperature at 1 percentile of the year (where only 1% of hours are colder than this temperature). This value varies with the climate of the project and you can search for your climate's temperature to the right.<a href="#fnref:11" title="return to article"> ↩</a></p>
+					<p>Does not take into account carbon that is sequestered from the atmosphere during biomass growth. If this option is chosen, it represents typical forestry practices.</p>
+
 			</li>
 
 

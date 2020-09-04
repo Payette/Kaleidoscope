@@ -55,7 +55,7 @@ dialog::backdrop {
   margin: 0;
 
   border-radius: 3px;
-  border: solid 6px rgba($highlight1, 0.1);
+  border: solid 6px rgba(yellow, 1);
 
   h4 {
     margin-bottom: 0.5rem;
@@ -105,7 +105,7 @@ dialog::backdrop {
 }
 
 .dialog-overlay {
-  background-color: rgba(100, 100, 100, 0.66);
+  background-color: rgba(255, 255, 255, 0.66);
 }
 
 .dialog h1 {

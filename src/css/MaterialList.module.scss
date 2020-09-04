@@ -29,15 +29,17 @@
 }
 
 .mLabel{
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .mButton{
   font-size: 10px;
   text-decoration: underline;
-  width: 96px;
-  height: 24px;
-  margin: 0px;
+  display: inline;
+
+  width: 76px;
+  height: 20px;
+  margin-left: 15px;
 }
 
 @media (min-width: $breakpoint1) {

@@ -100,6 +100,8 @@ export default withTooltip(({
    const getImg = d => d.img;
   // console.log(getName);
 
+  
+
   let impactCol = [];
 
   Object.values(metaData.impactColors).forEach(val =>{
@@ -169,12 +171,25 @@ export default withTooltip(({
                 
                 previousY += yMax;
 
+                let myAbb = "RS"
+
+                if(sm.key[0] == "M"){
+                      myAbb = "(MV)";
+                }else if (sm.key[0] == "F"){
+                  myAbb = "(FS)";
+                }else if(sm.key[0] == "C"){
+                  myAbb = "(CW)";
+                }else if(sm.key[0] == "R"){
+                  myAbb = "(RS)";
+               }
+
 
 
 
                 return (
                   
                   <Group top={yOffset}>
+                    
                     
                     <line className={styles.groupLine} x1={-margin.left+margin.smallGap} y1="0" x2={width2-margin.left-2*margin.smallGap} y2="0" stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
                     <BarStackHorizontal data={sm.values} keys={keys} height={yMax} y={getName} xScale={xScale} yScale={yScale} color={color} offset={'diverging'}>
@@ -190,7 +205,7 @@ export default withTooltip(({
                             if(colorBy === "material" && bar.bar && bar.bar.data && bar.bar.data.material) {
                               barColor = metaData.materialColors[bar.bar.data.material] || bar.color;
                             }
-                            return (<rect key={`barstack-horizontal-${barStack.index}-${bar.index}`} x={bar.x} y={bar.y} width={bar.width} height={bar.height} fill={barColor} onClick={event => {
+                            return (<rect key={`barstack-horizontal-${barStack.index}-${bar.index}`} x={bar.x} y={bar.y} width={bar.width} height={bar.height} stroke={'#ffffff'} fill={barColor} onClick={event => {
                                 if (!events)
                                   return;
                                 alert(`clicked: ${JSON.stringify(bar)}`);
@@ -225,8 +240,8 @@ export default withTooltip(({
                     verticalAnchor="start"
                     fontSize={14}
                     width={50}
-                    x={-margin.left + margin.smallGap} y={(barHeight * sm.values.length)/2}
-                  >{sm.key}</Text>
+                    x={-margin.left + margin.smallGap} y={(barHeight * sm.values.length)/2 - 10}
+                  >{sm.key + " " + myAbb}</Text>
                   <line className={styles.groupLine} x1={xScale(0)} y1="0" x2={xScale(0)} y2={20+(barHeight * sm.values.length)} stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
                 </Group>
                 )
@@ -256,12 +271,12 @@ export default withTooltip(({
               padding: 0
             }}>
                  <span style={{color: "red", margin: 0, padding:0, top: 10}}>
-                 <img src={'./BlueTriangle.png'}></img>
+                 <img src={'./YellowTriangle.png'}></img>
                   </span>
 
                 <div style={{
                   position: 'absolute',
-                border: '3px solid deepskyblue',
+                border: '3px solid yellow',
                 boxShadow:"5px 5px rgba(200, 200, 200, .4)",
                 minWidth: 60,
                 height: toolTipHeight+22,
@@ -283,7 +298,8 @@ export default withTooltip(({
                   }}>
                   {getType(tooltipData.bar.data)} - 
                 </div>
-                <div><strong>{getName(tooltipData.bar.data)}</strong></div>
+                <div><strong>{getName(tooltipData.bar.data)}</strong><br/>
+                  <small>{tooltipData.bar.data[tooltipData.key].toFixed(2)}</small></div>
                 <div className={styles.clearfix}>
                   
                   {/* <img className={styles.img2} src={'./Icon_FS.png'}></img> */}
@@ -294,7 +310,7 @@ export default withTooltip(({
                 {/* <div >
                   <small>4" granite veneer with knife edge</small>
                   
-                  
+                
                   
                 </div>
                 <img src={'./Icon_FS.png'} alt="material icon" className={styles.materialIcon}></img> */}

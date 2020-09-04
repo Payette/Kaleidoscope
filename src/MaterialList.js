@@ -3,6 +3,8 @@ import React, { PureComponent } from "react";
 import styles from './css/MaterialList.module.scss';
 import Dialog from 'react-a11y-dialog';
 import materialPopupMock from './images/popupmock.png';
+import MVGranite from './images/Detail_MockUp_MVGranite.png'
+import RSGranite from './images/Detail_MockUp_RSGranite.png'
 import { render } from 'react-dom'
 import Checkbox from './Checkbox'
 
@@ -60,7 +62,7 @@ export default class MaterialList extends PureComponent {
     event.stopPropagation();
 
     console.log(material);
-    myImg = './images/' + material.id + '.png';
+    myImg = 'https://raw.githubusercontent.com/Payette/LCA-Dashboard/master/public/images/' + material.id.toLowerCase() + '.png';
 
     this.setState({
       materialPopup: {
@@ -153,17 +155,17 @@ export default class MaterialList extends PureComponent {
     return (
       <div>
         <div>
-          LEGEND:
+        <h3>LEGEND</h3>
           <p>
             something
           </p>
           <p>
-            something
+          <h3 style={{display: "inline"}}>ASSEMBLY TYPE</h3><button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
           </p>
         </div>
         
         <ul className={styles.container} ref={node => (this.listEl = node)}>{this.renderItems()}
-        <button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
+        
         </ul>
 
         <Dialog id="materialdetailsdialog"
@@ -179,9 +181,9 @@ export default class MaterialList extends PureComponent {
           }}
           >
             <p>
-              <img style={{maxWidth: "100%", maxHeight: "100%"}} src={materialPopupMock} alt={`${this.state.materialPopup.name} facade diagram`} />
-              <img src={myImg} alt="material icon" className={styles.materialIcon}/>
-              Assumptions: Description of system
+              {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={materialPopupMock} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
+              <img style={{maxWidth: "100%", maxHeight: "100%"}} src={MVGranite} alt={`${this.state.materialPopup.name} facade diagram`} />
+              {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={myImg} alt="material icon"/> */}
             </p>
         </Dialog>
       </div>
