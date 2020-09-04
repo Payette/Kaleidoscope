@@ -308,6 +308,19 @@ class App extends Component {
     const lcsDataSelectedMaterialsOnly5 = this.state.lcsData5.filter(d => this.state.selectedMaterials.includes(d.material));
     const materialDataSelectedMaterialsOnly5 = this.state.materialData5.filter(d => this.state.selectedMaterials.includes(d.material));
 
+    let chartTitle = "";
+
+
+    if(this.state.chartType == "GWP"){
+      chartTitle = "Global Warming Potential"
+    }else if(this.state.chartType == "allImpacts"){
+      chartTitle = "All Impacts"
+    }else if(this.state.chartType == "LCS"){
+      chartTitle = "Life Cycle Stage"
+    }else if(this.state.chartType == "MB"){
+      chartTitle = "Material Breakdown"
+    }
+
     return (
       <div className="App">
           <form>
@@ -377,7 +390,7 @@ class App extends Component {
              }
 
         </form>
-        <h2>GLOBAL WARMING POTENTIAL</h2>
+        <h2>{chartTitle}</h2>
         {/* GLOBAL WARMING POTENTIAL */}
         <div className={styles.chartContainer}>
         {this.state.chartType === "GWP" && this.state.gwpData.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" &&<StackedBarChart
@@ -385,8 +398,9 @@ class App extends Component {
           allMaterials={this.state.gwpData}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel=" Global Warming Potential (kgCO&#x2082;eq/sf)"
+          xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
           colorBy="material"
+          currentChart={this.state.chartType}
         />}
         {/* ALL IMPACTS*/}
         
@@ -395,7 +409,8 @@ class App extends Component {
           allMaterials={this.state.allImpactsData}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="% of Total"
+          xAxisLabel="Normalized % of Total"
+          currentChart={this.state.chartType}
         />}
         {/* LIFE CYCLE STAGE */}
         
@@ -404,7 +419,8 @@ class App extends Component {
           allMaterials={this.state.lcsData}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="Life Cycle Stage"
+          xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+          currentChart={this.state.chartType}
         />}
         {/* MATERIAL BREAKDOWN */}
        
@@ -413,7 +429,8 @@ class App extends Component {
           allMaterials={this.state.materialData}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="Materials"
+          xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+          currentChart={this.state.chartType}
         />}
 
 
@@ -426,8 +443,9 @@ class App extends Component {
           allMaterials={this.state.gwpData1}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel=" Global Warming Potential (kgCO&#x2082;eq/sf)"
+          xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
           colorBy="material"
+          currentChart={this.state.chartType}
         />}
         {/* ALL IMPACTS*/}
         
@@ -436,7 +454,8 @@ class App extends Component {
           allMaterials={this.state.allImpactsData1}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="% of Total"
+          xAxisLabel="Normalized % of Total"
+          currentChart={this.state.chartType}
         />}
         {/* LIFE CYCLE STAGE */}
         
@@ -445,7 +464,8 @@ class App extends Component {
           allMaterials={this.state.lcsData1}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="Life Cycle Stage"
+          xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+          currentChart={this.state.chartType}
         />}
         {/* MATERIAL BREAKDOWN */}
        
@@ -454,7 +474,8 @@ class App extends Component {
           allMaterials={this.state.materialData1}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="Materials"
+          xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+          currentChart={this.state.chartType}
         />}
 
 
@@ -468,8 +489,9 @@ class App extends Component {
           allMaterials={this.state.gwpData2}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel=" Global Warming Potential (kgCO&#x2082;eq/sf)"
+          xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
           colorBy="material"
+          currentChart={this.state.chartType}
         />}
         {/* ALL IMPACTS*/}
         
@@ -478,7 +500,8 @@ class App extends Component {
           allMaterials={this.state.allImpactsData2}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="% of Total"
+          xAxisLabel="Normalized % of Total"
+          currentChart={this.state.chartType}
         />}
         {/* LIFE CYCLE STAGE */}
         
@@ -487,7 +510,8 @@ class App extends Component {
           allMaterials={this.state.lcsData2}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="Life Cycle Stage"
+          xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+          currentChart={this.state.chartType}
         />}
         {/* MATERIAL BREAKDOWN */}
        
@@ -496,7 +520,8 @@ class App extends Component {
           allMaterials={this.state.materialData2}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="Materials"
+          xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+          currentChart={this.state.chartType}
         />}
 
 
@@ -510,8 +535,9 @@ class App extends Component {
           allMaterials={this.state.gwpData4}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel=" Global Warming Potential (kgCO&#x2082;eq/sf)"
+          xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
           colorBy="material"
+          currentChart={this.state.chartType}
         />}
         {/* ALL IMPACTS*/}
         
@@ -520,7 +546,8 @@ class App extends Component {
           allMaterials={this.state.allImpactsData4}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="% of Total"
+          xAxisLabel="Normalized % of Total"
+          currentChart={this.state.chartType}
         />}
         {/* LIFE CYCLE STAGE */}
         
@@ -529,7 +556,8 @@ class App extends Component {
           allMaterials={this.state.lcsData4}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="Life Cycle Stage"
+          xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+          currentChart={this.state.chartType}
         />}
         {/* MATERIAL BREAKDOWN */}
        
@@ -538,7 +566,8 @@ class App extends Component {
           allMaterials={this.state.materialData3}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="Materials"
+          xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+          currentChart={this.state.chartType}
         />}
 
 
@@ -550,8 +579,9 @@ class App extends Component {
           allMaterials={this.state.gwpData3}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel=" Global Warming Potential (kgCO&#x2082;eq/sf)"
+          xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
           colorBy="material"
+          currentChart={this.state.chartType}
         />}
         {/* ALL IMPACTS*/}
         
@@ -560,7 +590,8 @@ class App extends Component {
           allMaterials={this.state.allImpactsData3}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="% of Total"
+          xAxisLabel="Normalized % of Total"
+          currentChart={this.state.chartType}
         />}
         {/* LIFE CYCLE STAGE */}
         
@@ -569,7 +600,8 @@ class App extends Component {
           allMaterials={this.state.lcsData3}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="Life Cycle Stage"
+          xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+          currentChart={this.state.chartType}
         />}
         {/* MATERIAL BREAKDOWN */}
        
@@ -578,7 +610,8 @@ class App extends Component {
           allMaterials={this.state.materialData3}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="Materials"
+          xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+          currentChart={this.state.chartType}
         />}
 
 
@@ -592,8 +625,9 @@ class App extends Component {
           allMaterials={this.state.gwpData5}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel=" Global Warming Potential (kgCO&#x2082;eq/sf)"
+          xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
           colorBy="material"
+          currentChart={this.state.chartType}
         />}
         {/* ALL IMPACTS*/}
         
@@ -602,7 +636,8 @@ class App extends Component {
           allMaterials={this.state.allImpactsData5}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="% of Total"
+          xAxisLabel="Normalized % of Total"
+          currentChart={this.state.chartType}
         />}
         {/* LIFE CYCLE STAGE */}
         
@@ -611,7 +646,8 @@ class App extends Component {
           allMaterials={this.state.lcsData5}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="Life Cycle Stage"
+          xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+          currentChart={this.state.chartType}
         />}
         {/* MATERIAL BREAKDOWN */}
        
@@ -620,7 +656,8 @@ class App extends Component {
           allMaterials={this.state.materialData5}
           metaData={LoadData.metaData}
           barHeight={40}
-          xAxisLabel="Materials"
+          xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+          currentChart={this.state.chartType}
         />}
         
         </div>

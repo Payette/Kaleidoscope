@@ -23,6 +23,7 @@ export default withTooltip(({
   metaData,
   allMaterials,
   xAxisLabel,
+  currentChart,
   events = false,
   margin = {
     top: 40,
@@ -103,6 +104,7 @@ export default withTooltip(({
   
 
   let impactCol = [];
+  console.log(currentChart)
 
   Object.values(metaData.impactColors).forEach(val =>{
     impactCol.push(val)
@@ -130,7 +132,7 @@ export default withTooltip(({
     range: impactCol
   });
 
-  if(xAxisLabel=="Materials"){
+  if(currentChart == "MB"){
   color = scaleOrdinal({
     domain: keys,
     // range: [purple1, purple2, purple3],

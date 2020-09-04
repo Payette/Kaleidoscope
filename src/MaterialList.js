@@ -5,11 +5,17 @@ import Dialog from 'react-a11y-dialog';
 import materialPopupMock from './images/popupmock.png';
 import MVGranite from './images/Detail_MockUp_MVGranite.png'
 import RSGranite from './images/Detail_MockUp_RSGranite.png'
+import legendGWP from './images/k-04.png'
+import legendImpacts from './images/k-02.png'
+import legendLCS from './images/k-03.png'
+import legendMB from './images/k-01.png'
 import { render } from 'react-dom'
 import Checkbox from './Checkbox'
 
 import 'pretty-checkbox'
 let myImg;
+let legend;
+
 
 export default class MaterialList extends PureComponent {
   constructor(props) {
@@ -32,6 +38,8 @@ export default class MaterialList extends PureComponent {
   // const hangleChange = React.useCallback(() => {
   //   setChecked(prev => !prev)
   // }, [])
+
+  
 
   handleSelectItem(e) {
     const { value } = e.target;
@@ -80,6 +88,8 @@ export default class MaterialList extends PureComponent {
   
 
   renderItems() {
+    
+
     const { items, selectedItems } = this.state;
     return items.map(item => {
       const { id, label } = item;
@@ -89,6 +99,9 @@ export default class MaterialList extends PureComponent {
       if(this.props.currentSel=="GWP"){
         materialColor = this.props.metaData.materialColors[id] ? this.props.metaData.materialColors[id] : '#CCCCCC';
       }
+
+      
+
 
       
       const materialIcon = this.props.metaData.materialIcons[id] ? this.props.metaData.materialIcons[id] : undefined;
@@ -152,12 +165,31 @@ export default class MaterialList extends PureComponent {
   }
 
   render() {
+    console.log(this.props.currentSel);
+
+    if(this.props.currentSel == "GWP"){
+      legend = legendGWP;
+    }else if(this.props.currentSel == "allImpacts"){
+      legend = legendImpacts;
+    }else if(this.props.currentSel == "LCS"){
+      legend = legendLCS;
+    }else if(this.props.currentSel == "MB"){
+      legend = legendMB;
+    }
+
+    let currentImg = MVGranite;
+
+    if(this.state.materialPopup.name == "Granite1"){
+      currentImg = RSGranite;
+    };
+
     return (
+      
       <div>
         <div>
         <h3>LEGEND</h3>
           <p>
-            something
+          <img style={{maxWidth: "100%", maxHeight: "100%"}} src={legend}/>
           </p>
           <p>
           <h3 style={{display: "inline"}}>ASSEMBLY TYPE</h3><button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
@@ -172,7 +204,7 @@ export default class MaterialList extends PureComponent {
           appRoot="#root"
           dialogRoot="#dialog-root"
           dialogRef={(dialog) => (this.materialsDialogRef = dialog)}
-          title={this.state.materialPopup.name}
+          // title={this.state.materialPopup.name}
           classNames={{
             overlay: "dialog-overlay",
             closeButton: "dialog-close",
@@ -182,7 +214,7 @@ export default class MaterialList extends PureComponent {
           >
             <p>
               {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={materialPopupMock} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
-              <img style={{maxWidth: "100%", maxHeight: "100%"}} src={MVGranite} alt={`${this.state.materialPopup.name} facade diagram`} />
+              <img style={{maxWidth: "100%", maxHeight: "100%"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} />
               {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={myImg} alt="material icon"/> */}
             </p>
         </Dialog>
