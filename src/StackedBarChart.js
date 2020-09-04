@@ -69,8 +69,7 @@ export default withTooltip(({
   const bg = '#ffffff';
 
   const keys = Object.keys(selectedMaterials[0]).filter(d => d !== 'material' && d !== 'type' && d !== 'name' && d !== 'img');
-
-  //console.log(allMaterials)
+ 
 
   const allMaterialTotals = allMaterials.reduce((ret, cur) => {
     const t = keys.reduce((dailyTotal, k) => {
@@ -104,7 +103,7 @@ export default withTooltip(({
   
 
   let impactCol = [];
-  console.log(currentChart)
+  // console.log(currentChart)
 
   Object.values(metaData.impactColors).forEach(val =>{
     impactCol.push(val)
@@ -114,6 +113,18 @@ export default withTooltip(({
 
   Object.values(metaData.matColors).forEach(val =>{
     matCol.push(val)
+  })
+
+  let myTexts = []
+
+  Object.values(metaData.materialOrdering).forEach(val =>{
+    myTexts.push(val)
+  })
+
+  let myIndex = []
+
+  Object.keys(metaData.materialOrdering).forEach(val =>{
+    myIndex.push(val)
   })
 
   // scales
@@ -132,7 +143,13 @@ export default withTooltip(({
     range: impactCol
   });
 
-  if(currentChart == "MB"){
+  let texts = scaleOrdinal({
+    domain: keys,
+    // range: [purple1, purple2, purple3],
+    range: myTexts
+  });
+
+  if(currentChart === "MB"){
   color = scaleOrdinal({
     domain: keys,
     // range: [purple1, purple2, purple3],
@@ -175,17 +192,15 @@ export default withTooltip(({
 
                 let myAbb = "RS"
 
-                if(sm.key[0] == "M"){
+                if(sm.key[0] === "M"){
                       myAbb = "(MV)";
-                }else if (sm.key[0] == "F"){
+                }else if (sm.key[0] === "F"){
                   myAbb = "(FS)";
-                }else if(sm.key[0] == "C"){
+                }else if(sm.key[0] === "C"){
                   myAbb = "(CW)";
-                }else if(sm.key[0] == "R"){
+                }else if(sm.key[0] === "R"){
                   myAbb = "(RS)";
                }
-
-
 
 
                 return (
@@ -307,7 +322,7 @@ export default withTooltip(({
                   {/* <img className={styles.img2} src={'./Icon_FS.png'}></img> */}
                   <img className={styles.img2} src={getImg(tooltipData.bar.data)}></img>
                   
-                  <small>4" Granite Knife Edge Wall Section</small>
+                  <small>{metaData.materialTexts[tooltipData.bar.data.material]}</small>
                 </div>
                 {/* <div >
                   <small>4" granite veneer with knife edge</small>

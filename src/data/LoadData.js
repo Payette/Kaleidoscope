@@ -56,6 +56,25 @@ const metaData = {
     Wood:"#001489"
   },
 
+  materialTexts: {
+    Granite:'4" granite veneer, shelf angle with knife plate connection',
+    Limestone:'4" limestone veneer, shelf angle with knife plate connection',
+    Brick:"Brick with mortar, shelf angle with knife plate connection",
+    InsMetPanel:"Steel foamed insulated metal panel, thermally broken connection",
+    Spandrel:"Double glazed IGU with low-e coating and argon fill, aluminum structurally glazed mullions",
+    UHPC:"Fibre C ultra high performance concrete panel with thermally broken galvanized steel support",
+    GFRC:"Glass fiber reinforced concrete panel with thermally broken galvanized steel support",
+    ACM:"Aluminum faced composite panel with thermally broken aluminum support",
+    Terracotta:"1'x4' hollow terracotta tile with thermally broken aluminum support",
+    PhenResin:"Phenolic resin panels with thermally broken aluminum support",
+    FiberCement:"Fiber cement panels with thermally broken aluminum support",
+    Zinc:"Fluoropolymer coated formed zinc metal panels with thermally broken galvanized steel support",
+    Granite1:'1/4" granite on aluminum honeycomb backer with thermally broken aluminum support',
+    Limestone1:'1/4" limestone on aluminum honeycomb backer with thermally broken aluminum support',
+    Steel:"Painted formed steel metal panels with thermally broken galvanized steel support",
+    Wood:"Hardwood (beech) rainscreen with water-based wood stain and thermally broken galvanized steel support"
+  },
+
   materialIcons: {
     Granite:"./images/granite.png",
     Limestone:"images/limestone.png",

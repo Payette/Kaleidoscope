@@ -96,7 +96,7 @@ export default class MaterialList extends PureComponent {
 
       let materialColor = '#ccc';
 
-      if(this.props.currentSel=="GWP"){
+      if(this.props.currentSel==="GWP"){
         materialColor = this.props.metaData.materialColors[id] ? this.props.metaData.materialColors[id] : '#CCCCCC';
       }
 
@@ -165,21 +165,21 @@ export default class MaterialList extends PureComponent {
   }
 
   render() {
-    console.log(this.props.currentSel);
+    // console.log(this.props.currentSel);
 
-    if(this.props.currentSel == "GWP"){
+    if(this.props.currentSel === "GWP"){
       legend = legendGWP;
-    }else if(this.props.currentSel == "allImpacts"){
+    }else if(this.props.currentSel === "allImpacts"){
       legend = legendImpacts;
-    }else if(this.props.currentSel == "LCS"){
+    }else if(this.props.currentSel === "LCS"){
       legend = legendLCS;
-    }else if(this.props.currentSel == "MB"){
+    }else if(this.props.currentSel === "MB"){
       legend = legendMB;
     }
 
     let currentImg = MVGranite;
 
-    if(this.state.materialPopup.name == "Granite1"){
+    if(this.state.materialPopup.name === "Granite1"){
       currentImg = RSGranite;
     };
 

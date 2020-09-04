@@ -311,13 +311,13 @@ class App extends Component {
     let chartTitle = "";
 
 
-    if(this.state.chartType == "GWP"){
+    if(this.state.chartType === "GWP"){
       chartTitle = "Global Warming Potential"
-    }else if(this.state.chartType == "allImpacts"){
+    }else if(this.state.chartType === "allImpacts"){
       chartTitle = "All Impacts"
-    }else if(this.state.chartType == "LCS"){
+    }else if(this.state.chartType === "LCS"){
       chartTitle = "Life Cycle Stage"
-    }else if(this.state.chartType == "MB"){
+    }else if(this.state.chartType === "MB"){
       chartTitle = "Material Breakdown"
     }
 
