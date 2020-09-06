@@ -102,6 +102,15 @@ const metaData = {
     impact5:"#a2d3eb",
   },
 
+  iColors: {
+    i1:"#87cde8",
+    i2:"#6d91cb",
+    i3:"#fbc05d",
+    i4:"#4686c6",
+    i5:"#90d0b6",
+    i6: "#4154a5"
+  },
+
   matColors: {
     mat1:"#cccccc",
     mat2:"#cccccc",
@@ -212,7 +221,7 @@ export default {
       complete: function(results, file) {
        if(Array.isArray(results.data)) {
          const resultData = results.data.map(d => {
-           return { material: d.material, type: d.type, value: parseFloat(d.value), name: d.name, img: d.img }
+           return { material: d.material, type: d.type, name: d.name, img: d.img, i1: parseFloat(d.i1), i2: parseFloat(d.i2), i3: parseFloat(d.i3), i4: parseFloat(d.i4), i5: parseFloat(d.i5), i6: parseFloat(d.i6)}
          }); 
          cb(resultData);
        } else {
@@ -322,7 +331,7 @@ export default {
       complete: function(results, file) {
        if(Array.isArray(results.data)) {
          const resultData = results.data.map(d => {
-           return { material: d.material, type: d.type, value: parseFloat(d.value), name: d.name, img: d.img }
+           return { material: d.material, type: d.type, name: d.name, img: d.img, i1: parseFloat(d.i1), i2: parseFloat(d.i2), i3: parseFloat(d.i3), i4: parseFloat(d.i4), i5: parseFloat(d.i5), i6: parseFloat(d.i6) }
          }); 
          cb(resultData);
        } else {
@@ -432,7 +441,7 @@ export default {
       complete: function(results, file) {
        if(Array.isArray(results.data)) {
          const resultData = results.data.map(d => {
-           return { material: d.material, type: d.type, value: parseFloat(d.value), name: d.name, img: d.img }
+           return { material: d.material, type: d.type, name: d.name, img: d.img, i1: parseFloat(d.i1), i2: parseFloat(d.i2), i3: parseFloat(d.i3), i4: parseFloat(d.i4), i5: parseFloat(d.i5), i6: parseFloat(d.i6) }
          }); 
          cb(resultData);
        } else {
@@ -542,7 +551,7 @@ export default {
       complete: function(results, file) {
        if(Array.isArray(results.data)) {
          const resultData = results.data.map(d => {
-           return { material: d.material, type: d.type, value: parseFloat(d.value), name: d.name, img: d.img }
+           return { material: d.material, type: d.type, name: d.name, img: d.img, i1: parseFloat(d.i1), i2: parseFloat(d.i2), i3: parseFloat(d.i3), i4: parseFloat(d.i4), i5: parseFloat(d.i5), i6: parseFloat(d.i6) }
          }); 
          cb(resultData);
        } else {
@@ -652,7 +661,7 @@ export default {
       complete: function(results, file) {
        if(Array.isArray(results.data)) {
          const resultData = results.data.map(d => {
-           return { material: d.material, type: d.type, value: parseFloat(d.value), name: d.name, img: d.img }
+           return { material: d.material, type: d.type, name: d.name, img: d.img, i1: parseFloat(d.i1), i2: parseFloat(d.i2), i3: parseFloat(d.i3), i4: parseFloat(d.i4), i5: parseFloat(d.i5), i6: parseFloat(d.i6) }
          }); 
          cb(resultData);
        } else {
@@ -762,7 +771,7 @@ export default {
       complete: function(results, file) {
        if(Array.isArray(results.data)) {
          const resultData = results.data.map(d => {
-           return { material: d.material, type: d.type, value: parseFloat(d.value), name: d.name, img: d.img }
+           return { material: d.material, type: d.type, name: d.name, img: d.img, i1: parseFloat(d.i1), i2: parseFloat(d.i2), i3: parseFloat(d.i3), i4: parseFloat(d.i4), i5: parseFloat(d.i5), i6: parseFloat(d.i6) }
          }); 
          cb(resultData);
        } else {

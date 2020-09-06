@@ -109,6 +109,13 @@ export default withTooltip(({
     impactCol.push(val)
   })
 
+  let iCol = [];
+  // console.log(currentChart)
+
+  Object.values(metaData.iColors).forEach(val =>{
+    iCol.push(val)
+  })
+
   let matCol = [];
 
   Object.values(metaData.matColors).forEach(val =>{
@@ -155,6 +162,14 @@ export default withTooltip(({
     // range: [purple1, purple2, purple3],
     range: matCol
   });
+}
+
+  if(currentChart === "allImpacts"){
+    color = scaleOrdinal({
+      domain: keys,
+      // range: [purple1, purple2, purple3],
+      range: iCol
+    });
 }
 
 
