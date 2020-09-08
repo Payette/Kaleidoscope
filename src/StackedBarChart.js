@@ -82,6 +82,28 @@ export default withTooltip(({
     return ret;
   }, []);
 
+// console.log(allMaterialTotals);
+// console.log(selectedMaterials)
+
+let currentBiggest = 0;
+
+for(let i = 0; i < selectedMaterials.length; i++){
+  if(selectedMaterials[i].hasOwnProperty('i1')){
+    let myTotal = selectedMaterials[i].i1 + selectedMaterials[i].i2 + selectedMaterials[i].i3 + selectedMaterials[i].i4 + selectedMaterials[i].i5 + selectedMaterials[i].i6;
+    if(myTotal > currentBiggest){
+      currentBiggest = myTotal;
+    }
+  }else{
+    currentBiggest = 100;
+  }
+  // console.log(selectedMaterials[i]);
+}
+
+
+
+let multiplier = 100.0 / currentBiggest;
+// console.log(multiplier);
+
   const allMaterialTotalsMin = allMaterials.reduce((ret, cur) => {
     const t = keys.reduce((dailyTotal, k) => {
       if(Math.abs(cur[k]) != (cur[k])){
@@ -217,6 +239,20 @@ export default withTooltip(({
                   myAbb = "(RS)";
                }
 
+               for(let i = 0; i < sm.values.length; i++){
+                if(selectedMaterials[i].hasOwnProperty('i1')){
+                  sm.values[i].i1 = sm.values[i].i1 * multiplier;
+                  sm.values[i].i2 = sm.values[i].i2 * multiplier;
+                  sm.values[i].i3 = sm.values[i].i3 * multiplier;
+                  sm.values[i].i4 = sm.values[i].i4 * multiplier;
+                  sm.values[i].i5 = sm.values[i].i5 * multiplier;
+                  sm.values[i].i6 = sm.values[i].i6 * multiplier;
+                }
+                // console.log(selectedMaterials[i]);
+              }
+
+              console.log(sm.values.length);
+
 
                 return (
                   
@@ -276,8 +312,12 @@ export default withTooltip(({
                   >{sm.key + " " + myAbb}</Text>
                   <line className={styles.groupLine} x1={xScale(0)} y1="0" x2={xScale(0)} y2={20+(barHeight * sm.values.length)} stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
                 </Group>
+
+                
                 )
               })}
+
+              
 
               <line className={styles.groupLine} x1={-margin.left+margin.smallGap} y1={previousY} x2={width2-margin.left-2*margin.smallGap} y2={previousY} stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
               <AxisBottom top={(previousY + 10)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({fill: textColor, fontSize: 11, textAnchor: 'middle'})} labelProps={{
@@ -355,6 +395,9 @@ export default withTooltip(({
         </div>);
       }
     }
+    
   </ParentSize>);
+
+  
 
 });
