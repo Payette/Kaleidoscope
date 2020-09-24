@@ -5,12 +5,16 @@
   @include containfloats;
 }
 
+.chartContainer{
+  min-height: 500px;
+}
+
 .inputgroup {
   height: 10rem;
   border: solid 1px $highlight3;
   border-radius: 2px;
-  margin: 0 1rem 1rem 0;
-  padding: 0.5rem 1rem 0.5rem 1rem;
+  // margin: 0 0 1rem 0;
+  padding: 0.5rem 0rem 0.5rem 1rem;
 
   h3 {
     margin: 0 0 0.5rem 0;

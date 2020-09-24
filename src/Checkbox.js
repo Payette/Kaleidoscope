@@ -9,7 +9,7 @@ const CheckboxContainer = styled.div`
 const Icon = styled.svg`
   fill: none;
   stroke: white;
-  stroke-width: 0px;
+  stroke-width: 2px;
 `
 // Hide checkbox visually but remain accessible to screen readers.
 // Source: https://polished.js.org/docs/#hidevisually
@@ -23,6 +23,8 @@ const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
   position: absolute;
   white-space: nowrap;
   width: 1px;
+  color: white;
+  content: "X";
 
 `
 
@@ -30,6 +32,8 @@ const StyledCheckbox = styled.div`
   display: inline-block;
   width: 16px;
   height: 16px;
+  color: white;
+  content: "X";
 
   background: ${(props) => (props.checked ? props.caseStudyColor : '#fff')};
   

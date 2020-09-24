@@ -68,7 +68,7 @@ const metaData = {
     Terracotta:"1'x4' hollow terracotta tile with thermally broken aluminum support",
     PhenResin:"Phenolic resin panels with thermally broken aluminum support",
     FiberCement:"Fiber cement panels with thermally broken aluminum support",
-    Zinc:"Fluoropolymer coated formed zinc metal panels with thermally broken galvanized steel support",
+    Zinc:"Fluoro-polymer coated formed zinc metal panels with thermally broken galvanized steel support",
     Granite1:'1/4" granite on aluminum honeycomb backer with thermally broken aluminum support',
     Limestone1:'1/4" limestone on aluminum honeycomb backer with thermally broken aluminum support',
     Steel:"Painted formed steel metal panels with thermally broken galvanized steel support",
@@ -183,7 +183,7 @@ const metaData = {
     Granite1: "RS - Granite",
     Zinc: "RS - Zinc",
     FiberCement: "RS - Fiber Cement",
-    PhenResin: "RS - Phoenolic Resin",
+    PhenResin: "RS - Phenolic Resin",
     Terracotta: "RS - Terracotta",
     ACM: "RS - ACM",
     GFRC: "RS - GFRC",
@@ -193,6 +193,44 @@ const metaData = {
     Brick: "MV - Brick",
     Limestone: "MV - Limestone",
     Granite: "MV - Granite"
+  },
+
+  materialName:{
+    Wood: "Wood",
+    Steel: "Formed Steel Panel",
+    Limestone1: "Limestone",
+    Granite1: "Granite",
+    Zinc: "Formed Zinc Panel",
+    FiberCement: "Fiber Cement",
+    PhenResin: "Phoenolic Resin",
+    Terracotta: "Terracotta",
+    ACM: "Aluminum Composite Material (ACM)",
+    GFRC: "Glass Fiber Reinforced Concrete (GFRC)",
+    UHPC: "Ultra-Hight Performance Concrete (UHPC)",
+    Spandrel: "Spandrel",
+    InsMetPanel: "Insulated Metal Panel",
+    Brick: "Brick",
+    Limestone: "Limestone",
+    Granite: "Granite"
+  },
+
+  materialImg:{
+    Wood: "./img/wood1.png",
+    Steel: "./img/steel1.png",
+    Limestone1: "./img/limestone1.png",
+    Granite1: "./img/granite1.png",
+    Zinc: "./img/zinc.png",
+    FiberCement: "./img/fibercement.png",
+    PhenResin: "./img/phenresin.png",
+    Terracotta: "./img/terracotta.png",
+    ACM: "./img/acm.png",
+    GFRC: "./img/gfrc.png",
+    UHPC: "Ultr./img/uhpc.png",
+    Spandrel: "./img/spandrel.png",
+    InsMetPanel: "./img/insmetalpanel.png",
+    Brick: "./img/brick.png",
+    Limestone: "./img/limestone.png",
+    Granite: "./img/granite.png"
   }
 };
 

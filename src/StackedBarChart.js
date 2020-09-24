@@ -85,15 +85,17 @@ export default withTooltip(({
 // console.log(allMaterialTotals);
 // console.log(selectedMaterials)
 
-let currentBiggest = 0;
+let currentBiggest = 1;
 
 for(let i = 0; i < selectedMaterials.length; i++){
   if(selectedMaterials[i].hasOwnProperty('i1')){
     let myTotal = selectedMaterials[i].i1 + selectedMaterials[i].i2 + selectedMaterials[i].i3 + selectedMaterials[i].i4 + selectedMaterials[i].i5 + selectedMaterials[i].i6;
     if(myTotal > currentBiggest){
       currentBiggest = myTotal;
+      // console.log(myTotal);
     }
-  }else{
+  }
+  else{
     currentBiggest = 100;
   }
   // console.log(selectedMaterials[i]);
@@ -102,7 +104,7 @@ for(let i = 0; i < selectedMaterials.length; i++){
 
 
 let multiplier = 100.0 / currentBiggest;
-// console.log(multiplier);
+console.log(multiplier);
 
   const allMaterialTotalsMin = allMaterials.reduce((ret, cur) => {
     const t = keys.reduce((dailyTotal, k) => {
@@ -157,7 +159,8 @@ let multiplier = 100.0 / currentBiggest;
   })
 
   // scales
-  const xScale = scaleLinear({
+
+  let xScale = scaleLinear({
     domain: [
       Math.min(...allMaterialTotalsMin),
       Math.max(...allMaterialTotals)
@@ -192,6 +195,14 @@ let multiplier = 100.0 / currentBiggest;
       // range: [purple1, purple2, purple3],
       range: iCol
     });
+
+    xScale = scaleLinear({
+      domain: [
+        0,
+        100
+      ],
+      nice: true
+    });
 }
 
 
@@ -206,6 +217,10 @@ let multiplier = 100.0 / currentBiggest;
         xScale.rangeRound([0, xMax]);
         // w = w- 100;
         var previousY = 0;
+
+        let whichArray = 0;
+
+        let deepClone = JSON.parse(JSON.stringify(selectedMaterialsGroupedByType))
         
 
         const chartHeight = (selectedMaterials.length * barHeight) + headerFooterHeight
@@ -218,7 +233,7 @@ let multiplier = 100.0 / currentBiggest;
           <svg width={width2} height={chartHeight}>
             <rect width={width2} height={chartHeight} fill={bg} rx={14}/>
             <Group top={margin.top} left={margin.left}>
-              {selectedMaterialsGroupedByType.map(sm => {
+              {deepClone.map(sm => {
                 const height = headerFooterHeight + (barHeight * sm.values.length);
                 const yMax = height - margin.top - margin.bottom;
                 const yScale = scaleBand({domain:  sm.values.map(getName), padding: 0.2});
@@ -239,19 +254,30 @@ let multiplier = 100.0 / currentBiggest;
                   myAbb = "(RS)";
                }
 
+              //  let ShallowCopy = _.cloneDeep(sm);
+              //  let odashCloneDeep = 
+
+              // console.log(selectedMaterialsGroupedByType[whichArray].values);
+              // console.log(sm.values)
+              
+
+               
+
                for(let i = 0; i < sm.values.length; i++){
                 if(selectedMaterials[i].hasOwnProperty('i1')){
-                  sm.values[i].i1 = sm.values[i].i1 * multiplier;
-                  sm.values[i].i2 = sm.values[i].i2 * multiplier;
-                  sm.values[i].i3 = sm.values[i].i3 * multiplier;
-                  sm.values[i].i4 = sm.values[i].i4 * multiplier;
-                  sm.values[i].i5 = sm.values[i].i5 * multiplier;
-                  sm.values[i].i6 = sm.values[i].i6 * multiplier;
+                  sm.values[i].i1 = selectedMaterialsGroupedByType[whichArray].values[i].i1 * multiplier;
+                  sm.values[i].i2 = selectedMaterialsGroupedByType[whichArray].values[i].i2 * multiplier;
+                  sm.values[i].i3 = selectedMaterialsGroupedByType[whichArray].values[i].i3 * multiplier;
+                  sm.values[i].i4 = selectedMaterialsGroupedByType[whichArray].values[i].i4 * multiplier;
+                  sm.values[i].i5 = selectedMaterialsGroupedByType[whichArray].values[i].i5 * multiplier;
+                  sm.values[i].i6 = selectedMaterialsGroupedByType[whichArray].values[i].i6 * multiplier;
                 }
                 // console.log(selectedMaterials[i]);
               }
 
-              console.log(sm.values.length);
+              whichArray++;
+
+              // console.log(sm.values.length);
 
 
                 return (
@@ -343,12 +369,12 @@ let multiplier = 100.0 / currentBiggest;
               padding: 0
             }}>
                  <span style={{color: "red", margin: 0, padding:0, top: 10}}>
-                 <img src={'./YellowTriangle.png'}></img>
+                 <img src={'./YellowTriangle2.png'}></img>
                   </span>
 
                 <div style={{
                   position: 'absolute',
-                border: '3px solid yellow',
+                border: '3px solid #ffd400',
                 boxShadow:"5px 5px rgba(200, 200, 200, .4)",
                 minWidth: 60,
                 height: toolTipHeight+22,
@@ -371,13 +397,13 @@ let multiplier = 100.0 / currentBiggest;
                   {getType(tooltipData.bar.data)} - 
                 </div>
                 <div><strong>{getName(tooltipData.bar.data)}</strong><br/>
-                  <small>{tooltipData.bar.data[tooltipData.key].toFixed(2)}</small></div>
+                  <small>{tooltipData.bar.data[tooltipData.key].toFixed(2)} (kgCO<sub>2</sub>eq/sf)</small></div>
                 <div className={styles.clearfix}>
                   
                   {/* <img className={styles.img2} src={'./Icon_FS.png'}></img> */}
                   <img className={styles.img2} src={getImg(tooltipData.bar.data)}></img>
                   
-                  <small>{metaData.materialTexts[tooltipData.bar.data.material]}</small>
+                  <small className={styles.imgText}>{metaData.materialTexts[tooltipData.bar.data.material]}</small>
                 </div>
                 {/* <div >
                   <small>4" granite veneer with knife edge</small>

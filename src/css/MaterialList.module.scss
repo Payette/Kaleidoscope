@@ -4,42 +4,64 @@
 .container {
   @include containfloats;
 }
+
+label{
+  cursor: pointer !important;
+}
 .material {
   float: left;
   margin: 0 1rem 1rem 0;
+  cursor: pointer !important;
 }
 .materialGraphic {
   width: 15px; height: 15px;
   display: inline-block;
   margin-right: 0px;
+  cursor: pointer !important;
 }
 .moreInformationButton {
+  font-family: raleway,sans-serif;
   background: none;
   border: none;
   padding: 0;
   margin-left: 1rem;
-  text-decoration: underline;
+  // text-decoration: underline;
+  cursor: pointer !important;
+  :hover{
+    transition: box-shadow 0.3s,background-size 0.3s;
+    background: linear-gradient(to bottom,#ffd400,#ffd400) left 1em no-repeat;
+    background-size: 100% 7px;
+    // background-size: 0% 7px;
+    border-bottom: 4px solid transparent;
+  }
+  *, :after, :before {
+    box-sizing: inherit;
+}
   
   // display: block;
 }
+
+
 .materialIcon {
   width: 30px; height: 30px;
   margin-bottom: 0.25rem;
   display: block;
+  cursor: pointer !important;
 }
 
 .mLabel{
   font-size: 12px;
+  cursor: pointer !important;
 }
 
 .mButton{
   font-size: 10px;
   text-decoration: underline;
   display: inline;
-
   width: 76px;
   height: 20px;
   margin-left: 15px;
+  cursor: pointer !important;
 }
 
 @media (min-width: $breakpoint1) {

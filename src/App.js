@@ -67,6 +67,8 @@ class App extends Component {
         names: names
       });
     });  
+
+
     
     LoadData.materialData(data => {
       const materials = data.map(d => d.material);
@@ -351,7 +353,7 @@ class App extends Component {
                 <h3>LIFESPAN</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="tenY" name="lifespan" value="tenY" checked={this.state.lifespan === "tenY"} onChange={this.handleInputChange} />
-                  <label htmlFor="tenY">10 Year (No Module D.)</label> <sup id="fnref:5"><a href="#fn:5" rel="footnote"></a></sup>
+                  <label htmlFor="tenY">10 Year (No Module D)</label> <sup id="fnref:5"><a href="#fn:5" rel="footnote"></a></sup>
                 </div>
                 <div className={styles.inputitem}>
                   <input type="radio" id="sixty1" name="lifespan" value="sixty1" checked={this.state.lifespan === "sixty1"} onChange={this.handleInputChange} />
@@ -694,6 +696,11 @@ class App extends Component {
 
 
         </ol>
+        </div>
+        <div style={{height:'200px'}}>
+          Disclaimer: The numbers are estimates.<br></br>
+          Credit: Tally from KT
+
         </div>
 
 

@@ -34,13 +34,6 @@ export default class MaterialList extends PureComponent {
     this.handleSelectItem = this.handleSelectItem.bind(this);
   }
 
-  // const [checked, setChecked] = React.useState(false);
-  // const hangleChange = React.useCallback(() => {
-  //   setChecked(prev => !prev)
-  // }, [])
-
-  
-
   handleSelectItem(e) {
     const { value } = e.target;
     const nextValue = this.getNextValue(value);
@@ -177,8 +170,9 @@ export default class MaterialList extends PureComponent {
       legend = legendMB;
     }
 
+    //CHANGE THE MODAL TO IMG OF MASONRY VENEER GRANITE AS DEFAULT
     let currentImg = MVGranite;
-
+    //IF IT IS RAINSCREEN USE THAT IMG INSTEAD
     if(this.state.materialPopup.name === "Granite1"){
       currentImg = RSGranite;
     };
@@ -192,7 +186,9 @@ export default class MaterialList extends PureComponent {
           <img style={{maxWidth: "100%", maxHeight: "100%"}} src={legend}/>
           </p>
           <p>
-          <h3 style={{display: "inline"}}>ASSEMBLY TYPE</h3><button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
+          <h3 style={{display: "inline"}}>ASSEMBLY TYPE</h3><button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button><br></br><br>
+          </br>Click on a type below for additional details
+          
           </p>
         </div>
         
