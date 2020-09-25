@@ -86,6 +86,8 @@ export default withTooltip(({
 // console.log(selectedMaterials)
 
 let currentBiggest = 1;
+let trail = "(kgCO2eq/sf)";
+
 
 for(let i = 0; i < selectedMaterials.length; i++){
   if(selectedMaterials[i].hasOwnProperty('i1')){
@@ -93,6 +95,7 @@ for(let i = 0; i < selectedMaterials.length; i++){
     if(myTotal > currentBiggest){
       currentBiggest = myTotal;
       // console.log(myTotal);
+      trail = "%";
     }
   }
   else{
@@ -228,6 +231,7 @@ console.log(multiplier);
 
         return (<div className={styles.container} style={{
             position: 'relative'
+            
           }}>
 
           <svg width={width2} height={chartHeight}>
@@ -327,7 +331,7 @@ console.log(multiplier);
                   <AxisLeft
                     hideAxisLine={true} hideTicks={true} scale={yScale} /* tickFormat={formatDate} */
                     stroke={textColor} tickStroke={textColor}
-                    tickLabelProps={(value, index) => ({fill: textColor, width: '200' , fontSize: 11, textAnchor: 'end', dy: '0.33em'})}
+                    tickLabelProps={(value, index) => ({fill: textColor, width: '200' , fontSize: 14, textAnchor: 'end', dy: '0.33em'})}
                   />
                   <Text
                     textAnchor="start"
@@ -346,15 +350,17 @@ console.log(multiplier);
               
 
               <line className={styles.groupLine} x1={-margin.left+margin.smallGap} y1={previousY} x2={width2-margin.left-2*margin.smallGap} y2={previousY} stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
-              <AxisBottom top={(previousY + 10)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({fill: textColor, fontSize: 11, textAnchor: 'middle'})} labelProps={{
+              <AxisBottom top={(previousY-7)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({fill: textColor, fontSize: 14, textAnchor: 'middle'})} labelProps={{
                   fontSize: 18,
                   textAnchor: 'middle',
                   fill: textColor
                 }}/>
-                <AxisTop  scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({fill: textColor, fontSize: 11, textAnchor: 'middle'})} labelProps={{
+                <AxisTop top={(3)}  scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({fill: textColor, fontSize: 14,verticalAnchor: 'bottom', textAnchor: 'middle'})} labelProps={{
                   fontSize: 18,
                   textAnchor: 'middle',
-                  fill: textColor
+                  verticalAnchor: 'bottom',
+                  fill: textColor,
+                  lineHeight: "2em"
                 }}/>
             </Group>
           </svg>
@@ -392,12 +398,16 @@ console.log(multiplier);
               <div className={styles.tooltipContainer}>
                 <div style={{
                     textTransform: 'uppercase',
-                    paddingBottom: 2
+                    paddingBottom: 2,
+                    fontSize: "20px",
+                    fontWeight: 700,
+                    color: "#dc1a55",
+                    paddingBottom: ".5em"
                   }}>
                   {getType(tooltipData.bar.data)} - 
                 </div>
                 <div><strong>{getName(tooltipData.bar.data)}</strong><br/>
-                  <small>{tooltipData.bar.data[tooltipData.key].toFixed(2)} (kgCO<sub>2</sub>eq/sf)</small></div>
+                  <small>{tooltipData.bar.data[tooltipData.key].toFixed(2)} {trail}</small></div>
                 <div className={styles.clearfix}>
                   
                   {/* <img className={styles.img2} src={'./Icon_FS.png'}></img> */}

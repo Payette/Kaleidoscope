@@ -3,17 +3,27 @@
 
 .container {
   font-family: $body-font;
+  font-size: 16px;
+  z-index: 100;
 }
 .tooltipContainer {
   // border: solid 1px black;
   padding:15px;
+  font-family: $headline-font;
 
   small {
+    font-family: $body-font;
     // font-style: bold;
     vertical-align: middle;
     // text-transform: uppercase;
     bottom: 0px;
+    font-size: 16px;
     
+  }
+
+  strong{
+    font-size: 16px;
+    padding-bottom: 1em;
   }
 }
 
@@ -22,6 +32,9 @@
   // vertical-align: middle;
   // text-transform: uppercase;
   // top: 0px;
+  font-size: 14px;
+  font-family: $body-font;
+  padding-right: 1em;
   
 }
 
