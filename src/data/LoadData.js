@@ -148,6 +148,7 @@ const metaData = {
     mat34:"#85e2bd",
     mat35:"#85e2bd",
     mat36:"#85e2bd",
+    mat37:"#85e2bd",
   },
 
   materialOrdering: {
@@ -331,6 +332,7 @@ export default {
             mat34: parseFloat(d.mat34),
             mat35: parseFloat(d.mat35),
             mat36: parseFloat(d.mat36),
+            mat37: parseFloat(d.mat37),
              name: d.name, 
              img: d.img }
          });
@@ -441,6 +443,7 @@ export default {
             mat34: parseFloat(d.mat34),
             mat35: parseFloat(d.mat35),
             mat36: parseFloat(d.mat36),
+            mat37: parseFloat(d.mat37),
              name: d.name, 
              img: d.img }
          });
@@ -551,6 +554,7 @@ export default {
             mat34: parseFloat(d.mat34),
             mat35: parseFloat(d.mat35),
             mat36: parseFloat(d.mat36),
+            mat37: parseFloat(d.mat37),
              name: d.name, 
              img: d.img }
          });
@@ -661,6 +665,7 @@ export default {
             mat34: parseFloat(d.mat34),
             mat35: parseFloat(d.mat35),
             mat36: parseFloat(d.mat36),
+            mat37: parseFloat(d.mat37),
              name: d.name, 
              img: d.img }
          });
@@ -771,6 +776,7 @@ export default {
             mat34: parseFloat(d.mat34),
             mat35: parseFloat(d.mat35),
             mat36: parseFloat(d.mat36),
+            mat37: parseFloat(d.mat37),
              name: d.name, 
              img: d.img }
          });
@@ -881,6 +887,7 @@ export default {
             mat34: parseFloat(d.mat34),
             mat35: parseFloat(d.mat35),
             mat36: parseFloat(d.mat36),
+            mat37: parseFloat(d.mat37),
              name: d.name, 
              img: d.img }
          });
