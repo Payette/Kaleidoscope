@@ -1,10 +1,10 @@
 material,type,impact1,impact2,impact3,name,img
-Granite,Masonry Veneer,18.21734095,0.353722336,0.045886373,Granite,./img/granite.png
-Limestone,Masonry Veneer,11.47793146,0.331355425,0.045886373,Limestone,./img/limestone.png
-Brick,Masonry Veneer,8.565424763,0.205872886,0.045886373,Brick,./img/brick.png
-InsMetPanel,Face Sealed,8.558419128,0.080215919,0.045886373,Insulated Metal Panel,./img/insmetalpanel.png
+Granite,Masonry Veneer,18.19375415,0.353306264,0.045886373,Granite,./img/granite.png
+Limestone,Masonry Veneer,11.45434466,0.330939354,0.045886373,Limestone,./img/limestone.png
+Brick,Masonry Veneer,8.541837958,0.205456815,0.045886373,Brick,./img/brick.png
+InsMetPanel,Face Sealed,8.534832323,0.079799848,0.045886373,Insulated Metal Panel,./img/insmetalpanel.png
 Spandrel,Curtain Wall,15.83975783,0.224277264,0.045886373,Spandrel,./img/spandrel.png
-UHPC,Rainscreen,14.7554033,0.159409566,0.045886373,Ultra-High Performance Concrete (fibreC),./img/uhpc.png
+UHPC,Rainscreen,14.89111758,0.159409566,0.045886373,Ultra-High Performance Concrete (fibreC),./img/uhpc.png
 GFRC,Rainscreen,14.60661742,0.144223589,0.045886373,Glass Fiber Reinfrced Concrete (GFRC),./img/gfrc.png
 ACM,Rainscreen,10.48992559,0.077785153,0.045886373,Aluminum Composite Material (ACM),./img/acm.png
 Terracotta,Rainscreen,7.991165875,0.341785344,0.045886373,Terracotta,./img/terracotta.png

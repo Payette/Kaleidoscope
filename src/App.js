@@ -356,12 +356,12 @@ class App extends Component {
                   <label htmlFor="tenY">10 Year (No Module D)</label> <sup id="fnref:5"><a href="#fn:5" rel="footnote"></a></sup>
                 </div>
                 <div className={styles.inputitem}>
-                  <input type="radio" id="sixty1" name="lifespan" value="sixty1" checked={this.state.lifespan === "sixty1"} onChange={this.handleInputChange} />
-                  <label htmlFor="sixty1">60 Year (With Module D)</label> <sup id="fnref:6"><a href="#fn:6" rel="footnote"></a></sup>
+                  <input type="radio" id="sixty2" name="lifespan" value="sixty2" checked={this.state.lifespan === "sixty2"} onChange={this.handleInputChange} />
+                  <label htmlFor="sixty2">60 Year (With Module D)</label> <sup id="fnref:6"><a href="#fn:6" rel="footnote"></a></sup>
                 </div>
                 <div className={styles.inputitem}>
-                  <input type="radio" id="sixty2" name="lifespan" value="sixty2" checked={this.state.lifespan === "sixty2"} onChange={this.handleInputChange} />
-                  <label htmlFor="sixty2">60 Year (No Module D)</label> <sup id="fnref:7"><a href="#fn:7" rel="footnote"></a></sup>
+                  <input type="radio" id="sixty1" name="lifespan" value="sixty1" checked={this.state.lifespan === "sixty1"} onChange={this.handleInputChange} />
+                  <label htmlFor="sixty1">60 Year (No Module D)</label> <sup id="fnref:7"><a href="#fn:7" rel="footnote"></a></sup>
                 </div>
               </div>
 
@@ -532,9 +532,9 @@ class App extends Component {
 
         {/* GLOBAL WARMING POTENTIAL */}
 
-        {this.state.chartType === "GWP" && this.state.gwpData4.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" &&<StackedBarChart
-          selectedMaterials={gwpDataSelectedMaterialsOnly4}
-          allMaterials={this.state.gwpData4}
+        {this.state.chartType === "GWP" && this.state.gwpData3.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" &&<StackedBarChart
+          selectedMaterials={gwpDataSelectedMaterialsOnly3}
+          allMaterials={this.state.gwpData3}
           metaData={LoadData.metaData}
           barHeight={40}
           xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
@@ -543,9 +543,9 @@ class App extends Component {
         />}
         {/* ALL IMPACTS*/}
         
-        {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly4.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart
-          selectedMaterials={allImpactsDataSelectedMaterialsOnly4}
-          allMaterials={this.state.allImpactsData4}
+        {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly3.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart
+          selectedMaterials={allImpactsDataSelectedMaterialsOnly3}
+          allMaterials={this.state.allImpactsData3}
           metaData={LoadData.metaData}
           barHeight={40}
           xAxisLabel="Normalized % of Total"
@@ -553,9 +553,9 @@ class App extends Component {
         />}
         {/* LIFE CYCLE STAGE */}
         
-        {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly4.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart
-          selectedMaterials={lcsDataSelectedMaterialsOnly4}
-          allMaterials={this.state.lcsData4}
+        {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly3.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart
+          selectedMaterials={lcsDataSelectedMaterialsOnly3}
+          allMaterials={this.state.lcsData3}
           metaData={LoadData.metaData}
           barHeight={40}
           xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
@@ -576,9 +576,9 @@ class App extends Component {
 
         {/* GLOBAL WARMING POTENTIAL */}
 
-        {this.state.chartType === "GWP" && this.state.gwpData3.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" &&<StackedBarChart
-          selectedMaterials={gwpDataSelectedMaterialsOnly3}
-          allMaterials={this.state.gwpData3}
+        {this.state.chartType === "GWP" && this.state.gwpData4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" &&<StackedBarChart
+          selectedMaterials={gwpDataSelectedMaterialsOnly4}
+          allMaterials={this.state.gwpData4}
           metaData={LoadData.metaData}
           barHeight={40}
           xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
@@ -587,9 +587,9 @@ class App extends Component {
         />}
         {/* ALL IMPACTS*/}
         
-        {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly3.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
-          selectedMaterials={allImpactsDataSelectedMaterialsOnly3}
-          allMaterials={this.state.allImpactsData3}
+        {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
+          selectedMaterials={allImpactsDataSelectedMaterialsOnly4}
+          allMaterials={this.state.allImpactsData4}
           metaData={LoadData.metaData}
           barHeight={40}
           xAxisLabel="Normalized % of Total"
@@ -597,9 +597,9 @@ class App extends Component {
         />}
         {/* LIFE CYCLE STAGE */}
         
-        {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly3.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
-          selectedMaterials={lcsDataSelectedMaterialsOnly3}
-          allMaterials={this.state.lcsData3}
+        {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
+          selectedMaterials={lcsDataSelectedMaterialsOnly4}
+          allMaterials={this.state.lcsData4}
           metaData={LoadData.metaData}
           barHeight={40}
           xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
@@ -607,9 +607,9 @@ class App extends Component {
         />}
         {/* MATERIAL BREAKDOWN */}
        
-        {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly3.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
-          selectedMaterials={materialDataSelectedMaterialsOnly3}
-          allMaterials={this.state.materialData3}
+        {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
+          selectedMaterials={materialDataSelectedMaterialsOnly4}
+          allMaterials={this.state.materialData4}
           metaData={LoadData.metaData}
           barHeight={40}
           xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
