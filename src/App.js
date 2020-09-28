@@ -672,7 +672,7 @@ class App extends Component {
             <p>Weighted LCA normalized across all systems. Includes global warming potential, non-renewable energy demand, eutrophication, smog creation, acidification, and ozone depletion. See methodology below for more info.</p>
 			</li>
       <li className="footnote" id="fn:3">
-					<p>Results broken into life cycle stage.</p>
+					<p>Results broken into life cycle stage as defined by standard EN 15978.</p>
 			</li>
             <li className="footnote" id="fn:4">
             <p>Global Warming Potential broken down into parts of the assembly: exterior finish, finish support, thermal insulation, and other.</p>
@@ -681,13 +681,13 @@ class App extends Component {
 					<p>Data adjusted for the time value of carbon. It does not include End of Life or Module D life cycle stage, which accounts for reuse potential beyond system boundary. See methodology below for more info.</p>
 			</li>
             <li className="footnote" id="fn:6">
-            <p>Data included Module D life cycle stage, which accounts for reuse potential beyond system boundary.</p>
+            <p>Data included Module D life cycle stage, which accounts for reuse potential beyond system boundary. See methodology below for more info. In some graphs this will be represented as a negative credit.</p>
 			</li>
       <li className="footnote" id="fn:7">
 					<p>Data does not include Module D life cycle stage, which accounts for reuse potential beyond system boundary. See methodology below for more info.</p>
 			</li>
             <li className="footnote" id="fn:8">
-            <p>Takes into account carbon that is sequestered from the atmosphere during biomass growth. If this option is chosen, it represents FSC or sustainable forestry. </p>
+            <p>Takes into account carbon that is sequestered from the atmosphere during biomass growth. If this option is chosen, it represents FSC or sustainable forestry. Sequestered carbon will show up as a negative credit when looking at biomass materials in the Material Breakdown chart.</p>
 			</li>
       <li className="footnote" id="fn:9">
 					<p>Does not take into account carbon that is sequestered from the atmosphere during biomass growth. If this option is chosen, it represents typical forestry practices.</p>
