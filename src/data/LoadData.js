@@ -193,6 +193,25 @@ const metaData = {
     Wood:"images/wood.png"
   },
 
+  pieIcons: {
+    Granite:"./images/MV-Granite-Pie.png",
+    Limestone:"images/MV-Limestone-Pie.png",
+    Brick:"images/MV-Brick-Pie.png",
+    Spandrel:"images/CW-Spandrel-Pie.png",
+    UHPC:"images/RS-UHPC-Pie.png",
+    InsMetPanel:"images/FS-Metal-Pie.png",
+    GFRC:"images/RS-GFRC-Pie.png",
+    ACM:"images/RS-ACM-Pie.png",
+    Terracotta:"images/RS-Terracotta-Pie.png",
+    PhenResin:"images/RS-Resin-Pie.png",
+    FiberCement:"images/RS-FiberCement-Pie.png",
+    Zinc:"images/RS-Zinc-Pie.png",
+    Granite1:"images/RS-Granite-Pie.png",
+    Limestone1:"images/RS-Limestone-Pie.png",
+    Steel:"images/RS-Steel-Pie.png",
+    Wood:"images/RS-Wood-Pie.png"
+  },
+
   sectionIcons: {
     Granite:"./images/Wall Section Drawings_01_MV_Granite.png",
     Limestone:"images/Wall Section Drawings_02_MV_Limestone.png",

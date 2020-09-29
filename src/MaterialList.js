@@ -183,7 +183,7 @@ export default class MaterialList extends PureComponent {
     //   currentImg = RSGranite;
     // };
 
-    currentImg = this.props.metaData.materialIcons[this.state.materialPopup.name];
+    currentImg = this.props.metaData.pieIcons[this.state.materialPopup.name];
     // console.log(this.props.metaData.materialIcons[this.state.materialPopup.name])
     let sectionImg = this.props.metaData.sectionIcons[this.state.materialPopup.name];
 
@@ -235,9 +235,11 @@ export default class MaterialList extends PureComponent {
           >
             <p>
               <h2 style={{fontSize: "40px"}}>{this.props.metaData.materialType[this.state.materialPopup.name]}</h2>
+              <p style={{fontSize:"18px"}}> 10 year Biogenic:<br></br></p><br></br>
               {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={materialPopupMock} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
-              <img style={{maxWidth: "30%", maxHeight: "30%", paddingBottom: "3em"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} />
-              <img style={{maxWidth: "45%", top:"-10px", float:"right"}} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />
+              {/* <img style={{maxWidth: "30%", maxHeight: "30%", paddingBottom: "3em"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
+              <img style={{maxWidth: "30%", maxHeight: "30%", paddingBottom: "3em", borderRadius:"50%", objectFit:"cover", objectPosition:"-2px -2px"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} />
+              <img style={{maxWidth: "45%", top:"-80px", float:"right", objectFit:"cover", position:"relative"}} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />
               <h4>Assumptions</h4>
               <ul style={{lineHeight:'1.6em', fontSize: '14px', paddingLeft:'2em'}}>{listItems}</ul>
               {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={myImg} alt="material icon"/> */}
