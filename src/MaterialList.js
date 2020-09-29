@@ -195,7 +195,7 @@ export default class MaterialList extends PureComponent {
     let listItems;
     if(this.state.materialPopup.name !== "Material"){
       listItems = this.props.metaData.materialNotes[this.state.materialPopup.name].map((number) =>
-    <li>{number}</li>
+    <li>- {number}</li>
   );
   
     }
@@ -238,7 +238,8 @@ export default class MaterialList extends PureComponent {
               {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={materialPopupMock} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
               <img style={{maxWidth: "30%", maxHeight: "30%", paddingBottom: "3em"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} />
               <img style={{maxWidth: "45%", top:"-10px", float:"right"}} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />
-              <ul style={{lineHeight:'1.8em', fontSize: '16px'}}>{listItems}</ul>
+              <h4>Assumptions</h4>
+              <ul style={{lineHeight:'1.6em', fontSize: '14px', paddingLeft:'2em'}}>{listItems}</ul>
               {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={myImg} alt="material icon"/> */}
             </p>
         </Dialog>
