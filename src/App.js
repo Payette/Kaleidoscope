@@ -698,8 +698,8 @@ class App extends Component {
         </ol>
         </div>
         <div style={{height:'200px'}}>
-          Disclaimer: The numbers are estimates.<br></br>
-          Credit: Tally from KT
+        Last updated September 2020<br></br>
+          Credit: <i>Data analysis run using Tally by KT Innovations, thinkstep, and Autodesk using industry standard EPDs unless otherwise noted </i>
 
         </div>
 

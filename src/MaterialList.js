@@ -63,7 +63,7 @@ export default class MaterialList extends PureComponent {
     event.preventDefault();
     event.stopPropagation();
 
-    console.log(material);
+    // console.log(material);
     myImg = 'https://raw.githubusercontent.com/Payette/LCA-Dashboard/master/public/images/' + material.id.toLowerCase() + '.png';
 
     this.setState({
@@ -179,10 +179,28 @@ export default class MaterialList extends PureComponent {
     let currentImg = MVGranite;
     //IF IT IS RAINSCREEN USE THAT IMG INSTEAD
 
-    if(this.state.materialPopup.name === "Granite1"){
-      currentImg = RSGranite;
-    };
+    // if(this.state.materialPopup.name === "Granite1"){
+    //   currentImg = RSGranite;
+    // };
 
+    currentImg = this.props.metaData.materialIcons[this.state.materialPopup.name];
+    // console.log(this.props.metaData.materialIcons[this.state.materialPopup.name])
+    let sectionImg = this.props.metaData.sectionIcons[this.state.materialPopup.name];
+
+    let concatNotes = [];
+    concatNotes = this.props.metaData.materialNotes[this.state.materialPopup.name];
+
+    let myNotes;
+    console.log(this.state.materialPopup)
+    let listItems;
+    if(this.state.materialPopup.name !== "Material"){
+      listItems = this.props.metaData.materialNotes[this.state.materialPopup.name].map((number) =>
+    <li>{number}</li>
+  );
+  
+    }
+
+  
     return (
       
       <div>
@@ -216,8 +234,11 @@ export default class MaterialList extends PureComponent {
           }}
           >
             <p>
+              <h2 style={{fontSize: "40px"}}>{this.props.metaData.materialType[this.state.materialPopup.name]}</h2>
               {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={materialPopupMock} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
-              <img style={{maxWidth: "100%", maxHeight: "100%"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} />
+              <img style={{maxWidth: "30%", maxHeight: "30%", paddingBottom: "3em"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} />
+              <img style={{maxWidth: "45%", top:"-10px", float:"right"}} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />
+              <ul style={{lineHeight:'1.8em', fontSize: '16px'}}>{listItems}</ul>
               {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={myImg} alt="material icon"/> */}
             </p>
         </Dialog>
