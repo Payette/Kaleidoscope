@@ -68,7 +68,7 @@ const metaData = {
     Terracotta:"1'x4' hollow terracotta tile with thermally broken aluminum support, continuous mineral wool insulation",
     PhenResin:"Phenolic resin panels with thermally broken aluminum support, continuous mineral wool insulation",
     FiberCement:"Fiber cement panels with thermally broken aluminum support, continuous mineral wool insulation",
-    Zinc:"Fluoropolymer coated formed zinc metal panels with thermally broken galvanized steel support, continuous mineral wool insulation",
+    Zinc:"Fluoro-polymer coated formed zinc metal panels with thermally broken galvanized steel support, continuous mineral wool insulation",
     Granite1:'1/4" granite on aluminum honeycomb backer with thermally broken aluminum support, continuous mineral wool insulation',
     Limestone1:'1/4" limestone on aluminum honeycomb backer with thermally broken aluminum support, continuous mineral wool insulation',
     Steel:"Painted formed steel metal panels with thermally broken galvanized steel support, continuous mineral wool insulation",
@@ -269,8 +269,8 @@ const metaData = {
     mat18:"#85e2bd",
     mat19:"#85e2bd",
     mat20:"#85e2bd",
-    mat21:"#4169e1",
-    mat22:"#85e2bd",
+    mat21:"#85e2bd",
+    mat22:"#4169e1",
     mat23:"#85e2bd",
     mat24:"#85e2bd",
     mat25:"#85e2bd",
@@ -350,6 +350,25 @@ const metaData = {
     Brick: "Brick",
     Limestone: "Limestone",
     Granite: "Granite"
+  },
+
+  materialName2:{
+    Wood: "Rainscreen - Wood",
+    Steel: "Rainscreen - Formed Steel Panel",
+    Limestone1: "Rainscreen - Limestone",
+    Granite1: "Rainscreen - Granite",
+    Zinc: "Rainscreen - Formed Zinc Panel",
+    FiberCement: "Rainscreen - Fiber Cement",
+    PhenResin: "Rainscreen - Phoenolic Resin",
+    Terracotta: "Rainscreen - Terracotta",
+    ACM: "Rainscreen - Aluminum Composite Material (ACM)",
+    GFRC: "Rainscreen - Glass Fiber Reinforced Concrete (GFRC)",
+    UHPC: "Rainscreen - Ultra-Hight Performance Concrete (UHPC)",
+    Spandrel: "Curtain Wall - Spandrel",
+    InsMetPanel: "Face Sealed - Insulated Metal Panel",
+    Brick: "Masonry Veneer - Brick",
+    Limestone: "Masonry Veneer - Limestone",
+    Granite: "Masonry Veneer - Granite"
   },
 
   materialImg:{

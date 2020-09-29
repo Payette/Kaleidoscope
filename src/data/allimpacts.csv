@@ -8,7 +8,7 @@ FiberCement,Rainscreen,280,10,200,Fiber Cement,./images/granite.png
 PhenResin,Rainscreen,300,50,20,Phenolic Resin,./images/granite.png
 Terracotta,Rainscreen,600,20,0,Terracotta,./images/granite.png
 ACM,Rainscreen,650,20,30,Aluminum Composite Material (ACM),./images/granite.png
-GFRC,Rainscreen,700,20,30,Glass Fiber Reinfrced Concrete (GFRC),./images/granite.png
+GFRC,Rainscreen,700,20,30,Glass Fiber Reinforced Concrete (GFRC),./images/granite.png
 UHPC,Rainscreen,600,30,30,Ultra-High Performance Concrete (fibreC),./images/granite.png
 Spandrel,Curtain Wall,600,30,30,Spandrel,./images/granite.png
 InsMetPanel,Face Sealed,500,20,20,Insulated Metal Panel,./images/granite.png

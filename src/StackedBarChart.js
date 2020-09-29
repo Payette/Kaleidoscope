@@ -338,6 +338,7 @@ console.log(multiplier);
                     verticalAnchor="start"
                     fontSize={14}
                     width={50}
+                    className={styles.myClass}
                     x={-margin.left + margin.smallGap} y={(barHeight * sm.values.length)/2 - 10}
                   >{sm.key + " " + myAbb}</Text>
                   <line className={styles.groupLine} x1={xScale(0)} y1="0" x2={xScale(0)} y2={20+(barHeight * sm.values.length)} stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
@@ -383,7 +384,7 @@ console.log(multiplier);
                 border: '3px solid #ffd400',
                 boxShadow:"5px 5px rgba(200, 200, 200, .4)",
                 minWidth: 60,
-                height: toolTipHeight+22,
+                height: toolTipHeight+50,
                 width: toolTipWidth,
                 backgroundColor: 'rgba(255,255,255,0.8)',
                 color: 'black',
@@ -397,17 +398,18 @@ console.log(multiplier);
                   
               <div className={styles.tooltipContainer}>
                 <div style={{
-                    textTransform: 'uppercase',
+                    // textTransform: 'uppercase',
                     paddingBottom: 2,
+                    lineHeight:"1.2em",
                     fontSize: "20px",
                     fontWeight: 700,
                     color: "#dc1a55",
                     paddingBottom: ".5em"
                   }}>
-                  {getType(tooltipData.bar.data)} - 
+                  {getType(tooltipData.bar.data)} - {getName(tooltipData.bar.data)}
                 </div>
-                <div><strong>{getName(tooltipData.bar.data)}</strong><br/>
-                  <small>{tooltipData.bar.data[tooltipData.key].toFixed(2)} {trail}</small></div>
+                <div><strong>{tooltipData.bar.data[tooltipData.key].toFixed(2)} </strong>
+                  <small>{trail}</small></div>
                 <div className={styles.clearfix}>
                   
                   {/* <img className={styles.img2} src={'./Icon_FS.png'}></img> */}

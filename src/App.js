@@ -284,6 +284,7 @@ class App extends Component {
     const gwpDataSelectedMaterialsOnly = this.state.gwpData.filter(d => this.state.selectedMaterials.includes(d.material));
     const lcsDataSelectedMaterialsOnly = this.state.lcsData.filter(d => this.state.selectedMaterials.includes(d.material));
     const materialDataSelectedMaterialsOnly = this.state.materialData.filter(d => this.state.selectedMaterials.includes(d.material));
+    
 
     const allImpactsDataSelectedMaterialsOnly1 = this.state.allImpactsData1.filter(d => this.state.selectedMaterials.includes(d.material));
     const gwpDataSelectedMaterialsOnly1 = this.state.gwpData1.filter(d => this.state.selectedMaterials.includes(d.material));
@@ -309,6 +310,17 @@ class App extends Component {
     const gwpDataSelectedMaterialsOnly5 = this.state.gwpData5.filter(d => this.state.selectedMaterials.includes(d.material));
     const lcsDataSelectedMaterialsOnly5 = this.state.lcsData5.filter(d => this.state.selectedMaterials.includes(d.material));
     const materialDataSelectedMaterialsOnly5 = this.state.materialData5.filter(d => this.state.selectedMaterials.includes(d.material));
+
+    var obj = {
+      "Material": "void"
+    };
+    
+
+    for(let i = 0; i < gwpDataSelectedMaterialsOnly.length; i++){
+      let myName = gwpDataSelectedMaterialsOnly[i].material;
+      let myVal = gwpDataSelectedMaterialsOnly[i].value;
+      obj[myName] = myVal;
+    }
 
     let chartTitle = "";
 
@@ -381,6 +393,7 @@ class App extends Component {
             {this.state.materials.length > 0 &&
               <div className={styles.sidebar}>
                 <MaterialList
+                  gwp={obj}
                   materials={this.state.materials}
                   names={this.state.names}
                   updateSelectedMaterials={this.updateSelectedMaterials.bind(this)}

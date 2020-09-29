@@ -187,6 +187,8 @@ export default class MaterialList extends PureComponent {
     // console.log(this.props.metaData.materialIcons[this.state.materialPopup.name])
     let sectionImg = this.props.metaData.sectionIcons[this.state.materialPopup.name];
 
+    console.log(this.props);
+
     let concatNotes = [];
     concatNotes = this.props.metaData.materialNotes[this.state.materialPopup.name];
 
@@ -199,6 +201,7 @@ export default class MaterialList extends PureComponent {
   );
   
     }
+
 
   
     return (
@@ -234,14 +237,18 @@ export default class MaterialList extends PureComponent {
           }}
           >
             <p>
-              <h2 style={{fontSize: "40px"}}>{this.props.metaData.materialType[this.state.materialPopup.name]}</h2>
-              <p style={{fontSize:"18px"}}> 10 year Biogenic:<br></br></p><br></br>
+              <h2 style={{fontSize: "40px"}}>{this.props.metaData.materialName2[this.state.materialPopup.name]}</h2>
+              <p style={{fontSize:"18px"}}><strong>10 year lifespan with biogenic carbon:</strong><br></br></p><br></br>
+              <div style={{width: "30%",float:"left"}}>
+              <p style={{textAlign:"center", width:"30%", top:"320px", position:"absolute", justyify:"center", zIndex:"100", marginLeft:"2.5em"}}><strong>{this.props.gwp[this.state.materialPopup.name]}</strong><br></br>kgCO&#x2082;eq/sf<br></br>GWP</p><br></br>
+              <img style={{width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} />
+
+              </div>
               {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={materialPopupMock} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
               {/* <img style={{maxWidth: "30%", maxHeight: "30%", paddingBottom: "3em"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
-              <img style={{maxWidth: "30%", maxHeight: "30%", paddingBottom: "3em", borderRadius:"50%", objectFit:"cover", objectPosition:"-2px -2px"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} />
-              <img style={{maxWidth: "45%", top:"-80px", float:"right", objectFit:"cover", position:"relative"}} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />
-              <h4>Assumptions</h4>
-              <ul style={{lineHeight:'1.6em', fontSize: '14px', paddingLeft:'2em'}}>{listItems}</ul>
+                            <img style={{maxWidth: "45%", top:"-70px", position:"relative", float:"right", objectFit:"cover", }} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />
+              <div style={{maxWidth:"55%", float:"left", position:'relative'}}><h4>Assumptions</h4>
+              <ul style={{lineHeight:'1.6em', fontSize: '16px', paddingLeft:'1em'}}>{listItems}</ul></div>
               {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={myImg} alt="material icon"/> */}
             </p>
         </Dialog>

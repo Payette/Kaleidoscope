@@ -38,6 +38,11 @@
   
 }
 
+.myClass{
+  font-family: $headline-font;
+  font-weight: 600;
+}
+
 .groupLine {
   stroke: $highlight3;
 }
