@@ -88,10 +88,10 @@ export default class MaterialList extends PureComponent {
     return items.map(item => {
       const { id, label } = item;
 
-      let materialColor = '#ccc';
+      let materialColor = '#4d4d4f';
 
       if(this.props.currentSel==="GWP"){
-        materialColor = this.props.metaData.materialColors[id] ? this.props.metaData.materialColors[id] : '#CCCCCC';
+        materialColor = this.props.metaData.materialColors[id] ? this.props.metaData.materialColors[id] : '#4d4d4f';
       }
 
       
@@ -187,13 +187,13 @@ export default class MaterialList extends PureComponent {
     // console.log(this.props.metaData.materialIcons[this.state.materialPopup.name])
     let sectionImg = this.props.metaData.sectionIcons[this.state.materialPopup.name];
 
-    console.log(this.props);
+    // console.log(this.props);
 
     let concatNotes = [];
     concatNotes = this.props.metaData.materialNotes[this.state.materialPopup.name];
 
     let myNotes;
-    console.log(this.state.materialPopup)
+    // console.log(this.state.materialPopup)
     let listItems;
     if(this.state.materialPopup.name !== "Material"){
       listItems = this.props.metaData.materialNotes[this.state.materialPopup.name].map((number) =>
@@ -239,8 +239,8 @@ export default class MaterialList extends PureComponent {
             <p>
               <h2 style={{fontSize: "40px"}}>{this.props.metaData.materialName2[this.state.materialPopup.name]}</h2>
               <p style={{fontSize:"18px"}}><strong>10 year lifespan with biogenic carbon:</strong><br></br></p><br></br>
-              <div style={{width: "30%",float:"left"}}>
-              <p style={{textAlign:"center", width:"30%", top:"320px", position:"absolute", justyify:"center", zIndex:"100", marginLeft:"2.5em"}}><strong>{this.props.gwp[this.state.materialPopup.name]}</strong><br></br>kgCO&#x2082;eq/sf<br></br>GWP</p><br></br>
+              <div style={{width: "30%",float:"left", position:"relative", textAlign:"center"}}>
+              <p style={{position:"absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", zIndex:"100", marginLeft:"2.5em"}}><strong>{this.props.gwp[this.state.materialPopup.name]}</strong><br></br>kgCO&#x2082;eq/sf<br></br>GWP</p><br></br>
               <img style={{width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} />
 
               </div>

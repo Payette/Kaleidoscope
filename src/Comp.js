@@ -1,0 +1,280 @@
+import React from "react";
+import styles from './css/Comp.module.scss';
+
+// let count = 1;
+
+export default class Comp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { rows: [], count:1, vals: [], sum:0, allMaterials:[0]};
+    
+  }
+
+  radioChange(e){
+
+    let myMult = 0;
+    let currentRadio;
+    var ele = document.getElementsByName('gender'+this.props.name); 
+      for(let i = 0; i < ele.length; i++) { 
+          if(ele[i].checked) {
+            currentRadio = ele[i].value
+          }
+      } 
+    
+    if(currentRadio == 1){
+      this.state.allMaterials = this.props.tenY
+    }else if(currentRadio == 2){
+      this.state.allMaterials = this.props.sixty1
+    }else{
+      this.state.allMaterials = this.props.sixty2
+    }
+
+    for(let i = 0; i < this.state.count; i++){
+      let currentPos = document.getElementById("select-position"+this.props.name+(i+1).toString());
+      let currentSelect = document.getElementById("select-type"+this.props.name+(i+1).toString());
+      let theCurrentMat = (currentSelect.options[ currentSelect.selectedIndex ].value);
+      for(let j = 0; j < this.state.allMaterials.length; j++){
+
+        if(this.state.allMaterials[j].material == theCurrentMat){
+          myMult = this.state.allMaterials[j].value
+          let num = parseInt(currentPos.value) || 0;
+          this.state.vals[i]= num * myMult;
+        }
+      }
+    }
+    let mRes = 0;
+    for(let i = 0; i < this.state.vals.length; i++){
+      let placeholderVal = 0
+      if(this.state.vals[i] == undefined || isNaN(this.state.vals[i])){
+        placeholderVal = 0;
+      }else{
+        placeholderVal = this.state.vals[i]
+      }
+      mRes += placeholderVal;
+      console.log(this.state.vals)
+    }
+    console.log(mRes)
+    mRes = mRes.toFixed(2);
+    this.setState({ sum: this.formatNumber(mRes)});
+  }
+
+  selectChange(e){
+    let currentRadio;
+    var ele = document.getElementsByName('gender'+this.props.name); 
+      for(let i = 0; i < ele.length; i++) { 
+          if(ele[i].checked) {
+            currentRadio = ele[i].value
+          }
+      } 
+    
+    if(currentRadio == 1){
+      this.state.allMaterials = this.props.tenY
+    }else if(currentRadio == 2){
+      this.state.allMaterials = this.props.sixty1
+    }else{
+      this.state.allMaterials = this.props.sixty2
+    }
+    // this.state.allMaterials = this.props.tenY
+    let myStr = e.target.id;
+    let myStr2 = myStr[myStr.length - 2]
+    myStr = myStr[myStr.length - 1]
+    let myMult = 0;
+    let currentPos = document.getElementById("select-position"+myStr2+myStr);
+    let currentSelect = document.getElementById("select-type"+myStr2+myStr);
+    // console.log(mySel)
+    let theCurrentMat = (currentSelect.options[ currentSelect.selectedIndex ].value);
+    for(let i = 0; i < this.state.allMaterials.length; i++){
+      // console.log(e)
+      if(this.state.allMaterials[i].material == theCurrentMat){
+        myMult = this.state.allMaterials[i].value
+        let num = parseInt(currentPos.value)
+        this.state.vals[myStr-1]= num * myMult;
+      }
+    }
+    
+    console.log(this.state.vals);
+    let mRes = 0;
+    for(let i = 0; i < this.state.vals.length; i++){
+      let placeholderVal = 0
+      if(this.state.vals[i] == undefined || isNaN(this.state.vals[i])){
+        placeholderVal = 0;
+      }else{
+        placeholderVal = this.state.vals[i]
+      }
+      mRes += placeholderVal;
+    }
+    mRes = mRes.toFixed(2);
+    this.setState({ sum: this.formatNumber(mRes)});
+    console.log(this.state.allMaterials)
+  }
+
+  
+
+  handleChange(e) {
+    let currentRadio;
+    var ele = document.getElementsByName('gender'+this.props.name); 
+      for(let i = 0; i < ele.length; i++) { 
+          if(ele[i].checked) {
+            currentRadio = ele[i].value
+          }
+      } 
+    
+    if(currentRadio == 1){
+      this.state.allMaterials = this.props.tenY
+    }else if(currentRadio == 2){
+      this.state.allMaterials = this.props.sixty1
+    }else{
+      this.state.allMaterials = this.props.sixty2
+    }
+
+    // this.state.allMaterials = this.props.tenY
+    let myStr = e.target.id;
+    let myStr2 = myStr[myStr.length - 2]
+    myStr = myStr[myStr.length - 1]
+    let myMult = 0;
+    let currentSelect = document.getElementById("select-type"+myStr2+myStr);
+    // console.log(mySel)
+    let theCurrentMat = (currentSelect.options[ currentSelect.selectedIndex ].value);
+    for(let i = 0; i < this.state.allMaterials.length; i++){
+      // console.log(e)
+      if(this.state.allMaterials[i].material == theCurrentMat){
+        myMult = this.state.allMaterials[i].value
+        let num = parseInt(e.target.value)
+        
+        this.state.vals[myStr-1]= Number(num) * myMult;
+      }
+    }
+    
+    console.log(this.state.vals);
+    let mRes = 0;
+    for(let i = 0; i < this.state.vals.length; i++){
+      let placeholderVal = 0
+      if(this.state.vals[i] == undefined || isNaN(this.state.vals[i])){
+        placeholderVal = 0;
+      }else{
+        placeholderVal = this.state.vals[i]
+      }
+      mRes += placeholderVal;
+    }
+    mRes = mRes.toFixed(2);
+    this.setState({ sum: this.formatNumber(mRes)});
+    // console.log(this.props.allMaterials)
+    
+  }
+  
+  
+
+  appendRow(event) {
+    var rel = event.target.getAttribute("rel");
+    rel = parseInt(rel) + 1;
+    this.state.count++;
+    
+    
+
+    var joined = this.state.rows.concat(
+      <tr>
+        <td>
+          <select id="mat" name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + this.state.count}>
+          <option value="Granite">MV - Granite</option>
+            <option value="Limestone">MV - Limestone</option>
+            <option value="Brick">MV - Brick</option>
+            <option value="InsMetPanel">FS - Insulated Metal Panel</option>
+            <option value="Spandrel">CW - Spandrel</option>
+            <option value="UHPC">RS - UHPC (fibreC)</option>
+            <option value="GFRC">RS - GFRC</option>
+            <option value="ACM">RS - ACM</option>
+            <option value="Terracotta">RS - Terracotta</option>
+            <option value="PhenResin">RS - Phenolic Resin</option>
+            <option value="FiberCement">RS - Fiber Cement</option>
+            <option value="Zinc">RS - Formed Zinc Panel</option>
+            <option value="Granite1">RS - Granite</option>
+            <option value="Limestone1">RS - Limestone</option>
+            <option value="Steel">RS - Formed Steel Panel</option>
+            <option value="Wood">RS - Wood</option>
+          </select>
+        </td>
+        <td>
+          <input type="number" onChange={this.handleChange.bind(this)} id={`select-position` + this.props.name + this.state.count} />
+        </td>
+      </tr>
+    );
+    this.setState({ rows: joined });
+
+    for(let i = 1; i < this.state.count; i++){
+      let currentSelect = document.getElementById("select-type" + this.props.name + i);
+      console.log(currentSelect);
+      console.log(currentSelect.options[ currentSelect.selectedIndex ].value);
+    }
+  }
+
+  formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+  }
+
+  render() {
+  
+    return (
+      <div className={styles.calculator}>
+        <div style={{margin:"auto", textAlign:"center"}}>
+          <input type="radio" id="ten" name={"gender"+ this.props.name} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
+<label for="ten"> 10 Year &nbsp;&nbsp;</label>
+<input type="radio" id="sixty1" name={"gender"+ this.props.name} value="2" onChange={this.radioChange.bind(this)}></input>
+<label for="sixty1"> 60 Year &nbsp;&nbsp;</label>
+<input type="radio" id="sixty2" name={"gender"+ this.props.name} value="3" onChange={this.radioChange.bind(this)}></input>
+<label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
+</div>
+        
+        
+        <table style={{border:"1px solid black", borderCollapse: "collapse", width:"100%", textAlign:"center"}}>
+        
+          <thead>
+            <td colspan="2"><strong>Option {this.props.name}</strong></td>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Type</td>
+            <td>Total SF</td>
+          </tr>
+          <tr>
+        <td>
+          {/* <input type="text" id={`select-type` + rel} /> */}
+          <select id="mat" name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name +`1`}>
+            <option value="Granite">MV - Granite</option>
+            <option value="Limestone">MV - Limestone</option>
+            <option value="Brick">MV - Brick</option>
+            <option value="InsMetPanel">FS - Insulated Metal Panel</option>
+            <option value="Spandrel">CW - Spandrel</option>
+            <option value="UHPC">RS - UHPC (fibreC)</option>
+            <option value="GFRC">RS - GFRC</option>
+            <option value="ACM">RS - ACM</option>
+            <option value="Terracotta">RS - Terracotta</option>
+            <option value="PhenResin">RS - Phenolic Resin</option>
+            <option value="FiberCement">RS - Fiber Cement</option>
+            <option value="Zinc">RS - Formed Zinc Panel</option>
+            <option value="Granite1">RS - Granite</option>
+            <option value="Limestone1">RS - Limestone</option>
+            <option value="Steel">RS - Formed Steel Panel</option>
+            <option value="Wood">RS - Wood</option>
+          </select>
+        </td>
+        <td>
+          <input type="number" onChange={this.handleChange.bind(this)} id={`select-position` + this.props.name +`1`} />
+        </td>
+      </tr>
+            {this.state.rows}</tbody>
+            <tr>
+              <td>
+                Total GWP
+              </td>
+              <td style={{color:"#dc1a55"}}>
+                <strong>{this.state.sum}</strong>
+              </td>
+            </tr>
+        </table><br></br>
+        <button rel="1" onClick={this.appendRow.bind(this)}>
+          Add row
+        </button>
+      </div>
+    );
+  }
+}

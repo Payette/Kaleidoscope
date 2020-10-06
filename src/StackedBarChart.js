@@ -107,7 +107,7 @@ for(let i = 0; i < selectedMaterials.length; i++){
 
 
 let multiplier = 100.0 / currentBiggest;
-console.log(multiplier);
+// console.log(multiplier);
 
   const allMaterialTotalsMin = allMaterials.reduce((ret, cur) => {
     const t = keys.reduce((dailyTotal, k) => {
