@@ -1,25 +1,39 @@
 import React from "react";
 import styles from './css/Comp.module.scss';
 
-// let count = 1;
+// let rad = 1;
 
 export default class Comp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { rows: [], count:1, vals: [], sum:0, allMaterials:[0]};
+    this.state = { rows: [], count:1, vals: [], vals1: [], sum:0, sum1:0, radio:1, allMaterials:[0], show:false};
+    // this.handleInputChange = this.handleInputChange.bind(this);
     
   }
+  // static getDerivedStateFromProps(props, current_state) {
+  //   if (current_state.radio !== props.radio) {
+  //     console.log("changed");
+  //     rad = props.radio;
 
-  radioChange(e){
+  //     return {
+  //       radio: props.radio,
+  //       // computed_prop: radC(props.radio)
+  //     }
+  //   }
+  //   return null
+  // }
+
+  componentDidUpdate(prevProps, prevState) {
+    // only update chart if the data has changed
+    if (prevProps.radio !== this.props.radio) {
+      this.radC(this.props.radio)
+    }
+  }
+
+  radC(e){
 
     let myMult = 0;
-    let currentRadio;
-    var ele = document.getElementsByName('gender'+this.props.name); 
-      for(let i = 0; i < ele.length; i++) { 
-          if(ele[i].checked) {
-            currentRadio = ele[i].value
-          }
-      } 
+    let currentRadio = e;
     
     if(currentRadio == 1){
       this.state.allMaterials = this.props.tenY
@@ -39,33 +53,44 @@ export default class Comp extends React.Component {
           myMult = this.state.allMaterials[j].value
           let num = parseInt(currentPos.value) || 0;
           this.state.vals[i]= num * myMult;
+          this.state.vals1[i]= num;
         }
       }
     }
     let mRes = 0;
+    let mRes1 = 0;
     for(let i = 0; i < this.state.vals.length; i++){
       let placeholderVal = 0
+      let placeholderVal1 = 0
       if(this.state.vals[i] == undefined || isNaN(this.state.vals[i])){
         placeholderVal = 0;
       }else{
         placeholderVal = this.state.vals[i]
       }
+
+      if(this.state.vals1[i] == undefined || isNaN(this.state.vals1[i])){
+        placeholderVal1 = 0;
+      }else{
+        placeholderVal1 = this.state.vals1[i]
+      }
       mRes += placeholderVal;
+      mRes += placeholderVal1;
       console.log(this.state.vals)
     }
     console.log(mRes)
     mRes = mRes.toFixed(2);
     this.setState({ sum: this.formatNumber(mRes)});
+    this.setState({ sum1: this.formatNumber(mRes1)});
   }
 
   selectChange(e){
-    let currentRadio;
-    var ele = document.getElementsByName('gender'+this.props.name); 
-      for(let i = 0; i < ele.length; i++) { 
-          if(ele[i].checked) {
-            currentRadio = ele[i].value
-          }
-      } 
+    let currentRadio = this.props.radio;
+    // var ele = document.getElementsByName('gender'+this.props.name); 
+    //   for(let i = 0; i < ele.length; i++) { 
+    //       if(ele[i].checked) {
+    //         currentRadio = ele[i].value
+    //       }
+    //   } 
     
     if(currentRadio == 1){
       this.state.allMaterials = this.props.tenY
@@ -89,11 +114,13 @@ export default class Comp extends React.Component {
         myMult = this.state.allMaterials[i].value
         let num = parseInt(currentPos.value)
         this.state.vals[myStr-1]= num * myMult;
+        this.state.vals1[myStr-1]= num;
       }
     }
     
-    console.log(this.state.vals);
+    console.log(this.props.radio);
     let mRes = 0;
+    let mRes1 = 0;
     for(let i = 0; i < this.state.vals.length; i++){
       let placeholderVal = 0
       if(this.state.vals[i] == undefined || isNaN(this.state.vals[i])){
@@ -103,21 +130,31 @@ export default class Comp extends React.Component {
       }
       mRes += placeholderVal;
     }
+    for(let i = 0; i < this.state.vals.length; i++){
+      let placeholderVal1 = 0
+      if(this.state.vals1[i] == undefined || isNaN(this.state.vals1[i])){
+        placeholderVal1 = 0;
+      }else{
+        placeholderVal1 = this.state.vals1[i]
+      }
+      mRes1 += placeholderVal1;
+    }
     mRes = mRes.toFixed(2);
     this.setState({ sum: this.formatNumber(mRes)});
-    console.log(this.state.allMaterials)
+    this.setState({ sum1: this.formatNumber(mRes1)});
+    // console.log(this.state.allMaterials)
   }
 
   
 
   handleChange(e) {
-    let currentRadio;
-    var ele = document.getElementsByName('gender'+this.props.name); 
-      for(let i = 0; i < ele.length; i++) { 
-          if(ele[i].checked) {
-            currentRadio = ele[i].value
-          }
-      } 
+    let currentRadio = this.props.radio;
+    // var ele = document.getElementsByName('gender'+this.props.name); 
+    //   for(let i = 0; i < ele.length; i++) { 
+    //       if(ele[i].checked) {
+    //         currentRadio = ele[i].value
+    //       }
+    //   } 
     
     if(currentRadio == 1){
       this.state.allMaterials = this.props.tenY
@@ -142,11 +179,13 @@ export default class Comp extends React.Component {
         let num = parseInt(e.target.value)
         
         this.state.vals[myStr-1]= Number(num) * myMult;
+        this.state.vals1[myStr-1]= Number(num);
       }
     }
     
     console.log(this.state.vals);
     let mRes = 0;
+    let mRes1 = 0;
     for(let i = 0; i < this.state.vals.length; i++){
       let placeholderVal = 0
       if(this.state.vals[i] == undefined || isNaN(this.state.vals[i])){
@@ -156,8 +195,18 @@ export default class Comp extends React.Component {
       }
       mRes += placeholderVal;
     }
+    for(let i = 0; i < this.state.vals1.length; i++){
+      let placeholderVal1 = 0
+      if(this.state.vals1[i] == undefined || isNaN(this.state.vals1[i])){
+        placeholderVal1 = 0;
+      }else{
+        placeholderVal1 = this.state.vals1[i]
+      }
+      mRes1 += placeholderVal1;
+    }
     mRes = mRes.toFixed(2);
     this.setState({ sum: this.formatNumber(mRes)});
+    this.setState({ sum1: this.formatNumber(mRes1)});
     // console.log(this.props.allMaterials)
     
   }
@@ -199,12 +248,22 @@ export default class Comp extends React.Component {
       </tr>
     );
     this.setState({ rows: joined });
+    console.log(this.state.rows);
 
     for(let i = 1; i < this.state.count; i++){
       let currentSelect = document.getElementById("select-type" + this.props.name + i);
       console.log(currentSelect);
       console.log(currentSelect.options[ currentSelect.selectedIndex ].value);
     }
+  }
+
+  removeRow(){
+    let mArray = []
+    for(let i = 0; i < this.state.rows.length-1; i++){
+      mArray.push(this.state.rows[i]);
+    }
+    this.setState({ rows: mArray });
+    this.state.count--;
   }
 
   formatNumber(num) {
@@ -215,17 +274,17 @@ export default class Comp extends React.Component {
   
     return (
       <div className={styles.calculator}>
-        <div style={{margin:"auto", textAlign:"center"}}>
+        {/* <div style={{margin:"auto", textAlign:"center"}}>
           <input type="radio" id="ten" name={"gender"+ this.props.name} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
-<label for="ten"> 10 Year &nbsp;&nbsp;</label>
-<input type="radio" id="sixty1" name={"gender"+ this.props.name} value="2" onChange={this.radioChange.bind(this)}></input>
-<label for="sixty1"> 60 Year &nbsp;&nbsp;</label>
-<input type="radio" id="sixty2" name={"gender"+ this.props.name} value="3" onChange={this.radioChange.bind(this)}></input>
-<label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
-</div>
+      <label for="ten"> 10 Year &nbsp;&nbsp;</label>
+      <input type="radio" id="sixty1" name={"gender"+ this.props.name} value="2" onChange={this.radioChange.bind(this)}></input>
+      <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label>
+      <input type="radio" id="sixty2" name={"gender"+ this.props.name} value="3" onChange={this.radioChange.bind(this)}></input>
+      <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
+    </div> */}
         
         
-        <table style={{border:"1px solid black", borderCollapse: "collapse", width:"100%", textAlign:"center"}}>
+        <table style={{borderCollapse: "collapse", width:"100%", textAlign:"center"}}>
         
           <thead>
             <td colspan="2"><strong>Option {this.props.name}</strong></td>
@@ -233,7 +292,7 @@ export default class Comp extends React.Component {
           <tbody>
           <tr>
             <td>Type</td>
-            <td>Total SF</td>
+            <td>Square Feet (SF)</td>
           </tr>
           <tr>
         <td>
@@ -264,15 +323,18 @@ export default class Comp extends React.Component {
             {this.state.rows}</tbody>
             <tr>
               <td>
-                Total GWP
+                Total GWP <strong style={{color:"#dc1a55"}}>{this.state.sum}</strong>
               </td>
-              <td style={{color:"#dc1a55"}}>
-                <strong>{this.state.sum}</strong>
+              <td >
+                Total SF <strong style={{color:"#dc1a55"}}>{this.state.sum1}</strong>
               </td>
             </tr>
         </table><br></br>
         <button rel="1" onClick={this.appendRow.bind(this)}>
           Add row
+        </button>&nbsp;
+        <button rel="1" onClick={this.removeRow.bind(this)}>
+          Remove row
         </button>
       </div>
     );

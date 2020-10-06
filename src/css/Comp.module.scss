@@ -5,7 +5,8 @@
   font-family: raleway,sans-serif;
   input{
     font-family: raleway,sans-serif;
-    font-size:13px
+    font-size:13px;
+    width:100px;
   }
   button{
     font-family: raleway,sans-serif;
@@ -15,9 +16,19 @@
     font-family: raleway,sans-serif;
     font-size:13px
   }
-  table, td, th, tr{
+  table{
     font-family: raleway,sans-serif;
-    font-size:13px
+    font-size:13px;
+    border: solid 1px #C9CDF2;
+    border-radius: 2px;
+    padding: 0.5rem 0rem 0.5rem 1rem;
+    // margin:1em;
+  }
+
+  td, th, tr{
+    font-family: raleway,sans-serif;
+    font-size:13px;
+
   }
   // background: none;
   // border: none;

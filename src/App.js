@@ -40,7 +40,8 @@ class App extends Component {
       lcsData5: [],
       materialData5: [],
       materials: [],
-      selectedMaterials: []
+      selectedMaterials: [],
+      currentRadio: 1
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -278,9 +279,36 @@ class App extends Component {
     })
   }
 
+  radioChange(e){
+    console.log(e.target.value)
+    let currentRad = e.target.value;
+    // var ele = document.getElementsByName('gender'); 
+    //   for(let i = 0; i < ele.length; i++) { 
+    //       if(ele[i].checked) {
+    //         currentRad = ele[i].value
+    //       }
+    //   }
+      
+      // console.log()
+      this.state.currentRadio = currentRad;
+      this.setState({ currentRadio: currentRad});
+      console.log(this.state.currentRadio) 
+  }
+
+  
+
   
 
   render() {
+    // let currentRadio;
+    // var ele = document.getElementsByName('gender'+this.props.name); 
+    //   for(let i = 0; i < ele.length; i++) { 
+    //       if(ele[i].checked) {
+    //         this.state.currentRadio = ele[i].value
+    //       }
+    //       console.log(this.state.currentRadio)
+    //   } 
+
     const allImpactsDataSelectedMaterialsOnly = this.state.allImpactsData.filter(d => this.state.selectedMaterials.includes(d.material));
     const gwpDataSelectedMaterialsOnly = this.state.gwpData.filter(d => this.state.selectedMaterials.includes(d.material));
     const lcsDataSelectedMaterialsOnly = this.state.lcsData.filter(d => this.state.selectedMaterials.includes(d.material));
@@ -335,6 +363,8 @@ class App extends Component {
     }else if(this.state.chartType === "MB"){
       chartTitle = "Material Breakdown"
     }
+
+
 
     
 
@@ -679,19 +709,30 @@ class App extends Component {
         />}
         
         </div>
+        <h1>ENVELOPE CALCULATOR</h1>
         <div style={{height:'250px', display:"inline-block", width:"100%"}}>
+
+        <div style={{margin:"auto", textAlign:"center"}}>
+          <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
+      <label for="ten"> 10 Year (no Module D) &nbsp;&nbsp;</label>
+      <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
+      <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
+      <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
+      <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label>
+      
+    </div><br></br>
 
         
         <div style={{float:"left", display:"inline-block", width:"31%"}}>
-        <Comp name={1} count={0} tenY={this.state.gwpData1} sixty1={this.state.gwpData3} sixty2={this.state.gwpData5}/>
+        <Comp name={1} count={0} tenY={this.state.gwpData1} sixty1={this.state.gwpData3} sixty2={this.state.gwpData5} radio={this.state.currentRadio}/>
         </div>
 
         <div style={{width:"32%", display:"inline-block", marginRight:"3%",marginLeft:"3%"}}>
-        <Comp name={2} count={0} tenY={this.state.gwpData1} sixty1={this.state.gwpData3} sixty2={this.state.gwpData5}/>
+        <Comp name={2} count={0} tenY={this.state.gwpData1} sixty1={this.state.gwpData3} sixty2={this.state.gwpData5} radio={this.state.currentRadio}/>
         </div>
 
         <div style={{float:"right", width:"31%", display:"inline-block"}}>
-        <Comp name={3} count={0} tenY={this.state.gwpData1} sixty1={this.state.gwpData3} sixty2={this.state.gwpData5}/>
+        <Comp name={3} count={0} tenY={this.state.gwpData1} sixty1={this.state.gwpData3} sixty2={this.state.gwpData5} radio={this.state.currentRadio}/>
         </div>
         </div>
         
