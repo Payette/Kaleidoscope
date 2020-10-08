@@ -287,12 +287,12 @@ export default class Comp extends React.Component {
         <table style={{borderCollapse: "collapse", width:"100%", textAlign:"center"}}>
         
           <thead>
-            <td colspan="2"><strong>Option {this.props.name}</strong></td>
+            <td colspan="2" style={{textAlign:"left", height:"25px"}}>&nbsp;&nbsp;<strong>Option {this.props.name}</strong></td>
           </thead>
           <tbody>
           <tr>
             <td>Type</td>
-            <td>Square Feet (SF)</td>
+            <td>Square Feet</td>
           </tr>
           <tr>
         <td>
@@ -321,12 +321,12 @@ export default class Comp extends React.Component {
         </td>
       </tr>
             {this.state.rows}</tbody>
-            <tr>
+            <tr style={{height:"35px"}}>
               <td>
-                Total GWP <strong style={{color:"#dc1a55"}}>{this.state.sum}</strong>
+                Total GWP: <strong style={{color:"#dc1a55"}}>{this.state.sum}</strong> kgCO<sub>2</sub>eq
               </td>
               <td >
-                Total SF <strong style={{color:"#dc1a55"}}>{this.state.sum1}</strong>
+                Total: <strong style={{color:"#dc1a55"}}>{this.state.sum1}</strong> ft<sup>2</sup>
               </td>
             </tr>
         </table><br></br>

@@ -3,6 +3,7 @@ import StackedBarChart from './StackedBarChart';
 import LoadData from './data/LoadData';
 import MaterialList from './MaterialList';
 import Comp from "./Comp";
+
 import './css/Main.scss';
 import styles from './css/App.module.scss';
 
@@ -433,6 +434,8 @@ class App extends Component {
                   initialSelectedMaterials={this.state.selectedMaterials}
                   metaData={LoadData.metaData}
                   currentSel={this.state.chartType}
+                  matBreakdown={this.state.materialData}
+                  tenYGWP={this.state.gwpData1}
                 />
               </div>
              }
@@ -707,12 +710,21 @@ class App extends Component {
           xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
           currentChart={this.state.chartType}
         />}
+
+         <div>
+          <p style={{display:"inline-block"}}>
+          Last updated September 2020<br></br>
+          Credit: <i>Data analysis run using Tally by KT Innovations, thinkstep, and Autodesk using industry standard EPDs unless otherwise noted </i>
+
+          </p>
+        
+        </div><br></br>
         
         </div>
         <h1>ENVELOPE CALCULATOR</h1>
-        <div style={{height:'250px', display:"inline-block", width:"100%"}}>
+        <div style={{minHeight:'250px', display:"inline-block", width:"100%"}}>
 
-        <div style={{margin:"auto", textAlign:"center"}}>
+        <div style={{margin:"auto"}}>
           <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
       <label for="ten"> 10 Year (no Module D) &nbsp;&nbsp;</label>
       <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
@@ -721,6 +733,7 @@ class App extends Component {
       <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label>
       
     </div><br></br>
+    
 
         
         <div style={{float:"left", display:"inline-block", width:"31%"}}>
@@ -736,82 +749,7 @@ class App extends Component {
         </div>
         </div>
         
-        {/* <div style={{float:"left", display:"inline-block", width:"31%"}}>
-        <table style={{border:"1px solid black", borderCollapse: "collapse", width:"100%", textAlign:"center"}}>
-          <tr>
-            <th> </th>
-            <th>Option 1</th> 
-            <th> </th>
-          </tr>
-          <tr>
-            <td>Type</td>
-            <td>GWP/sf</td>
-            <td>Total SF</td>
-          </tr>
-          <tr>
-            <td>Eve</td>
-            <td>Jackson</td>
-            <td>94</td>
-          </tr>
-          <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>80</td>
-          </tr>
-        </table>
-        </div>
-        
-        <div style={{width:"32%", display:"inline-block", marginRight:"3%",marginLeft:"3%"}}>
-
-        <table style={{border:"1px solid black", borderCollapse: "collapse", width:"100%", textAlign:"center"}}>
-          <tr>
-            <th> </th>
-            <th>Option 1</th> 
-            <th>A </th>
-          </tr>
-          <tr>
-            <td>Type</td>
-            <td>GWP/sf</td>
-            <td>Total SF</td>
-          </tr>
-          <tr>
-            <td>Eve</td>
-            <td>Jackson</td>
-            <td>94</td>
-          </tr>
-          <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>80</td>
-          </tr>
-        </table>
-        </div>
-
-        <div style={{float:"right", width:"31%", display:"inline-block"}}>
-
-        <table style={{border:"1px solid black", borderCollapse: "collapse", width:"100%", textAlign:"center"}}>
-          <tr>
-            <th> </th>
-            <th>Option 1</th> 
-            <th>A </th>
-          </tr>
-          <tr>
-            <td>Type</td>
-            <td>GWP/sf</td>
-            <td>Total SF</td>
-          </tr>
-          <tr>
-            <td>Eve</td>
-            <td>Jackson</td>
-            <td>94</td>
-          </tr>
-          <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>80</td>
-          </tr>
-        </table>
-        </div> */}
+     
         <br></br>
         <div className="footnotes">
         <ol>
@@ -847,15 +785,7 @@ class App extends Component {
 
         </ol>
         </div>
-        {/* <div>
-          <br></br>
-          <p style={{display:"inline-block", float:"left"}}>
-          Last updated September 2020<br></br>
-          Credit: <i>Data analysis run using Tally by KT Innovations, thinkstep, and Autodesk using industry standard EPDs unless otherwise noted </i>
-
-          </p>
-        
-        </div> */}
+       
 
 
 

@@ -11,6 +11,7 @@ import legendLCS from './images/k-03.png'
 import legendMB from './images/MaterialBreakdown-10.png'
 import { render } from 'react-dom'
 import Checkbox from './Checkbox'
+import Pie from "./PieChart";
 
 import 'pretty-checkbox'
 let myImg;
@@ -238,16 +239,23 @@ export default class MaterialList extends PureComponent {
           >
             <p>
               <h2 style={{fontSize: "40px"}}>{this.props.metaData.materialName2[this.state.materialPopup.name]}</h2>
-              <p style={{fontSize:"18px"}}><strong>10 year lifespan with biogenic carbon:</strong><br></br></p><br></br>
+              <p style={{fontSize:"18px"}}><strong>10 year lifespan with biogenic carbon:</strong><br></br></p>
+              <p id="textLabel" style={{display:"block", width:"100%", position:"relative", textAlign:"left", }}>Hover over chart to see data</p> 
+              <br></br>
               <div style={{width: "30%",float:"left", position:"relative", textAlign:"center"}}>
-              <p style={{position:"absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", zIndex:"100", marginLeft:"2.5em"}}><strong>{this.props.gwp[this.state.materialPopup.name]}</strong><br></br>kgCO&#x2082;eq/sf<br></br>GWP</p><br></br>
-              <img style={{width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} />
+              {/* <p style={{position:"absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", zIndex:"100", marginLeft:"2.5em"}}><strong>{this.props.gwp[this.state.materialPopup.name]}</strong><br></br>kgCO&#x2082;eq/sf<br></br>GWP</p><br></br> */}
+              {/* <img style={{width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
+              <Pie style={{width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em"}}  width={window.innerWidth/3} height={380} matBreakdown={this.props.matBreakdown} currentMat={this.state.materialPopup.name} tenYGWP={this.props.tenYGWP}/>
+                 
 
               </div>
               {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={materialPopupMock} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
               {/* <img style={{maxWidth: "30%", maxHeight: "30%", paddingBottom: "3em"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
-                            <img style={{maxWidth: "45%", top:"-70px", position:"relative", float:"right", objectFit:"cover", }} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />
+              
+                            <img style={{maxWidth: "45%", top:"-70px", position:"relative", float:"right", objectFit:"cover", display:"block"}} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />
+                                    
               <div style={{maxWidth:"55%", float:"left", position:'relative'}}><h4>Assumptions</h4>
+              
               <ul style={{lineHeight:'1.6em', fontSize: '16px', paddingLeft:'1em'}}>{listItems}</ul></div>
               {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={myImg} alt="material icon"/> */}
             </p>
