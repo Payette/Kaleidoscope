@@ -24,7 +24,7 @@ const browsers = browserNames.map(k => ({ label: k, usage: browserUsage[0][k] })
 const usage = d => d.usage;
 console.log(usage);
 const frequency = d => d.frequency;
-export default ({ width, height, margin, matBreakdown, currentMat, tenYGWP }) => {
+export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdown2,currentMat, tenYGWP, sixty1YGWP, sixty2YGWP, GWPSel }) => {
 
     // this.state = { textToShow: ""};
     // this.handleInputChange = this.handleInputChange.bind(this);
@@ -35,17 +35,56 @@ export default ({ width, height, margin, matBreakdown, currentMat, tenYGWP }) =>
   // console.log(matBreakdown);
   // console.log(currentMat);
   let myGWP = 0.00;
+  let selGWP;
   let materials = {mat1:10, mat2:11, mat3:1, mat4:7, mat6:2, mat7:0, mat8:0, mat9:19};
-  for(let i=0; i<matBreakdown.length; i++){
-    if(matBreakdown[i].material == currentMat){
-      console.log(matBreakdown[i])
-      materials = matBreakdown[i];
-      console.log(tenYGWP)
-      myGWP = tenYGWP[i].value;
-    }
-  }
 
-  // console.log(materials)
+
+    let mCurrSel = GWPSel;
+  
+    if(mCurrSel == "tenYGWP"){
+      selGWP = tenYGWP;
+      for(let i=0; i<matBreakdown.length; i++){
+        if(matBreakdown[i].material == currentMat){
+          // console.log(matBreakdown[i])
+          materials = matBreakdown[i];
+          // console.log(tenYGWP)
+    
+          myGWP = selGWP[i].value;
+        }
+      }
+    }else if(mCurrSel == "sixty1YGWP"){
+      selGWP = sixty1YGWP;
+      for(let i=0; i<matBreakdown1.length; i++){
+        if(matBreakdown1[i].material == currentMat){
+          // console.log(matBreakdown[i])
+          materials = matBreakdown1[i];
+          // console.log(tenYGWP)
+    
+          myGWP = selGWP[i].value;
+        }
+      }
+    }else{
+      selGWP = sixty2YGWP;
+      for(let i=0; i<matBreakdown2.length; i++){
+        if(matBreakdown2[i].material == currentMat){
+          // console.log(matBreakdown[i])
+          materials = matBreakdown2[i];
+          // console.log(tenYGWP)
+    
+          myGWP = selGWP[i].value;
+        }
+      }
+    }
+  // }
+
+  // console.log(selGWP)
+  
+
+  
+
+
+
+  console.log(materials)
   // let materialNames1 = materialNames.reverse();
   // console.log(materialNames1)
 
@@ -122,34 +161,7 @@ export default ({ width, height, margin, matBreakdown, currentMat, tenYGWP }) =>
           }}
           
         </Pie>
-        {/* <Pie
-          data={letters}
-          pieValue={frequency}
-          pieSortValues={(a, b) => -1}
-          outerRadius={radius - 135}
-        >
-          {pie => {
-            return pie.arcs.map((arc, i) => {
-              const opacity = 1 / (i + 2);
-              const [centroidX, centroidY] = pie.path.centroid(arc);
-              return (
-                <g key={`letters-\${arc.data.label}-\${i}`}>
-                  <path d={pie.path(arc)} fill={black} fillOpacity={opacity} />
-                  <text
-                    fill="white"
-                    textAnchor="middle"
-                    x={centroidX}
-                    y={centroidY}
-                    dy=".33em"
-                    fontSize={9}
-                  >
-                    {arc.data.letter}
-                  </text>
-                </g>
-              );
-            });
-          }}
-        </Pie> */}
+        
       </Group>
       <text
       textAnchor="middle"
@@ -176,7 +188,7 @@ export default ({ width, height, margin, matBreakdown, currentMat, tenYGWP }) =>
     <text
       textAnchor="middle"
       x={centerX}
-      y={centerY+40}
+      y={centerY+32}
       fill="black"
       fontSize={11}
       fontWeight={300}

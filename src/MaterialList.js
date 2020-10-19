@@ -8,7 +8,7 @@ import RSGranite from './images/Detail_MockUp_RSGranite.png'
 import legendGWP from './images/k-04.png'
 import legendImpacts from './images/k-02.png'
 import legendLCS from './images/k-03.png'
-import legendMB from './images/MaterialBreakdown-10.png'
+import legendMB from './images/MaterialBreakdown-11.png'
 import { render } from 'react-dom'
 import Checkbox from './Checkbox'
 import Pie from "./PieChart";
@@ -29,7 +29,8 @@ export default class MaterialList extends PureComponent {
       materialPopup: {
         name: "Material"
       },
-      checked: true
+      checked: true,
+      curSel: 'tenYGWP'
     };
 
     this.listEl = null;
@@ -159,6 +160,12 @@ export default class MaterialList extends PureComponent {
     });
   }
 
+  selectChange(e){
+    // this.state.curSel = e.target.value;
+    this.setState({ curSel: e.target.value })
+
+    }
+
   render() {
     // console.log(this.props.currentSel);
 
@@ -239,13 +246,30 @@ export default class MaterialList extends PureComponent {
           >
             <p>
               <h2 style={{fontSize: "40px"}}>{this.props.metaData.materialName2[this.state.materialPopup.name]}</h2>
-              <p style={{fontSize:"18px"}}><strong>10 year lifespan with biogenic carbon:</strong><br></br></p>
+              {/* <p style={{fontSize:"18px"}}><strong>10 year lifespan with biogenic carbon:</strong><br></br></p> */}
+              <select id="pie1" name="pie1" id='piech' onChange={this.selectChange.bind(this)}>
+          <option value="tenYGWP">10 year lifespan with biogenic carbon</option>
+            <option value="sixty1YGWP">60 year lifespan with Module D and biogenic carbon</option>
+            <option value="sixty2YGWP">60 year lifespan with biogenic carbon</option>
+            
+          </select>
               <p id="textLabel" style={{display:"block", width:"100%", position:"relative", textAlign:"left", }}>Hover over chart to see data</p> 
               <br></br>
               <div style={{width: "30%",float:"left", position:"relative", textAlign:"center"}}>
               {/* <p style={{position:"absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", zIndex:"100", marginLeft:"2.5em"}}><strong>{this.props.gwp[this.state.materialPopup.name]}</strong><br></br>kgCO&#x2082;eq/sf<br></br>GWP</p><br></br> */}
               {/* <img style={{width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
-              <Pie style={{width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em"}}  width={window.innerWidth/3} height={380} matBreakdown={this.props.matBreakdown} currentMat={this.state.materialPopup.name} tenYGWP={this.props.tenYGWP}/>
+              <Pie style={{width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em"}}  
+              width={window.innerWidth/3} 
+              height={380} 
+              matBreakdown={this.props.matBreakdown} 
+              matBreakdown1={this.props.matBreakdown1} 
+              matBreakdown2={this.props.matBreakdown2} 
+              currentMat={this.state.materialPopup.name} 
+              tenYGWP={this.props.tenYGWP}
+              sixty1YGWP={this.props.sixty1YGWP}
+              sixty2YGWP={this.props.sixty2YGWP}
+              GWPSel = {this.state.curSel}
+              />
                  
 
               </div>

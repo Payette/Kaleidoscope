@@ -95,7 +95,7 @@ export default class Comp extends React.Component {
     if(currentRadio == 1){
       this.state.allMaterials = this.props.tenY
     }else if(currentRadio == 2){
-      this.state.allMaterials = this.props.sixty1
+      this.state.allMaterials = this.props.sixty1 
     }else{
       this.state.allMaterials = this.props.sixty2
     }
@@ -113,6 +113,8 @@ export default class Comp extends React.Component {
       if(this.state.allMaterials[i].material == theCurrentMat){
         myMult = this.state.allMaterials[i].value
         let num = parseInt(currentPos.value)
+        let gwpDisplay = document.getElementById("displayGWP"+myStr2+myStr)
+        gwpDisplay.innerHTML = (Number(num) * myMult).toFixed(2);
         this.state.vals[myStr-1]= num * myMult;
         this.state.vals1[myStr-1]= num;
       }
@@ -142,12 +144,20 @@ export default class Comp extends React.Component {
     mRes = mRes.toFixed(2);
     this.setState({ sum: this.formatNumber(mRes)});
     this.setState({ sum1: this.formatNumber(mRes1)});
+
+    
     // console.log(this.state.allMaterials)
   }
 
   
 
   handleChange(e) {
+
+    console.log(this.state.vals);
+    console.log(this.state.vals1);
+    console.log(e.target)
+
+
     let currentRadio = this.props.radio;
     // var ele = document.getElementsByName('gender'+this.props.name); 
     //   for(let i = 0; i < ele.length; i++) { 
@@ -170,6 +180,7 @@ export default class Comp extends React.Component {
     myStr = myStr[myStr.length - 1]
     let myMult = 0;
     let currentSelect = document.getElementById("select-type"+myStr2+myStr);
+    
     // console.log(mySel)
     let theCurrentMat = (currentSelect.options[ currentSelect.selectedIndex ].value);
     for(let i = 0; i < this.state.allMaterials.length; i++){
@@ -177,11 +188,15 @@ export default class Comp extends React.Component {
       if(this.state.allMaterials[i].material == theCurrentMat){
         myMult = this.state.allMaterials[i].value
         let num = parseInt(e.target.value)
+        let gwpDisplay = document.getElementById("displayGWP"+myStr2+myStr)
+        gwpDisplay.innerHTML = (Number(num) * myMult).toFixed(2);
         
         this.state.vals[myStr-1]= Number(num) * myMult;
         this.state.vals1[myStr-1]= Number(num);
       }
     }
+
+    let emptyArray = []
     
     console.log(this.state.vals);
     let mRes = 0;
@@ -194,6 +209,7 @@ export default class Comp extends React.Component {
         placeholderVal = this.state.vals[i]
       }
       mRes += placeholderVal;
+      emptyArray.push(placeholderVal);
     }
     for(let i = 0; i < this.state.vals1.length; i++){
       let placeholderVal1 = 0
@@ -205,11 +221,14 @@ export default class Comp extends React.Component {
       mRes1 += placeholderVal1;
     }
     mRes = mRes.toFixed(2);
+    this.setState({ vals: emptyArray})
     this.setState({ sum: this.formatNumber(mRes)});
     this.setState({ sum1: this.formatNumber(mRes1)});
     // console.log(this.props.allMaterials)
     
   }
+
+
   
   
 
@@ -217,6 +236,8 @@ export default class Comp extends React.Component {
     var rel = event.target.getAttribute("rel");
     rel = parseInt(rel) + 1;
     this.state.count++;
+    console.log(this.state.count)
+    console.log(this.props.name)
     
     
 
@@ -245,6 +266,10 @@ export default class Comp extends React.Component {
         <td>
           <input type="number" onChange={this.handleChange.bind(this)} id={`select-position` + this.props.name + this.state.count} />
         </td>
+        <td id={`displayGWP` + this.props.name + this.state.count}>
+          {/* {this.state.vals[0]} */}
+          0.00
+        </td>
       </tr>
     );
     this.setState({ rows: joined });
@@ -255,6 +280,8 @@ export default class Comp extends React.Component {
       console.log(currentSelect);
       console.log(currentSelect.options[ currentSelect.selectedIndex ].value);
     }
+
+    
   }
 
   removeRow(){
@@ -287,12 +314,13 @@ export default class Comp extends React.Component {
         <table style={{borderCollapse: "collapse", width:"100%", textAlign:"center"}}>
         
           <thead>
-            <td colspan="2" style={{textAlign:"left", height:"25px"}}>&nbsp;&nbsp;<strong>Option {this.props.name}</strong></td>
+            <td colspan="3" style={{textAlign:"left", height:"25px"}}>&nbsp;&nbsp;<strong>Option {this.props.name}</strong></td>
           </thead>
           <tbody>
           <tr>
             <td>Type</td>
             <td>Square Feet</td>
+            <td>GWP</td>
           </tr>
           <tr>
         <td>
@@ -303,7 +331,7 @@ export default class Comp extends React.Component {
             <option value="Brick">MV - Brick</option>
             <option value="InsMetPanel">FS - Insulated Metal Panel</option>
             <option value="Spandrel">CW - Spandrel</option>
-            <option value="UHPC">RS - UHPC (fibreC)</option>
+            {/* <option value="UHPC">RS - UHPC (fibreC)</option> */}
             <option value="GFRC">RS - GFRC</option>
             <option value="ACM">RS - ACM</option>
             <option value="Terracotta">RS - Terracotta</option>
@@ -319,14 +347,18 @@ export default class Comp extends React.Component {
         <td>
           <input type="number" onChange={this.handleChange.bind(this)} id={`select-position` + this.props.name +`1`} />
         </td>
+        <td id={`displayGWP` + this.props.name + `1`}></td>
       </tr>
             {this.state.rows}</tbody>
             <tr style={{height:"35px"}}>
               <td>
-                Total GWP: <strong style={{color:"#dc1a55"}}>{this.state.sum}</strong> kgCO<sub>2</sub>eq
+                
               </td>
               <td >
-                Total: <strong style={{color:"#dc1a55"}}>{this.state.sum1}</strong> ft<sup>2</sup>
+                <strong style={{color:"#dc1a55", fontSize:"1.3em"}}>{this.state.sum1}</strong> ft<sup>2</sup>
+              </td>
+              <td>
+              <strong style={{color:"#dc1a55", fontSize:"1.3em"}}>{this.state.sum}</strong> kgCO<sub>2</sub>eq
               </td>
             </tr>
         </table><br></br>

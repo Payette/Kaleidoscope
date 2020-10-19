@@ -434,8 +434,12 @@ class App extends Component {
                   initialSelectedMaterials={this.state.selectedMaterials}
                   metaData={LoadData.metaData}
                   currentSel={this.state.chartType}
-                  matBreakdown={this.state.materialData}
+                  matBreakdown={this.state.materialData1}
+                  matBreakdown1={this.state.materialData3}
+                  matBreakdown2={this.state.materialData5}
                   tenYGWP={this.state.gwpData1}
+                  sixty1YGWP={this.state.gwpData3}
+                  sixty2YGWP={this.state.gwpData5}
                 />
               </div>
              }

@@ -4,7 +4,6 @@ Limestone,Masonry Veneer,Limestone,./img/limestone.png,32,11,7,4,4,2
 Brick,Masonry Veneer,Brick,./img/brick.png,26,9,5,3,3,2
 InsMetPanel,Face Sealed,Insulated Metal Panel,./img/insmetalpanel.png,37,12,8,5,4,3
 Spandrel,Curtain Wall, Spandrel,./img/spandrel.png,54,18,11,7,6,4
-UHPC,Rainscreen,Ultra-High Performance Concrete (fibreC),./img/uhpc.png,40,13,8,5,4,3
 GFRC,Rainscreen,Glass Fiber Reinforced Concrete (GFRC),./img/gfrc.png,38,13,8,5,4,3
 ACM,Rainscreen,Aluminum Composite Material (ACM),./img/acm.png,32,11,7,4,4,2
 Terracotta,Rainscreen,Terracotta,./img/terracotta.png,24,8,5,3,3,2
