@@ -9,7 +9,6 @@ PhenResin,Rainscreen,123,Phenolic Resin,./img/granite.png
 Terracotta,Rainscreen,467,Terracotta,./img/granite.png
 ACM,Rainscreen,345,Aluminum Composite Material (ACM),./img/granite.png
 GFRC,Rainscreen,567,Glass Fiber Reinforced Concrete (GFRC),./img/granite.png
-UHPC,Rainscreen,567,Ultra-High Performance Concrete (fibreC),./img/granite.png
 Spandrel,Curtain Wall, 600, Spandrel,./img/granite.png
 InsMetPanel,Face Sealed,234,Insulated Metal Panel,./img/granite.png
 Brick,Masonry Veneer,345,Brick,./img/wood.png

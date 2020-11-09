@@ -43,34 +43,39 @@ export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdo
   
     if(mCurrSel == "tenYGWP"){
       selGWP = tenYGWP;
+      // console.log(matBreakdown)
+      // console.log(selGWP)
       for(let i=0; i<matBreakdown.length; i++){
         if(matBreakdown[i].material == currentMat){
-          // console.log(matBreakdown[i])
           materials = matBreakdown[i];
-          // console.log(tenYGWP)
-    
+        }
+      }
+      for(let i=0; i<selGWP.length; i++){
+        if(selGWP[i].material == currentMat){
           myGWP = selGWP[i].value;
         }
       }
     }else if(mCurrSel == "sixty1YGWP"){
       selGWP = sixty1YGWP;
-      for(let i=0; i<matBreakdown1.length; i++){
+      for(let i=0; i<matBreakdown.length; i++){
         if(matBreakdown1[i].material == currentMat){
-          // console.log(matBreakdown[i])
           materials = matBreakdown1[i];
-          // console.log(tenYGWP)
-    
+        }
+      }
+      for(let i=0; i<selGWP.length; i++){
+        if(selGWP[i].material == currentMat){
           myGWP = selGWP[i].value;
         }
       }
     }else{
       selGWP = sixty2YGWP;
-      for(let i=0; i<matBreakdown2.length; i++){
+      for(let i=0; i<matBreakdown.length; i++){
         if(matBreakdown2[i].material == currentMat){
-          // console.log(matBreakdown[i])
           materials = matBreakdown2[i];
-          // console.log(tenYGWP)
-    
+        }
+      }
+      for(let i=0; i<selGWP.length; i++){
+        if(selGWP[i].material == currentMat){
           myGWP = selGWP[i].value;
         }
       }

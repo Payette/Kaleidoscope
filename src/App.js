@@ -716,17 +716,14 @@ class App extends Component {
         />}
 
          <div>
-          <p style={{display:"inline-block"}}>
-          Last updated September 2020<br></br>
-          Credit: <i>Data analysis run using Tally by KT Innovations, thinkstep, and Autodesk using industry standard EPDs unless otherwise noted </i>
-
-          </p>
-        
-        </div><br></br>
+          
         
         </div>
+        
+        </div>
+        <div style={{marginTop:"-40px", zIndex:"10000"}}>
         <h1>ENVELOPE CALCULATOR</h1>
-        <div style={{minHeight:'250px', display:"inline-block", width:"100%"}}>
+        <div style={{minHeight:'60px', display:"inline-block", width:"100%"}}>
 
         <div style={{margin:"auto"}}>
           <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
@@ -735,6 +732,8 @@ class App extends Component {
       <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
       <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
       <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label>
+
+      
       
     </div><br></br>
     
@@ -750,6 +749,18 @@ class App extends Component {
 
         <div style={{float:"right", width:"31%", display:"inline-block"}}>
         <Comp name={3} count={0} tenY={this.state.gwpData1} sixty1={this.state.gwpData3} sixty2={this.state.gwpData5} radio={this.state.currentRadio}/>
+        </div>
+        <br></br>
+
+        
+        </div>
+
+        <div style={{paddingTop:0, top:0, marginTop:0}}>
+        <p style={{display:"inline-block"}}>
+          Last updated October 2020<br></br>
+          Credit: <i>Data analysis run using Tally by KT Innovations, thinkstep, and Autodesk using industry standard EPDs unless otherwise noted </i>
+
+          </p>
         </div>
         </div>
         

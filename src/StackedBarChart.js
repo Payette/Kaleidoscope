@@ -66,7 +66,7 @@ export default withTooltip(({
   const purple2 = "#febd2a";
   const purple3 = "#ffd743";
   const textColor = "#000000";
-  const bg = '#ffffff';
+  const bg = 'rgba(255,255,255,0)';
 
   const keys = Object.keys(selectedMaterials[0]).filter(d => d !== 'material' && d !== 'type' && d !== 'name' && d !== 'img');
  

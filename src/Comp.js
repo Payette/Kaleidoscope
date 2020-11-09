@@ -250,7 +250,7 @@ export default class Comp extends React.Component {
             <option value="Brick">MV - Brick</option>
             <option value="InsMetPanel">FS - Insulated Metal Panel</option>
             <option value="Spandrel">CW - Spandrel</option>
-            <option value="UHPC">RS - UHPC (fibreC)</option>
+            {/* <option value="UHPC">RS - UHPC (fibreC)</option> */}
             <option value="GFRC">RS - GFRC</option>
             <option value="ACM">RS - ACM</option>
             <option value="Terracotta">RS - Terracotta</option>
@@ -351,8 +351,8 @@ export default class Comp extends React.Component {
       </tr>
             {this.state.rows}</tbody>
             <tr style={{height:"35px"}}>
-              <td>
-                
+              <td >
+                {/* Total: */}
               </td>
               <td >
                 <strong style={{color:"#dc1a55", fontSize:"1.3em"}}>{this.state.sum1}</strong> ft<sup>2</sup>
