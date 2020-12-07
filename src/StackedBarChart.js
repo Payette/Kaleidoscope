@@ -40,8 +40,8 @@ export default withTooltip(({
   showTooltip
 }) => {
 
-  const toolTipWidth = 300;
-  const toolTipHeight = 300;
+  const toolTipWidth = 320;
+  const toolTipHeight = 280;
 
   const selectedMaterialsGroupedByType = d3.nest()
   .key(function(d) { return d.type })

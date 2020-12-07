@@ -213,22 +213,22 @@ const metaData = {
   },
 
   sectionIcons: {
-    Granite:"./images/Wall Section Drawings_01_MV_Granite.png",
-    Limestone:"images/Wall Section Drawings_02_MV_Limestone.png",
-    Brick:"images/Wall Section Drawings_03_MV_Brick.png",
-    Spandrel:"images/Wall Section Drawings_01_CW_Spandrel.png",
+    Granite:"./img/Wall Section Drawings_01_MV_Granite.png",
+    Limestone:"img/Wall Section Drawings_02_MV_Limestone.png",
+    Brick:"img/Wall Section Drawings_03_MV_Brick.png",
+    Spandrel:"img/Wall Section Drawings_01_CW_Spandrel.png",
     // UHPC:"images/Wall Section Drawings_01_RS_UHPC.png",
-    InsMetPanel:"images/Wall Section Drawings_01_FS_Metal Panel.png",
-    GFRC:"images/Wall Section Drawings_02_RS_GFRC.png",
-    ACM:"images/Wall Section Drawings_03_RS_ACM.png",
-    Terracotta:"images/Wall Section Drawings_04_RS_Terracotta.png",
-    PhenResin:"images/Wall Section Drawings_05_RS_Phenolic Resin.png",
-    FiberCement:"images/Wall Section Drawings_06_RS_Fiber Cement.png",
-    Zinc:"images/Wall Section Drawings_07_RS_Zinc.png",
-    Granite1:"images/Wall Section Drawings_08_RS_Granite.png",
-    Limestone1:"images/Wall Section Drawings_09_RS_Limestone.png",
-    Steel:"images/Wall Section Drawings_10_RS_Steel.png",
-    Wood:"images/Wall Section Drawings_11_RS_Wood.png"
+    InsMetPanel:"img/Wall Section Drawings_01_FS_Metal Panel.png",
+    GFRC:"img/Wall Section Drawings_02_RS_GFRC.png",
+    ACM:"img/Wall Section Drawings_03_RS_ACM.png",
+    Terracotta:"img/Wall Section Drawings_04_RS_Terracotta.png",
+    PhenResin:"img/Wall Section Drawings_05_RS_Phenolic Resin.png",
+    FiberCement:"img/Wall Section Drawings_06_RS_Fiber Cement.png",
+    Zinc:"img/Wall Section Drawings_07_RS_Zinc.png",
+    Granite1:"img/Wall Section Drawings_08_RS_Granite.png",
+    Limestone1:"img/Wall Section Drawings_09_RS_Limestone.png",
+    Steel:"img/Wall Section Drawings_10_RS_Steel.png",
+    Wood:"img/Wall Section Drawings_11_RS_Wood.png"
   },
 
   impactColors: {
@@ -372,22 +372,22 @@ const metaData = {
   },
 
   materialImg:{
-    Wood: "./img/wood1.png",
-    Steel: "./img/steel1.png",
-    Limestone1: "./img/limestone1.png",
-    Granite1: "./img/granite1.png",
-    Zinc: "./img/zinc.png",
-    FiberCement: "./img/fibercement.png",
-    PhenResin: "./img/phenresin.png",
-    Terracotta: "./img/terracotta.png",
-    ACM: "./img/acm.png",
-    GFRC: "./img/gfrc.png",
+    Wood: "./img/RS_wood.png",
+    Steel: "./img/RS_zinc_steel.png",
+    Limestone1: "./img/RS_granite_limestone.png",
+    Granite1: "./img/RS_granite_limestone.png",
+    Zinc: "./img/RS_zinc_steel.png",
+    FiberCement: "./img/RS_fibercement_phenolicresin.png",
+    PhenResin: "./img/RS_fibercement_phenolicresin.png",
+    Terracotta: "./img/RS_terracotta.png",
+    ACM: "./img/RS_ACM.png",
+    GFRC: "./img/RS_GFRC.png",
     // UHPC: "Ultr./img/uhpc.png",
-    Spandrel: "./img/spandrel.png",
-    InsMetPanel: "./img/insmetalpanel.png",
-    Brick: "./img/brick.png",
-    Limestone: "./img/limestone.png",
-    Granite: "./img/granite.png"
+    Spandrel: "./img/CW_Axon.png",
+    InsMetPanel: "./img/FS_Axon.png",
+    Brick: "./img/MV_Axon.png",
+    Limestone: "./img/MV_Axon.png",
+    Granite: "./img/MV_Axon.png"
   }
 };
 
