@@ -749,7 +749,7 @@ class App extends Component {
 
         <div style={{float:"right", width:"31%", display:"inline-block"}}>
         <Comp name={3} count={0} tenY={this.state.gwpData1} sixty1={this.state.gwpData3} sixty2={this.state.gwpData5} radio={this.state.currentRadio}/>
-        </div>
+        </div> 
         <br></br>
 
         
