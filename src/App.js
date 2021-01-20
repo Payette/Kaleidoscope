@@ -413,8 +413,10 @@ class App extends Component {
     let parentD = document.getElementById("parentDiv");
 
     let calcWidth = 31
+    let sidebarHeight = 0
 
     if(sidebar1 && parentD && window.innerWidth > 1200){
+      sidebarHeight = 300 + sidebar1.offsetHeight;
       if(parseInt(sidebar1.offsetHeight) >= parseInt(parentD.offsetHeight)){
         calcWidth = (((window.innerWidth - 355) - (window.innerWidth/25)) / 2) / window.innerWidth *100
       }
@@ -435,7 +437,7 @@ class App extends Component {
 
 
     return (
-      <div className="App">
+      <div className="App" style={{minHeight: sidebarHeight}}>
         <form>
           <h1>ENVELOPE ASSEMBLIES</h1>
           <div className={styles.topcontrols}>
