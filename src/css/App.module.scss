@@ -27,21 +27,55 @@
   }
 }
 
+.calc {
+  width: 98%;
+  display: inline-block;
+  margin-right: 1%;
+  margin-left: 1%;
+}
+
+
+
 @media (min-width: $breakpoint2) {
   .topcontrols {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 1.5rem;
   }
+
+  .calc {
+    width: 48%;
+    display: inline-block;
+    margin-right: 1%;
+    margin-left: 1%;
+  }
 }
 
 @media (min-width: $breakpoint1) {
   .sidebar {
     position: absolute;
+    // display: inline-block;
     right: 0;
     width: 350px;
+    // height:600px;
   }
   .chartContainer {
-    margin-right: 366px;
+    width: 70%;
+    display: inline-block;
+    // margin-right: 366px;
+  }
+
+  .calc {
+    width: 31%;
+    // display: "inline-block";
+    // margin-right: "1%";
+    // margin-left: "1%";
+  }
+
+  .calc1 {
+    width: 32%;
+    display: inline-block;
+    margin-right: 1%;
+    margin-left: 1%;
   }
 }

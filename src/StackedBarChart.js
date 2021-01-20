@@ -215,8 +215,17 @@ let multiplier = 100.0 / currentBiggest;
   return (<ParentSize>
     {
       ({width: w}) => {
-        const width2 = Math.max(w, margin.left + margin.right + 1);
-        const xMax = width2 - margin.left - margin.right;
+        let width2 = 0;
+        if(window.innerWidth > 1200){
+          width2 = window.innerWidth-400
+        }else{
+          width2 = window.innerWidth - margin.right
+        }
+        // const width2 = Math.max(w, margin.left + margin.right + 1);
+        
+        // const xMax = width2 - margin.left - margin.right;
+        const xMax = width2;
+        // console.log("xMax" + width2)
         xScale.rangeRound([0, xMax]);
         // w = w- 100;
         var previousY = 0;
@@ -230,7 +239,8 @@ let multiplier = 100.0 / currentBiggest;
         + (selectedMaterialsGroupedByType.length * 20);
 
         return (<div className={styles.container} style={{
-            position: 'relative'
+            position: 'relative',
+            // width: '100%'
             
           }}>
 

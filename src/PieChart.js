@@ -89,7 +89,7 @@ export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdo
 
 
 
-  console.log(materials)
+  // console.log(materials)
   // let materialNames1 = materialNames.reverse();
   // console.log(materialNames1)
 
