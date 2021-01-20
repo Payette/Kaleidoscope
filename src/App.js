@@ -82,8 +82,9 @@ class App extends Component {
   }
   
   deleteRows = () => {
+    let oh = this.state.rows.pop();
     this.setState({
-      rows: this.state.rows.filter(e => !e.checked)
+      rows: this.state.rows
     });
   }
 
@@ -417,9 +418,9 @@ class App extends Component {
 
     if(sidebar1 && parentD && window.innerWidth > 1200){
       sidebarHeight = 300 + sidebar1.offsetHeight;
-      if(parseInt(sidebar1.offsetHeight) >= parseInt(parentD.offsetHeight)){
+      // if(parseInt(sidebar1.offsetHeight) >= parseInt(parentD.offsetHeight)){
         calcWidth = (((window.innerWidth - 355) - (window.innerWidth/25)) / 2) / window.innerWidth *100
-      }
+      // }
     }else if(window.innerWidth <= 1200 && window.innerWidth > 800){
       calcWidth = 48
     }else{
