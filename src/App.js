@@ -48,8 +48,7 @@ class App extends Component {
       currentRadio: 1,
       rows: [
         {value: 'row1', checked: false},
-        {value: 'row2', checked: true},
-        {value: 'row3', checked: false},
+        {value: 'row2', checked: false},
       ]
     };
 
