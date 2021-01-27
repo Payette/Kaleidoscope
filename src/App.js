@@ -860,7 +860,7 @@ class App extends Component {
           <div style={{ paddingTop: 0, top: 0, marginTop: 0 }}>
             <p style={{ display: "inline-block" }}>
               Last updated January 2021<br></br>
-          Credit: <i>Data analysis run using Tally by KT Innovations, thinkstep, and Autodesk using industry standard EPDs unless otherwise noted </i>
+          Credit: <i>Data analysis run using Tally version 2020.06.09.01 by KT Innovations, thinkstep, and Autodesk using industry standard EPDs unless otherwise noted </i>
 
             </p>
           </div>
