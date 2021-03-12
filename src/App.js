@@ -500,7 +500,7 @@ class App extends Component {
           </div>
 
         </form>
-        <div style={{display: "inline-block", width: "100%", height: "100%" }} id="parentDiv">
+        <div style={{display: "inline-block", height: "100%" }} id="parentDiv">
 
           {this.state.materials.length > 0 &&
             <div className={styles.sidebar} id="sidebar123">
