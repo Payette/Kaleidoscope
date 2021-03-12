@@ -107,28 +107,7 @@ export default class MaterialList extends PureComponent {
         
         <li key={id} className={styles.material}>
           
-          {/* <Checkbox state='checked'></Checkbox> */}
-          {/* {materialIcon && <img src={materialIcon} alt="material icon" className={styles.materialIcon}/>} */}
-          {/* <div className={styles.materialGraphic} style={{backgroundColor: materialColor}}></div> */}
-          {/* <section title=".squaredOne"> */}
-    {/* <!-- .squaredOne --> */}
-    {/* <div className={styles.squaredOne}>
-      <input type="checkbox" value="None" id="squaredOne" name="check" checked />
-      <label for="squaredOne"></label>
-    </div> */}
-    {/* <!-- end .squaredOne --> */}
-  {/* </section> */}
-
-  {/* <input
-            onChange={this.handleSelectItem}
-            type="checkbox"
-            checked={selectedItems.includes(id)}
-            value={id}
-            id={`item-${id}`}
-            name="check"
-          /> */}
-
-  {/* <div style={{ fontFamily: 'system-ui' }}> */}
+        
   <label>
           <Checkbox
           caseStudyColor={materialColor}
@@ -137,22 +116,11 @@ export default class MaterialList extends PureComponent {
             checked={selectedItems.includes(id)}
             value={id}
             id={`item-${id}`}
-            name="check"
-            
+            name="check"           
           />
-          {/* <span style={{ marginLeft: 8 }}>Label Text</span> */}
+ 
         </label>
-      {/* </div> */}
-
-
-    {/* <div className={styles.squaredOne}>
-      <input type="checkbox" value="None" id={styles.squaredOne} name="check" checked />
-      <label for={styles.squaredOne}></label>
-    </div> */}
-
-    
-          
-          {/* <label htmlFor={`item-${id}`}>{label}</label> */}
+     
           
           <button className={styles.moreInformationButton} onClick={event => this.showMaterialsPopup.bind(this)(event, item)}><label className={styles.mLabel} htmlFor={`item-${id}`}>{materialType}</label></button>
         </li>

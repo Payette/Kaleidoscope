@@ -4,12 +4,12 @@ import LoadData from './data/LoadData';
 import MaterialList from './MaterialList';
 import Comp from "./Comp";
 import Row from "./Row";
+import { Tabs, AppBar, Tab } from '@material-ui/core';
+import TabPanel from "./TabPanel";
+import withSplashScreen from './withSplashScreen';
 
 import './css/Main.scss';
 import styles from './css/App.module.scss';
-
-
-
 
 
 class App extends Component {
@@ -49,11 +49,19 @@ class App extends Component {
       rows: [
         {value: 'row1', checked: false},
         {value: 'row2', checked: false},
-      ]
+      ],
+      value: 0
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
   }
+
+  handleChange = (event, newValue) => {
+    // const [value, setValue] = React.useState(0);
+    let value = newValue
+    console.log(newValue)
+    this.setState({value});
+  };
 
   updateValue = (e, idx) => {
     const rows = [...this.state.rows];  // copy array because we don't want to mutate the previous one
@@ -322,14 +330,7 @@ class App extends Component {
   radioChange(e) {
     console.log(e.target.value)
     let currentRad = e.target.value;
-    // var ele = document.getElementsByName('gender'); 
-    //   for(let i = 0; i < ele.length; i++) { 
-    //       if(ele[i].checked) {
-    //         currentRad = ele[i].value
-    //       }
-    //   }
-
-    // console.log()
+  
     this.state.currentRadio = currentRad;
     this.setState({ currentRadio: currentRad });
     console.log(this.state.currentRadio)
@@ -342,14 +343,8 @@ class App extends Component {
 
 
   render() {
-    // let currentRadio;
-    // var ele = document.getElementsByName('gender'+this.props.name); 
-    //   for(let i = 0; i < ele.length; i++) { 
-    //       if(ele[i].checked) {
-    //         this.state.currentRadio = ele[i].value
-    //       }
-    //       console.log(this.state.currentRadio)
-    //   } 
+
+    
 
     const allImpactsDataSelectedMaterialsOnly = this.state.allImpactsData.filter(d => this.state.selectedMaterials.includes(d.material));
     const gwpDataSelectedMaterialsOnly = this.state.gwpData.filter(d => this.state.selectedMaterials.includes(d.material));
@@ -437,8 +432,21 @@ class App extends Component {
 
 
     return (
+
+      
+      
       <div className="App" style={{minHeight: sidebarHeight}}>
-        <form>
+        {/* <AppBar position="static">
+        <Tabs value={this.state.value} onChange={this.handleChange}>
+          <Tab label="ENVELOPE" />
+          <Tab label="STRUCTURE" />
+          <Tab label="OTHER" />
+        </Tabs>
+      </AppBar> */}
+      {/* <TabPanel value={this.state.value} index={0}> */}
+        
+
+      <form>
           <h1>ENVELOPE ASSEMBLIES</h1>
           <div className={styles.topcontrols}>
 
@@ -794,7 +802,7 @@ class App extends Component {
 
         <div style={{display: "inline-block", width: "100%" }}>
           <h1>ENVELOPE CALCULATOR</h1>
-          <div style={{ minHeight: '60px', display: "block" }}>
+          <div className={styles.calc} style={{ minHeight: '60px', display: "block" }}>
 
             <div style={{ margin: "auto" }}>
               <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
@@ -808,9 +816,6 @@ class App extends Component {
 
             </div><br></br>
 
-            {/* envelope calculator componenets */}
-
-            {/* <div> */}
         {this.state.rows.map((row, idx) => {
           return(
               <Row 
@@ -838,19 +843,7 @@ class App extends Component {
         <button onClick={this.deleteRows}>
           Delete Option
         </button>
-      {/* </div> */}
-
-            {/* <div style={divStyle}>
-              <Comp name={1} count={0} tenY={this.state.gwpData1} sixty1={this.state.gwpData3} sixty2={this.state.gwpData5} radio={this.state.currentRadio} />
-            </div>
-
-            <div style={divStyle}>
-              <Comp name={2} count={0} tenY={this.state.gwpData1} sixty1={this.state.gwpData3} sixty2={this.state.gwpData5} radio={this.state.currentRadio} />
-            </div>
-
-            <div style={divStyle}>
-              <Comp name={3} count={0} tenY={this.state.gwpData1} sixty1={this.state.gwpData3} sixty2={this.state.gwpData5} radio={this.state.currentRadio} />
-            </div> */}
+   
 
             <br></br>
 
@@ -868,7 +861,17 @@ class App extends Component {
 
 
         <br></br>
-        <div className="footnotes">
+        
+
+
+      {/* </TabPanel>
+      <TabPanel value={this.state.value} index={1}>
+        Structure
+      </TabPanel>
+      <TabPanel value={this.state.value} index={2}>
+        Other
+      </TabPanel> */}
+      <div className="footnotes">
           <ol>
             <li className="footnote" id="fn:1">
               <p>Greenhouse gas emissions shown in equivalent units of carbon dioxide. Most impactful factor to reduce to meet climate change goals.</p>
@@ -911,6 +914,6 @@ class App extends Component {
     );
   }
 }
-
+// export default withSplashScreen(App);
 export default App;
 

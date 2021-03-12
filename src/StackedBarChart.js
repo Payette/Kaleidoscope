@@ -226,7 +226,7 @@ let multiplier = 100.0 / currentBiggest;
         // const xMax = width2 - margin.left - margin.right;
         const xMax = width2;
         // console.log("xMax" + width2)
-        xScale.rangeRound([0, xMax]);
+        xScale.rangeRound([0, xMax-250]);
         // w = w- 100;
         var previousY = 0;
 
