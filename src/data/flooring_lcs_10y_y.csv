@@ -1,0 +1,19 @@
+material,type,impact1,impact2,impact3,name,img
+sGranite,Stone / Ceramic,3.134362105,0.124499398,0,Granite,./img/granite.png
+sSlate,Stone / Ceramic,3.047051828,0.127295262,0,Slate,./img/limestone.png
+sCeramic,Stone / Ceramic,0.686781267,0.072770989,0,Ceramic Tile,./img/brick.png
+rRubber,Resilient,1.431395622,0.035745461,0,Rubber Tile,./img/insmetalpanel.png
+rVinyl,Resilient,0.96041437,0.028967072,0,Solid Vinyl Tile,./img/spandrel.png
+rLinoTile,Resilient,0.218015029,0.103002789,0,Linoleum Tile,./img/gfrc.png
+mConcrete,Miscellaneous,1.629029249,0.110061435,0,Concrete,./img/acm.png
+mTerrazzo,Miscellaneous,1.4572,0.0347,0,Terrazzo,./img/limestone1.png
+mSealedC,Miscellaneous,1.3842,0.0421,0,Sealed Concrete,./img/steel1.png
+mEpoxy,Miscellaneous,0.7562,0.0883,0,Epoxy,./img/wood1.png
+cHigh,Carpet,0.912290123,0.031016867,0,High Pile,./img/terracotta.png
+cMedium,Carpet,1.32110066,0.035179314,0,Medium Pile,./img/phenresin.png
+cLow,Carpet,1.604157642,0.037872663,0,Low Pile,./img/fibercement.png
+wEngineered,Wood,-1.203403232,0.086807013,0,Engineered,./img/zinc.png
+wBamboo,Wood,-0.815815774,0.021528832,0,Bamboo,./img/granite1.png
+wCork,Wood,-2.587837459,0.053062772,0,Cork,./img/limestone1.png
+wSoftwood,Wood,-1.526882,0.080631469,0,Softwood Plank,./img/steel1.png
+wHardwood,Wood,-2.399427604,0.040648587,0,Hardwood Plank,./img/wood1.png

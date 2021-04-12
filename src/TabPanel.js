@@ -9,7 +9,7 @@ import Box from '@material-ui/core/Box';
 
 const TabPanel = function(props) {
   const { children, value, index, ...other } = props;
-  console.log(value)
+  // console.log(value)
 
   return (
     <div

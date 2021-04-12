@@ -9,7 +9,7 @@
 
 .splash-screen .loading-dot {
   font-size: 100px;
-  margin-top: -80px;
+  /* margin-top: -80px; */
   position: relative;
   animation: ease-in-out infinite alternate;
   animation-name: run;

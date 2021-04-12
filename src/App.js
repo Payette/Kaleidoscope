@@ -1,16 +1,38 @@
 import React, { Component } from 'react';
 import StackedBarChart from './StackedBarChart';
+import FlooringStackedBarChart from './Flooring_StackedBarChart';
 import LoadData from './data/LoadData';
+import FlooringLoadData from './data/Flooring_LoadData';
 import MaterialList from './MaterialList';
+import FlooringMaterialList from './Flooring_MaterialList';
 import Comp from "./Comp";
 import Row from "./Row";
-import { Tabs, AppBar, Tab } from '@material-ui/core';
+import { Tabs, AppBar, Tab, Popover, Button, Typography, Popper } from '@material-ui/core';
 import TabPanel from "./TabPanel";
 import withSplashScreen from './withSplashScreen';
 
-import './css/Main.scss';
-import styles from './css/App.module.scss';
+// import Helmet from 'Helmet';
+import {Helmet} from "react-helmet";
 
+import './css/Main.scss';
+import styles from './css/App.module.scss'; 
+
+// var $ = require( "jquery" );
+
+// $.bigfoot();
+
+
+
+{/* <script> */}
+      // Footnote Options
+		// $.bigfoot({
+    //     	activateOnHover: false,
+    //         deleteOnUnhover: false,
+    //         popoverDeleteDelay: 250,
+		// 	buttonMarkup: "<div class=\"bigfoot-footnote__container\"> <button class=\"bigfoot-footnote__button\" rel=\"footnote\" id=\"{{SUP:data-footnote-backlink-ref}}\" data-footnote-number=\"{{FOOTNOTENUM}}\" data-footnote-identifier=\"{{FOOTNOTEID}}\" alt=\"See Footnote {{FOOTNOTENUM}}\" data-bigfoot-footnote=\"{{FOOTNOTECONTENT}}\">?</button></div>"
+
+    //     });
+    {/* </script> */}
 
 class App extends Component {
   constructor(props) {
@@ -45,16 +67,74 @@ class App extends Component {
       materialData5: [],
       materials: [],
       selectedMaterials: [],
+
+      flooring_allImpactsData: [],
+      flooring_gwpData: [],
+      flooring_lcsData: [],
+      flooring_materialData: [],
+      flooring_allImpactsData1: [],
+      flooring_gwpData1: [],
+      flooring_lcsData1: [],
+      flooring_materialData1: [],
+      flooring_allImpactsData2: [],
+      flooring_gwpData2: [],
+      flooring_lcsData2: [],
+      flooring_materialData2: [],
+      flooring_allImpactsData3: [],
+      flooring_gwpData3: [],
+      flooring_lcsData3: [],
+      flooring_materialData3: [],
+      flooring_allImpactsData4: [],
+      flooring_gwpData4: [],
+      flooring_lcsData4: [],
+      flooring_materialData4: [],
+      flooring_allImpactsData5: [],
+      flooring_gwpData5: [],
+      flooring_lcsData5: [],
+      flooring_materialData5: [],
+      flooring_materials: [],
+      flooring_selectedMaterials: [],
+
+
       currentRadio: 1,
       rows: [
         {value: 'row1', checked: false},
         {value: 'row2', checked: false},
       ],
-      value: 0
+      value: parseInt(props.item),
+      anchorEl: null,
+      currentToolTip: null
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
+    console.log(props)
   }
+
+  // $.bigfoot();
+
+
+  handleClick = (e) => {
+    this.setAnchorEl(e.currentTarget);
+    // console.log(e.target.id)
+  }
+
+  
+handleClose= () => {
+  this.setAnchorEl(null)
+}
+
+setAnchorEl= (target) => {
+  // this.setState()
+  let placeholder = null
+  if(target){
+    placeholder = target.id
+  }
+  // console.log(target.id)
+  this.setState({anchorEl: target, currentToolTip: placeholder});
+  console.log(this.state.anchorEl)
+}
+
 
   handleChange = (event, newValue) => {
     // const [value, setValue] = React.useState(0);
@@ -96,6 +176,43 @@ class App extends Component {
   }
 
   componentDidMount() {
+
+    // "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    // "https://cdnjs.cloudflare.com/ajax/libs/bigfoot/2.1.4/bigfoot.min.js"
+    // "https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.6.3/iframeResizer.contentWindow.min.js"
+    
+	
+    
+
+    // let script1 = document.createElement("script");
+    // script1.async = true;
+    // script1.src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js";
+    // script1.onload = () => this.scriptLoaded();
+
+    // document.head.appendChild(script1);
+
+    // let script2 = document.createElement("script");
+    // script2.async = true;
+    // script2.src = "https://cdnjs.cloudflare.com/ajax/libs/bigfoot/2.1.4/bigfoot.min.js";
+    // script2.onload = () => this.scriptLoaded();
+
+    // document.head.appendChild(script2);
+
+    // let script3 = document.createElement("script");
+    // script3.async = true;
+    // script3.src = "https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.6.3/iframeResizer.contentWindow.min.js";
+    // script3.onload = () => this.scriptLoaded();
+
+    // document.head.appendChild(script3);
+
+  //   $.bigfoot({
+  //     activateOnHover: false,
+  //       deleteOnUnhover: false,
+  //       popoverDeleteDelay: 250,
+  // buttonMarkup: "<div class=\"bigfoot-footnote__container\"> <button class=\"bigfoot-footnote__button\" rel=\"footnote\" id=\"{{SUP:data-footnote-backlink-ref}}\" data-footnote-number=\"{{FOOTNOTENUM}}\" data-footnote-identifier=\"{{FOOTNOTEID}}\" alt=\"See Footnote {{FOOTNOTENUM}}\" data-bigfoot-footnote=\"{{FOOTNOTECONTENT}}\">?</button></div>"
+
+  //   });
+
     LoadData.lcsData(data => {
       const materials = data.map(d => d.material);
       const names = data.map(d => d.name);
@@ -107,6 +224,18 @@ class App extends Component {
       });
     });
 
+    FlooringLoadData.lcsData(data => {
+      const materials = data.map(d => d.material);
+      const names = data.map(d => d.name);
+      this.setState({
+        flooring_lcsData: data,
+        flooring_materials: materials,
+        flooring_selectedMaterials: materials,
+        flooring_names: names
+      });
+    });
+
+
     LoadData.allImpactsData(data => {
       const materials = data.map(d => d.material);
       const names = data.map(d => d.name);
@@ -115,6 +244,17 @@ class App extends Component {
         materials: materials,
         selectedMaterials: materials,
         names: names
+      });
+    });
+
+    FlooringLoadData.allImpactsData(data => {
+      const materials = data.map(d => d.material);
+      const names = data.map(d => d.name);
+      this.setState({
+        flooring_allImpactsData: data,
+        flooring_materials: materials,
+        flooring_selectedMaterials: materials,
+        flooring_names: names
       });
     });
 
@@ -131,7 +271,20 @@ class App extends Component {
       });
     });
 
+    FlooringLoadData.materialData(data => {
+      const materials = data.map(d => d.material);
+      const names = data.map(d => d.name);
+      this.setState({
+        flooring_materialData: data,
+        flooring_materials: materials,
+        flooring_selectedMaterials: materials,
+        flooring_names: names
+      });
+    });
+
     LoadData.gwpData(data => this.setState({ gwpData: data }));
+
+    FlooringLoadData.gwpData(data => this.setState({ flooring_gwpData: data }));
 
     LoadData.lcsData1(data => {
       const materials = data.map(d => d.material);
@@ -141,6 +294,17 @@ class App extends Component {
         materials: materials,
         selectedMaterials: materials,
         names: names
+      });
+    });
+
+    FlooringLoadData.lcsData1(data => {
+      const materials = data.map(d => d.material);
+      const names = data.map(d => d.name);
+      this.setState({
+        flooring_lcsData1: data,
+        flooring_materials: materials,
+        flooring_selectedMaterials: materials,
+        flooring_names: names
       });
     });
 
@@ -155,6 +319,17 @@ class App extends Component {
       });
     });
 
+    FlooringLoadData.allImpactsData1(data => {
+      const materials = data.map(d => d.material);
+      const names = data.map(d => d.name);
+      this.setState({
+        flooring_allImpactsData1: data,
+        flooring_materials: materials,
+        flooring_selectedMaterials: materials,
+        flooring_names: names
+      });
+    });
+
     LoadData.materialData1(data => {
       const materials = data.map(d => d.material);
       const names = data.map(d => d.name);
@@ -166,7 +341,20 @@ class App extends Component {
       });
     });
 
+    FlooringLoadData.materialData1(data => {
+      const materials = data.map(d => d.material);
+      const names = data.map(d => d.name);
+      this.setState({
+        flooring_materialData1: data,
+        flooring_materials: materials,
+        flooring_selectedMaterials: materials,
+        flooring_names: names
+      });
+    });
+
     LoadData.gwpData1(data => this.setState({ gwpData1: data }));
+
+    FlooringLoadData.gwpData1(data => this.setState({ flooring_gwpData1: data }));
 
     LoadData.lcsData2(data => {
       const materials = data.map(d => d.material);
@@ -176,6 +364,17 @@ class App extends Component {
         materials: materials,
         selectedMaterials: materials,
         names: names
+      });
+    });
+
+    FlooringLoadData.lcsData2(data => {
+      const materials = data.map(d => d.material);
+      const names = data.map(d => d.name);
+      this.setState({
+        flooring_lcsData2: data,
+        flooring_materials: materials,
+        flooring_selectedMaterials: materials,
+        flooring_names: names
       });
     });
 
@@ -190,6 +389,17 @@ class App extends Component {
       });
     });
 
+    FlooringLoadData.allImpactsData2(data => {
+      const materials = data.map(d => d.material);
+      const names = data.map(d => d.name);
+      this.setState({
+        flooring_allImpactsData2: data,
+        flooring_materials: materials,
+        flooring_selectedMaterials: materials,
+        flooring_names: names
+      });
+    });
+
     LoadData.materialData2(data => {
       const materials = data.map(d => d.material);
       const names = data.map(d => d.name);
@@ -201,7 +411,20 @@ class App extends Component {
       });
     });
 
+    FlooringLoadData.materialData2(data => {
+      const materials = data.map(d => d.material);
+      const names = data.map(d => d.name);
+      this.setState({
+        flooring_materialData2: data,
+        flooring_materials: materials,
+        flooring_selectedMaterials: materials,
+        flooring_names: names
+      });
+    });
+
     LoadData.gwpData2(data => this.setState({ gwpData2: data }));
+
+    FlooringLoadData.gwpData2(data => this.setState({ flooring_gwpData2: data }));
 
     LoadData.lcsData3(data => {
       const materials = data.map(d => d.material);
@@ -211,6 +434,17 @@ class App extends Component {
         materials: materials,
         selectedMaterials: materials,
         names: names
+      });
+    });
+
+    FlooringLoadData.lcsData3(data => {
+      const materials = data.map(d => d.material);
+      const names = data.map(d => d.name);
+      this.setState({
+        flooring_lcsData3: data,
+        flooring_materials: materials,
+        flooring_selectedMaterials: materials,
+        flooring_names: names
       });
     });
 
@@ -225,6 +459,17 @@ class App extends Component {
       });
     });
 
+    FlooringLoadData.allImpactsData3(data => {
+      const materials = data.map(d => d.material);
+      const names = data.map(d => d.name);
+      this.setState({
+        flooring_allImpactsData3: data,
+        flooring_materials: materials,
+        flooring_selectedMaterials: materials,
+        flooring_names: names
+      });
+    });
+
     LoadData.materialData3(data => {
       const materials = data.map(d => d.material);
       const names = data.map(d => d.name);
@@ -236,7 +481,20 @@ class App extends Component {
       });
     });
 
+    FlooringLoadData.materialData3(data => {
+      const materials = data.map(d => d.material);
+      const names = data.map(d => d.name);
+      this.setState({
+        flooring_materialData3: data,
+        flooring_materials: materials,
+        flooring_selectedMaterials: materials,
+        flooring_names: names
+      });
+    });
+
     LoadData.gwpData3(data => this.setState({ gwpData3: data }));
+
+    FlooringLoadData.gwpData3(data => this.setState({ flooring_gwpData3: data }));
 
     LoadData.lcsData4(data => {
       const materials = data.map(d => d.material);
@@ -246,6 +504,17 @@ class App extends Component {
         materials: materials,
         selectedMaterials: materials,
         names: names
+      });
+    });
+
+    FlooringLoadData.lcsData4(data => {
+      const materials = data.map(d => d.material);
+      const names = data.map(d => d.name);
+      this.setState({
+        flooring_lcsData4: data,
+        flooring_materials: materials,
+        flooring_selectedMaterials: materials,
+        flooring_names: names
       });
     });
 
@@ -260,6 +529,17 @@ class App extends Component {
       });
     });
 
+    FlooringLoadData.allImpactsData4(data => {
+      const materials = data.map(d => d.material);
+      const names = data.map(d => d.name);
+      this.setState({
+        flooring_allImpactsData4: data,
+        flooring_materials: materials,
+        flooring_selectedMaterials: materials,
+        flooring_names: names
+      });
+    });
+
     LoadData.materialData4(data => {
       const materials = data.map(d => d.material);
       const names = data.map(d => d.name);
@@ -271,7 +551,20 @@ class App extends Component {
       });
     });
 
+    FlooringLoadData.materialData4(data => {
+      const materials = data.map(d => d.material);
+      const names = data.map(d => d.name);
+      this.setState({
+        flooring_materialData4: data,
+        flooring_materials: materials,
+        flooring_selectedMaterials: materials,
+        flooring_names: names
+      });
+    });
+
     LoadData.gwpData4(data => this.setState({ gwpData4: data }));
+
+    FlooringLoadData.gwpData4(data => this.setState({ flooring_gwpData4: data }));
 
     LoadData.lcsData5(data => {
       const materials = data.map(d => d.material);
@@ -281,6 +574,17 @@ class App extends Component {
         materials: materials,
         selectedMaterials: materials,
         names: names
+      });
+    });
+
+    FlooringLoadData.lcsData5(data => {
+      const materials = data.map(d => d.material);
+      const names = data.map(d => d.name);
+      this.setState({
+        flooring_lcsData5: data,
+        flooring_materials: materials,
+        flooring_selectedMaterials: materials,
+        flooring_names: names
       });
     });
 
@@ -295,6 +599,17 @@ class App extends Component {
       });
     });
 
+    FlooringLoadData.allImpactsData5(data => {
+      const materials = data.map(d => d.material);
+      const names = data.map(d => d.name);
+      this.setState({
+        flooring_allImpactsData5: data,
+        flooring_materials: materials,
+        flooring_selectedMaterials: materials,
+        flooring_names: names
+      });
+    });
+
     LoadData.materialData5(data => {
       const materials = data.map(d => d.material);
       const names = data.map(d => d.name);
@@ -306,7 +621,20 @@ class App extends Component {
       });
     });
 
+    FlooringLoadData.materialData5(data => {
+      const materials = data.map(d => d.material);
+      const names = data.map(d => d.name);
+      this.setState({
+        flooring_materialData5: data,
+        flooring_materials: materials,
+        flooring_selectedMaterials: materials,
+        flooring_names: names
+      });
+    });
+
     LoadData.gwpData5(data => this.setState({ gwpData5: data }));
+
+    FlooringLoadData.gwpData5(data => this.setState({ flooring_gwpData5: data }));
   }
 
   handleInputChange(event) {
@@ -324,6 +652,12 @@ class App extends Component {
   updateSelectedMaterials(newSelectedMaterials) {
     this.setState({
       selectedMaterials: newSelectedMaterials
+    })
+  }
+
+  updateSelectedFlooringMaterials(flooring_newSelectedMaterials) {
+    this.setState({
+      flooring_selectedMaterials: flooring_newSelectedMaterials
     })
   }
 
@@ -345,12 +679,17 @@ class App extends Component {
   render() {
 
     
+  
+    const open = Boolean(this.state.anchorEl);
+    
+    const id = open ? 'simple-popover' : undefined;
+
+    
 
     const allImpactsDataSelectedMaterialsOnly = this.state.allImpactsData.filter(d => this.state.selectedMaterials.includes(d.material));
     const gwpDataSelectedMaterialsOnly = this.state.gwpData.filter(d => this.state.selectedMaterials.includes(d.material));
     const lcsDataSelectedMaterialsOnly = this.state.lcsData.filter(d => this.state.selectedMaterials.includes(d.material));
     const materialDataSelectedMaterialsOnly = this.state.materialData.filter(d => this.state.selectedMaterials.includes(d.material));
-
 
     const allImpactsDataSelectedMaterialsOnly1 = this.state.allImpactsData1.filter(d => this.state.selectedMaterials.includes(d.material));
     const gwpDataSelectedMaterialsOnly1 = this.state.gwpData1.filter(d => this.state.selectedMaterials.includes(d.material));
@@ -377,6 +716,40 @@ class App extends Component {
     const lcsDataSelectedMaterialsOnly5 = this.state.lcsData5.filter(d => this.state.selectedMaterials.includes(d.material));
     const materialDataSelectedMaterialsOnly5 = this.state.materialData5.filter(d => this.state.selectedMaterials.includes(d.material));
 
+    
+
+
+
+    const allImpactsDataSelectedMaterialsOnlyFlooring = this.state.flooring_allImpactsData.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    const gwpDataSelectedMaterialsOnlyFlooring = this.state.flooring_gwpData.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    const lcsDataSelectedMaterialsOnlyFlooring = this.state.flooring_lcsData.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    const materialDataSelectedMaterialsOnlyFlooring = this.state.flooring_materialData.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+
+    const allImpactsDataSelectedMaterialsOnly1Flooring = this.state.flooring_allImpactsData1.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    const gwpDataSelectedMaterialsOnly1Flooring = this.state.flooring_gwpData1.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    const lcsDataSelectedMaterialsOnly1Flooring = this.state.flooring_lcsData1.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    const materialDataSelectedMaterialsOnly1Flooring = this.state.flooring_materialData1.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+
+    const allImpactsDataSelectedMaterialsOnly2Flooring = this.state.flooring_allImpactsData2.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    const gwpDataSelectedMaterialsOnly2Flooring = this.state.flooring_gwpData2.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    const lcsDataSelectedMaterialsOnly2Flooring = this.state.flooring_lcsData2.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    const materialDataSelectedMaterialsOnly2Flooring = this.state.flooring_materialData2.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+
+    const allImpactsDataSelectedMaterialsOnly3Flooring = this.state.flooring_allImpactsData3.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    const gwpDataSelectedMaterialsOnly3Flooring = this.state.flooring_gwpData3.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    const lcsDataSelectedMaterialsOnly3Flooring = this.state.flooring_lcsData3.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    const materialDataSelectedMaterialsOnly3Flooring = this.state.flooring_materialData3.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+
+    const allImpactsDataSelectedMaterialsOnly4Flooring = this.state.flooring_allImpactsData4.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    const gwpDataSelectedMaterialsOnly4Flooring = this.state.flooring_gwpData4.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    const lcsDataSelectedMaterialsOnly4Flooring = this.state.flooring_lcsData4.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    const materialDataSelectedMaterialsOnly4Flooring = this.state.flooring_materialData4.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+
+    const allImpactsDataSelectedMaterialsOnly5Flooring = this.state.flooring_allImpactsData5.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    const gwpDataSelectedMaterialsOnly5Flooring = this.state.flooring_gwpData5.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    const lcsDataSelectedMaterialsOnly5Flooring = this.state.flooring_lcsData5.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    const materialDataSelectedMaterialsOnly5Flooring = this.state.flooring_materialData5.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+
     var obj = {
       "Material": "void"
     };
@@ -386,6 +759,17 @@ class App extends Component {
       let myName = gwpDataSelectedMaterialsOnly[i].material;
       let myVal = gwpDataSelectedMaterialsOnly[i].value;
       obj[myName] = myVal;
+    }
+
+    var flooring_obj = {
+      "Material": "void"
+    };
+
+
+    for (let i = 0; i < gwpDataSelectedMaterialsOnlyFlooring.length; i++) {
+      let myName = gwpDataSelectedMaterialsOnlyFlooring[i].material;
+      let myVal = gwpDataSelectedMaterialsOnlyFlooring[i].value;
+      flooring_obj[myName] = myVal;
     }
 
     let chartTitle = "";
@@ -429,6 +813,21 @@ class App extends Component {
       marginBottom: "10px"
     };
 
+    // const MyButton = styled(Button)({
+    //   // border: 1,
+    //     borderRadius: 12,
+    //     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    //     color: 'grey',
+    //     height: 12,
+    //     maxWidth: 12,
+    //     minWidth:12,
+    //     marginLeft: '10px',
+    //     fontSize:10,
+    //     padding: '0px',
+    // });
+
+   
+
 
 
     return (
@@ -436,14 +835,24 @@ class App extends Component {
       
       
       <div className="App" style={{minHeight: sidebarHeight}}>
-        {/* <AppBar position="static">
-        <Tabs value={this.state.value} onChange={this.handleChange}>
+        <Helmet>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            
+            <link rel="stylesheet" type="text/css" href="bigfoot-default.css"/>
+        
+            <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/bigfoot/2.1.4/bigfoot.min.js"></script>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.6.3/iframeResizer.contentWindow.min.js"></script>
+            <script type="text/javascript" src="bf.js"></script>
+        </Helmet>
+        <AppBar position="static" style={{background:'white', color:'black'}}>
+        <Tabs value={this.state.value} indicatorColor="secondary" textColor="secondary"
+    centered onChange={this.handleChange}>
           <Tab label="ENVELOPE" />
-          <Tab label="STRUCTURE" />
-          <Tab label="OTHER" />
+          <Tab label="FLOORING" />
+          <Tab label="OTHER" disabled/>
         </Tabs>
-      </AppBar> */}
-      {/* <TabPanel value={this.state.value} index={0}> */}
+      </AppBar>
+      <TabPanel value={this.state.value} index={0}>
         
 
       <form>
@@ -454,11 +863,76 @@ class App extends Component {
               <h3>CHART TYPE</h3>
               <div className={styles.inputitem}>
                 <input type="radio" id="GWP" value="GWP" name="chartType" checked={this.state.chartType === "GWP"} onChange={this.handleInputChange} />
-                <label htmlFor="fGWP">Global Warming Potential</label> <sup id="fnref:1"><a href="#fn:1" rel="footnote"></a></sup>
+                <label htmlFor="fGWP">Global Warming Potential <sup id="fnref:1"><a href="#fn:1" rel="footnote"></a></sup></label> 
+
+{/* <Button onClick={this.handleClick} id="GWP1" style={{
+                  borderRadius: 12,
+        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+        color: 'grey',
+        height: 12,
+        maxWidth: 12,
+        minWidth:12,
+        marginLeft: '10px',
+        fontSize:10,
+        padding: '0px'}}>
+        ?
+      </Button>
+      <Popover
+      className={styles.popover_class}
+        // id="GWP1"
+        open={open && this.state.currentToolTip == "GWP1"}
+        anchorEl={this.state.anchorEl}
+        onClose={this.handleClose}
+        anchorOrigin={{
+          vertical: 'center',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'center',
+          horizontal: 'left',
+        }}
+      >
+        <Typography style={{padding:5}}>
+        Greenhouse gas emissions shown in equivalent units of carbon dioxide. Most impactful factor to reduce to meet climate change goals.
+        </Typography>
+      </Popover> */}
               </div>
+              
               <div className={styles.inputitem}>
                 <input type="radio" id="allImpacts" name="chartType" value="allImpacts" checked={this.state.chartType === "allImpacts"} onChange={this.handleInputChange} />
-                <label htmlFor="allImpacts">All Impacts</label> <sup id="fnref:2"><a href="#fn:2" rel="footnote"></a></sup>
+                <label htmlFor="allImpacts">All Impacts <sup id="fnref:2"><a href="#fn:2" rel="footnote"></a></sup></label> 
+                
+                {/* <Button aria-describedby={id} onClick={this.handleClick} id="allImpacts1" style={{
+                  borderRadius: 12,
+        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+        color: 'grey',
+        height: 12,
+        maxWidth: 12,
+        minWidth:12,
+        marginLeft: '10px',
+        fontSize:10,
+        padding: '0px'}}>
+        ?
+      </Button>
+      <Popover
+      className={styles.popover_class}
+        // id="allImpacts"
+        open={open && this.state.currentToolTip == "allImpacts1"}
+        anchorEl={this.state.anchorEl}
+        onClose={this.handleClose}
+        anchorOrigin={{
+          vertical: 'center',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'center',
+          horizontal: 'left',
+        }}
+      >
+        <Typography style={{padding:5}}>
+          The content of the Popover.
+        </Typography>
+      </Popover> */}
               </div>
               <div className={styles.inputitem}>
                 <input type="radio" id="LCS" value="LCS" name="chartType" checked={this.state.chartType === "LCS"} onChange={this.handleInputChange} />
@@ -864,13 +1338,435 @@ class App extends Component {
         
 
 
-      {/* </TabPanel>
+      </TabPanel>
       <TabPanel value={this.state.value} index={1}>
-        Structure
+        
+      <form>
+          <h1>FLOOR ASSEMBLIES</h1>
+          <div className={styles.topcontrols}>
+
+            <div className={styles.inputgroup}>
+              <h3>CHART TYPE</h3>
+              <div className={styles.inputitem}>
+                <input type="radio" id="GWP" value="GWP" name="chartType" checked={this.state.chartType === "GWP"} onChange={this.handleInputChange} />
+                <label htmlFor="fGWP">Global Warming Potential <sup><a href="#fn:1" rel="footnote"></a></sup></label> 
+{/* <a href="#fn:1" rel="footnote">?</a> */}
+{/* <Button onClick={this.handleClick} id="GWP1" style={{
+                  borderRadius: 12,
+        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+        color: 'grey',
+        height: 12,
+        maxWidth: 12,
+        minWidth:12,
+        marginLeft: '10px',
+        fontSize:10,
+        padding: '0px'}}>
+        ?
+      </Button>
+      <Popover
+      className={styles.popover_class}
+        // id="GWP1"
+        open={open && this.state.currentToolTip == "GWP1"}
+        anchorEl={this.state.anchorEl}
+        onClose={this.handleClose}
+        anchorOrigin={{
+          vertical: 'center',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'center',
+          horizontal: 'left',
+        }}
+      >
+        <Typography style={{padding:5}}>
+        Greenhouse gas emissions shown in equivalent units of carbon dioxide. Most impactful factor to reduce to meet climate change goals.
+        </Typography>
+      </Popover> */}
+              </div>
+              
+              <div className={styles.inputitem}>
+                <input type="radio" id="allImpacts" name="chartType" value="allImpacts" checked={this.state.chartType === "allImpacts"} onChange={this.handleInputChange} />
+                <label htmlFor="allImpacts">All Impacts <sup id="fnref:2"><a href="#fn:2" rel="footnote"></a></sup></label> 
+                
+                {/* <Button aria-describedby={id} onClick={this.handleClick} id="allImpacts1" style={{
+                  borderRadius: 12,
+        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+        color: 'grey',
+        height: 12,
+        maxWidth: 12,
+        minWidth:12,
+        marginLeft: '10px',
+        fontSize:10,
+        padding: '0px'}}>
+        ?
+      </Button>
+      <Popover
+      className={styles.popover_class}
+        // id="allImpacts"
+        open={open && this.state.currentToolTip == "allImpacts1"}
+        anchorEl={this.state.anchorEl}
+        onClose={this.handleClose}
+        anchorOrigin={{
+          vertical: 'center',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'center',
+          horizontal: 'left',
+        }}
+      >
+        <Typography style={{padding:5}}>
+          The content of the Popover.
+        </Typography>
+      </Popover> */}
+              </div>
+              <div className={styles.inputitem}>
+                <input type="radio" id="LCS" value="LCS" name="chartType" checked={this.state.chartType === "LCS"} onChange={this.handleInputChange} />
+                <label htmlFor="LCS">Life Cycle Stage</label> <sup id="fnref:3"><a href="#fn:3" rel="footnote"></a></sup>
+              </div>
+              <div className={styles.inputitem}>
+                <input type="radio" id="MB" value="MB" name="chartType" checked={this.state.chartType === "MB"} onChange={this.handleInputChange} />
+                <label htmlFor="MB">Material Breakdown</label> <sup id="fnref:4"><a href="#fn:4" rel="footnote"></a></sup>
+              </div>
+              <div className={styles.inputitem}>
+                <input type="radio" id="MP" value="MP" name="chartType" checked={this.state.chartType === "MP"} onChange={this.handleInputChange} />
+                <label htmlFor="MP">Material Health Impacts</label> <sup id="fnref:4"><a href="#fn:4" rel="footnote"></a></sup>
+              </div>
+            </div>
+
+            <div className={styles.inputgroup}>
+              <h3>LIFESPAN</h3>
+              <div className={styles.inputitem}>
+                <input type="radio" id="tenY" name="lifespan" value="tenY" checked={this.state.lifespan === "tenY"} onChange={this.handleInputChange} />
+                <label htmlFor="tenY">10 Year (No Module D)</label> <sup id="fnref:5"><a href="#fn:5" rel="footnote"></a></sup>
+              </div>
+              <div className={styles.inputitem}>
+                <input type="radio" id="sixty2" name="lifespan" value="sixty2" checked={this.state.lifespan === "sixty2"} onChange={this.handleInputChange} />
+                <label htmlFor="sixty2">60 Year (With Module D)</label> <sup id="fnref:6"><a href="#fn:6" rel="footnote"></a></sup>
+              </div>
+              <div className={styles.inputitem}>
+                <input type="radio" id="sixty1" name="lifespan" value="sixty1" checked={this.state.lifespan === "sixty1"} onChange={this.handleInputChange} />
+                <label htmlFor="sixty1">60 Year (No Module D)</label> <sup id="fnref:7"><a href="#fn:7" rel="footnote"></a></sup>
+              </div>
+            </div>
+
+            <div className={styles.inputgroup}>
+              <h3>BIOGENIC CARBON</h3>
+              <div className={styles.inputitem}>
+                <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked={this.state.biogenicCarbon === "yBio"} onChange={this.handleInputChange} />
+                <label htmlFor="yBio">With Biogenic Carbon</label> <sup id="fnref:8"><a href="#fn:8" rel="footnote"></a></sup>
+              </div>
+              <div className={styles.inputitem}>
+                <input type="radio" id="nBio" name="biogenicCarbon" value="nBio" checked={this.state.biogenicCarbon === "nBio"} onChange={this.handleInputChange} />
+                <label htmlFor="nBio">No Biogenic Carbon</label> <sup id="fnref:9"><a href="#fn:9" rel="footnote"></a></sup>
+              </div>
+            </div>
+          </div>
+
+        </form>
+        <div style={{display: "inline-block", height: "100%" }} id="parentDiv">
+
+          {this.state.materials.length > 0 &&
+            <div className={styles.sidebar} id="sidebar123">
+              <FlooringMaterialList
+                gwp={flooring_obj}
+                materials={this.state.flooring_materials}
+                names={this.state.names}
+                updateSelectedMaterials={this.updateSelectedFlooringMaterials.bind(this)}
+                initialSelectedMaterials={this.state.flooring_selectedMaterials}
+                metaData={FlooringLoadData.metaData}
+                currentSel={this.state.chartType}
+                matBreakdown={this.state.flooring_materialData1}
+                matBreakdown1={this.state.flooring_materialData3}
+                matBreakdown2={this.state.flooring_materialData5}
+                tenYGWP={this.state.flooring_gwpData1}
+                sixty1YGWP={this.state.flooring_gwpData3}
+                sixty2YGWP={this.state.flooring_gwpData5}
+              />
+            </div>
+          }
+          <h2>{chartTitle}</h2>
+          {/* GLOBAL WARMING POTENTIAL */}
+          <div className={styles.chartContainer}>
+            {this.state.chartType === "GWP" && this.state.flooring_gwpData.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" && <FlooringStackedBarChart
+              selectedMaterials={gwpDataSelectedMaterialsOnlyFlooring}
+              allMaterials={this.state.flooring_gwpData}
+              metaData={FlooringLoadData.metaData}
+              barHeight={40}
+              xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+              colorBy="material"
+              currentChart={this.state.chartType}
+            />}
+            {/* ALL IMPACTS*/}
+
+            {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnlyFlooring.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" && <FlooringStackedBarChart
+              selectedMaterials={allImpactsDataSelectedMaterialsOnlyFlooring}
+              allMaterials={this.state.flooring_allImpactsData}
+              metaData={FlooringLoadData.metaData}
+              barHeight={40}
+              xAxisLabel="Normalized % of Total"
+              currentChart={this.state.chartType}
+            />}
+            {/* LIFE CYCLE STAGE */}
+
+            {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnlyFlooring.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" && <FlooringStackedBarChart
+              selectedMaterials={lcsDataSelectedMaterialsOnlyFlooring}
+              allMaterials={this.state.flooring_lcsData}
+              metaData={FlooringLoadData.metaData}
+              barHeight={40}
+              xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+              currentChart={this.state.chartType}
+            />}
+            {/* MATERIAL BREAKDOWN */}
+
+            {this.state.chartType === "MB" && materialDataSelectedMaterialsOnlyFlooring.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" && <FlooringStackedBarChart
+              selectedMaterials={materialDataSelectedMaterialsOnlyFlooring}
+              allMaterials={this.state.flooring_materialData}
+              metaData={FlooringLoadData.metaData}
+              barHeight={40}
+              xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+              currentChart={this.state.chartType}
+            />}
+
+
+
+
+            {/* GLOBAL WARMING POTENTIAL */}
+
+            {this.state.chartType === "GWP" && this.state.flooring_gwpData1.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "yBio" && <FlooringStackedBarChart
+              selectedMaterials={gwpDataSelectedMaterialsOnly1Flooring}
+              allMaterials={this.state.flooring_gwpData1}
+              metaData={FlooringLoadData.metaData}
+              barHeight={40}
+              xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+              colorBy="material"
+              currentChart={this.state.chartType}
+            />}
+            {/* ALL IMPACTS*/}
+
+            {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly1Flooring.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "yBio" && <FlooringStackedBarChart
+              selectedMaterials={allImpactsDataSelectedMaterialsOnly1Flooring}
+              allMaterials={this.state.flooring_allImpactsData1}
+              metaData={FlooringLoadData.metaData}
+              barHeight={40}
+              xAxisLabel="Normalized % of Total"
+              currentChart={this.state.chartType}
+            />}
+            {/* LIFE CYCLE STAGE */}
+
+            {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly1Flooring.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "yBio" && <FlooringStackedBarChart
+              selectedMaterials={lcsDataSelectedMaterialsOnly1Flooring}
+              allMaterials={this.state.flooring_lcsData1}
+              metaData={FlooringLoadData.metaData}
+              barHeight={40}
+              xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+              currentChart={this.state.chartType}
+            />}
+            {/* MATERIAL BREAKDOWN */}
+
+            {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly1Flooring.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "yBio" && <FlooringStackedBarChart
+              selectedMaterials={materialDataSelectedMaterialsOnly1Flooring}
+              allMaterials={this.state.flooring_materialData1}
+              metaData={FlooringLoadData.metaData}
+              barHeight={40}
+              xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+              currentChart={this.state.chartType}
+            />}
+
+
+
+
+
+            {/* GLOBAL WARMING POTENTIAL */}
+
+            {this.state.chartType === "GWP" && this.state.gwpData2.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
+              selectedMaterials={gwpDataSelectedMaterialsOnly2}
+              allMaterials={this.state.gwpData2}
+              metaData={LoadData.metaData}
+              barHeight={40}
+              xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+              colorBy="material"
+              currentChart={this.state.chartType}
+            />}
+            {/* ALL IMPACTS*/}
+
+            {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly2.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
+              selectedMaterials={allImpactsDataSelectedMaterialsOnly2}
+              allMaterials={this.state.allImpactsData2}
+              metaData={LoadData.metaData}
+              barHeight={40}
+              xAxisLabel="Normalized % of Total"
+              currentChart={this.state.chartType}
+            />}
+            {/* LIFE CYCLE STAGE */}
+
+            {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly2.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
+              selectedMaterials={lcsDataSelectedMaterialsOnly2}
+              allMaterials={this.state.lcsData2}
+              metaData={LoadData.metaData}
+              barHeight={40}
+              xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+              currentChart={this.state.chartType}
+            />}
+            {/* MATERIAL BREAKDOWN */}
+
+            {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly2.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
+              selectedMaterials={materialDataSelectedMaterialsOnly2}
+              allMaterials={this.state.materialData2}
+              metaData={LoadData.metaData}
+              barHeight={40}
+              xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+              currentChart={this.state.chartType}
+            />}
+
+
+
+
+
+            {/* GLOBAL WARMING POTENTIAL */}
+
+            {this.state.chartType === "GWP" && this.state.gwpData3.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart
+              selectedMaterials={gwpDataSelectedMaterialsOnly3}
+              allMaterials={this.state.gwpData3}
+              metaData={LoadData.metaData}
+              barHeight={40}
+              xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+              colorBy="material"
+              currentChart={this.state.chartType}
+            />}
+            {/* ALL IMPACTS*/}
+
+            {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly3.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart
+              selectedMaterials={allImpactsDataSelectedMaterialsOnly3}
+              allMaterials={this.state.allImpactsData3}
+              metaData={LoadData.metaData}
+              barHeight={40}
+              xAxisLabel="Normalized % of Total"
+              currentChart={this.state.chartType}
+            />}
+            {/* LIFE CYCLE STAGE */}
+
+            {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly3.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart
+              selectedMaterials={lcsDataSelectedMaterialsOnly3}
+              allMaterials={this.state.lcsData3}
+              metaData={LoadData.metaData}
+              barHeight={40}
+              xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+              currentChart={this.state.chartType}
+            />}
+            {/* MATERIAL BREAKDOWN */}
+
+            {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly3.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart
+              selectedMaterials={materialDataSelectedMaterialsOnly3}
+              allMaterials={this.state.materialData3}
+              metaData={LoadData.metaData}
+              barHeight={40}
+              xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+              currentChart={this.state.chartType}
+            />}
+
+
+
+            {/* GLOBAL WARMING POTENTIAL */}
+
+            {this.state.chartType === "GWP" && this.state.gwpData4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
+              selectedMaterials={gwpDataSelectedMaterialsOnly4}
+              allMaterials={this.state.gwpData4}
+              metaData={LoadData.metaData}
+              barHeight={40}
+              xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+              colorBy="material"
+              currentChart={this.state.chartType}
+            />}
+            {/* ALL IMPACTS*/}
+
+            {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
+              selectedMaterials={allImpactsDataSelectedMaterialsOnly4}
+              allMaterials={this.state.allImpactsData4}
+              metaData={LoadData.metaData}
+              barHeight={40}
+              xAxisLabel="Normalized % of Total"
+              currentChart={this.state.chartType}
+            />}
+            {/* LIFE CYCLE STAGE */}
+
+            {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
+              selectedMaterials={lcsDataSelectedMaterialsOnly4}
+              allMaterials={this.state.lcsData4}
+              metaData={LoadData.metaData}
+              barHeight={40}
+              xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+              currentChart={this.state.chartType}
+            />}
+            {/* MATERIAL BREAKDOWN */}
+
+            {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart
+              selectedMaterials={materialDataSelectedMaterialsOnly4}
+              allMaterials={this.state.materialData4}
+              metaData={LoadData.metaData}
+              barHeight={40}
+              xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+              currentChart={this.state.chartType}
+            />}
+
+
+
+
+
+            {/* GLOBAL WARMING POTENTIAL */}
+
+            {this.state.chartType === "GWP" && this.state.gwpData5.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "yBio" && <StackedBarChart
+              selectedMaterials={gwpDataSelectedMaterialsOnly5}
+              allMaterials={this.state.gwpData5}
+              metaData={LoadData.metaData}
+              barHeight={40}
+              xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+              colorBy="material"
+              currentChart={this.state.chartType}
+            />}
+            {/* ALL IMPACTS*/}
+
+            {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly5.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "yBio" && <StackedBarChart
+              selectedMaterials={allImpactsDataSelectedMaterialsOnly5}
+              allMaterials={this.state.allImpactsData5}
+              metaData={LoadData.metaData}
+              barHeight={40}
+              xAxisLabel="Normalized % of Total"
+              currentChart={this.state.chartType}
+            />}
+            {/* LIFE CYCLE STAGE */}
+
+            {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly5.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "yBio" && <StackedBarChart
+              selectedMaterials={lcsDataSelectedMaterialsOnly5}
+              allMaterials={this.state.lcsData5}
+              metaData={LoadData.metaData}
+              barHeight={40}
+              xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+              currentChart={this.state.chartType}
+            />}
+            {/* MATERIAL BREAKDOWN */}
+
+            {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly5.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "yBio" && <StackedBarChart
+              selectedMaterials={materialDataSelectedMaterialsOnly5}
+              allMaterials={this.state.materialData5}
+              metaData={LoadData.metaData}
+              barHeight={40}
+              xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+              currentChart={this.state.chartType}
+            />}
+
+            <div>
+
+
+            </div>
+
+          </div>
+        </div>
+
       </TabPanel>
       <TabPanel value={this.state.value} index={2}>
         Other
-      </TabPanel> */}
+      </TabPanel>
       <div className="footnotes">
           <ol>
             <li className="footnote" id="fn:1">
@@ -906,14 +1802,13 @@ class App extends Component {
           </ol>
         </div>
 
-
-
+       
 
 
       </div>
     );
   }
 }
-// export default withSplashScreen(App);
-export default App;
+export default withSplashScreen(App);
+// export default App;
 

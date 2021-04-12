@@ -11,7 +11,8 @@ import legendLCS from './images/k-03.png'
 import legendMB from './images/MaterialBreakdown-11.png'
 import { render } from 'react-dom'
 import Checkbox from './Checkbox'
-import Pie from "./PieChart";
+import Pie from "./Flooring_PieChart";
+
 
 import 'pretty-checkbox'
 let myImg;
@@ -190,7 +191,7 @@ export default class MaterialList extends PureComponent {
           {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={legend}/> */}<br></br>
           </span>
           <span>
-          <h3 style={{display: "inline-block"}}>ASSEMBLY TYPE</h3><button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button><br></br><br>
+          <h3 style={{display: "inline-block"}}>FLOORING TYPE</h3><button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button><br></br><br>
           </br>Click on a type below for additional details
           
           </span>
