@@ -5,10 +5,10 @@ sCeramic,Stone / Ceramic,Ceramic Tile,./img/brick.png,0,0,0.033031513,0.20658219
 rRubber,Resilient,Rubber Tile,./img/insmetalpanel.png,0.070573631,0,0,0,0.217386335,0,0,0,0.000559826,0,0,0,0,0,0,0,0,0,0,0,1.157075169,1.157075169,0,0,0,0,0,0.021546122
 rVinyl,Resilient,Solid Vinyl Tile,./img/spandrel.png,0.070573631,0,0,0,0.217386335,0,0,0,0.000559826,0,0,0,0,0,0,0,0,0,0.679315527,0,0,0,0,0,0,0,0,0.021546122
 rLinoTile,Resilient,Linoleum Tile,./img/gfrc.png,0.070573631,0,0,0,0.217386335,0,0,0,0.000559826,0,0,0,0,0,0,0,0,0,0,0.010951904,0,0,0,0,0,0,0,0.021546122
-mConcrete,Miscellaneous,Concrete,./img/acm.png,0,0,0,0,1.739090684,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-mTerrazzo,Miscellaneous,Terrazzo,./img/terracotta.png,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.4854,0,0,0,0
-mSealedC,Miscellaneous,Sealed Concrete,./img/phenresin.png,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.4341,0,0,0
-mEpoxy,Miscellaneous,Epoxy,./img/fibercement.png,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.8222,0,0
+mConcrete,Misc.,Concrete,./img/acm.png,0,0,0,0,1.739090684,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+mTerrazzo,Misc.,Terrazzo,./img/terracotta.png,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.4854,0,0,0,0
+mSealedC,Misc.,Sealed Concrete,./img/phenresin.png,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.4341,0,0,0
+mEpoxy,Misc.,Epoxy,./img/fibercement.png,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.8222,0,0
 cHigh,Carpet,High Pile,./img/zinc.png,0.070573631,0,0,0,0.217386335,0,0,0.023925729,0,0,0,1.330144609,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 cMedium,Carpet,Medium Pile,./img/granite1.png,0.070573631,0,0,0,0.217386335,0,0,0.023925729,0,0,0,0,0,1.044394279,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 cLow,Carpet,Low Pile,./img/limestone1.png,0.070573631,0,0,0,0.217386335,0,0,0.023925729,0,0,0,0,0.631421294,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

@@ -1,30 +1,36 @@
 import Papa from 'papaparse';
 
+// import dataHealth from './flooring_healthymats_10y_y.csv';
 import dataGWP from './flooring_gwp_10y_y.csv';
 import dataAllImpacts from './flooring_allImpact_10y_y.csv';
 import dataLCS from './flooring_lcs_10y_y.csv';
 import dataMaterial from './flooring_material_10y_y.csv';
 
+// import dataHealth1 from './flooring_healthymats_10y_y.csv';
 import dataGWP1 from './flooring_gwp_10y_y.csv';
 import dataAllImpacts1 from './flooring_allImpact_10y_y.csv';
 import dataLCS1 from './flooring_lcs_10y_y.csv';
 import dataMaterial1 from './flooring_material_10y_y.csv';
 
+// import dataHealth2 from './flooring_healthymats_10y_y.csv';
 import dataGWP2 from './flooring_gwp_10y_y.csv';
 import dataAllImpacts2 from './flooring_allImpact_10y_y.csv';
 import dataLCS2 from './flooring_lcs_10y_y.csv';
 import dataMaterial2 from './flooring_material_10y_y.csv';
 
-import dataGWP3 from './flooring_gwp_10y_y.csv';
-import dataAllImpacts3 from './flooring_allImpact_10y_y.csv';
-import dataLCS3 from './flooring_lcs_10y_y.csv';
-import dataMaterial3 from './flooring_material_10y_y.csv';
+// import dataHealth3 from './flooring_healthymats_10y_y.csv';
+import dataGWP3 from './flooring_gwp_60y_y.csv';
+import dataAllImpacts3 from './flooring_allImpact_60y_y.csv';
+import dataLCS3 from './flooring_lcs_60y_y.csv';
+import dataMaterial3 from './flooring_material_60y_y.csv';
 
+// import dataHealth4 from './flooring_healthymats_10y_y.csv';
 import dataGWP4 from './flooring_gwp_10y_y.csv';
 import dataAllImpacts4 from './flooring_allImpact_10y_y.csv';
 import dataLCS4 from './flooring_lcs_10y_y.csv';
 import dataMaterial4 from './flooring_material_10y_y.csv';
 
+// import dataHealth5 from './flooring_healthymats_10y_y.csv';
 import dataGWP5 from './flooring_gwp_10y_y.csv';
 import dataAllImpacts5 from './flooring_allImpact_10y_y.csv';
 import dataLCS5 from './flooring_lcs_10y_y.csv';
@@ -55,7 +61,34 @@ const metaData = {
     wBamboo:"#a4c1e3",
     wCork:"#a3c1e2",
     wSoftwood:"#4f71be",
-    wHardwood:"0b00c4"
+    wHardwood:"#0b00c4"
+  },
+
+
+  //green = 00AE5E
+  //light green = 97CD78
+  //yellow = FEBE10
+  //red = D51C29
+
+  materialHealth: {
+    sGranite:"#97CD78",
+    sSlate:"#97CD78",
+    sCeramic:"#97CD78",
+    rRubber:"#97CD78",
+    rVinyl:"#D51C29",
+    rLinoTile:"#97CD78",
+    mConcrete:"#00AE5E",
+    mTerrazzo:"#00AE5E",
+    mSealedC:"#00AE5E",
+    mEpoxy:"#D51C29",
+    cHigh:"#97CD78",
+    cMedium:"#97CD78",
+    cLow:"#97CD78",
+    wEngineered:"#00AE5E",
+    wBamboo:"#00AE5E",
+    wCork:"#00AE5E",
+    wSoftwood:"#00AE5E",
+    wHardwood:"#00AE5E"
   },
 
   materialTexts: {
@@ -325,7 +358,7 @@ const metaData = {
   typeOrdering: {
     "Stone / Ceramic": 1,
     "Resilient": 2,
-    "Misc": 3,
+    "Misc.": 3,
     "Carpet": 4,
     "Wood": 5
   },
@@ -434,6 +467,22 @@ export default {
     });
   },
 
+  // healthyMatsData: (cb) => {
+  //   Papa.parse(dataHealth, {
+  //     ...PAPAPARSE_CONFIG,
+  //     complete: function(results, file) {
+  //      if(Array.isArray(results.data)) {
+  //        const resultData = results.data.map(d => {
+  //          return { material: d.material, type: d.type, value: parseFloat(d.value), name: d.name, img: d.img }
+  //        });
+  //        cb(resultData);
+  //      } else {
+  //        console.error('error trying to load file', results.errors);
+  //      }
+  //    }
+  //   });
+  // },
+
   allImpactsData: (cb) => {
     Papa.parse(dataAllImpacts, {
       ...PAPAPARSE_CONFIG,
@@ -535,6 +584,22 @@ export default {
      }
     });
   },
+
+  // healthyMatsData1: (cb) => {
+  //   Papa.parse(dataHealth1, {
+  //     ...PAPAPARSE_CONFIG,
+  //     complete: function(results, file) {
+  //      if(Array.isArray(results.data)) {
+  //        const resultData = results.data.map(d => {
+  //          return { material: d.material, type: d.type, value: parseFloat(d.value), name: d.name, img: d.img }
+  //        });
+  //        cb(resultData);
+  //      } else {
+  //        console.error('error trying to load file', results.errors);
+  //      }
+  //    }
+  //   });
+  // },
 
   allImpactsData1: (cb) => {
     Papa.parse(dataAllImpacts1, {
@@ -638,6 +703,22 @@ export default {
     });
   },
 
+  // healthyMatsData2: (cb) => {
+  //   Papa.parse(dataHealth2, {
+  //     ...PAPAPARSE_CONFIG,
+  //     complete: function(results, file) {
+  //      if(Array.isArray(results.data)) {
+  //        const resultData = results.data.map(d => {
+  //          return { material: d.material, type: d.type, value: parseFloat(d.value), name: d.name, img: d.img }
+  //        });
+  //        cb(resultData);
+  //      } else {
+  //        console.error('error trying to load file', results.errors);
+  //      }
+  //    }
+  //   });
+  // },
+
   allImpactsData2: (cb) => {
     Papa.parse(dataAllImpacts2, {
       ...PAPAPARSE_CONFIG,
@@ -739,6 +820,22 @@ export default {
      }
     });
   },
+
+  // healthyMatsData3: (cb) => {
+  //   Papa.parse(dataHealth3, {
+  //     ...PAPAPARSE_CONFIG,
+  //     complete: function(results, file) {
+  //      if(Array.isArray(results.data)) {
+  //        const resultData = results.data.map(d => {
+  //          return { material: d.material, type: d.type, value: parseFloat(d.value), name: d.name, img: d.img }
+  //        });
+  //        cb(resultData);
+  //      } else {
+  //        console.error('error trying to load file', results.errors);
+  //      }
+  //    }
+  //   });
+  // },
 
   allImpactsData3: (cb) => {
     Papa.parse(dataAllImpacts3, {
@@ -842,6 +939,22 @@ export default {
     });
   },
 
+  // healthyMatsData4: (cb) => {
+  //   Papa.parse(dataHealth4, {
+  //     ...PAPAPARSE_CONFIG,
+  //     complete: function(results, file) {
+  //      if(Array.isArray(results.data)) {
+  //        const resultData = results.data.map(d => {
+  //          return { material: d.material, type: d.type, value: parseFloat(d.value), name: d.name, img: d.img }
+  //        });
+  //        cb(resultData);
+  //      } else {
+  //        console.error('error trying to load file', results.errors);
+  //      }
+  //    }
+  //   });
+  // },
+
   allImpactsData4: (cb) => {
     Papa.parse(dataAllImpacts4, {
       ...PAPAPARSE_CONFIG,
@@ -943,6 +1056,8 @@ export default {
      }
     });
   },
+
+
 
   allImpactsData5: (cb) => {
     Papa.parse(dataAllImpacts5, {

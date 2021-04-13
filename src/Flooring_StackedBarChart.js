@@ -149,6 +149,7 @@ let multiplier = 100.0 / currentBiggest;
     matCol.push(val)
   })
 
+
   let myTexts = []
 
   Object.values(metaData.materialOrdering).forEach(val =>{
@@ -314,6 +315,9 @@ let multiplier = 100.0 / currentBiggest;
                             // console.log(bar.bar.data.mName)
                             if(colorBy === "material" && bar.bar && bar.bar.data && bar.bar.data.material) {
                               barColor = metaData.materialColors[bar.bar.data.material] || bar.color;
+                            }else if(colorBy === "health" && bar.bar && bar.bar.data && bar.bar.data.material) {
+                              barColor = metaData.materialHealth[bar.bar.data.material] || bar.color;
+
                             }
                             return (<rect key={`barstack-horizontal-${barStack.index}-${bar.index}`} x={bar.x} y={bar.y} width={bar.width} height={bar.height} stroke={'#ffffff'} fill={barColor} onClick={event => {
                                 if (!events)

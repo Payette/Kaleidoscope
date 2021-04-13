@@ -87,7 +87,7 @@ const tiers = [
       'Help center access',
       'Priority email support',
     ],
-    img: "./img/FS_Axon.png",
+    img: "./img/Axon_1_Stone.png",
     buttonText: 'View Flooring',
     buttonVariant: 'contained',
     item: 1
@@ -124,6 +124,18 @@ function withSplashScreen(WrappedComponent) {
     }
 
     async componentDidMount() {
+
+      let s = new URLSearchParams(window.location.search)
+
+      console.log(s.get("type"))
+  
+      let type = s.get("type")
+
+
+
+      if(type == 0 || type == 1){ //envelope
+        this.setState({loading: false, currentItem: type});
+      }
     //   try {
     //     await auth0Client.loadSession();
 
@@ -168,7 +180,7 @@ function withSplashScreen(WrappedComponent) {
                           ${tier.price}
                         </Typography> */}
                         <Typography variant="h6" color="textSecondary">
-                          <img src={tier.img} style={{height: "250px", margin: "auto"}}></img>
+                          <img src={tier.img} style={{height: "250px", maxWidth:"100%", margin: "auto"}}></img>
                         </Typography>
                       </div>
                       {/* <ul>
@@ -199,6 +211,13 @@ function withSplashScreen(WrappedComponent) {
     }
 
     render() {
+
+      
+      //else if(type == 1){
+      //   this.setState( //flooring
+      //     {value: 1}
+      //   )
+      // }
 
       // while checking user session, show "loading" message
       if(!loading1){

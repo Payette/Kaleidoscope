@@ -8,7 +8,7 @@ import RSGranite from './images/Detail_MockUp_RSGranite.png'
 import legendGWP from './images/k-04.png'
 import legendImpacts from './images/k-02.png'
 import legendLCS from './images/k-03.png'
-import legendMB from './images/MaterialBreakdown-11.png'
+import legendMB from './images/Flooring_system-boundary.png'
 import { render } from 'react-dom'
 import Checkbox from './Checkbox'
 import Pie from "./Flooring_PieChart";

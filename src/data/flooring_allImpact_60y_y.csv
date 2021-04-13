@@ -1,0 +1,19 @@
+material,type,name,img,i1,i2,i3,i4,i5,i6
+sGranite,Stone / Ceramic,Granite,./img/granite.png,18.97,6.32,3.86,2.46,2.11,1.41
+sSlate,Stone / Ceramic,Slate,./img/limestone.png,18.02,6.01,3.67,2.34,2.00,1.34
+sCeramic,Stone / Ceramic,Ceramic Tile,./img/brick.png,2.11,0.70,0.43,0.27,0.23,0.16
+rRubber,Resilient,Rubber Tile,./img/insmetalpanel.png,15.32,5.11,3.12,1.99,1.70,1.13
+rVinyl,Resilient,Solid Vinyl Tile,./img/spandrel.png,16.23,5.41,3.31,2.10,1.80,1.20
+rLinoTile,Resilient,Linoleum Tile,./img/gfrc.png,6.22,2.07,1.27,0.81,0.69,0.46
+mConcrete,Misc.,Concrete,./img/acm.png,36.78,12.26,7.49,4.77,4.09,2.72
+mTerrazzo,Misc.,Terrazzo,./img/terracotta.png,38.25,12.75,7.79,4.96,4.25,2.83
+mSealedC,Misc.,Sealed Concrete,./img/phenresin.png,9.68,3.23,1.97,1.26,1.08,0.72
+mEpoxy,Misc.,Epoxy,./img/fibercement.png,52.47,17.49,10.69,6.80,5.83,3.89
+cHigh,Carpet,High Pile,./img/zinc.png,54.00,18.00,11.00,7.00,6.00,4.00
+cMedium,Carpet,Medium Pile,./img/granite1.png,43.26,14.42,8.81,5.61,4.81,3.20
+cLow,Carpet,Low Pile,./img/limestone1.png,28.19,9.40,5.74,3.65,3.13,2.09
+wEngineered,Wood,Engineered,./img/steel1.png,1.92,0.64,0.39,0.25,0.21,0.14
+wBamboo,Wood,Bamboo,./img/wood1.png,9.54,3.18,1.94,1.24,1.06,0.71
+wCork,Wood,Cork,./img/limestone1.png,2.03,0.68,0.41,0.26,0.23,0.15
+wSoftwood,Wood,Softwood Plank,./img/steel1.png,-2.40,-0.80,-0.49,-0.31,-0.27,-0.18
+wHardwood,Wood,Hardwood Plank,./img/wood1.png,4.11,1.37,0.84,0.53,0.46,0.30

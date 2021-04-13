@@ -4,6 +4,7 @@ import { Group } from '@vx/group';
 import { GradientPinkBlue } from '@vx/gradient';
 import { letterFrequency, browserUsage } from '@vx/mock-data';
 import { localPoint } from '@vx/event';
+// import { Pattern as CustomPattern, PatternLines, PatternCircles, PatternWaves } from '@vx/pattern';
 
 let pointX = 0;
 let pointY = 0;
@@ -97,9 +98,11 @@ export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdo
 //  console.log(cols1);
   
 
-  const mats = materialNames.map(k => ({ label: materialLabel[k], mUsage: materials[k] }));
+  const mats = materialNames.map(k => ({ label: materialLabel[k], mUsage: Math.abs(materials[k]) }));
   let mUsage = d => d.mUsage;
   let textToShow = "0.00";
+
+  // console.log(mUsage)
 
   
   return (

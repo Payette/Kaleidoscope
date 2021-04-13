@@ -5,10 +5,10 @@ sCeramic,Stone / Ceramic,0.76,Ceramic Tile,./img/brick.png
 rRubber,Resilient,1.47,Rubber Tile,./img/insmetalpanel.png
 rVinyl,Resilient,0.99,Solid Vinyl Tile,./img/spandrel.png
 rLinoTile,Resilient,0.32,Linoleum Tile,./img/gfrc.png
-mConcrete,Miscellaneous,1.74,Concrete,./img/acm.png
-mTerrazzo,Miscellaneous,1.49,Terrazzo,./img/terracotta.png
-mSealedC,Miscellaneous,1.43,Sealed Concrete,./img/phenresin.png
-mEpoxy,Miscellaneous,0.84,Epoxy,./img/fibercement.png
+mConcrete,Misc.,1.74,Concrete,./img/acm.png
+mTerrazzo,Misc.,1.49,Terrazzo,./img/terracotta.png
+mSealedC,Misc.,1.43,Sealed Concrete,./img/phenresin.png
+mEpoxy,Misc.,0.84,Epoxy,./img/fibercement.png
 cHigh,Carpet,1.64,High Pile,./img/zinc.png
 cMedium,Carpet,1.36,Medium Pile,./img/granite1.png
 cLow,Carpet,0.94,Low Pile,./img/limestone1.png
