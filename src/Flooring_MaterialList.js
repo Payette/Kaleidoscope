@@ -8,7 +8,7 @@ import RSGranite from './images/Detail_MockUp_RSGranite.png'
 import legendGWP from './images/k-04.png'
 import legendImpacts from './images/k-02.png'
 import legendLCS from './images/k-03.png'
-import legendMB from './images/Flooring_system-boundary.png'
+import legendMB from './images/System_Boundary-flooring_EDIT.png'
 import { render } from 'react-dom'
 import Checkbox from './Checkbox'
 import Pie from "./Flooring_PieChart";
@@ -143,13 +143,16 @@ export default class MaterialList extends PureComponent {
       legendText = ""
     }else if(this.props.currentSel === "allImpacts"){
       legend = legendGWP;
-      legendText = <div><p> <span style={{background: "#87cee9"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Global Warming Potential (kgCO<sub>2</sub>eq/sf)</p> <p> <span style={{background: "#6495ed"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Non-Renewable Energy Demand (MJ/sf)</p><p> <span style={{background: "#fcc05e"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Eutrophication Potential (kgNeq/sf)</p> <p> <span style={{background: "#0090ff"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Smog Formation Potential (kgO<sub>3</sub>eq/sf)</p><p> <span style={{background: "#85e2bd"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Acidification Potential (kgSO<sub>2</sub>eq/sf)</p> <p> <span style={{background: "#283cdc"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Ozone Depletion Potential (CFC-11eq/sf)</p></div>
+      legendText = <div style={{fontFamily: "freight-text-pro, serif"}}><p> <span style={{background: "#87cee9"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Global Warming Potential (kgCO<sub>2</sub>eq/sf)</p> <p> <span style={{background: "#6495ed"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Non-Renewable Energy Demand (MJ/sf)</p><p> <span style={{background: "#fcc05e"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Eutrophication Potential (kgNeq/sf)</p> <p> <span style={{background: "#0090ff"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Smog Formation Potential (kgO<sub>3</sub>eq/sf)</p><p> <span style={{background: "#85e2bd"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Acidification Potential (kgSO<sub>2</sub>eq/sf)</p> <p> <span style={{background: "#283cdc"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Ozone Depletion Potential (CFC-11eq/sf)</p></div>
     }else if(this.props.currentSel === "LCS"){
       legend = legendGWP;
-      legendText = <div><p> <span style={{background: "#85e2bd"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [A1 - A3] Product </p> <p> <span style={{background: "#fcc05e"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [A4] Transportation </p><p> <span style={{background: "#001489"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [B2 - B5] Maintenance and Replacement </p> <p> <span style={{background: "#4095ee"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [C2 - C4] End of Life </p><p> <span style={{background: "#a2d3eb"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [D] Module D </p> </div>
+      legendText = <div style={{fontFamily: "freight-text-pro, serif"}}><p> <span style={{background: "#85e2bd"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [A1 - A3] Product </p> <p> <span style={{background: "#fcc05e"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [A4] Transportation </p><p> <span style={{background: "#001489"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [B2 - B5] Maintenance and Replacement </p> <p> <span style={{background: "#4095ee"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [C2 - C4] End of Life </p><p> <span style={{background: "#a2d3eb"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [D] Module D </p> </div>
     }else if(this.props.currentSel === "MB"){
       legend = legendMB;
-      legendText = <div><img style={{maxWidth: "320px"}} src={legend}/><p> <span style={{background: "#85e2bd"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Exterior Finish </p> <p> <span style={{background: "#4169e1"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Support System </p> <p> <span style={{background: "#fcc05e"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Insulation </p> <p> <span style={{background: "#cccccc"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Other </p></div>
+      legendText = <div style={{fontFamily: "freight-text-pro, serif"}}><img style={{maxWidth: "320px"}} src={legend}/><p> <span style={{background: "#85e2bd"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Flooring Finish </p> <p style={{fontFamily: "freight-text-pro, serif"}}> <span style={{background: "#4169e1"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Attachment Material </p> <p> <span style={{background: "#cccccc"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Other </p></div>
+    }else if(this.props.currentSel === "MH"){
+      legend = legendMB;
+      legendText = <div style={{fontFamily: "freight-text-pro, serif"}}><p> <span style={{background: "#00a558"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Meets Payette Policy </p> <p> <span style={{background: "#8cc672"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Meets Payette Material Policy with Requests </p> <p> <span style={{background: "#FEBE10"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Meets some of Payette Material Policy </p><p> <span style={{background: "#D51C29"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Does not meet Payette Material Policy </p></div>
     }
 
     //CHANGE THE MODAL TO IMG OF MASONRY VENEER GRANITE AS DEFAULT
@@ -175,6 +178,13 @@ export default class MaterialList extends PureComponent {
     if(this.state.materialPopup.name !== "Material"){
       listItems = this.props.metaData.materialNotes[this.state.materialPopup.name].map((number) =>
     <li>- {number}</li>
+    );
+    }
+
+    let listItemsHealth;
+    if(this.state.materialPopup.name !== "Material"){
+      listItemsHealth = this.props.metaData.materialHealthText[this.state.materialPopup.name].map((number) =>
+    <li>- {number}</li>
   );
   
     }
@@ -192,9 +202,9 @@ export default class MaterialList extends PureComponent {
           </span>
           <span>
           <h3 style={{display: "inline-block"}}>FLOORING TYPE</h3><button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button><br></br><br>
-          </br>Click on a type below for additional details
+          </br><span style={{fontFamily:"freight-text-pro, serif"}}>Click on a type below for additional details</span><br></br>
           
-          </span>
+          </span><br></br>
         </div>
         <div>
         
@@ -214,6 +224,7 @@ export default class MaterialList extends PureComponent {
             element: "dialog-content",
             base: "dialog"
           }}
+          style={{width:500}}
           >
             <span>
               <h2 style={{fontSize: "40px"}}>{this.props.metaData.materialName2[this.state.materialPopup.name]}</h2>
@@ -229,7 +240,7 @@ export default class MaterialList extends PureComponent {
               <div style={{width: "30%",float:"left", position:"relative", textAlign:"center"}}>
               {/* <p style={{position:"absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", zIndex:"100", marginLeft:"2.5em"}}><strong>{this.props.gwp[this.state.materialPopup.name]}</strong><br></br>kgCO&#x2082;eq/sf<br></br>GWP</p><br></br> */}
               {/* <img style={{width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
-              <Pie style={{width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em"}}  
+              <Pie style={{width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em", position:"absolute"}}  
               width={window.innerWidth/3} 
               height={380} 
               matBreakdown={this.props.matBreakdown} 
@@ -244,16 +255,26 @@ export default class MaterialList extends PureComponent {
                  
 
               </div>
+              <br></br>
               {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={materialPopupMock} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
               {/* <img style={{maxWidth: "30%", maxHeight: "30%", paddingBottom: "3em"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
               
-                            <img style={{maxWidth: "45%", top:"-70px", position:"relative", float:"right", objectFit:"cover", display:"block"}} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />
-                                    
-              <div style={{maxWidth:"55%", float:"left", position:'relative'}}><h4>Assumptions</h4>
+                            <img style={{maxWidth: "45%", top:"20px", position:"absolute", right:"0px", objectFit:"cover", display:"block", zIndex:"-1"}} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />
+                                    <br></br>
+                                    <div style={{maxWidth:"55%", top:"600px", left:"50px", position:'absolute', display:"block"}}>
+              <div style={{display:"block"}}><h4>Assumptions</h4>
               
               <ul style={{lineHeight:'1.6em', fontSize: '16px', paddingLeft:'1em'}}>{listItems}</ul></div>
+              <br></br>
+              <div style={{position:'relative', display:'block'}}><h4>Material Health</h4>
+              
+              <ul style={{lineHeight:'1.6em', fontSize: '16px', paddingLeft:'1em'}}>{listItemsHealth}</ul></div>
               {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={myImg} alt="material icon"/> */}
+              </div>
             </span>
+            <div style={{height:"700px"}}>
+
+            </div>
         </Dialog>
       </div>
     )

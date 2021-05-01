@@ -1,10 +1,10 @@
 import Papa from 'papaparse';
 
 // import dataHealth from './flooring_healthymats_10y_y.csv';
-import dataGWP from './flooring_gwp_10y_y.csv';
-import dataAllImpacts from './flooring_allImpact_10y_y.csv';
-import dataLCS from './flooring_lcs_10y_y.csv';
-import dataMaterial from './flooring_material_10y_y.csv';
+import dataGWP from './flooring_gwp_10y_n.csv';
+import dataAllImpacts from './flooring_allImpact_10y_n.csv';
+import dataLCS from './flooring_lcs_10y_n.csv';
+import dataMaterial from './flooring_material_10y_n.csv';
 
 // import dataHealth1 from './flooring_healthymats_10y_y.csv';
 import dataGWP1 from './flooring_gwp_10y_y.csv';
@@ -13,28 +13,28 @@ import dataLCS1 from './flooring_lcs_10y_y.csv';
 import dataMaterial1 from './flooring_material_10y_y.csv';
 
 // import dataHealth2 from './flooring_healthymats_10y_y.csv';
-import dataGWP2 from './flooring_gwp_10y_y.csv';
-import dataAllImpacts2 from './flooring_allImpact_10y_y.csv';
-import dataLCS2 from './flooring_lcs_10y_y.csv';
-import dataMaterial2 from './flooring_material_10y_y.csv';
+import dataGWP2 from './flooring_gwp_60y_n.csv';
+import dataAllImpacts2 from './flooring_allImpact_60y_n.csv';
+import dataLCS2 from './flooring_lcs_60y_n.csv';
+import dataMaterial2 from './flooring_material_60y_n.csv';
 
 // import dataHealth3 from './flooring_healthymats_10y_y.csv';
-import dataGWP3 from './flooring_gwp_60y_y.csv';
-import dataAllImpacts3 from './flooring_allImpact_60y_y.csv';
-import dataLCS3 from './flooring_lcs_60y_y.csv';
-import dataMaterial3 from './flooring_material_60y_y.csv';
+import dataGWP4 from './flooring_gwp_60y_y.csv';
+import dataAllImpacts4 from './flooring_allImpact_60y_y.csv';
+import dataLCS4 from './flooring_lcs_60y_y.csv';
+import dataMaterial4 from './flooring_material_60y_y.csv';
 
 // import dataHealth4 from './flooring_healthymats_10y_y.csv';
-import dataGWP4 from './flooring_gwp_10y_y.csv';
-import dataAllImpacts4 from './flooring_allImpact_10y_y.csv';
-import dataLCS4 from './flooring_lcs_10y_y.csv';
-import dataMaterial4 from './flooring_material_10y_y.csv';
+import dataGWP3 from './flooring_gwp_60yd_n.csv';
+import dataAllImpacts3 from './flooring_allImpact_60yd_n.csv';
+import dataLCS3 from './flooring_lcs_60yd_n.csv';
+import dataMaterial3 from './flooring_material_60yd_n.csv';
 
 // import dataHealth5 from './flooring_healthymats_10y_y.csv';
-import dataGWP5 from './flooring_gwp_10y_y.csv';
-import dataAllImpacts5 from './flooring_allImpact_10y_y.csv';
-import dataLCS5 from './flooring_lcs_10y_y.csv';
-import dataMaterial5 from './flooring_material_10y_y.csv';
+import dataGWP5 from './flooring_gwp_60yd_y.csv';
+import dataAllImpacts5 from './flooring_allImpact_60yd_y.csv';
+import dataLCS5 from './flooring_lcs_60yd_y.csv';
+import dataMaterial5 from './flooring_material_60yd_y.csv';
 
 const PAPAPARSE_CONFIG = {
   download: true,
@@ -44,24 +44,24 @@ const PAPAPARSE_CONFIG = {
 
 const metaData = {
   materialColors: {
-    sGranite:"#d15476",
-    sSlate:"#e6a7bb",
-    sCeramic:"#eec8d5",
-    rRubber:"#f3c36f",
-    rVinyl:"#f2cd9e",
-    rLinoTile:"#f9e6c4",
-    mConcrete:"#b2edb0",
-    mTerrazzo:"#d2f6d2",
-    mSealedC:"#e0f8e1",
-    mEpoxy:"#eafbea",
-    cHigh:"#9ce0bf",
-    cMedium:"#c1ecd6",
-    cLow:"#daf5e7",
-    wEngineered:"#e0eaf5",
-    wBamboo:"#a4c1e3",
-    wCork:"#a3c1e2",
-    wSoftwood:"#4f71be",
-    wHardwood:"#0b00c4"
+    sGranite:"#F78461",
+    sSlate:"#F99D81",
+    sCeramic:"#FAB5A0",
+    rRubber:"#FCC05E",
+    rVinyl:"#F9CB97",
+    rLinoTile:"#FEE6BF",
+    mConcrete:"#8EE05F",
+    mTerrazzo:"#ADE589",
+    // mSealedC:"#e0f8e1",
+    mEpoxy:"#C2EAA7",
+    cHigh:"#89EFC0",
+    cMedium:"#A1F2CD",
+    cLow:"#B8F5D9",
+    wEngineered:"#87CEE9",
+    wBamboo:"#66BCFF",
+    wCork:"#4497EA",
+    wSoftwood:"#4169E1",
+    wHardwood:"#283CDC"
   },
 
 
@@ -71,156 +71,160 @@ const metaData = {
   //red = D51C29
 
   materialHealth: {
-    sGranite:"#97CD78",
-    sSlate:"#97CD78",
-    sCeramic:"#97CD78",
-    rRubber:"#97CD78",
-    rVinyl:"#D51C29",
-    rLinoTile:"#97CD78",
-    mConcrete:"#00AE5E",
-    mTerrazzo:"#00AE5E",
-    mSealedC:"#00AE5E",
-    mEpoxy:"#D51C29",
-    cHigh:"#97CD78",
-    cMedium:"#97CD78",
-    cLow:"#97CD78",
-    wEngineered:"#00AE5E",
-    wBamboo:"#00AE5E",
-    wCork:"#00AE5E",
-    wSoftwood:"#00AE5E",
-    wHardwood:"#00AE5E"
+    sGranite:"#8cc672",
+    sSlate:"#8cc672",
+    sCeramic:"#8cc672",
+    rRubber:"#8cc672",
+    rVinyl:"#d51128",
+    rLinoTile:"#8cc672",
+    mConcrete:"#00a558",
+    mTerrazzo:"#00a558",
+    // mSealedC:"",
+    mEpoxy:"#d51128",
+    cHigh:"#8cc672",
+    cMedium:"#8cc672",
+    cLow:"#8cc672",
+    wEngineered:"#00a558",
+    wBamboo:"#00a558",
+    wCork:"#00a558",
+    wSoftwood:"#00a558",
+    wHardwood:"#00a558"
+  },
+
+  materialHealthText: {
+    sGranite:["Check that no antimicrobial coatings are included"],
+    sSlate:["Check that no antimicrobial coatings are included"],
+    sCeramic:["Check that no antimicrobial coatings are included"],
+    rRubber:["Check that no antimicrobial coatings are included"],
+    rVinyl:["Not recommended per Payette Material Policy"],
+    rLinoTile:["Check that no antimicrobial coatings are included"],
+    mConcrete:[""],
+    mTerrazzo:["Watch for VOC Content"],
+    // mSealedC:"",
+    mEpoxy:["Watch for VOC Content","Watch for Vinyl Content  'color chips', choose alternate if possible"],
+    cHigh:["Specify Vinyl Free backing","Watch for stain treatments, flame retardants and anti-microbials","Consider solution-dyed; solution-dyed with waterproof backing is stain resistant without added treatments"],
+    cMedium:["Specify Vinyl Free backing","Watch for stain treatments, flame retardants and anti-microbials","Consider solution-dyed; solution-dyed with waterproof backing is stain resistant without added treatments"],
+    cLow:["Specify Vinyl Free backing","Watch for stain treatments, flame retardants and anti-microbials","Consider solution-dyed; solution-dyed with waterproof backing is stain resistant without added treatments"],
+    wEngineered:["Specify FSC or other responsible source","Watch for VOC content of coatings","Specify no added urea-formaldehyde or ultra-low emitting formaldehyde (NAUF/ULEF)"],
+    wBamboo:["Specify FSC or other responsible source","Watch for VOC content of coatings","Specify no added urea-formaldehyde or ultra-low emitting formaldehyde (NAUF/ULEF)"],
+    wCork:["Specify FSC or other responsible source","Watch for VOC content of coatings","Specify no added urea-formaldehyde or ultra-low emitting formaldehyde (NAUF/ULEF)"],
+    wSoftwood:["Specify FSC or other responsible source","Watch for VOC content of coatings."],
+    wHardwood:["Specify FSC or other responsible source","Watch for VOC content of coatings."]
   },
 
   materialTexts: {
-    sGranite:"hello #d15476",
-    sSlate:"hi #e6a7bb",
-    sCeramic:"#eec8d5",
-    rRubber:"#f3c36f",
-    rVinyl:"#f2cd9e",
-    rLinoTile:"#f9e6c4",
-    mConcrete:"#b2edb0",
-    mTerrazzo:"#d2f6d2",
-    mSealedC:"#e0f8e1",
-    mEpoxy:"#eafbea",
-    cHigh:"#9ce0bf",
-    cMedium:"#c1ecd6",
-    cLow:"#daf5e7",
-    wEngineered:"#e0eaf5",
-    wBamboo:"#a4c1e3",
-    wCork:"#a3c1e2",
-    wSoftwood:"#4f71be",
-    wHardwood:"goodbye 0b00c4"
+    sGranite:"Granite stone tile; cement grout; thickset mortar",
+    sSlate:"Slate stone tile; cement grout; thickset mortar",
+    sCeramic:"Porcelain ceramic tile; cement grout; thin-set mortar",
+    rRubber:"Rubber tile; HDPE vapor barrier; cementitious underlayment",
+    rVinyl:"Solid vinyl flooring; HDPE vapor barrier; cementitious underlayment",
+    rLinoTile:"Linoleum flooring; HDPE vapor barrier; cementitious underlayment",
+    mConcrete:'2" Concrete topping slab',
+    mTerrazzo:"Thin-set Epoxy Terrazzo (EPD specific)",
+    // mSealedC:"",
+    mEpoxy:"Decorative Mosaic Epoxy Coating System (EPD Specific)",
+    cHigh:"High-pile carpet; HDPE vapor barrier; cementitious underlayment",
+    cMedium:"Medium-pile nylon carpet; HDPE vapor barrier; cementitious underlayment",
+    cLow:"Low-pile nylon carpet; HDPE vapor barrier; cementitious underlayment",
+    wEngineered:"Hardwood veneer flooring; HDPE vapor barrier; plywood substrate",
+    wBamboo:"Bamboo plank flooring; HDPE vapor barrier; plywood substrate",
+    wCork:"Cork tile flooring; HDPE vapor barrier; plywood substrate",
+    wSoftwood:"Softwood solid plank flooring; HDPE vapor barrier; plywood substrate",
+    wHardwood:"Hardwood solid plank flooring; HPDE vapor barrier; plywood substrate"
   },
 
   materialNotes:{
-    sGranite:['Building structure not included in LCA calculations',
-    'Opaque wall only; fenestrations not included',
-    'Section includes steel shelf angle with knife plate connection for thermal performance',
-    '4" continuous mineral wool insulation thickness set to reach system R-value 15.625',
-    'Fiberglass mat gypsum sheathing',
-    'Service life of exterior materials default of 60 years or higher'],
-    sSlate:['Building structure not included in LCA calculations',
-    'Opaque wall only; fenestrations not included',
-    'Section includes steel shelf angle with knife plate connection for thermal performance',
-    '4" continuous mineral wool insulation thickness set to reach system R-value 15.625',
-    'Fiberglass mat gypsum sheathing',
-    'Service life of exterior materials default of 60 years or higher'],
-    sCeramic:['Building structure not included in LCA calculations',
-    'Opaque wall only; fenestrations not included',
-    'Section includes steel shelf angle with knife plate connection for thermal performance',
-    '4" continuous mineral wool insulation thickness set to reach system R-value 15.625',
-    'Fiberglass mat gypsum sheathing',
-    'Service life of exterior materials default of 60 years or higher'],
-    rRubber:['Building structure not included in LCA calculations',
-    'Opaque wall only; fenestrations not included',
-    'Section includes steel shelf angle with knife plate connection for thermal performance',
-    '4" continuous mineral wool insulation thickness set to reach system R-value 15.625',
-    'Fiberglass mat gypsum sheathing',
-    'Service life of exterior materials default of 60 years or higher'],
-    rVinyl:['Building structure not included in LCA calculations',
-    'Opaque wall only; fenestrations not included',
-    'Section includes steel shelf angle with knife plate connection for thermal performance',
-    '4" continuous mineral wool insulation thickness set to reach system R-value 15.625',
-    'Fiberglass mat gypsum sheathing',
-    'Service life of exterior materials default of 60 years or higher'],
-    rLinoTile:['Building structure not included in LCA calculations',
-    'Opaque wall only; fenestrations not included',
-    'Section includes steel shelf angle with knife plate connection for thermal performance',
-    '4" continuous mineral wool insulation thickness set to reach system R-value 15.625',
-    'Fiberglass mat gypsum sheathing',
-    'Service life of exterior materials default of 60 years or higher'],
-    mConcrete:['Building structure not included in LCA calculations',
-    'Opaque wall only; fenestrations not included',
-    'Section includes steel shelf angle with knife plate connection for thermal performance',
-    '4" continuous mineral wool insulation thickness set to reach system R-value 15.625',
-    'Fiberglass mat gypsum sheathing',
-    'Service life of exterior materials default of 60 years or higher'],
-    mTerrazzo:['Building structure not included in LCA calculations',
-    'Opaque wall only; fenestrations not included',
-    'Section includes steel shelf angle with knife plate connection for thermal performance',
-    '4" continuous mineral wool insulation thickness set to reach system R-value 15.625',
-    'Fiberglass mat gypsum sheathing',
-    'Service life of exterior materials default of 60 years or higher'],
-    mSealedC:['Building structure not included in LCA calculations',
-    'Opaque wall only; fenestrations not included',
-    'Section includes steel shelf angle with knife plate connection for thermal performance',
-    '4" continuous mineral wool insulation thickness set to reach system R-value 15.625',
-    'Fiberglass mat gypsum sheathing',
-    'Service life of exterior materials default of 60 years or higher'],
-    mEpoxy:['Building structure not included in LCA calculations',
-    'Opaque wall only; fenestrations not included',
-    'Section includes steel shelf angle with knife plate connection for thermal performance',
-    '4" continuous mineral wool insulation thickness set to reach system R-value 15.625',
-    'Fiberglass mat gypsum sheathing',
-    'Service life of exterior materials default of 60 years or higher'],
-    cHigh:['Building structure not included in LCA calculations',
-    'Opaque wall only; fenestrations not included',
-    'Section includes steel shelf angle with knife plate connection for thermal performance',
-    '4" continuous mineral wool insulation thickness set to reach system R-value 15.625',
-    'Fiberglass mat gypsum sheathing',
-    'Service life of exterior materials default of 60 years or higher'],
-    cMedium:['Building structure not included in LCA calculations',
-    'Opaque wall only; fenestrations not included',
-    'Section includes steel shelf angle with knife plate connection for thermal performance',
-    '4" continuous mineral wool insulation thickness set to reach system R-value 15.625',
-    'Fiberglass mat gypsum sheathing',
-    'Service life of exterior materials default of 60 years or higher'],
-    cLow:['Building structure not included in LCA calculations',
-    'Opaque wall only; fenestrations not included',
-    'Section includes steel shelf angle with knife plate connection for thermal performance',
-    '4" continuous mineral wool insulation thickness set to reach system R-value 15.625',
-    'Fiberglass mat gypsum sheathing',
-    'Service life of exterior materials default of 60 years or higher'],
-    wEngineered:['Building structure not included in LCA calculations',
-    'Opaque wall only; fenestrations not included',
-    'Section includes steel shelf angle with knife plate connection for thermal performance',
-    '4" continuous mineral wool insulation thickness set to reach system R-value 15.625',
-    'Fiberglass mat gypsum sheathing',
-    'Service life of exterior materials default of 60 years or higher'],
-    wBamboo:['Building structure not included in LCA calculations',
-    'Opaque wall only; fenestrations not included',
-    'Section includes steel shelf angle with knife plate connection for thermal performance',
-    '4" continuous mineral wool insulation thickness set to reach system R-value 15.625',
-    'Fiberglass mat gypsum sheathing',
-    'Service life of exterior materials default of 60 years or higher'],
-    wCork:['Building structure not included in LCA calculations',
-    'Opaque wall only; fenestrations not included',
-    'Section includes steel shelf angle with knife plate connection for thermal performance',
-    '4" continuous mineral wool insulation thickness set to reach system R-value 15.625',
-    'Fiberglass mat gypsum sheathing',
-    'Service life of exterior materials default of 60 years or higher'],
-    wSoftwood:['Building structure not included in LCA calculations',
-    'Opaque wall only; fenestrations not included',
-    'Section includes steel shelf angle with knife plate connection for thermal performance',
-    '4" continuous mineral wool insulation thickness set to reach system R-value 15.625',
-    'Fiberglass mat gypsum sheathing',
-    'Service life of exterior materials default of 60 years or higher'],
-    wHardwood:['Building structure not included in LCA calculations',
-    'Opaque wall only; fenestrations not included',
-    'Section includes steel shelf angle with knife plate connection for thermal performance',
-    '4" continuous mineral wool insulation thickness set to reach system R-value 15.625',
-    'Fiberglass mat gypsum sheathing',
-    'Service life of exterior materials default of 60 years or higher']
+    sGranite:['Structural slab not included in LCA calculations',
+    'Flooring only; no wall bases included',
+    'Service life of materials set to Tally default',
+    '1/2" Granite stone tile flooring',
+    '1" Thickset mortar'],
+    sSlate:['Structural slab not included in LCA calculations',
+    'Flooring only; no wall bases included',
+    'Service life of materials set to Tally default',
+    '1/2" Slate stone tile flooring',
+    '1" Thickset mortar'],
+    sCeramic:['Structural slab not included in LCA calculations',
+      'Flooring only; no wall bases included',
+      'Service life of materials set to Tally default',
+      '1/4" Porcelain ceramic tile, glazed',
+      '3/8" thin-set mortar'],
+    rRubber:['Structural slab not included in LCA calculations',
+    'Data is for sheet or tile flooring',
+    'Service life of materials set to Tally default',
+    'Flooring only; no wall bases included',
+    'Inclusive of polyurethane-based flooring finish',
+    'Inclusive of latex-based adhesive',
+    '1/2" cementitious underlayment'],
+    rVinyl:['Structural slab not included in LCA calculations',
+    'Data is for sheet or tile flooring',
+    'Data assumed similar for Vinyl Composite Tyle (VCT)',
+    'Service life of materials set to Tally default',
+    'Flooring only; no wall bases included',
+    'Inclusive of polyurethane-based flooring finish',
+    'Inclusive of latex-based adhesive',
+    '1/2" cementitious underlayment'],
+    rLinoTile:['Structural slab not included in LCA calculations',
+      'Data is for sheet or tile flooring',
+      'Service life of materials set to Tally default',
+      'Flooring only; no wall bases included',
+      'Inclusive of polyurethane-based flooring finish',
+      'Inclusive of latex-based adhesive',
+      '1/2" cementitious underlayment'],
+    mConcrete:['Structural slab not included in LCA calculations',
+      'Service life of materials set to Tally default',
+      'Flooring only; no wall bases included',
+      '2" self-leveling concrete'],
+    mTerrazzo:["Structural slab not included in LCA calculations",
+      "Flooring only; no wall bases included",
+      "Sherwin-Williams Thin-set Epoxy Terrazzo #1100 System Date of issue: April 10, 2019", 
+      "EPD includes: primer and matrix layer, moisture vapor treatment and iso-crack membrane"],
+    // mSealedC:[''],
+    mEpoxy:['Structural slab not included in LCA calculations',
+      'Flooring only; no wall bases included',
+      'Sherwin-Williams Decorative Mosaic Epoxy Coating System  Date of issue: April 10, 2019'],
+    cHigh:['Structural slab not included in LCA calculations',
+    'Commercial, high-traffic carpet application',
+    'Service life of materials set to Tally default',
+    'Flooring only; no wall bases included',
+    'Inclusive of latex-based carpet adhesive',
+    '1/2" cementitious underlayment'],
+    cMedium:['Structural slab not included in LCA calculations',
+    'Commercial, high-traffic carpet application',
+    'Service life of materials set to Tally default',
+    'Flooring only; no wall bases included',
+    'Inclusive of latex-based carpet adhesive',
+    '1/2" cementitious underlayment'],
+    cLow:['Structural slab not included in LCA calculations',
+      'Commercial, high-traffic carpet application',
+      'Service life of materials set to Tally default',
+      'Flooring only; no wall bases included',
+      'Inclusive of latex-based carpet adhesive',
+      '1/2" cementitious underlayment'],
+    wEngineered:['Structural slab not included in LCA calculations',
+    'Service life of materials set to Tally default',
+    'Flooring only; no wall bases included',
+    '3/32" Hardwood veneer flooring',
+    'Includes galvanized steel fasteners'],
+    wBamboo:['Structural slab not included in LCA calculations',
+    'Service life of materials set to Tally default',
+    '1/2" Bamboo plank flooring',
+    'Flooring only; no wall bases included',
+    'Includes galvanized steel fasteners'],
+    wCork:['Structural slab not included in LCA calculations',
+    'Service life of materials set to Tally default',
+    'Flooring only; no wall bases included',
+    'Inclusive of latex-based flooring adhesive'],
+    wSoftwood:['Structural slab not included in LCA calculations',
+     'Service life of materials set to Tally default',
+      'Flooring only; no wall bases included',
+      '3/4" Domestic softwood solid plank flooring',
+      'Inclusive of galvanized steel fasteners'],
+    wHardwood:['Structural slab not included in LCA calculations',
+    'Service life of materials set to Tally default',
+     'Flooring only; no wall bases included',
+     '3/4" White Oak solid plank flooring',
+     'Inclusive of galvanized steel fasteners']
   },
 
   materialIcons: { 
@@ -232,7 +236,7 @@ const metaData = {
   rLinoTile:"./images/granite.png",
   mConcrete:"./images/granite.png",
   mTerrazzo:"./images/granite.png",
-  mSealedC:"./images/granite.png",
+  // mSealedC:"./images/granite.png",
   mEpoxy:"./images/granite.png",
   cHigh:"./images/granite.png",
   cMedium:"./images/granite.png",
@@ -253,7 +257,7 @@ const metaData = {
     rLinoTile:"./images/MV-Granite-Pie.png",
     mConcrete:"./images/MV-Granite-Pie.png",
     mTerrazzo:"./images/MV-Granite-Pie.png",
-    mSealedC:"./images/MV-Granite-Pie.png",
+    // mSealedC:"./images/MV-Granite-Pie.png",
     mEpoxy:"./images/MV-Granite-Pie.png",
     cHigh:"./images/MV-Granite-Pie.png",
     cMedium:"./images/MV-Granite-Pie.png",
@@ -266,24 +270,24 @@ const metaData = {
   },
 
   sectionIcons: {
-    sGranite:"./img/Wall Section Drawings_01_MV_Granite.png",
-    sSlate:"./img/Wall Section Drawings_01_MV_Granite.png",
-    sCeramic:"./img/Wall Section Drawings_01_MV_Granite.png",
-    rRubber:"./img/Wall Section Drawings_01_MV_Granite.png",
-    rVinyl:"./img/Wall Section Drawings_01_MV_Granite.png",
-    rLinoTile:"./img/Wall Section Drawings_01_MV_Granite.png",
-    mConcrete:"./img/Wall Section Drawings_01_MV_Granite.png",
-    mTerrazzo:"./img/Wall Section Drawings_01_MV_Granite.png",
-    mSealedC:"./img/Wall Section Drawings_01_MV_Granite.png",
-    mEpoxy:"./img/Wall Section Drawings_01_MV_Granite.png",
-    cHigh:"./img/Wall Section Drawings_01_MV_Granite.png",
-    cMedium:"./img/Wall Section Drawings_01_MV_Granite.png",
-    cLow:"./img/Wall Section Drawings_01_MV_Granite.png",
-    wEngineered:"./img/Wall Section Drawings_01_MV_Granite.png",
-    wBamboo:"./img/Wall Section Drawings_01_MV_Granite.png",
-    wCork:"./img/Wall Section Drawings_01_MV_Granite.png",
-    wSoftwood:"./img/Wall Section Drawings_01_MV_Granite.png",
-    wHardwood:"./img/Wall Section Drawings_01_MV_Granite.png",
+    sGranite:"./img/Flooring_S-Granite.png",
+    sSlate:"./img/Flooring_S-Slate.png",
+    sCeramic:"./img/Flooring_S-Porcelain.png",
+    rRubber:"./img/Flooring_R-Rubber.png",
+    rVinyl:"./img/Flooring_R-Vinyl.png",
+    rLinoTile:"./img/Flooring_R-Linoleum.png",
+    mConcrete:"./img/Flooring_M-Concrete.png",
+    mTerrazzo:"./img/Flooring_M-Terrazzo.png",
+    // mSealedC:"./img/Flooring_M-SealedConcrete.png",
+    mEpoxy:"./img/Flooring_M-Epoxy.png",
+    cHigh:"./img/Flooring_C-HighPile.png",
+    cMedium:"./img/Flooring_C-MediumPile.png",
+    cLow:"./img/Flooring_C-LowPile.png",
+    wEngineered:"./img/Flooring_W-Engineered.png",
+    wBamboo:"./img/Flooring_W-Bamboo.png",
+    wCork:"./img/Flooring_W-Cork.png",
+    wSoftwood:"./img/Flooring_W-Softwood.png",
+    wHardwood:"./img/Flooring_W-Hardwood.png",
   },
 
   impactColors: {
@@ -310,9 +314,9 @@ const metaData = {
     mat4:"#cccccc",
     mat5:"#b3b3b3",
     mat6:"#b3b3b3",
-    mat7:"#0090ff",
-    mat8:"#0090ff",
-    mat9:"#0090ff",
+    mat7:"#4169e1",
+    mat8:"#4169e1",
+    mat9:"#4169e1",
     mat10:"#85e2bd",
     mat11:"#85e2bd",
     mat12:"#85e2bd",
@@ -329,9 +333,9 @@ const metaData = {
     mat23:"#85e2bd",
     mat24:"#85e2bd",
     mat25:"#85e2bd",
-    mat26:"#85e2bd",
+    mat26:"#c7e9b7",
     mat27:"#c7e9b7",
-    mat28:"#c7e9b7",
+    // mat28:"#c7e9b7",
   },
 
   materialOrdering: {
@@ -343,16 +347,16 @@ const metaData = {
     rLinoTile:6,
     mConcrete:7,
     mTerrazzo:8,
-    mSealedC:9,
-    mEpoxy:10,
-    cHigh:11,
-    cMedium:12,
-    cLow:13,
-    wEngineered:14,
-    wBamboo:15,
-    wCork:16,
-    wSoftwood:17,
-    wHardwood:18,
+    // mSealedC:9,
+    mEpoxy:9,
+    cHigh:10,
+    cMedium:11,
+    cLow:12,
+    wEngineered:13,
+    wBamboo:14,
+    wCork:15,
+    wSoftwood:16,
+    wHardwood:17,
   },
 
   typeOrdering: {
@@ -366,13 +370,13 @@ const metaData = {
   materialType:{
     sGranite:"SC - Granite",
     sSlate:"SC - Slate",
-    sCeramic:"SC - Ceramic",
+    sCeramic:"SC - Porcelain",
     rRubber:"R - Rubber",
     rVinyl:"R - Vinyl",
     rLinoTile:"R - Linoleum",
     mConcrete:"M - Concrete",
     mTerrazzo:"M - Terrazzo",
-    mSealedC:"M - Sealed",
+    // mSealedC:"M - Sealed",
     mEpoxy:"M - Epoxy",
     cHigh:"C - High Pile",
     cMedium:"C - Med Pile",
@@ -387,13 +391,13 @@ const metaData = {
   materialName:{
     sGranite:"Granite",
     sSlate:"Slate",
-    sCeramic:"Ceramic",
+    sCeramic:"Porcelain",
     rRubber:"Rubber",
     rVinyl:"Vinyl",
     rLinoTile:"Linoleum",
     mConcrete:"Concrete",
     mTerrazzo:"Terrazzo",
-    mSealedC:"Sealed",
+    // mSealedC:"Sealed",
     mEpoxy:"Epoxy",
     cHigh:"High Pile",
     cMedium:"Med Pile",
@@ -408,13 +412,13 @@ const metaData = {
   materialName2:{
     sGranite:"Stone/Ceramic - Granite",
     sSlate:"Stone/Ceramic - Slate",
-    sCeramic:"Stone/Ceramic - Ceramic",
+    sCeramic:"Stone/Ceramic - Porcelain",
     rRubber:"Resilient - Rubber",
     rVinyl:"Resilient - Vinyl",
     rLinoTile:"Resilient - Linoleum",
     mConcrete:"Miscellaneous - Concrete",
     mTerrazzo:"Miscellaneous - Terrazzo",
-    mSealedC:"Miscellaneous - Sealed",
+    // mSealedC:"Miscellaneous - Sealed",
     mEpoxy:"Miscellaneous - Epoxy",
     cHigh:"Carpet - High Pile",
     cMedium:"Carpet - Med Pile",
@@ -427,24 +431,24 @@ const metaData = {
   },
 
   materialImg:{
-    sGranite:"./img/RS_wood.png",
-    sSlate:"./img/RS_wood.png",
-    sCeramic:"./img/RS_wood.png",
-    rRubber:"./img/RS_wood.png",
-    rVinyl:"./img/RS_wood.png",
-    rLinoTile:"./img/RS_wood.png",
-    mConcrete:"./img/RS_wood.png",
-    mTerrazzo:"./img/RS_wood.png",
-    mSealedC:"./img/RS_wood.png",
-    mEpoxy:"./img/RS_wood.png",
-    cHigh:"./img/RS_wood.png",
-    cMedium:"./img/RS_wood.png",
-    cLow:"./img/RS_wood.png",
-    wEngineered:"./img/RS_wood.png",
-    wBamboo:"./img/RS_wood.png",
-    wCork:"./img/RS_wood.png",
-    wSoftwood:"./img/RS_wood.png",
-    wHardwood:"./img/RS_wood.png",
+    sGranite:"./img/Axon_Stone.png",
+    sSlate:"./img/Axon_Stone.png",
+    sCeramic:"./img/Axon_Stone.png",
+    rRubber:"./img/Axon_Resilient.png",
+    rVinyl:"./img/Axon_Resilient.png",
+    rLinoTile:"./img/Axon_Resilient.png",
+    mConcrete:"./img/Axon_Misc.png",
+    mTerrazzo:"./img/Axon_Misc.png",
+    // mSealedC:"./img/Axon_Misc.png",
+    mEpoxy:"./img/Axon_Misc.png",
+    cHigh:"./img/Axon_Carpet.png",
+    cMedium:"./img/Axon_Carpet.png",
+    cLow:"./img/Axon_Carpet.png",
+    wEngineered:"./img/Axon_Wood.png",
+    wBamboo:"./img/Axon_Wood.png",
+    wCork:"./img/Axon_Wood.png",
+    wSoftwood:"./img/Axon_Wood.png",
+    wHardwood:"./img/Axon_Wood.png",
   }
 };
 
@@ -552,7 +556,7 @@ export default {
             mat25: parseFloat(d.mat25),
             mat26: parseFloat(d.mat26),
             mat27: parseFloat(d.mat27),
-            mat28: parseFloat(d.mat28),
+            // mat28: parseFloat(d.mat28),
              name: d.name, 
              img: d.img }
          });
@@ -670,7 +674,7 @@ export default {
             mat25: parseFloat(d.mat25),
             mat26: parseFloat(d.mat26),
             mat27: parseFloat(d.mat27),
-            mat28: parseFloat(d.mat28),
+            // mat28: parseFloat(d.mat28),
              name: d.name, 
              img: d.img }
          });
@@ -741,7 +745,7 @@ export default {
       complete: function(results, file) {
        if(Array.isArray(results.data)) {
          var resultData = results.data.map(d => { // impact4: parseFloat(d.impact4), 
-           return { material: d.material, type: d.type, impact1: parseFloat(d.impact1), impact2: parseFloat(d.impact2), impact3: parseFloat(d.impact3),name: d.name, img: d.img }
+           return { material: d.material, type: d.type, impact1: parseFloat(d.impact1), impact2: parseFloat(d.impact2), impact3: parseFloat(d.impact3), impact4: parseFloat(d.impact4), name: d.name, img: d.img }
          });
          
          cb(resultData);
@@ -788,7 +792,7 @@ export default {
             mat25: parseFloat(d.mat25),
             mat26: parseFloat(d.mat26),
             mat27: parseFloat(d.mat27),
-            mat28: parseFloat(d.mat28),
+            // mat28: parseFloat(d.mat28),
              name: d.name, 
              img: d.img }
          });
@@ -859,7 +863,7 @@ export default {
       complete: function(results, file) {
        if(Array.isArray(results.data)) {
          var resultData = results.data.map(d => { // impact4: parseFloat(d.impact4), 
-           return { material: d.material, type: d.type, impact1: parseFloat(d.impact1), impact2: parseFloat(d.impact2), impact3: parseFloat(d.impact3), name: d.name, img: d.img }
+           return { material: d.material, type: d.type, impact1: parseFloat(d.impact1), impact2: parseFloat(d.impact2), impact3: parseFloat(d.impact3), impact4: parseFloat(d.impact4), name: d.name, img: d.img }
          });
          
          cb(resultData);
@@ -906,7 +910,7 @@ export default {
             mat25: parseFloat(d.mat25),
             mat26: parseFloat(d.mat26),
             mat27: parseFloat(d.mat27),
-            mat28: parseFloat(d.mat28),
+            // mat28: parseFloat(d.mat28),
              name: d.name, 
              img: d.img }
          });
@@ -977,7 +981,7 @@ export default {
       complete: function(results, file) {
        if(Array.isArray(results.data)) {
          var resultData = results.data.map(d => { //impact4: parseFloat(d.impact4), impact5: parseFloat(d.impact5), 
-           return { material: d.material, type: d.type, impact1: parseFloat(d.impact1), impact2: parseFloat(d.impact2), impact3: parseFloat(d.impact3), name: d.name, img: d.img }
+           return { material: d.material, type: d.type, impact1: parseFloat(d.impact1), impact2: parseFloat(d.impact2), impact3: parseFloat(d.impact3), impact4: parseFloat(d.impact4), impact5: parseFloat(d.impact5),  name: d.name, img: d.img }
          });
          
          cb(resultData);
@@ -1024,7 +1028,7 @@ export default {
             mat25: parseFloat(d.mat25),
             mat26: parseFloat(d.mat26),
             mat27: parseFloat(d.mat27),
-            mat28: parseFloat(d.mat28),
+            // mat28: parseFloat(d.mat28),
              name: d.name, 
              img: d.img }
          });
@@ -1081,7 +1085,7 @@ export default {
       complete: function(results, file) {
        if(Array.isArray(results.data)) {
          var resultData = results.data.map(d => { //impact4: parseFloat(d.impact4), impact5: parseFloat(d.impact5), 
-           return { material: d.material, type: d.type, impact1: parseFloat(d.impact1), impact2: parseFloat(d.impact2), impact3: parseFloat(d.impact3), name: d.name, img: d.img }
+           return { material: d.material, type: d.type, impact1: parseFloat(d.impact1), impact2: parseFloat(d.impact2), impact3: parseFloat(d.impact3), impact4: parseFloat(d.impact4), impact5: parseFloat(d.impact5), name: d.name, img: d.img }
          });
          
          cb(resultData);
@@ -1128,7 +1132,7 @@ export default {
             mat25: parseFloat(d.mat25),
             mat26: parseFloat(d.mat26),
             mat27: parseFloat(d.mat27),
-            mat28: parseFloat(d.mat28),
+            // mat28: parseFloat(d.mat28),
              name: d.name, 
              img: d.img }
          });

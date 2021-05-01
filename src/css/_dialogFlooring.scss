@@ -1,0 +1,135 @@
+@use 'constants' as *;
+@use 'components' as *;
+
+/* -------------------------------------------------------------------------- *\
+ * Necessary styling for the dialog to work
+ * -------------------------------------------------------------------------- */
+
+/**
+ * When `<dialog>` is properly supported, the overlay is implied and can be
+ * styled with `::backdrop`, which means the DOM one should be removed.
+ */
+[data-a11y-dialog-native] .dialog-overlay {
+  display: none;
+}
+
+/**
+ * When `<dialog>` is not supported, its default display is `inline` which can
+ * cause layout issues.
+ */
+dialog[open] {
+  display: block;
+}
+
+.dialog[aria-hidden="true"] {
+  display: none;
+}
+
+/* -------------------------------------------------------------------------- *\
+ * Styling to make the dialog look like a dialog
+ * -------------------------------------------------------------------------- */
+
+.dialog-overlay {
+  z-index: 2000;
+  background-color: rgba(255, 255, 255, 0.66);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+dialog::backdrop {
+  background-color: rgba(255, 255, 255, 0.66);
+}
+
+.dialog-content {
+  background-color: rgb(255, 255, 255);
+  z-index: 3000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin: 0;
+
+  border-radius: 3px;
+  border: solid 6px rgba(#ffd400, 1);
+
+  h4 {
+    margin-bottom: 0.5rem;
+  }
+  img {
+    max-width: 100%;
+  }
+}
+
+/* -------------------------------------------------------------------------- *\
+ * Extra dialog styling to make it shiny
+ * -------------------------------------------------------------------------- */
+
+@keyframes fade-in {
+  from { opacity: 0;  }
+  to { opacity: 1;  }
+}
+
+@keyframes appear {
+  from { transform: translate(-50%, -40%); opacity: 0; }
+  to { transform: translate(-50%, -50%); opacity: 1; }
+}
+
+.dialog:not([aria-hidden='true']) > .dialog-overlay {
+  animation: fade-in 200ms 1 both;
+}
+
+.dialog:not([aria-hidden='true']) > .dialog-content {
+  animation: appear 400ms 150ms 1 both;
+}
+
+.dialog-content {
+  padding: 1em;
+  box-sizing: border-box;
+  max-width: 1400px;
+  // max-height: 90%;
+
+  min-height: 5000px;
+  width: 80%;
+  border-radius: 2px;
+  overflow: auto;
+}
+
+
+@media screen and (min-width: 700px) {
+  .dialog-content {
+    padding: 2em;
+  }
+}
+
+.dialog-overlay {
+  background-color: rgba(255, 255, 255, 0.66);
+}
+
+.dialog h1 {
+  margin: 0;
+  font-size: 1.25em;
+}
+
+.dialog-close {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+
+  @include closebutton;
+}
+
+@media screen and (min-width: 700px) {
+  .dialog-close {
+    top: 1em;
+    right: 1em;
+  }
+}
+
+.dialog-content-marker-editing {
+  width: 30rem;
+}

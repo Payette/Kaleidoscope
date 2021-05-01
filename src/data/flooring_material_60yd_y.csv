@@ -1,0 +1,18 @@
+material,type,name,img,mat1,mat2,mat3,mat4,mat5,mat6,mat7,mat8,mat9,mat10,mat11,mat12,mat13,mat14,mat15,mat16,mat17,mat18,mat19,mat20,mat21,mat22,mat23,mat24,mat25,mat26,mat27
+sGranite,Stone / Ceramic,Granite,./img/Axon_Stone.png,0,0,0.014754,0,0,1.05636976,0,0,0,0,0,0,0,0,0,0,3.762357,0,0,0,0,0,0,0,0,0,0
+sSlate,Stone / Ceramic,Slate,./img/Axon_Stone.png,0,0,0.014754,0,0,1.05636976,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3.603082,0,0,0,0,0
+sCeramic,Stone / Ceramic,Porcelain,./img/Axon_Stone.png,0,0,0.014754,0.67057,0,0,0,0,0,0,0.515701,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+rRubber,Resilient,Rubber,./img/Axon_Resilient.png,0.068719,0,0,0,0.49533095,0,0,0,0.001308,0,0,0,0,0,0,0,0,0,0,0,2.346361,0,0,0,0,0,0.129913575
+rVinyl,Resilient,Vinyl,./img/Axon_Resilient.png,0.068719,0,0,0,0.49533095,0,0,0,0.001962,0,0,0,0,0,0,0,0,0,2.076698,0,0,0,0,0,0,0,0.129913575
+rLinoTile,Resilient,Linoleum,./img/Axon_Resilient.png,0.068719,0,0,0,0.49533095,0,0,0,0.001308,0,0,0,0,0,0,0,0,0,0,0.045449,0,0,0,0,0,0,0.129913575
+mConcrete,Misc.,Concrete Topper,./img/Axon_Misc.png,0,0,0,0,1.98132382,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+mTerrazzo,Misc.,Thin-Set Terrazzo,./img/Axon_Misc.png,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2.498,0,0,0
+mEpoxy,Misc.,Epoxy,./img/Axon_Misc.png,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2.6366,0,0
+cHigh,Carpet,High Pile,./img/Axon_Carpet.png,0.068719,0,0,0,0.49533095,0,0,0.152831,0,0,0,7.658524,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+cMedium,Carpet,Medium Pile,./img/Axon_Carpet.png,0.068719,0,0,0,0.49533095,0,0,0.152831,0,0,0,0,0,5.987618,0,0,0,0,0,0,0,0,0,0,0,0,0
+cLow,Carpet,Low Pile,./img/Axon_Carpet.png,0.068719,0,0,0,0.49533095,0,0,0.152831,0,0,0,0,3.577155,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+wEngineered,Wood,Engineered,./img/Axon_Wood.png,0.068719,-0.35982,0,0,0,0,0.083299,0,0,0,0,0,0,0,0,0,0,0.145689,0,0,0,0,0,0,0,0.104629505,0
+wBamboo,Wood,Bamboo,./img/Axon_Wood.png,0.068719,-0.77721,0,0,0,0,0.124948,0,0,1.586033,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.104629505,0
+wCork,Wood,Cork,./img/Axon_Wood.png,0.068719,-0.51814,0,0,0,0,0,0,0.001308,0,0,0,0,0,-0.38371,0,0,0,0,0,0,0,0,0,0,0,0.129913575
+wSoftwood,Wood,Softwood Plank,./img/Axon_Wood.png,0.068719,-0.51814,0,0,0,0,0.083299,0,0,0,0,0,0,0,0,-0.67385,0,0,0,0,0,0,0,0,0,0.104629505,0
+wHardwood,Wood,Hardwood Plank,./img/Axon_Wood.png,0.068719,-0.51814,0,0,0,0,0.083299,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.296998,0,0,0.104629505,0

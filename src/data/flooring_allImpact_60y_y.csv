@@ -1,19 +1,18 @@
 material,type,name,img,i1,i2,i3,i4,i5,i6
-sGranite,Stone / Ceramic,Granite,./img/granite.png,18.97,6.32,3.86,2.46,2.11,1.41
-sSlate,Stone / Ceramic,Slate,./img/limestone.png,18.02,6.01,3.67,2.34,2.00,1.34
-sCeramic,Stone / Ceramic,Ceramic Tile,./img/brick.png,2.11,0.70,0.43,0.27,0.23,0.16
-rRubber,Resilient,Rubber Tile,./img/insmetalpanel.png,15.32,5.11,3.12,1.99,1.70,1.13
-rVinyl,Resilient,Solid Vinyl Tile,./img/spandrel.png,16.23,5.41,3.31,2.10,1.80,1.20
-rLinoTile,Resilient,Linoleum Tile,./img/gfrc.png,6.22,2.07,1.27,0.81,0.69,0.46
-mConcrete,Misc.,Concrete,./img/acm.png,36.78,12.26,7.49,4.77,4.09,2.72
-mTerrazzo,Misc.,Terrazzo,./img/terracotta.png,38.25,12.75,7.79,4.96,4.25,2.83
-mSealedC,Misc.,Sealed Concrete,./img/phenresin.png,9.68,3.23,1.97,1.26,1.08,0.72
-mEpoxy,Misc.,Epoxy,./img/fibercement.png,52.47,17.49,10.69,6.80,5.83,3.89
-cHigh,Carpet,High Pile,./img/zinc.png,54.00,18.00,11.00,7.00,6.00,4.00
-cMedium,Carpet,Medium Pile,./img/granite1.png,43.26,14.42,8.81,5.61,4.81,3.20
-cLow,Carpet,Low Pile,./img/limestone1.png,28.19,9.40,5.74,3.65,3.13,2.09
-wEngineered,Wood,Engineered,./img/steel1.png,1.92,0.64,0.39,0.25,0.21,0.14
-wBamboo,Wood,Bamboo,./img/wood1.png,9.54,3.18,1.94,1.24,1.06,0.71
-wCork,Wood,Cork,./img/limestone1.png,2.03,0.68,0.41,0.26,0.23,0.15
-wSoftwood,Wood,Softwood Plank,./img/steel1.png,-2.40,-0.80,-0.49,-0.31,-0.27,-0.18
-wHardwood,Wood,Hardwood Plank,./img/wood1.png,4.11,1.37,0.84,0.53,0.46,0.30
+sGranite,Stone / Ceramic,Granite,./img/Axon_Stone.png,24.6057,8.2019,5.01227,3.18963,2.73397,1.82264
+sSlate,Stone / Ceramic,Slate,./img/Axon_Stone.png,22.8522,7.6174,4.65508,2.96232,2.53913,1.69276
+sCeramic,Stone / Ceramic,Porcelain,./img/Axon_Stone.png,6.06745,2.02248,1.23596,0.78652,0.67416,0.44944
+rRubber,Resilient,Rubber,./img/Axon_Resilient.png,23.832,7.94401,4.85468,3.08934,2.648,1.76534
+rVinyl,Resilient,Vinyl,./img/Axon_Resilient.png,20.8546,6.95153,4.24816,2.70337,2.31718,1.54479
+rLinoTile,Resilient,Linoleum,./img/Axon_Resilient.png,11.7866,3.92886,2.40097,1.52789,1.30962,0.87308
+mConcrete,Misc.,Concrete Topper,./img/Axon_Misc.png,8.95893,2.98631,1.82497,1.16134,0.99544,0.66362
+mTerrazzo,Misc.,Thin-Set Terrazzo,./img/Axon_Misc.png,20.445,6.81499,4.16472,2.65027,2.27166,1.51444
+mEpoxy,Misc.,Epoxy,./img/Axon_Misc.png,23.9186,7.97285,4.8723,3.10055,2.65762,1.77174
+cHigh,Carpet,High Pile,./img/Axon_Carpet.png,54,18,11,7,6,4
+cMedium,Carpet,Medium Pile,./img/Axon_Carpet.png,43.7354,14.5785,8.90906,5.6694,4.85949,3.23966
+cLow,Carpet,Low Pile,./img/Axon_Carpet.png,29.3417,9.78058,5.97702,3.80356,3.26019,2.17346
+wEngineered,Wood,Engineered,./img/Axon_Wood.png,5.79635,1.93212,1.18074,0.75138,0.64404,0.42936
+wBamboo,Wood,Bamboo,./img/Axon_Wood.png,17.4242,5.80806,3.54937,2.25869,1.93602,1.29068
+wCork,Wood,Cork,./img/Axon_Wood.png,6.31951,2.1065,1.28731,0.8192,0.70217,0.46811
+wSoftwood,Wood,Softwood Plank,./img/Axon_Wood.png,6.34542,2.11514,1.29259,0.82255,0.70505,0.47003
+wHardwood,Wood,Hardwood Plank,./img/Axon_Wood.png,14.4627,4.82091,2.94611,1.8748,1.60697,1.07131

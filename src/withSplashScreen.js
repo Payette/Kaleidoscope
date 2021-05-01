@@ -72,7 +72,7 @@ const tiers = [
     subheader: 'Exterior Systems',
     price: '0',
     description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
-    img: "./img/CW_Axon.png",
+    img: "./img/MV_Axon.png",
     buttonText: 'View Envelopes',
     buttonVariant: 'contained',
     item: 0
@@ -87,7 +87,7 @@ const tiers = [
       'Help center access',
       'Priority email support',
     ],
-    img: "./img/Axon_1_Stone.png",
+    img: "./img/FL_Axon-2.png",
     buttonText: 'View Flooring',
     buttonVariant: 'contained',
     item: 1
@@ -102,7 +102,7 @@ const tiers = [
       'Help center access',
       'Phone & email support',
     ],
-    img: "./img/MV_Axon.png",
+    img: "./img/OtherBox.png",
     buttonText: 'Coming soon',
     buttonVariant: 'disabled',
     item: 2
@@ -180,7 +180,7 @@ function withSplashScreen(WrappedComponent) {
                           ${tier.price}
                         </Typography> */}
                         <Typography variant="h6" color="textSecondary">
-                          <img src={tier.img} style={{height: "250px", maxWidth:"100%", margin: "auto"}}></img>
+                          <img src={tier.img} style={{height: "250px", maxWidth:"80%", position:'relative', margin: "0px 0px 0px 30px"}}></img>
                         </Typography>
                       </div>
                       {/* <ul>
@@ -202,10 +202,12 @@ function withSplashScreen(WrappedComponent) {
                 </Grid>
               ))}
             </Grid>
+            <br></br><br></br>
           </Container>
           {/* <Pricing loading={loading1}></Pricing> */}
           {/* Wait a moment while we load your app. */}
           {/* <div className="loading-dot">.</div> */}
+          <br></br><br></br><br></br><br></br>
         </div>
       );
     }

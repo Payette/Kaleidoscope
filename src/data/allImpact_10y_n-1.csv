@@ -1,0 +1,25 @@
+material,type,name,img,i1,i2,i3,i4,i5,i6
+MVGranite,Masonry Veneer,Granite,./img/mvgranite.png,53.99717,17.99906,10.99942,6.999633,5.999686,3.99979
+MVLimestone,Masonry Veneer,Limestone,./img/mvlimestone.png,35.18082,11.72694,7.166463,4.560477,3.90898,2.605987
+MVBrick,Masonry Veneer,Brick,./img/mvbrick.png,28.15295,9.384316,5.73486,3.649456,3.128105,2.085404
+MVTBrick,Masonry Veneer,Thin Brick,./img/mvtbrick.png,16.98347,5.661158,3.459597,2.201562,1.887053,1.258035
+MInsMePanel,Misc,Insulated Metal Panel,./img/minsmepanel.png,27.4883,9.162768,5.599469,3.563299,3.054256,2.036171
+MEIFS,Misc,EIFS (XPS),./img/mefis.png,17.925,5.974999,3.651388,2.323611,1.991666,1.327778
+MPrecast,Misc,Precast Concrete,./img/mprecast.png,18.71208,6.237358,3.811719,2.425639,2.079119,1.38608
+MMinWool,Misc,EIFS (Min Wool),./img/mminwool.png,11.02837,3.676124,2.246521,1.429604,1.225375,0.816917
+CSpandrelAlumB,Curtain Wall,Spandrel (Alum w/ Backpan),./img/cspandrelalumb.png,39.35941,13.1198,8.017657,5.102146,4.373268,2.915512
+CSpandrelSteel,Curtain Wall,Spandrel (Steel),./img/cspandrelsteel.png,39.20142,13.06714,7.985475,5.081666,4.355714,2.903809
+CSpandrelAlum,Curtain Wall,Spandrel (Alum),./img/cspandrelalum.png,32.40412,10.80137,6.600839,4.200534,3.600457,2.400305
+CSpandrelWood,Curtain Wall,Spandrel (Wood),./img/cspandrelwood.png,22.42637,7.475458,4.568336,2.907123,2.491819,1.661213
+RGFRC,Rainscreen,Glass Fiber Reinforced Concrete (GFRC),./img/rgfrc.png,42.02377,14.00792,8.560397,5.447526,4.669308,3.112872
+RACM,Rainscreen,Aluminum Composite Material (ACM),./img/racm.png,34.60283,11.53428,7.048724,4.485552,3.844758,2.563172
+RTerracotta,Rainscreen,Terracotta,./img/rterracotta.png,24.25501,8.085002,4.940835,3.144168,2.695001,1.796667
+RPhenResin,Rainscreen,Phenolic Resin,./img/rphenresin.png,25.71886,8.572952,5.239026,3.333926,2.857651,1.905101
+RFiberCement,Rainscreen,Fiber Cement,./img/rfibercement.png,21.9279,7.309299,4.466794,2.842505,2.436433,1.624289
+RZinc,Rainscreen,Formed Zinc Panel,./img/rzinc.png,21.10765,7.035884,4.299707,2.736177,2.345295,1.56353
+RUHPC,Rainscreen,UHPC (fibreC),./img/ruhpc.png,20.19941,6.733138,4.114695,2.618442,2.244379,1.496253
+RGranite,Rainscreen,Granite,./img/rgranite.png,19.16449,6.388163,3.903877,2.484286,2.129388,1.419592
+RTBrick,Rainscreen,Thin Brick,./img/rtbrick.png,19.21692,6.405639,3.914557,2.491082,2.135213,1.423475
+RLimestone,Rainscreen,Limestone,./img/rlimestone.png,18.19291,6.064304,3.705964,2.358341,2.021435,1.347623
+RSteel,Rainscreen,Formed Steel Panel,./img/rsteel.png,14.68425,4.89475,2.991236,1.903514,1.631583,1.087722
+RWood,Rainscreen,Wood,./img/rwood.png,15.08455,5.028182,3.072778,1.955404,1.676061,1.117374

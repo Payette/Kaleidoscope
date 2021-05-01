@@ -142,13 +142,13 @@ export default class MaterialList extends PureComponent {
       legendText = ""
     }else if(this.props.currentSel === "allImpacts"){
       legend = legendGWP;
-      legendText = <div><p> <span style={{background: "#87cee9"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Global Warming Potential (kgCO<sub>2</sub>eq/sf)</p> <p> <span style={{background: "#6495ed"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Non-Renewable Energy Demand (MJ/sf)</p><p> <span style={{background: "#fcc05e"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Eutrophication Potential (kgNeq/sf)</p> <p> <span style={{background: "#0090ff"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Smog Formation Potential (kgO<sub>3</sub>eq/sf)</p><p> <span style={{background: "#85e2bd"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Acidification Potential (kgSO<sub>2</sub>eq/sf)</p> <p> <span style={{background: "#283cdc"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Ozone Depletion Potential (CFC-11eq/sf)</p></div>
+      legendText = <div style={{fontFamily: "freight-text-pro, serif"}}><p> <span style={{background: "#87cee9"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Global Warming Potential (kgCO<sub>2</sub>eq/sf)</p> <p> <span style={{background: "#6495ed"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Non-Renewable Energy Demand (MJ/sf)</p><p> <span style={{background: "#fcc05e"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Eutrophication Potential (kgNeq/sf)</p> <p> <span style={{background: "#0090ff"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Smog Formation Potential (kgO<sub>3</sub>eq/sf)</p><p> <span style={{background: "#85e2bd"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Acidification Potential (kgSO<sub>2</sub>eq/sf)</p> <p> <span style={{background: "#283cdc"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Ozone Depletion Potential (CFC-11eq/sf)</p></div>
     }else if(this.props.currentSel === "LCS"){
       legend = legendGWP;
-      legendText = <div><p> <span style={{background: "#85e2bd"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [A1 - A3] Product </p> <p> <span style={{background: "#fcc05e"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [A4] Transportation </p><p> <span style={{background: "#001489"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [B2 - B5] Maintenance and Replacement </p> <p> <span style={{background: "#4095ee"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [C2 - C4] End of Life </p><p> <span style={{background: "#a2d3eb"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [D] Module D </p> </div>
+      legendText = <div style={{fontFamily: "freight-text-pro, serif"}}><p> <span style={{background: "#85e2bd"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [A1 - A3] Product </p> <p> <span style={{background: "#fcc05e"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [A4] Transportation </p><p> <span style={{background: "#001489"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [B2 - B5] Maintenance and Replacement </p> <p> <span style={{background: "#4095ee"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [C2 - C4] End of Life </p><p> <span style={{background: "#a2d3eb"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [D] Module D </p> </div>
     }else if(this.props.currentSel === "MB"){
       legend = legendMB;
-      legendText = <div><img style={{maxWidth: "320px"}} src={legend}/><p> <span style={{background: "#85e2bd"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Exterior Finish </p> <p> <span style={{background: "#4169e1"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Support System </p> <p> <span style={{background: "#fcc05e"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Insulation </p> <p> <span style={{background: "#cccccc"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Other </p></div>
+      legendText = <div style={{fontFamily: "freight-text-pro, serif"}}><img style={{maxWidth: "320px"}} src={legend}/><p> <span style={{background: "#85e2bd"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Exterior Finish </p> <p> <span style={{background: "#4169e1"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Support System </p> <p> <span style={{background: "#fcc05e"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Insulation </p> <p> <span style={{background: "#cccccc"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Other </p></div>
     }
 
     //CHANGE THE MODAL TO IMG OF MASONRY VENEER GRANITE AS DEFAULT
@@ -191,9 +191,9 @@ export default class MaterialList extends PureComponent {
           </span>
           <span>
           <h3 style={{display: "inline-block"}}>ASSEMBLY TYPE</h3><button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button><br></br><br>
-          </br>Click on a type below for additional details
+          </br><span style={{fontFamily:"freight-text-pro, serif", marginBottom:10}}>Click on a type below for additional details</span><br></br>
           
-          </span>
+          </span><br></br>
         </div>
         <div>
         
@@ -213,6 +213,7 @@ export default class MaterialList extends PureComponent {
             element: "dialog-content",
             base: "dialog"
           }}
+          
           >
             <span>
               <h2 style={{fontSize: "40px"}}>{this.props.metaData.materialName2[this.state.materialPopup.name]}</h2>

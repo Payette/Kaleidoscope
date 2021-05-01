@@ -91,7 +91,13 @@ let trail = "(kgCO2eq/sf)";
 
 for(let i = 0; i < selectedMaterials.length; i++){
   if(selectedMaterials[i].hasOwnProperty('i1')){
-    let myTotal = selectedMaterials[i].i1 + selectedMaterials[i].i2 + selectedMaterials[i].i3 + selectedMaterials[i].i4 + selectedMaterials[i].i5 + selectedMaterials[i].i6;
+    let i1 = selectedMaterials[i].i1>0 ? selectedMaterials[i].i1 : 0 
+    let i2 = selectedMaterials[i].i2>0 ? selectedMaterials[i].i2 : 0
+    let i3 = selectedMaterials[i].i3>0 ? selectedMaterials[i].i3 : 0
+    let i4 = selectedMaterials[i].i4>0 ? selectedMaterials[i].i4 : 0
+    let i5 = selectedMaterials[i].i5>0 ? selectedMaterials[i].i5 : 0
+    let i6 = selectedMaterials[i].i6>0 ? selectedMaterials[i].i6 : 0
+    let myTotal = i1 + i2 + i3 + i4 + i5 + i6;
     if(myTotal > currentBiggest){
       currentBiggest = myTotal;
       // console.log(myTotal);
@@ -112,13 +118,26 @@ let multiplier = 100.0 / currentBiggest;
   const allMaterialTotalsMin = allMaterials.reduce((ret, cur) => {
     const t = keys.reduce((dailyTotal, k) => {
       if(Math.abs(cur[k]) != (cur[k])){
-        dailyTotal += + Math.abs(cur[k]);
+        dailyTotal -= Math.abs(cur[k]);
       }
-      return dailyTotal * -1;
+      return dailyTotal;
     }, 0);
     ret.push(t);
     return ret;
   }, []);
+
+
+  const allImpactTotalsMin = allMaterials.reduce((ret, cur) => {
+    const t = keys.reduce((dailyTotal, k) => {
+      if(Math.abs(cur[k]) != (cur[k])){
+        dailyTotal -= Math.abs(cur[k]);
+      }
+      return dailyTotal;
+    }, 0);
+    ret.push(t);
+    return ret;
+  }, []);
+
 
   // accessors
   const y = d => d.material;
@@ -191,6 +210,13 @@ let multiplier = 100.0 / currentBiggest;
     // range: [purple1, purple2, purple3],
     range: matCol
   });
+  xScale = scaleLinear({
+    domain: [
+      Math.min(...allMaterialTotalsMin),
+      Math.max(...allMaterialTotals)
+    ],
+    nice: true
+  });
 }
 
   if(currentChart === "allImpacts"){
@@ -202,11 +228,27 @@ let multiplier = 100.0 / currentBiggest;
 
     xScale = scaleLinear({
       domain: [
-        0,
+        Math.min(...allMaterialTotalsMin),
         100
       ],
       nice: true
     });
+}
+
+if(currentChart === "GWP"){
+  color = scaleOrdinal({
+    domain: keys,
+    // range: [purple1, purple2, purple3],
+    range: iCol
+  });
+
+  xScale = scaleLinear({
+    domain: [
+      Math.min(...allMaterialTotalsMin),
+      Math.max(...allMaterialTotals)
+    ],
+    nice: true
+  });
 }
 
 
@@ -282,12 +324,12 @@ let multiplier = 100.0 / currentBiggest;
 
                for(let i = 0; i < sm.values.length; i++){
                 if(selectedMaterials[i].hasOwnProperty('i1')){
-                  sm.values[i].i1 = selectedMaterialsGroupedByType[whichArray].values[i].i1 * multiplier;
-                  sm.values[i].i2 = selectedMaterialsGroupedByType[whichArray].values[i].i2 * multiplier;
-                  sm.values[i].i3 = selectedMaterialsGroupedByType[whichArray].values[i].i3 * multiplier;
-                  sm.values[i].i4 = selectedMaterialsGroupedByType[whichArray].values[i].i4 * multiplier;
-                  sm.values[i].i5 = selectedMaterialsGroupedByType[whichArray].values[i].i5 * multiplier;
-                  sm.values[i].i6 = selectedMaterialsGroupedByType[whichArray].values[i].i6 * multiplier;
+                  sm.values[i].i1 = selectedMaterialsGroupedByType[whichArray].values[i].i1 > 0 ? selectedMaterialsGroupedByType[whichArray].values[i].i1 * multiplier : selectedMaterialsGroupedByType[whichArray].values[i].i1;
+                  sm.values[i].i2 = selectedMaterialsGroupedByType[whichArray].values[i].i2 > 0 ? selectedMaterialsGroupedByType[whichArray].values[i].i2 * multiplier : selectedMaterialsGroupedByType[whichArray].values[i].i2
+                  sm.values[i].i3 = selectedMaterialsGroupedByType[whichArray].values[i].i3 > 0 ? selectedMaterialsGroupedByType[whichArray].values[i].i3 * multiplier : selectedMaterialsGroupedByType[whichArray].values[i].i3
+                  sm.values[i].i4 = selectedMaterialsGroupedByType[whichArray].values[i].i4 > 0 ? selectedMaterialsGroupedByType[whichArray].values[i].i4 * multiplier : selectedMaterialsGroupedByType[whichArray].values[i].i4
+                  sm.values[i].i5 = selectedMaterialsGroupedByType[whichArray].values[i].i5 > 0 ? selectedMaterialsGroupedByType[whichArray].values[i].i5 * multiplier : selectedMaterialsGroupedByType[whichArray].values[i].i5
+                  sm.values[i].i6 = selectedMaterialsGroupedByType[whichArray].values[i].i6 > 0 ? selectedMaterialsGroupedByType[whichArray].values[i].i6 * multiplier : selectedMaterialsGroupedByType[whichArray].values[i].i6
                 }
                 // console.log(selectedMaterials[i]);
               }
@@ -401,7 +443,7 @@ let multiplier = 100.0 / currentBiggest;
                 boxShadow:"5px 5px rgba(200, 200, 200, .4)",
                 minWidth: 60,
                 height: toolTipHeight+50,
-                width: toolTipWidth,
+                width: toolTipWidth+5,
                 backgroundColor: 'rgba(255,255,255,0.8)',
                 color: 'black',
                 borderRadius: '0px',
