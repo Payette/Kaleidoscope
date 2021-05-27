@@ -68,10 +68,10 @@ RWood:"#001489"
     MVGranite:'4" granite veneer, shelf angle with knife plate connection, continuous mineral wool insulation',
 MVLimestone:'4" limestone veneer, shelf angle with knife plate connection, continuous mineral wool insulation',
 MVBrick:"Brick with mortar, shelf angle with knife plate connection, continuous mineral wool insulation",
-MVTBrick:"Brick with mortar, shelf angle with knife plate connection, continuous mineral wool insulation",
+MVTBrick:"Thin set thin brick with mortar, on cement board backer, continuous mineral wool insulation",
 MInsMePanel:"Steel foamed insulated metal panel, thermally broken connection",
 MEIFS:"Exterior insulation and finish system (EIFS) with XPS insulation core and synthetic stucco",
-MPrecast:"Precast concrete nonstructural panel with spray foam insulation",
+MPrecast:"Precast concrete panel with spray foam insulation with HFO blowing agent",
 MMinWool:"Exterior insulation and finish system (EIFS) with mineral wool insulation core and synthetic stucco",
 CSpandrelAlumB:"Double glazed IGU with low-e coating and argon fill, aluminum structurally glazed mullions, mineral wool insulation and PUR board blocking, backpan finish",
 CSpandrelSteel:"Double glazed IGU with low-e coating and argon fill, steel structurally glazed mullions, mineral wool insulation",
@@ -88,7 +88,7 @@ RGranite:'1/4" granite on aluminum honeycomb backer with thermally broken alumin
 RTBrick:"Modular panel system thin brick with mortar, on galvanized steel panel, continuous mineral wool insulation",
 RLimestone:'1/4" limestone on aluminum honeycomb backer with thermally broken aluminum support, continuous mineral wool insulation',
 RSteel:"Painted formed steel metal panels with thermally broken galvanized steel support, continuous mineral wool insulation",
-RWood:"Hardwood (beech) rainscreen with water-based wood stain and thermally broken galvanized steel support, continuous mineral wool insulation"
+RWood:"Hardwood (Tulipwood/ Poplar) rainscreen with water-based wood stain and thermally broken galvanized steel support, continuous mineral wool insulation"
   },
 
   materialNotes:{
@@ -128,7 +128,7 @@ RWood:"Hardwood (beech) rainscreen with water-based wood stain and thermally bro
       MPrecast:['Building structure not included in LCA calculations',
       'Opaque wall only; fenestrations not included',
       'Gravity load structural haunch included',
-      '2.5" closed cell spray polyurethane foam insulation thickness set to reach system R-value 15.625',
+      '2.5" closed cell spray polyurethane foam insulation with HFO blowing agent, thickness set to reach system R-value 15.625',
       'Service life of exterior materials Tally default of 60 years or higher'],
       MMinWool:['Building structure not included in LCA calculations',
       'Opaque wall only; fenestrations not included',
@@ -379,6 +379,7 @@ RWood:"images/wood.png",
     mat46:"#9be0bf",
     mat47:"#9be0bf",
     mat48:"#9be0bf",
+    mat49:"#9be0bf",
   },
 
   materialOrdering: {
@@ -633,6 +634,7 @@ export default {
             mat46: parseFloat(d.mat46),
             mat47: parseFloat(d.mat47),
             mat48: parseFloat(d.mat48),
+            mat49: parseFloat(d.mat49),
              name: d.name, 
              img: d.img }
          });
@@ -755,6 +757,7 @@ export default {
             mat46: parseFloat(d.mat46),
             mat47: parseFloat(d.mat47),
             mat48: parseFloat(d.mat48),
+            mat49: parseFloat(d.mat49),
              name: d.name, 
              img: d.img }
          });
@@ -877,6 +880,7 @@ export default {
             mat46: parseFloat(d.mat46),
             mat47: parseFloat(d.mat47),
             mat48: parseFloat(d.mat48),
+            mat49: parseFloat(d.mat49),
              name: d.name, 
              img: d.img }
          });
@@ -999,6 +1003,7 @@ export default {
             mat46: parseFloat(d.mat46),
             mat47: parseFloat(d.mat47),
             mat48: parseFloat(d.mat48),
+            mat49: parseFloat(d.mat49),
              name: d.name, 
              img: d.img }
          });
@@ -1121,6 +1126,7 @@ export default {
             mat46: parseFloat(d.mat46),
             mat47: parseFloat(d.mat47),
             mat48: parseFloat(d.mat48),
+            mat49: parseFloat(d.mat49),
              name: d.name, 
              img: d.img }
          });
@@ -1243,6 +1249,7 @@ export default {
             mat46: parseFloat(d.mat46),
             mat47: parseFloat(d.mat47),
             mat48: parseFloat(d.mat48),
+            mat49: parseFloat(d.mat49),
              name: d.name, 
              img: d.img }
          });

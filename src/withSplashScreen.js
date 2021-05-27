@@ -135,7 +135,36 @@ function withSplashScreen(WrappedComponent) {
 
       if(type == 0 || type == 1){ //envelope
         this.setState({loading: false, currentItem: type});
+        if(type == 0){
+          this.setState({selectedMaterials:[
+            "MVGranite",
+            "MVLimestone",
+            "MVBrick",
+            "MVTBrick",
+            "MInsMePanel",
+            "MEIFS",
+            "MPrecast",
+            "MMinWool",
+            "CSpandrelAlumB",
+            "CSpandrelSteel",
+            "CSpandrelAlum",
+            "CSpandrelWood",
+            "RGFRC",
+            "RACM",
+            "RTerracotta",
+            "RPhenResin",
+            "RFiberCement",
+            "RZinc",
+            "RUHPC",
+            "RGranite",
+            "RTBrick",
+            "RLimestone",
+            "RSteel",
+            "RWood"
+        ]})
+        }
       }
+      
     //   try {
     //     await auth0Client.loadSession();
 
@@ -194,7 +223,17 @@ function withSplashScreen(WrappedComponent) {
                     <CardActions>
                       <Button fullWidth variant={tier.buttonVariant} 
                       color="secondary" 
-                      onClick={() => { this.setState({loading: false, currentItem: tier.item});}}>
+                      onClick={() => { this.setState({loading: false, currentItem: tier.item, selectedMaterials: this.state.selectedMaterials}); 
+                      let urlVar = new URLSearchParams()
+      urlVar.set("type", tier.item)
+      // urlVar.set("system", this.state.systemString)
+
+      
+      // console.log(this.state.selectedMaterials)
+      // console.log(s.get("system"))
+
+      window.history.replaceState({}, '', "?" + urlVar.toString())
+                      }}>
                         {tier.buttonText}
                       </Button>
                     </CardActions>

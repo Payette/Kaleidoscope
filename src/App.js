@@ -12,6 +12,7 @@ import Flooring_Row from "./Flooring_Row";
 import { Tabs, AppBar, Tab, Popover, Button, Typography, Popper } from '@material-ui/core';
 import TabPanel from "./TabPanel";
 import withSplashScreen from './withSplashScreen';
+import Dialog from 'react-a11y-dialog';
 
 
 // import Helmet from 'Helmet';
@@ -19,25 +20,6 @@ import { Helmet } from "react-helmet";
 
 import './css/Main.scss';
 import styles from './css/App.module.scss';
-
-
-// var $ = require( "jquery" );
-
-// $.bigfoot();
-
-
-
-{/* <script> */ }
-// Footnote Options
-// $.bigfoot({
-//     	activateOnHover: false,
-//         deleteOnUnhover: false,
-//         popoverDeleteDelay: 250,
-// 	buttonMarkup: "<div class=\"bigfoot-footnote__container\"> <button class=\"bigfoot-footnote__button\" rel=\"footnote\" id=\"{{SUP:data-footnote-backlink-ref}}\" data-footnote-number=\"{{FOOTNOTENUM}}\" data-footnote-identifier=\"{{FOOTNOTEID}}\" alt=\"See Footnote {{FOOTNOTENUM}}\" data-bigfoot-footnote=\"{{FOOTNOTECONTENT}}\">?</button></div>"
-
-//     });
-{/* </script> */ }
-
 
 
 
@@ -76,13 +58,6 @@ class App extends Component {
       materials: [],
       selectedMaterials: [],
 
-      // flooring_healthyMatsData: [],
-      // flooring_healthyMatsData1: [],
-      // flooring_healthyMatsData2: [],
-      // flooring_healthyMatsData3: [],
-      // flooring_healthyMatsData4: [],
-      // flooring_healthyMatsData5: [],
-
       flooring_allImpactsData: [],
       flooring_gwpData: [],
       flooring_lcsData: [],
@@ -118,7 +93,10 @@ class App extends Component {
       ],
       value: parseInt(props.item),
       anchorEl: null,
-      currentToolTip: null
+      currentToolTip: null,
+      systemString: "",
+      lens: "0_0_0",
+      shareableUrl: "https://engine.payette.com/static/kaleidoscope-staging/"
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -150,14 +128,46 @@ class App extends Component {
   }
 
 
-  handleChange = (event, newValue) => {
+  handleChange = (event, newValue) => { // tab button click
+
+    
+
     // const [value, setValue] = React.useState(0);
     let value = newValue
     console.log(newValue)
-    this.setState({ value });
-    // let clicks = this.state.clicks +1
-    // this.setState({ clicks })
-    console.log("clicks = " + this.state.clicks) 
+    console.log(this.state.materials)
+    if(this.state.selectedMaterials.length != 0){
+      this.setState({ value: newValue, selectedMaterials: this.state.selectedMaterials });
+    }else{
+      this.setState({ value: newValue, selectedMaterials: this.state.materials });
+    }
+
+    if(this.state.flooring_selectedMaterials.length != 0){
+      this.setState({ value: newValue, flooring_selectedMaterials: this.state.flooring_selectedMaterials });
+    }else{
+      this.setState({ value: newValue, flooring_selectedMaterials: this.state.flooring_materials });
+    }
+    
+
+    let urlVar = new URLSearchParams()
+      urlVar.set("type", newValue)
+      // urlVar.set("system", this.state.systemString)
+
+      // urlVar.set("chartType", this.state.chartType)
+      // urlVar.set("lifespan", this.state.lifespan)
+      // urlVar.set("biogenicCarbon", this.state.biogenicCarbon)
+
+      // chartType: "GWP",
+      // lifespan: "tenY",
+      // biogenicCarbon: "yBio",
+
+      
+      // console.log(this.state.selectedMaterials)
+      // console.log(s.get("system"))
+
+      window.history.replaceState({}, '', "?" + urlVar.toString())
+
+  
   };
 
   updateValue = (e, idx) => {
@@ -195,15 +205,156 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (!_.isEqual(prevState, this.state)) {
 
+     
+
+      let urlSystems = []
+      // for(let i = 0; i < this.state.selectedMaterials.length; i++){
+
+      // }
+      let s = new URLSearchParams(window.location.search)
+
+      let type = s.get("type")
+      let mSystem = s.get("system")
+      let mLenses = s.get("lens")
+
+
+      let mChartType = s.get("chartType")
+      let mLifespan = s.get("lifespan")
+      let mBiogenicCarbon = s.get("biogenicCarbon")
+      // urlVar.set("chartType", this.state.chartType)
+      // urlVar.set("lifespan", this.state.lifespan)
+      // urlVar.set("biogenicCarbon", this.state.biogenicCarbon)
+
+    console.log(mSystem)
+    if(mSystem == null){
+      mSystem = "0_1_2_3_4_5_6_7_8_9_10_11_12_13_14_15_16_17_18_19_20_21_22_23_"
+    }
+    if(type == null){
+      type = 0
+    }
+    if(mLenses == null){
+      mLenses = "0_0_0"
+    }
+
+    if(mChartType == null){
+      mChartType = this.state.chartType
+    }
+
+    if(mLifespan == null){
+      mLifespan = this.state.lifespan
+    }
+
+    if(mBiogenicCarbon == null){
+      mBiogenicCarbon = this.state.biogenicCarbon
+    }
+
+
+    this.setState({
+      systemString: mSystem,
+      chartType: mChartType,
+      lifespan: mLifespan,
+      biogenicCarbon: mBiogenicCarbon
+      })
+    if (type == 0) { //envelope
+      let names = mSystem.split("_")
+
+      names.pop()
+
+      let allSystems = [
+        "MVGranite",
+        "MVLimestone",
+        "MVBrick",
+        "MVTBrick",
+        "MInsMePanel",
+        "MEIFS",
+        "MPrecast",
+        "MMinWool",
+        "CSpandrelAlumB",
+        "CSpandrelSteel",
+        "CSpandrelAlum",
+        "CSpandrelWood",
+        "RGFRC",
+        "RACM",
+        "RTerracotta",
+        "RPhenResin",
+        "RFiberCement",
+        "RZinc",
+        "RUHPC",
+        "RGranite",
+        "RTBrick",
+        "RLimestone",
+        "RSteel",
+        "RWood"
+    ]
+      let urlSelectedMaterials = []
+
+      for(let i = 0; i < names.length; i++){
+        urlSelectedMaterials.push(allSystems[parseInt(names[i])])
+      }
+
+      this.setState(
+        { value: 0,
+        systemString: mSystem,
+      selectedMaterials: urlSelectedMaterials }
+      )
+    } else if(type == 1){ //flooring
+      let names = mSystem.split("_")
+
+      names.pop()
+
+      let allSystems = [
+       "sGranite",
+    "sSlate",
+    "sCeramic",
+    "rRubber",
+    "rVinyl",
+    "rLinoTile",
+    "mConcrete",
+    "mTerrazzo",
+    //"mSealedC",
+    "mEpoxy",
+    "cHigh",
+    "cMedium",
+    "cLow",
+    "wEngineered",
+    "wBamboo",
+    "wCork",
+    "wSoftwood",
+    "wHardwood"
+    ]
+      let urlSelectedMaterials = []
+
+      for(let i = 0; i < names.length; i++){
+        urlSelectedMaterials.push(allSystems[parseInt(names[i])])
+      }
+
+      this.setState(
+        { value: 1,
+        systemString: mSystem,
+      flooring_selectedMaterials: urlSelectedMaterials }
+      )
+        }
+
 
       let urlVar = new URLSearchParams()
       urlVar.set("type", this.state.value)
+      urlVar.set("system", this.state.systemString)
 
-      window.history.replaceState({}, '', "?" + urlVar.toString())
+      // urlVar.set("chartType", this.state.chartType)
+      // urlVar.set("lifespan", this.state.lifespan)
+      // urlVar.set("biogenicCarbon", this.state.biogenicCarbon)
+
+      
+      // console.log(this.state.selectedMaterials)
+      console.log(s.get("system"))
+
+      // window.history.replaceState({}, '', "?" + urlVar.toString())
 
       // window.history.replace = urlVar.toString()
     }
   }
+
+  
 
 
 
@@ -214,19 +365,109 @@ class App extends Component {
     let s = new URLSearchParams(window.location.search)
 
     console.log(s.get("type"))
+    console.log(s.get("system"))
 
 
 
     let type = s.get("type")
+    console.log(type)
+    let mSystem = s.get("system")
+    console.log(mSystem)
+    this.setState({systemString: mSystem})
     if (type == 0) { //envelope
+      let names = this.state.systemString.split("_")
+
+      names.pop()
+
+      let allSystems = [
+        "MVGranite",
+        "MVLimestone",
+        "MVBrick",
+        "MVTBrick",
+        "MInsMePanel",
+        "MEIFS",
+        "MPrecast",
+        "MMinWool",
+        "CSpandrelAlumB",
+        "CSpandrelSteel",
+        "CSpandrelAlum",
+        "CSpandrelWood",
+        "RGFRC",
+        "RACM",
+        "RTerracotta",
+        "RPhenResin",
+        "RFiberCement",
+        "RZinc",
+        "RUHPC",
+        "RGranite",
+        "RTBrick",
+        "RLimestone",
+        "RSteel",
+        "RWood"
+    ]
+
+      let urlSelectedMaterials = []
+
+      console.log(names)
+      for(let i = 0; i < names.length; i++){
+        urlSelectedMaterials.push(allSystems[parseInt(names[i])])
+      }
+
+      console.log(urlSelectedMaterials)
+
       this.setState(
-        { value: 0 }
+        { value: 0,
+        systemString: mSystem,
+      selectedMaterials: urlSelectedMaterials }
       )
-    } else if (type == 1) {
-      this.setState( //flooring
-        { value: 1 }
+    } else if (type == 1) { //envelope
+      let names = this.state.systemString.split("_")
+
+      names.pop()
+
+      let allSystems = [
+        "sGranite",
+     "sSlate",
+     "sCeramic",
+     "rRubber",
+     "rVinyl",
+     "rLinoTile",
+     "mConcrete",
+     "mTerrazzo",
+     //"mSealedC",
+     "mEpoxy",
+     "cHigh",
+     "cMedium",
+     "cLow",
+     "wEngineered",
+     "wBamboo",
+     "wCork",
+     "wSoftwood",
+     "wHardwood"
+     ]
+
+      let urlSelectedMaterials = []
+
+      console.log(names)
+      for(let i = 0; i < names.length; i++){
+        urlSelectedMaterials.push(allSystems[parseInt(names[i])])
+      }
+
+      // console.log(urlSelectedMaterials)
+
+      this.setState(
+        { value: 1,
+        systemString: mSystem,
+      flooring_selectedMaterials: urlSelectedMaterials }
       )
     }
+
+
+
+    
+    
+
+
 
 
     LoadData.lcsData(data => {
@@ -235,7 +476,7 @@ class App extends Component {
       this.setState({
         lcsData: data,
         materials: materials,
-        selectedMaterials: materials,
+        // selectedMaterials: materials,
         names: names
       });
     });
@@ -246,7 +487,7 @@ class App extends Component {
       this.setState({
         flooring_lcsData: data,
         flooring_materials: materials,
-        flooring_selectedMaterials: materials,
+        // flooring_selectedMaterials: materials,
         flooring_names: names
       });
     });
@@ -258,7 +499,7 @@ class App extends Component {
       this.setState({
         allImpactsData: data,
         materials: materials,
-        selectedMaterials: materials,
+        // selectedMaterials: materials,
         names: names
       });
     });
@@ -269,7 +510,7 @@ class App extends Component {
       this.setState({
         flooring_allImpactsData: data,
         flooring_materials: materials,
-        flooring_selectedMaterials: materials,
+        // flooring_selectedMaterials: materials,
         flooring_names: names
       });
     });
@@ -282,7 +523,7 @@ class App extends Component {
       this.setState({
         materialData: data,
         materials: materials,
-        selectedMaterials: materials,
+        // selectedMaterials: materials,
         names: names
       });
     });
@@ -293,7 +534,7 @@ class App extends Component {
       this.setState({
         flooring_materialData: data,
         flooring_materials: materials,
-        flooring_selectedMaterials: materials,
+        // flooring_selectedMaterials: materials,
         flooring_names: names
       });
     });
@@ -309,7 +550,7 @@ class App extends Component {
       this.setState({
         lcsData1: data,
         materials: materials,
-        selectedMaterials: materials,
+        // selectedMaterials: materials,
         names: names
       });
     });
@@ -320,7 +561,7 @@ class App extends Component {
       this.setState({
         flooring_lcsData1: data,
         flooring_materials: materials,
-        flooring_selectedMaterials: materials,
+        // flooring_selectedMaterials: materials,
         flooring_names: names
       });
     });
@@ -331,7 +572,7 @@ class App extends Component {
       this.setState({
         allImpactsData1: data,
         materials: materials,
-        selectedMaterials: materials,
+        // selectedMaterials: materials,
         names: names
       });
     });
@@ -342,7 +583,7 @@ class App extends Component {
       this.setState({
         flooring_allImpactsData1: data,
         flooring_materials: materials,
-        flooring_selectedMaterials: materials,
+        // flooring_selectedMaterials: materials,
         flooring_names: names
       });
     });
@@ -353,7 +594,7 @@ class App extends Component {
       this.setState({
         materialData1: data,
         materials: materials,
-        selectedMaterials: materials,
+        // selectedMaterials: materials,
         names: names
       });
     });
@@ -364,7 +605,7 @@ class App extends Component {
       this.setState({
         flooring_materialData1: data,
         flooring_materials: materials,
-        flooring_selectedMaterials: materials,
+        // flooring_selectedMaterials: materials,
         flooring_names: names
       });
     });
@@ -380,7 +621,7 @@ class App extends Component {
       this.setState({
         lcsData2: data,
         materials: materials,
-        selectedMaterials: materials,
+        // selectedMaterials: materials,
         names: names
       });
     });
@@ -391,7 +632,7 @@ class App extends Component {
       this.setState({
         flooring_lcsData2: data,
         flooring_materials: materials,
-        flooring_selectedMaterials: materials,
+        // flooring_selectedMaterials: materials,
         flooring_names: names
       });
     });
@@ -402,7 +643,7 @@ class App extends Component {
       this.setState({
         allImpactsData2: data,
         materials: materials,
-        selectedMaterials: materials,
+        // selectedMaterials: materials,
         names: names
       });
     });
@@ -413,7 +654,7 @@ class App extends Component {
       this.setState({
         flooring_allImpactsData2: data,
         flooring_materials: materials,
-        flooring_selectedMaterials: materials,
+        // flooring_selectedMaterials: materials,
         flooring_names: names
       });
     });
@@ -424,7 +665,7 @@ class App extends Component {
       this.setState({
         materialData2: data,
         materials: materials,
-        selectedMaterials: materials,
+        // selectedMaterials: materials,
         names: names
       });
     });
@@ -435,7 +676,7 @@ class App extends Component {
       this.setState({
         flooring_materialData2: data,
         flooring_materials: materials,
-        flooring_selectedMaterials: materials,
+        // flooring_selectedMaterials: materials,
         flooring_names: names
       });
     });
@@ -451,7 +692,7 @@ class App extends Component {
       this.setState({
         lcsData3: data,
         materials: materials,
-        selectedMaterials: materials,
+        // selectedMaterials: materials,
         names: names
       });
     });
@@ -462,7 +703,7 @@ class App extends Component {
       this.setState({
         flooring_lcsData3: data,
         flooring_materials: materials,
-        flooring_selectedMaterials: materials,
+        // flooring_selectedMaterials: materials,
         flooring_names: names
       });
     });
@@ -473,7 +714,7 @@ class App extends Component {
       this.setState({
         allImpactsData3: data,
         materials: materials,
-        selectedMaterials: materials,
+        // selectedMaterials: materials,
         names: names
       });
     });
@@ -484,7 +725,7 @@ class App extends Component {
       this.setState({
         flooring_allImpactsData3: data,
         flooring_materials: materials,
-        flooring_selectedMaterials: materials,
+        // flooring_selectedMaterials: materials,
         flooring_names: names
       });
     });
@@ -495,7 +736,7 @@ class App extends Component {
       this.setState({
         materialData3: data,
         materials: materials,
-        selectedMaterials: materials,
+        // selectedMaterials: materials,
         names: names
       });
     });
@@ -506,7 +747,7 @@ class App extends Component {
       this.setState({
         flooring_materialData3: data,
         flooring_materials: materials,
-        flooring_selectedMaterials: materials,
+        // flooring_selectedMaterials: materials,
         flooring_names: names
       });
     });
@@ -522,7 +763,7 @@ class App extends Component {
       this.setState({
         lcsData4: data,
         materials: materials,
-        selectedMaterials: materials,
+        // selectedMaterials: materials,
         names: names
       });
     });
@@ -533,7 +774,7 @@ class App extends Component {
       this.setState({
         flooring_lcsData4: data,
         flooring_materials: materials,
-        flooring_selectedMaterials: materials,
+        // flooring_selectedMaterials: materials,
         flooring_names: names
       });
     });
@@ -544,7 +785,7 @@ class App extends Component {
       this.setState({
         allImpactsData4: data,
         materials: materials,
-        selectedMaterials: materials,
+        // selectedMaterials: materials,
         names: names
       });
     });
@@ -555,7 +796,7 @@ class App extends Component {
       this.setState({
         flooring_allImpactsData4: data,
         flooring_materials: materials,
-        flooring_selectedMaterials: materials,
+        // flooring_selectedMaterials: materials,
         flooring_names: names
       });
     });
@@ -566,7 +807,7 @@ class App extends Component {
       this.setState({
         materialData4: data,
         materials: materials,
-        selectedMaterials: materials,
+        // selectedMaterials: materials,
         names: names
       });
     });
@@ -577,7 +818,7 @@ class App extends Component {
       this.setState({
         flooring_materialData4: data,
         flooring_materials: materials,
-        flooring_selectedMaterials: materials,
+        // flooring_selectedMaterials: materials,
         flooring_names: names
       });
     });
@@ -593,7 +834,7 @@ class App extends Component {
       this.setState({
         lcsData5: data,
         materials: materials,
-        selectedMaterials: materials,
+        // selectedMaterials: materials,
         names: names
       });
     });
@@ -604,7 +845,7 @@ class App extends Component {
       this.setState({
         flooring_lcsData5: data,
         flooring_materials: materials,
-        flooring_selectedMaterials: materials,
+        // flooring_selectedMaterials: materials,
         flooring_names: names
       });
     });
@@ -615,7 +856,7 @@ class App extends Component {
       this.setState({
         allImpactsData5: data,
         materials: materials,
-        selectedMaterials: materials,
+        // selectedMaterials: materials,
         names: names
       });
     });
@@ -626,7 +867,7 @@ class App extends Component {
       this.setState({
         flooring_allImpactsData5: data,
         flooring_materials: materials,
-        flooring_selectedMaterials: materials,
+        // flooring_selectedMaterials: materials,
         flooring_names: names
       });
     });
@@ -637,7 +878,7 @@ class App extends Component {
       this.setState({
         materialData5: data,
         materials: materials,
-        selectedMaterials: materials,
+        // selectedMaterials: materials,
         names: names
       });
     });
@@ -648,7 +889,7 @@ class App extends Component {
       this.setState({
         flooring_materialData5: data,
         flooring_materials: materials,
-        flooring_selectedMaterials: materials,
+        // flooring_selectedMaterials: materials,
         flooring_names: names
       });
     });
@@ -671,16 +912,211 @@ class App extends Component {
     });
   }
 
+  constructURL(){
+
+    console.log(this.state.value)
+    let urlVar = new URLSearchParams()
+      urlVar.set("type", this.state.value)
+      let selectedString = ""
+      if(this.state.value == 0){
+        
+    // for(let i = 0; i < newSelectedMaterials.length; i++){
+      let allSystems = [
+        "MVGranite",
+        "MVLimestone",
+        "MVBrick",
+        "MVTBrick",
+        "MInsMePanel",
+        "MEIFS",
+        "MPrecast",
+        "MMinWool",
+        "CSpandrelAlumB",
+        "CSpandrelSteel",
+        "CSpandrelAlum",
+        "CSpandrelWood",
+        "RGFRC",
+        "RACM",
+        "RTerracotta",
+        "RPhenResin",
+        "RFiberCement",
+        "RZinc",
+        "RUHPC",
+        "RGranite",
+        "RTBrick",
+        "RLimestone",
+        "RSteel",
+        "RWood"
+    ]
+    for(let i = 0; i < allSystems.length; i++){
+      if(this.state.selectedMaterials.includes(allSystems[i])){
+      selectedString += i + "_"
+      }
+    }
+      }else{
+        let allSystems = [
+          "sGranite",
+       "sSlate",
+       "sCeramic",
+       "rRubber",
+       "rVinyl",
+       "rLinoTile",
+       "mConcrete",
+       "mTerrazzo",
+       //"mSealedC",
+       "mEpoxy",
+       "cHigh",
+       "cMedium",
+       "cLow",
+       "wEngineered",
+       "wBamboo",
+       "wCork",
+       "wSoftwood",
+       "wHardwood"
+       ]
+      for(let i = 0; i < allSystems.length; i++){
+        if(this.state.flooring_selectedMaterials.includes(allSystems[i])){
+        selectedString += i + "_"
+        }
+      }
+      }
+      urlVar.set("system", selectedString)
+
+      urlVar.set("chartType", this.state.chartType)
+      urlVar.set("lifespan", this.state.lifespan)
+      urlVar.set("biogenicCarbon", this.state.biogenicCarbon)
+
+      // console.log("payette.github.com/?"+urlVar.toString())
+
+      // alert("payette.github.com/?"+urlVar.toString())
+
+      this.setState({
+        shareableUrl: "https://engine.payette.com/static/kaleidoscope-staging/?"+urlVar.toString()
+        // materialPopup: {
+        //   name: material.label
+        // }
+      }, () => {
+        this.materialsDialogRef.show();
+      })
+
+     
+  }
+
   updateSelectedMaterials(newSelectedMaterials) {
-    this.setState({
-      selectedMaterials: newSelectedMaterials
-    })
+    let selectedString = ""
+    // for(let i = 0; i < newSelectedMaterials.length; i++){
+      let allSystems = [
+        "MVGranite",
+        "MVLimestone",
+        "MVBrick",
+        "MVTBrick",
+        "MInsMePanel",
+        "MEIFS",
+        "MPrecast",
+        "MMinWool",
+        "CSpandrelAlumB",
+        "CSpandrelSteel",
+        "CSpandrelAlum",
+        "CSpandrelWood",
+        "RGFRC",
+        "RACM",
+        "RTerracotta",
+        "RPhenResin",
+        "RFiberCement",
+        "RZinc",
+        "RUHPC",
+        "RGranite",
+        "RTBrick",
+        "RLimestone",
+        "RSteel",
+        "RWood"
+    ]
+    for(let i = 0; i < allSystems.length; i++){
+      if(newSelectedMaterials.includes(allSystems[i])){
+      selectedString += i + "_"
+      }
+    }
+
+    this.setState({systemString: selectedString})
+
+    let urlVar = new URLSearchParams()
+      urlVar.set("type", this.state.value)
+      // urlVar.set("system", this.state.systemString)
+
+      
+      // console.log(this.state.selectedMaterials)
+      // console.log(s.get("system"))
+      this.setState({
+        selectedMaterials: newSelectedMaterials
+      })
+
+      
+
+    urlVar.set("system", selectedString)
+
+
+    window.history.replaceState({}, '', "?" + urlVar.toString())
+
+   
+
+    // this.setState({systemString: selectedString})
+    // }
+   
   }
 
   updateSelectedFlooringMaterials(flooring_newSelectedMaterials) {
-    this.setState({
-      flooring_selectedMaterials: flooring_newSelectedMaterials
-    })
+
+
+    let selectedString = ""
+    // for(let i = 0; i < newSelectedMaterials.length; i++){
+      let allSystems = [
+        "sGranite",
+     "sSlate",
+     "sCeramic",
+     "rRubber",
+     "rVinyl",
+     "rLinoTile",
+     "mConcrete",
+     "mTerrazzo",
+     //"mSealedC",
+     "mEpoxy",
+     "cHigh",
+     "cMedium",
+     "cLow",
+     "wEngineered",
+     "wBamboo",
+     "wCork",
+     "wSoftwood",
+     "wHardwood"
+     ]
+    for(let i = 0; i < allSystems.length; i++){
+      if(flooring_newSelectedMaterials.includes(allSystems[i])){
+      selectedString += i + "_"
+      }
+    }
+
+    this.setState({systemString: selectedString})
+
+    let urlVar = new URLSearchParams()
+      urlVar.set("type", this.state.value)
+      // urlVar.set("system", this.state.systemString)
+
+      
+      // console.log(this.state.selectedMaterials)
+      // console.log(s.get("system"))
+      this.setState({
+        flooring_selectedMaterials: flooring_newSelectedMaterials
+      })
+
+      
+
+    urlVar.set("system", selectedString)
+
+    
+    window.history.replaceState({}, '', "?" + urlVar.toString())
+
+
+
+    
   }
 
   radioChange(e) {
@@ -845,29 +1281,36 @@ class App extends Component {
       marginBottom: "10px"
     };
 
-    // const MyButton = styled(Button)({
-    //   // border: 1,
-    //     borderRadius: 12,
-    //     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    //     color: 'grey',
-    //     height: 12,
-    //     maxWidth: 12,
-    //     minWidth:12,
-    //     marginLeft: '10px',
-    //     fontSize:10,
-    //     padding: '0px',
-    // });
-
-
-
-
-
 
     return (
 
 
 
       <div className="App" style={{ minHeight: sidebarHeight }}>
+
+      <Dialog id="materialdetailsdialog"
+                appRoot="#root"
+                dialogRoot="#dialog-root"
+                dialogRef={(dialog) => (this.materialsDialogRef = dialog)}
+                // title={this.state.materialPopup.name}
+                classNames={{
+                  overlay: "dialog-overlay",
+                  closeButton: "dialog-close",
+                  element: "dialog-content",
+                  base: "dialog"
+                }}
+                style={{width:500}}
+                >
+                  <span>
+                  <h2 style={{fontSize: "40px"}}>Copy Link Below to Share URL</h2>
+                    <h2 style={{fontSize: "12px", textAlign:"center"}}>{this.state.shareableUrl}</h2>
+                    
+                  </span>
+              </Dialog>
+
+              <h3 style={{position:"absolute", right:"25px", top:"120px"}}>
+              <button onClick={this.constructURL.bind(this)} style={{borderRadius:"5px", padding:"5px"}}>Share Link</button>
+              </h3>
         
         <AppBar position="static" style={{ background: 'white', color: 'black', boxShadow: "none" }}>
           <Tabs value={this.state.value} indicatorColor="secondary" textColor="secondary"
@@ -879,19 +1322,19 @@ class App extends Component {
         </AppBar>
         <TabPanel value={this.state.value} index={0}>
         <Helmet>
-          {/* <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-          <link rel="stylesheet" type="text/css" href="bigfoot-default.css" />
-
-          <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/bigfoot/2.1.4/bigfoot.min.js"></script>
-          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.6.3/iframeResizer.contentWindow.min.js"></script> */}
+         
           <script type="text/javascript" src="bf.js"></script>
         </Helmet>
 
         
 
+        
+
+        
+
           <form>
             <h1>ENVELOPE ASSEMBLIES</h1>
+            
             <div className={styles.topcontrols}>
 
               <div className={styles.inputgroup}>
@@ -900,74 +1343,14 @@ class App extends Component {
                   <input type="radio" id="GWP" value="GWP" name="chartType" checked={this.state.chartType === "GWP"} onChange={this.handleInputChange} />
                   <label htmlFor="fGWP">Global Warming Potential <sup id="fnref:1"><a href="#fn:1" rel="footnote"></a></sup></label>
 
-                  {/* <Button onClick={this.handleClick} id="GWP1" style={{
-                  borderRadius: 12,
-        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-        color: 'grey',
-        height: 12,
-        maxWidth: 12,
-        minWidth:12,
-        marginLeft: '10px',
-        fontSize:10,
-        padding: '0px'}}>
-        ?
-      </Button>
-      <Popover
-      className={styles.popover_class}
-        // id="GWP1"
-        open={open && this.state.currentToolTip == "GWP1"}
-        anchorEl={this.state.anchorEl}
-        onClose={this.handleClose}
-        anchorOrigin={{
-          vertical: 'center',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'center',
-          horizontal: 'left',
-        }}
-      >
-        <Typography style={{padding:5}}>
-        Greenhouse gas emissions shown in equivalent units of carbon dioxide. Most impactful factor to reduce to meet climate change goals.
-        </Typography>
-      </Popover> */}
+                  
                 </div>
 
                 <div className={styles.inputitem}>
                   <input type="radio" id="allImpacts" name="chartType" value="allImpacts" checked={this.state.chartType === "allImpacts"} onChange={this.handleInputChange} />
                   <label htmlFor="allImpacts">All Impacts <sup id={"fnref:2"}><a href={"#fn:2"} rel="footnote"></a></sup></label>
 
-                  {/* <Button aria-describedby={id} onClick={this.handleClick} id="allImpacts1" style={{
-                  borderRadius: 12,
-        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-        color: 'grey',
-        height: 12,
-        maxWidth: 12,
-        minWidth:12,
-        marginLeft: '10px',
-        fontSize:10,
-        padding: '0px'}}>
-        ?
-      </Button>
-      <Popover
-      className={styles.popover_class}
-        // id="allImpacts"
-        open={open && this.state.currentToolTip == "allImpacts1"}
-        anchorEl={this.state.anchorEl}
-        onClose={this.handleClose}
-        anchorOrigin={{
-          vertical: 'center',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'center',
-          horizontal: 'left',
-        }}
-      >
-        <Typography style={{padding:5}}>
-          The content of the Popover.
-        </Typography>
-      </Popover> */}
+                 
                 </div>
 
                 <div className={styles.inputitem}>
@@ -1367,24 +1750,7 @@ class App extends Component {
               For questions or comments: <h5 style={{display:"inline-block"}}>tools@payette.com</h5>
               </p>
             </div>
-            {/* <div className="footnotes">
-          <ol>
-
-          <li className="footnote" id={"fn:2"}>
-              <p>Weighted LCA normalized across all systems. Includes global warming potential, non-renewable energy demand, eutrophication, smog creation, acidification, and ozone depletion. See methodology below for more info.</p>
-            </li>
-            
-            <li className="footnote" id="fn:9">
-              <p>Evaluates assemblies based on Payette's Material Health Policy. Read more about it <a href="https://www.payette.com/wp-content/uploads/2019/06/policy_and_letter.pdf" target="_blank">here</a>.</p>
-
-            </li>
-
-            
-            
-
-
-          </ol>
-        </div> */}
+           
           </div>
 
 
@@ -1395,11 +1761,7 @@ class App extends Component {
         </TabPanel>
         <TabPanel value={this.state.value} index={1}>
         <Helmet>
-        {/* <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
-          <link rel="stylesheet" type="text/css" href="bigfoot-default.css" />
-
-          <script type="text/javascript" charset="utf-8" src="bf2.js"></script> */}
+     
           <script type="text/javascript" src="bf3.js"></script>
         </Helmet>
           <form>
@@ -1411,75 +1773,14 @@ class App extends Component {
                 <div className={styles.inputitem}>
                   <input type="radio" id="GWP" value="GWP" name="chartType" checked={this.state.chartType === "GWP"} onChange={this.handleInputChange} />
                   <label htmlFor="fGWP">Global Warming Potential <sup id={"fnref:11"}><a href={"#fn:11"} rel="footnote"></a></sup></label>
-                  {/* <a href="#fn:1" rel="footnote">?</a> */}
-                  {/* <Button onClick={this.handleClick} id="GWP1" style={{
-                  borderRadius: 12,
-        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-        color: 'grey',
-        height: 12,
-        maxWidth: 12,
-        minWidth:12,
-        marginLeft: '10px',
-        fontSize:10,
-        padding: '0px'}}>
-        ?
-      </Button>
-      <Popover
-      className={styles.popover_class}
-        // id="GWP1"
-        open={open && this.state.currentToolTip == "GWP1"}
-        anchorEl={this.state.anchorEl}
-        onClose={this.handleClose}
-        anchorOrigin={{
-          vertical: 'center',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'center',
-          horizontal: 'left',
-        }}
-      >
-        <Typography style={{padding:5}}>
-        Greenhouse gas emissions shown in equivalent units of carbon dioxide. Most impactful factor to reduce to meet climate change goals.
-        </Typography>
-      </Popover> */}
+                  
                 </div>
 
                 <div className={styles.inputitem}>
                   <input type="radio" id="allImpacts" name="chartType" value="allImpacts" checked={this.state.chartType === "allImpacts"} onChange={this.handleInputChange} />
                   <label htmlFor="allImpacts">All Impacts <sup id={"fnref:"+this.state.clicks+"2"}><a href={"#fn:"+this.state.clicks+"2"} rel="footnote"></a></sup></label>
 
-                  {/* <Button aria-describedby={id} onClick={this.handleClick} id="allImpacts1" style={{
-                  borderRadius: 12,
-        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-        color: 'grey',
-        height: 12,
-        maxWidth: 12,
-        minWidth:12,
-        marginLeft: '10px',
-        fontSize:10,
-        padding: '0px'}}>
-        ?
-      </Button>
-      <Popover
-      className={styles.popover_class}
-        // id="allImpacts"
-        open={open && this.state.currentToolTip == "allImpacts1"}
-        anchorEl={this.state.anchorEl}
-        onClose={this.handleClose}
-        anchorOrigin={{
-          vertical: 'center',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'center',
-          horizontal: 'left',
-        }}
-      >
-        <Typography style={{padding:5}}>
-          The content of the Popover.
-        </Typography>
-      </Popover> */}
+                  
                 </div>
                 <div className={styles.inputitem}>
                   <input type="radio" id="LCS" value="LCS" name="chartType" checked={this.state.chartType === "LCS"} onChange={this.handleInputChange} />
@@ -1953,50 +2254,7 @@ class App extends Component {
               </p>
             </div>
           </div>
-          {/* <div className="footnotes">
-          <ol>
-          <li className="footnote" id={"fn:"+this.state.clicks+"1"}>
-              <p>Greenhouse gas emissions shown in equivalent units of carbon dioxide. Most impactful factor to reduce to meet climate change goals.</p>
-            </li>
-
-          <li className="footnote" id={"fn:"+this.state.clicks+"2"}>
-              <p>Weighted LCA normalized across all systems. Includes global warming potential, non-renewable energy demand, eutrophication, smog creation, acidification, and ozone depletion. See methodology below for more info.</p>
-            </li>
-            
-            <li className="footnote" id={"fn:"+this.state.clicks+"3"}>
-              <p>Results broken into life cycle stage as defined by standard EN 15978.</p>
-            </li>
-            <li className="footnote" id={"fn:"+this.state.clicks+"4"}>
-              <p>Global Warming Potential broken down into parts of the assembly: exterior finish, finish support, thermal insulation, and other.</p>
-            </li>
-            <li className="footnote" id={"fn:"+this.state.clicks+"5"}>
-              <p>Includes Cradle-to-Gate (A1-3) + Transport (A4).  Data for the time value of carbon and the 2030 carbon reduction goals. See methodology below for more info.</p>
-            </li>
-            <li className="footnote" id={"fn:"+this.state.clicks+"6"}>
-              <p>Data included Module D life cycle stage, which accounts for reuse potential beyond system boundary. See methodology below for more info. In some graphs this will be represented as a negative credit.</p>
-            </li>
-            <li className="footnote" id={"fn:"+this.state.clicks+"7"}>
-              <p>Data does not include Module D life cycle stage, which accounts for reuse potential beyond system boundary. See methodology below for more info.</p>
-            </li>
-            <li className="footnote" id={"fn:"+this.state.clicks+"8"}>
-              <p>Takes into account carbon that is sequestered from the atmosphere during biomass growth. If this option is chosen, it represents FSC or sustainable forestry. Sequestered carbon will show up as a negative credit when looking at biomass materials in the Material Breakdown chart.</p>
-            </li>
-            <li className="footnote" id={"fn:"+this.state.clicks+"9"}>
-              <p>Does not take into account carbon that is sequestered from the atmosphere during biomass growth. If this option is chosen, it represents typical forestry practices.</p>
-
-            </li>
-
-            <li className="footnote" id="fn:10">
-              <p>Evaluates assemblies based on Payette's Material Health Policy. Read more about it <a href="https://www.payette.com/wp-content/uploads/2019/06/policy_and_letter.pdf" target="_blank">here</a>.</p>
-
-            </li>
-
-            
-            
-
-
-          </ol>
-        </div> */}
+        
 
         </TabPanel>
         <TabPanel value={this.state.value} index={2}>

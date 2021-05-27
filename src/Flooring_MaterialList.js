@@ -259,7 +259,7 @@ export default class MaterialList extends PureComponent {
               {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={materialPopupMock} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
               {/* <img style={{maxWidth: "30%", maxHeight: "30%", paddingBottom: "3em"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
               
-                            <img style={{maxWidth: "45%", top:"20px", position:"absolute", right:"0px", objectFit:"cover", display:"block", zIndex:"-1"}} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />
+                            <img style={{maxWidth: "45%", top:"120px", position:"absolute", right:"0px", objectFit:"cover", display:"block", zIndex:"-1"}} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />
                                     <br></br>
                                     <div style={{maxWidth:"55%", top:"600px", left:"50px", position:'absolute', display:"block"}}>
               <div style={{display:"block"}}><h4>Assumptions</h4>

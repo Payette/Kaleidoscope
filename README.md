@@ -17,3 +17,4 @@ replace:
 "https://engine.payette.com/static/kaleidoscope-staging"
 
 ?type=0
+urlVar.set("system", "1_2_3")

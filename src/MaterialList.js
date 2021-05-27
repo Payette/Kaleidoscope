@@ -219,7 +219,7 @@ export default class MaterialList extends PureComponent {
               <h2 style={{fontSize: "40px"}}>{this.props.metaData.materialName2[this.state.materialPopup.name]}</h2>
               {/* <p style={{fontSize:"18px"}}><strong>10 year lifespan with biogenic carbon:</strong><br></br></p> */}
               <select id="pie1" name="pie1" id='piech' onChange={this.selectChange.bind(this)}>
-          <option value="tenYGWP">10 year lifespan with biogenic carbon</option>
+          <option value="tenYGWP">Initial carbon (only Module A)</option>
             <option value="sixty2YGWP">60 year lifespan with Module D and biogenic carbon</option>
             <option value="sixty1YGWP">60 year lifespan with biogenic carbon</option>
             

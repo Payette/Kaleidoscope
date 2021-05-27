@@ -5,7 +5,7 @@ MVBrick,Masonry Veneer,8.629073875,0.204327931,Brick,./img/mvbrick.png
 MVTBrick,Masonry Veneer,5.789686279,0.087256861,Thin Brick,./img/mvtbrick.png
 MInsMePanel,Misc,13.36560877,0.072705647,Insulated Metal Panel,./img/minsmepanel.png
 MEIFS,Misc,13.06159705,0.051625675,EIFS (XPS),./img/mefis.png
-MPrecast,Misc,6.985080055,0.090479899,Precast Concrete,./img/mprecast.png
+MPrecast,Misc,9.540902617,0.095679974,Precast Concrete,./img/mprecast.png
 MMinWool,Misc,3.216098568,0.044426722,EIFS (Min Wool),./img/mminwool.png
 CSpandrelAlumB,Curtain Wall,14.14635887,0.197835797,Spandrel (Alum w/ Backpan),./img/cspandrelalumb.png
 CSpandrelSteel,Curtain Wall,13.42098049,0.210382362,Spandrel (Steel),./img/cspandrelsteel.png
