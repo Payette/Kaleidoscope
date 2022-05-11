@@ -1296,7 +1296,7 @@ class App extends Component {
                 classNames={{
                   overlay: "dialog-overlay",
                   closeButton: "dialog-close",
-                  element: "dialog-content",
+                  element: "dialog-content-top",
                   base: "dialog"
                 }}
                 style={{width:500}}

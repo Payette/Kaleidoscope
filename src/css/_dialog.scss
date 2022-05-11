@@ -64,6 +64,10 @@ dialog::backdrop {
     max-width: 100%;
   }
 }
+.dialog-content-top {
+  @extend .dialog-content;
+  top: 15%;
+}
 
 /* -------------------------------------------------------------------------- *\
  * Extra dialog styling to make it shiny
