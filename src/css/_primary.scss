@@ -6,6 +6,7 @@ html, body {
   // height: 100%;
   // position: relative;
   font-family: $body-font;
+  overflow-y: visible !important;
 }
 body {
   margin-top: 2rem;
@@ -47,3 +48,5 @@ a.link1 {
 /* default component mappings */
 .visuallyhidden { @include visuallyhidden; }
 .primarybutton { @include primarybutton; }
+
+

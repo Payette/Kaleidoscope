@@ -1,0 +1,25 @@
+material,type,value,name,img
+MVGranite,Masonry Veneer,20,Granite,./img/mvgranite.png
+MVLimestone,Masonry Veneer,13.2,Limestone,./img/mvlimestone.png
+MVBrick,Masonry Veneer,10.01,Brick,./img/mvbrick.png
+MVTBrick,Masonry Veneer,6.93,Thin Brick,./img/mvtbrick.png
+MInsMePanel,Misc,25.86,Insulated Metal Panel,./img/minsmepanel.png
+MEIFS,Misc,27.73,EIFS (XPS),./img/mefis.png
+MPrecast,Misc,11.5,Precast Concrete,./img/mprecast.png
+MMinWool,Misc,5.01,EIFS (Min Wool),./img/mminwool.png
+CSpandrelAlumB,Curtain Wall,20.19,Spandrel (Alum w/ Backpan),./img/cspandrelalumb.png
+CSpandrelSteel,Curtain Wall,20.23,Spandrel (Steel),./img/cspandrelsteel.png
+CSpandrelAlum,Curtain Wall,18.2,Spandrel (Alum),./img/cspandrelalum.png
+CSpandrelWood,Curtain Wall,14.76,Spandrel (Wood),./img/cspandrelwood.png
+RGFRC,Rainscreen,16.14,Glass Fiber Reinforced Concrete (GFRC),./img/rgfrc.png
+RACM,Rainscreen,11.96,Aluminum Composite Material (ACM),./img/racm.png
+RTerracotta,Rainscreen,9.22,Terracotta,./img/rterracotta.png
+RPhenResin,Rainscreen,15.49,Phenolic Resin,./img/rphenresin.png
+RFiberCement,Rainscreen,14.97,Fiber Cement,./img/rfibercement.png
+RZinc,Rainscreen,7.64,Formed Zinc Panel,./img/rzinc.png
+RUHPC,Rainscreen,7.63,UHPC (fibreC),./img/ruhpc.png
+RGranite,Rainscreen,7.42,Granite,./img/rgranite.png
+RTBrick,Rainscreen,7.2,Thin Brick,./img/rtbrick.png
+RLimestone,Rainscreen,7.07,Limestone,./img/rlimestone.png
+RSteel,Rainscreen,8.12,Formed Steel Panel,./img/rsteel.png
+RWood,Rainscreen,9.42,Wood,./img/rwood.png

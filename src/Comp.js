@@ -245,22 +245,30 @@ export default class Comp extends React.Component {
       <tr>
         <td>
           <select id="mat" name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + this.state.count}>
-          <option value="Granite">MV - Granite</option>
-            <option value="Limestone">MV - Limestone</option>
-            <option value="Brick">MV - Brick</option>
-            <option value="InsMetPanel">FS - Insulated Metal Panel</option>
-            <option value="Spandrel">CW - Spandrel</option>
-            {/* <option value="UHPC">RS - UHPC (fibreC)</option> */}
-            <option value="GFRC">RS - GFRC</option>
-            <option value="ACM">RS - ACM</option>
-            <option value="Terracotta">RS - Terracotta</option>
-            <option value="PhenResin">RS - Phenolic Resin</option>
-            <option value="FiberCement">RS - Fiber Cement</option>
-            <option value="Zinc">RS - Formed Zinc Panel</option>
-            <option value="Granite1">RS - Granite</option>
-            <option value="Limestone1">RS - Limestone</option>
-            <option value="Steel">RS - Formed Steel Panel</option>
-            <option value="Wood">RS - Wood</option>
+          <option value="MVGranite">MV - Granite</option>
+            <option value="MVLimestone">MV - Limestone</option>
+            <option value="MVBrick">MV - Brick</option>
+            <option value="MVTBrick">MV - Thin Brick</option>
+            <option value="MInsMePanel">M - Insulated Metal Panel</option>
+            <option value="MEIFS">M - EIFS (XPS)</option>
+            <option value="MPrecast">M - Precast Concrete</option>
+            <option value="MMinWool">M - EIFS (Min Wool)</option>
+            <option value="CSpandrelAlumB">CW - Spandrel (Alum w/ Backpan)</option>
+            <option value="CSpandrelSteel">CW - Spandrel (Steel)</option>
+            <option value="CSpandrelAlum">CW - Spandrel (Alum)</option>
+            <option value="CSpandrelWood">CW - Spandrel (Wood)</option>
+            <option value="RGFRC">RS - GFRC</option>
+            <option value="RACM">RS - ACM</option>
+            <option value="RTerracotta">RS - Terracotta</option>
+            <option value="RPhenResin">RS - Phenolic Resin</option>
+            <option value="RFiberCement">RS - Fiber Cement</option>
+            <option value="RZinc">RS - Formed Zinc Panel</option>
+            <option value="RUHPC">RS - UHPC (fibreC)</option>
+            <option value="RGranite">RS - Granite</option>
+            <option value="RTBrick">RS - Thin Brick</option>
+            <option value="RLimestone">RS - Limestone</option>
+            <option value="RSteel">RS - Formed Steel Panel</option>
+            <option value="RWood">RS - Wood</option>
           </select>
         </td>
         <td>
@@ -326,22 +334,30 @@ export default class Comp extends React.Component {
         <td>
           {/* <input type="text" id={`select-type` + rel} /> */}
           <select id="mat" name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name +`1`}>
-            <option value="Granite">MV - Granite</option>
-            <option value="Limestone">MV - Limestone</option>
-            <option value="Brick">MV - Brick</option>
-            <option value="InsMetPanel">FS - Insulated Metal Panel</option>
-            <option value="Spandrel">CW - Spandrel</option>
-            {/* <option value="UHPC">RS - UHPC (fibreC)</option> */}
-            <option value="GFRC">RS - GFRC</option>
-            <option value="ACM">RS - ACM</option>
-            <option value="Terracotta">RS - Terracotta</option>
-            <option value="PhenResin">RS - Phenolic Resin</option>
-            <option value="FiberCement">RS - Fiber Cement</option>
-            <option value="Zinc">RS - Formed Zinc Panel</option>
-            <option value="Granite1">RS - Granite</option>
-            <option value="Limestone1">RS - Limestone</option>
-            <option value="Steel">RS - Formed Steel Panel</option>
-            <option value="Wood">RS - Wood</option>
+          <option value="MVGranite">MV - Granite</option>
+            <option value="MVLimestone">MV - Limestone</option>
+            <option value="MVBrick">MV - Brick</option>
+            <option value="MVTBrick">MV - Thin Brick</option>
+            <option value="MInsMePanel">M - Insulated Metal Panel</option>
+            <option value="MEIFS">M - EIFS (XPS)</option>
+            <option value="MPrecast">M - Precast Concrete</option>
+            <option value="MMinWool">M - EIFS (Min Wool)</option>
+            <option value="CSpandrelAlumB">CW - Spandrel (Alum w/ Backpan)</option>
+            <option value="CSpandrelSteel">CW - Spandrel (Steel)</option>
+            <option value="CSpandrelAlum">CW - Spandrel (Alum)</option>
+            <option value="CSpandrelWood">CW - Spandrel (Wood)</option>
+            <option value="RGFRC">RS - GFRC</option>
+            <option value="RACM">RS - ACM</option>
+            <option value="RTerracotta">RS - Terracotta</option>
+            <option value="RPhenResin">RS - Phenolic Resin</option>
+            <option value="RFiberCement">RS - Fiber Cement</option>
+            <option value="RZinc">RS - Formed Zinc Panel</option>
+            <option value="RUHPC">RS - UHPC (fibreC)</option>
+            <option value="RGranite">RS - Granite</option>
+            <option value="RTBrick">RS - Thin Brick</option>
+            <option value="RLimestone">RS - Limestone</option>
+            <option value="RSteel">RS - Formed Steel Panel</option>
+            <option value="RWood">RS - Wood</option>
           </select>
         </td>
         <td>

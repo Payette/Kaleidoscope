@@ -15,8 +15,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
+
 // import auth0Client from '../Auth';
 import './css/splash-screen.css';
+
+// $.bigfoot();
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -65,15 +68,18 @@ const useStyles = makeStyles((theme) => ({
 
 const tiers = [
   {
-    title: 'Free',
+    title: 'ENVELOPES',
+    subheader: 'Exterior Systems',
     price: '0',
     description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
-    buttonText: 'Sign up for free',
-    buttonVariant: 'outlined',
+    img: "./img/MV_Axon.png",
+    buttonText: 'View Envelopes',
+    buttonVariant: 'contained',
+    item: 0
   },
   {
-    title: 'Pro',
-    subheader: 'Most popular',
+    title: 'FLOORING',
+    subheader: 'Flooring Systems',
     price: '15',
     description: [
       '20 users included',
@@ -81,11 +87,14 @@ const tiers = [
       'Help center access',
       'Priority email support',
     ],
-    buttonText: 'Get started',
+    img: "./img/FL_Axon-2.png",
+    buttonText: 'View Flooring',
     buttonVariant: 'contained',
+    item: 1
   },
   {
-    title: 'Enterprise',
+    title: 'OTHER',
+    subheader: 'Future Systems',
     price: '30',
     description: [
       '50 users included',
@@ -93,8 +102,10 @@ const tiers = [
       'Help center access',
       'Phone & email support',
     ],
-    buttonText: 'Contact us',
-    buttonVariant: 'outlined',
+    img: "./img/OtherBox.png",
+    buttonText: 'Coming soon',
+    buttonVariant: 'disabled',
+    item: 2
   },
 ];
 
@@ -108,10 +119,52 @@ function withSplashScreen(WrappedComponent) {
       super(props);
       this.state = {
         loading: loading1,
+        currentItem: 0
       };
     }
 
     async componentDidMount() {
+
+      let s = new URLSearchParams(window.location.search)
+
+      console.log(s.get("type"))
+  
+      let type = s.get("type")
+
+
+
+      if(type == 0 || type == 1){ //envelope
+        this.setState({loading: false, currentItem: type});
+        if(type == 0){
+          this.setState({selectedMaterials:[
+            "MVGranite",
+            "MVLimestone",
+            "MVBrick",
+            "MVTBrick",
+            "MInsMePanel",
+            "MEIFS",
+            "MPrecast",
+            "MMinWool",
+            "CSpandrelAlumB",
+            "CSpandrelSteel",
+            "CSpandrelAlum",
+            "CSpandrelWood",
+            "RGFRC",
+            "RACM",
+            "RTerracotta",
+            "RPhenResin",
+            "RFiberCement",
+            "RZinc",
+            "RUHPC",
+            "RGranite",
+            "RTBrick",
+            "RLimestone",
+            "RSteel",
+            "RWood"
+        ]})
+        }
+      }
+      
     //   try {
     //     await auth0Client.loadSession();
 
@@ -152,23 +205,35 @@ function withSplashScreen(WrappedComponent) {
                     />
                     <CardContent>
                       <div>
-                        <Typography component="h2" variant="h3" color="textPrimary">
+                        {/* <Typography component="h2" variant="h3" color="textPrimary">
                           ${tier.price}
-                        </Typography>
+                        </Typography> */}
                         <Typography variant="h6" color="textSecondary">
-                          /mo
+                          <img src={tier.img} style={{height: "250px", maxWidth:"80%", position:'relative', margin: "0px 0px 0px 30px"}}></img>
                         </Typography>
                       </div>
-                      <ul>
+                      {/* <ul>
                         {tier.description.map((line) => (
                           <Typography component="li" variant="subtitle1" align="center" key={line}>
                             {line}
                           </Typography>
                         ))}
-                      </ul>
+                      </ul> */}
                     </CardContent>
                     <CardActions>
-                      <Button fullWidth variant={tier.buttonVariant} color="primary" onClick={() => { this.setState({loading: false,});}}>
+                      <Button fullWidth variant={tier.buttonVariant} 
+                      color="secondary" 
+                      onClick={() => { this.setState({loading: false, currentItem: tier.item, selectedMaterials: this.state.selectedMaterials}); 
+                      let urlVar = new URLSearchParams()
+      urlVar.set("type", tier.item)
+      // urlVar.set("system", this.state.systemString)
+
+      
+      // console.log(this.state.selectedMaterials)
+      // console.log(s.get("system"))
+
+      window.history.replaceState({}, '', "?" + urlVar.toString())
+                      }}>
                         {tier.buttonText}
                       </Button>
                     </CardActions>
@@ -176,26 +241,38 @@ function withSplashScreen(WrappedComponent) {
                 </Grid>
               ))}
             </Grid>
+            <br></br><br></br>
           </Container>
           {/* <Pricing loading={loading1}></Pricing> */}
-          Wait a moment while we load your app.
+          {/* Wait a moment while we load your app. */}
           {/* <div className="loading-dot">.</div> */}
+          <br></br><br></br><br></br><br></br>
         </div>
       );
     }
 
     render() {
+
+      
+      //else if(type == 1){
+      //   this.setState( //flooring
+      //     {value: 1}
+      //   )
+      // }
+
       // while checking user session, show "loading" message
       if(!loading1){
         this.setState({
           loading: false,
         });
+        // this.props.loading = 1
       }
       
       if (this.state.loading) return this.LoadingMessage();
 
       // otherwise, show the desired route
-      return <WrappedComponent {...this.props} />;
+      console.log(this.state)
+      return <WrappedComponent item={this.state.currentItem} {...this.state} />;
     }
 
     

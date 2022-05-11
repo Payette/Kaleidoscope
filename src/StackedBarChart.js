@@ -114,9 +114,10 @@ let multiplier = 100.0 / currentBiggest;
       if(Math.abs(cur[k]) != (cur[k])){
         dailyTotal += + Math.abs(cur[k]);
       }
-      return dailyTotal * -1;
+      return (Math.abs(dailyTotal) * -1) ;
     }, 0);
     ret.push(t);
+    // console.log(ret)
     return ret;
   }, []);
 
@@ -144,9 +145,11 @@ let multiplier = 100.0 / currentBiggest;
   })
 
   let matCol = [];
+  // matCol.push(-5)
 
   Object.values(metaData.matColors).forEach(val =>{
     matCol.push(val)
+    // console.log(val)
   })
 
   let myTexts = []
@@ -185,6 +188,7 @@ let multiplier = 100.0 / currentBiggest;
   });
 
   if(currentChart === "MB"){
+    // console.log(matCol)
   color = scaleOrdinal({
     domain: keys,
     // range: [purple1, purple2, purple3],
@@ -250,7 +254,7 @@ let multiplier = 100.0 / currentBiggest;
               {deepClone.map(sm => {
                 const height = headerFooterHeight + (barHeight * sm.values.length);
                 const yMax = height - margin.top - margin.bottom;
-                const yScale = scaleBand({domain:  sm.values.map(getName), padding: 0.2});
+                const yScale = scaleBand({domain:  sm.values.map(getName), padding: .2});
                 yScale.rangeRound([yMax, 0]);
                 const yOffset = previousY;
                 
@@ -258,8 +262,10 @@ let multiplier = 100.0 / currentBiggest;
 
                 let myAbb = "RS"
 
-                if(sm.key[0] === "M"){
+                if(sm.key[0] === "M" && sm.key[1] === "a"){
                       myAbb = "(MV)";
+                }else if(sm.key[0] === "M" && sm.key[1] === "i"){
+                  myAbb = "(M)";
                 }else if (sm.key[0] === "F"){
                   myAbb = "(FS)";
                 }else if(sm.key[0] === "C"){

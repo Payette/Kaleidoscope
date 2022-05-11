@@ -90,8 +90,8 @@ dialog::backdrop {
 .dialog-content {
   padding: 1em;
   box-sizing: border-box;
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 1400px;
+  // max-height: 90%;
   width: 80%;
   border-radius: 2px;
   overflow: auto;
