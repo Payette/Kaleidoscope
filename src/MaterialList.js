@@ -184,16 +184,17 @@ export default class MaterialList extends PureComponent {
       
       <div>
         <div>
-        <h3>LEGEND</h3>
+          {legendText && <>
+          <h3>LEGEND</h3>
           <span>
             {legendText}
           {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={legend}/> */}<br></br>
           </span>
-          <span>
-          <h3 style={{display: "inline-block"}}>ASSEMBLY TYPE</h3><button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button><br></br><br>
-          </br><span style={{fontFamily:"freight-text-pro, serif", marginBottom:10}}>Click on a type below for additional details</span><br></br>
-          
-          </span><br></br>
+          </>}
+          <div>
+          <h3 style={{display: "inline-block", marginBottom: "0.5em" }}>ASSEMBLY TYPE</h3><button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
+          <div style={{fontFamily:"freight-text-pro, serif", marginBottom: "0.75em" }}>Click on a type below for additional details</div>
+          </div>
         </div>
         <div>
         
