@@ -4,7 +4,7 @@ import StackedBarChart from './StackedBarChart';
 import FlooringStackedBarChart from './Flooring_StackedBarChart';
 import LoadData from './data/LoadData1';
 import FlooringLoadData from './data/Flooring_LoadData';
-import MaterialList from './MaterialListCombined';
+import MaterialList from './MaterialList';
 import Row from "./Row";
 import { Tabs, AppBar, Tab, Popover, Button, Typography, Popper } from '@material-ui/core';
 import TabPanel from "./TabPanel";

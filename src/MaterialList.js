@@ -8,7 +8,7 @@ import legendMBEnvelope from './images/MaterialBreakdown-11.png'
 import legendMBFlooring from './images/System_Boundary-flooring_EDIT.png'
 
 import Checkbox from './Checkbox'
-import Pie from "./PieChartCombined";
+import Pie from "./PieChart";
 import 'pretty-checkbox'
 let myImg;
 let legend;
@@ -22,7 +22,7 @@ let colsFlooring = ["#c7e9b7", "#c7e9b7", "#b5e2bd", "#85E2BD", "#b5e2bd", "#b5e
 const materialNamesFlooring = ["mat27", "mat26", "mat25", "mat24", "mat23", "mat22", "mat21", "mat20", "mat19", "mat18", "mat17", "mat16", "mat15", "mat14", "mat13", "mat12", "mat11", "mat10", "mat9", "mat8", "mat7", "mat6", "mat5", "mat4", "mat3", "mat2", "mat1"];
 let materialLabelFlooring = {mat1:"Polyethelene sheet vapor barrier",mat2:"Interior grade plywood",mat3:"Cement grout",mat4:"Cement mortar",mat5:"Self-leveling underlayment",mat6:"Thickset mortar",mat7:"Fasteners, galvanized steel",mat8:"Floor adhesive, carpet",mat9:"Floor adhesive, latex",mat10:"Bamboo plank",mat11:"Ceramic tile, glazed",mat12:"Commercial high-traffic carpet, high pile",mat13:"Commercial high-traffic carpet, low pile",mat14:"Commercial high-traffic carpet, medium pile",mat15:"Cork tile",mat16:"Domestic softwood",mat17:"Granite tile",mat18:"Harwood veneer, thick",mat19:"Homogeneous vinyl tile",mat20:"Linoleum tile",mat21:"SBS rubber tile",mat22:"Slate tile",mat23:"White oak lumber, 1 inch",mat24:"Terrazzo",mat25:"Epoxy",mat26:"Wood sealer, water-based",mat27:"Polyuretane floor finish"};
 
-export default class MaterialListCombined extends PureComponent {
+export default class MaterialList extends PureComponent {
   constructor(props) {
     super(props);
 

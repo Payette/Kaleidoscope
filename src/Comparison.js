@@ -3,7 +3,7 @@ import styles from './css/Comp.module.scss';
 
 // let rad = 1;
 
-export default class Comp extends React.Component {
+export default class Comparison extends React.Component {
   constructor(props) {
     super(props);
     this.state = { rows: [], count:1, vals: [], vals1: [], sum:0, sum1:0, radio:1, allMaterials:[0], show:false};
