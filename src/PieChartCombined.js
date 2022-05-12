@@ -14,20 +14,10 @@ const NO_PATTERN = 'transparent';
 
 
 const white = '#fff';
-let cols = ["#c7e9b7", "#c7e9b7", "#b5e2bd", "#85E2BD", "#b5e2bd", "#b5e2bd", "#b5e2bd", "#85E2BD", "#b5e2bd", "#85E2BD", "#b5e2bd", "#b5e2bd", "#b5e2bd", "#b5e2bd", "#b5e2bd", "#b5e2bd", "#b5e2bd", "#b5e2bd", "#0090ff", "#0090ff", "#0090ff", "#B3B3B3", "#b3b3b3", "#cccccc", "#cccccc", "#999999", "#666666"]
-const black = '#000000';
-const letters = letterFrequency.slice(0, 4);
-// const browserNames = Object.keys(browserUsage[0]).filter(k => k !== 'date');
-// console.log(browserNames)
-// console.log(browserUsage)
-const materialNames = ["mat27", "mat26", "mat25", "mat24", "mat23", "mat22", "mat21", "mat20", "mat19", "mat18", "mat17", "mat16", "mat15", "mat14", "mat13", "mat12", "mat11", "mat10", "mat9", "mat8", "mat7", "mat6", "mat5", "mat4", "mat3", "mat2", "mat1"];
-let materialLabel = {mat1:"Polyethelene sheet vapor barrier",mat2:"Interior grade plywood",mat3:"Cement grout",mat4:"Cement mortar",mat5:"Self-leveling underlayment",mat6:"Thickset mortar",mat7:"Fasteners, galvanized steel",mat8:"Floor adhesive, carpet",mat9:"Floor adhesive, latex",mat10:"Bamboo plank",mat11:"Ceramic tile, glazed",mat12:"Commercial high-traffic carpet, high pile",mat13:"Commercial high-traffic carpet, low pile",mat14:"Commercial high-traffic carpet, medium pile",mat15:"Cork tile",mat16:"Domestic softwood",mat17:"Granite tile",mat18:"Harwood veneer, thick",mat19:"Homogeneous vinyl tile",mat20:"Linoleum tile",mat21:"SBS rubber tile",mat22:"Slate tile",mat23:"White oak lumber, 1 inch",mat24:"Terrazzo",mat25:"Epoxy",mat26:"Wood sealer, water-based",mat27:"Polyuretane floor finish"};
-// const browsers = browserNames.map(k => ({ label: k, usage: browserUsage[0][k] }));
-
 const usage = d => d.usage;
 console.log(usage);
 const frequency = d => d.frequency;
-export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdown2,currentMat, tenYGWP, sixty1YGWP, sixty2YGWP, GWPSel }) => {
+export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdown2,currentMat, tenYGWP, sixty1YGWP, sixty2YGWP, GWPSel, cols, materialNames, materialLabel }) => {
 
     // this.state = { textToShow: ""};
     // this.handleInputChange = this.handleInputChange.bind(this);
@@ -111,7 +101,7 @@ export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdo
 
   let strokeVal = [];
 
-  
+
   return (
     <svg width={width} height={height}>
       {/* <GradientPinkBlue id="pie-gradients" /> */}
@@ -158,11 +148,9 @@ export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdo
               }
 
               // console.log(strokeVal)
-
-
               return (
                 <g key={`browser-\${arc.data.label}-\${i}`}>
-                  <PatternLines
+                 <PatternLines
             id={"hLines"+i}
             height={5}
             width={5}

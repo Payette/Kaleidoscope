@@ -8,23 +8,27 @@ import legendMBEnvelope from './images/MaterialBreakdown-11.png'
 import legendMBFlooring from './images/System_Boundary-flooring_EDIT.png'
 
 import Checkbox from './Checkbox'
-import PieEnvelope from "./PieChart";
-import PieFlooring from "./Flooring_PieChart";
+import Pie from "./PieChartCombined";
 import 'pretty-checkbox'
 let myImg;
 let legend;
 let legendText = "hello";
 
+let colsEnvelope = ["#c8e3b6", "#74deb6", "#bfe6b1", "#74deb6", "#bfe6b1", "#74deb6", "#74deb6", "#74deb6", "#74deb6", "#74deb6", "#74deb6", "#74deb6","#b6e6e9", "#bfe6b1", "#74deb6", "#93cee6", "#2461fa", "#2461fa", "#2461fa", "#74deb6", "#74deb6", "#bfe6b1", "#74deb6", "#bfe6b1", "#74deb6", "#93cee6", "#93cee6", "#b6e6e9", "#74deb6", "#74deb6", "#bfe6b1", "#bfe6b1", "#bfe6b1", "#93cee6", "#0087fb", "#2461fa", "#2461fa", "#00177b", "#ffe2b9", "#ffb65b", "#ffb65b", "#ffb65b", "#c5c5c5", "#aaaaaa", "#c5c5c5", "#aaaaaa", "#8e8e8e", "#5b5b5b", "#2d2d2d"]
+const materialNamesEnvelope = ["mat49", "mat48", "mat47", "mat46", "mat45", "mat44", "mat43", "mat42", "mat41", "mat40", "mat39", "mat38","mat37", "mat36", "mat35", "mat34", "mat33", "mat32", "mat31", "mat30", "mat29", "mat28", "mat27", "mat26", "mat25", "mat24", "mat23", "mat22", "mat21", "mat20", "mat19", "mat18", "mat17", "mat16", "mat15", "mat14", "mat13", "mat12", "mat11", "mat10", "mat9", "mat8", "mat7", "mat6", "mat5", "mat4", "mat3", "mat2", "mat1"];
+let materialLabelEnvelope = {mat1:"Paint, interior acrylic latex",mat2:"Wall board, gypsum, natural",mat3:"Cold formed structural steel",mat4:"Fiberglass mat gypsum sheathing board",mat5:"Self-adhering, polymer-modified asphalt sheet underlayment",mat6:"Aluminum Backpan",mat7:"Powder coating, metal stock",mat8:"Mineral wool, low density, NAIMA - EPD",mat9:"Spray polyurethane foal, closed cell, (HFO blowing agent)",mat10:"XPS insulation, Foamular average, Owens Corning - EPD",mat11:"Polyureathane foam (PUR) rigid board", mat12:"Adhesive, polychloroprene (neoprene)",mat13:"Galvanized steel",mat14:"Galvanized steel support",mat15:"Aluminum extrusion, AEC - EPD",mat16:"Fasteners, stainless steel",mat17:"Mortar type S",mat18:"Mortar type N",mat19:"Aluminum sheet",mat20:"Stone slab, granite",mat21:"Stone slab, limestone",mat22:"Cement bonded particle board",mat23:"Steel Sheet",mat24:"Zinc coating (galvanized) for stee G60",mat25:"Brick, generic",mat26:"Fluoropolymer coating, metal stock",mat27:"Steel insulated metal panel (IMP), MCA - EPD",mat28:"Glass fiber board, NAIMA - EPD",mat29:"Stucco synthetic",mat30:"Structural concrete, 5000 psi, 0% fly ash and slag",mat31:"Aluminum curtain wall system, YKK AP - EPD ",mat32:"Stainless steel, extruded chromium 18/8",mat33:"Glue laminated timber (Glulam), AWC - EPD",mat34:"Argon gas for IGU",mat35:"Glazing, monolithic sheet, tempered",mat36:"IGU spacer",mat37:"Low-e coating (for glazing)",mat38:"GFRC panel, Rieder, FibreC panel - EPD",mat39:"GFRC",mat40:"Aluminum-faced composite wall panel (ACM), MCA - EPD",mat41:"Terracotta",mat42:"Phenolic resin solid surfacing, sheet",mat43:"Fiber cement board",mat44:"Titanium zinc sheet, Rheinzink, prePATINA blue/graphite-grey - EPD",mat45:"Paint, enamel, solvent based",mat46:"Steel, sheet",mat47:"Wood stain, water based",mat48:"Tulipwood lumber, 1 inch",mat49:"Steel, welded wire mesh"};
+
+let colsFlooring = ["#c7e9b7", "#c7e9b7", "#b5e2bd", "#85E2BD", "#b5e2bd", "#b5e2bd", "#b5e2bd", "#85E2BD", "#b5e2bd", "#85E2BD", "#b5e2bd", "#b5e2bd", "#b5e2bd", "#b5e2bd", "#b5e2bd", "#b5e2bd", "#b5e2bd", "#b5e2bd", "#0090ff", "#0090ff", "#0090ff", "#B3B3B3", "#b3b3b3", "#cccccc", "#cccccc", "#999999", "#666666"]
+const materialNamesFlooring = ["mat27", "mat26", "mat25", "mat24", "mat23", "mat22", "mat21", "mat20", "mat19", "mat18", "mat17", "mat16", "mat15", "mat14", "mat13", "mat12", "mat11", "mat10", "mat9", "mat8", "mat7", "mat6", "mat5", "mat4", "mat3", "mat2", "mat1"];
+let materialLabelFlooring = {mat1:"Polyethelene sheet vapor barrier",mat2:"Interior grade plywood",mat3:"Cement grout",mat4:"Cement mortar",mat5:"Self-leveling underlayment",mat6:"Thickset mortar",mat7:"Fasteners, galvanized steel",mat8:"Floor adhesive, carpet",mat9:"Floor adhesive, latex",mat10:"Bamboo plank",mat11:"Ceramic tile, glazed",mat12:"Commercial high-traffic carpet, high pile",mat13:"Commercial high-traffic carpet, low pile",mat14:"Commercial high-traffic carpet, medium pile",mat15:"Cork tile",mat16:"Domestic softwood",mat17:"Granite tile",mat18:"Harwood veneer, thick",mat19:"Homogeneous vinyl tile",mat20:"Linoleum tile",mat21:"SBS rubber tile",mat22:"Slate tile",mat23:"White oak lumber, 1 inch",mat24:"Terrazzo",mat25:"Epoxy",mat26:"Wood sealer, water-based",mat27:"Polyuretane floor finish"};
 
 export default class MaterialListCombined extends PureComponent {
   constructor(props) {
     super(props);
 
     this.legendMB = legendMBEnvelope;
-    this.Pie = PieEnvelope;
     if(props.type === 'flooring') {
       this.legendMB = legendMBFlooring;
-      this.Pie = PieFlooring;
     }
 
     this.state = {
@@ -194,9 +198,6 @@ export default class MaterialListCombined extends PureComponent {
       );}
     }
 
-    let Pie = this.Pie;
-
-
     return (
       
       <div>
@@ -260,6 +261,9 @@ export default class MaterialListCombined extends PureComponent {
               sixty1YGWP={this.props.sixty1YGWP}
               sixty2YGWP={this.props.sixty2YGWP}
               GWPSel = {this.state.curSel}
+              cols = { this.props.type === "envelope" ? colsEnvelope : colsFlooring }
+              materialNames = { this.props.type === "envelope" ? materialNamesEnvelope : materialNamesFlooring }
+              materialLabel = { this.props.type === "envelope" ? materialLabelEnvelope : materialLabelFlooring }
               />
                  
               </div>
