@@ -245,24 +245,7 @@ export default class Comp extends React.Component {
       <tr>
         <td>
           <select id="mat" name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + this.state.count}>
-          <option value="sGranite">S - Granite</option>
-            <option value="sSlate">S - Slate</option>
-            <option value="sCeramic">S - Porcelain</option>
-            <option value="rRubber">R - Rubber</option>
-            <option value="rVinyl">R - Vinyl</option>
-            <option value="rLinoTile">R - Linoleum Tile</option>
-            <option value="mConcrete">M - Concrete</option>
-            <option value="mTerrazzo">M - Terrazzo</option>
-            <option value="mSealedC">M - Sealed Concrete</option>
-            <option value="mEpoxy">M - Epoxy</option>
-            <option value="cHigh">C - High Pile</option>
-            <option value="cMedium">C - Medium Pile</option>
-            <option value="cLow">C - Low Pile</option>
-            <option value="wEngineered">W - Engineered</option>
-            <option value="wBamboo">W - Bamboo</option>
-            <option value="wCork">W - Cork</option>
-            <option value="wSoftwood">W - Softwood Plank</option>
-            <option value="wHardwood">W - Hardwood Plank</option>
+            {this.props.materialList.map(m => <option value={m.value} key={m.value}>{m.label}</option>)}
           </select>
         </td>
         <td>
@@ -328,24 +311,7 @@ export default class Comp extends React.Component {
         <td>
           {/* <input type="text" id={`select-type` + rel} /> */}
           <select id="mat" name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name +`1`}>
-          <option value="sGranite">S - Granite</option>
-            <option value="sSlate">S - Slate</option>
-            <option value="sCeramic">S - Porcelain</option>
-            <option value="rRubber">R - Rubber</option>
-            <option value="rVinyl">R - Vinyl</option>
-            <option value="rLinoTile">R - Linoleum Tile</option>
-            <option value="mConcrete">M - Concrete</option>
-            <option value="mTerrazzo">M - Terrazzo</option>
-            <option value="mSealedC">M - Sealed Concrete</option>
-            <option value="mEpoxy">M - Epoxy</option>
-            <option value="cHigh">C - High Pile</option>
-            <option value="cMedium">C - Medium Pile</option>
-            <option value="cLow">C - Low Pile</option>
-            <option value="wEngineered">W - Engineered</option>
-            <option value="wBamboo">W - Bamboo</option>
-            <option value="wCork">W - Cork</option>
-            <option value="wSoftwood">W - Softwood Plank</option>
-            <option value="wHardwood">W - Hardwood Plank</option>
+            {this.props.materialList.map(m => <option value={m.value} key={m.value}>{m.label}</option>)}
           </select>
         </td>
         <td>
