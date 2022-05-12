@@ -14,17 +14,20 @@
 }
 </style>
 
-
-
 <script>
 function iframeInit() {
     var wrapper = document.querySelector('.wrapper');
     var iframe = wrapper.querySelector('iframe');
 
-
-
     if(iframe === null || iframeInit.initialized === true || window.iFrameResize === undefined) {
         return;
+    }
+
+    // pass URL parameters to our iframe for saved URLs
+    var loc = window.location.toString();
+    var params = loc.split('?')[1];
+    if(loc && params && iframe && iframe.src) {
+        iframe.src = `${iframe.src}?${params}`;
     }
 
     var scaleRations = {
@@ -58,7 +61,10 @@ function iframeInit() {
         wrapper.style.height = iframe.getBoundingClientRect().height + 'px';
     }
 
-    iFrameResize({resizedCallback: adjustWrapperSize});
+    iFrameResize({
+        resizedCallback: adjustWrapperSize,
+        checkOrigin: false
+    });
     iframeInit.initialized = true;
     window.addEventListener('resize', adjustWrapperSize);
 }
@@ -67,7 +73,7 @@ document.addEventListener('DOMContentLoaded', iframeInit);
 window.addEventListener('load', iframeInit);
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.6.3/iframeResizer.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.min.js" defer></script>
 <div class="wrapper">
-  <iframe src="https://payette.github.io/LCA-Dashboard/" allowfullscreen frameborder="0" scrolling="no"></iframe>
+  <iframe src="https://payette.github.io/Kaleidoscope/" allowfullscreen frameborder="0" scrolling="no"></iframe>
 </div>
