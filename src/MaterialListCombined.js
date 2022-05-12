@@ -2,27 +2,30 @@
 import React, { PureComponent } from "react";
 import styles from './css/MaterialList.module.scss';
 import Dialog from 'react-a11y-dialog';
-import materialPopupMock from './images/popupmock.png';
 import MVGranite from './images/Detail_MockUp_MVGranite.png'
-import RSGranite from './images/Detail_MockUp_RSGranite.png'
 import legendGWP from './images/k-04.png'
-import legendImpacts from './images/k-02.png'
-import legendLCS from './images/k-03.png'
-import legendMB from './images/System_Boundary-flooring_EDIT.png'
-import { render } from 'react-dom'
+import legendMBEnvelope from './images/MaterialBreakdown-11.png'
+import legendMBFlooring from './images/System_Boundary-flooring_EDIT.png'
+
 import Checkbox from './Checkbox'
-import Pie from "./Flooring_PieChart";
-
-
+import PieEnvelope from "./PieChart";
+import PieFlooring from "./Flooring_PieChart";
 import 'pretty-checkbox'
 let myImg;
 let legend;
 let legendText = "hello";
 
 
-export default class MaterialList extends PureComponent {
+export default class MaterialListCombined extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.legendMB = legendMBEnvelope;
+    this.Pie = PieEnvelope;
+    if(props.type === 'flooring') {
+      this.legendMB = legendMBFlooring;
+      this.Pie = PieFlooring;
+    }
 
     this.state = {
       items: props.materials.map(material => { return { label: material, id: material }}),
@@ -148,10 +151,13 @@ export default class MaterialList extends PureComponent {
       legend = legendGWP;
       legendText = <div style={{fontFamily: "freight-text-pro, serif"}}><p> <span style={{background: "#85e2bd"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [A1 - A3] Product </p> <p> <span style={{background: "#fcc05e"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [A4] Transportation </p><p> <span style={{background: "#001489"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [B2 - B5] Maintenance and Replacement </p> <p> <span style={{background: "#4095ee"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [C2 - C4] End of Life </p><p> <span style={{background: "#a2d3eb"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [D] Module D </p> </div>
     }else if(this.props.currentSel === "MB"){
-      legend = legendMB;
-      legendText = <div style={{fontFamily: "freight-text-pro, serif"}}><img style={{maxWidth: "320px"}} src={legend}/><p> <span style={{background: "#85e2bd"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Flooring Finish </p> <p style={{fontFamily: "freight-text-pro, serif"}}> <span style={{background: "#4169e1"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Attachment Material </p> <p> <span style={{background: "#cccccc"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Other </p></div>
+      legend = this.legendMB;
+      legendText = <div style={{fontFamily: "freight-text-pro, serif"}}><img style={{maxWidth: "320px"}} src={legend}/><p> <span style={{background: "#85e2bd"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Exterior Finish </p> <p> <span style={{background: "#4169e1"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Support System </p> <p> <span style={{background: "#fcc05e"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Insulation </p> <p> <span style={{background: "#cccccc"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Other </p></div>
+      if (this.props.types === 'flooring') {
+        legendText = <div style={{fontFamily: "freight-text-pro, serif"}}><img style={{maxWidth: "320px"}} src={legend}/><p> <span style={{background: "#85e2bd"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Flooring Finish </p> <p style={{fontFamily: "freight-text-pro, serif"}}> <span style={{background: "#4169e1"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Attachment Material </p> <p> <span style={{background: "#cccccc"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Other </p></div>
+      }
     }else if(this.props.currentSel === "MH"){
-      legend = legendMB;
+      legend = this.legendMB;
       legendText = <div style={{fontFamily: "freight-text-pro, serif"}}><p> <span style={{background: "#00a558"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Meets Payette Policy </p> <p> <span style={{background: "#8cc672"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Meets Payette Material Policy with Requests </p> <p> <span style={{background: "#FEBE10"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Meets some of Payette Material Policy </p><p> <span style={{background: "#D51C29"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Does not meet Payette Material Policy </p></div>
     }
 
@@ -177,34 +183,33 @@ export default class MaterialList extends PureComponent {
     let listItems;
     if(this.state.materialPopup.name !== "Material"){
       listItems = this.props.metaData.materialNotes[this.state.materialPopup.name].map((number) =>
-    <li>- {number}</li>
-    );
-    }
+      <li>- {number}</li>
+    );}
 
     let listItemsHealth;
-    if(this.state.materialPopup.name !== "Material"){
-      listItemsHealth = this.props.metaData.materialHealthText[this.state.materialPopup.name].map((number) =>
-    <li>- {number}</li>
-  );
-  
+    if (this.props.type === "flooring") {
+      if(this.state.materialPopup.name !== "Material"){
+        listItemsHealth = this.props.metaData.materialHealthText[this.state.materialPopup.name].map((number) =>
+      <li>- {number}</li>
+      );}
     }
 
 
-  
     return (
       
       <div>
         <div>
-        <h3>LEGEND</h3>
+          {legendText && <>
+          <h3>LEGEND</h3>
           <span>
             {legendText}
           {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={legend}/> */}<br></br>
           </span>
-          <span>
-          <h3 style={{display: "inline-block"}}>FLOORING TYPE</h3><button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button><br></br><br>
-          </br><span style={{fontFamily:"freight-text-pro, serif"}}>Click on a type below for additional details</span><br></br>
-          
-          </span><br></br>
+          </>}
+          <div>
+          <h3 style={{display: "inline-block", marginBottom: "0.5em" }}>{this.props.type === "envelope" ? "ASSEMBLY TYPE" : "FLOORING TYPE"}</h3><button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
+          <div style={{fontFamily:"freight-text-pro, serif", marginBottom: "0.75em" }}>Click on a type below for additional details</div>
+          </div>
         </div>
         <div>
         
@@ -224,13 +229,13 @@ export default class MaterialList extends PureComponent {
             element: "dialog-content",
             base: "dialog"
           }}
-          style={{width:500}}
+          style={ this.props.type === "flooring" ? {width:500} : {} }
           >
             <span>
               <h2 style={{fontSize: "40px"}}>{this.props.metaData.materialName2[this.state.materialPopup.name]}</h2>
               {/* <p style={{fontSize:"18px"}}><strong>10 year lifespan with biogenic carbon:</strong><br></br></p> */}
               <select id="pie1" name="pie1" id='piech' onChange={this.selectChange.bind(this)}>
-          <option value="tenYGWP">10 year lifespan with biogenic carbon</option>
+          <option value="tenYGWP">{ this.props.type === "envelope" ? "Initial carbon (only Module A)" : "10 year lifespan with biogenic carbon" }</option>
             <option value="sixty2YGWP">60 year lifespan with Module D and biogenic carbon</option>
             <option value="sixty1YGWP">60 year lifespan with biogenic carbon</option>
             
@@ -240,7 +245,10 @@ export default class MaterialList extends PureComponent {
               <div style={{width: "30%",float:"left", position:"relative", textAlign:"center"}}>
               {/* <p style={{position:"absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", zIndex:"100", marginLeft:"2.5em"}}><strong>{this.props.gwp[this.state.materialPopup.name]}</strong><br></br>kgCO&#x2082;eq/sf<br></br>GWP</p><br></br> */}
               {/* <img style={{width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
-              <Pie style={{width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em", position:"absolute"}}  
+              <this.Pie style={
+                this.props.type === "envelope" ? {width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em"} :
+                {width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em", position:"absolute"}
+              }  
               width={window.innerWidth/3} 
               height={380} 
               matBreakdown={this.props.matBreakdown} 
@@ -253,28 +261,32 @@ export default class MaterialList extends PureComponent {
               GWPSel = {this.state.curSel}
               />
                  
+              </div>
 
-              </div>
-              <br></br>
-              {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={materialPopupMock} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
-              {/* <img style={{maxWidth: "30%", maxHeight: "30%", paddingBottom: "3em"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
-              
-                            <img style={{maxWidth: "45%", top:"120px", position:"absolute", right:"0px", objectFit:"cover", display:"block", zIndex:"-1"}} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />
-                                    <br></br>
-                                    <div style={{maxWidth:"55%", top:"600px", left:"50px", position:'absolute', display:"block"}}>
-              <div style={{display:"block"}}><h4>Assumptions</h4>
-              
-              <ul style={{lineHeight:'1.6em', fontSize: '16px', paddingLeft:'1em'}}>{listItems}</ul></div>
-              <br></br>
-              <div style={{position:'relative', display:'block'}}><h4>Material Health</h4>
-              
-              <ul style={{lineHeight:'1.6em', fontSize: '16px', paddingLeft:'1em'}}>{listItemsHealth}</ul></div>
-              {/* <img style={{maxWidth: "100%", maxHeight: "100%"}} src={myImg} alt="material icon"/> */}
-              </div>
+              {this.props.type === "envelope" ?             
+              <>
+                <img style={{maxWidth: "45%", top:"-70px", position:"relative", float:"right", objectFit:"cover", display:"block"}} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />                      
+                <div style={{maxWidth:"55%", float:"left", position:'relative'}}>
+                <h4>Assumptions</h4>              
+                <ul style={{lineHeight:'1.6em', fontSize: '16px', paddingLeft:'1em'}}>{listItems}</ul></div>
+              </> :
+              <>
+                <img style={{maxWidth: "45%", top:"120px", position:"absolute", right:"0px", objectFit:"cover", display:"block", zIndex:"-1"}} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />
+                <br></br>
+                <div style={{maxWidth:"55%", top:"600px", left:"50px", position:'absolute', display:"block"}}>
+                <div style={{display:"block"}}><h4>Assumptions</h4>
+                <ul style={{lineHeight:'1.6em', fontSize: '16px', paddingLeft:'1em'}}>{listItems}</ul></div>
+                <br></br>
+                <div style={{position:'relative', display:'block'}}><h4>Material Health</h4>              
+                <ul style={{lineHeight:'1.6em', fontSize: '16px', paddingLeft:'1em'}}>{listItemsHealth}</ul></div>
+                </div>              
+              </>}
+
             </span>
-            <div style={{height:"700px"}}>
 
-            </div>
+            {this.props.type === "flooring" ?             <div style={{height:"700px"}}>
+
+</div> : null }
         </Dialog>
       </div>
     )

@@ -4,9 +4,7 @@ import StackedBarChart from './StackedBarChart';
 import FlooringStackedBarChart from './Flooring_StackedBarChart';
 import LoadData from './data/LoadData1';
 import FlooringLoadData from './data/Flooring_LoadData';
-import MaterialList from './MaterialList';
-import FlooringMaterialList from './Flooring_MaterialList';
-import Comp from "./Comp";
+import MaterialList from './MaterialListCombined';
 import Row from "./Row";
 import Flooring_Row from "./Flooring_Row";
 import { Tabs, AppBar, Tab, Popover, Button, Typography, Popper } from '@material-ui/core';
@@ -15,7 +13,6 @@ import withSplashScreen from './withSplashScreen';
 import Dialog from 'react-a11y-dialog';
 
 
-// import Helmet from 'Helmet';
 import { Helmet } from "react-helmet";
 
 import './css/Main.scss';
@@ -1398,6 +1395,7 @@ class App extends Component {
             {this.state.materials.length > 0 &&
               <div className={styles.sidebar} id="sidebar123">
                 <MaterialList
+                  type="envelope"
                   gwp={obj}
                   materials={this.state.materials}
                   names={this.state.names}
@@ -1830,7 +1828,8 @@ class App extends Component {
 
             {this.state.flooring_materials.length > 0 &&
               <div className={styles.sidebar} id="sidebar123">
-                <FlooringMaterialList
+                <MaterialList
+                  type="flooring"
                   gwp={flooring_obj}
                   materials={this.state.flooring_materials}
                   names={this.state.flooring_names}
