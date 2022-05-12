@@ -96,7 +96,7 @@ class App extends Component {
       currentToolTip: null,
       systemString: "",
       lens: "0_0_0",
-      shareableUrl: "https://www.payette.com/Kaleidoscope/"
+      shareableUrl: "https://www.payette.com/kaleidoscope/"
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -990,7 +990,7 @@ class App extends Component {
       // alert("payette.github.com/?"+urlVar.toString())
 
       this.setState({
-        shareableUrl: "https://www.payette.com/Kaleidoscope/?"+urlVar.toString()
+        shareableUrl: "https://www.payette.com/kaleidoscope/?"+urlVar.toString()
         // materialPopup: {
         //   name: material.label
         // }
