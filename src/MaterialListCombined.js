@@ -194,6 +194,8 @@ export default class MaterialListCombined extends PureComponent {
       );}
     }
 
+    let Pie = this.Pie;
+
 
     return (
       
@@ -234,7 +236,7 @@ export default class MaterialListCombined extends PureComponent {
             <span>
               <h2 style={{fontSize: "40px"}}>{this.props.metaData.materialName2[this.state.materialPopup.name]}</h2>
               {/* <p style={{fontSize:"18px"}}><strong>10 year lifespan with biogenic carbon:</strong><br></br></p> */}
-              <select id="pie1" name="pie1" id='piech' onChange={this.selectChange.bind(this)}>
+              <select id="pie1" name="pie1" onChange={this.selectChange.bind(this)}>
           <option value="tenYGWP">{ this.props.type === "envelope" ? "Initial carbon (only Module A)" : "10 year lifespan with biogenic carbon" }</option>
             <option value="sixty2YGWP">60 year lifespan with Module D and biogenic carbon</option>
             <option value="sixty1YGWP">60 year lifespan with biogenic carbon</option>
@@ -243,9 +245,8 @@ export default class MaterialListCombined extends PureComponent {
               <p id="textLabel" style={{display:"block", width:"100%", position:"relative", textAlign:"left", }}>Hover over chart to see data</p> 
               <br></br>
               <div style={{width: "30%",float:"left", position:"relative", textAlign:"center"}}>
-              {/* <p style={{position:"absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", zIndex:"100", marginLeft:"2.5em"}}><strong>{this.props.gwp[this.state.materialPopup.name]}</strong><br></br>kgCO&#x2082;eq/sf<br></br>GWP</p><br></br> */}
-              {/* <img style={{width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em"}} src={currentImg} alt={`${this.state.materialPopup.name} facade diagram`} /> */}
-              <this.Pie style={
+              <Pie
+              style={
                 this.props.type === "envelope" ? {width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em"} :
                 {width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em", position:"absolute"}
               }  
