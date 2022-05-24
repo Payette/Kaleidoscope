@@ -104,7 +104,8 @@ const tiers = [
     ],
     img: "./img/OtherBox.png",
     buttonText: 'Coming soon',
-    buttonVariant: 'disabled',
+    buttonVariant: 'text',
+    disabled: true,
     item: 2
   },
 ];
@@ -222,6 +223,7 @@ function withSplashScreen(WrappedComponent) {
                     </CardContent>
                     <CardActions>
                       <Button fullWidth variant={tier.buttonVariant} 
+                      disabled={tier.disabled}
                       color="secondary" 
                       onClick={() => { this.setState({loading: false, currentItem: tier.item, selectedMaterials: this.state.selectedMaterials}); 
                       let urlVar = new URLSearchParams()
