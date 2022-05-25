@@ -4,6 +4,9 @@
 .container {
   @include containfloats;
 }
+.serif {
+  font-family: $body-font;
+}
 
 label{
   cursor: pointer !important;

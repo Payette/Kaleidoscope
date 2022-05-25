@@ -1788,7 +1788,7 @@ class App extends Component {
             </div>
 
             <div style={{ paddingTop: 0, top: 0, marginTop: 0 }}>
-              <p style={{ display: "inline-block", fontFamily:"'freight-text-pro', serif"}}>
+              <p className={styles.serif} style={{ display: "inline-block" }}>
                 Last updated April 2021<br></br>
               Credit: <i>Data analysis run using Tally version 2020.06.09.01 by KT Innovations, thinkstep, and Autodesk using industry standard EPDs unless otherwise noted </i><br></br>
               For questions or comments: <h5 style={{display:"inline-block"}}>tools@payette.com</h5>, Source code: <h5 style={{display:"inline-block"}}><a href="https://github.com/Payette/Kaleidoscope">github.com/Payette/Kaleidoscope</a></h5>
@@ -2292,7 +2292,7 @@ class App extends Component {
             </div>
 
             <div style={{ paddingTop: 0, top: 0, marginTop: 0 }}>
-              <p style={{ display: "inline-block", fontFamily:"'freight-text-pro', serif" }}>
+              <p className={styles.serif} style={{ display: "inline-block" }}>
                 Last updated April 2021<br></br>
               Credit: <i>Data analysis run using Tally version 2020.06.09.01 by KT Innovations, thinkstep, and Autodesk using industry standard EPDs unless otherwise noted </i><br></br>
               For questions or comments: <h5 style={{display:"inline-block"}}>tools@payette.com</h5>, Source code: <h5 style={{display:"inline-block"}}><a href="https://github.com/Payette/Kaleidoscope">github.com/Payette/Kaleidoscope</a></h5>

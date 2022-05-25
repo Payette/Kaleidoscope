@@ -2,6 +2,9 @@
 @use 'constants' as *;
 
 
+.serif {
+  font-family: $body-font;
+}
 
 .buttonStyle{
   border: 1;
