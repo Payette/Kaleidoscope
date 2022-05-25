@@ -53,8 +53,10 @@ label{
 }
 
 .mLabel{
-  font-size: 13.5px;
+  font-size: 11px;
   cursor: pointer !important;
+  font-weight: bold;
+  font-family: $control-font;
 }
 
 .mButton{
