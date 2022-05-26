@@ -149,7 +149,7 @@ export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdo
 
               // console.log(strokeVal)
               return (
-                <g key={`browser-\${arc.data.label}-\${i}`}>
+                <g key={`browser-${arc.data.label}-${i}`}>
                  <PatternLines
             id={"hLines"+i}
             height={5}
