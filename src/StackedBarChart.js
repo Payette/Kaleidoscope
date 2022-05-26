@@ -41,6 +41,9 @@ export default withTooltip(({
   showTooltip,
   type
 }) => {
+  if(!selectedMaterials || selectedMaterials.length === 0) {
+    return <div>Select materials to show charts.</div>
+  }
 
   const toolTipWidth = 320;
   const toolTipHeight = 300;

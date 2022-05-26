@@ -15,7 +15,6 @@ const NO_PATTERN = 'transparent';
 
 const white = '#fff';
 const usage = d => d.usage;
-console.log(usage);
 const frequency = d => d.frequency;
 export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdown2,currentMat, tenYGWP, sixty1YGWP, sixty2YGWP, GWPSel, cols, materialNames, materialLabel }) => {
 
@@ -163,7 +162,6 @@ export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdo
                   <path d={pie.path(arc)} fill={"url(#hLines"+i+")"} stroke={white} fillOpacity={opacity} onMouseMove={(event) => {
                     // console.log(arc.data)
                     // console.log(currentItem)
-                    console.log(strokeVal)
                         const point = localPoint(event) || { x: 0, y: 0 };
                         pointX = point.x;
                         pointY = point.y;

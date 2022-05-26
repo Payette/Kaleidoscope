@@ -136,7 +136,6 @@ function withSplashScreen(WrappedComponent) {
 
       let s = new URLSearchParams(window.location.search)
 
-      console.log(s.get("type"))
   
       let type = s.get("type")
 

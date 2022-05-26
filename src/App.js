@@ -2275,7 +2275,501 @@ class App extends Component {
 
         {/* CEILINGS */}
         <TabPanel value={this.state.value} index={2}>
-          Ceilings
+        <Helmet>
+          <script type="text/javascript" src="bf3.js"></script>
+        </Helmet>
+          <form>
+            <h1>FLOOR ASSEMBLIES</h1>
+            <div className={styles.topcontrols}>
+
+              <div className={styles.inputgroup} style={{minHeight:195}}>
+                <h3>CHART TYPE</h3>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="GWP" value="GWP" name="chartType" checked={this.state.chartType === "GWP"} onChange={this.handleInputChange} />
+                  <label htmlFor="fGWP">Global Warming Potential <sup id={"fnref:11"}><a href={"#fn:11"} rel="footnote"></a></sup></label>
+                  
+                </div>
+
+                <div className={styles.inputitem}>
+                  <input type="radio" id="allImpacts" name="chartType" value="allImpacts" checked={this.state.chartType === "allImpacts"} onChange={this.handleInputChange} />
+                  <label htmlFor="allImpacts">All Impacts <sup id={"fnref:"+this.state.clicks+"2"}><a href={"#fn:"+this.state.clicks+"2"} rel="footnote"></a></sup></label>
+
+                  
+                </div>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="LCS" value="LCS" name="chartType" checked={this.state.chartType === "LCS"} onChange={this.handleInputChange} />
+                  <label htmlFor="LCS">Life Cycle Stage</label> <sup id={"fnref:"+this.state.clicks+"3"}><a href={"#fn:"+this.state.clicks+"3"}  rel="footnote"></a></sup>
+                </div>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="MB" value="MB" name="chartType" checked={this.state.chartType === "MB"} onChange={this.handleInputChange} />
+                  <label htmlFor="MB">Material Breakdown</label> <sup id={"fnref:"+this.state.clicks+"4"}><a href={"#fn:"+this.state.clicks+"4"}  rel="footnote"></a></sup>
+                </div>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="MH" value="MH" name="chartType" checked={this.state.chartType === "MH"} onChange={this.handleInputChange} />
+                  <label htmlFor="MH">Material Health Impacts</label> <sup id="fnref:10"><a href="#fn:10" rel="footnote"></a></sup>
+                </div>
+              </div>
+
+              <div className={styles.inputgroup} style={{minHeight:195}}>
+                <h3>LIFESPAN</h3>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="tenY" name="lifespan" value="tenY" checked={this.state.lifespan === "tenY"} onChange={this.handleInputChange} />
+                  <label htmlFor="tenY">Initial Carbon (only Module A)</label> <sup id={"fnref:"+this.state.clicks+"5"}><a href={"#fn:"+this.state.clicks+"5"}  rel="footnote"></a></sup>
+                </div>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="sixty2" name="lifespan" value="sixty2" checked={this.state.lifespan === "sixty2"} onChange={this.handleInputChange} />
+                  <label htmlFor="sixty2">60 Year (With Module D)</label> <sup id={"fnref:"+this.state.clicks+"6"}><a href={"#fn:"+this.state.clicks+"6"}  rel="footnote"></a></sup>
+                </div>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="sixty1" name="lifespan" value="sixty1" checked={this.state.lifespan === "sixty1"} onChange={this.handleInputChange} />
+                  <label htmlFor="sixty1">60 Year (No Module D)</label> <sup id={"fnref:"+this.state.clicks+"7"}><a href={"#fn:"+this.state.clicks+"7"}  rel="footnote"></a></sup>
+                </div>
+              </div>
+
+              <div className={styles.inputgroup} style={{minHeight:195}}>
+                <h3>BIOGENIC CARBON</h3>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked={this.state.biogenicCarbon === "yBio"} onChange={this.handleInputChange} />
+                  <label htmlFor="yBio">With Biogenic Carbon</label> <sup id={"fnref:"+this.state.clicks+"8"}><a href={"#fn:"+this.state.clicks+"8"}  rel="footnote"></a></sup>
+                </div>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="nBio" name="biogenicCarbon" value="nBio" checked={this.state.biogenicCarbon === "nBio"} onChange={this.handleInputChange} />
+                  <label htmlFor="nBio">No Biogenic Carbon</label> <sup id={"fnref:"+this.state.clicks+"9"}><a href={"#fn:"+this.state.clicks+"9"}  rel="footnote"></a></sup>
+                </div>
+              </div>
+            </div>
+
+          </form>
+          <div style={{ display: "inline-block", height: "100%" }} id="parentDiv">
+
+            {this.state.flooring_materials.length > 0 &&
+              <div className={styles.sidebar} id="sidebar123">
+                <MaterialList
+                  type={SYSTEM_TYPE_FLOORING}
+                  gwp={flooring_obj}
+                  materials={this.state.flooring_materials}
+                  names={this.state.flooring_names}
+                  updateSelectedMaterials={this.updateSelectedFlooringMaterials.bind(this)}
+                  initialSelectedMaterials={this.state.flooring_selectedMaterials}
+                  metaData={FlooringLoadData.metaData}
+                  currentSel={this.state.chartType}
+                  matBreakdown={this.state.flooring_materialData1}
+                  matBreakdown1={this.state.flooring_materialData3}
+                  matBreakdown2={this.state.flooring_materialData5}
+                  tenYGWP={this.state.flooring_gwpData1}
+                  sixty1YGWP={this.state.flooring_gwpData3}
+                  sixty2YGWP={this.state.flooring_gwpData5}
+                />
+              </div>
+            }
+            <h2>{chartTitle}</h2>
+            {/* GLOBAL WARMING POTENTIAL */}
+            <div className={styles.chartContainer}>
+              {this.state.chartType === "GWP" && this.state.flooring_gwpData.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={gwpDataSelectedMaterialsOnlyFlooring}
+                allMaterials={this.state.flooring_gwpData}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                colorBy="material"
+                currentChart={this.state.chartType}
+              />}
+              {/* ALL IMPACTS*/}
+
+              {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnlyFlooring.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={allImpactsDataSelectedMaterialsOnlyFlooring}
+                allMaterials={this.state.flooring_allImpactsData}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="Normalized % of Total"
+                currentChart={this.state.chartType}
+              />}
+              {/* LIFE CYCLE STAGE */}
+
+              {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnlyFlooring.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={lcsDataSelectedMaterialsOnlyFlooring}
+                allMaterials={this.state.flooring_lcsData}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                currentChart={this.state.chartType}
+              />}
+              {/* MATERIAL BREAKDOWN */}
+
+              {this.state.chartType === "MB" && materialDataSelectedMaterialsOnlyFlooring.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={materialDataSelectedMaterialsOnlyFlooring}
+                allMaterials={this.state.flooring_materialData}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                currentChart={this.state.chartType}
+              />}
+
+              {/* MATERIAL HEALTH */}
+              {this.state.chartType === "MH" && this.state.flooring_gwpData.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={gwpDataSelectedMaterialsOnlyFlooring}
+                allMaterials={this.state.flooring_gwpData}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                colorBy="health"
+                currentChart={this.state.chartType}
+              />}
+
+
+
+
+              {/* GLOBAL WARMING POTENTIAL */}
+
+              {this.state.chartType === "GWP" && this.state.flooring_gwpData1.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={gwpDataSelectedMaterialsOnly1Flooring}
+                allMaterials={this.state.flooring_gwpData1}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                colorBy="material"
+                currentChart={this.state.chartType}
+              />}
+              {/* ALL IMPACTS*/}
+
+              {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly1Flooring.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={allImpactsDataSelectedMaterialsOnly1Flooring}
+                allMaterials={this.state.flooring_allImpactsData1}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="Normalized % of Total"
+                currentChart={this.state.chartType}
+              />}
+              {/* LIFE CYCLE STAGE */}
+
+              {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly1Flooring.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={lcsDataSelectedMaterialsOnly1Flooring}
+                allMaterials={this.state.flooring_lcsData1}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                currentChart={this.state.chartType}
+              />}
+              {/* MATERIAL BREAKDOWN */}
+
+              {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly1Flooring.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={materialDataSelectedMaterialsOnly1Flooring}
+                allMaterials={this.state.flooring_materialData1}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                currentChart={this.state.chartType}
+              />}
+
+              {/* MATERIAL HEALTH */}
+              {this.state.chartType === "MH" && this.state.flooring_gwpData1.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={gwpDataSelectedMaterialsOnly1Flooring}
+                allMaterials={this.state.flooring_gwpData1}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                colorBy="health"
+                currentChart={this.state.chartType}
+              />}
+
+
+
+
+
+              {/* GLOBAL WARMING POTENTIAL */}
+
+              {this.state.chartType === "GWP" && this.state.flooring_gwpData2.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={gwpDataSelectedMaterialsOnly2Flooring}
+                allMaterials={this.state.flooring_gwpData2}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                colorBy="material"
+                currentChart={this.state.chartType}
+              />}
+              {/* ALL IMPACTS*/}
+
+              {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly2Flooring.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={allImpactsDataSelectedMaterialsOnly2Flooring}
+                allMaterials={this.state.flooring_allImpactsData2}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="Normalized % of Total"
+                currentChart={this.state.chartType}
+              />}
+              {/* LIFE CYCLE STAGE */}
+
+              {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly2Flooring.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={lcsDataSelectedMaterialsOnly2Flooring}
+                allMaterials={this.state.flooring_lcsData2}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                currentChart={this.state.chartType}
+              />}
+              {/* MATERIAL BREAKDOWN */}
+
+              {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly2Flooring.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={materialDataSelectedMaterialsOnly2Flooring}
+                allMaterials={this.state.flooring_materialData2}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                currentChart={this.state.chartType}
+              />}
+
+              {/* MATERIAL HEALTH */}
+              {this.state.chartType === "MH" && this.state.flooring_gwpData2.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={gwpDataSelectedMaterialsOnly2Flooring}
+                allMaterials={this.state.flooring_gwpData2}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                colorBy="health"
+                currentChart={this.state.chartType}
+              />}
+
+
+
+
+
+              {/* GLOBAL WARMING POTENTIAL */}
+
+              {this.state.chartType === "GWP" && this.state.flooring_gwpData3.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={gwpDataSelectedMaterialsOnly3Flooring}
+                allMaterials={this.state.flooring_gwpData3}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                colorBy="material"
+                currentChart={this.state.chartType}
+              />}
+              {/* ALL IMPACTS*/}
+
+              {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly3Flooring.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={allImpactsDataSelectedMaterialsOnly3Flooring}
+                allMaterials={this.state.flooring_allImpactsData3}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="Normalized % of Total"
+                currentChart={this.state.chartType}
+              />}
+              {/* LIFE CYCLE STAGE */}
+
+              {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly3Flooring.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={lcsDataSelectedMaterialsOnly3Flooring}
+                allMaterials={this.state.flooring_lcsData3}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                currentChart={this.state.chartType}
+              />}
+              {/* MATERIAL BREAKDOWN */}
+
+              {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly3Flooring.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={materialDataSelectedMaterialsOnly3Flooring}
+                allMaterials={this.state.flooring_materialData3}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                currentChart={this.state.chartType}
+              />}
+
+              {/* MATERIAL HEALTH */}
+              {this.state.chartType === "MH" && this.state.flooring_gwpData3.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={gwpDataSelectedMaterialsOnly3Flooring}
+                allMaterials={this.state.flooring_gwpData3}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                colorBy="health"
+                currentChart={this.state.chartType}
+              />}
+
+
+
+
+
+
+              {/* GLOBAL WARMING POTENTIAL */}
+
+              {this.state.chartType === "GWP" && this.state.flooring_gwpData4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={gwpDataSelectedMaterialsOnly4Flooring}
+                allMaterials={this.state.flooring_gwpData4}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                colorBy="material"
+                currentChart={this.state.chartType}
+              />}
+              {/* ALL IMPACTS*/}
+
+              {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly4Flooring.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={allImpactsDataSelectedMaterialsOnly4Flooring}
+                allMaterials={this.state.flooring_allImpactsData4}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="Normalized % of Total"
+                currentChart={this.state.chartType}
+              />}
+              {/* LIFE CYCLE STAGE */}
+
+              {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly4Flooring.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={lcsDataSelectedMaterialsOnly4Flooring}
+                allMaterials={this.state.flooring_lcsData4}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                currentChart={this.state.chartType}
+              />}
+              {/* MATERIAL BREAKDOWN */}
+
+              {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly4Flooring.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={materialDataSelectedMaterialsOnly4Flooring}
+                allMaterials={this.state.flooring_materialData4}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                currentChart={this.state.chartType}
+              />}
+
+              {/* MATERIAL HEALTH */}
+              {this.state.chartType === "MH" && this.state.flooring_gwpData4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={gwpDataSelectedMaterialsOnly4Flooring}
+                allMaterials={this.state.flooring_gwpData4}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                colorBy="health"
+                currentChart={this.state.chartType}
+              />}
+
+
+
+
+
+
+
+              {/* GLOBAL WARMING POTENTIAL */}
+
+              {this.state.chartType === "GWP" && this.state.flooring_gwpData5.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={gwpDataSelectedMaterialsOnly5Flooring}
+                allMaterials={this.state.flooring_gwpData5}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                colorBy="material"
+                currentChart={this.state.chartType}
+              />}
+              {/* ALL IMPACTS*/}
+
+              {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly5Flooring.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={allImpactsDataSelectedMaterialsOnly5Flooring}
+                allMaterials={this.state.flooring_allImpactsData5}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="Normalized % of Total"
+                currentChart={this.state.chartType}
+              />}
+              {/* LIFE CYCLE STAGE */}
+
+              {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly5Flooring.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={lcsDataSelectedMaterialsOnly5Flooring}
+                allMaterials={this.state.flooring_lcsData5}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                currentChart={this.state.chartType}
+              />}
+              {/* MATERIAL BREAKDOWN */}
+
+              {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly5Flooring.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={materialDataSelectedMaterialsOnly5Flooring}
+                allMaterials={this.state.flooring_materialData5}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                currentChart={this.state.chartType}
+              />}
+
+              {/* MATERIAL HEALTH */}
+              {this.state.chartType === "MH" && this.state.flooring_gwpData5.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING} 
+                selectedMaterials={gwpDataSelectedMaterialsOnly5Flooring}
+                allMaterials={this.state.flooring_gwpData5}
+                metaData={FlooringLoadData.metaData}
+                barHeight={40}
+                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
+                colorBy="health"
+                currentChart={this.state.chartType}
+              />}
+
+              <div>
+
+
+              </div>
+
+            </div>
+          </div>
+          <div style={{ display: "inline-block", width: "100%" }}>
+            <h1>FLOORING CALCULATOR</h1>
+            <div className={styles.calc} style={{ minHeight: '60px', display: "block" }}>
+
+              <div style={{ margin: "auto" }}>
+                <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
+                <label for="ten"> Initial Carbon (only Module A) &nbsp;&nbsp;</label>
+                <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
+                <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
+                <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
+                <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label>
+
+
+
+              </div><br></br>
+
+              {this.state.rows.map((row, idx) => {
+                return (
+                  <Row
+                    materialList={materialListFlooring}
+                    key={idx}
+                    value={row.value}
+                    checked={row.checked}
+                    name={idx + 1}
+                    count={0}
+                    tenY={this.state.flooring_gwpData1}
+                    sixty1={this.state.flooring_gwpData3}
+                    sixty2={this.state.flooring_gwpData5}
+                    radio={this.state.currentRadio}
+                    divStyle={divStyle}
+                    onChange={(e) => this.updateValue(e, idx)}
+                    onChecked={() => this.onChecked(idx)}
+                  />
+                )
+              })
+              }
+              <br></br>
+
+              <button onClick={this.addRow}>
+                Add Option
+                </button>
+                  <button onClick={this.deleteRows}>
+                    Delete Option
+              </button>
+
+
+              <br></br>
+
+
+            </div>
+
+            <div style={{ paddingTop: 0, top: 0, marginTop: 0 }}>
+              <p className={styles.serif} style={{ display: "inline-block" }}>
+                Last updated April 2021<br></br>
+              Credit: <i>Data analysis run using Tally version 2020.06.09.01 by KT Innovations, thinkstep, and Autodesk using industry standard EPDs unless otherwise noted </i><br></br>
+              For questions or comments: <h5 style={{display:"inline-block"}}>tools@payette.com</h5>, Source code: <h5 style={{display:"inline-block"}}><a href="https://github.com/Payette/Kaleidoscope">github.com/Payette/Kaleidoscope</a></h5>
+
+              </p>
+            </div>
+          </div>
         </TabPanel>
 
         {/* OTHER */}
