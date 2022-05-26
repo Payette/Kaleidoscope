@@ -6,7 +6,7 @@ import MVGranite from './images/Detail_MockUp_MVGranite.png'
 import legendGWP from './images/k-04.png'
 import legendMBEnvelope from './images/MaterialBreakdown-11.png'
 import legendMBFlooring from './images/System_Boundary-flooring_EDIT.png'
-
+import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_ENVELOPES } from './Constants';
 import Checkbox from './Checkbox'
 import Pie from "./PieChart";
 import 'pretty-checkbox'
@@ -27,7 +27,7 @@ export default class MaterialList extends PureComponent {
     super(props);
 
     this.legendMB = legendMBEnvelope;
-    if(props.type === 'flooring') {
+    if(props.type === SYSTEM_TYPE_FLOORING) {
       this.legendMB = legendMBFlooring;
     }
 
@@ -157,7 +157,7 @@ export default class MaterialList extends PureComponent {
     }else if(this.props.currentSel === "MB"){
       legend = this.legendMB;
       legendText = <div className={styles.serif}><img style={{maxWidth: "320px"}} src={legend}/><p> <span style={{background: "#85e2bd"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Exterior Finish </p> <p> <span style={{background: "#4169e1"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Support System </p> <p> <span style={{background: "#fcc05e"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Insulation </p> <p> <span style={{background: "#cccccc"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Other </p></div>
-      if (this.props.types === 'flooring') {
+      if (this.props.types === SYSTEM_TYPE_FLOORING) {
         legendText = <div className={styles.serif}><img style={{maxWidth: "320px"}} src={legend}/><p> <span style={{background: "#85e2bd"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Flooring Finish </p> <p className={styles.serif}> <span style={{background: "#4169e1"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Attachment Material </p> <p> <span style={{background: "#cccccc"}}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Other </p></div>
       }
     }else if(this.props.currentSel === "MH"){
@@ -191,7 +191,7 @@ export default class MaterialList extends PureComponent {
     );}
 
     let listItemsHealth;
-    if (this.props.type === "flooring") {
+    if (this.props.type === SYSTEM_TYPE_FLOORING) {
       if(this.state.materialPopup.name !== "Material"){
         listItemsHealth = this.props.metaData.materialHealthText[this.state.materialPopup.name].map((number) =>
       <li>- {number}</li>
@@ -210,7 +210,7 @@ export default class MaterialList extends PureComponent {
           </span>
           </>}
           <div>
-          <h3 style={{display: "inline-block", marginBottom: "0.5em" }}>{this.props.type === "envelope" ? "ASSEMBLY TYPE" : "FLOORING TYPE"}</h3><button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
+          <h3 style={{display: "inline-block", marginBottom: "0.5em" }}>{this.props.type === SYSTEM_TYPE_ENVELOPES ? "ASSEMBLY TYPE" : "FLOORING TYPE"}</h3><button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
           <div className={styles.serif} style={{ marginBottom: "0.75em" }}>Click on a type below for additional details</div>
           </div>
         </div>
@@ -232,7 +232,7 @@ export default class MaterialList extends PureComponent {
             element: "dialog-content",
             base: "dialog"
           }}
-          style={ this.props.type === "flooring" ? {width:500} : {} }
+          style={ this.props.type === SYSTEM_TYPE_FLOORING ? {width:500} : {} }
           >
             <span>
               <h2 style={{fontSize: "40px"}}>{this.props.metaData.materialName2[this.state.materialPopup.name]}</h2>
@@ -247,7 +247,7 @@ export default class MaterialList extends PureComponent {
               <div style={{width: "30%",float:"left", position:"relative", textAlign:"center"}}>
               <Pie
               style={
-                this.props.type === "envelope" ? {width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em"} :
+                this.props.type === SYSTEM_TYPE_ENVELOPES ? {width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em"} :
                 {width:"100%",  transform:"scaleX(-1)", zIndex:"-1", marginLeft:"3em", position:"absolute"}
               }  
               width={window.innerWidth/3} 
@@ -260,14 +260,14 @@ export default class MaterialList extends PureComponent {
               sixty1YGWP={this.props.sixty1YGWP}
               sixty2YGWP={this.props.sixty2YGWP}
               GWPSel = {this.state.curSel}
-              cols = { this.props.type === "envelope" ? colsEnvelope : colsFlooring }
-              materialNames = { this.props.type === "envelope" ? materialNamesEnvelope : materialNamesFlooring }
-              materialLabel = { this.props.type === "envelope" ? materialLabelEnvelope : materialLabelFlooring }
+              cols = { this.props.type === SYSTEM_TYPE_ENVELOPES ? colsEnvelope : colsFlooring }
+              materialNames = { this.props.type === SYSTEM_TYPE_ENVELOPES ? materialNamesEnvelope : materialNamesFlooring }
+              materialLabel = { this.props.type === SYSTEM_TYPE_ENVELOPES ? materialLabelEnvelope : materialLabelFlooring }
               />
                  
               </div>
 
-              {this.props.type === "envelope" ?             
+              {this.props.type === SYSTEM_TYPE_ENVELOPES ?             
               <>
                 <img style={{maxWidth: "45%", top:"-70px", position:"relative", float:"right", objectFit:"cover", display:"block"}} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />                      
                 <div style={{maxWidth:"55%", float:"left", position:'relative'}}>
@@ -288,7 +288,7 @@ export default class MaterialList extends PureComponent {
 
             </span>
 
-            {this.props.type === "flooring" ?             <div style={{height:"700px"}}>
+            {this.props.type === SYSTEM_TYPE_FLOORING ?             <div style={{height:"700px"}}>
 
 </div> : null }
         </Dialog>

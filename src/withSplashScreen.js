@@ -93,6 +93,14 @@ const tiers = [
     item: 1
   },
   {
+    title: 'CEILINGS',
+    subheader: 'Ceiling Systems',
+    img: "./img/FL_Axon-2.png",
+    buttonText: 'View Ceilings',
+    buttonVariant: 'contained',
+    item: 2
+  },
+  {
     title: 'OTHER',
     subheader: 'Future Systems',
     price: '30',
@@ -106,7 +114,7 @@ const tiers = [
     buttonText: 'Coming soon',
     buttonVariant: 'text',
     disabled: true,
-    item: 2
+    item: 3
   },
 ];
 
@@ -190,11 +198,11 @@ function withSplashScreen(WrappedComponent) {
           {/* <Button href="#" color="primary" variant="outlined">
                 Login
               </Button> */}
-              <Container maxWidth="md" component="main">
+              <Container maxWidth="lg" component="main">
             <Grid container spacing={5} alignItems="flex-end">
               {tiers.map((tier) => (
                 // Enterprise card is full width at sm breakpoint
-                <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
+                <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={3}>
                   <Card>
                     <CardHeader
                       title={tier.title}

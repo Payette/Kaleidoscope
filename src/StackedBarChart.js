@@ -11,6 +11,7 @@ import { localPoint } from '@vx/event';
 import * as d3 from 'd3';
 import styles from './css/StackedBarChart.module.scss';
 import { GridRows, GridColumns } from '@vx/grid';
+import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_ENVELOPES } from './Constants';
 
 
     
@@ -37,7 +38,8 @@ export default withTooltip(({
   tooltipTop,
   tooltipData,
   hideTooltip,
-  showTooltip
+  showTooltip,
+  type
 }) => {
 
   const toolTipWidth = 320;
@@ -91,7 +93,13 @@ let trail = "(kgCO2eq/sf)";
 
 for(let i = 0; i < selectedMaterials.length; i++){
   if(selectedMaterials[i].hasOwnProperty('i1')){
-    let myTotal = selectedMaterials[i].i1 + selectedMaterials[i].i2 + selectedMaterials[i].i3 + selectedMaterials[i].i4 + selectedMaterials[i].i5 + selectedMaterials[i].i6;
+    let i1 = selectedMaterials[i].i1>0 ? selectedMaterials[i].i1 : 0 
+    let i2 = selectedMaterials[i].i2>0 ? selectedMaterials[i].i2 : 0
+    let i3 = selectedMaterials[i].i3>0 ? selectedMaterials[i].i3 : 0
+    let i4 = selectedMaterials[i].i4>0 ? selectedMaterials[i].i4 : 0
+    let i5 = selectedMaterials[i].i5>0 ? selectedMaterials[i].i5 : 0
+    let i6 = selectedMaterials[i].i6>0 ? selectedMaterials[i].i6 : 0
+    let myTotal = i1 + i2 + i3 + i4 + i5 + i6;
     if(myTotal > currentBiggest){
       currentBiggest = myTotal;
       // console.log(myTotal);
@@ -109,17 +117,16 @@ for(let i = 0; i < selectedMaterials.length; i++){
 let multiplier = 100.0 / currentBiggest;
 // console.log(multiplier);
 
-  const allMaterialTotalsMin = allMaterials.reduce((ret, cur) => {
-    const t = keys.reduce((dailyTotal, k) => {
-      if(Math.abs(cur[k]) != (cur[k])){
-        dailyTotal += + Math.abs(cur[k]);
-      }
-      return (Math.abs(dailyTotal) * -1) ;
-    }, 0);
-    ret.push(t);
-    // console.log(ret)
-    return ret;
-  }, []);
+const allMaterialTotalsMin = allMaterials.reduce((ret, cur) => {
+  const t = keys.reduce((dailyTotal, k) => {
+    if(Math.abs(cur[k]) != (cur[k])){
+      dailyTotal -= Math.abs(cur[k]);
+    }
+    return dailyTotal;
+  }, 0);
+  ret.push(t);
+  return ret;
+}, []);
 
   // accessors
   const y = d => d.material;
@@ -145,11 +152,9 @@ let multiplier = 100.0 / currentBiggest;
   })
 
   let matCol = [];
-  // matCol.push(-5)
 
   Object.values(metaData.matColors).forEach(val =>{
     matCol.push(val)
-    // console.log(val)
   })
 
   let myTexts = []
@@ -183,15 +188,12 @@ let multiplier = 100.0 / currentBiggest;
 
   let texts = scaleOrdinal({
     domain: keys,
-    // range: [purple1, purple2, purple3],
     range: myTexts
   });
 
   if(currentChart === "MB"){
-    // console.log(matCol)
   color = scaleOrdinal({
     domain: keys,
-    // range: [purple1, purple2, purple3],
     range: matCol
   });
 }
@@ -199,13 +201,12 @@ let multiplier = 100.0 / currentBiggest;
   if(currentChart === "allImpacts"){
     color = scaleOrdinal({
       domain: keys,
-      // range: [purple1, purple2, purple3],
       range: iCol
     });
 
     xScale = scaleLinear({
       domain: [
-        0,
+        Math.min(...allMaterialTotalsMin),
         100
       ],
       nice: true
@@ -254,25 +255,39 @@ let multiplier = 100.0 / currentBiggest;
               {deepClone.map(sm => {
                 const height = headerFooterHeight + (barHeight * sm.values.length);
                 const yMax = height - margin.top - margin.bottom;
-                const yScale = scaleBand({domain:  sm.values.map(getName), padding: .2});
+                const yScale = scaleBand({domain:  sm.values.map(getName), padding: 0.2});
                 yScale.rangeRound([yMax, 0]);
                 const yOffset = previousY;
                 
                 previousY += yMax;
 
-                let myAbb = "RS"
-
-                if(sm.key[0] === "M" && sm.key[1] === "a"){
-                      myAbb = "(MV)";
-                }else if(sm.key[0] === "M" && sm.key[1] === "i"){
-                  myAbb = "(M)";
-                }else if (sm.key[0] === "F"){
-                  myAbb = "(FS)";
-                }else if(sm.key[0] === "C"){
-                  myAbb = "(CW)";
-                }else if(sm.key[0] === "R"){
-                  myAbb = "(RS)";
-               }
+                let myAbb = ""
+                if(type === SYSTEM_TYPE_ENVELOPES) {
+                  if(sm.key[0] === "M" && sm.key[1] === "a"){
+                        myAbb = "(MV)";
+                  }else if(sm.key[0] === "M" && sm.key[1] === "i"){
+                    myAbb = "(M)";
+                  }else if (sm.key[0] === "F"){
+                    myAbb = "(FS)";
+                  }else if(sm.key[0] === "C"){
+                    myAbb = "(CW)";
+                  }else if(sm.key[0] === "R"){
+                    myAbb = "(RS)";
+                  }
+                }
+                if(type === SYSTEM_TYPE_FLOORING) {
+                  if(sm.key[0] === "S"){
+                    myAbb = "(SC)";
+                  }else if (sm.key[0] === "R"){
+                    myAbb = "(R)";
+                  }else if(sm.key[0] === "M"){
+                    myAbb = "(M)";
+                  }else if(sm.key[0] === "C"){
+                    myAbb = "(C)";
+                  }else if(sm.key[0] === "W"){
+                    myAbb = "(W)";
+                  }
+                }
 
               //  let ShallowCopy = _.cloneDeep(sm);
               //  let odashCloneDeep = 
@@ -285,12 +300,12 @@ let multiplier = 100.0 / currentBiggest;
 
                for(let i = 0; i < sm.values.length; i++){
                 if(selectedMaterials[i].hasOwnProperty('i1')){
-                  sm.values[i].i1 = selectedMaterialsGroupedByType[whichArray].values[i].i1 * multiplier;
-                  sm.values[i].i2 = selectedMaterialsGroupedByType[whichArray].values[i].i2 * multiplier;
-                  sm.values[i].i3 = selectedMaterialsGroupedByType[whichArray].values[i].i3 * multiplier;
-                  sm.values[i].i4 = selectedMaterialsGroupedByType[whichArray].values[i].i4 * multiplier;
-                  sm.values[i].i5 = selectedMaterialsGroupedByType[whichArray].values[i].i5 * multiplier;
-                  sm.values[i].i6 = selectedMaterialsGroupedByType[whichArray].values[i].i6 * multiplier;
+                  sm.values[i].i1 = selectedMaterialsGroupedByType[whichArray].values[i].i1 > 0 ? selectedMaterialsGroupedByType[whichArray].values[i].i1 * multiplier : selectedMaterialsGroupedByType[whichArray].values[i].i1;
+                  sm.values[i].i2 = selectedMaterialsGroupedByType[whichArray].values[i].i2 > 0 ? selectedMaterialsGroupedByType[whichArray].values[i].i2 * multiplier : selectedMaterialsGroupedByType[whichArray].values[i].i2
+                  sm.values[i].i3 = selectedMaterialsGroupedByType[whichArray].values[i].i3 > 0 ? selectedMaterialsGroupedByType[whichArray].values[i].i3 * multiplier : selectedMaterialsGroupedByType[whichArray].values[i].i3
+                  sm.values[i].i4 = selectedMaterialsGroupedByType[whichArray].values[i].i4 > 0 ? selectedMaterialsGroupedByType[whichArray].values[i].i4 * multiplier : selectedMaterialsGroupedByType[whichArray].values[i].i4
+                  sm.values[i].i5 = selectedMaterialsGroupedByType[whichArray].values[i].i5 > 0 ? selectedMaterialsGroupedByType[whichArray].values[i].i5 * multiplier : selectedMaterialsGroupedByType[whichArray].values[i].i5
+                  sm.values[i].i6 = selectedMaterialsGroupedByType[whichArray].values[i].i6 > 0 ? selectedMaterialsGroupedByType[whichArray].values[i].i6 * multiplier : selectedMaterialsGroupedByType[whichArray].values[i].i6
                 }
                 // console.log(selectedMaterials[i]);
               }
@@ -318,6 +333,9 @@ let multiplier = 100.0 / currentBiggest;
                             // console.log(bar.bar.data.mName)
                             if(colorBy === "material" && bar.bar && bar.bar.data && bar.bar.data.material) {
                               barColor = metaData.materialColors[bar.bar.data.material] || bar.color;
+                            }else if(colorBy === "health" && bar.bar && bar.bar.data && bar.bar.data.material) {
+                              barColor = metaData.materialHealth[bar.bar.data.material] || bar.color;
+
                             }
                             return (<rect key={`barstack-horizontal-${barStack.index}-${bar.index}`} x={bar.x} y={bar.y} width={bar.width} height={bar.height} stroke={'#ffffff'} fill={barColor} onClick={event => {
                                 if (!events)
@@ -401,7 +419,7 @@ let multiplier = 100.0 / currentBiggest;
                 boxShadow:"5px 5px rgba(200, 200, 200, .4)",
                 minWidth: 60,
                 height: toolTipHeight+50,
-                width: toolTipWidth,
+                width: toolTipWidth+5,
                 backgroundColor: 'rgba(255,255,255,0.8)',
                 color: 'black',
                 borderRadius: '0px',
