@@ -46,7 +46,6 @@ const metaData = {
     rLinoTile: "#FEE6BF",
     mConcrete: "#8EE05F",
     mTerrazzo: "#ADE589",
-    // mSealedC:"#e0f8e1",
     mEpoxy: "#C2EAA7",
     cHigh: "#89EFC0",
     cMedium: "#A1F2CD",
@@ -58,12 +57,6 @@ const metaData = {
     wHardwood: "#283CDC"
   },
 
-
-  //green = 00AE5E
-  //light green = 97CD78
-  //yellow = FEBE10
-  //red = D51C29
-
   materialHealth: {
     sGranite: "#8cc672",
     sSlate: "#8cc672",
@@ -73,7 +66,6 @@ const metaData = {
     rLinoTile: "#8cc672",
     mConcrete: "#00a558",
     mTerrazzo: "#00a558",
-    // mSealedC:"",
     mEpoxy: "#d51128",
     cHigh: "#8cc672",
     cMedium: "#8cc672",
@@ -94,7 +86,6 @@ const metaData = {
     rLinoTile: ["Check that no antimicrobial coatings are included"],
     mConcrete: [""],
     mTerrazzo: ["Watch for VOC Content"],
-    // mSealedC:"",
     mEpoxy: ["Watch for VOC Content", "Watch for Vinyl Content  'color chips', choose alternate if possible"],
     cHigh: ["Specify Vinyl Free backing", "Watch for stain treatments, flame retardants and anti-microbials", "Consider solution-dyed; solution-dyed with waterproof backing is stain resistant without added treatments"],
     cMedium: ["Specify Vinyl Free backing", "Watch for stain treatments, flame retardants and anti-microbials", "Consider solution-dyed; solution-dyed with waterproof backing is stain resistant without added treatments"],
@@ -115,7 +106,6 @@ const metaData = {
     rLinoTile: "Linoleum flooring; HDPE vapor barrier; cementitious underlayment",
     mConcrete: '2" Concrete topping slab',
     mTerrazzo: "Thin-set Epoxy Terrazzo (EPD specific)",
-    // mSealedC:"",
     mEpoxy: "Decorative Mosaic Epoxy Coating System (EPD Specific)",
     cHigh: "High-pile carpet; HDPE vapor barrier; cementitious underlayment",
     cMedium: "Medium-pile nylon carpet; HDPE vapor barrier; cementitious underlayment",
@@ -173,7 +163,6 @@ const metaData = {
       "Flooring only; no wall bases included",
       "Sherwin-Williams Thin-set Epoxy Terrazzo #1100 System Date of issue: April 10, 2019",
       "EPD includes: primer and matrix layer, moisture vapor treatment and iso-crack membrane"],
-    // mSealedC:[''],
     mEpoxy: ['Structural slab not included in LCA calculations',
       'Flooring only; no wall bases included',
       'Sherwin-Williams Decorative Mosaic Epoxy Coating System  Date of issue: April 10, 2019'],
@@ -230,7 +219,6 @@ const metaData = {
     rLinoTile: "./images/granite.png",
     mConcrete: "./images/granite.png",
     mTerrazzo: "./images/granite.png",
-    // mSealedC:"./images/granite.png",
     mEpoxy: "./images/granite.png",
     cHigh: "./images/granite.png",
     cMedium: "./images/granite.png",
@@ -251,7 +239,6 @@ const metaData = {
     rLinoTile: "./images/MV-Granite-Pie.png",
     mConcrete: "./images/MV-Granite-Pie.png",
     mTerrazzo: "./images/MV-Granite-Pie.png",
-    // mSealedC:"./images/MV-Granite-Pie.png",
     mEpoxy: "./images/MV-Granite-Pie.png",
     cHigh: "./images/MV-Granite-Pie.png",
     cMedium: "./images/MV-Granite-Pie.png",
@@ -272,7 +259,6 @@ const metaData = {
     rLinoTile: "./img/Flooring_R-Linoleum.png",
     mConcrete: "./img/Flooring_M-Concrete.png",
     mTerrazzo: "./img/Flooring_M-Terrazzo.png",
-    // mSealedC:"./img/Flooring_M-SealedConcrete.png",
     mEpoxy: "./img/Flooring_M-Epoxy.png",
     cHigh: "./img/Flooring_C-HighPile.png",
     cMedium: "./img/Flooring_C-MediumPile.png",
@@ -329,7 +315,6 @@ const metaData = {
     mat25: "#85e2bd",
     mat26: "#c7e9b7",
     mat27: "#c7e9b7",
-    // mat28:"#c7e9b7",
   },
 
   materialOrdering: {
@@ -341,7 +326,6 @@ const metaData = {
     rLinoTile: 6,
     mConcrete: 7,
     mTerrazzo: 8,
-    // mSealedC:9,
     mEpoxy: 9,
     cHigh: 10,
     cMedium: 11,
@@ -370,7 +354,6 @@ const metaData = {
     rLinoTile: "R - Linoleum",
     mConcrete: "M - Concrete",
     mTerrazzo: "M - Terrazzo",
-    // mSealedC:"M - Sealed",
     mEpoxy: "M - Epoxy",
     cHigh: "C - High Pile",
     cMedium: "C - Med Pile",
@@ -391,7 +374,6 @@ const metaData = {
     rLinoTile: "Linoleum",
     mConcrete: "Concrete",
     mTerrazzo: "Terrazzo",
-    // mSealedC:"Sealed",
     mEpoxy: "Epoxy",
     cHigh: "High Pile",
     cMedium: "Med Pile",
@@ -412,7 +394,6 @@ const metaData = {
     rLinoTile: "Resilient - Linoleum",
     mConcrete: "Miscellaneous - Concrete",
     mTerrazzo: "Miscellaneous - Terrazzo",
-    // mSealedC:"Miscellaneous - Sealed",
     mEpoxy: "Miscellaneous - Epoxy",
     cHigh: "Carpet - High Pile",
     cMedium: "Carpet - Med Pile",
@@ -433,7 +414,6 @@ const metaData = {
     rLinoTile: "./img/Axon_Resilient.png",
     mConcrete: "./img/Axon_Misc.png",
     mTerrazzo: "./img/Axon_Misc.png",
-    // mSealedC:"./img/Axon_Misc.png",
     mEpoxy: "./img/Axon_Misc.png",
     cHigh: "./img/Axon_Carpet.png",
     cMedium: "./img/Axon_Carpet.png",
@@ -464,22 +444,6 @@ export default {
       }
     });
   },
-
-  // healthyMatsData: (cb) => {
-  //   Papa.parse(dataHealth, {
-  //     ...PAPAPARSE_CONFIG,
-  //     complete: function(results, file) {
-  //      if(Array.isArray(results.data)) {
-  //        const resultData = results.data.map(d => {
-  //          return { material: d.material, type: d.type, value: parseFloat(d.value), name: d.name, img: d.img }
-  //        });
-  //        cb(resultData);
-  //      } else {
-  //        console.error('error trying to load file', results.errors);
-  //      }
-  //    }
-  //   });
-  // },
 
   allImpactsData: (cb) => {
     Papa.parse(dataAllImpacts, {
@@ -550,7 +514,6 @@ export default {
               mat25: parseFloat(d.mat25),
               mat26: parseFloat(d.mat26),
               mat27: parseFloat(d.mat27),
-              // mat28: parseFloat(d.mat28),
               name: d.name,
               img: d.img
             }
@@ -583,22 +546,6 @@ export default {
       }
     });
   },
-
-  // healthyMatsData1: (cb) => {
-  //   Papa.parse(dataHealth1, {
-  //     ...PAPAPARSE_CONFIG,
-  //     complete: function(results, file) {
-  //      if(Array.isArray(results.data)) {
-  //        const resultData = results.data.map(d => {
-  //          return { material: d.material, type: d.type, value: parseFloat(d.value), name: d.name, img: d.img }
-  //        });
-  //        cb(resultData);
-  //      } else {
-  //        console.error('error trying to load file', results.errors);
-  //      }
-  //    }
-  //   });
-  // },
 
   allImpactsData1: (cb) => {
     Papa.parse(dataAllImpacts1, {
@@ -669,7 +616,6 @@ export default {
               mat25: parseFloat(d.mat25),
               mat26: parseFloat(d.mat26),
               mat27: parseFloat(d.mat27),
-              // mat28: parseFloat(d.mat28),
               name: d.name,
               img: d.img
             }
@@ -702,22 +648,6 @@ export default {
       }
     });
   },
-
-  // healthyMatsData2: (cb) => {
-  //   Papa.parse(dataHealth2, {
-  //     ...PAPAPARSE_CONFIG,
-  //     complete: function(results, file) {
-  //      if(Array.isArray(results.data)) {
-  //        const resultData = results.data.map(d => {
-  //          return { material: d.material, type: d.type, value: parseFloat(d.value), name: d.name, img: d.img }
-  //        });
-  //        cb(resultData);
-  //      } else {
-  //        console.error('error trying to load file', results.errors);
-  //      }
-  //    }
-  //   });
-  // },
 
   allImpactsData2: (cb) => {
     Papa.parse(dataAllImpacts2, {
@@ -788,7 +718,6 @@ export default {
               mat25: parseFloat(d.mat25),
               mat26: parseFloat(d.mat26),
               mat27: parseFloat(d.mat27),
-              // mat28: parseFloat(d.mat28),
               name: d.name,
               img: d.img
             }
@@ -821,22 +750,6 @@ export default {
       }
     });
   },
-
-  // healthyMatsData3: (cb) => {
-  //   Papa.parse(dataHealth3, {
-  //     ...PAPAPARSE_CONFIG,
-  //     complete: function(results, file) {
-  //      if(Array.isArray(results.data)) {
-  //        const resultData = results.data.map(d => {
-  //          return { material: d.material, type: d.type, value: parseFloat(d.value), name: d.name, img: d.img }
-  //        });
-  //        cb(resultData);
-  //      } else {
-  //        console.error('error trying to load file', results.errors);
-  //      }
-  //    }
-  //   });
-  // },
 
   allImpactsData3: (cb) => {
     Papa.parse(dataAllImpacts3, {
@@ -907,7 +820,6 @@ export default {
               mat25: parseFloat(d.mat25),
               mat26: parseFloat(d.mat26),
               mat27: parseFloat(d.mat27),
-              // mat28: parseFloat(d.mat28),
               name: d.name,
               img: d.img
             }
@@ -940,22 +852,6 @@ export default {
       }
     });
   },
-
-  // healthyMatsData4: (cb) => {
-  //   Papa.parse(dataHealth4, {
-  //     ...PAPAPARSE_CONFIG,
-  //     complete: function(results, file) {
-  //      if(Array.isArray(results.data)) {
-  //        const resultData = results.data.map(d => {
-  //          return { material: d.material, type: d.type, value: parseFloat(d.value), name: d.name, img: d.img }
-  //        });
-  //        cb(resultData);
-  //      } else {
-  //        console.error('error trying to load file', results.errors);
-  //      }
-  //    }
-  //   });
-  // },
 
   allImpactsData4: (cb) => {
     Papa.parse(dataAllImpacts4, {
@@ -1026,7 +922,6 @@ export default {
               mat25: parseFloat(d.mat25),
               mat26: parseFloat(d.mat26),
               mat27: parseFloat(d.mat27),
-              // mat28: parseFloat(d.mat28),
               name: d.name,
               img: d.img
             }
@@ -1131,7 +1026,6 @@ export default {
               mat25: parseFloat(d.mat25),
               mat26: parseFloat(d.mat26),
               mat27: parseFloat(d.mat27),
-              // mat28: parseFloat(d.mat28),
               name: d.name,
               img: d.img
             }
