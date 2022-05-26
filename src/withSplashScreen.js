@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Pricing from './Pricing'
 import Card from '@material-ui/core/Card';
@@ -120,7 +120,7 @@ const tiers = [
 
 // const classes = useStyles();
 
-let loading1 = true; 
+let loading1 = true;
 
 function withSplashScreen(WrappedComponent) {
   return class extends Component {
@@ -136,60 +136,62 @@ function withSplashScreen(WrappedComponent) {
 
       let s = new URLSearchParams(window.location.search)
 
-  
+
       let type = s.get("type")
 
 
 
-      if(type == 0 || type == 1){ //envelope
-        this.setState({loading: false, currentItem: type});
-        if(type == 0){
-          this.setState({selectedMaterials:[
-            "MVGranite",
-            "MVLimestone",
-            "MVBrick",
-            "MVTBrick",
-            "MInsMePanel",
-            "MEIFS",
-            "MPrecast",
-            "MMinWool",
-            "CSpandrelAlumB",
-            "CSpandrelSteel",
-            "CSpandrelAlum",
-            "CSpandrelWood",
-            "RGFRC",
-            "RACM",
-            "RTerracotta",
-            "RPhenResin",
-            "RFiberCement",
-            "RZinc",
-            "RUHPC",
-            "RGranite",
-            "RTBrick",
-            "RLimestone",
-            "RSteel",
-            "RWood"
-        ]})
+      if (type == 0 || type == 1) { //envelope
+        this.setState({ loading: false, currentItem: type });
+        if (type == 0) {
+          this.setState({
+            selectedMaterials: [
+              "MVGranite",
+              "MVLimestone",
+              "MVBrick",
+              "MVTBrick",
+              "MInsMePanel",
+              "MEIFS",
+              "MPrecast",
+              "MMinWool",
+              "CSpandrelAlumB",
+              "CSpandrelSteel",
+              "CSpandrelAlum",
+              "CSpandrelWood",
+              "RGFRC",
+              "RACM",
+              "RTerracotta",
+              "RPhenResin",
+              "RFiberCement",
+              "RZinc",
+              "RUHPC",
+              "RGranite",
+              "RTBrick",
+              "RLimestone",
+              "RSteel",
+              "RWood"
+            ]
+          })
         }
       }
-      
-    //   try {
-    //     await auth0Client.loadSession();
 
-    
+      //   try {
+      //     await auth0Client.loadSession();
 
-        // setTimeout(() => {
-        //   this.setState({
-        //     loading: false,
-        //   });
-        // }, 1500)
 
-    //   } catch (err) {
-    //     console.log(err);
-    //     this.setState({
-    //       loading: false,
-    //     });
-    //   }
+
+      // setTimeout(() => {
+      //   this.setState({
+      //     loading: false,
+      //   });
+      // }, 1500)
+
+      //   } catch (err) {
+      //     console.log(err);
+      //     this.setState({
+      //       loading: false,
+      //     });
+      //   }
     }
     LoadingMessage() {
       return (
@@ -197,7 +199,7 @@ function withSplashScreen(WrappedComponent) {
           {/* <Button href="#" color="primary" variant="outlined">
                 Login
               </Button> */}
-              <Container maxWidth="lg" component="main">
+          <Container maxWidth="lg" component="main">
             <Grid container spacing={5} alignItems="flex-end">
               {tiers.map((tier) => (
                 // Enterprise card is full width at sm breakpoint
@@ -208,8 +210,8 @@ function withSplashScreen(WrappedComponent) {
                       subheader={tier.subheader}
                       titleTypographyProps={{ align: 'center' }}
                       subheaderTypographyProps={{ align: 'center' }}
-                      // action={tier.title === 'Pro' ? <StarIcon /> : null}
-                      // className={classes.cardHeader}
+                    // action={tier.title === 'Pro' ? <StarIcon /> : null}
+                    // className={classes.cardHeader}
                     />
                     <CardContent>
                       <div>
@@ -217,7 +219,7 @@ function withSplashScreen(WrappedComponent) {
                           ${tier.price}
                         </Typography> */}
                         <Typography variant="h6" color="textSecondary">
-                          <img src={tier.img} style={{height: "250px", maxWidth:"80%", position:'relative', margin: "0px 0px 0px 30px"}}></img>
+                          <img src={tier.img} style={{ height: "250px", maxWidth: "80%", position: 'relative', margin: "0px 0px 0px 30px" }}></img>
                         </Typography>
                       </div>
                       {/* <ul>
@@ -229,20 +231,21 @@ function withSplashScreen(WrappedComponent) {
                       </ul> */}
                     </CardContent>
                     <CardActions>
-                      <Button fullWidth variant={tier.buttonVariant} 
-                      disabled={tier.disabled}
-                      color="secondary" 
-                      onClick={() => { this.setState({loading: false, currentItem: tier.item, selectedMaterials: this.state.selectedMaterials}); 
-                      let urlVar = new URLSearchParams()
-      urlVar.set("type", tier.item)
-      // urlVar.set("system", this.state.systemString)
+                      <Button fullWidth variant={tier.buttonVariant}
+                        disabled={tier.disabled}
+                        color="secondary"
+                        onClick={() => {
+                          this.setState({ loading: false, currentItem: tier.item, selectedMaterials: this.state.selectedMaterials });
+                          let urlVar = new URLSearchParams()
+                          urlVar.set("type", tier.item)
+                          // urlVar.set("system", this.state.systemString)
 
-      
-      // console.log(this.state.selectedMaterials)
-      // console.log(s.get("system"))
 
-      window.history.replaceState({}, '', "?" + urlVar.toString())
-                      }}>
+                          // console.log(this.state.selectedMaterials)
+                          // console.log(s.get("system"))
+
+                          window.history.replaceState({}, '', "?" + urlVar.toString())
+                        }}>
                         {tier.buttonText}
                       </Button>
                     </CardActions>
@@ -262,7 +265,7 @@ function withSplashScreen(WrappedComponent) {
 
     render() {
 
-      
+
       //else if(type == 1){
       //   this.setState( //flooring
       //     {value: 1}
@@ -270,13 +273,13 @@ function withSplashScreen(WrappedComponent) {
       // }
 
       // while checking user session, show "loading" message
-      if(!loading1){
+      if (!loading1) {
         this.setState({
           loading: false,
         });
         // this.props.loading = 1
       }
-      
+
       if (this.state.loading) return this.LoadingMessage();
 
       // otherwise, show the desired route
@@ -284,10 +287,10 @@ function withSplashScreen(WrappedComponent) {
       return <WrappedComponent item={this.state.currentItem} {...this.state} />;
     }
 
-    
+
   };
 
-  
+
 
 }
 

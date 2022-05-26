@@ -7,7 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
-const TabPanel = function(props) {
+const TabPanel = function (props) {
   const { children, value, index, ...other } = props;
   // console.log(value)
 

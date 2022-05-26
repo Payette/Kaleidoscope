@@ -204,7 +204,7 @@ export default function Pricing(props) {
                   </ul>
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant} color="primary" onClick={() => { props.loading = false}}>
+                  <Button fullWidth variant={tier.buttonVariant} color="primary" onClick={() => { props.loading = false }}>
                     {tier.buttonText}
                   </Button>
                 </CardActions>

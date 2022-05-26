@@ -16,11 +16,11 @@ const NO_PATTERN = 'transparent';
 const white = '#fff';
 const usage = d => d.usage;
 const frequency = d => d.frequency;
-export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdown2,currentMat, tenYGWP, sixty1YGWP, sixty2YGWP, GWPSel, cols, materialNames, materialLabel }) => {
+export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdown2, currentMat, tenYGWP, sixty1YGWP, sixty2YGWP, GWPSel, cols, materialNames, materialLabel }) => {
 
-    // this.state = { textToShow: ""};
-    // this.handleInputChange = this.handleInputChange.bind(this);
-    
+  // this.state = { textToShow: ""};
+  // this.handleInputChange = this.handleInputChange.bind(this);
+
   const radius = Math.min(width, height) / 1.5;
   const centerY = height / 2;
   const centerX = width / 2;
@@ -28,56 +28,56 @@ export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdo
   // console.log(currentMat);
   let myGWP = 0.00;
   let selGWP;
-  let materials = {mat1:10, mat2:11, mat3:1, mat4:7, mat6:2, mat7:0, mat8:0, mat9:19};
+  let materials = { mat1: 10, mat2: 11, mat3: 1, mat4: 7, mat6: 2, mat7: 0, mat8: 0, mat9: 19 };
 
 
-    let mCurrSel = GWPSel;
-  
-    if(mCurrSel == "tenYGWP"){
-      selGWP = tenYGWP;
-      // console.log(matBreakdown)
-      // console.log(selGWP)
-      for(let i=0; i<matBreakdown.length; i++){
-        if(matBreakdown[i].material == currentMat){
-          materials = matBreakdown[i];
-        }
-      }
-      for(let i=0; i<selGWP.length; i++){
-        if(selGWP[i].material == currentMat){
-          myGWP = selGWP[i].value;
-        }
-      }
-    }else if(mCurrSel == "sixty1YGWP"){
-      selGWP = sixty1YGWP;
-      for(let i=0; i<matBreakdown.length; i++){
-        if(matBreakdown1[i].material == currentMat){
-          materials = matBreakdown1[i];
-        }
-      }
-      for(let i=0; i<selGWP.length; i++){
-        if(selGWP[i].material == currentMat){
-          myGWP = selGWP[i].value;
-        }
-      }
-    }else{
-      selGWP = sixty2YGWP;
-      for(let i=0; i<matBreakdown.length; i++){
-        if(matBreakdown2[i].material == currentMat){
-          materials = matBreakdown2[i];
-        }
-      }
-      for(let i=0; i<selGWP.length; i++){
-        if(selGWP[i].material == currentMat){
-          myGWP = selGWP[i].value;
-        }
+  let mCurrSel = GWPSel;
+
+  if (mCurrSel == "tenYGWP") {
+    selGWP = tenYGWP;
+    // console.log(matBreakdown)
+    // console.log(selGWP)
+    for (let i = 0; i < matBreakdown.length; i++) {
+      if (matBreakdown[i].material == currentMat) {
+        materials = matBreakdown[i];
       }
     }
+    for (let i = 0; i < selGWP.length; i++) {
+      if (selGWP[i].material == currentMat) {
+        myGWP = selGWP[i].value;
+      }
+    }
+  } else if (mCurrSel == "sixty1YGWP") {
+    selGWP = sixty1YGWP;
+    for (let i = 0; i < matBreakdown.length; i++) {
+      if (matBreakdown1[i].material == currentMat) {
+        materials = matBreakdown1[i];
+      }
+    }
+    for (let i = 0; i < selGWP.length; i++) {
+      if (selGWP[i].material == currentMat) {
+        myGWP = selGWP[i].value;
+      }
+    }
+  } else {
+    selGWP = sixty2YGWP;
+    for (let i = 0; i < matBreakdown.length; i++) {
+      if (matBreakdown2[i].material == currentMat) {
+        materials = matBreakdown2[i];
+      }
+    }
+    for (let i = 0; i < selGWP.length; i++) {
+      if (selGWP[i].material == currentMat) {
+        myGWP = selGWP[i].value;
+      }
+    }
+  }
   // }
 
   // console.log(selGWP)
-  
 
-  
+
+
 
 
 
@@ -85,9 +85,9 @@ export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdo
   // let materialNames1 = materialNames.reverse();
   // console.log(materialNames1)
 
-//  let  cols1 = cols.reverse();
-//  console.log(cols1);
-  
+  //  let  cols1 = cols.reverse();
+  //  console.log(cols1);
+
 
   const mats = materialNames.map(k => ({ label: materialLabel[k], mUsage: Math.abs(materials[k]) }));
   let mUsage = d => d.mUsage;
@@ -115,7 +115,7 @@ export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdo
           padAngle={0}
           pieSort={null}
           pieSortValues={null}
-          
+
         >
           {pie => {
             return pie.arcs.map((arc, i) => {
@@ -136,48 +136,48 @@ export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdo
               //   }
               // }
 
-              
+
               // console.log(matsAbs[i].mUsageAbs)
 
-              if((matsAbs[i].mUsageAbs + 0) <= 0){
+              if ((matsAbs[i].mUsageAbs + 0) <= 0) {
                 strokeVal.push(2);
                 // console.log("hi")
-              }else{
+              } else {
                 strokeVal.push(5);
               }
 
               // console.log(strokeVal)
               return (
                 <g key={`browser-${arc.data.label}-${i}`}>
-                 <PatternLines
-            id={"hLines"+i}
-            height={5}
-            width={5}
-            stroke={cols[i]}
-            strokeWidth={strokeVal[i]}
-            // fill={cols[i]}
-            orientation={['diagonal']}
-          />
-                  
-                  <path d={pie.path(arc)} fill={"url(#hLines"+i+")"} stroke={white} fillOpacity={opacity} onMouseMove={(event) => {
+                  <PatternLines
+                    id={"hLines" + i}
+                    height={5}
+                    width={5}
+                    stroke={cols[i]}
+                    strokeWidth={strokeVal[i]}
+                    // fill={cols[i]}
+                    orientation={['diagonal']}
+                  />
+
+                  <path d={pie.path(arc)} fill={"url(#hLines" + i + ")"} stroke={white} fillOpacity={opacity} onMouseMove={(event) => {
                     // console.log(arc.data)
                     // console.log(currentItem)
-                        const point = localPoint(event) || { x: 0, y: 0 };
-                        pointX = point.x;
-                        pointY = point.y;
-                        // console.log(point);
-                        // console.log(arc.data.label)
-                        textToShow = arc.data.label + ": " + matsAbs[i].mUsageAbs.toFixed(2) + " kgCO₂eq/sf";
-                        document.getElementById("textLabel").innerHTML = textToShow
-                        // myText = textToShow;
-                        displayText = 1;
-                        // stroke={black}
-                        // use coordinates ...
-                        opac = 1;
+                    const point = localPoint(event) || { x: 0, y: 0 };
+                    pointX = point.x;
+                    pointY = point.y;
+                    // console.log(point);
+                    // console.log(arc.data.label)
+                    textToShow = arc.data.label + ": " + matsAbs[i].mUsageAbs.toFixed(2) + " kgCO₂eq/sf";
+                    document.getElementById("textLabel").innerHTML = textToShow
+                    // myText = textToShow;
+                    displayText = 1;
+                    // stroke={black}
+                    // use coordinates ...
+                    opac = 1;
 
-                        //fill={cols[i]} 
-                      }}/>
-                
+                    //fill={cols[i]} 
+                  }} />
+
                   {/* {hasSpaceForLabel && displayText &&(
                     <text
                       fill={black}
@@ -198,43 +198,43 @@ export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdo
               );
             });
           }}
-          
+
         </Pie>
-        
+
       </Group>
       <text
-      textAnchor="middle"
-      x={centerX}
-      y={centerY}
-      fill="black"
-      fontSize={17}
-      fontWeight={700}
-      pointerEvents="none"
-    >
-      {myGWP}
-    </text>
-    <text
-      textAnchor="middle"
-      x={centerX}
-      y={centerY+20}
-      fill="black"
-      fontSize={11}
-      fontWeight={300}
-      pointerEvents="none"
-    >
-      kgCO₂eq/sf
-    </text>
-    <text
-      textAnchor="middle"
-      x={centerX}
-      y={centerY+32}
-      fill="black"
-      fontSize={11}
-      fontWeight={300}
-      pointerEvents="none"
-    >
-      GWP
-    </text>
+        textAnchor="middle"
+        x={centerX}
+        y={centerY}
+        fill="black"
+        fontSize={17}
+        fontWeight={700}
+        pointerEvents="none"
+      >
+        {myGWP}
+      </text>
+      <text
+        textAnchor="middle"
+        x={centerX}
+        y={centerY + 20}
+        fill="black"
+        fontSize={11}
+        fontWeight={300}
+        pointerEvents="none"
+      >
+        kgCO₂eq/sf
+      </text>
+      <text
+        textAnchor="middle"
+        x={centerX}
+        y={centerY + 32}
+        fill="black"
+        fontSize={11}
+        fontWeight={300}
+        pointerEvents="none"
+      >
+        GWP
+      </text>
     </svg>
   );
 };
