@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import StackedBarChart from './StackedBarChart';
-import LoadData from './data/LoadData1';
+import LoadData from './data/Envelopes_LoadData';
 import FlooringLoadData from './data/Flooring_LoadData';
 import MaterialList from './MaterialList';
 import Row from "./Row";

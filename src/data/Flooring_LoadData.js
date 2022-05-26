@@ -1,40 +1,34 @@
 import Papa from 'papaparse';
 
-// import dataHealth from './flooring_healthymats_10y_y.csv';
-import dataGWP from './flooring_gwp_10y_n.csv';
-import dataAllImpacts from './flooring_allImpact_10y_n.csv';
-import dataLCS from './flooring_lcs_10y_n.csv';
-import dataMaterial from './flooring_material_10y_n.csv';
+import dataGWP from './flooring/flooring_gwp_10y_n.csv';
+import dataAllImpacts from './flooring/flooring_allImpact_10y_n.csv';
+import dataLCS from './flooring/flooring_lcs_10y_n.csv';
+import dataMaterial from './flooring/flooring_material_10y_n.csv';
 
-// import dataHealth1 from './flooring_healthymats_10y_y.csv';
-import dataGWP1 from './flooring_gwp_10y_y.csv';
-import dataAllImpacts1 from './flooring_allImpact_10y_y.csv';
-import dataLCS1 from './flooring_lcs_10y_y.csv';
-import dataMaterial1 from './flooring_material_10y_y.csv';
+import dataGWP1 from './flooring/flooring_gwp_10y_y.csv';
+import dataAllImpacts1 from './flooring/flooring_allImpact_10y_y.csv';
+import dataLCS1 from './flooring/flooring_lcs_10y_y.csv';
+import dataMaterial1 from './flooring/flooring_material_10y_y.csv';
 
-// import dataHealth2 from './flooring_healthymats_10y_y.csv';
-import dataGWP2 from './flooring_gwp_60y_n.csv';
-import dataAllImpacts2 from './flooring_allImpact_60y_n.csv';
-import dataLCS2 from './flooring_lcs_60y_n.csv';
-import dataMaterial2 from './flooring_material_60y_n.csv';
+import dataGWP2 from './flooring/flooring_gwp_60y_n.csv';
+import dataAllImpacts2 from './flooring/flooring_allImpact_60y_n.csv';
+import dataLCS2 from './flooring/flooring_lcs_60y_n.csv';
+import dataMaterial2 from './flooring/flooring_material_60y_n.csv';
 
-// import dataHealth3 from './flooring_healthymats_10y_y.csv';
-import dataGWP4 from './flooring_gwp_60y_y.csv';
-import dataAllImpacts4 from './flooring_allImpact_60y_y.csv';
-import dataLCS4 from './flooring_lcs_60y_y.csv';
-import dataMaterial4 from './flooring_material_60y_y.csv';
+import dataGWP4 from './flooring/flooring_gwp_60y_y.csv';
+import dataAllImpacts4 from './flooring/flooring_allImpact_60y_y.csv';
+import dataLCS4 from './flooring/flooring_lcs_60y_y.csv';
+import dataMaterial4 from './flooring/flooring_material_60y_y.csv';
 
-// import dataHealth4 from './flooring_healthymats_10y_y.csv';
-import dataGWP3 from './flooring_gwp_60yd_n.csv';
-import dataAllImpacts3 from './flooring_allImpact_60yd_n.csv';
-import dataLCS3 from './flooring_lcs_60yd_n.csv';
-import dataMaterial3 from './flooring_material_60yd_n.csv';
+import dataGWP3 from './flooring/flooring_gwp_60yd_n.csv';
+import dataAllImpacts3 from './flooring/flooring_allImpact_60yd_n.csv';
+import dataLCS3 from './flooring/flooring_lcs_60yd_n.csv';
+import dataMaterial3 from './flooring/flooring_material_60yd_n.csv';
 
-// import dataHealth5 from './flooring_healthymats_10y_y.csv';
-import dataGWP5 from './flooring_gwp_60yd_y.csv';
-import dataAllImpacts5 from './flooring_allImpact_60yd_y.csv';
-import dataLCS5 from './flooring_lcs_60yd_y.csv';
-import dataMaterial5 from './flooring_material_60yd_y.csv';
+import dataGWP5 from './flooring/flooring_gwp_60yd_y.csv';
+import dataAllImpacts5 from './flooring/flooring_allImpact_60yd_y.csv';
+import dataLCS5 from './flooring/flooring_lcs_60yd_y.csv';
+import dataMaterial5 from './flooring/flooring_material_60yd_y.csv';
 
 const PAPAPARSE_CONFIG = {
   download: true,
