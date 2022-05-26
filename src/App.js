@@ -143,7 +143,6 @@ class App extends Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     // this.handleClick = this.handleClick.bind(this);
-    console.log(props)
   }
 
 
@@ -166,7 +165,6 @@ class App extends Component {
     }
     // console.log(target.id)
     this.setState({ anchorEl: target, currentToolTip: placeholder });
-    console.log(this.state.anchorEl)
   }
 
 
@@ -176,8 +174,6 @@ class App extends Component {
 
     // const [value, setValue] = React.useState(0);
     let value = newValue
-    console.log(newValue)
-    console.log(this.state.materials)
     if(this.state.selectedMaterials.length != 0){
       this.setState({ value: newValue, selectedMaterials: this.state.selectedMaterials });
     }else{
@@ -267,7 +263,6 @@ class App extends Component {
       // urlVar.set("lifespan", this.state.lifespan)
       // urlVar.set("biogenicCarbon", this.state.biogenicCarbon)
 
-    console.log(mSystem)
     if(mSystem == null){
       mSystem = "0_1_2_3_4_5_6_7_8_9_10_11_12_13_14_15_16_17_18_19_20_21_22_23_"
     }
@@ -388,7 +383,6 @@ class App extends Component {
 
       
       // console.log(this.state.selectedMaterials)
-      console.log(s.get("system"))
 
       // window.history.replaceState({}, '', "?" + urlVar.toString())
 
@@ -406,15 +400,11 @@ class App extends Component {
 
     let s = new URLSearchParams(window.location.search)
 
-    console.log(s.get("type"))
-    console.log(s.get("system"))
 
 
 
     let type = s.get("type")
-    console.log(type)
     let mSystem = s.get("system")
-    console.log(mSystem)
     this.setState({systemString: mSystem})
     if (type == 0) { //envelope
       let names = this.state.systemString.split("_")
@@ -450,12 +440,9 @@ class App extends Component {
 
       let urlSelectedMaterials = []
 
-      console.log(names)
       for(let i = 0; i < names.length; i++){
         urlSelectedMaterials.push(allSystems[parseInt(names[i])])
       }
-
-      console.log(urlSelectedMaterials)
 
       this.setState(
         { value: 0,
@@ -490,7 +477,6 @@ class App extends Component {
 
       let urlSelectedMaterials = []
 
-      console.log(names)
       for(let i = 0; i < names.length; i++){
         urlSelectedMaterials.push(allSystems[parseInt(names[i])])
       }
@@ -955,8 +941,6 @@ class App extends Component {
   }
 
   constructURL(){
-
-    console.log(this.state.value)
     let urlVar = new URLSearchParams()
       urlVar.set("type", this.state.value)
       let selectedString = ""
@@ -1162,12 +1146,10 @@ class App extends Component {
   }
 
   radioChange(e) {
-    console.log(e.target.value)
     let currentRad = e.target.value;
 
     this.state.currentRadio = currentRad;
     this.setState({ currentRadio: currentRad });
-    console.log(this.state.currentRadio)
   }
 
 
