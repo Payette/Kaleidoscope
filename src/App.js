@@ -643,36 +643,6 @@ class App extends Component {
     const open = Boolean(this.state.anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
-    // const allImpactsDataSelectedMaterialsOnlyFlooring = this.state.flooring_allImpactsData.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    // const gwpDataSelectedMaterialsOnlyFlooring = this.state.flooring_gwpData.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    // const lcsDataSelectedMaterialsOnlyFlooring = this.state.flooring_lcsData.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    // const materialDataSelectedMaterialsOnlyFlooring = this.state.flooring_materialData.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-
-    // const allImpactsDataSelectedMaterialsOnly1Flooring = this.state.flooring_allImpactsData1.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    // const gwpDataSelectedMaterialsOnly1Flooring = this.state.flooring_gwpData1.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    // const lcsDataSelectedMaterialsOnly1Flooring = this.state.flooring_lcsData1.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    // const materialDataSelectedMaterialsOnly1Flooring = this.state.flooring_materialData1.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-
-    // const allImpactsDataSelectedMaterialsOnly2Flooring = this.state.flooring_allImpactsData2.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    // const gwpDataSelectedMaterialsOnly2Flooring = this.state.flooring_gwpData2.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    // const lcsDataSelectedMaterialsOnly2Flooring = this.state.flooring_lcsData2.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    // const materialDataSelectedMaterialsOnly2Flooring = this.state.flooring_materialData2.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-
-    // const allImpactsDataSelectedMaterialsOnly3Flooring = this.state.flooring_allImpactsData3.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    // const gwpDataSelectedMaterialsOnly3Flooring = this.state.flooring_gwpData3.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    // const lcsDataSelectedMaterialsOnly3Flooring = this.state.flooring_lcsData3.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    // const materialDataSelectedMaterialsOnly3Flooring = this.state.flooring_materialData3.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-
-    // const allImpactsDataSelectedMaterialsOnly4Flooring = this.state.flooring_allImpactsData4.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    // const gwpDataSelectedMaterialsOnly4Flooring = this.state.flooring_gwpData4.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    // const lcsDataSelectedMaterialsOnly4Flooring = this.state.flooring_lcsData4.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    // const materialDataSelectedMaterialsOnly4Flooring = this.state.flooring_materialData4.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-
-    // const allImpactsDataSelectedMaterialsOnly5Flooring = this.state.flooring_allImpactsData5.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    // const gwpDataSelectedMaterialsOnly5Flooring = this.state.flooring_gwpData5.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    // const lcsDataSelectedMaterialsOnly5Flooring = this.state.flooring_lcsData5.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    // const materialDataSelectedMaterialsOnly5Flooring = this.state.flooring_materialData5.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-
     var obj = {
       "Material": "void"
     };
