@@ -35,8 +35,7 @@ export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdo
 
   if (mCurrSel == "tenYGWP") {
     selGWP = tenYGWP;
-    // console.log(matBreakdown)
-    // console.log(selGWP)
+
     for (let i = 0; i < matBreakdown.length; i++) {
       if (matBreakdown[i].material == currentMat) {
         materials = matBreakdown[i];

@@ -1,5 +1,6 @@
 import LoadData from './data/Envelopes_LoadData';
 import FlooringLoadData from './data/Flooring_LoadData';
+import CeilingsLoadData from './data/Ceilings_LoadData';
 
 export let TAB_INDEX_ENVELOPES = 0;
 export let TAB_INDEX_FLOORING = 1;
@@ -47,4 +48,8 @@ export let materialListEnvelope = Object.keys(LoadData.metaData.materialType).ma
 
 export let materialListFlooring = Object.keys(FlooringLoadData.metaData.materialType).map(variableName => {
   return { value: variableName, label: FlooringLoadData.metaData.materialType[variableName] };
+});
+
+export let materialListCeilings = Object.keys(CeilingsLoadData.metaData.materialType).map(variableName => {
+  return { value: variableName, label: CeilingsLoadData.metaData.materialType[variableName] };
 });

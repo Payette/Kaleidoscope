@@ -2,19 +2,28 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import LoadData from './data/Envelopes_LoadData';
 import FlooringLoadData from './data/Flooring_LoadData';
+import CeilingsLoadData from './data/Ceilings_LoadData';
 import MaterialList from './MaterialList';
 import Row from "./Row";
 import { Tabs, AppBar, Tab } from '@material-ui/core';
 import TabPanel from "./TabPanel";
 import withSplashScreen from './withSplashScreen';
 import Dialog from 'react-a11y-dialog';
-import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_ENVELOPES, DATASET_NAMES, materialListEnvelope, materialListFlooring,
+import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_ENVELOPES, DATASET_NAMES, materialListEnvelope, materialListFlooring, materialListCeilings,
   CHART_TYPES_ENVELOPES,
   TAB_INDEX_ENVELOPES, TAB_INDEX_FLOORING, TAB_INDEX_CEILINGS, TAB_INDEX_OTHER } from './CommonUtil';
 import { Helmet } from "react-helmet";
 import ChartContainerEnvelopes from './ChartContainerEnvelopes';
 import './css/Main.scss';
 import styles from './css/App.module.scss';
+
+let footer = <div style={{ paddingTop: 0, top: 0, marginTop: 0 }}>
+<p className={styles.serif} style={{ display: "inline-block" }}>
+  Last updated June 2022<br></br>
+  Credit: <i>Data analysis run using Tally version 2022.04.08.01 by Building Transparency and KT Innovations, thinkstep, and Autodesk using industry representative LCI data unless otherwise noted</i><br></br>
+  For questions or comments: <h5 style={{ display: "inline-block" }}>tools@payette.com</h5>, Source code: <h5 style={{ display: "inline-block" }}><a href="https://github.com/Payette/Kaleidoscope">github.com/Payette/Kaleidoscope</a></h5>
+</p>
+</div>
 
 class App extends Component {
   constructor(props) {
@@ -30,6 +39,9 @@ class App extends Component {
 
       flooring_materials: [],
       flooring_selectedMaterials: [],
+
+      ceilings_materials: [],
+      ceilings_selectedMaterials: [],
 
       currentRadio: 1,
       rows: [
@@ -47,6 +59,7 @@ class App extends Component {
     DATASET_NAMES.forEach(dataSetName => {
       this.state[dataSetName] = [];
       this.state[`flooring_${dataSetName}`] = [];
+      this.state[`ceilings_${dataSetName}`] = [];
     })
    
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -83,6 +96,12 @@ class App extends Component {
       this.setState({ value: newValue, flooring_selectedMaterials: this.state.flooring_selectedMaterials });
     } else {
       this.setState({ value: newValue, flooring_selectedMaterials: this.state.flooring_materials });
+    }
+
+    if (this.state.ceilings_selectedMaterials.length != 0) {
+      this.setState({ value: newValue, ceilings_selectedMaterials: this.state.ceilings_selectedMaterials });
+    } else {
+      this.setState({ value: newValue, ceilings_selectedMaterials: this.state.ceilings_materials });
     }
 
     let urlVar = new URLSearchParams()
@@ -124,6 +143,9 @@ class App extends Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (!_.isEqual(prevState, this.state)) {      
+      //
+      // ENVELOPES
+      //
       // package all data into an array
       let dataEnvelopes = {};
       let selectedDataEnvelopes = {};
@@ -145,8 +167,12 @@ class App extends Component {
           dataEnvelopes, selectedDataEnvelopes, dataEnvelopesReady
         })          
       }
+      //-------------------------------------------------------------------
 
-      // flooring
+
+      //
+      // FLOORING
+      //
       // package all data into an array
       let flooring_dataEnvelopes = {};
       let flooring_selectedDataEnvelopes = {};
@@ -169,6 +195,37 @@ class App extends Component {
           flooring_dataEnvelopes, flooring_selectedDataEnvelopes, flooring_dataEnvelopesReady
         })          
       }
+      //-------------------------------------------------------------------
+
+
+      //
+      // CEILINGS
+      //
+      // package all data into an array
+      let ceilings_dataEnvelopes = {};
+      let ceilings_selectedDataEnvelopes = {};
+      DATASET_NAMES.forEach(dataSetName => {
+        let ceilings_dataSetName = `ceilings_${dataSetName}`;
+        ceilings_dataEnvelopes[dataSetName] = this.state[ceilings_dataSetName] || [];
+        if(this.state.ceilings_selectedMaterials && this.state.ceilings_selectedMaterials.length > 0) {
+          ceilings_selectedDataEnvelopes[dataSetName] = ceilings_dataEnvelopes[dataSetName].filter(d => (this.state.ceilings_selectedMaterials).includes(d.material));
+        } else {
+          ceilings_selectedDataEnvelopes[dataSetName] = [];
+        }
+      });
+      // data set is ready if ALL datasets have loaded
+      let ceilings_dataEnvelopesReady = true;
+      DATASET_NAMES.forEach(dataSetName => {
+        ceilings_dataEnvelopesReady = ceilings_dataEnvelopesReady && (ceilings_dataEnvelopes[dataSetName] && ceilings_dataEnvelopes[dataSetName].length > 0);
+      });
+      if(ceilings_dataEnvelopesReady) {
+        this.setState({
+          ceilings_dataEnvelopes, ceilings_selectedDataEnvelopes, ceilings_dataEnvelopesReady
+        })          
+      }
+      //-------------------------------------------------------------------
+
+
 
       let s = new URLSearchParams(window.location.search)
       let type = s.get("type")
@@ -245,6 +302,25 @@ class App extends Component {
             flooring_selectedMaterials: urlSelectedMaterials
           }
         )
+      } else if (type == 2) { //ceilings
+        let names = mSystem.split("_")
+
+        names.pop()
+
+        let allSystems = materialListCeilings.map(m => m.value)
+        let urlSelectedMaterials = []
+
+        for (let i = 0; i < names.length; i++) {
+          urlSelectedMaterials.push(allSystems[parseInt(names[i])])
+        }
+
+        this.setState(
+          {
+            value: 2,
+            systemString: mSystem,
+            ceilings_selectedMaterials: urlSelectedMaterials
+          }
+        )
       }
 
       let urlVar = new URLSearchParams()
@@ -296,6 +372,25 @@ class App extends Component {
           flooring_selectedMaterials: urlSelectedMaterials
         }
       )
+    } else if (type == 2) { //ceilings
+      let names = this.state.systemString.split("_")
+
+      names.pop()
+
+      let allSystems = materialListCeilings.map(m => m.value);
+      let urlSelectedMaterials = []
+
+      for (let i = 0; i < names.length; i++) {
+        urlSelectedMaterials.push(allSystems[parseInt(names[i])])
+      }
+
+      this.setState(
+        {
+          value: 2,
+          systemString: mSystem,
+          ceilings_selectedMaterials: urlSelectedMaterials
+        }
+      )
     }
 
     DATASET_NAMES.forEach((dataSetName, idx) => {
@@ -326,6 +421,20 @@ class App extends Component {
           this.setState({ [`flooring_${dataSetName}`]: data });
         }
       });
+
+      CeilingsLoadData[dataSetName](data => {        
+        if(idx === 0) {
+          const materials = data.map(d => d.material);
+          const names = data.map(d => d.name);
+          this.setState({
+            [`ceilings_${dataSetName}`]: data,
+            ceilings_materials: materials,
+            ceilings_names: names
+          });
+        } else {
+          this.setState({ [`ceilings_${dataSetName}`]: data });
+        }
+      });
     })
   }
 
@@ -352,10 +461,17 @@ class App extends Component {
           selectedString += i + "_"
         }
       }
-    } else {
+    } else if(this.state.value == 1) {
       let allSystems = materialListFlooring.map(m => m.value);
       for (let i = 0; i < allSystems.length; i++) {
         if (this.state.flooring_selectedMaterials.includes(allSystems[i])) {
+          selectedString += i + "_"
+        }
+      }
+    } else if(this.state.value == 2) {
+      let allSystems = materialListCeilings.map(m => m.value);
+      for (let i = 0; i < allSystems.length; i++) {
+        if (this.state.ceilings_selectedMaterials.includes(allSystems[i])) {
           selectedString += i + "_"
         }
       }
@@ -413,6 +529,26 @@ class App extends Component {
     window.history.replaceState({}, '', "?" + urlVar.toString())
   }
 
+  updateSelectedCeilingsMaterials(newSelectedMaterials) {
+    let selectedString = ""
+    let allSystems = materialListCeilings.map(m => m.value);
+    for (let i = 0; i < allSystems.length; i++) {
+      if (newSelectedMaterials.includes(allSystems[i])) {
+        selectedString += i + "_"
+      }
+    }
+
+    this.setState({ systemString: selectedString })
+
+    let urlVar = new URLSearchParams()
+    urlVar.set("type", this.state.value)
+    this.setState({
+      ceilings_selectedMaterials: newSelectedMaterials
+    })
+    urlVar.set("system", selectedString)
+    window.history.replaceState({}, '', "?" + urlVar.toString())
+  }
+
   radioChange(e) {
     let currentRad = e.target.value;
     this.state.currentRadio = currentRad;
@@ -423,10 +559,12 @@ class App extends Component {
     const open = Boolean(this.state.anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
+    //
+    // ENVELOPES
+    //
     var obj = {
       "Material": "void"
     };
-
     if(this.state.dataEnvelopesReady) {
       for (let i = 0; i < this.state.selectedDataEnvelopes.gwpData.length; i++) {
         let myName = this.state.selectedDataEnvelopes.gwpData[i].material;
@@ -435,15 +573,31 @@ class App extends Component {
       }
     }
 
+    //
+    // FLOORING
+    //    
     var flooring_obj = {
       "Material": "void"
     };
-
     if(this.state.flooring_dataEnvelopesReady) {
       for (let i = 0; i < this.state.flooring_selectedDataEnvelopes.gwpData.length; i++) {
         let myName = this.state.flooring_selectedDataEnvelopes.gwpData[i].material;
         let myVal = this.state.flooring_selectedDataEnvelopes.gwpData[i].value;
         flooring_obj[myName] = myVal;
+      }
+    }
+
+    //
+    // CEILINGS
+    //    
+    var ceilings_obj = {
+      "Material": "void"
+    };
+    if(this.state.ceilings_dataEnvelopesReady) {
+      for (let i = 0; i < this.state.ceilings_selectedDataEnvelopes.gwpData.length; i++) {
+        let myName = this.state.ceilings_selectedDataEnvelopes.gwpData[i].material;
+        let myVal = this.state.ceilings_selectedDataEnvelopes.gwpData[i].value;
+        ceilings_obj[myName] = myVal;
       }
     }
 
@@ -670,13 +824,7 @@ class App extends Component {
 
             </div>
 
-            <div style={{ paddingTop: 0, top: 0, marginTop: 0 }}>
-              <p className={styles.serif} style={{ display: "inline-block" }}>
-                Last updated April 2021<br></br>
-                Credit: <i>Data analysis run using Tally version 2020.06.09.01 by KT Innovations, thinkstep, and Autodesk using industry standard EPDs unless otherwise noted </i><br></br>
-                For questions or comments: <h5 style={{ display: "inline-block" }}>tools@payette.com</h5>, Source code: <h5 style={{ display: "inline-block" }}><a href="https://github.com/Payette/Kaleidoscope">github.com/Payette/Kaleidoscope</a></h5>
-              </p>
-            </div>
+            {footer}
 
           </div>
           <br></br>
@@ -838,20 +986,168 @@ class App extends Component {
 
             </div>
 
-            <div style={{ paddingTop: 0, top: 0, marginTop: 0 }}>
-              <p className={styles.serif} style={{ display: "inline-block" }}>
-                Last updated April 2021<br></br>
-                Credit: <i>Data analysis run using Tally version 2020.06.09.01 by KT Innovations, thinkstep, and Autodesk using industry standard EPDs unless otherwise noted </i><br></br>
-                For questions or comments: <h5 style={{ display: "inline-block" }}>tools@payette.com</h5>, Source code: <h5 style={{ display: "inline-block" }}><a href="https://github.com/Payette/Kaleidoscope">github.com/Payette/Kaleidoscope</a></h5>
-
-              </p>
-            </div>
+            {footer}
           </div>
         </TabPanel>
 
         {/* CEILINGS */}
         <TabPanel value={this.state.value} index={TAB_INDEX_CEILINGS}>
-          Ceilings
+          <Helmet>
+            <script type="text/javascript" src="bf3.js"></script>
+          </Helmet>
+          <form>
+            <h1>CEILING ASSEMBLIES</h1>
+            <div className={styles.topcontrols}>
+
+              <div className={styles.inputgroup} style={{ minHeight: 195 }}>
+                <h3>CHART TYPE</h3>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="GWP" value="GWP" name="chartType" checked={this.state.chartType === "GWP"} onChange={this.handleInputChange} />
+                  <label htmlFor="fGWP">Global Warming Potential <sup id={"fnref:11"}><a href={"#fn:11"} rel="footnote"></a></sup></label>
+
+                </div>
+
+                <div className={styles.inputitem}>
+                  <input type="radio" id="allImpacts" name="chartType" value="allImpacts" checked={this.state.chartType === "allImpacts"} onChange={this.handleInputChange} />
+                  <label htmlFor="allImpacts">All Impacts <sup id={"fnref:" + this.state.clicks + "2"}><a href={"#fn:" + this.state.clicks + "2"} rel="footnote"></a></sup></label>
+
+
+                </div>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="LCS" value="LCS" name="chartType" checked={this.state.chartType === "LCS"} onChange={this.handleInputChange} />
+                  <label htmlFor="LCS">Life Cycle Stage</label> <sup id={"fnref:" + this.state.clicks + "3"}><a href={"#fn:" + this.state.clicks + "3"} rel="footnote"></a></sup>
+                </div>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="MB" value="MB" name="chartType" checked={this.state.chartType === "MB"} onChange={this.handleInputChange} />
+                  <label htmlFor="MB">Material Breakdown</label> <sup id={"fnref:" + this.state.clicks + "4"}><a href={"#fn:" + this.state.clicks + "4"} rel="footnote"></a></sup>
+                </div>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="MH" value="MH" name="chartType" checked={this.state.chartType === "MH"} onChange={this.handleInputChange} />
+                  <label htmlFor="MH">Material Health Impacts</label> <sup id="fnref:10"><a href="#fn:10" rel="footnote"></a></sup>
+                </div>
+              </div>
+
+              <div className={styles.inputgroup} style={{ minHeight: 195 }}>
+                <h3>LIFESPAN</h3>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="tenY" name="lifespan" value="tenY" checked={this.state.lifespan === "tenY"} onChange={this.handleInputChange} />
+                  <label htmlFor="tenY">Initial Carbon (only Module A)</label> <sup id={"fnref:" + this.state.clicks + "5"}><a href={"#fn:" + this.state.clicks + "5"} rel="footnote"></a></sup>
+                </div>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="sixty2" name="lifespan" value="sixty2" checked={this.state.lifespan === "sixty2"} onChange={this.handleInputChange} />
+                  <label htmlFor="sixty2">60 Year (With Module D)</label> <sup id={"fnref:" + this.state.clicks + "6"}><a href={"#fn:" + this.state.clicks + "6"} rel="footnote"></a></sup>
+                </div>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="sixty1" name="lifespan" value="sixty1" checked={this.state.lifespan === "sixty1"} onChange={this.handleInputChange} />
+                  <label htmlFor="sixty1">60 Year (No Module D)</label> <sup id={"fnref:" + this.state.clicks + "7"}><a href={"#fn:" + this.state.clicks + "7"} rel="footnote"></a></sup>
+                </div>
+              </div>
+
+              <div className={styles.inputgroup} style={{ minHeight: 195 }}>
+                <h3>BIOGENIC CARBON</h3>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked={this.state.biogenicCarbon === "yBio"} onChange={this.handleInputChange} />
+                  <label htmlFor="yBio">With Biogenic Carbon</label> <sup id={"fnref:" + this.state.clicks + "8"}><a href={"#fn:" + this.state.clicks + "8"} rel="footnote"></a></sup>
+                </div>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="nBio" name="biogenicCarbon" value="nBio" checked={this.state.biogenicCarbon === "nBio"} onChange={this.handleInputChange} />
+                  <label htmlFor="nBio">No Biogenic Carbon</label> <sup id={"fnref:" + this.state.clicks + "9"}><a href={"#fn:" + this.state.clicks + "9"} rel="footnote"></a></sup>
+                </div>
+              </div>
+            </div>
+
+          </form>
+          <div style={{ display: "inline-block", height: "100%" }} id="parentDiv">
+
+            {this.state.flooring_materials.length > 0 &&
+              <div className={styles.sidebar} id="sidebar123">
+                <MaterialList
+                  type={SYSTEM_TYPE_CEILINGS}
+                  gwp={ceilings_obj}
+                  materials={this.state.ceilings_materials}
+                  names={this.state.ceilings_names}
+                  updateSelectedMaterials={this.updateSelectedCeilingsMaterials.bind(this)}
+                  initialSelectedMaterials={this.state.ceilings_selectedMaterials}
+                  metaData={CeilingsLoadData.metaData}
+                  currentSel={this.state.chartType}
+                  matBreakdown={this.state.ceilings_materialData1}
+                  matBreakdown1={this.state.ceilings_materialData3}
+                  matBreakdown2={this.state.ceilings_materialData5}
+                  tenYGWP={this.state.ceilings_gwpData1}
+                  sixty1YGWP={this.state.ceilings_gwpData3}
+                  sixty2YGWP={this.state.ceilings_gwpData5}
+                />
+              </div>
+            }
+            <h2>{chartTitle}</h2>
+            <div className={styles.chartContainer}>
+              {this.state.ceilings_dataEnvelopesReady && <ChartContainerEnvelopes
+                  type={SYSTEM_TYPE_CEILINGS}
+                  chartTitle
+                  chartType={this.state.chartType}
+                  lifespan={this.state.lifespan}
+                  biogenicCarbon={this.state.biogenicCarbon}
+                  selectedMaterials={this.state.ceilings_selectedMaterials}
+                  metaData={CeilingsLoadData.metaData}
+                  data={this.state.ceilings_dataEnvelopes || {}}
+                  selectedData={this.state.ceilings_selectedDataEnvelopes || {}}
+                  ready={this.state.ceilings_dataEnvelopesReady === true}
+                />}
+            </div>
+          </div>
+          <div style={{ display: "inline-block", width: "100%" }}>
+            <h1>CEILINGS CALCULATOR</h1>
+            <div className={styles.calc} style={{ minHeight: '60px', display: "block" }}>
+
+              <div style={{ margin: "auto" }}>
+                <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
+                <label for="ten"> Initial Carbon (only Module A) &nbsp;&nbsp;</label>
+                <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
+                <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
+                <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
+                <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label>
+
+
+
+              </div><br></br>
+
+              {this.state.rows.map((row, idx) => {
+                return (
+                  <Row
+                    materialList={materialListCeilings}
+                    key={idx}
+                    value={row.value}
+                    checked={row.checked}
+                    name={idx + 1}
+                    count={0}
+                    tenY={this.state.ceilings_gwpData1}
+                    sixty1={this.state.ceilings_gwpData3}
+                    sixty2={this.state.ceilings_gwpData5}
+                    radio={this.state.currentRadio}
+                    divStyle={divStyle}
+                    onChange={(e) => this.updateValue(e, idx)}
+                    onChecked={() => this.onChecked(idx)}
+                  />
+                )
+              })
+              }
+              <br></br>
+
+              <button onClick={this.addRow}>
+                Add Option
+              </button>
+              <button onClick={this.deleteRows}>
+                Delete Option
+              </button>
+
+
+              <br></br>
+
+
+            </div>
+
+            {footer}
+          </div>
         </TabPanel>
 
         {/* OTHER */}
