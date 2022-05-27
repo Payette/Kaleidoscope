@@ -1,20 +1,20 @@
-display_order,material_variable_name,type,name,name_w_short_type,name_w_long_type,material_section_graphic,material_color,material_health_color,material_health_text,material_texts,material_notes
-1,mBaffle,Metal,Metal Baffle,M - Baffle (Metal),,,,,,,
-2,mPan,Metal,Metal Pan,M -  Metal Pan,,,,,,,
-3,mPerforatedPan,Metal,Perforated Metal Pan,M - Perf Metal Pan,,,,,,,
-4,hcGypsum,Hard Ceiling,Gypsum,HC - Gyp,,,,,,,
-5,hcMoistureResistantGyp,Hard Ceiling,Moisture Resistant Gypsum,HC - Moisture Resistant Gyp,,,,,,,
-6,cFiberglassTrim,Cloud,Fiberglass (w/ Trim),C - Fiberglass (w/ Trim),,,,,,,
-7,cFiberglass,Cloud,Fiberglass,C - Fiberglass,,,,,,,
-8,ltFiberglass,Lay-In Tile,Fiberglass,LT - Fiberglass,,,,,,,
-9,ltMineralBoard,Lay-In Tile,Mineral Board,LT - Mineral Board,,,,,,,
-10,ocAcousticalSpray,Open Ceiling,Acoustical Spray,OC - Acoustical Spray,,,,,,,
-11,ocPaint,Open Ceiling,Paint,OC - Paint,,,,,,,
-12,wVeneerDense,Wood,Dense Grille (Veneer),W - Dense Grille (Veneer),,,,,,,
-13,wVeneerOpen,Wood,Open Grille (Veneer),W - Open Grille (Veneer),,,,,,,
-14,wPoplarDense,Wood,Dense Grille (Poplar),W - Dense Grille (Poplar),,,,,,,
-15,wPoplarOpen,Wood,Open Grille (Poplar),W - Open Grille (Poplar),,,,,,,
-16,wWalnutDense,Wood,Dense Grille (Walnut),W - Dense Grille (Walnut),,,,,,,
-17,wWalnutOpen,Wood,Open Grille (Walnut),W - Open Grille (Walnut),,,,,,,
-18,wMapleDense,Wood,Dense Grille (Maple),W - Dense Grille (Maple),,,,,,,
-19,wMapleOpen,Wood,Open Grille (Maple),W - Open Grille (Maple),,,,,,,
+display_order,assembly_variable_name,type,name,name_w_short_type,name_w_long_type,assembly_section_graphic,assembly_color,material_health_color,material_health_text,material_texts,material_notes
+1,mBaffle,Metal,Metal Baffle,M - Baffle (Metal),Metal - Baffle,./img/Axon_Stone.png,#9E005D,#00ae5e,Watch for VOC content for interior paint; Type X gypsum board includes flame retardants,material text,material notes
+2,mPan,Metal,Metal Pan,M -  Metal Pan,Metal - Pan,./img/Axon_Stone.png,#C3426B,#00ae5e,,material text,material notes
+3,mPerforatedPan,Metal,Perforated Metal Pan,M - Perf Metal Pan,Metal - Perforated Pan,./img/Axon_Stone.png,#EBB3C3,#00ae5e,,material text,material notes
+4,hcGypsum,Hard Ceiling,Gypsum,HC - Gyp,Hard Ceiling - Gypsum,./img/Axon_Stone.png,#F78461,#97cd78,,material text,material notes
+5,hcMoistureResistantGyp,Hard Ceiling,Moisture Resistant Gypsum,HC - Moisture Resistant Gyp,Hard Ceiling - Moisture Resistant Gypsum,./img/Axon_Stone.png,#FAB5A0,#febe10,,material text,material notes
+6,cFiberglassTrim,Cloud,Fiberglass (w/ Trim),C - Fiberglass (w/ Trim),Cloud - Fiberglass (w/ Trim),./img/Axon_Stone.png,#FCC05E,#febe10,,material text,material notes
+7,cFiberglass,Cloud,Fiberglass,C - Fiberglass,Cloud - Fiberglass,./img/Axon_Stone.png,#FCE4C3,#febe10,,material text,material notes
+8,ltFiberglass,Lay-In Tile,Fiberglass,LT - Fiberglass,Lay-In Tile - Fiberglass,./img/Axon_Stone.png,#8EE05F,#febe10,,material text,material notes
+9,ltMineralBoard,Lay-In Tile,Mineral Board,LT - Mineral Board,Lay-In Tile - Mineral Board,./img/Axon_Stone.png,#C2EAA7,#febe10,,material text,material notes
+10,ocAcousticalSpray,Open Ceiling,Acoustical Spray,OC - Acoustical Spray,Open Ceiling - Acoustical Spray,./img/Axon_Stone.png,#89EFC0,#febe10,,material text,material notes
+11,ocPaint,Open Ceiling,Paint,OC - Paint,Open Ceiling - Paint,./img/Axon_Stone.png,#B8F5D9,#97cd78,,material text,material notes
+12,wVeneerDense,Wood,Dense Grille (Veneer),W - Dense Grille (Veneer),Wood - Dense Grille (Veneer),./img/Axon_Stone.png,#87CEE9,#00ae5e,,material text,material notes
+13,wVeneerOpen,Wood,Open Grille (Veneer),W - Open Grille (Veneer),Wood - Open Grille (Veneer),./img/Axon_Stone.png,#8BD3F7,#00ae5e,,material text,material notes
+14,wPoplarDense,Wood,Dense Grille (Poplar),W - Dense Grille (Poplar),Wood - Dense Grille (Poplar),./img/Axon_Stone.png,#5CBDFF,#00ae5e,,material text,material notes
+15,wPoplarOpen,Wood,Open Grille (Poplar),W - Open Grille (Poplar),Wood - Open Grille (Poplar),./img/Axon_Stone.png,#00AAFF,#00ae5e,,material text,material notes
+16,wWalnutDense,Wood,Dense Grille (Walnut),W - Dense Grille (Walnut),Wood - Dense Grille (Walnut),./img/Axon_Stone.png,#4497EA,#00ae5e,,material text,material notes
+17,wWalnutOpen,Wood,Open Grille (Walnut),W - Open Grille (Walnut),Wood - Open Grille (Walnut),./img/Axon_Stone.png,#6495ED,#00ae5e,,material text,material notes
+18,wMapleDense,Wood,Dense Grille (Maple),W - Dense Grille (Maple),Wood - Dense Grille (Maple),./img/Axon_Stone.png,#4169E1,#00ae5e,,material text,material notes
+19,wMapleOpen,Wood,Open Grille (Maple),W - Open Grille (Maple),Wood - Open Grille (Maple),./img/Axon_Stone.png,#283CDC,#00ae5e,,material text,material notes

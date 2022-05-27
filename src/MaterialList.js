@@ -104,11 +104,6 @@ export default class MaterialList extends PureComponent {
         materialColor = this.props.metaData.materialColors[id] ? this.props.metaData.materialColors[id] : '#4d4d4f';
       }
 
-
-
-
-
-      const materialIcon = this.props.metaData.materialIcons[id] ? this.props.metaData.materialIcons[id] : undefined;
       const materialType = this.props.metaData.materialType[id] ? this.props.metaData.materialType[id] : undefined;
 
       return (
@@ -165,25 +160,10 @@ export default class MaterialList extends PureComponent {
       legendText = <div className={styles.serif}><p> <span style={{ background: "#00a558" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Meets Payette Policy </p> <p> <span style={{ background: "#8cc672" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Meets Payette Material Policy with Requests </p> <p> <span style={{ background: "#FEBE10" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Meets some of Payette Material Policy </p><p> <span style={{ background: "#D51C29" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Does not meet Payette Material Policy </p></div>
     }
 
-    //CHANGE THE MODAL TO IMG OF MASONRY VENEER GRANITE AS DEFAULT
-    let currentImg = MVGranite;
-    //IF IT IS RAINSCREEN USE THAT IMG INSTEAD
-
-    // if(this.state.materialPopup.name === "Granite1"){
-    //   currentImg = RSGranite;
-    // };
-
-    currentImg = this.props.metaData.pieIcons[this.state.materialPopup.name];
-    // console.log(this.props.metaData.materialIcons[this.state.materialPopup.name])
     let sectionImg = this.props.metaData.sectionIcons[this.state.materialPopup.name];
-
-    // console.log(this.props);
-
     let concatNotes = [];
     concatNotes = this.props.metaData.materialNotes[this.state.materialPopup.name];
 
-    let myNotes;
-    // console.log(this.state.materialPopup)
     let listItems;
     if (this.state.materialPopup.name !== "Material") {
       listItems = this.props.metaData.materialNotes[this.state.materialPopup.name].map((number) =>

@@ -212,32 +212,7 @@ class App extends Component {
 
         names.pop()
 
-        let allSystems = [
-          "MVGranite",
-          "MVLimestone",
-          "MVBrick",
-          "MVTBrick",
-          "MInsMePanel",
-          "MEIFS",
-          "MPrecast",
-          "MMinWool",
-          "CSpandrelAlumB",
-          "CSpandrelSteel",
-          "CSpandrelAlum",
-          "CSpandrelWood",
-          "RGFRC",
-          "RACM",
-          "RTerracotta",
-          "RPhenResin",
-          "RFiberCement",
-          "RZinc",
-          "RUHPC",
-          "RGranite",
-          "RTBrick",
-          "RLimestone",
-          "RSteel",
-          "RWood"
-        ]
+        let allSystems = materialListEnvelope.map(m => m.value)
         let urlSelectedMaterials = []
 
         for (let i = 0; i < names.length; i++) {
@@ -256,25 +231,7 @@ class App extends Component {
 
         names.pop()
 
-        let allSystems = [
-          "sGranite",
-          "sSlate",
-          "sCeramic",
-          "rRubber",
-          "rVinyl",
-          "rLinoTile",
-          "mConcrete",
-          "mTerrazzo",
-          "mEpoxy",
-          "cHigh",
-          "cMedium",
-          "cLow",
-          "wEngineered",
-          "wBamboo",
-          "wCork",
-          "wSoftwood",
-          "wHardwood"
-        ]
+        let allSystems = materialListFlooring.map(m => m.value)
         let urlSelectedMaterials = []
 
         for (let i = 0; i < names.length; i++) {
@@ -289,7 +246,6 @@ class App extends Component {
           }
         )
       }
-
 
       let urlVar = new URLSearchParams()
       urlVar.set("type", this.state.value)
@@ -307,34 +263,8 @@ class App extends Component {
 
       names.pop()
 
-      let allSystems = [
-        "MVGranite",
-        "MVLimestone",
-        "MVBrick",
-        "MVTBrick",
-        "MInsMePanel",
-        "MEIFS",
-        "MPrecast",
-        "MMinWool",
-        "CSpandrelAlumB",
-        "CSpandrelSteel",
-        "CSpandrelAlum",
-        "CSpandrelWood",
-        "RGFRC",
-        "RACM",
-        "RTerracotta",
-        "RPhenResin",
-        "RFiberCement",
-        "RZinc",
-        "RUHPC",
-        "RGranite",
-        "RTBrick",
-        "RLimestone",
-        "RSteel",
-        "RWood"
-      ]
-
-      let urlSelectedMaterials = []
+      let allSystems = materialListEnvelope.map(m => m.value);
+      let urlSelectedMaterials = [];
 
       for (let i = 0; i < names.length; i++) {
         urlSelectedMaterials.push(allSystems[parseInt(names[i])])
@@ -352,26 +282,7 @@ class App extends Component {
 
       names.pop()
 
-      let allSystems = [
-        "sGranite",
-        "sSlate",
-        "sCeramic",
-        "rRubber",
-        "rVinyl",
-        "rLinoTile",
-        "mConcrete",
-        "mTerrazzo",
-        "mEpoxy",
-        "cHigh",
-        "cMedium",
-        "cLow",
-        "wEngineered",
-        "wBamboo",
-        "wCork",
-        "wSoftwood",
-        "wHardwood"
-      ]
-
+      let allSystems = materialListFlooring.map(m => m.value);
       let urlSelectedMaterials = []
 
       for (let i = 0; i < names.length; i++) {
@@ -435,57 +346,14 @@ class App extends Component {
     urlVar.set("type", this.state.value)
     let selectedString = ""
     if (this.state.value == 0) {
-      let allSystems = [
-        "MVGranite",
-        "MVLimestone",
-        "MVBrick",
-        "MVTBrick",
-        "MInsMePanel",
-        "MEIFS",
-        "MPrecast",
-        "MMinWool",
-        "CSpandrelAlumB",
-        "CSpandrelSteel",
-        "CSpandrelAlum",
-        "CSpandrelWood",
-        "RGFRC",
-        "RACM",
-        "RTerracotta",
-        "RPhenResin",
-        "RFiberCement",
-        "RZinc",
-        "RUHPC",
-        "RGranite",
-        "RTBrick",
-        "RLimestone",
-        "RSteel",
-        "RWood"
-      ]
+      let allSystems = materialListEnvelope.map(m => m.value);
       for (let i = 0; i < allSystems.length; i++) {
         if (this.state.selectedMaterials.includes(allSystems[i])) {
           selectedString += i + "_"
         }
       }
     } else {
-      let allSystems = [
-        "sGranite",
-        "sSlate",
-        "sCeramic",
-        "rRubber",
-        "rVinyl",
-        "rLinoTile",
-        "mConcrete",
-        "mTerrazzo",
-        "mEpoxy",
-        "cHigh",
-        "cMedium",
-        "cLow",
-        "wEngineered",
-        "wBamboo",
-        "wCork",
-        "wSoftwood",
-        "wHardwood"
-      ]
+      let allSystems = materialListFlooring.map(m => m.value);
       for (let i = 0; i < allSystems.length; i++) {
         if (this.state.flooring_selectedMaterials.includes(allSystems[i])) {
           selectedString += i + "_"
@@ -507,32 +375,7 @@ class App extends Component {
 
   updateSelectedMaterials(newSelectedMaterials) {
     let selectedString = ""
-    let allSystems = [
-      "MVGranite",
-      "MVLimestone",
-      "MVBrick",
-      "MVTBrick",
-      "MInsMePanel",
-      "MEIFS",
-      "MPrecast",
-      "MMinWool",
-      "CSpandrelAlumB",
-      "CSpandrelSteel",
-      "CSpandrelAlum",
-      "CSpandrelWood",
-      "RGFRC",
-      "RACM",
-      "RTerracotta",
-      "RPhenResin",
-      "RFiberCement",
-      "RZinc",
-      "RUHPC",
-      "RGranite",
-      "RTBrick",
-      "RLimestone",
-      "RSteel",
-      "RWood"
-    ]
+    let allSystems = materialListEnvelope.map(m => m.value);
     for (let i = 0; i < allSystems.length; i++) {
       if (newSelectedMaterials.includes(allSystems[i])) {
         selectedString += i + "_"
@@ -552,25 +395,7 @@ class App extends Component {
 
   updateSelectedFlooringMaterials(flooring_newSelectedMaterials) {
     let selectedString = ""
-    let allSystems = [
-      "sGranite",
-      "sSlate",
-      "sCeramic",
-      "rRubber",
-      "rVinyl",
-      "rLinoTile",
-      "mConcrete",
-      "mTerrazzo",
-      "mEpoxy",
-      "cHigh",
-      "cMedium",
-      "cLow",
-      "wEngineered",
-      "wBamboo",
-      "wCork",
-      "wSoftwood",
-      "wHardwood"
-    ]
+    let allSystems = materialListFlooring.map(m => m.value);
     for (let i = 0; i < allSystems.length; i++) {
       if (flooring_newSelectedMaterials.includes(allSystems[i])) {
         selectedString += i + "_"

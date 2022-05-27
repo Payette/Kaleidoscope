@@ -210,46 +210,6 @@ const metaData = {
       'Inclusive of galvanized steel fasteners']
   },
 
-  materialIcons: {
-    sGranite: "./images/granite.png",
-    sSlate: "./images/granite.png",
-    sCeramic: "./images/granite.png",
-    rRubber: "./images/granite.png",
-    rVinyl: "./images/granite.png",
-    rLinoTile: "./images/granite.png",
-    mConcrete: "./images/granite.png",
-    mTerrazzo: "./images/granite.png",
-    mEpoxy: "./images/granite.png",
-    cHigh: "./images/granite.png",
-    cMedium: "./images/granite.png",
-    cLow: "./images/granite.png",
-    wEngineered: "./images/granite.png",
-    wBamboo: "./images/granite.png",
-    wCork: "./images/granite.png",
-    wSoftwood: "./images/granite.png",
-    wHardwood: "./images/granite.png"
-  },
-
-  pieIcons: {
-    sGranite: "./images/MV-Granite-Pie.png",
-    sSlate: "./images/MV-Granite-Pie.png",
-    sCeramic: "./images/MV-Granite-Pie.png",
-    rRubber: "./images/MV-Granite-Pie.png",
-    rVinyl: "./images/MV-Granite-Pie.png",
-    rLinoTile: "./images/MV-Granite-Pie.png",
-    mConcrete: "./images/MV-Granite-Pie.png",
-    mTerrazzo: "./images/MV-Granite-Pie.png",
-    mEpoxy: "./images/MV-Granite-Pie.png",
-    cHigh: "./images/MV-Granite-Pie.png",
-    cMedium: "./images/MV-Granite-Pie.png",
-    cLow: "./images/MV-Granite-Pie.png",
-    wEngineered: "./images/MV-Granite-Pie.png",
-    wBamboo: "./images/MV-Granite-Pie.png",
-    wCork: "./images/MV-Granite-Pie.png",
-    wSoftwood: "./images/MV-Granite-Pie.png",
-    wHardwood: "./images/MV-Granite-Pie.png"
-  },
-
   sectionIcons: {
     sGranite: "./img/Flooring_S-Granite.png",
     sSlate: "./img/Flooring_S-Slate.png",
@@ -403,26 +363,6 @@ const metaData = {
     wCork: "Wood - Cork",
     wSoftwood: "Wood - Softwood",
     wHardwood: "Wood - Hardwood",
-  },
-
-  materialImg: {
-    sGranite: "./img/Axon_Stone.png",
-    sSlate: "./img/Axon_Stone.png",
-    sCeramic: "./img/Axon_Stone.png",
-    rRubber: "./img/Axon_Resilient.png",
-    rVinyl: "./img/Axon_Resilient.png",
-    rLinoTile: "./img/Axon_Resilient.png",
-    mConcrete: "./img/Axon_Misc.png",
-    mTerrazzo: "./img/Axon_Misc.png",
-    mEpoxy: "./img/Axon_Misc.png",
-    cHigh: "./img/Axon_Carpet.png",
-    cMedium: "./img/Axon_Carpet.png",
-    cLow: "./img/Axon_Carpet.png",
-    wEngineered: "./img/Axon_Wood.png",
-    wBamboo: "./img/Axon_Wood.png",
-    wCork: "./img/Axon_Wood.png",
-    wSoftwood: "./img/Axon_Wood.png",
-    wHardwood: "./img/Axon_Wood.png",
   }
 };
 
