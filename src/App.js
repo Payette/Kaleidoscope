@@ -10,7 +10,7 @@ import withSplashScreen from './withSplashScreen';
 import Dialog from 'react-a11y-dialog';
 import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_ENVELOPES, DATASET_NAMES, materialListEnvelope, materialListFlooring,
   CHART_TYPES_ENVELOPES,
-  TAB_INDEX_ENVELOPES, TAB_INDEX_FLOORING, TAB_INDEX_CEILINGS, TAB_INDEX_OTHER } from './Constants';
+  TAB_INDEX_ENVELOPES, TAB_INDEX_FLOORING, TAB_INDEX_CEILINGS, TAB_INDEX_OTHER } from './CommonUtil';
 import { Helmet } from "react-helmet";
 import ChartContainerEnvelopes from './ChartContainerEnvelopes';
 import './css/Main.scss';

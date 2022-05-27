@@ -6,7 +6,7 @@ import MVGranite from './images/Detail_MockUp_MVGranite.png'
 import legendGWP from './images/k-04.png'
 import legendMBEnvelope from './images/MaterialBreakdown-11.png'
 import legendMBFlooring from './images/System_Boundary-flooring_EDIT.png'
-import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_ENVELOPES } from './Constants';
+import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_ENVELOPES } from './CommonUtil';
 import Checkbox from './Checkbox'
 import Pie from "./PieChart";
 import 'pretty-checkbox'

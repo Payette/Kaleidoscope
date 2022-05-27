@@ -11,7 +11,7 @@ import { localPoint } from '@vx/event';
 import * as d3 from 'd3';
 import styles from './css/StackedBarChart.module.scss';
 import { GridRows, GridColumns } from '@vx/grid';
-import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_ENVELOPES } from './Constants';
+import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_ENVELOPES } from './CommonUtil';
 
 
 
