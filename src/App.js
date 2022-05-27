@@ -8,60 +8,13 @@ import { Tabs, AppBar, Tab } from '@material-ui/core';
 import TabPanel from "./TabPanel";
 import withSplashScreen from './withSplashScreen';
 import Dialog from 'react-a11y-dialog';
-import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_ENVELOPES, DATASET_NAMES } from './Constants';
+import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_ENVELOPES, DATASET_NAMES, materialListEnvelope, materialListFlooring,
+  CHART_TYPES_ENVELOPES,
+  TAB_INDEX_ENVELOPES, TAB_INDEX_FLOORING, TAB_INDEX_CEILINGS, TAB_INDEX_OTHER } from './Constants';
 import { Helmet } from "react-helmet";
 import ChartContainerEnvelopes from './ChartContainerEnvelopes';
 import './css/Main.scss';
 import styles from './css/App.module.scss';
-
-
-let materialListEnvelope = [
-  { value: "MVGranite", label: "MV - Granite" },
-  { value: "MVLimestone", label: "MV - Limestone" },
-  { value: "MVBrick", label: "MV - Brick" },
-  { value: "MVTBrick", label: "MV - Thin Brick" },
-  { value: "MInsMePanel", label: "M - Insulated Metal Panel" },
-  { value: "MEIFS", label: "M - EIFS (XPS)" },
-  { value: "MPrecast", label: "M - Precast Concrete" },
-  { value: "MMinWool", label: "M - EIFS (Min Wool)" },
-  { value: "CSpandrelAlumB", label: "CW - Spandrel (Alum w/ Backpan)" },
-  { value: "CSpandrelSteel", label: "CW - Spandrel (Steel)" },
-  { value: "CSpandrelAlum", label: "CW - Spandrel (Alum)" },
-  { value: "CSpandrelWood", label: "CW - Spandrel (Wood)" },
-  { value: "RGFRC", label: "RS - GFRC" },
-  { value: "RACM", label: "RS - ACM" },
-  { value: "RTerracotta", label: "RS - Terracotta" },
-  { value: "RPhenResin", label: "RS - Phenolic Resin" },
-  { value: "RFiberCement", label: "RS - Fiber Cement" },
-  { value: "RZinc", label: "RS - Formed Zinc Panel" },
-  { value: "RUHPC", label: "RS - UHPC (fibreC)" },
-  { value: "RGranite", label: "RS - Granite" },
-  { value: "RTBrick", label: "RS - Thin Brick" },
-  { value: "RLimestone", label: "RS - Limestone" },
-  { value: "RSteel", label: "RS - Formed Steel Panel" },
-  { value: "RWood", label: "RS - Wood" }
-];
-
-let materialListFlooring = [
-  { value: "sGranite", label: "S - Granite" },
-  { value: "sSlate", label: "S - Slate" },
-  { value: "sCeramic", label: "S - Porcelain" },
-  { value: "rRubber", label: "R - Rubber" },
-  { value: "rVinyl", label: "R - Vinyl" },
-  { value: "rLinoTile", label: "R - Linoleum Tile" },
-  { value: "mConcrete", label: "M - Concrete" },
-  { value: "mTerrazzo", label: "M - Terrazzo" },
-  { value: "mSealedC", label: "M - Sealed Concrete" },
-  { value: "mEpoxy", label: "M - Epoxy" },
-  { value: "cHigh", label: "C - High Pile" },
-  { value: "cMedium", label: "C - Medium Pile" },
-  { value: "cLow", label: "C - Low Pile" },
-  { value: "wEngineered", label: "W - Engineered" },
-  { value: "wBamboo", label: "W - Bamboo" },
-  { value: "wCork", label: "W - Cork" },
-  { value: "wSoftwood", label: "W - Softwood Plank" },
-  { value: "wHardwood", label: "W - Hardwood Plank" }
-];
 
 class App extends Component {
   constructor(props) {
@@ -77,7 +30,6 @@ class App extends Component {
 
       flooring_materials: [],
       flooring_selectedMaterials: [],
-
 
       currentRadio: 1,
       rows: [
@@ -116,8 +68,11 @@ class App extends Component {
     this.setState({ anchorEl: target, currentToolTip: placeholder });
   }
 
-  handleChange = (event, newValue) => { // tab button click
-    let value = newValue
+  handleTabChange = (event, newValue) => {
+    if(newValue === TAB_INDEX_ENVELOPES && !CHART_TYPES_ENVELOPES.includes(this.state.chartType)) {
+      this.setState({ chartType: CHART_TYPES_ENVELOPES[0] })
+    }
+
     if (this.state.selectedMaterials.length != 0) {
       this.setState({ value: newValue, selectedMaterials: this.state.selectedMaterials });
     } else {
@@ -733,7 +688,7 @@ class App extends Component {
 
         <AppBar position="static" style={{ background: 'white', color: 'black', boxShadow: "none" }}>
           <Tabs value={this.state.value} indicatorColor="secondary" textColor="secondary"
-            centered onChange={this.handleChange}>
+            centered onChange={this.handleTabChange}>
             <Tab label="ENVELOPES" />
             <Tab label="FLOORING" />
             <Tab label="CEILINGS" />
@@ -742,7 +697,7 @@ class App extends Component {
         </AppBar>
 
         {/* ENVELOPES */}
-        <TabPanel value={this.state.value} index={0}>
+        <TabPanel value={this.state.value} index={TAB_INDEX_ENVELOPES}>
           <Helmet>
             <script type="text/javascript" src="bf.js"></script>
           </Helmet>
@@ -903,7 +858,7 @@ class App extends Component {
         </TabPanel>
 
         {/* FLOORING */}
-        <TabPanel value={this.state.value} index={1}>
+        <TabPanel value={this.state.value} index={TAB_INDEX_FLOORING}>
           <Helmet>
             <script type="text/javascript" src="bf3.js"></script>
           </Helmet>
@@ -1070,12 +1025,12 @@ class App extends Component {
         </TabPanel>
 
         {/* CEILINGS */}
-        <TabPanel value={this.state.value} index={2}>
+        <TabPanel value={this.state.value} index={TAB_INDEX_CEILINGS}>
           Ceilings
         </TabPanel>
 
         {/* OTHER */}
-        <TabPanel value={this.state.value} index={3}>
+        <TabPanel value={this.state.value} index={TAB_INDEX_OTHER}>
           Other
         </TabPanel>
 
