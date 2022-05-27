@@ -1,8 +1,6 @@
 import React from 'react';
 
 import StackedBarChart from './StackedBarChart';
-import LoadData from './data/Envelopes_LoadData';
-import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, type } from './Constants';
 
 export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, selectedData, metaData }) => {
     if(ready !== true) {
@@ -268,7 +266,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
       />}
 
       {/* MATERIAL HEALTH */}
-      {chartType === "MH" && data.gwpData.length > 0 && lifespan === "tenY" && biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
+      {chartType === "MH" && data.gwpData.length > 0 && lifespan === "tenY" && biogenicCarbon === "nBio" && <StackedBarChart type={type}
         selectedMaterials={selectedData.gwpData}
         allMaterials={data.gwpData}
         metaData={metaData}
@@ -279,7 +277,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
       />}
 
       {/* MATERIAL HEALTH */}
-      {chartType === "MH" && data.gwpData1.length > 0 && lifespan === "tenY" && biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
+      {chartType === "MH" && data.gwpData1.length > 0 && lifespan === "tenY" && biogenicCarbon === "yBio" && <StackedBarChart type={type}
         selectedMaterials={selectedData.gwpData1}
         allMaterials={data.gwpData1}
         metaData={metaData}
@@ -290,7 +288,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
       />}
 
       {/* MATERIAL HEALTH */}
-      {chartType === "MH" && data.gwpData2.length > 0 && lifespan === "sixty1" && biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
+      {chartType === "MH" && data.gwpData2.length > 0 && lifespan === "sixty1" && biogenicCarbon === "nBio" && <StackedBarChart type={type}
         selectedMaterials={selectedData.gwpData1}
         allMaterials={data.gwpData2}
         metaData={metaData}
@@ -301,7 +299,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
       />}
 
       {/* MATERIAL HEALTH */}
-      {chartType === "MH" && data.gwpData3.length > 0 && lifespan === "sixty1" && biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
+      {chartType === "MH" && data.gwpData3.length > 0 && lifespan === "sixty1" && biogenicCarbon === "yBio" && <StackedBarChart type={type}
         selectedMaterials={selectedData.gwpData3}
         allMaterials={data.gwpData3}
         metaData={metaData}
@@ -312,7 +310,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
       />}
 
       {/* MATERIAL HEALTH */}
-      {chartType === "MH" && data.gwpData4.length > 0 && lifespan === "sixty2" && biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
+      {chartType === "MH" && data.gwpData4.length > 0 && lifespan === "sixty2" && biogenicCarbon === "nBio" && <StackedBarChart type={type}
         selectedMaterials={selectedData.gwpData4}
         allMaterials={data.gwpData4}
         metaData={metaData}
@@ -323,7 +321,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
       />}
 
       {/* MATERIAL HEALTH */}
-      {chartType === "MH" && data.gwpData5.length > 0 && lifespan === "sixty2" && biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
+      {chartType === "MH" && data.gwpData5.length > 0 && lifespan === "sixty2" && biogenicCarbon === "yBio" && <StackedBarChart type={type}
         selectedMaterials={selectedData.gwpData5}
         allMaterials={data.gwpData5}
         metaData={metaData}
