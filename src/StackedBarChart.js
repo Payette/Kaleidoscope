@@ -41,7 +41,7 @@ export default withTooltip(({
   showTooltip,
   type
 }) => {
-  if (!selectedMaterials || selectedMaterials.length === 0) {
+  if (!selectedMaterials || !Array.isArray(selectedMaterials) || selectedMaterials.length === 0) {
     return <div>Select materials to show charts.</div>
   }
 

@@ -9,10 +9,12 @@ import { Tabs, AppBar, Tab } from '@material-ui/core';
 import TabPanel from "./TabPanel";
 import withSplashScreen from './withSplashScreen';
 import Dialog from 'react-a11y-dialog';
-import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_ENVELOPES } from './Constants';
+import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_ENVELOPES, DATASET_NAMES } from './Constants';
 import { Helmet } from "react-helmet";
+import ChartContainerEnvelopes from './ChartContainerEnvelopes';
 import './css/Main.scss';
 import styles from './css/App.module.scss';
+
 
 let materialListEnvelope = [
   { value: "MVGranite", label: "MV - Granite" },
@@ -209,7 +211,29 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (!_.isEqual(prevState, this.state)) {
+    if (!_.isEqual(prevState, this.state)) {      
+      // package all data into an array
+      let dataEnvelopes = {};
+      let selectedDataEnvelopes = {};
+      DATASET_NAMES.forEach(dataSetName => {
+        dataEnvelopes[dataSetName] = this.state[dataSetName] || [];
+        if(this.state.selectedMaterials && this.state.selectedMaterials.length > 0) {
+          selectedDataEnvelopes[dataSetName] = dataEnvelopes[dataSetName].filter(d => (this.state.selectedMaterials).includes(d.material));
+        } else {
+          selectedDataEnvelopes[dataSetName] = [];
+        }
+      });
+      // data set is ready if ALL datasets have loaded
+      let dataEnvelopesReady = true;
+      DATASET_NAMES.forEach(dataSetName => {
+        dataEnvelopesReady = dataEnvelopesReady && (dataEnvelopes[dataSetName] && dataEnvelopes[dataSetName].length > 0);
+      });
+      if(dataEnvelopesReady) {
+        this.setState({
+          dataEnvelopes, selectedDataEnvelopes, dataEnvelopesReady
+        })          
+      }
+  
       let s = new URLSearchParams(window.location.search)
       let type = s.get("type")
       let mSystem = s.get("system")
@@ -987,36 +1011,6 @@ class App extends Component {
     const open = Boolean(this.state.anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
-    const allImpactsDataSelectedMaterialsOnly = this.state.allImpactsData.filter(d => this.state.selectedMaterials.includes(d.material));
-    const gwpDataSelectedMaterialsOnly = this.state.gwpData.filter(d => this.state.selectedMaterials.includes(d.material));
-    const lcsDataSelectedMaterialsOnly = this.state.lcsData.filter(d => this.state.selectedMaterials.includes(d.material));
-    const materialDataSelectedMaterialsOnly = this.state.materialData.filter(d => this.state.selectedMaterials.includes(d.material));
-
-    const allImpactsDataSelectedMaterialsOnly1 = this.state.allImpactsData1.filter(d => this.state.selectedMaterials.includes(d.material));
-    const gwpDataSelectedMaterialsOnly1 = this.state.gwpData1.filter(d => this.state.selectedMaterials.includes(d.material));
-    const lcsDataSelectedMaterialsOnly1 = this.state.lcsData1.filter(d => this.state.selectedMaterials.includes(d.material));
-    const materialDataSelectedMaterialsOnly1 = this.state.materialData1.filter(d => this.state.selectedMaterials.includes(d.material));
-
-    const allImpactsDataSelectedMaterialsOnly2 = this.state.allImpactsData2.filter(d => this.state.selectedMaterials.includes(d.material));
-    const gwpDataSelectedMaterialsOnly2 = this.state.gwpData2.filter(d => this.state.selectedMaterials.includes(d.material));
-    const lcsDataSelectedMaterialsOnly2 = this.state.lcsData2.filter(d => this.state.selectedMaterials.includes(d.material));
-    const materialDataSelectedMaterialsOnly2 = this.state.materialData2.filter(d => this.state.selectedMaterials.includes(d.material));
-
-    const allImpactsDataSelectedMaterialsOnly3 = this.state.allImpactsData3.filter(d => this.state.selectedMaterials.includes(d.material));
-    const gwpDataSelectedMaterialsOnly3 = this.state.gwpData3.filter(d => this.state.selectedMaterials.includes(d.material));
-    const lcsDataSelectedMaterialsOnly3 = this.state.lcsData3.filter(d => this.state.selectedMaterials.includes(d.material));
-    const materialDataSelectedMaterialsOnly3 = this.state.materialData3.filter(d => this.state.selectedMaterials.includes(d.material));
-
-    const allImpactsDataSelectedMaterialsOnly4 = this.state.allImpactsData4.filter(d => this.state.selectedMaterials.includes(d.material));
-    const gwpDataSelectedMaterialsOnly4 = this.state.gwpData4.filter(d => this.state.selectedMaterials.includes(d.material));
-    const lcsDataSelectedMaterialsOnly4 = this.state.lcsData4.filter(d => this.state.selectedMaterials.includes(d.material));
-    const materialDataSelectedMaterialsOnly4 = this.state.materialData4.filter(d => this.state.selectedMaterials.includes(d.material));
-
-    const allImpactsDataSelectedMaterialsOnly5 = this.state.allImpactsData5.filter(d => this.state.selectedMaterials.includes(d.material));
-    const gwpDataSelectedMaterialsOnly5 = this.state.gwpData5.filter(d => this.state.selectedMaterials.includes(d.material));
-    const lcsDataSelectedMaterialsOnly5 = this.state.lcsData5.filter(d => this.state.selectedMaterials.includes(d.material));
-    const materialDataSelectedMaterialsOnly5 = this.state.materialData5.filter(d => this.state.selectedMaterials.includes(d.material));
-
     const allImpactsDataSelectedMaterialsOnlyFlooring = this.state.flooring_allImpactsData.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
     const gwpDataSelectedMaterialsOnlyFlooring = this.state.flooring_gwpData.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
     const lcsDataSelectedMaterialsOnlyFlooring = this.state.flooring_lcsData.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
@@ -1051,10 +1045,12 @@ class App extends Component {
       "Material": "void"
     };
 
-    for (let i = 0; i < gwpDataSelectedMaterialsOnly.length; i++) {
-      let myName = gwpDataSelectedMaterialsOnly[i].material;
-      let myVal = gwpDataSelectedMaterialsOnly[i].value;
-      obj[myName] = myVal;
+    if(this.state.dataEnvelopesReady) {
+      for (let i = 0; i < this.state.selectedDataEnvelopes.gwpData.length; i++) {
+        let myName = this.state.selectedDataEnvelopes.gwpData[i].material;
+        let myVal = this.state.selectedDataEnvelopes.gwpData[i].value;
+        obj[myName] = myVal;
+      }
     }
 
     var flooring_obj = {
@@ -1225,256 +1221,22 @@ class App extends Component {
               </div>
             }
             <h2>{chartTitle}</h2>
-            {/* GLOBAL WARMING POTENTIAL */}
             <div className={styles.chartContainer}>
-              {this.state.chartType === "GWP" && this.state.gwpData.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={gwpDataSelectedMaterialsOnly}
-                allMaterials={this.state.gwpData}
+              {this.state.dataEnvelopesReady && <ChartContainerEnvelopes
+                chartTitle
+                chartType={this.state.chartType}
+                lifespan={this.state.lifespan}
+                biogenicCarbon={this.state.biogenicCarbon}
+                selectedMaterials={this.state.selectedMaterials}
                 metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                colorBy="material"
-                currentChart={this.state.chartType}
+                data={this.state.dataEnvelopes || {}}
+                selectedData={this.state.selectedDataEnvelopes || {}}
+                ready={this.state.dataEnvelopesReady === true}
               />}
-              {/* ALL IMPACTS*/}
-
-              {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={allImpactsDataSelectedMaterialsOnly}
-                allMaterials={this.state.allImpactsData}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="Normalized % of Total"
-                currentChart={this.state.chartType}
-              />}
-              {/* LIFE CYCLE STAGE */}
-
-              {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={lcsDataSelectedMaterialsOnly}
-                allMaterials={this.state.lcsData}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-              {/* MATERIAL BREAKDOWN */}
-
-              {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={materialDataSelectedMaterialsOnly}
-                allMaterials={this.state.materialData}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* GLOBAL WARMING POTENTIAL */}
-              {this.state.chartType === "GWP" && this.state.gwpData1.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={gwpDataSelectedMaterialsOnly1}
-                allMaterials={this.state.gwpData1}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                colorBy="material"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* ALL IMPACTS*/}
-              {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly1.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={allImpactsDataSelectedMaterialsOnly1}
-                allMaterials={this.state.allImpactsData1}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="Normalized % of Total"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* LIFE CYCLE STAGE */}
-              {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly1.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={lcsDataSelectedMaterialsOnly1}
-                allMaterials={this.state.lcsData1}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* MATERIAL BREAKDOWN */}
-              {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly1.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={materialDataSelectedMaterialsOnly1}
-                allMaterials={this.state.materialData1}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* GLOBAL WARMING POTENTIAL */}
-              {this.state.chartType === "GWP" && this.state.gwpData2.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={gwpDataSelectedMaterialsOnly2}
-                allMaterials={this.state.gwpData2}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                colorBy="material"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* ALL IMPACTS*/}
-              {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly2.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={allImpactsDataSelectedMaterialsOnly2}
-                allMaterials={this.state.allImpactsData2}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="Normalized % of Total"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* LIFE CYCLE STAGE */}
-              {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly2.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={lcsDataSelectedMaterialsOnly2}
-                allMaterials={this.state.lcsData2}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* MATERIAL BREAKDOWN */}
-              {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly2.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={materialDataSelectedMaterialsOnly2}
-                allMaterials={this.state.materialData2}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* GLOBAL WARMING POTENTIAL */}
-              {this.state.chartType === "GWP" && this.state.gwpData3.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={gwpDataSelectedMaterialsOnly3}
-                allMaterials={this.state.gwpData3}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                colorBy="material"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* ALL IMPACTS*/}
-              {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly3.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={allImpactsDataSelectedMaterialsOnly3}
-                allMaterials={this.state.allImpactsData3}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="Normalized % of Total"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* LIFE CYCLE STAGE */}
-              {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly3.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={lcsDataSelectedMaterialsOnly3}
-                allMaterials={this.state.lcsData3}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* MATERIAL BREAKDOWN */}
-              {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly3.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={materialDataSelectedMaterialsOnly3}
-                allMaterials={this.state.materialData3}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* GLOBAL WARMING POTENTIAL */}
-              {this.state.chartType === "GWP" && this.state.gwpData4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={gwpDataSelectedMaterialsOnly4}
-                allMaterials={this.state.gwpData4}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                colorBy="material"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* ALL IMPACTS*/}
-              {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={allImpactsDataSelectedMaterialsOnly4}
-                allMaterials={this.state.allImpactsData4}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="Normalized % of Total"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* LIFE CYCLE STAGE */}
-              {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={lcsDataSelectedMaterialsOnly4}
-                allMaterials={this.state.lcsData4}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* MATERIAL BREAKDOWN */}
-              {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={materialDataSelectedMaterialsOnly4}
-                allMaterials={this.state.materialData4}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* GLOBAL WARMING POTENTIAL */}
-              {this.state.chartType === "GWP" && this.state.gwpData5.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={gwpDataSelectedMaterialsOnly5}
-                allMaterials={this.state.gwpData5}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                colorBy="material"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* ALL IMPACTS*/}
-              {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly5.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={allImpactsDataSelectedMaterialsOnly5}
-                allMaterials={this.state.allImpactsData5}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="Normalized % of Total"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* LIFE CYCLE STAGE */}
-              {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly5.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={lcsDataSelectedMaterialsOnly5}
-                allMaterials={this.state.lcsData5}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* MATERIAL BREAKDOWN */}
-              {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly5.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_ENVELOPES}
-                selectedMaterials={materialDataSelectedMaterialsOnly5}
-                allMaterials={this.state.materialData5}
-                metaData={LoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-              <div>
-              </div>
             </div>
           </div>
+
+          {/* Envelope Calculator */}
           <div style={{ display: "inline-block", width: "100%" }}>
             <h1>ENVELOPE CALCULATOR</h1>
             <div className={styles.calc} style={{ minHeight: '60px', display: "block" }}>
