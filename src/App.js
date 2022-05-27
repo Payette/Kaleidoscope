@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import StackedBarChart from './StackedBarChart';
 import LoadData from './data/Envelopes_LoadData';
 import FlooringLoadData from './data/Flooring_LoadData';
 import MaterialList from './MaterialList';
@@ -72,57 +71,10 @@ class App extends Component {
       chartType: "GWP",
       lifespan: "tenY",
       biogenicCarbon: "yBio",
-      allImpactsData: [],
-      gwpData: [],
-      lcsData: [],
-      materialData: [],
-      allImpactsData1: [],
-      gwpData1: [],
-      lcsData1: [],
-      materialData1: [],
-      allImpactsData2: [],
-      gwpData2: [],
-      lcsData2: [],
-      materialData2: [],
-      allImpactsData3: [],
-      gwpData3: [],
-      lcsData3: [],
-      materialData3: [],
-      allImpactsData4: [],
-      gwpData4: [],
-      lcsData4: [],
-      materialData4: [],
-      allImpactsData5: [],
-      gwpData5: [],
-      lcsData5: [],
-      materialData5: [],
+
       materials: [],
       selectedMaterials: [],
 
-      flooring_allImpactsData: [],
-      flooring_gwpData: [],
-      flooring_lcsData: [],
-      flooring_materialData: [],
-      flooring_allImpactsData1: [],
-      flooring_gwpData1: [],
-      flooring_lcsData1: [],
-      flooring_materialData1: [],
-      flooring_allImpactsData2: [],
-      flooring_gwpData2: [],
-      flooring_lcsData2: [],
-      flooring_materialData2: [],
-      flooring_allImpactsData3: [],
-      flooring_gwpData3: [],
-      flooring_lcsData3: [],
-      flooring_materialData3: [],
-      flooring_allImpactsData4: [],
-      flooring_gwpData4: [],
-      flooring_lcsData4: [],
-      flooring_materialData4: [],
-      flooring_allImpactsData5: [],
-      flooring_gwpData5: [],
-      flooring_lcsData5: [],
-      flooring_materialData5: [],
       flooring_materials: [],
       flooring_selectedMaterials: [],
 
@@ -140,6 +92,11 @@ class App extends Component {
       shareableUrl: "https://www.payette.com/kaleidoscope/"
     };
 
+    DATASET_NAMES.forEach(dataSetName => {
+      this.state[dataSetName] = [];
+      this.state[`flooring_${dataSetName}`] = [];
+    })
+   
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
