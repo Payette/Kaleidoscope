@@ -233,7 +233,31 @@ class App extends Component {
           dataEnvelopes, selectedDataEnvelopes, dataEnvelopesReady
         })          
       }
-  
+
+      // flooring
+      // package all data into an array
+      let flooring_dataEnvelopes = {};
+      let flooring_selectedDataEnvelopes = {};
+      DATASET_NAMES.forEach(dataSetName => {
+        let flooring_dataSetName = `flooring_${dataSetName}`;
+        flooring_dataEnvelopes[dataSetName] = this.state[flooring_dataSetName] || [];
+        if(this.state.flooring_selectedMaterials && this.state.flooring_selectedMaterials.length > 0) {
+          flooring_selectedDataEnvelopes[dataSetName] = flooring_dataEnvelopes[dataSetName].filter(d => (this.state.flooring_selectedMaterials).includes(d.material));
+        } else {
+          flooring_selectedDataEnvelopes[dataSetName] = [];
+        }
+      });
+      // data set is ready if ALL datasets have loaded
+      let flooring_dataEnvelopesReady = true;
+      DATASET_NAMES.forEach(dataSetName => {
+        flooring_dataEnvelopesReady = flooring_dataEnvelopesReady && (flooring_dataEnvelopes[dataSetName] && flooring_dataEnvelopes[dataSetName].length > 0);
+      });
+      if(flooring_dataEnvelopesReady) {
+        this.setState({
+          flooring_dataEnvelopes, flooring_selectedDataEnvelopes, flooring_dataEnvelopesReady
+        })          
+      }
+
       let s = new URLSearchParams(window.location.search)
       let type = s.get("type")
       let mSystem = s.get("system")
@@ -1011,35 +1035,35 @@ class App extends Component {
     const open = Boolean(this.state.anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
-    const allImpactsDataSelectedMaterialsOnlyFlooring = this.state.flooring_allImpactsData.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    const gwpDataSelectedMaterialsOnlyFlooring = this.state.flooring_gwpData.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    const lcsDataSelectedMaterialsOnlyFlooring = this.state.flooring_lcsData.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    const materialDataSelectedMaterialsOnlyFlooring = this.state.flooring_materialData.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const allImpactsDataSelectedMaterialsOnlyFlooring = this.state.flooring_allImpactsData.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const gwpDataSelectedMaterialsOnlyFlooring = this.state.flooring_gwpData.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const lcsDataSelectedMaterialsOnlyFlooring = this.state.flooring_lcsData.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const materialDataSelectedMaterialsOnlyFlooring = this.state.flooring_materialData.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
 
-    const allImpactsDataSelectedMaterialsOnly1Flooring = this.state.flooring_allImpactsData1.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    const gwpDataSelectedMaterialsOnly1Flooring = this.state.flooring_gwpData1.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    const lcsDataSelectedMaterialsOnly1Flooring = this.state.flooring_lcsData1.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    const materialDataSelectedMaterialsOnly1Flooring = this.state.flooring_materialData1.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const allImpactsDataSelectedMaterialsOnly1Flooring = this.state.flooring_allImpactsData1.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const gwpDataSelectedMaterialsOnly1Flooring = this.state.flooring_gwpData1.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const lcsDataSelectedMaterialsOnly1Flooring = this.state.flooring_lcsData1.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const materialDataSelectedMaterialsOnly1Flooring = this.state.flooring_materialData1.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
 
-    const allImpactsDataSelectedMaterialsOnly2Flooring = this.state.flooring_allImpactsData2.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    const gwpDataSelectedMaterialsOnly2Flooring = this.state.flooring_gwpData2.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    const lcsDataSelectedMaterialsOnly2Flooring = this.state.flooring_lcsData2.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    const materialDataSelectedMaterialsOnly2Flooring = this.state.flooring_materialData2.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const allImpactsDataSelectedMaterialsOnly2Flooring = this.state.flooring_allImpactsData2.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const gwpDataSelectedMaterialsOnly2Flooring = this.state.flooring_gwpData2.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const lcsDataSelectedMaterialsOnly2Flooring = this.state.flooring_lcsData2.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const materialDataSelectedMaterialsOnly2Flooring = this.state.flooring_materialData2.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
 
-    const allImpactsDataSelectedMaterialsOnly3Flooring = this.state.flooring_allImpactsData3.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    const gwpDataSelectedMaterialsOnly3Flooring = this.state.flooring_gwpData3.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    const lcsDataSelectedMaterialsOnly3Flooring = this.state.flooring_lcsData3.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    const materialDataSelectedMaterialsOnly3Flooring = this.state.flooring_materialData3.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const allImpactsDataSelectedMaterialsOnly3Flooring = this.state.flooring_allImpactsData3.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const gwpDataSelectedMaterialsOnly3Flooring = this.state.flooring_gwpData3.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const lcsDataSelectedMaterialsOnly3Flooring = this.state.flooring_lcsData3.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const materialDataSelectedMaterialsOnly3Flooring = this.state.flooring_materialData3.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
 
-    const allImpactsDataSelectedMaterialsOnly4Flooring = this.state.flooring_allImpactsData4.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    const gwpDataSelectedMaterialsOnly4Flooring = this.state.flooring_gwpData4.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    const lcsDataSelectedMaterialsOnly4Flooring = this.state.flooring_lcsData4.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    const materialDataSelectedMaterialsOnly4Flooring = this.state.flooring_materialData4.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const allImpactsDataSelectedMaterialsOnly4Flooring = this.state.flooring_allImpactsData4.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const gwpDataSelectedMaterialsOnly4Flooring = this.state.flooring_gwpData4.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const lcsDataSelectedMaterialsOnly4Flooring = this.state.flooring_lcsData4.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const materialDataSelectedMaterialsOnly4Flooring = this.state.flooring_materialData4.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
 
-    const allImpactsDataSelectedMaterialsOnly5Flooring = this.state.flooring_allImpactsData5.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    const gwpDataSelectedMaterialsOnly5Flooring = this.state.flooring_gwpData5.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    const lcsDataSelectedMaterialsOnly5Flooring = this.state.flooring_lcsData5.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
-    const materialDataSelectedMaterialsOnly5Flooring = this.state.flooring_materialData5.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const allImpactsDataSelectedMaterialsOnly5Flooring = this.state.flooring_allImpactsData5.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const gwpDataSelectedMaterialsOnly5Flooring = this.state.flooring_gwpData5.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const lcsDataSelectedMaterialsOnly5Flooring = this.state.flooring_lcsData5.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
+    // const materialDataSelectedMaterialsOnly5Flooring = this.state.flooring_materialData5.filter(d => this.state.flooring_selectedMaterials.includes(d.material));
 
     var obj = {
       "Material": "void"
@@ -1057,10 +1081,12 @@ class App extends Component {
       "Material": "void"
     };
 
-    for (let i = 0; i < gwpDataSelectedMaterialsOnlyFlooring.length; i++) {
-      let myName = gwpDataSelectedMaterialsOnlyFlooring[i].material;
-      let myVal = gwpDataSelectedMaterialsOnlyFlooring[i].value;
-      flooring_obj[myName] = myVal;
+    if(this.state.flooring_dataEnvelopesReady) {
+      for (let i = 0; i < this.state.flooring_selectedDataEnvelopes.gwpData.length; i++) {
+        let myName = this.state.flooring_selectedDataEnvelopes.gwpData[i].material;
+        let myVal = this.state.flooring_selectedDataEnvelopes.gwpData[i].value;
+        flooring_obj[myName] = myVal;
+      }
     }
 
     let chartTitle = "";
@@ -1223,6 +1249,7 @@ class App extends Component {
             <h2>{chartTitle}</h2>
             <div className={styles.chartContainer}>
               {this.state.dataEnvelopesReady && <ChartContainerEnvelopes
+                type={SYSTEM_TYPE_ENVELOPES}
                 chartTitle
                 chartType={this.state.chartType}
                 lifespan={this.state.lifespan}
@@ -1387,321 +1414,19 @@ class App extends Component {
               </div>
             }
             <h2>{chartTitle}</h2>
-            {/* GLOBAL WARMING POTENTIAL */}
             <div className={styles.chartContainer}>
-              {this.state.chartType === "GWP" && this.state.flooring_gwpData.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={gwpDataSelectedMaterialsOnlyFlooring}
-                allMaterials={this.state.flooring_gwpData}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                colorBy="material"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* ALL IMPACTS*/}
-              {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnlyFlooring.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={allImpactsDataSelectedMaterialsOnlyFlooring}
-                allMaterials={this.state.flooring_allImpactsData}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="Normalized % of Total"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* LIFE CYCLE STAGE */}
-              {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnlyFlooring.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={lcsDataSelectedMaterialsOnlyFlooring}
-                allMaterials={this.state.flooring_lcsData}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* MATERIAL BREAKDOWN */}
-              {this.state.chartType === "MB" && materialDataSelectedMaterialsOnlyFlooring.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={materialDataSelectedMaterialsOnlyFlooring}
-                allMaterials={this.state.flooring_materialData}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* MATERIAL HEALTH */}
-              {this.state.chartType === "MH" && this.state.flooring_gwpData.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={gwpDataSelectedMaterialsOnlyFlooring}
-                allMaterials={this.state.flooring_gwpData}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                colorBy="health"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* GLOBAL WARMING POTENTIAL */}
-              {this.state.chartType === "GWP" && this.state.flooring_gwpData1.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={gwpDataSelectedMaterialsOnly1Flooring}
-                allMaterials={this.state.flooring_gwpData1}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                colorBy="material"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* ALL IMPACTS*/}
-              {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly1Flooring.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={allImpactsDataSelectedMaterialsOnly1Flooring}
-                allMaterials={this.state.flooring_allImpactsData1}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="Normalized % of Total"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* LIFE CYCLE STAGE */}
-              {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly1Flooring.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={lcsDataSelectedMaterialsOnly1Flooring}
-                allMaterials={this.state.flooring_lcsData1}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* MATERIAL BREAKDOWN */}
-              {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly1Flooring.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={materialDataSelectedMaterialsOnly1Flooring}
-                allMaterials={this.state.flooring_materialData1}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* MATERIAL HEALTH */}
-              {this.state.chartType === "MH" && this.state.flooring_gwpData1.length > 0 && this.state.lifespan === "tenY" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={gwpDataSelectedMaterialsOnly1Flooring}
-                allMaterials={this.state.flooring_gwpData1}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                colorBy="health"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* GLOBAL WARMING POTENTIAL */}
-              {this.state.chartType === "GWP" && this.state.flooring_gwpData2.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={gwpDataSelectedMaterialsOnly2Flooring}
-                allMaterials={this.state.flooring_gwpData2}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                colorBy="material"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* ALL IMPACTS*/}
-              {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly2Flooring.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={allImpactsDataSelectedMaterialsOnly2Flooring}
-                allMaterials={this.state.flooring_allImpactsData2}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="Normalized % of Total"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* LIFE CYCLE STAGE */}
-              {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly2Flooring.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={lcsDataSelectedMaterialsOnly2Flooring}
-                allMaterials={this.state.flooring_lcsData2}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* MATERIAL BREAKDOWN */}
-              {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly2Flooring.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={materialDataSelectedMaterialsOnly2Flooring}
-                allMaterials={this.state.flooring_materialData2}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* MATERIAL HEALTH */}
-              {this.state.chartType === "MH" && this.state.flooring_gwpData2.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={gwpDataSelectedMaterialsOnly2Flooring}
-                allMaterials={this.state.flooring_gwpData2}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                colorBy="health"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* GLOBAL WARMING POTENTIAL */}
-              {this.state.chartType === "GWP" && this.state.flooring_gwpData3.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={gwpDataSelectedMaterialsOnly3Flooring}
-                allMaterials={this.state.flooring_gwpData3}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                colorBy="material"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* ALL IMPACTS*/}
-              {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly3Flooring.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={allImpactsDataSelectedMaterialsOnly3Flooring}
-                allMaterials={this.state.flooring_allImpactsData3}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="Normalized % of Total"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* LIFE CYCLE STAGE */}
-              {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly3Flooring.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={lcsDataSelectedMaterialsOnly3Flooring}
-                allMaterials={this.state.flooring_lcsData3}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* MATERIAL BREAKDOWN */}
-              {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly3Flooring.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={materialDataSelectedMaterialsOnly3Flooring}
-                allMaterials={this.state.flooring_materialData3}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* MATERIAL HEALTH */}
-              {this.state.chartType === "MH" && this.state.flooring_gwpData3.length > 0 && this.state.lifespan === "sixty1" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={gwpDataSelectedMaterialsOnly3Flooring}
-                allMaterials={this.state.flooring_gwpData3}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                colorBy="health"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* GLOBAL WARMING POTENTIAL */}
-              {this.state.chartType === "GWP" && this.state.flooring_gwpData4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={gwpDataSelectedMaterialsOnly4Flooring}
-                allMaterials={this.state.flooring_gwpData4}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                colorBy="material"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* ALL IMPACTS*/}
-              {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly4Flooring.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={allImpactsDataSelectedMaterialsOnly4Flooring}
-                allMaterials={this.state.flooring_allImpactsData4}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="Normalized % of Total"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* LIFE CYCLE STAGE */}
-              {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly4Flooring.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={lcsDataSelectedMaterialsOnly4Flooring}
-                allMaterials={this.state.flooring_lcsData4}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* MATERIAL BREAKDOWN */}
-              {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly4Flooring.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={materialDataSelectedMaterialsOnly4Flooring}
-                allMaterials={this.state.flooring_materialData4}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* MATERIAL HEALTH */}
-              {this.state.chartType === "MH" && this.state.flooring_gwpData4.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "nBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={gwpDataSelectedMaterialsOnly4Flooring}
-                allMaterials={this.state.flooring_gwpData4}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                colorBy="health"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* GLOBAL WARMING POTENTIAL */}
-              {this.state.chartType === "GWP" && this.state.flooring_gwpData5.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={gwpDataSelectedMaterialsOnly5Flooring}
-                allMaterials={this.state.flooring_gwpData5}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                colorBy="material"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* ALL IMPACTS*/}
-              {this.state.chartType === "allImpacts" && allImpactsDataSelectedMaterialsOnly5Flooring.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={allImpactsDataSelectedMaterialsOnly5Flooring}
-                allMaterials={this.state.flooring_allImpactsData5}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="Normalized % of Total"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* LIFE CYCLE STAGE */}
-              {this.state.chartType === "LCS" && lcsDataSelectedMaterialsOnly5Flooring.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={lcsDataSelectedMaterialsOnly5Flooring}
-                allMaterials={this.state.flooring_lcsData5}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* MATERIAL BREAKDOWN */}
-              {this.state.chartType === "MB" && materialDataSelectedMaterialsOnly5Flooring.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={materialDataSelectedMaterialsOnly5Flooring}
-                allMaterials={this.state.flooring_materialData5}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                currentChart={this.state.chartType}
-              />}
-
-              {/* MATERIAL HEALTH */}
-              {this.state.chartType === "MH" && this.state.flooring_gwpData5.length > 0 && this.state.lifespan === "sixty2" && this.state.biogenicCarbon === "yBio" && <StackedBarChart type={SYSTEM_TYPE_FLOORING}
-                selectedMaterials={gwpDataSelectedMaterialsOnly5Flooring}
-                allMaterials={this.state.flooring_gwpData5}
-                metaData={FlooringLoadData.metaData}
-                barHeight={40}
-                xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-                colorBy="health"
-                currentChart={this.state.chartType}
-              />}
-
-              <div>
-              </div>
+              {this.state.flooring_dataEnvelopesReady && <ChartContainerEnvelopes
+                  type={SYSTEM_TYPE_FLOORING}
+                  chartTitle
+                  chartType={this.state.chartType}
+                  lifespan={this.state.lifespan}
+                  biogenicCarbon={this.state.biogenicCarbon}
+                  selectedMaterials={this.state.selectedMaterials}
+                  metaData={FlooringLoadData.metaData}
+                  data={this.state.flooring_dataEnvelopes || {}}
+                  selectedData={this.state.flooring_selectedDataEnvelopes || {}}
+                  ready={this.state.flooring_dataEnvelopesReady === true}
+                />}
             </div>
           </div>
           <div style={{ display: "inline-block", width: "100%" }}>
