@@ -214,7 +214,6 @@ export default class MaterialList extends PureComponent {
             element: "dialog-content",
             base: "dialog"
           }}
-          style={this.props.type === SYSTEM_TYPE_FLOORING ? { width: 500 } : {}}
         >
           <span>
             <h2 style={{ fontSize: "40px" }}>{this.props.metaData.materialName2[this.state.materialPopup.name]}</h2>
@@ -232,8 +231,8 @@ export default class MaterialList extends PureComponent {
                   this.props.type === SYSTEM_TYPE_ENVELOPES ? { width: "100%", transform: "scaleX(-1)", zIndex: "-1", marginLeft: "3em" } :
                     { width: "100%", transform: "scaleX(-1)", zIndex: "-1", marginLeft: "3em", position: "absolute" }
                 }
-                width={window.innerWidth / 3}
-                height={380}
+                width={600}
+                height={400}
                 matBreakdown={this.props.matBreakdown}
                 matBreakdown1={this.props.matBreakdown1}
                 matBreakdown2={this.props.matBreakdown2}
