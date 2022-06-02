@@ -9,20 +9,22 @@ import { Tabs, AppBar, Tab } from '@material-ui/core';
 import TabPanel from "./TabPanel";
 import withSplashScreen from './withSplashScreen';
 import Dialog from 'react-a11y-dialog';
-import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_ENVELOPES, DATASET_NAMES, materialListEnvelope, materialListFlooring, materialListCeilings,
+import {
+  SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_ENVELOPES, DATASET_NAMES, materialListEnvelope, materialListFlooring, materialListCeilings,
   CHART_TYPES_ENVELOPES,
-  TAB_INDEX_ENVELOPES, TAB_INDEX_FLOORING, TAB_INDEX_CEILINGS, TAB_INDEX_OTHER } from './CommonUtil';
+  TAB_INDEX_ENVELOPES, TAB_INDEX_FLOORING, TAB_INDEX_CEILINGS, TAB_INDEX_OTHER
+} from './CommonUtil';
 import { Helmet } from "react-helmet";
 import ChartContainer from './ChartContainer';
 import './css/Main.scss';
 import styles from './css/App.module.scss';
 
 let footer = <div style={{ paddingTop: 0, top: 0, marginTop: 0 }}>
-<p className={styles.serif} style={{ display: "inline-block" }}>
-  Last updated June 2022<br></br>
-  Credit: <i>Data analysis run using Tally version 2022.04.08.01 by Building Transparency and KT Innovations, thinkstep, and Autodesk using industry representative LCI data unless otherwise noted</i><br></br>
-  For questions or comments: <h5 style={{ display: "inline-block" }}>tools@payette.com</h5>, Source code: <h5 style={{ display: "inline-block" }}><a href="https://github.com/Payette/Kaleidoscope">github.com/Payette/Kaleidoscope</a></h5>
-</p>
+  <p className={styles.serif} style={{ display: "inline-block" }}>
+    Last updated June 2022<br></br>
+    Credit: <i>Data analysis run using Tally version 2022.04.08.01 by Building Transparency and KT Innovations, thinkstep, and Autodesk using industry representative LCI data unless otherwise noted</i><br></br>
+    For questions or comments: <h5 style={{ display: "inline-block" }}>tools@payette.com</h5>, Source code: <h5 style={{ display: "inline-block" }}><a href="https://github.com/Payette/Kaleidoscope">github.com/Payette/Kaleidoscope</a></h5>
+  </p>
 </div>
 
 class App extends Component {
@@ -61,7 +63,7 @@ class App extends Component {
       this.state[`flooring_${dataSetName}`] = [];
       this.state[`ceilings_${dataSetName}`] = [];
     })
-   
+
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
@@ -82,7 +84,7 @@ class App extends Component {
   }
 
   handleTabChange = (event, newValue) => {
-    if(newValue === TAB_INDEX_ENVELOPES && !CHART_TYPES_ENVELOPES.includes(this.state.chartType)) {
+    if (newValue === TAB_INDEX_ENVELOPES && !CHART_TYPES_ENVELOPES.includes(this.state.chartType)) {
       this.setState({ chartType: CHART_TYPES_ENVELOPES[0] })
     }
 
@@ -142,7 +144,7 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (!_.isEqual(prevState, this.state)) {      
+    if (!_.isEqual(prevState, this.state)) {
       //
       // ENVELOPES
       //
@@ -151,7 +153,7 @@ class App extends Component {
       let selectedDataEnvelopes = {};
       DATASET_NAMES.forEach(dataSetName => {
         dataEnvelopes[dataSetName] = this.state[dataSetName] || [];
-        if(this.state.selectedMaterials && this.state.selectedMaterials.length > 0) {
+        if (this.state.selectedMaterials && this.state.selectedMaterials.length > 0) {
           selectedDataEnvelopes[dataSetName] = dataEnvelopes[dataSetName].filter(d => (this.state.selectedMaterials).includes(d.material));
         } else {
           selectedDataEnvelopes[dataSetName] = [];
@@ -162,10 +164,10 @@ class App extends Component {
       DATASET_NAMES.forEach(dataSetName => {
         dataEnvelopesReady = dataEnvelopesReady && (dataEnvelopes[dataSetName] && dataEnvelopes[dataSetName].length > 0);
       });
-      if(dataEnvelopesReady) {
+      if (dataEnvelopesReady) {
         this.setState({
           dataEnvelopes, selectedDataEnvelopes, dataEnvelopesReady
-        })          
+        })
       }
       //-------------------------------------------------------------------
 
@@ -179,7 +181,7 @@ class App extends Component {
       DATASET_NAMES.forEach(dataSetName => {
         let flooring_dataSetName = `flooring_${dataSetName}`;
         flooring_dataEnvelopes[dataSetName] = this.state[flooring_dataSetName] || [];
-        if(this.state.flooring_selectedMaterials && this.state.flooring_selectedMaterials.length > 0) {
+        if (this.state.flooring_selectedMaterials && this.state.flooring_selectedMaterials.length > 0) {
           flooring_selectedDataEnvelopes[dataSetName] = flooring_dataEnvelopes[dataSetName].filter(d => (this.state.flooring_selectedMaterials).includes(d.material));
         } else {
           flooring_selectedDataEnvelopes[dataSetName] = [];
@@ -190,10 +192,10 @@ class App extends Component {
       DATASET_NAMES.forEach(dataSetName => {
         flooring_dataEnvelopesReady = flooring_dataEnvelopesReady && (flooring_dataEnvelopes[dataSetName] && flooring_dataEnvelopes[dataSetName].length > 0);
       });
-      if(flooring_dataEnvelopesReady) {
+      if (flooring_dataEnvelopesReady) {
         this.setState({
           flooring_dataEnvelopes, flooring_selectedDataEnvelopes, flooring_dataEnvelopesReady
-        })          
+        })
       }
       //-------------------------------------------------------------------
 
@@ -207,7 +209,7 @@ class App extends Component {
       DATASET_NAMES.forEach(dataSetName => {
         let ceilings_dataSetName = `ceilings_${dataSetName}`;
         ceilings_dataEnvelopes[dataSetName] = this.state[ceilings_dataSetName] || [];
-        if(this.state.ceilings_selectedMaterials && this.state.ceilings_selectedMaterials.length > 0) {
+        if (this.state.ceilings_selectedMaterials && this.state.ceilings_selectedMaterials.length > 0) {
           ceilings_selectedDataEnvelopes[dataSetName] = ceilings_dataEnvelopes[dataSetName].filter(d => (this.state.ceilings_selectedMaterials).includes(d.material));
         } else {
           ceilings_selectedDataEnvelopes[dataSetName] = [];
@@ -218,10 +220,10 @@ class App extends Component {
       DATASET_NAMES.forEach(dataSetName => {
         ceilings_dataEnvelopesReady = ceilings_dataEnvelopesReady && (ceilings_dataEnvelopes[dataSetName] && ceilings_dataEnvelopes[dataSetName].length > 0);
       });
-      if(ceilings_dataEnvelopesReady) {
+      if (ceilings_dataEnvelopesReady) {
         this.setState({
           ceilings_dataEnvelopes, ceilings_selectedDataEnvelopes, ceilings_dataEnvelopesReady
-        })          
+        })
       }
       //-------------------------------------------------------------------
 
@@ -394,8 +396,8 @@ class App extends Component {
     }
 
     DATASET_NAMES.forEach((dataSetName, idx) => {
-      LoadData[dataSetName](data => {        
-        if(idx === 0) {
+      LoadData[dataSetName](data => {
+        if (idx === 0) {
           const materials = data.map(d => d.material);
           const names = data.map(d => d.name);
           this.setState({
@@ -408,8 +410,8 @@ class App extends Component {
         }
       });
 
-      FlooringLoadData[dataSetName](data => {        
-        if(idx === 0) {
+      FlooringLoadData[dataSetName](data => {
+        if (idx === 0) {
           const materials = data.map(d => d.material);
           const names = data.map(d => d.name);
           this.setState({
@@ -422,8 +424,8 @@ class App extends Component {
         }
       });
 
-      CeilingsLoadData[dataSetName](data => {        
-        if(idx === 0) {
+      CeilingsLoadData[dataSetName](data => {
+        if (idx === 0) {
           const materials = data.map(d => d.material);
           const names = data.map(d => d.name);
           this.setState({
@@ -461,14 +463,14 @@ class App extends Component {
           selectedString += i + "_"
         }
       }
-    } else if(this.state.value == 1) {
+    } else if (this.state.value == 1) {
       let allSystems = materialListFlooring.map(m => m.value);
       for (let i = 0; i < allSystems.length; i++) {
         if (this.state.flooring_selectedMaterials.includes(allSystems[i])) {
           selectedString += i + "_"
         }
       }
-    } else if(this.state.value == 2) {
+    } else if (this.state.value == 2) {
       let allSystems = materialListCeilings.map(m => m.value);
       for (let i = 0; i < allSystems.length; i++) {
         if (this.state.ceilings_selectedMaterials.includes(allSystems[i])) {
@@ -565,7 +567,7 @@ class App extends Component {
     var obj = {
       "Material": "void"
     };
-    if(this.state.dataEnvelopesReady) {
+    if (this.state.dataEnvelopesReady) {
       for (let i = 0; i < this.state.selectedDataEnvelopes.gwpData.length; i++) {
         let myName = this.state.selectedDataEnvelopes.gwpData[i].material;
         let myVal = this.state.selectedDataEnvelopes.gwpData[i].value;
@@ -579,7 +581,7 @@ class App extends Component {
     var flooring_obj = {
       "Material": "void"
     };
-    if(this.state.flooring_dataEnvelopesReady) {
+    if (this.state.flooring_dataEnvelopesReady) {
       for (let i = 0; i < this.state.flooring_selectedDataEnvelopes.gwpData.length; i++) {
         let myName = this.state.flooring_selectedDataEnvelopes.gwpData[i].material;
         let myVal = this.state.flooring_selectedDataEnvelopes.gwpData[i].value;
@@ -593,7 +595,7 @@ class App extends Component {
     var ceilings_obj = {
       "Material": "void"
     };
-    if(this.state.ceilings_dataEnvelopesReady) {
+    if (this.state.ceilings_dataEnvelopesReady) {
       for (let i = 0; i < this.state.ceilings_selectedDataEnvelopes.gwpData.length; i++) {
         let myName = this.state.ceilings_selectedDataEnvelopes.gwpData[i].material;
         let myVal = this.state.ceilings_selectedDataEnvelopes.gwpData[i].value;
@@ -633,6 +635,7 @@ class App extends Component {
 
     var divStyle = {
       width: calcWidth + '%',
+      // width: '50%',
       display: 'inline-block',
       marginRight: '1%',
       marginLeft: '1%',
@@ -773,61 +776,63 @@ class App extends Component {
                 selectedData={this.state.selectedDataEnvelopes || {}}
                 ready={this.state.dataEnvelopesReady === true}
               />}
+
+              {/* Envelope Calculator */}
+              <div style={{ display: "inline-block", width: "100%" }}>
+                <h1>ENVELOPE CALCULATOR</h1>
+                <div className={styles.calc} style={{ minHeight: '60px', display: "block" }}>
+
+                  <div style={{ margin: "auto" }}>
+                    <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
+                    <label for="ten"> Initial Carbon (only Module A) &nbsp;&nbsp;</label>
+                    <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
+                    <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
+                    <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
+                    <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label>
+                  </div><br></br>
+
+                  {this.state.rows.map((row, idx) => {
+                    return (
+                      <Row
+                        materialList={materialListEnvelope}
+                        key={idx}
+                        value={row.value}
+                        checked={row.checked}
+                        name={idx + 1}
+                        count={0}
+                        tenY={this.state.gwpData1}
+                        sixty1={this.state.gwpData3}
+                        sixty2={this.state.gwpData5}
+                        radio={this.state.currentRadio}
+                        divStyle={divStyle}
+                        onChange={(e) => this.updateValue(e, idx)}
+                        onChecked={() => this.onChecked(idx)}
+                      />
+                    )
+                  })
+                  }
+                  <br></br>
+
+                  <button onClick={this.addRow}>
+                    Add Option
+                  </button>
+                  <button onClick={this.deleteRows}>
+                    Delete Option
+                  </button>
+
+
+                  <br></br>
+
+
+                </div>
+
+                {footer}
+
+              </div>
             </div>
           </div>
 
-          {/* Envelope Calculator */}
-          <div style={{ display: "inline-block", width: "100%" }}>
-            <h1>ENVELOPE CALCULATOR</h1>
-            <div className={styles.calc} style={{ minHeight: '60px', display: "block" }}>
 
-              <div style={{ margin: "auto" }}>
-                <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
-                <label for="ten"> Initial Carbon (only Module A) &nbsp;&nbsp;</label>
-                <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
-                <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
-                <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
-                <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label>
-              </div><br></br>
-
-              {this.state.rows.map((row, idx) => {
-                return (
-                  <Row
-                    materialList={materialListEnvelope}
-                    key={idx}
-                    value={row.value}
-                    checked={row.checked}
-                    name={idx + 1}
-                    count={0}
-                    tenY={this.state.gwpData1}
-                    sixty1={this.state.gwpData3}
-                    sixty2={this.state.gwpData5}
-                    radio={this.state.currentRadio}
-                    divStyle={divStyle}
-                    onChange={(e) => this.updateValue(e, idx)}
-                    onChecked={() => this.onChecked(idx)}
-                  />
-                )
-              })
-              }
-              <br></br>
-
-              <button onClick={this.addRow}>
-                Add Option
-              </button>
-              <button onClick={this.deleteRows}>
-                Delete Option
-              </button>
-
-
-              <br></br>
-
-
-            </div>
-
-            {footer}
-
-          </div>
           <br></br>
         </TabPanel>
 
@@ -925,72 +930,74 @@ class App extends Component {
             <div className={styles.chartContainer}>
               <h2>{chartTitle}</h2>
               {this.state.flooring_dataEnvelopesReady && <ChartContainer
-                  type={SYSTEM_TYPE_FLOORING}
-                  chartTitle
-                  chartType={this.state.chartType}
-                  lifespan={this.state.lifespan}
-                  biogenicCarbon={this.state.biogenicCarbon}
-                  selectedMaterials={this.state.selectedMaterials}
-                  metaData={FlooringLoadData.metaData}
-                  data={this.state.flooring_dataEnvelopes || {}}
-                  selectedData={this.state.flooring_selectedDataEnvelopes || {}}
-                  ready={this.state.flooring_dataEnvelopesReady === true}
-                />}
+                type={SYSTEM_TYPE_FLOORING}
+                chartTitle
+                chartType={this.state.chartType}
+                lifespan={this.state.lifespan}
+                biogenicCarbon={this.state.biogenicCarbon}
+                selectedMaterials={this.state.selectedMaterials}
+                metaData={FlooringLoadData.metaData}
+                data={this.state.flooring_dataEnvelopes || {}}
+                selectedData={this.state.flooring_selectedDataEnvelopes || {}}
+                ready={this.state.flooring_dataEnvelopesReady === true}
+              />}
+
+              <div style={{ display: "inline-block", width: "100%" }}>
+                <h1>FLOORING CALCULATOR</h1>
+                <div className={styles.calc} style={{ minHeight: '60px', display: "block" }}>
+
+                  <div style={{ margin: "auto" }}>
+                    <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
+                    <label for="ten"> Initial Carbon (only Module A) &nbsp;&nbsp;</label>
+                    <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
+                    <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
+                    <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
+                    <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label>
+
+
+
+                  </div><br></br>
+
+                  {this.state.rows.map((row, idx) => {
+                    return (
+                      <Row
+                        materialList={materialListFlooring}
+                        key={idx}
+                        value={row.value}
+                        checked={row.checked}
+                        name={idx + 1}
+                        count={0}
+                        tenY={this.state.flooring_gwpData1}
+                        sixty1={this.state.flooring_gwpData3}
+                        sixty2={this.state.flooring_gwpData5}
+                        radio={this.state.currentRadio}
+                        divStyle={divStyle}
+                        onChange={(e) => this.updateValue(e, idx)}
+                        onChecked={() => this.onChecked(idx)}
+                      />
+                    )
+                  })
+                  }
+                  <br></br>
+
+                  <button onClick={this.addRow}>
+                    Add Option
+                  </button>
+                  <button onClick={this.deleteRows}>
+                    Delete Option
+                  </button>
+
+
+                  <br></br>
+
+
+                </div>
+
+                {footer}
+              </div>
             </div>
           </div>
-          <div style={{ display: "inline-block", width: "100%" }}>
-            <h1>FLOORING CALCULATOR</h1>
-            <div className={styles.calc} style={{ minHeight: '60px', display: "block" }}>
 
-              <div style={{ margin: "auto" }}>
-                <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
-                <label for="ten"> Initial Carbon (only Module A) &nbsp;&nbsp;</label>
-                <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
-                <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
-                <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
-                <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label>
-
-
-
-              </div><br></br>
-
-              {this.state.rows.map((row, idx) => {
-                return (
-                  <Row
-                    materialList={materialListFlooring}
-                    key={idx}
-                    value={row.value}
-                    checked={row.checked}
-                    name={idx + 1}
-                    count={0}
-                    tenY={this.state.flooring_gwpData1}
-                    sixty1={this.state.flooring_gwpData3}
-                    sixty2={this.state.flooring_gwpData5}
-                    radio={this.state.currentRadio}
-                    divStyle={divStyle}
-                    onChange={(e) => this.updateValue(e, idx)}
-                    onChecked={() => this.onChecked(idx)}
-                  />
-                )
-              })
-              }
-              <br></br>
-
-              <button onClick={this.addRow}>
-                Add Option
-              </button>
-              <button onClick={this.deleteRows}>
-                Delete Option
-              </button>
-
-
-              <br></br>
-
-
-            </div>
-
-            {footer}
-          </div>
         </TabPanel>
 
         {/* CEILINGS */}
@@ -1087,71 +1094,73 @@ class App extends Component {
             <div className={styles.chartContainer}>
               <h2>{chartTitle}</h2>
               {this.state.ceilings_dataEnvelopesReady && <ChartContainer
-                  type={SYSTEM_TYPE_CEILINGS}
-                  chartTitle
-                  chartType={this.state.chartType}
-                  lifespan={this.state.lifespan}
-                  biogenicCarbon={this.state.biogenicCarbon}
-                  selectedMaterials={this.state.ceilings_selectedMaterials}
-                  metaData={CeilingsLoadData.metaData}
-                  data={this.state.ceilings_dataEnvelopes || {}}
-                  selectedData={this.state.ceilings_selectedDataEnvelopes || {}}
-                  ready={this.state.ceilings_dataEnvelopesReady === true}
-                />}
+                type={SYSTEM_TYPE_CEILINGS}
+                chartTitle
+                chartType={this.state.chartType}
+                lifespan={this.state.lifespan}
+                biogenicCarbon={this.state.biogenicCarbon}
+                selectedMaterials={this.state.ceilings_selectedMaterials}
+                metaData={CeilingsLoadData.metaData}
+                data={this.state.ceilings_dataEnvelopes || {}}
+                selectedData={this.state.ceilings_selectedDataEnvelopes || {}}
+                ready={this.state.ceilings_dataEnvelopesReady === true}
+              />}
+
+              <div style={{ display: "inline-block", width: "100%" }}>
+                <h1>CEILINGS CALCULATOR</h1>
+                <div className={styles.calc} style={{ minHeight: '60px', display: "block" }}>
+
+                  <div style={{ margin: "auto" }}>
+                    <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
+                    <label for="ten"> Initial Carbon (only Module A) &nbsp;&nbsp;</label>
+                    <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
+                    <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
+                    <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
+                    <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label>
+
+
+
+                  </div><br></br>
+
+                  {this.state.rows.map((row, idx) => {
+                    return (
+                      <Row
+                        materialList={materialListCeilings}
+                        key={idx}
+                        value={row.value}
+                        checked={row.checked}
+                        name={idx + 1}
+                        count={0}
+                        tenY={this.state.ceilings_gwpData1}
+                        sixty1={this.state.ceilings_gwpData3}
+                        sixty2={this.state.ceilings_gwpData5}
+                        radio={this.state.currentRadio}
+                        divStyle={divStyle}
+                        onChange={(e) => this.updateValue(e, idx)}
+                        onChecked={() => this.onChecked(idx)}
+                      />
+                    )
+                  })
+                  }
+                  <br></br>
+
+                  <button onClick={this.addRow}>
+                    Add Option
+                  </button>
+                  <button onClick={this.deleteRows}>
+                    Delete Option
+                  </button>
+
+
+                  <br></br>
+
+
+                </div>
+
+                {footer}
+              </div>
+
             </div>
-          </div>
-          <div style={{ display: "inline-block", width: "100%" }}>
-            <h1>CEILINGS CALCULATOR</h1>
-            <div className={styles.calc} style={{ minHeight: '60px', display: "block" }}>
-
-              <div style={{ margin: "auto" }}>
-                <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
-                <label for="ten"> Initial Carbon (only Module A) &nbsp;&nbsp;</label>
-                <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
-                <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
-                <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
-                <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label>
-
-
-
-              </div><br></br>
-
-              {this.state.rows.map((row, idx) => {
-                return (
-                  <Row
-                    materialList={materialListCeilings}
-                    key={idx}
-                    value={row.value}
-                    checked={row.checked}
-                    name={idx + 1}
-                    count={0}
-                    tenY={this.state.ceilings_gwpData1}
-                    sixty1={this.state.ceilings_gwpData3}
-                    sixty2={this.state.ceilings_gwpData5}
-                    radio={this.state.currentRadio}
-                    divStyle={divStyle}
-                    onChange={(e) => this.updateValue(e, idx)}
-                    onChecked={() => this.onChecked(idx)}
-                  />
-                )
-              })
-              }
-              <br></br>
-
-              <button onClick={this.addRow}>
-                Add Option
-              </button>
-              <button onClick={this.deleteRows}>
-                Delete Option
-              </button>
-
-
-              <br></br>
-
-
-            </div>
-
-            {footer}
           </div>
         </TabPanel>
 
