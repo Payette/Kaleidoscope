@@ -1,7 +1,0 @@
-type,display_order,assembly_type_graphic
-Metal,1,./img/Axon_Stone.png
-Hard Ceiling,2,./img/Axon_Stone.png
-Cloud,3,./img/Axon_Stone.png
-Lay-In Tile,4,./img/Axon_Stone.png
-Open Ceiling,5,./img/Axon_Stone.png
-Wood,6,./img/Axon_Stone.png
