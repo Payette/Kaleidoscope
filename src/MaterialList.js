@@ -6,6 +6,7 @@ import MVGranite from './images/Detail_MockUp_MVGranite.png'
 import legendGWP from './images/k-04.png'
 import legendMBEnvelope from './images/MaterialBreakdown-11.png'
 import legendMBFlooring from './images/System_Boundary-flooring_EDIT.png'
+import legendMBCelings from './images/ceilingslegendaxon.png'
 import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_ENVELOPES } from './CommonUtil';
 import Checkbox from './Checkbox'
 import Pie from "./PieChart";
@@ -22,6 +23,10 @@ let colsFlooring = ["#c7e9b7", "#c7e9b7", "#b5e2bd", "#85E2BD", "#b5e2bd", "#b5e
 const materialNamesFlooring = ["mat27", "mat26", "mat25", "mat24", "mat23", "mat22", "mat21", "mat20", "mat19", "mat18", "mat17", "mat16", "mat15", "mat14", "mat13", "mat12", "mat11", "mat10", "mat9", "mat8", "mat7", "mat6", "mat5", "mat4", "mat3", "mat2", "mat1"];
 let materialLabelFlooring = { mat1: "Polyethelene sheet vapor barrier", mat2: "Interior grade plywood", mat3: "Cement grout", mat4: "Cement mortar", mat5: "Self-leveling underlayment", mat6: "Thickset mortar", mat7: "Fasteners, galvanized steel", mat8: "Floor adhesive, carpet", mat9: "Floor adhesive, latex", mat10: "Bamboo plank", mat11: "Ceramic tile, glazed", mat12: "Commercial high-traffic carpet, high pile", mat13: "Commercial high-traffic carpet, low pile", mat14: "Commercial high-traffic carpet, medium pile", mat15: "Cork tile", mat16: "Domestic softwood", mat17: "Granite tile", mat18: "Harwood veneer, thick", mat19: "Homogeneous vinyl tile", mat20: "Linoleum tile", mat21: "SBS rubber tile", mat22: "Slate tile", mat23: "White oak lumber, 1 inch", mat24: "Terrazzo", mat25: "Epoxy", mat26: "Wood sealer, water-based", mat27: "Polyuretane floor finish" };
 
+let colsCeilings = [ "#CCCCCC", "#666666", "#999999", "#666666", "#C2EAA7", "#C2EAA7", "#89EFC0", "#89EFC0", "#C2EAA7", "#FFFF99", "#FFFFCC ", "#C2EAA7", "#89EFC0", "#89EFC0", "#89EFC0", "#89EFC0", "#C2EAA7", "#89EFC0", "#89EFC0", "#89EFC0", "#5CBDFF", "#00AAFF", "#4169E1", "#4169E1", "#000099" ];
+let materialNamesCeilings = ["mat25", "mat24", "mat23", "mat22", "mat21", "mat20", "mat19", "mat18", "mat17", "mat16", "mat15", "mat14", "mat13", "mat12", "mat11", "mat10", "mat9", "mat8", "mat7", "mat6", "mat5", "mat4", "mat3", "mat2", "mat1"]; 
+let materialLabelCeilings = { mat1: "Steel, cable", mat2: "Suspended grid", mat3: "Cold formed structural steel", mat4: "Fasteners, galvanized steel", mat5: "Galvanized steel", mat6: "Acoustic ceiling tile (ACT), fiberglass", mat7: "Acoustic ceiling tile (ACT), mineral fiber board", mat8: "Acoustic ceiling tile (ACT), perforated aluminum", mat9: "Aluminum extrusion, AEC - EPD", mat10: "Aluminum, formed", mat11: "Ceiling tile, aluminum", mat12: "K-13 Spray on System", mat13: "Tulipwood lumber, 1 inch", mat14: "Medium density fiberboard (MDF), AWC - EPD", mat15: "Adhesive, polyurethane", mat16: "Hardwood veneer, medium thickness", mat17: "Hard maple lumber, 1 inch", mat18: "Wall board, gypsum, moisture- and mold-resistant", mat19: "Wall board, gypsum, natural", mat20: "Walnut lumber, 1 inch", mat21: "Paint, interior acrylic latex", mat22: "Paint, enamel, solvent based", mat23: "Polyurethane top coat, water-based, for wood", mat24: "Powder coating, metal stock", mat25: "Wood stain, water based" }; 
+
 export default class MaterialList extends PureComponent {
   constructor(props) {
     super(props);
@@ -29,6 +34,9 @@ export default class MaterialList extends PureComponent {
     this.legendMB = legendMBEnvelope;
     if (props.type === SYSTEM_TYPE_FLOORING) {
       this.legendMB = legendMBFlooring;
+    }
+    if(props.type === SYSTEM_TYPE_CEILINGS) {
+      this.legendMB = legendMBCelings;
     }
 
     this.state = {
@@ -137,6 +145,39 @@ export default class MaterialList extends PureComponent {
 
   }
 
+  colsForType(type) {
+    if(type === SYSTEM_TYPE_FLOORING){
+      return colsFlooring;
+    }
+    if(type === SYSTEM_TYPE_CEILINGS) {
+      return colsCeilings;
+    }
+
+    return colsEnvelope;
+  }
+
+  namesForType(type) {
+    if(type === SYSTEM_TYPE_FLOORING){
+      return materialNamesFlooring;
+    }
+    if(type === SYSTEM_TYPE_CEILINGS) {
+      return materialNamesCeilings;
+    }
+
+    return materialNamesEnvelope;    
+  }
+
+  labelForType(type) {
+    if(type === SYSTEM_TYPE_FLOORING){
+      return materialLabelFlooring;
+    }
+    if(type === SYSTEM_TYPE_CEILINGS) {
+      return materialLabelCeilings;
+    }
+
+    return materialLabelEnvelope;    
+  }
+
   render() {
     // console.log(this.props.currentSel);
 
@@ -154,6 +195,14 @@ export default class MaterialList extends PureComponent {
       legendText = <div className={styles.serif}><img style={{ maxWidth: "320px" }} src={legend} /><p> <span style={{ background: "#85e2bd" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Exterior Finish </p> <p> <span style={{ background: "#4169e1" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Support System </p> <p> <span style={{ background: "#fcc05e" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Insulation </p> <p> <span style={{ background: "#cccccc" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Other </p></div>
       if (this.props.type === SYSTEM_TYPE_FLOORING) {
         legendText = <div className={styles.serif}><img style={{ maxWidth: "320px" }} src={legend} /><p> <span style={{ background: "#85e2bd" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Flooring Finish </p> <p className={styles.serif}> <span style={{ background: "#4169e1" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Attachment Material </p> <p> <span style={{ background: "#cccccc" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Other </p></div>
+      }
+      if (this.props.type === SYSTEM_TYPE_CEILINGS) {
+        legendText = <div className={styles.serif}>
+          <img style={{ maxWidth: "320px" }} src={legend} />
+            <p><span style={{ background: "#4169e1" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Support System </p>
+            <p className={styles.serif}> <span style={{ background: "#85e2bd" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Finish Material </p>
+            <p> <span style={{ background: "#cccccc" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Surface Treatment </p>
+        </div>
       }
     } else if (this.props.currentSel === "MH") {
       legend = this.legendMB;
@@ -237,9 +286,9 @@ export default class MaterialList extends PureComponent {
                 sixty1YGWP={this.props.sixty1YGWP}
                 sixty2YGWP={this.props.sixty2YGWP}
                 GWPSel={this.state.curSel}
-                cols={this.props.type === SYSTEM_TYPE_ENVELOPES ? colsEnvelope : colsFlooring}
-                materialNames={this.props.type === SYSTEM_TYPE_ENVELOPES ? materialNamesEnvelope : materialNamesFlooring}
-                materialLabel={this.props.type === SYSTEM_TYPE_ENVELOPES ? materialLabelEnvelope : materialLabelFlooring}
+                cols={this.colsForType(this.props.type)}
+                materialNames={this.namesForType(this.props.type)}
+                materialLabel={this.labelForType(this.props.type)}
               />
 
             </div>

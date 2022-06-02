@@ -68,6 +68,10 @@ dialog::backdrop {
   @extend .dialog-content;
   top: 15%;
 }
+#sharedialog {
+  top: 100px;
+  height: 8rem;
+}
 
 /* -------------------------------------------------------------------------- *\
  * Extra dialog styling to make it shiny
