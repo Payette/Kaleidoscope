@@ -225,7 +225,7 @@ export default withTooltip(({
       ({ width: w }) => {
         let width2 = 0;
         if (window.innerWidth > 1200) {
-          width2 = window.innerWidth - 400
+          width2 = window.innerWidth - 460
         } else {
           width2 = window.innerWidth - margin.right
         }
