@@ -678,7 +678,7 @@ class App extends Component {
         {/* ENVELOPES */}
         <TabPanel value={this.state.value} index={TAB_INDEX_ENVELOPES}>
           <Helmet>
-            <script type="text/javascript" src="bf.js"></script>
+            <script type="text/javascript" src="loadBigfoot1.js"></script>
           </Helmet>
           <form>
             <h1>ENVELOPE ASSEMBLIES</h1>
@@ -834,7 +834,7 @@ class App extends Component {
         {/* FLOORING */}
         <TabPanel value={this.state.value} index={TAB_INDEX_FLOORING}>
           <Helmet>
-            <script type="text/javascript" src="bf3.js"></script>
+            <script type="text/javascript" src="loadBigfoot2.js"></script>
           </Helmet>
           <form>
             <h1>FLOOR ASSEMBLIES</h1>
@@ -996,7 +996,7 @@ class App extends Component {
         {/* CEILINGS */}
         <TabPanel value={this.state.value} index={TAB_INDEX_CEILINGS}>
           <Helmet>
-            <script type="text/javascript" src="bf3.js"></script>
+            <script type="text/javascript" src="loadBigfoot3.js"></script>
           </Helmet>
           <form>
             <h1>CEILING ASSEMBLIES</h1>
