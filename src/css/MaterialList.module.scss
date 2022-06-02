@@ -15,7 +15,8 @@ label{
   cursor: pointer !important;
 }
 .material {
-  float: left;
+  display: flex;
+  // float: left;
   margin: 0 1rem 1rem 0;
   cursor: pointer !important;
 }
@@ -56,6 +57,7 @@ label{
 }
 
 .mLabel{
+  white-space: nowrap;
   font-size: 13.5px;
   cursor: pointer !important;
 }
@@ -72,11 +74,12 @@ label{
 
 @media (min-width: $breakpoint1) {
   .material {
-    float: none;
+    // float: none;
     margin: 0 0 1rem 0;
   }
   .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
   }
 }

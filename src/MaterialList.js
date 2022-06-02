@@ -181,8 +181,7 @@ export default class MaterialList extends PureComponent {
     }
 
     return (
-
-      <div>
+      <>
         <div>
           {legendText && <>
             <h3>LEGEND</h3>
@@ -195,14 +194,11 @@ export default class MaterialList extends PureComponent {
             <h3 style={{ display: "inline-block", marginBottom: "0.5em", textTransform: "uppercase" }}>{this.props.title}</h3><button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
             <div className={styles.sansserif} style={{ fontWeight: "bold", marginBottom: "0.75em", fontSize: "0.9em" }}>Click on type name below for additional details</div>
           </div>
-        </div>
-        <div>
 
           <ul className={styles.container} ref={node => (this.listEl = node)}>{this.renderItems()}
-
           </ul>
         </div>
-
+        
         <Dialog id="materialdetailsdialog"
           appRoot="#root"
           dialogRoot="#dialog-root"
@@ -273,7 +269,7 @@ export default class MaterialList extends PureComponent {
 
           </div> : null}
         </Dialog>
-      </div>
+      </>
     )
   }
 }

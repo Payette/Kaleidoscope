@@ -65,6 +65,10 @@
   margin-left: 1%;
 }
 
+.tabPanel {
+  padding-right: 1px;
+  overflow-x: hidden;
+}
 
 
 @media (min-width: $breakpoint2) {
@@ -83,24 +87,22 @@
 }
 
 @media (min-width: $breakpoint1) {
+  :global(#parentDiv) {
+    display: flex;
+    flex-direction: row-reverse;
+    column-gap: 40px;
+  }
   .sidebar {
-    position: absolute;
-    // display: inline-block;
-    right: 0;
-    width: 400px;
-    // height:600px;
+    width: 420px;
+    flex-grow: 3;
   }
   .chartContainer {
-    width: 100%;
-    display: inline-block;
-    // margin-right: 366px;
+    flex-shrink: 2;
   }
 
   .calc {
     width: 100%;
     display: inline-block;
-    // margin-right: "1%";
-    // margin-left: "1%";
   }
 
   .calc1 {

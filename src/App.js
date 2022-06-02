@@ -13,7 +13,7 @@ import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_ENVELOPES, DATA
   CHART_TYPES_ENVELOPES,
   TAB_INDEX_ENVELOPES, TAB_INDEX_FLOORING, TAB_INDEX_CEILINGS, TAB_INDEX_OTHER } from './CommonUtil';
 import { Helmet } from "react-helmet";
-import ChartContainerEnvelopes from './ChartContainerEnvelopes';
+import ChartContainer from './ChartContainer';
 import './css/Main.scss';
 import styles from './css/App.module.scss';
 
@@ -661,7 +661,7 @@ class App extends Component {
           </span>
         </Dialog>
 
-        <h3 style={{ position: "absolute", right: "25px", top: "120px" }}>
+        <h3 style={{ position: "absolute", right: "25px", top: "60px" }}>
           <button onClick={this.constructURL.bind(this)} style={{ borderRadius: "5px", padding: "5px" }}>Share Link</button>
         </h3>
 
@@ -676,7 +676,7 @@ class App extends Component {
         </AppBar>
 
         {/* ENVELOPES */}
-        <TabPanel value={this.state.value} index={TAB_INDEX_ENVELOPES}>
+        <TabPanel className={styles.tabPanel} value={this.state.value} index={TAB_INDEX_ENVELOPES}>
           <Helmet>
             <script type="text/javascript" src="loadBigfoot1.js"></script>
           </Helmet>
@@ -737,7 +737,7 @@ class App extends Component {
             </div>
 
           </form>
-          <div style={{ display: "inline-block", height: "100%" }} id="parentDiv">
+          <div id="parentDiv">
             {this.state.materials.length > 0 &&
               <div className={styles.sidebar} id="sidebar123">
                 <MaterialList
@@ -759,9 +759,9 @@ class App extends Component {
                 />
               </div>
             }
-            <h2>{chartTitle}</h2>
             <div className={styles.chartContainer}>
-              {this.state.dataEnvelopesReady && <ChartContainerEnvelopes
+              <h2>{chartTitle}</h2>
+              {this.state.dataEnvelopesReady && <ChartContainer
                 type={SYSTEM_TYPE_ENVELOPES}
                 chartTitle
                 chartType={this.state.chartType}
@@ -832,7 +832,7 @@ class App extends Component {
         </TabPanel>
 
         {/* FLOORING */}
-        <TabPanel value={this.state.value} index={TAB_INDEX_FLOORING}>
+        <TabPanel className={styles.tabPanel} value={this.state.value} index={TAB_INDEX_FLOORING}>
           <Helmet>
             <script type="text/javascript" src="loadBigfoot2.js"></script>
           </Helmet>
@@ -898,7 +898,7 @@ class App extends Component {
             </div>
 
           </form>
-          <div style={{ display: "inline-block", height: "100%" }} id="parentDiv">
+          <div id="parentDiv">
 
             {this.state.flooring_materials.length > 0 &&
               <div className={styles.sidebar} id="sidebar123">
@@ -922,9 +922,9 @@ class App extends Component {
                 />
               </div>
             }
-            <h2>{chartTitle}</h2>
             <div className={styles.chartContainer}>
-              {this.state.flooring_dataEnvelopesReady && <ChartContainerEnvelopes
+              <h2>{chartTitle}</h2>
+              {this.state.flooring_dataEnvelopesReady && <ChartContainer
                   type={SYSTEM_TYPE_FLOORING}
                   chartTitle
                   chartType={this.state.chartType}
@@ -994,7 +994,7 @@ class App extends Component {
         </TabPanel>
 
         {/* CEILINGS */}
-        <TabPanel value={this.state.value} index={TAB_INDEX_CEILINGS}>
+        <TabPanel className={styles.tabPanel} value={this.state.value} index={TAB_INDEX_CEILINGS}>
           <Helmet>
             <script type="text/javascript" src="loadBigfoot3.js"></script>
           </Helmet>
@@ -1060,7 +1060,7 @@ class App extends Component {
             </div>
 
           </form>
-          <div style={{ display: "inline-block", height: "100%" }} id="parentDiv">
+          <div id="parentDiv">
 
             {this.state.ceilings_materials.length > 0 &&
               <div className={styles.sidebar} id="sidebar123">
@@ -1084,9 +1084,9 @@ class App extends Component {
                 />
               </div>
             }
-            <h2>{chartTitle}</h2>
             <div className={styles.chartContainer}>
-              {this.state.ceilings_dataEnvelopesReady && <ChartContainerEnvelopes
+              <h2>{chartTitle}</h2>
+              {this.state.ceilings_dataEnvelopesReady && <ChartContainer
                   type={SYSTEM_TYPE_CEILINGS}
                   chartTitle
                   chartType={this.state.chartType}
@@ -1156,7 +1156,7 @@ class App extends Component {
         </TabPanel>
 
         {/* OTHER */}
-        <TabPanel value={this.state.value} index={TAB_INDEX_OTHER}>
+        <TabPanel className={styles.tabPanel} value={this.state.value} index={TAB_INDEX_OTHER}>
           Other
         </TabPanel>
 
