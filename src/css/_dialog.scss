@@ -49,8 +49,6 @@ dialog::backdrop {
   position: fixed;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   margin: 0;
 
@@ -63,15 +61,29 @@ dialog::backdrop {
   img {
     max-width: 100%;
   }
+
+  padding: 1em;
+  box-sizing: border-box;
+  max-width: 1400px;
+  width: 80%;
+  min-height: 900px;
+  border-radius: 2px;
+  overflow: auto;
 }
 .dialog-content-top {
   @extend .dialog-content;
-  top: 15%;
+
+  top: 200px;
+  height: 15rem;
+  max-height: inherit;
+  min-height: inherit;
 }
-#sharedialog {
-  top: 100px;
-  height: 8rem;
-}
+// #sharedialog {
+//   .dialog-content {
+//     top: 100px;
+//     height: 8rem;
+//   }
+// }
 
 /* -------------------------------------------------------------------------- *\
  * Extra dialog styling to make it shiny
@@ -94,17 +106,6 @@ dialog::backdrop {
 .dialog:not([aria-hidden='true']) > .dialog-content {
   animation: appear 400ms 150ms 1 both;
 }
-
-.dialog-content {
-  padding: 1em;
-  box-sizing: border-box;
-  max-width: 1400px;
-  width: 80%;
-  min-height: 900px;
-  border-radius: 2px;
-  overflow: auto;
-}
-
 
 @media screen and (min-width: 700px) {
   .dialog-content {
