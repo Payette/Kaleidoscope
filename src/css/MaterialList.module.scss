@@ -15,8 +15,9 @@ label{
   cursor: pointer !important;
 }
 .material {
+  width: 15rem;
   display: flex;
-  // float: left;
+  float: left;
   margin: 0 1rem 1rem 0;
   cursor: pointer !important;
 }
@@ -74,7 +75,8 @@ label{
 
 @media (min-width: $breakpoint1) {
   .material {
-    // float: none;
+    width: inherit;
+    float: none;
     margin: 0 0 1rem 0;
   }
   .container {

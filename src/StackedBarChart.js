@@ -223,33 +223,23 @@ export default withTooltip(({
   return (<ParentSize>
     {
       ({ width: w }) => {
-        let width2 = 0;
-        if (window.innerWidth > 1200) {
-          width2 = window.innerWidth - 460
-        } else {
-          width2 = window.innerWidth - margin.right
+        if(w === 0) {
+          // not initialized yet...
+          return null;
         }
-        // const width2 = Math.max(w, margin.left + margin.right + 1);
 
-        // const xMax = width2 - margin.left - margin.right;
+        let width2 = Math.max(300, w) - 20;
         const xMax = width2;
-        // console.log("xMax" + width2)
         xScale.rangeRound([0, xMax - 250]);
-        // w = w- 100;
         var previousY = 0;
-
         let whichArray = 0;
-
         let deepClone = JSON.parse(JSON.stringify(selectedMaterialsGroupedByType))
-
 
         const chartHeight = (selectedMaterials.length * barHeight) + headerFooterHeight
           + (selectedMaterialsGroupedByType.length * 20);
 
         return (<div className={styles.container} style={{
-          position: 'relative',
-          // width: '100%'
-
+          position: 'relative'
         }}>
 
           <svg width={width2} height={chartHeight}>

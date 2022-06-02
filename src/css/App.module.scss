@@ -90,14 +90,12 @@
   :global(#parentDiv) {
     display: flex;
     flex-direction: row-reverse;
-    column-gap: 40px;
   }
   .sidebar {
     width: 420px;
-    flex-grow: 3;
   }
   .chartContainer {
-    flex-shrink: 2;
+    flex-grow: 2;
   }
 
   .calc {

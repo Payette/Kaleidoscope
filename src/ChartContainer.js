@@ -7,7 +7,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         return null;
     }
           
-    return <div>
+    return <div style={{ width: "100%"}}>
       {/* GLOBAL WARMING POTENTIAL */}
       {chartType === "GWP" && data.gwpData.length > 0 && lifespan === "tenY" && biogenicCarbon === "nBio" && <StackedBarChart type={type}
         selectedMaterials={selectedData.gwpData}
