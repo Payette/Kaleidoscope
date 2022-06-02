@@ -363,7 +363,7 @@ export default {
       complete: function (results, file) {
         if (Array.isArray(results.data)) {
           var resultData = results.data.map(d => {
-            return { material: d.material, type: d.type, impact1: parseFloat(d.impact1), impact2: parseFloat(d.impact2), impact3: parseFloat(d.impact3), name: d.name, img: d.img }
+            return { material: d.material, type: d.type, impact1: parseFloat(d.impact1), impact2: parseFloat(d.impact2), name: d.name, img: d.img }
           });
 
           cb(resultData);
@@ -463,7 +463,7 @@ export default {
       complete: function (results, file) {
         if (Array.isArray(results.data)) {
           var resultData = results.data.map(d => {
-            return { material: d.material, type: d.type, impact1: parseFloat(d.impact1), impact2: parseFloat(d.impact2), impact3: parseFloat(d.impact3), name: d.name, img: d.img }
+            return { material: d.material, type: d.type, impact1: parseFloat(d.impact1), impact2: parseFloat(d.impact2), name: d.name, img: d.img }
           });
 
           cb(resultData);
@@ -662,8 +662,8 @@ export default {
       ...PAPAPARSE_CONFIG,
       complete: function (results, file) {
         if (Array.isArray(results.data)) {
-          var resultData = results.data.map(d => { // impact4: parseFloat(d.impact4), 
-            return { material: d.material, type: d.type, impact1: parseFloat(d.impact1), impact2: parseFloat(d.impact2), impact3: parseFloat(d.impact3), impact4: parseFloat(d.impact4), name: d.name, img: d.img }
+          var resultData = results.data.map(d => {
+            return { material: d.material, type: d.type, impact1: parseFloat(d.impact1), impact2: parseFloat(d.impact2), impact3: parseFloat(d.impact3), impact4: parseFloat(d.impact4), impact5: parseFloat(d.impact5), name: d.name, img: d.img }
           });
 
           cb(resultData);
@@ -762,8 +762,8 @@ export default {
       ...PAPAPARSE_CONFIG,
       complete: function (results, file) {
         if (Array.isArray(results.data)) {
-          var resultData = results.data.map(d => { //impact4: parseFloat(d.impact4), impact5: parseFloat(d.impact5), 
-            return { material: d.material, type: d.type, impact1: parseFloat(d.impact1), impact2: parseFloat(d.impact2), impact3: parseFloat(d.impact3), impact4: parseFloat(d.impact4), impact5: parseFloat(d.impact5), name: d.name, img: d.img }
+          var resultData = results.data.map(d => {
+            return { material: d.material, type: d.type, impact1: parseFloat(d.impact1), impact2: parseFloat(d.impact2), impact3: parseFloat(d.impact3), impact4: parseFloat(d.impact4), name: d.name, img: d.img }
           });
 
           cb(resultData);
@@ -864,7 +864,7 @@ export default {
       ...PAPAPARSE_CONFIG,
       complete: function (results, file) {
         if (Array.isArray(results.data)) {
-          var resultData = results.data.map(d => { //impact4: parseFloat(d.impact4), impact5: parseFloat(d.impact5), 
+          var resultData = results.data.map(d => {
             return { material: d.material, type: d.type, impact1: parseFloat(d.impact1), impact2: parseFloat(d.impact2), impact3: parseFloat(d.impact3), impact4: parseFloat(d.impact4), impact5: parseFloat(d.impact5), name: d.name, img: d.img }
           });
 
