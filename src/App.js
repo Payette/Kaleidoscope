@@ -742,6 +742,7 @@ class App extends Component {
               <div className={styles.sidebar} id="sidebar123">
                 <MaterialList
                   type={SYSTEM_TYPE_ENVELOPES}
+                  title={"Assembly Type"}
                   gwp={obj}
                   materials={this.state.materials}
                   names={this.state.names}
@@ -903,6 +904,8 @@ class App extends Component {
               <div className={styles.sidebar} id="sidebar123">
                 <MaterialList
                   type={SYSTEM_TYPE_FLOORING}
+                  title={"Flooring Type"}
+                  hasMaterialHealth={true}
                   gwp={flooring_obj}
                   materials={this.state.flooring_materials}
                   names={this.state.flooring_names}
@@ -1059,10 +1062,12 @@ class App extends Component {
           </form>
           <div style={{ display: "inline-block", height: "100%" }} id="parentDiv">
 
-            {this.state.flooring_materials.length > 0 &&
+            {this.state.ceilings_materials.length > 0 &&
               <div className={styles.sidebar} id="sidebar123">
                 <MaterialList
                   type={SYSTEM_TYPE_CEILINGS}
+                  title={"Ceilings Type"}
+                  hasMaterialHealth={true}
                   gwp={ceilings_obj}
                   materials={this.state.ceilings_materials}
                   names={this.state.ceilings_names}

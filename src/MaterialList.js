@@ -172,7 +172,7 @@ export default class MaterialList extends PureComponent {
     }
 
     let listItemsHealth;
-    if (this.props.type === SYSTEM_TYPE_FLOORING) {
+    if (this.props.hasMaterialHealth) {
       if (this.state.materialPopup.name !== "Material") {
         listItemsHealth = this.props.metaData.materialHealthText[this.state.materialPopup.name].map((number) =>
           <li>- {number}</li>
@@ -192,7 +192,7 @@ export default class MaterialList extends PureComponent {
             </span>
           </>}
           <div>
-            <h3 style={{ display: "inline-block", marginBottom: "0.5em" }}>{this.props.type === SYSTEM_TYPE_ENVELOPES ? "ASSEMBLY TYPE" : "FLOORING TYPE"}</h3><button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
+            <h3 style={{ display: "inline-block", marginBottom: "0.5em", textTransform: "uppercase" }}>{this.props.title}</h3><button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
             <div className={styles.serif} style={{ marginBottom: "0.75em" }}>Click on a type below for additional details</div>
           </div>
         </div>
