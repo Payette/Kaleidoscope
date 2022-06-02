@@ -193,7 +193,7 @@ export default class MaterialList extends PureComponent {
           </>}
           <div>
             <h3 style={{ display: "inline-block", marginBottom: "0.5em", textTransform: "uppercase" }}>{this.props.title}</h3><button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
-            <div className={styles.serif} style={{ marginBottom: "0.75em" }}>Click on a type below for additional details</div>
+            <div className={styles.sansserif} style={{ fontWeight: "bold", marginBottom: "0.75em", fontSize: "0.9em" }}>Click on type name below for additional details</div>
           </div>
         </div>
         <div>
