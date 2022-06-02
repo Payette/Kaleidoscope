@@ -82,8 +82,8 @@ const metaData = {
   },
 
   materialHealthText: {
-    mBaffle: ["Check TODO"],
-    mPan: ["Check TODO"],
+    mBaffle: ["Material Assumptions Line 1","Material Assumptions Line 2"],
+    mPan: ["Check TODO","Line 2","Line 3"],
     mPerforatedPan: ["Check TODO"],
     hcGypsum: ["Check TODO"],
     hcMoistureResistantGyp: ["Check TODO"],
@@ -128,8 +128,8 @@ const metaData = {
 
   // modal popup text
   materialNotes: {
-    mBaffle: ["Check TODO", "Line 2"],
-    mPan: ["Check TODO"],
+    mBaffle: ["Material Notes Line 1", "Material Notes Line 2"],
+    mPan: ["Check TODO", "Line 2", "Line 3"],
     mPerforatedPan: ["Check TODO"],
     hcGypsum: ["Check TODO"],
     hcMoistureResistantGyp: ["Check TODO"],
