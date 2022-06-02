@@ -1,20 +1,20 @@
 material,type,name,img,label,i1,i2,i3,i4,i5,i6
-mBaffle,Metal,Metal Baffle,./img/Axon_Stone.png,M - Baffle (Metal),24.53332879,8.177776262,4.997529938,3.180246324,2.725925421,1.817283614
-mPan,Metal,Metal Pan,./img/Axon_Stone.png,M -  Metal Pan,30.37249412,10.12416471,6.186989544,3.937175164,3.374721569,2.24981438
-mPerforatedPan,Metal,Perforated Metal Pan,./img/Axon_Stone.png,M - Perf Metal Pan,25.32071908,8.440239694,5.157924257,3.282315436,2.813413231,1.875608821
-hcGypsum,Hard Ceiling,Gypsum,./img/Axon_Stone.png,HC - Gyp,19.04070454,6.346901515,3.878662037,2.468239478,2.115633838,1.410422559
-hcMoistureResistantGyp,Hard Ceiling,Moisture Resistant Gypsum,./img/Axon_Stone.png,HC - Moisture Resistant Gyp,17.90134763,5.967115875,3.646570813,2.320545063,1.989038625,1.32602575
-cFiberglassTrim,Cloud,Fiberglass (w/ Trim),./img/Axon_Stone.png,C - Fiberglass (w/ Trim),22.15007514,7.383358381,4.512052344,2.871306037,2.46111946,1.640746307
-cFiberglass,Cloud,Fiberglass,./img/Axon_Stone.png,C - Fiberglass,17.0958726,5.6986242,3.482492566,2.216131633,1.8995414,1.266360933
-ltFiberglass,Lay-In Tile,Fiberglass,./img/Axon_Stone.png,LT - Fiberglass,18.20265637,6.067552125,3.707948521,2.359603604,2.022517375,1.348344917
-ltMineralBoard,Lay-In Tile,Mineral Board,./img/Axon_Stone.png,LT - Mineral Board,15.32425549,5.108085163,3.1216076,1.986477564,1.702695054,1.135130036
-ocAcousticalSpray,Open Ceiling,Acoustical Spray,./img/Axon_Stone.png,OC - Acoustical Spray,0.321206634,0.107068878,0.065430981,0.041637897,0.035689626,0.023793084
-ocPaint,Open Ceiling,Paint,./img/Axon_Stone.png,OC - Paint,4.863593058,1.621197686,0.990731919,0.630465767,0.540399229,0.360266152
-wVeneerDense,Wood,Dense Grille (Veneer),./img/Axon_Stone.png,W - Dense Grille (Veneer),54,18,11,7,6,4
-wVeneerOpen,Wood,Open Grille (Veneer),./img/Axon_Stone.png,W - Open Grille (Veneer),50.45792851,16.8193095,10.27846692,6.540842585,5.606436501,3.737624334
-wPoplarDense,Wood,Dense Grille (Poplar),./img/Axon_Stone.png,W - Dense Grille (Poplar),14.02778033,4.675926777,2.857510808,1.818415969,1.558642259,1.039094839
-wPoplarOpen,Wood,Open Grille (Poplar),./img/Axon_Stone.png,W - Open Grille (Poplar),14.48013636,4.82671212,2.949657407,1.877054713,1.60890404,1.072602693
-wWalnutDense,Wood,Dense Grille (Walnut),./img/Axon_Stone.png,W - Dense Grille (Walnut),18.61174096,6.203913654,3.791280566,2.412633088,2.067971218,1.378647479
-wWalnutOpen,Wood,Open Grille (Walnut),./img/Axon_Stone.png,W - Open Grille (Walnut),19.40276665,6.467588885,3.95241543,2.515173455,2.155862962,1.437241974
-wMapleDense,Wood,Dense Grille (Maple),./img/Axon_Stone.png,W - Dense Grille (Maple),16.56319224,5.52106408,3.373983605,2.147080476,1.840354693,1.226903129
-wMapleOpen,Wood,Open Grille (Maple),./img/Axon_Stone.png,W - Open Grille (Maple),16.58409211,5.528030703,3.378240985,2.149789718,1.842676901,1.228451267
+mBaffle,Metal,Metal Baffle,./img/Ceilings/Axons/Axon_MetalBaffle.png,M - Baffle (Metal),24.53332879,8.177776262,4.997529938,3.180246324,2.725925421,1.817283614
+mPan,Metal,Metal Pan,./img/Ceilings/Axons/Axon_MetalPan.png,M -  Metal Pan,30.37249412,10.12416471,6.186989544,3.937175164,3.374721569,2.24981438
+mPerforatedPan,Metal,Perforated Metal Pan,./img/Ceilings/Axons/Axon_MetalPanPerforated.png,M - Perf Metal Pan,25.32071908,8.440239694,5.157924257,3.282315436,2.813413231,1.875608821
+hcGypsum,Hard Ceiling,Gypsum,./img/Ceilings/Axons/Axon_Gypsum.png,HC - Gyp,19.04070454,6.346901515,3.878662037,2.468239478,2.115633838,1.410422559
+hcMoistureResistantGyp,Hard Ceiling,Moisture Resistant Gypsum,./img/Ceilings/Axons/Axon_Gypsum.png,HC - Moisture Resistant Gyp,17.90134763,5.967115875,3.646570813,2.320545063,1.989038625,1.32602575
+cFiberglassTrim,Cloud,Fiberglass (w/ Trim),./img/Ceilings/Axons/Axon_CloudwTrim.png,C - Fiberglass (w/ Trim),22.15007514,7.383358381,4.512052344,2.871306037,2.46111946,1.640746307
+cFiberglass,Cloud,Fiberglass,./img/Ceilings/Axons/Axon_Cloud.png,C - Fiberglass,17.0958726,5.6986242,3.482492566,2.216131633,1.8995414,1.266360933
+ltFiberglass,Lay-In Tile,Fiberglass,./img/Ceilings/Axons/Axon_Lay-InTile.png,LT - Fiberglass,18.20265637,6.067552125,3.707948521,2.359603604,2.022517375,1.348344917
+ltMineralBoard,Lay-In Tile,Mineral Board,./img/Ceilings/Axons/Axon_Lay-InTile.png,LT - Mineral Board,15.32425549,5.108085163,3.1216076,1.986477564,1.702695054,1.135130036
+ocAcousticalSpray,Open Ceiling,Acoustical Spray,./img/Ceilings/Axons/Axon_OpenCeiling.png,OC - Acoustical Spray,0.321206634,0.107068878,0.065430981,0.041637897,0.035689626,0.023793084
+ocPaint,Open Ceiling,Paint,./img/Ceilings/Axons/Axon_OpenCeiling.png,OC - Paint,4.863593058,1.621197686,0.990731919,0.630465767,0.540399229,0.360266152
+wVeneerDense,Wood,Dense Grille (Veneer),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Veneer),54,18,11,7,6,4
+wVeneerOpen,Wood,Open Grille (Veneer),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Open Grille (Veneer),50.45792851,16.8193095,10.27846692,6.540842585,5.606436501,3.737624334
+wPoplarDense,Wood,Dense Grille (Poplar),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Poplar),14.02778033,4.675926777,2.857510808,1.818415969,1.558642259,1.039094839
+wPoplarOpen,Wood,Open Grille (Poplar),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Open Grille (Poplar),14.48013636,4.82671212,2.949657407,1.877054713,1.60890404,1.072602693
+wWalnutDense,Wood,Dense Grille (Walnut),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Walnut),18.61174096,6.203913654,3.791280566,2.412633088,2.067971218,1.378647479
+wWalnutOpen,Wood,Open Grille (Walnut),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Open Grille (Walnut),19.40276665,6.467588885,3.95241543,2.515173455,2.155862962,1.437241974
+wMapleDense,Wood,Dense Grille (Maple),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Maple),16.56319224,5.52106408,3.373983605,2.147080476,1.840354693,1.226903129
+wMapleOpen,Wood,Open Grille (Maple),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Open Grille (Maple),16.58409211,5.528030703,3.378240985,2.149789718,1.842676901,1.228451267
