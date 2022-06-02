@@ -95,8 +95,8 @@ dialog::backdrop {
   padding: 1em;
   box-sizing: border-box;
   max-width: 1400px;
-  // max-height: 90%;
   width: 80%;
+  min-height: 900px;
   border-radius: 2px;
   overflow: auto;
 }

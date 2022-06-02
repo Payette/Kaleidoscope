@@ -641,7 +641,7 @@ class App extends Component {
 
     return (
       <div className="App" style={{ minHeight: sidebarHeight }}>
-        <Dialog id="materialdetailsdialog"
+        <Dialog id="sharedialog"
           appRoot="#root"
           dialogRoot="#dialog-root"
           dialogRef={(dialog) => (this.materialsDialogRef = dialog)}
