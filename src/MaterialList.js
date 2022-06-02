@@ -152,7 +152,7 @@ export default class MaterialList extends PureComponent {
     } else if (this.props.currentSel === "MB") {
       legend = this.legendMB;
       legendText = <div className={styles.serif}><img style={{ maxWidth: "320px" }} src={legend} /><p> <span style={{ background: "#85e2bd" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Exterior Finish </p> <p> <span style={{ background: "#4169e1" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Support System </p> <p> <span style={{ background: "#fcc05e" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Insulation </p> <p> <span style={{ background: "#cccccc" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Other </p></div>
-      if (this.props.types === SYSTEM_TYPE_FLOORING) {
+      if (this.props.type === SYSTEM_TYPE_FLOORING) {
         legendText = <div className={styles.serif}><img style={{ maxWidth: "320px" }} src={legend} /><p> <span style={{ background: "#85e2bd" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Flooring Finish </p> <p className={styles.serif}> <span style={{ background: "#4169e1" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Attachment Material </p> <p> <span style={{ background: "#cccccc" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Other </p></div>
       }
     } else if (this.props.currentSel === "MH") {
