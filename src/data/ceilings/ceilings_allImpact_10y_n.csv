@@ -1,5 +1,5 @@
 material,type,name,img,label,i1,i2,i3,i4,i5,i6
-mBaffle,Metal,Metal Baffle,./img/Axon_Stone.png,M - Baffle (Metal),54,18,11,7,6,4
+mBaffle,Metal,Metal Baffle,./img/Ceilings/Axons/Axon_MetalBaffle.png,M - Baffle (Metal),54,18,11,7,6,4
 mPan,Metal,Metal Pan,./img/Axon_Stone.png,M -  Metal Pan,33.2074139,11.06913797,6.764473202,4.304664765,3.689712656,2.459808437
 mPerforatedPan,Metal,Perforated Metal Pan,./img/Axon_Stone.png,M - Perf Metal Pan,28.243472,9.414490667,5.753299852,3.661190815,3.138163556,2.092109037
 hcGypsum,Hard Ceiling,Gypsum,./img/Axon_Stone.png,HC - Gyp,16.54203718,5.514012393,3.36967424,2.144338153,1.838004131,1.225336087
