@@ -95,7 +95,7 @@ const tiers = [
   {
     title: 'CEILINGS',
     subheader: 'Ceiling Systems',
-    img: "./img/FL_Axon-2.png",
+    img: "./img/Ceilings/Axons/ceilingslandingpageaxon.png",
     buttonText: 'View Ceilings',
     buttonVariant: 'contained',
     item: 2
