@@ -626,7 +626,7 @@ class App extends Component {
 
     if (sidebar1 && parentD && window.innerWidth > 1200) {
       sidebarHeight = 300 + sidebar1.offsetHeight;
-      calcWidth = (((window.innerWidth - 355) - (window.innerWidth / 25)) / 2) / window.innerWidth * 100
+      calcWidth = (((window.innerWidth - 150) - (window.innerWidth / 25)) / 2) / window.innerWidth * 100
     } else if (window.innerWidth <= 1200 && window.innerWidth > 800) {
       calcWidth = 48
     } else {

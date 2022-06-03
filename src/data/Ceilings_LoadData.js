@@ -311,7 +311,7 @@ const metaData = {
     ltMineralBoard: "Lay-In Tile - Mineral Board",
     ocAcousticalSpray: "Open Ceiling - Acoustical Spray",
     ocPaint: "Open Ceiling - Paint",
-    wVeneerDense: "Open Ceiling - Paint",
+    wVeneerDense: "Wood - Dense Grille (Veneer)",
     wVeneerOpen: "Wood - Open Grille (Veneer)",
     wPoplarDense: "Wood - Dense Grille (Poplar)",
     wPoplarOpen: "Wood - Open Grille (Poplar)",
