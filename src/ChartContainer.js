@@ -289,7 +289,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
 
       {/* MATERIAL HEALTH */}
       {chartType === "MH" && data.gwpData2.length > 0 && lifespan === "sixty1" && biogenicCarbon === "nBio" && <StackedBarChart type={type}
-        selectedMaterials={selectedData.gwpData1}
+        selectedMaterials={selectedData.gwpData2}
         allMaterials={data.gwpData2}
         metaData={metaData}
         barHeight={40}
