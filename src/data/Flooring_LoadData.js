@@ -66,7 +66,7 @@ const metaData = {
     rLinoTile: "#8cc672",
     mConcrete: "#00a558",
     mTerrazzo: "#00a558",
-    mEpoxy: "#d51128",
+    mEpoxy: "#febe10",
     cHigh: "#8cc672",
     cMedium: "#8cc672",
     cLow: "#8cc672",

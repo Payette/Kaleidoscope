@@ -105,7 +105,7 @@ const metaData = {
 
   // hover on bar chart
   materialTexts: {
-    mBaffle: "Sheet-formed aluminum baffle, structural steel support system, steel cable",
+    mBaffle: "Loosely-spaced sheet-formed aluminum baffle, structural steel support system, steel cable",
     mPan: "Power-coated aluminum ceiling panel, strucutral steel suspension grid, steel cable, steel fasteners",
     mPerforatedPan: "Power-coated perforated aluminum ceiling panel, strucutral steel suspension grid, steel cable, steel fasteners",
     hcGypsum: "Gypsum wall board, cold-formed structural steel framing and furring channel, steel cable",
@@ -130,7 +130,7 @@ const metaData = {
   materialNotes: {
     mBaffle: ['Building structure is not included in LCA calculations',
     'Service life 60 year Tally default and some materials adjusted to match',
-    'Metal baffles are 1 1/4" wide x 3 1/4" deep and spaced 2 3/4" apart'],
+    '"Open" Metal baffles are 1 1/4" wide x 3 1/4" deep and spaced 2 3/4" apart'],
     mPan: ['Building structure is not included in LCA calculations',
     'Service life 50 year Tally default and some materials adjusted to match'],
     mPerforatedPan: ['Building structure is not included in LCA calculations',
