@@ -10,7 +10,6 @@ Embodied Carbon Design Tool
 Then head to <http://localhost:3000>
 * This allows you to view changes as you edit
 * Save the file you're working on and then localhost:3000 will refresh with your changes
-* Saving the file you're working on also pushes the change to github
 
 * Type CTRL+C in terminal to stop npm start command
 * Do this before you move to the next step for production build
