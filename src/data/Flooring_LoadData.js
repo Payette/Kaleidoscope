@@ -15,15 +15,15 @@ import dataAllImpacts2 from './flooring/flooring_allImpact_60y_n.csv';
 import dataLCS2 from './flooring/flooring_lcs_60y_n.csv';
 import dataMaterial2 from './flooring/flooring_material_60y_n.csv';
 
-import dataGWP4 from './flooring/flooring_gwp_60y_y.csv';
-import dataAllImpacts4 from './flooring/flooring_allImpact_60y_y.csv';
-import dataLCS4 from './flooring/flooring_lcs_60y_y.csv';
-import dataMaterial4 from './flooring/flooring_material_60y_y.csv';
+import dataGWP3 from './flooring/flooring_gwp_60y_y.csv';
+import dataAllImpacts3 from './flooring/flooring_allImpact_60y_y.csv';
+import dataLCS3 from './flooring/flooring_lcs_60y_y.csv';
+import dataMaterial3 from './flooring/flooring_material_60y_y.csv';
 
-import dataGWP3 from './flooring/flooring_gwp_60yd_n.csv';
-import dataAllImpacts3 from './flooring/flooring_allImpact_60yd_n.csv';
-import dataLCS3 from './flooring/flooring_lcs_60yd_n.csv';
-import dataMaterial3 from './flooring/flooring_material_60yd_n.csv';
+import dataGWP4 from './flooring/flooring_gwp_60yd_n.csv';
+import dataAllImpacts4 from './flooring/flooring_allImpact_60yd_n.csv';
+import dataLCS4 from './flooring/flooring_lcs_60yd_n.csv';
+import dataMaterial4 from './flooring/flooring_material_60yd_n.csv';
 
 import dataGWP5 from './flooring/flooring_gwp_60yd_y.csv';
 import dataAllImpacts5 from './flooring/flooring_allImpact_60yd_y.csv';

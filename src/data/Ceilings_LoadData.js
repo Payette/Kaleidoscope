@@ -15,15 +15,15 @@ import dataAllImpacts2 from './ceilings/ceilings_allImpact_60y_n.csv';
 import dataLCS2 from './ceilings/ceilings_lcs_60y_n.csv';
 import dataMaterial2 from './ceilings/ceilings_material_60y_n.csv';
 
-import dataGWP4 from './ceilings/ceilings_gwp_60y_y.csv';
-import dataAllImpacts4 from './ceilings/ceilings_allImpact_60y_y.csv';
-import dataLCS4 from './ceilings/ceilings_lcs_60y_y.csv';
-import dataMaterial4 from './ceilings/ceilings_material_60y_y.csv';
+import dataGWP3 from './ceilings/ceilings_gwp_60y_y.csv';
+import dataAllImpacts3 from './ceilings/ceilings_allImpact_60y_y.csv';
+import dataLCS3 from './ceilings/ceilings_lcs_60y_y.csv';
+import dataMaterial3 from './ceilings/ceilings_material_60y_y.csv';
 
-import dataGWP3 from './ceilings/ceilings_gwp_60yd_n.csv';
-import dataAllImpacts3 from './ceilings/ceilings_allImpact_60yd_n.csv';
-import dataLCS3 from './ceilings/ceilings_lcs_60yd_n.csv';
-import dataMaterial3 from './ceilings/ceilings_material_60yd_n.csv';
+import dataGWP4 from './ceilings/ceilings_gwp_60yd_n.csv';
+import dataAllImpacts4 from './ceilings/ceilings_allImpact_60yd_n.csv';
+import dataLCS4 from './ceilings/ceilings_lcs_60yd_n.csv';
+import dataMaterial4 from './ceilings/ceilings_material_60yd_n.csv';
 
 import dataGWP5 from './ceilings/ceilings_gwp_60yd_y.csv';
 import dataAllImpacts5 from './ceilings/ceilings_allImpact_60yd_y.csv';
