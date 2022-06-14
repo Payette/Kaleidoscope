@@ -19,7 +19,7 @@ import ChartContainer from './ChartContainer';
 import './css/Main.scss';
 import styles from './css/App.module.scss';
 
-let footer = <div style={{ paddingTop: 0, top: 0, marginTop: 0 }}>
+let footer = <div style={{ paddingTop: 0, top: 0, marginTop: 0, marginRight: '3%'}}>
   <p className={styles.serif} style={{ display: "inline-block" }}>
     Last updated June 2022<br></br>
     Credit: <i>Data analysis run using Tally version 2022.04.08.01 by Building Transparency and KT Innovations, thinkstep, and Autodesk using industry representative LCI data unless otherwise noted</i><br></br>
@@ -626,7 +626,7 @@ class App extends Component {
 
     if (sidebar1 && parentD && window.innerWidth > 1200) {
       sidebarHeight = 300 + sidebar1.offsetHeight;
-      calcWidth = (((window.innerWidth - 150) - (window.innerWidth / 25)) / 2) / window.innerWidth * 100
+      calcWidth = (((window.innerWidth - 100) - (window.innerWidth / 25)) / 2) / window.innerWidth * 100
     } else if (window.innerWidth <= 1200 && window.innerWidth > 800) {
       calcWidth = 48
     } else {
@@ -780,7 +780,7 @@ class App extends Component {
               {/* Envelope Calculator */}
               <div style={{ display: "inline-block", width: "100%" }}>
                 <h1>ENVELOPE CALCULATOR</h1>
-                <div className={styles.calc} style={{ minHeight: '60px', display: "block" }}>
+                <div className={styles.calc} style={{ minHeight: '60px', width: '95%', display: "block" }}>
 
                   <div style={{ margin: "auto" }}>
                     <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
