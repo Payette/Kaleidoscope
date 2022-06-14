@@ -2,7 +2,7 @@
 Embodied Carbon Design Tool
 
 ## New Developer Setup
- * Install nodejs // only need to do this once
+ * Install nodejs // only need to do this once (install the program; this is not a command)
  * Clone this repository // only need to do this once
  * npm install // only need to do this once
  * npm start
