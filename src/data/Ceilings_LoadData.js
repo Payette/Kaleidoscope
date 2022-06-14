@@ -307,10 +307,10 @@ const metaData = {
 
   // Name with Type prefix used in Material List
   materialType: {
-    mBaffle: "M - Baffle (Metal)",
+    mBaffle: "M - Metal Baffle",
     mPan: "M -  Metal Pan",
     mPerforatedPan: "M - Perf Metal Pan",
-    hcGypsum: "HC - Gyp",
+    hcGypsum: "HC - Gypsum",
     hcMoistureResistantGyp: "HC - Moisture Resistant Gyp",
     cFiberglassTrim: "C - Fiberglass (w/ Trim)",
     cFiberglass: "C - Fiberglass",
@@ -328,11 +328,11 @@ const metaData = {
     wMapleOpen: "W - Open Grille (Maple)"
   },
 
-  // Shortish name used in chart row labels (does not have type)
+  // Shortish name used in chart row labels (does not have type). !This is being called from CSV files - 2022 EDIT!
   materialName: {
-    mBaffle: "Metal Baffle",
-    mPan: "Metal Pan",
-    mPerforatedPan: "Perforated Metal Pan",
+    mBaffle: "Baffle",
+    mPan: "Pan",
+    mPerforatedPan: "Perforated Pan",
     hcGypsum: "Gypsum",
     hcMoistureResistantGyp: "Moisture Resistant Gypsum",
     cFiberglassTrim: "Fiberglass (w/ Trim)",
@@ -354,9 +354,9 @@ const metaData = {
   // Name with Longer Type prefix used in Chart Hover Popup
   // and used in Modal Material Popup
   materialName2: {
-    mBaffle: "Metal - Baffle",
-    mPan: "Metal - Pan",
-    mPerforatedPan: "Metal - Perforated Pan",
+    mBaffle: "Baffle",
+    mPan: "Pan",
+    mPerforatedPan: "Perforated Pan",
     hcGypsum: "Hard Ceiling - Gypsum",
     hcMoistureResistantGyp: "Hard Ceiling - Moisture Resistant Gypsum",
     cFiberglassTrim: "Cloud - Fiberglass (w/ Trim)",

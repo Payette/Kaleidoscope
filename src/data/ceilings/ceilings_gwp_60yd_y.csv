@@ -1,13 +1,13 @@
 material,type,value,name,img,label
-mBaffle,Metal,5.70,Metal Baffle,./img/Ceilings/Axons/Axon_MetalBaffle.png,M - Baffle (Metal)
-mPan,Metal,3.61,Metal Pan,./img/Ceilings/Axons/Axon_MetalPan.png,M -  Metal Pan
-mPerforatedPan,Metal,3.03,Perforated Metal Pan,./img/Ceilings/Axons/Axon_MetalPanPerforated.png,M - Perf Metal Pan
-hcGypsum,Hard Ceiling,2.00,Gypsum,./img/Ceilings/Axons/Axon_Gypsum.png,HC - Gyp
+mBaffle,Metal,5.7,Baffle,./img/Ceilings/Axons/Axon_MetalBaffle.png,M - Baffle (Metal)
+mPan,Metal,3.61,Pan,./img/Ceilings/Axons/Axon_MetalPan.png,M -  Metal Pan
+mPerforatedPan,Metal,3.03,Perforated Pan,./img/Ceilings/Axons/Axon_MetalPanPerforated.png,M - Perf Metal Pan
+hcGypsum,Hard Ceiling,2,Gypsum,./img/Ceilings/Axons/Axon_Gypsum.png,HC - Gyp
 hcMoistureResistantGyp,Hard Ceiling,1.91,Moisture Resistant Gypsum,./img/Ceilings/Axons/Axon_Gypsum.png,HC - Moisture Resistant Gyp
 cFiberglassTrim,Cloud,2.43,Fiberglass (w/ Trim),./img/Ceilings/Axons/Axon_CloudwTrim.png,C - Fiberglass (w/ Trim)
 cFiberglass,Cloud,2.45,Fiberglass,./img/Ceilings/Axons/Axon_Cloud.png,C - Fiberglass
 ltFiberglass,Lay-In Tile,1.94,Fiberglass,./img/Ceilings/Axons/Axon_Lay-InTile.png,LT - Fiberglass
-ltMineralBoard,Lay-In Tile,1.70,Mineral Board,./img/Ceilings/Axons/Axon_Lay-InTile.png,LT - Mineral Board
+ltMineralBoard,Lay-In Tile,1.7,Mineral Board,./img/Ceilings/Axons/Axon_Lay-InTile.png,LT - Mineral Board
 ocAcousticalSpray,Open Ceiling,0.13,Acoustical Spray,./img/Ceilings/Axons/Axon_OpenCeiling.png,OC - Acoustical Spray
 ocPaint,Open Ceiling,0.41,Paint,./img/Ceilings/Axons/Axon_OpenCeiling.png,OC - Paint
 wVeneerDense,Wood,4.02,Dense Grille (Veneer),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Veneer)
