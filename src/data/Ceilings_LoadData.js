@@ -328,7 +328,7 @@ const metaData = {
     wMapleOpen: "W - Open Grille (Maple)"
   },
 
-  // Shortish name used in chart row labels (does not have type)
+  // Shortish name used in chart row labels (does not have type). !This is being called from CSV files - 2022 EDIT!
   materialName: {
     mBaffle: "Baffle",
     mPan: "Pan",
