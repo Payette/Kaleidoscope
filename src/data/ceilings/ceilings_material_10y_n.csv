@@ -5,7 +5,7 @@ mPerforatedPan,Metal,Perforated Metal Pan,./img/Ceilings/Axons/Axon_MetalPanPerf
 hcGypsum,Hard Ceiling,Gypsum,./img/Ceilings/Axons/Axon_Gypsum.png,HC - Gyp,0.004074962,0,1.019822428,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.298907441,0,0.044177371,0,0,0,0
 hcMoistureResistantGyp,Hard Ceiling,Moisture Resistant Gypsum,./img/Ceilings/Axons/Axon_Gypsum.png,HC - Moisture Resistant Gyp,0.004074962,0,1.019822428,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.244558354,0,0,0.044177371,0,0,0,0
 cFiberglassTrim,Cloud,Fiberglass (w/ Trim),./img/Ceilings/Axons/Axon_CloudwTrim.png,C - Fiberglass (w/ Trim),0.016299848,0.143595034,0,0,0,0.874842181,0,0,0.834309997,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-cFiberglass,Cloud,Fiberglass,./img/Ceilings/Axons/Axon_Cloud.png,C - Fiberglass,0.016299848,0.143595034,0,0,0,0.874842181,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+cFiberglass,Cloud,Fiberglass,./img/Ceilings/Axons/Axon_Cloud.png,C - Fiberglass,0.016299848,0.143595034,0,0,0,1.225022065,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 ltFiberglass,Lay-In Tile,Fiberglass,./img/Ceilings/Axons/Axon_Lay-InTile.png,LT - Fiberglass,0.004074962,0.25528006,0,0,0,0.874842181,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 ltMineralBoard,Lay-In Tile,Mineral Board,./img/Ceilings/Axons/Axon_Lay-InTile.png,LT - Mineral Board,0.004074962,0.25528006,0,0,0,0,0.670427327,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 ocAcousticalSpray,Open Ceiling,Acoustical Spray,./img/Ceilings/Axons/Axon_OpenCeiling.png,OC - Acoustical Spray,0,0,0,0,0,0,0,0,0,0,0,0.120894608,0,0,0,0,0,0,0,0,0,0,0,0,0
