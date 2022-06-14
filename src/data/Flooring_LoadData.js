@@ -247,13 +247,14 @@ const metaData = {
     i6: "#4154a5"
   },
 
+  //Material Breakdown Colors
   matColors: {
-    mat1: "#666666",
-    mat2: "#999999",
+    mat1: "#CCCCCC",
+    mat2: "#CCCCCC",
     mat3: "#cccccc",
     mat4: "#cccccc",
-    mat5: "#b3b3b3",
-    mat6: "#b3b3b3",
+    mat5: "#CCCCCC",
+    mat6: "#CCCCCC",
     mat7: "#4169e1",
     mat8: "#4169e1",
     mat9: "#4169e1",
@@ -273,8 +274,8 @@ const metaData = {
     mat23: "#85e2bd",
     mat24: "#85e2bd",
     mat25: "#85e2bd",
-    mat26: "#c7e9b7",
-    mat27: "#c7e9b7",
+    mat26: "#85e2bd",
+    mat27: "#85e2bd",
   },
 
   materialOrdering: {
