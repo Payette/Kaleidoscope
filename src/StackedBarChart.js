@@ -281,6 +281,22 @@ export default withTooltip(({
                     myAbb = "(W)";
                   }
                 }
+                if (type === SYSTEM_TYPE_CEILINGS) {
+                  if (sm.key[0] === "M") {
+                    myAbb = "(M)";
+                  } else if (sm.key[0] === "H") {
+                    myAbb = "(HC)";
+                  } else if (sm.key[0] === "C") {
+                    myAbb = "(C)";
+                  } else if (sm.key[0] === "L") {
+                    myAbb = "(LT)";
+                  } else if (sm.key[0] === "O") {
+                    myAbb = "(OC)";
+                  } else if (sm.key[0] === "W") {
+                    myAbb = "(W)";
+                  }
+                }
+      
 
                 //  let ShallowCopy = _.cloneDeep(sm);
                 //  let odashCloneDeep = 
