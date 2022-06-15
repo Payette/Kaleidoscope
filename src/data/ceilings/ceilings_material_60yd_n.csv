@@ -1,7 +1,7 @@
 material,type,name,img,label,mat1,mat2,mat3,mat4,mat5,mat6,mat7,mat8,mat9,mat10,mat11,mat12,mat13,mat14,mat15,mat16,mat17,mat18,mat19,mat20,mat21,mat22,mat23,mat24,mat25
 mBaffle,Metal,Baffle,./img/Ceilings/Axons/Axon_MetalBaffle.png,M - Baffle (Metal),0.001709799,0,0,0,1.08624246,0,0,0,0,3.858217835,0,0,0,0,0,0,0,0,0,0,0,0.809506878,0,0,0
-mPan,Metal,Pan,./img/Ceilings/Axons/Axon_MetalPan.png,M -  Metal Pan,0.004113802,0.339269865,0,0.000936581,0,0,0,0,0,0,2.403377831,0,0,0,0,0,0,0,0,0,0,0,0,0.778615176,0
-mPerforatedPan,Metal,Perforated Pan,./img/Ceilings/Axons/Axon_MetalPanPerforated.png,M - Perf Metal Pan,0.004113802,0.339269865,0,0.000936581,0,0,0,1.929332486,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.778615176,0
+mPan,Metal,Panel,./img/Ceilings/Axons/Axon_MetalPan.png,M -  Metal Pan,0.004113802,0.339269865,0,0.000936581,0,0,0,0,0,0,2.403377831,0,0,0,0,0,0,0,0,0,0,0,0,0.778615176,0
+mPerforatedPan,Metal,Perforated Panel,./img/Ceilings/Axons/Axon_MetalPanPerforated.png,M - Perf Metal Pan,0.004113802,0.339269865,0,0.000936581,0,0,0,1.929332486,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.778615176,0
 hcGypsum,Hard Ceiling,Gypsum,./img/Ceilings/Axons/Axon_Gypsum.png,HC - Gyp,0.004113802,0,0.902393046,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.70353111,0,0.404911876,0,0,0,0
 hcMoistureResistantGyp,Hard Ceiling,Moisture Resistant Gypsum,./img/Ceilings/Axons/Axon_Gypsum.png,HC - Moisture Resistant Gyp,0.004113802,0,0.902393046,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.589018542,0,0,0.404911876,0,0,0,0
 cFiberglassTrim,Cloud,Fiberglass (w/ Trim),./img/Ceilings/Axons/Axon_CloudwTrim.png,C - Fiberglass (w/ Trim),0.016455208,0.190839299,0,0,0,1.772084548,0,0,0.643088833,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

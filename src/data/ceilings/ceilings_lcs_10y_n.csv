@@ -1,7 +1,7 @@
 material,type,impact1,impact2,name,img,label
 mBaffle,Metal,4.493957208,0.03325925,Baffle,./img/Ceilings/Axons/Axon_MetalBaffle.png,M - Baffle (Metal)
-mPan,Metal,2.758699253,0.013753496,Pan,./img/Ceilings/Axons/Axon_MetalPan.png,M -  Metal Pan
-mPerforatedPan,Metal,2.405351831,0.012214983,Perforated Pan,./img/Ceilings/Axons/Axon_MetalPanPerforated.png,M - Perf Metal Pan
+mPan,Metal,2.758699253,0.013753496,Panel,./img/Ceilings/Axons/Axon_MetalPan.png,M -  Metal Pan
+mPerforatedPan,Metal,2.405351831,0.012214983,Perforated Panel,./img/Ceilings/Axons/Axon_MetalPanPerforated.png,M - Perf Metal Pan
 hcGypsum,Hard Ceiling,1.345644581,0.021337621,Gypsum,./img/Ceilings/Axons/Axon_Gypsum.png,HC - Gyp
 hcMoistureResistantGyp,Hard Ceiling,1.291901566,0.020731548,Moisture Resistant Gypsum,./img/Ceilings/Axons/Axon_Gypsum.png,HC - Moisture Resistant Gyp
 cFiberglassTrim,Cloud,1.861217686,0.007829374,Fiberglass (w/ Trim),./img/Ceilings/Axons/Axon_CloudwTrim.png,C - Fiberglass (w/ Trim)
