@@ -1,6 +1,6 @@
 material_variable_name,material_name,material_color,hatched,legend_category
 mat1,"Steel, cable",#000099,n,Support System
-mat2,Suspended grid,#4169E1,n,Support System
+mat2,Suspended grid,#5CBDFF,n,Support System
 mat3,Cold formed structural steel,#4169E1,n,Support System
 mat4,"Fasteners, galvanized steel",#00AAFF,n,Support System
 mat5,Galvanized steel,#5CBDFF,n,Support System
