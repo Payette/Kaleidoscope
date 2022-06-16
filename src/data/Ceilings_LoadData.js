@@ -105,25 +105,25 @@ const metaData = {
 
   // hover on bar chart
   materialTexts: {
-    mBaffle: "Loosely-spaced sheet-formed aluminum baffle, structural steel support system, steel cable",
-    mPan: "Power-coated aluminum ceiling panel, strucutral steel suspension grid, steel cable, steel fasteners",
-    mPerforatedPan: "Power-coated perforated aluminum ceiling panel, strucutral steel suspension grid, steel cable, steel fasteners",
-    hcGypsum: "Gypsum wall board, cold-formed structural steel framing and furring channel, steel cable",
-    hcMoistureResistantGyp: "Moisture resistant gypsum wall board, cold-formed structural steel framing and furring channel, steel cable",
-    cFiberglassTrim: "Fiberglass cloud acoustical ceiling tile with trim, suspended grid, supported by steel cable",
-    cFiberglass: "Fiberglass cloud acoustical ceiling tile, suspended grid, supported by steel cable",
-    ltFiberglass: "Fiberglass acoustical ceiling tile, suspended grid, supported by steel cable",
-    ltMineralBoard: "Mineral fiber acoustical ceiling tile, suspended grid, supported by steel cable",
-    ocAcousticalSpray: '1" thick Spray-applied cellulose-based thermal and acoustical insulation (EPD Specific "K-13")',
-    ocPaint: "Acrylic latex paint coating",
-    wVeneerDense: "Tightly-spaced wood veneer grille on MDF substrate; hardwood dowel backer; steel suspension system and cables",
-    wVeneerOpen: "Loosely-spaced wood veneer grille on MDF substrate; hardwood dowel backer; steel suspension system and cables",
-    wPoplarDense: "Tightly-spaced poplar wood grille; hardwood dowel backer; steel suspension system and cables",
-    wPoplarOpen: "Loosely-spaced poplar wood grille; hardwood dowel backer; steel suspension system and cables",
-    wWalnutDense: "Tightly-spaced walnut wood grille; hardwood dowel backer; steel suspension system and cables",
-    wWalnutOpen: "Loosely-spaced walnut wood grille; hardwood dowel backer; steel suspension system and cables",
-    wMapleDense: "Tightly-spaced maple wood grille; hardwood dowel backer; steel suspension system and cables",
-    wMapleOpen: "Loosely-spaced maple wood grille; hardwood dowel backer; steel suspension system and cables",
+    mBaffle: "Linear sheet-formed aluminum baffle, steel support system, steel cable",
+    mPan: "Powder-coated aluminum panel, steel suspension grid, steel cable, steel fasteners",
+    mPerforatedPan: "Powder-coated 13.6% open perforated aluminum panel, steel suspension grid, steel cable, steel fasteners",
+    hcGypsum: '5/8" gypsum wall board, cold-formed steel framing and furring channel, steel cable',
+    hcMoistureResistantGyp: '5/8" moisture resistant gypsum wall board, cold-formed steel framing and furring channel, steel cable',
+    cFiberglassTrim: 'Free-hanging cloud, 5/8" fiberglass acoustical ceiling panel with aluminum trim, steel suspension grid, steel cable',
+    cFiberglass: 'Free-hanging cloud, 7/8" fiberglass acoustical ceiling panel, steel suspension grid, steel cable',
+    ltFiberglass: '5/8" fiberglass acoustical ceiling panel, steel suspension grid, steel cable',
+    ltMineralBoard: '5/8" mineral fiber acoustical ceiling panel, steel suspension grid, steel cable',
+    ocAcousticalSpray: '1" thick spray-applied cellulose-based acoustical insulation on building structure, (EPD specific)',
+    ocPaint: "Interior acrylic latex paint coating on building structure",
+    wVeneerDense: 'Tightly-spaced 2 1/4" D linear wood veneer on MDF substrate grille, hardwood backer, steel suspension system, steel cable',
+    wVeneerOpen: '3 1/4" D linear wood veneer on MDF substrate grille, hardwood backer and dowel, steel suspension system, steel cable',
+    wPoplarDense: 'Tightly-spaced 2 1/4" D linear hardwood poplar wood grille, hardwood backer, steel suspension system, steel cable',
+    wPoplarOpen: '3 1/4" D linear hardwood poplar wood grille, hardwood backer and dowel, steel suspension system, steel cable',
+    wWalnutDense: 'Tightly-spaced 2 1/4" D linear hardwood walnut wood grille, hardwood backer, steel suspension system, steel cable',
+    wWalnutOpen: '3 1/4" D linear hardwood walnut wood grille, hardwood backer and dowel, steel suspension system, steel cable',
+    wMapleDense: 'Tightly-spaced 2 1/4" D linear hardwood maple wood grille, hardwood backer, steel suspension system, steel cable',
+    wMapleOpen: '3 1/4" D linear hardwood maple wood grille, hardwood backer and dowel, steel suspension system, steel cable',
   },
 
   // modal popup text
@@ -175,7 +175,7 @@ const metaData = {
     wVeneerOpen: ['Building structure is not included in LCA calculations',
     'Service life 50 year Tally default and some materials adjusted to match',
     'Adhesive is polyurethane; specify bio-based glue for embodied carbon reduction',
-    '"Open" wood grilles are 1 1/4" wide x 3 1/4" deep and spaced 2 3/4" apart',
+    'Wood grilles are 1 1/4" wide x 3 1/4" deep and spaced 2 3/4" apart',
     'End of life based on assumption that 63.5% of wood sent to landfill. (Tally data source based on 2014 Municipal Solid Waste and Construction Demolition Wood Waste Generation and Recovery in the United States report by Dovetail Partners, Inc.)'],
     wPoplarDense: ['Building structure is not included in LCA calculations',
     'Service life 50 year Tally default and some materials adjusted to match',
@@ -183,7 +183,7 @@ const metaData = {
     'End of life based on assumption that 63.5% of wood sent to landfill. (Tally data source based on 2014 Municipal Solid Waste and Construction Demolition Wood Waste Generation and Recovery in the United States report by Dovetail Partners, Inc.)'],
     wPoplarOpen: ['Building structure is not included in LCA calculations',
     'Service life 50 year Tally default and some materials adjusted to match',
-    '"Open" wood grilles are 1 1/4" wide x 3 1/4" deep and spaced 2 3/4" apart',
+    'Wood grilles are 1 1/4" wide x 3 1/4" deep and spaced 2 3/4" apart',
     'End of life based on assumption that 63.5% of wood sent to landfill. (Tally data source based on 2014 Municipal Solid Waste and Construction Demolition Wood Waste Generation and Recovery in the United States report by Dovetail Partners, Inc.)'],
     wWalnutDense: ['Building structure is not included in LCA calculations',
     'Service life 50 year Tally default and some materials adjusted to match',
@@ -191,7 +191,7 @@ const metaData = {
     'End of life based on assumption that 63.5% of wood sent to landfill. (Tally data source based on 2014 Municipal Solid Waste and Construction Demolition Wood Waste Generation and Recovery in the United States report by Dovetail Partners, Inc.)'],
     wWalnutOpen: ['Building structure is not included in LCA calculations',
     'Service life 50 year Tally default and some materials adjusted to match',
-    '"Open" wood grilles are 1 1/4" wide x 3 1/4" deep and spaced 2 3/4" apart',
+    'Wood grilles are 1 1/4" wide x 3 1/4" deep and spaced 2 3/4" apart',
     'End of life based on assumption that 63.5% of wood sent to landfill. (Tally data source based on 2014 Municipal Solid Waste and Construction Demolition Wood Waste Generation and Recovery in the United States report by Dovetail Partners, Inc.)'],
     wMapleDense: ['Building structure is not included in LCA calculations',
     'Service life 50 year Tally default and some materials adjusted to match',
@@ -199,7 +199,7 @@ const metaData = {
     'End of life based on assumption that 63.5% of wood sent to landfill. (Tally data source based on 2014 Municipal Solid Waste and Construction Demolition Wood Waste Generation and Recovery in the United States report by Dovetail Partners, Inc.)'],
     wMapleOpen: ['Building structure is not included in LCA calculations',
     'Service life 50 year Tally default and some materials adjusted to match',
-    '"Open" wood grilles are 1 1/4" wide x 3 1/4" deep and spaced 2 3/4" apart',
+    'Wood grilles are 1 1/4" wide x 3 1/4" deep and spaced 2 3/4" apart',
     'End of life based on assumption that 63.5% of wood sent to landfill. (Tally data source based on 2014 Municipal Solid Waste and Construction Demolition Wood Waste Generation and Recovery in the United States report by Dovetail Partners, Inc.)'],
   },
 
@@ -319,13 +319,13 @@ const metaData = {
     ocAcousticalSpray: "OC - Acoustical Spray",
     ocPaint: "OC - Paint",
     wVeneerDense: "W - Dense Grille (Veneer)",
-    wVeneerOpen: "W - Open Grille (Veneer)",
+    wVeneerOpen: "W - Grille (Veneer)",
     wPoplarDense: "W - Dense Grille (Poplar)",
-    wPoplarOpen: "W - Open Grille (Poplar)",
+    wPoplarOpen: "W - Grille (Poplar)",
     wWalnutDense: "W - Dense Grille (Walnut)",
-    wWalnutOpen: "W - Open Grille (Walnut)",
+    wWalnutOpen: "W - Grille (Walnut)",
     wMapleDense: "W - Dense Grille (Maple)",
-    wMapleOpen: "W - Open Grille (Maple)"
+    wMapleOpen: "W - Grille (Maple)"
   },
 
   // Shortish name used in chart row labels (does not have type). !This is being called from CSV files - 2022 EDIT!
@@ -342,13 +342,13 @@ const metaData = {
     ocAcousticalSpray: "Acoustical Spray",
     ocPaint: "Paint",
     wVeneerDense: "Dense Grille (Veneer)",
-    wVeneerOpen: " Open Grille (Veneer)",
+    wVeneerOpen: "Grille (Veneer)",
     wPoplarDense: "Dense Grille (Poplar)",
-    wPoplarOpen: "Open Grille (Poplar)",
+    wPoplarOpen: "Grille (Poplar)",
     wWalnutDense: "Dense Grille (Walnut)",
-    wWalnutOpen: "Open Grille (Walnut)",
+    wWalnutOpen: "Grille (Walnut)",
     wMapleDense: "Dense Grille (Maple)",
-    wMapleOpen: "Open Grille (Maple)"
+    wMapleOpen: "Grille (Maple)"
   },
 
   // Name with Longer Type prefix used in Chart Hover Popup
@@ -366,13 +366,13 @@ const metaData = {
     ocAcousticalSpray: "Open Ceiling - Acoustical Spray",
     ocPaint: "Open Ceiling - Paint",
     wVeneerDense: "Wood - Dense Grille (Veneer)",
-    wVeneerOpen: "Wood - Open Grille (Veneer)",
+    wVeneerOpen: "Wood - Grille (Veneer)",
     wPoplarDense: "Wood - Dense Grille (Poplar)",
-    wPoplarOpen: "Wood - Open Grille (Poplar)",
+    wPoplarOpen: "Wood - Grille (Poplar)",
     wWalnutDense: "Wood - Dense Grille (Walnut)",
-    wWalnutOpen: "Wood - Open Grille (Walnut)",
+    wWalnutOpen: "Wood - Grille (Walnut)",
     wMapleDense: "Wood - Dense Grille (Maple)",
-    wMapleOpen: "Wood - Open Grille (Maple)"
+    wMapleOpen: "Wood - Grille (Maple)"
   }
 };
 
