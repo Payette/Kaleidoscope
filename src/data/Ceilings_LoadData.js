@@ -82,9 +82,9 @@ const metaData = {
   },
 
   materialHealthText: {
-    mBaffle: [""],
-    mPan: [""],
-    mPerforatedPan: [""],
+    mBaffle: ["Meets Payette Material Health Policy"],
+    mPan: ["Meets Payette Material Health Policy"],
+    mPerforatedPan: ["Meets Payette Material Health Policy"],
     hcGypsum: ["Watch for VOC content for interior paint","Type X gypsum board includes flame retardants"],
     hcMoistureResistantGyp: ["Watch for VOC content for interior paint","Typically includes antimicrobials"],
     cFiberglassTrim: ["Antimicrobials included as a preservative are acceptable","Avoid products that add antimicrobials as part of a health claim"],
@@ -129,8 +129,8 @@ const metaData = {
   // modal popup text
   materialNotes: {
     mBaffle: ['Building structure is not included in LCA calculations',
-    'Service life 60 year Tally default and some materials adjusted to match',
-    '"Open" Metal baffles are 1 1/4" wide x 3 1/4" deep and spaced 2 3/4" apart'],
+    'Service life set to 50 year and some materials adjusted to match',
+    'Metal baffles are 1 1/4" wide x 3 1/4" deep and spaced 2 3/4" apart'],
     mPan: ['Building structure is not included in LCA calculations',
     'Service life 50 year Tally default and some materials adjusted to match'],
     mPerforatedPan: ['Building structure is not included in LCA calculations',

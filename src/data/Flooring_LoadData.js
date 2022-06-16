@@ -84,7 +84,7 @@ const metaData = {
     rRubber: ["Check that no antimicrobial coatings are included"],
     rVinyl: ["Not recommended per Payette Material Policy"],
     rLinoTile: ["Check that no antimicrobial coatings are included"],
-    mConcrete: [""],
+    mConcrete: ["Meets Payette Material Health Policy"],
     mTerrazzo: ["Watch for VOC Content"],
     mEpoxy: ["Watch for VOC Content", "Watch for Vinyl Content  'color chips', choose alternate if possible"],
     cHigh: ["Specify Vinyl Free backing", "Watch for stain treatments, flame retardants and anti-microbials", "Consider solution-dyed; solution-dyed with waterproof backing is stain resistant without added treatments"],
