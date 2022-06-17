@@ -219,8 +219,19 @@ function withSplashScreen(WrappedComponent) {
                           ${tier.price}
                         </Typography> */}
                         <Typography variant="h6" color="textSecondary">
-                          <img src={tier.img} style={{ height: "250px", maxWidth: "80%", position: 'relative', margin: "0px 0px 0px 30px" }}></img>
-                        </Typography>
+                        
+                          {/* For future, intent: images become links: <a href="#">*/}
+                            <img src={tier.img} style={{ height: "250px", maxWidth: "80%", position: 'relative', margin: "0px 0px 0px 30px" }} 
+                            
+                            /*onClick={() => {
+                           this.setState({ loading: false, currentItem: tier.item, selectedMaterials: this.state.selectedMaterials });
+                            let urlVar = new URLSearchParams()
+                            urlVar.set("type", tier.item)
+                            window.history.replaceState({}, '', "?" + urlVar.toString())
+                        }}</a>*/
+
+                        ></img>
+                      </Typography> 
                       </div>
                       {/* <ul>
                         {tier.description.map((line) => (
@@ -247,7 +258,7 @@ function withSplashScreen(WrappedComponent) {
                           window.history.replaceState({}, '', "?" + urlVar.toString())
                         }}>
                         {tier.buttonText}
-                      </Button>
+                      </Button>                    
                     </CardActions>
                   </Card>
                 </Grid>
