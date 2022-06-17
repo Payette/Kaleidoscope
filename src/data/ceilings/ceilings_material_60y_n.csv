@@ -11,10 +11,10 @@ ltMineralBoard,Lay-In Tile,Mineral Board,./img/Ceilings/Axons/Axon_Lay-InTile.pn
 ocAcousticalSpray,Open Ceiling,Acoustical Spray,./img/Ceilings/Axons/Axon_OpenCeiling.png,OC - Acoustical Spray,0,0,0,0,0,0,0,0,0,0,0,0.120894608,0,0,0,0,0,0,0,0,0,0,0,0,0
 ocPaint,Open Ceiling,Paint,./img/Ceilings/Axons/Axon_OpenCeiling.png,OC - Paint,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.404911876,0,0,0,0
 wVeneerDense,Wood,Dense Grille (Veneer),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Veneer),0.010134244,0,0,0,1.505131939,0,0,0,0,0,0,0,0.12023112,4.541539152,2.006199668,0.04938072,0,0,0,0,0,0,0.035936018,0,0.008136817
-wVeneerOpen,Wood,Open Grille (Veneer),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Open Grille (Veneer),0.010134244,0,0,0,1.505131939,0,0,0,0,0,0,0,0.141295118,4.941322528,1.504649751,0.03703554,0,0,0,0,0,0,0.026952014,0,0.009845764
+wVeneerOpen,Wood,Grille (Veneer),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Grille (Veneer),0.010134244,0,0,0,1.505131939,0,0,0,0,0,0,0,0.141295118,4.941322528,1.504649751,0.03703554,0,0,0,0,0,0,0.026952014,0,0.009845764
 wPoplarDense,Wood,Dense Grille (Poplar),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Poplar),0.012191571,0,0,0,1.505131939,0,0,0,0,0,0,0,2.487859333,0,0,0,0,0,0,0,0,0,0,0,0.018753662
-wPoplarOpen,Wood,Open Grille (Poplar),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Open Grille (Poplar),0.012191571,0,0,0,1.505131939,0,0,0,0,0,0,0,2.706225682,0,0,0,0,0,0,0,0,0,0,0,0.017808398
+wPoplarOpen,Wood,Grille (Poplar),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Grille (Poplar),0.012191571,0,0,0,1.505131939,0,0,0,0,0,0,0,2.706225682,0,0,0,0,0,0,0,0,0,0,0,0.017808398
 wWalnutDense,Wood,Dense Grille (Walnut),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Walnut),0.012191571,0,0,0,1.505131939,0,0,0,0,0,0,0,0.12023112,0,0,0,0,0,0,3.518502305,0,0,0.024104904,0,0.008136817
-wWalnutOpen,Wood,Open Grille (Walnut),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Open Grille (Walnut),0.012191571,0,0,0,1.505131939,0,0,0,0,0,0,0,0.141295118,0,0,0,0,0,0,3.811710831,0,0,0.018078678,0,0.009845764
+wWalnutOpen,Wood,Grille (Walnut),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Grille (Walnut),0.012191571,0,0,0,1.505131939,0,0,0,0,0,0,0,0.141295118,0,0,0,0,0,0,3.811710831,0,0,0.018078678,0,0.009845764
 wMapleDense,Wood,Dense Grille (Maple),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Maple),0.012191571,0,0,0,1.505131939,0,0,0,0,0,0,0,0.12023112,0,0,0,3.599012863,0,0,0,0,0,0.072314713,0,0.008136817
-wMapleOpen,Wood,Open Grille (Maple),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Open Grille (Maple),0.012191571,0,0,0,1.505131939,0,0,0,0,0,0,0,0.141295118,0,0,0,3.898930601,0,0,0,0,0,0.018078678,0,0.009845764
+wMapleOpen,Wood,Grille (Maple),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Grille (Maple),0.012191571,0,0,0,1.505131939,0,0,0,0,0,0,0,0.141295118,0,0,0,3.898930601,0,0,0,0,0,0.018078678,0,0.009845764

@@ -11,10 +11,10 @@ ltMineralBoard,Lay-In Tile,Mineral Board,./img/Ceilings/Axons/Axon_Lay-InTile.pn
 ocAcousticalSpray,Open Ceiling,Acoustical Spray,./img/Ceilings/Axons/Axon_OpenCeiling.png,OC - Acoustical Spray,1,0,0,0,0,1
 ocPaint,Open Ceiling,Paint,./img/Ceilings/Axons/Axon_OpenCeiling.png,OC - Paint,2,1,0,0,0,0
 wVeneerDense,Wood,Dense Grille (Veneer),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Veneer),41,17,12,4,5,5
-wVeneerOpen,Wood,Open Grille (Veneer),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Open Grille (Veneer),40,16,12,4,5,4
+wVeneerOpen,Wood,Grille (Veneer),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Grille (Veneer),40,16,12,4,5,4
 wPoplarDense,Wood,Dense Grille (Poplar),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Poplar),20,6,3,2,2,1
-wPoplarOpen,Wood,Open Grille (Poplar),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Open Grille (Poplar),21,6,3,2,2,1
+wPoplarOpen,Wood,Grille (Poplar),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Grille (Poplar),21,6,3,2,2,1
 wWalnutDense,Wood,Dense Grille (Walnut),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Walnut),26,7,4,3,2,1
-wWalnutOpen,Wood,Open Grille (Walnut),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Open Grille (Walnut),27,8,4,3,2,1
+wWalnutOpen,Wood,Grille (Walnut),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Grille (Walnut),27,8,4,3,2,1
 wMapleDense,Wood,Dense Grille (Maple),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Maple),26,7,3,3,2,1
-wMapleOpen,Wood,Open Grille (Maple),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Open Grille (Maple),28,8,4,3,2,1
+wMapleOpen,Wood,Grille (Maple),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Grille (Maple),28,8,4,3,2,1
