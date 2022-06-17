@@ -207,11 +207,10 @@ export default class MaterialList extends PureComponent {
     } else if (this.props.currentSel === "MH") {
       legend = this.legendMB;
       legendText = <div className={styles.serif}>
-      <p> <span style={{ background: "#00a558" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Meets 
-      <a href="https://www.payette.com/wp-content/uploads/2019/06/policy_and_letter.pdf" target="_blank"> Payette Material Policy </a></p>
-      <p> <span style={{ background: "#8cc672" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Meets Payette Material Policy with Requests </p> 
-      <p> <span style={{ background: "#FEBE10" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Meets some of Payette Material Policy </p>
-      <p> <span style={{ background: "#D51C29" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Does not meet Payette Material Policy </p></div>
+      <p> <span style={{ background: "#00a558" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Meets Payette Material Health Policy </p>
+      <p> <span style={{ background: "#8cc672" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Meets Payette Material Health Policy with Requests </p> 
+      <p> <span style={{ background: "#FEBE10" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Meets some of Payette Material Health Policy </p>
+      <p> <span style={{ background: "#D51C29" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Does not meet Payette Material Health Policy </p></div>
     }
 
     let sectionImg = this.props.metaData.sectionIcons[this.state.materialPopup.name];
