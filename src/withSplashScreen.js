@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
 const tiers = [
   {
     title: 'ENVELOPES',
-    subheader: 'Exterior Systems',
+    subheader: 'Exterior Assemblies',
     price: '0',
     description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
     img: "./img/MV_Axon.png",
@@ -79,7 +79,7 @@ const tiers = [
   },
   {
     title: 'FLOORING',
-    subheader: 'Flooring Systems',
+    subheader: 'Flooring Assemblies',
     price: '15',
     description: [
       '20 users included',
@@ -94,7 +94,7 @@ const tiers = [
   },
   {
     title: 'CEILINGS',
-    subheader: 'Ceiling Systems',
+    subheader: 'Ceiling Assemblies',
     img: "./img/Ceilings/Axons/ceilingslandingpageaxon.png",
     buttonText: 'View Ceilings',
     buttonVariant: 'contained',
@@ -102,7 +102,7 @@ const tiers = [
   },
   {
     title: 'OTHER',
-    subheader: 'Future Systems',
+    subheader: 'Future Assemblies',
     price: '30',
     description: [
       '50 users included',
