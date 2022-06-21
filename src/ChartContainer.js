@@ -19,17 +19,6 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         currentChart={chartType}
       />}
 
-      {/* GLOBAL WARMING POTENTIAL */}
-      {chartType === "GWP" && data.gwpData.length > 0 && lifespan === "tenY" && biogenicCarbon === "nBio" && <StackedBarChart type={type}
-        selectedMaterials={selectedData.gwpData}
-        allMaterials={data.gwpData}
-        metaData={metaData}
-        barHeight={40}
-        xAxisLabel="GWP (kgCO&#x2082;eq/sf)"
-        colorBy="material"
-        currentChart={chartType}
-      />}
-
       {/* ALL IMPACTS*/}
       {chartType === "allImpacts" && selectedData.allImpactsData.length > 0 && lifespan === "tenY" && biogenicCarbon === "nBio" && <StackedBarChart type={type}
         selectedMaterials={selectedData.allImpactsData}
