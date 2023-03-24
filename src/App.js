@@ -18,6 +18,7 @@ import {
 } from './CommonUtil';
 import { Helmet } from "react-helmet";
 import ChartContainer from './ChartContainer';
+import ChartContainerP from './ChartContainerP';
 import './css/Main.scss';
 import styles from './css/App.module.scss';
 
@@ -1522,7 +1523,7 @@ class App extends Component {
             }
             <div className={styles.chartContainer}>
               <h2>{chartTitle}</h2>
-              {this.state.partitions_dataEnvelopesReady && <ChartContainer
+              {this.state.partitions_dataEnvelopesReady && <ChartContainerP
                 type={SYSTEM_TYPE_PARTITIONS}
                 chartTitle
                 chartType={this.state.chartType}
