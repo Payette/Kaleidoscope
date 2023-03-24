@@ -1,0 +1,50 @@
+@use 'components' as *;
+@use 'constants' as *;
+
+.calculator {
+  font-family: raleway,sans-serif;
+  input{
+    font-family: raleway,sans-serif;
+    font-size:13px;
+    width:70px;
+  }
+  button{
+    font-family: raleway,sans-serif;
+    font-size:13px
+  }
+  label{
+    font-family: raleway,sans-serif;
+    font-size:13px
+  }
+  table{
+    font-family: raleway,sans-serif;
+    font-size:13px;
+    border: solid 1px #C9CDF2;
+    border-radius: 2px;
+    padding: 0.5rem 0rem 0.5rem 1rem;
+    // margin:1em;
+  }
+
+  td, th, tr{
+    font-family: raleway,sans-serif;
+    font-size:13px;
+
+  }
+  // background: none;
+  // border: none;
+  // padding: 0;
+  // margin-left: 1rem;
+  // text-decoration: underline;
+  // cursor: pointer !important;
+  // :hover{
+  //   transition: box-shadow 0.3s,background-size 0.3s;
+  //   background: linear-gradient(to bottom,#ffd400,#ffd400) left 1em no-repeat;
+  //   background-size: 100% 7px;
+  //   border-bottom: 4px solid transparent;
+  // }
+  // *, :after, :before {
+  //   box-sizing: inherit;
+  input[type=number]::-webkit-inner-spin-button {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,26 @@
+material_variable_name,material_name,material_color,hatched,legend_category
+mat1,"Steel, cable",#000099,n,Support System
+mat2,Suspended grid,#5CBDFF,n,Support System
+mat3,Cold formed structural steel,#4169E1,n,Support System
+mat4,"Fasteners, galvanized steel",#00AAFF,n,Support System
+mat5,Galvanized steel,#5CBDFF,n,Support System
+mat6,"Acoustic ceiling tile (ACT), fiberglass",#89EFC0,n,Finish Material
+mat7,"Acoustic ceiling tile (ACT), mineral fiber board",#89EFC0,n,Finish Material
+mat8,"Acoustic ceiling tile (ACT), perforated aluminum",#89EFC0,n,Finish Material
+mat9,"Aluminum extrusion, AEC - EPD",#C2EAA7,n,Finish Material
+mat10,"Aluminum, formed",#89EFC0,n,Finish Material
+mat11,"Ceiling tile, aluminum",#89EFC0,n,Finish Material
+mat12,K-13 Spray on System,#89EFC0,n,Finish Material
+mat13,"Tulipwood lumber, 1 inch",#89EFC0,y,Finish Material
+mat14,"Medium density fiberboard (MDF), AWC - EPD",#C2EAA7,y,Finish Material
+mat15,"Adhesive, polyurethane",#FFFFCC,n,Finish Material
+mat16,"Hardwood veneer, medium thickness",#FFFF99,y,Finish Material
+mat17,"Hard maple lumber, 1 inch",#C2EAA7,y,Finish Material
+mat18,"Wall board, gypsum, moisture- and mold-resistant",#89EFC0,n,Finish Material
+mat19,"Wall board, gypsum, natural",#89EFC0,n,Finish Material
+mat20,"Walnut lumber, 1 inch",#C2EAA7,y,Finish Material
+mat21,"Paint, interior acrylic latex",#C2EAA7,n,Finish Material
+mat22,"Paint, enamel, solvent based",#666666,n,Surface Treatment
+mat23,"Polyurethane top coat, water-based, for wood",#999999,n,Surface Treatment
+mat24,"Powder coating, metal stock",#666666,n,Surface Treatment
+mat25,"Wood stain, water based",#CCCCCC,n,Surface Treatment

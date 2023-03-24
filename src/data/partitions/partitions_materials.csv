@@ -1,0 +1,23 @@
+material_variable_name,material_name,material_color,hatched,legend_category
+mat1,"Coated non-structural steel framing, ClarkDietrich, ProSTUD - EPD",#000099,n,Support System
+mat2,"Domestic softwood, US, AWC - EPD",#000099,y,Support System
+mat3,"Concrete masonry unit (CMU), hollow-core",#000099,n,Support System
+mat4,Jandris Block CarbonX Normal Weight - EPD,#000099,n,Support System
+mat5,"Aluminum curtain wall system, YKK AP - EPD ",#4169E1,n,Support System
+mat6,"White oak lumber, 2 inch",#4169E1,y,Support System
+mat7,"Steel, reinforcing rod",#4169E1,n,Support System
+mat8,Thickset mortar,#5CBDFF,n,Support System
+mat9,Mortar type N,#8BD3F7,n,Support System
+mat10,Cold formed structural steel,#87CEE9,n,Support System
+mat11,Galvanized steel,#C1E9EC,n,Support System
+mat12,"Sealant, silicone",#5CBDFF,n,Support System
+mat13,"Mineral wool, low density, NAIMA - EPD",#FFFFCC,n,Insulation
+mat14,Polyurethane foam (PUR) rigid board,#FFFFCC,n,Insulation
+mat15,"Glass wool unfaced batt, Knauf, EcoBatt - EPD",#FFFFCC,n,Insulation
+mat16,"Cellulose insulation, boards",#FFFFCC,y,Insulation
+mat17,"Wall board, gypsum, fire-resistant (Type X)",#89EFC0,n,Finish Material
+mat18,"Glazing, monolithic sheet, tempered",#C2EAA7,n,Finish Material
+mat19,"Medium density fiberboard (MDF), AWC - EPD",#89EFC0,y,Finish Material
+mat20,EcoSmart Firecode X Gypsum - EPD,#89EFC0,n,Finish Material
+mat21,"Paint, interior acrylic latex",#666666,n,Surface Treatment
+mat22,"Wood stain, water based, by area",#666666,n,Surface Treatment

@@ -1,0 +1,124 @@
+@use 'constants' as *;
+
+/* https://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
+@mixin visuallyhidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden !important;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+@mixin containfloats {
+  &:after {
+     content: ".";
+     visibility: hidden;
+     display: block;
+     height: 0;
+     clear: both;
+  }
+}
+
+@mixin secondarynav {
+  font-weight: 400;
+  color: $primary1;
+  text-transform: uppercase;
+}
+
+@mixin outline1 {
+  outline: 1px dashed rgba($primary1, 0.6);
+  outline-offset: 1px;
+}
+
+@mixin primarybutton {
+  font-family: $button-font;
+  font-weight: 700;
+  font-size: 14px;
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 0);
+  background-color: $primary1;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  &:hover {
+    background-color: white;
+    color: $primary1;
+    border: 1px solid $primary1;
+  }
+  &:focus,&:active {
+    @include outline1;
+  }
+  &.disabled,&.disabled:hover,&[disabled] {
+    color: black;
+    background-color: #ddd;
+    border: 1px solid rgba(0, 0, 0, 0);
+    cursor: default;
+    cursor: not-allowed;
+  }
+}
+
+@mixin requiredasterisk {
+  content: '*';
+  font-weight: bold;
+  font-family: $button-font;
+  font-size: 1.1rem;
+  position: absolute;
+  left: -8px;
+}
+
+@mixin linkunderline {
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1.3em;
+  padding-top: 5px;
+  border: solid transparent;
+  border-top-width: 2px;
+  border-bottom-width: 4px;
+  background: linear-gradient(to bottom,$highlight1,$highlight1) left 1em no-repeat;
+  background-size: 0% 4px;
+  background-position: bottom;
+  transition: background-size 0.3s;
+
+  &:hover,&:active,&.active {
+    background-size: 100% 4px;
+  }
+}
+
+@mixin outline1 {
+  outline: 1px dashed rgba($highlight1, 0.6);
+  outline-offset: 1px;
+}
+
+@mixin closebutton {
+  border: 0;
+  padding: 0px 5px;
+  background-color: transparent;
+  font-weight: normal;
+  font-family: $headline-font;
+  text-transform: lowercase;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 1em;
+  cursor: pointer;
+  transition: 0.15s;
+  border: solid 1px #333;
+  border-radius: 2px;
+
+  &:focus,&:active {
+    @include outline1;
+  }
+}
+
+@mixin toolbutton {
+  font-family: $control-font;
+  font-weight: bold;
+  font-size: 0.7rem;
+  border: solid 1px $highlight2;
+  border-radius: 2px;
+  background-color: $highlight2;
+  color: white;
+}

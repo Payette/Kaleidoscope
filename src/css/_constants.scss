@@ -1,0 +1,20 @@
+@use 'payette' as p;
+
+$primary1: p.$payette-magenta;
+$highlight1: p.$payette-yellow;
+$highlight2: p.$payette-charcoal;
+$errorcolor: p.$payette-magenta;
+
+$highlight3: #C9CDF2;
+
+$breakpoint1: 1200px;
+$breakpoint2: 800px;
+
+/* Font Mappings */
+$body-font: 'freight-text-pro', 'Freight Text Pro', 'Freight Text', 'Noto Serif', 'Poly', 'Sura', serif;
+$control-font: 'Gotham SSm A', 'Gotham SSm B', 'Gotham', 'Open Sans', sans-serif;
+$footer-font: 'Raleway', sans-serif;
+$headline-font: 'Raleway', sans-serif;
+$button-font: 'Gotham SSm A', 'Gotham SSm B', 'Gotham', 'Open Sans', sans-serif;
+$map-font: 'Gotham Cond SSm A', 'Gotham Cond SSm B', 'Gotham Condensed', 'Gotham Narrow', 'Gotham', 'Open Sans Condensed', sans-serif;
+$number-font: 'Source Code Pro', monospace;

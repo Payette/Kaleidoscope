@@ -1,0 +1,105 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 5039925, 2022-05-31T15:01:16-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: FreightTextLight-Regular by Freight Collection
+ * URL: https://www.myfonts.com/fonts/freight-collection/freight-text-pro/light/
+ * 
+ * Webfont: FreightTextLight-Italic by Freight Collection
+ * URL: https://www.myfonts.com/fonts/freight-collection/freight-text-pro/light-italic/
+ * 
+ * Webfont: FreightTextBook-Regular by Freight Collection
+ * URL: https://www.myfonts.com/fonts/freight-collection/freight-text-pro/book/
+ * 
+ * Webfont: FreightTextBook-Italic by Freight Collection
+ * URL: https://www.myfonts.com/fonts/freight-collection/freight-text-pro/book-italic/
+ * 
+ * Webfont: FreightTextMedium-Regular by Freight Collection
+ * URL: https://www.myfonts.com/fonts/freight-collection/freight-text-pro/medium/
+ * 
+ * Webfont: FreightTextMedium-Italic by Freight Collection
+ * URL: https://www.myfonts.com/fonts/freight-collection/freight-text-pro/medium-italic/
+ * 
+ * Webfont: FreightTextSemibold-Regular by Freight Collection
+ * URL: https://www.myfonts.com/fonts/freight-collection/freight-text-pro/semibold/
+ * 
+ * Webfont: FreightTextSemibold-Italic by Freight Collection
+ * URL: https://www.myfonts.com/fonts/freight-collection/freight-text-pro/semibold-italic/
+ * 
+ * Webfont: FreightTextBold-Regular by Freight Collection
+ * URL: https://www.myfonts.com/fonts/freight-collection/freight-text-pro/bold/
+ * 
+ * Webfont: FreightTextBold-Italic by Freight Collection
+ * URL: https://www.myfonts.com/fonts/freight-collection/freight-text-pro/bold-italic/
+ * 
+ * Webfont: FreightTextBlack-Regular by Freight Collection
+ * URL: https://www.myfonts.com/fonts/freight-collection/freight-text-pro/black/
+ * 
+ * Webfont: FreightTextBlack-Italic by Freight Collection
+ * URL: https://www.myfonts.com/fonts/freight-collection/freight-text-pro/black-italic/
+ * 
+ * 
+ * Webfonts copyright: Copyright © 2004-2009, Joshua Darden &amp; Phil&#x27;s Fonts, Inc. All rights reserved. Published by Garagefonts USA 301-879-9222 www.garagefonts.com
+ * 
+ * © 2022 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/4ce735");
+  
+@font-face {
+  font-family: "FreightTextBold-Italic";
+  src: url('webFonts/FreightTextBoldItalic/font.woff2') format('woff2'), url('webFonts/FreightTextBoldItalic/font.woff') format('woff');
+}
+@font-face {
+  font-family: "FreightTextBlack-Regular";
+  src: url('webFonts/FreightTextBlackRegular/font.woff2') format('woff2'), url('webFonts/FreightTextBlackRegular/font.woff') format('woff');
+}
+@font-face {
+  font-family: "FreightTextMedium-Regular";
+  src: url('webFonts/FreightTextMediumRegular/font.woff2') format('woff2'), url('webFonts/FreightTextMediumRegular/font.woff') format('woff');
+}
+@font-face {
+  font-family: "FreightTextBook-Regular";
+  src: url('webFonts/FreightTextBookRegular/font.woff2') format('woff2'), url('webFonts/FreightTextBookRegular/font.woff') format('woff');
+}
+@font-face {
+  font-family: "FreightTextSemibold-Regular";
+  src: url('webFonts/FreightTextSemiboldRegular/font.woff2') format('woff2'), url('webFonts/FreightTextSemiboldRegular/font.woff') format('woff');
+}
+@font-face {
+  font-family: "FreightTextMedium-Italic";
+  src: url('webFonts/FreightTextMediumItalic/font.woff2') format('woff2'), url('webFonts/FreightTextMediumItalic/font.woff') format('woff');
+}
+@font-face {
+  font-family: "FreightTextSemibold-Italic";
+  src: url('webFonts/FreightTextSemiboldItalic/font.woff2') format('woff2'), url('webFonts/FreightTextSemiboldItalic/font.woff') format('woff');
+}
+@font-face {
+  font-family: "FreightTextBold-Regular";
+  src: url('webFonts/FreightTextBoldRegular/font.woff2') format('woff2'), url('webFonts/FreightTextBoldRegular/font.woff') format('woff');
+}
+@font-face {
+  font-family: "FreightTextBook-Italic";
+  src: url('webFonts/FreightTextBookItalic/font.woff2') format('woff2'), url('webFonts/FreightTextBookItalic/font.woff') format('woff');
+}
+@font-face {
+  font-family: "FreightTextLight-Italic";
+  src: url('webFonts/FreightTextLightItalic/font.woff2') format('woff2'), url('webFonts/FreightTextLightItalic/font.woff') format('woff');
+}
+@font-face {
+  font-family: "FreightTextBlack-Italic";
+  src: url('webFonts/FreightTextBlackItalic/font.woff2') format('woff2'), url('webFonts/FreightTextBlackItalic/font.woff') format('woff');
+}
+@font-face {
+  font-family: "FreightTextLight-Regular";
+  src: url('webFonts/FreightTextLightRegular/font.woff2') format('woff2'), url('webFonts/FreightTextLightRegular/font.woff') format('woff');
+}
+

@@ -1,0 +1,79 @@
+<style>
+.wrapper {
+    position: relative;
+    overflow: hidden;
+}
+.wrapper iframe {
+    width: 100%;
+    -webkit-transform-origin: top left;
+        -ms-transform-origin: top left;
+            transform-origin: top left;
+        transform: perspective(1px) translateZ(0);
+        backface-visibility: hidden;
+        -webkit-perspective: 1000;
+}
+</style>
+
+<script>
+function iframeInit() {
+    var wrapper = document.querySelector('.wrapper');
+    var iframe = wrapper.querySelector('iframe');
+
+    if(iframe === null || iframeInit.initialized === true || window.iFrameResize === undefined) {
+        return;
+    }
+
+    // pass URL parameters to our iframe for saved URLs
+    var loc = window.location.toString();
+    var params = loc.split('?')[1];
+    if(loc && params && iframe && iframe.src) {
+        iframe.src = `${iframe.src}?${params}`;
+    }
+
+    var scaleRations = {
+        1580: 1.22,
+        1760: 1.38,
+        2080: 1.68
+    };
+
+    function adjustWrapperSize() {
+        var width = document.body.clientWidth;
+        var breakpoints = Object.keys(scaleRations);
+        var style = '';
+        var scaleValue = 1;
+
+        for(var i = 0; i < breakpoints.length; i++) {
+            if(width >= breakpoints[i]) {
+                scaleValue = scaleRations[breakpoints[i]];
+            }
+        }
+
+        // if(scaleValue !== 1) {
+        //     iframe.style["transform"] = 'scale('+scaleValue+')';
+        //     iframe.style["webkitTransform"] = 'scale('+scaleValue+')';
+        //     iframe.style["msTransform"] = 'scale('+scaleValue+')';
+        // } else {
+        //     iframe.style["transform"] = '';
+        //     iframe.style["webkitTransform"] = '';
+        //     iframe.style["msTransform"] = '';
+        // }
+
+        wrapper.style.height = iframe.getBoundingClientRect().height + 'px';
+    }
+
+    iFrameResize({
+        resizedCallback: adjustWrapperSize,
+        checkOrigin: false
+    });
+    iframeInit.initialized = true;
+    window.addEventListener('resize', adjustWrapperSize);
+}
+iframeInit.initialized = false;
+document.addEventListener('DOMContentLoaded', iframeInit);
+window.addEventListener('load', iframeInit);
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.min.js" defer></script>
+<div class="wrapper">
+  <iframe src="https://payette.github.io/Kaleidoscope/" allowfullscreen frameborder="0" scrolling="no"></iframe>
+</div>

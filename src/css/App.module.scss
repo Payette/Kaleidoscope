@@ -1,0 +1,115 @@
+@use 'components' as *;
+@use 'constants' as *;
+
+
+.serif {
+  font-family: $body-font;
+}
+
+.buttonStyle{
+  border: 1;
+        border-radius: 12;
+        box-shadow: '0 3px 5px 2px rgba(255, 105, 135, .3)';
+        color: 'black';
+        height: 12;
+        max-width: 12;
+        min-width:12;
+        margin: 0px;
+        padding: 0px;
+        // size: 'small'
+}
+
+.popover_class{
+  max-width: 500px;
+  min-width: 500px;
+  position: absolute;
+  display: block;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  // overflow-x:visible !important; 
+}
+
+.topcontrols {
+  @include containfloats;
+}
+
+// .chartContainer{
+//   min-height: 500px;
+// }
+
+.inputgroup {
+  height: 8rem;
+  border: solid 1px $highlight3;
+  border-radius: 2px;
+  // margin: 0 0 1rem 0;
+  padding: 0.5rem 0rem 0.5rem 1rem;
+  height: fit-content;
+  min-height: 162px;
+
+  h3 {
+    margin: 0 0 0.5rem 0;
+  }
+  .inputitem {
+    margin-bottom: 0.5rem;
+    label {
+      margin-left: 0.5rem;
+      display: inline-block;
+
+    }
+  }
+}
+
+.calc {
+  width: 98%;
+  display: inline-block;
+  margin-right: 1%;
+  margin-left: 1%;
+}
+
+.tabPanel {
+  padding-right: 1px;
+  overflow-x: hidden;
+}
+
+
+@media (min-width: $breakpoint2) {
+  .topcontrols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1.5rem;
+  }
+
+  .calc {
+    width: 100%;
+    display: inline-block;
+    margin-right: 1%;
+    margin-left: 1%;
+  }
+}
+
+@media (min-width: $breakpoint1) {
+  :global(#parentDiv) {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .sidebar {
+    width: 420px;
+    margin-left: 1%;
+  }
+  .chartContainer {
+    flex-grow: 2;
+  }
+
+  .calc {
+    width: 100%;
+    display: inline-block;
+  }
+
+  .calc1 {
+    width: 32%;
+    display: inline-block;
+    margin-right: 1%;
+    margin-left: 1%;
+  }
+}
