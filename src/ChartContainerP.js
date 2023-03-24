@@ -1,6 +1,6 @@
 import React from 'react';
 
-import StackedBarChart from './StackedBarChart';
+import StackedBarChart from './StackedBarChartP';
 
 export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, selectedData, metaData }) => {
     if(ready !== true) {

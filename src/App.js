@@ -5,6 +5,7 @@ import FlooringLoadData from './data/Flooring_LoadData';
 import CeilingsLoadData from './data/Ceilings_LoadData';
 import PartitionsLoadData from './data/Partitions_LoadData';
 import MaterialList from './MaterialList';
+import MaterialListP from './MaterialListP';
 import Row from "./Row";
 import RowP from "./RowP";
 import { Tabs, AppBar, Tab } from '@material-ui/core';
@@ -1501,7 +1502,7 @@ class App extends Component {
 
             {this.state.partitions_materials.length > 0 &&
               <div className={styles.sidebar} id="sidebar123">
-                <MaterialList
+                <MaterialListP
                   type={SYSTEM_TYPE_PARTITIONS}
                   title={"Partitions Type"}
                   hasMaterialHealth={true}
@@ -1549,7 +1550,7 @@ class App extends Component {
                     <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label>
                   </div>
                   <div>
-                    <p className={styles.serif} style={{ display: "inline-block",marginLeft: 600}}>
+                    <p className={styles.serif} style={{ display: "inline-block",fontWeight: "bold"}}>
                     For Partition Height of 13' - 6"
                     </p>
                   </div>
