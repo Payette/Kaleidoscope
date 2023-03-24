@@ -171,10 +171,6 @@ const metaData = {
   },
   
 
-
-
-
-
   // modal popup text
   materialNotes: {
     gButtGlazed: ["Partition height 13.5', data in linear feet; Building structure is not included in LCA calculations; 5' wide by 10' tall glazing panels with 3.5' of metal stud wall to deck above; Gypsum board inclusive of taping compounds, topping compounds, and joint compounds; Service life set to Tally defaults"],
