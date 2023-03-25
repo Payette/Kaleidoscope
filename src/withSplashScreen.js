@@ -22,9 +22,9 @@ import Tooltip from '@material-ui/core/Tooltip';
 import './css/splash-screen.css';
 
 import introJs from 'intro.js';
-import 'intro.js/introjs copy2.css';
-//import 'intro.js/themes/introjs-payette.css';
-import 'intro.js/themes/introjs-modern copy.css';
+import './css/introjs copy2.css';
+//import './css/introjs-payette.css';
+import './css/introjs-modern copy.css';
 // $.bigfoot();
 
 const useStyles = makeStyles((theme) => ({

@@ -25,10 +25,10 @@ import styles from './css/App.module.scss';
 
 //introJS
 import introJs from 'intro.js';
-import 'intro.js/introjs copy2.css';
-//import 'intro.js/themes/introjs-payette.css';
-import 'intro.js/themes/introjs-modern copy.css';
-//import 'intro.js/themes/introjs-payette2.css';
+import './css/introjs copy2.css';
+//import './css/introjs-payette.css';
+import './css/introjs-modern copy.css';
+//import './css/introjs-payette2.css';
 
 
 import {BitlyClient} from "bitly-react";    
