@@ -77,7 +77,7 @@ const tier0 = [
     title: 'WELCOME',
     subheader: 'Want A Tour?',
     price: '0',
-    img: "./img/_Question Mark-Tutorial Graphics02.png",
+    img: "./img/QuestionMark.png",
     buttonText: 'View Intro',
     buttonVariant: 'text',
     //item: 0,
