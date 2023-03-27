@@ -279,6 +279,7 @@ class App extends Component {
         this.setState({
           partitions_dataEnvelopes, partitions_selectedDataEnvelopes, partitions_dataEnvelopesReady
         })
+        
       }
       //-------------------------------------------------------------------
 
@@ -847,12 +848,7 @@ class App extends Component {
 
     return (
       <div className="App" style={{ minHeight: sidebarHeight }}>
-
       
-              
-
-
-        
         <h4 style={{ position: "absolute", right: "85px", top: "60px" }}>
           <button onClick={this.constructURL.bind(this)} style={{ borderRadius: "5px", padding: "5px" }}>Share Link</button>
         </h4>
@@ -917,7 +913,7 @@ class App extends Component {
             <form  >
               <h1 >ENVELOPE ASSEMBLIES</h1>
 
-              <div  className={styles.topcontrols} data-step="2" data-position="bottom" data-intro='Select Data Lens'>
+              <div  className={styles.topcontrols} data-step="2" data-position="bottom" data-intro='Select Data Lens Combination'>
 
                 <div className={styles.inputgroup}>
                   <h3>CHART TYPE</h3>
@@ -1502,6 +1498,7 @@ class App extends Component {
 
             {this.state.partitions_materials.length > 0 &&
               <div className={styles.sidebar} id="sidebar123">
+                {/* Pchange from Materiallist to MaterialistP */}
                 <MaterialListP
                   type={SYSTEM_TYPE_PARTITIONS}
                   title={"Partitions Type"}

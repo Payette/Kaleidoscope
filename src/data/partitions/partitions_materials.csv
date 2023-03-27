@@ -11,10 +11,10 @@ mat9,Mortar type N,#8BD3F7,n,Support System
 mat10,Cold formed structural steel,#87CEE9,n,Support System
 mat11,Galvanized steel,#C1E9EC,n,Support System
 mat12,"Sealant, silicone",#5CBDFF,n,Support System
-mat13,"Mineral wool, low density, NAIMA - EPD",#FFFFCC,n,Insulation
-mat14,Polyurethane foam (PUR) rigid board,#FFFFCC,n,Insulation
-mat15,"Glass wool unfaced batt, Knauf, EcoBatt - EPD",#FFFFCC,n,Insulation
-mat16,"Cellulose insulation, boards",#FFFFCC,y,Insulation
+mat13,"Mineral wool, low density, NAIMA - EPD",#FFB65B,n,Insulation
+mat14,Polyurethane foam (PUR) rigid board,#FFB65B,n,Insulation
+mat15,"Glass wool unfaced batt, Knauf, EcoBatt - EPD",#FFB65B,n,Insulation
+mat16,"Cellulose insulation, boards",#FFB65B,y,Insulation
 mat17,"Wall board, gypsum, fire-resistant (Type X)",#89EFC0,n,Finish Material
 mat18,"Glazing, monolithic sheet, tempered",#C2EAA7,n,Finish Material
 mat19,"Medium density fiberboard (MDF), AWC - EPD",#89EFC0,y,Finish Material

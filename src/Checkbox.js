@@ -53,8 +53,8 @@ const StyledCheckbox = styled.div`
 
 const Checkbox = ({ className, checked, caseStudyColor, ...props }) => (
   <CheckboxContainer className={className}>
-    <HiddenCheckbox checked={true} {...props} />
-    <StyledCheckbox checked={true} caseStudyColor={caseStudyColor}>
+    <HiddenCheckbox checked={checked} {...props} />
+    <StyledCheckbox checked={checked} caseStudyColor={caseStudyColor}>
       <Icon viewBox="0 0 24 24">
         <polyline points="20 6 9 17 4 12" />
       </Icon>

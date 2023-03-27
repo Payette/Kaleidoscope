@@ -387,7 +387,7 @@ export default withTooltip(({
                       
                       hideAxisLine={true} hideTicks={true} scale={yScale} /* tickFormat={formatDate} */
                       stroke={textColor} tickStroke={textColor}
-                      tickLabelProps={(value, index) => ({ fill: textColor, width: '160', fontSize: 14, textAnchor: 'end', dy: '0.33em' })}
+                      tickLabelProps={(value, index) => ({ fill: textColor, width: '180', fontSize: 14, textAnchor: 'end', dy: '0.33em' })}
                       
                     />
                     <Text

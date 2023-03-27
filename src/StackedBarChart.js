@@ -105,14 +105,14 @@ export default withTooltip(({
       let myTotal = i1 + i2 + i3 + i4 + i5 + i6;
       if (myTotal > currentBiggest) {
         currentBiggest = myTotal;
-        // console.log(myTotal);
+        //console.log(myTotal);
         trail = "%";
       }
     }
     else {
       currentBiggest = 100;
     }
-    // console.log(selectedMaterials[i]);
+    //console.log(selectedMaterials[i]);
   }
 
 
@@ -387,7 +387,7 @@ export default withTooltip(({
                       
                       hideAxisLine={true} hideTicks={true} scale={yScale} /* tickFormat={formatDate} */
                       stroke={textColor} tickStroke={textColor}
-                      tickLabelProps={(value, index) => ({ fill: textColor, width: '160', fontSize: 14, textAnchor: 'end', dy: '0.33em' })}
+                      tickLabelProps={(value, index) => ({ fill: textColor, width: '180', fontSize: 14, textAnchor: 'end', dy: '0.33em' })}
                       
                     />
                     <Text

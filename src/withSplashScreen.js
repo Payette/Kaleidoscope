@@ -74,11 +74,11 @@ const useStyles = makeStyles((theme) => ({
 
 const tier0 = [
   {
-    title: 'WANT TOUR?',
-    subheader: 'Example: Envelopes',
+    title: 'WELCOME',
+    subheader: 'Want A Tour?',
     price: '0',
-    img: "./img/Qbutton.png",
-    buttonText: 'Start Intro',
+    img: "./img/_Question Mark-Tutorial Graphics02.png",
+    buttonText: 'View Intro',
     buttonVariant: 'text',
     //item: 0,
     // disabled: true,
