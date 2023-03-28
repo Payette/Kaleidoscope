@@ -1,0 +1,30 @@
+material,type,value,name,img,label
+gButtGlazed,Glass,68.41,Butt-Glazed,./img/Partitions/Axons/Glass_Axon_G01_ButtGlazed.png,G - Butt-Glazed
+gHollowMetalFrame,Glass,67.05,Aluminum Frame,./img/Partitions/Axons/Glass_Axon_G02_HollowMetalFrame.png,G - Aluminum Frame
+gWoodFrame,Glass,33.82,Wood Frame,./img/Partitions/Axons/Glass_Axon_G03_WoodFrame.png,G - Wood Frame
+cFurredOutMFB,CMU,36.25,Furred GWB,./img/Partitions/Axons/CMU_Axon_C01_FurredOut_MFB.png,CMU - Furred GWB
+cFurredOutEcosmart,CMU,34.8,Furred Low Carbon GWB,./img/Partitions/Axons/CMU_Axon_C02_FurredOut_Ecosmart.png,CMU - Furred Low CO2 GWB
+cPaintedBlock,CMU,23.4,Painted,./img/Partitions/Axons/CMU_Axon_C03_PaintedBlock.png,CMU - Painted
+cJandris,CMU,20.49,Painted Low Carbon Block,./img/Partitions/Axons/CMU_Axon_C04_Jandris.png,CMU - Painted Low CO2 Block
+cFurredOutMDF,CMU,44.35,Furred MDF,./img/Partitions/Axons/CMU_Axon_C05_FurredOut_MDF.png,CMU - Furred MDF
+ms16MinWoolMFB,Metal Stud,22.74,16 OC w/ Mineral Wool & GWB,./img/Partitions/Axons/MetalStuds_Axon_MS01_16_MinWool_MFB.png,MS - 16 OC w/ Min Wool & GWB
+msEmb16MinWoolMFB,Metal Stud,20.68,Embossed 16 OC w/ Mineral Wool & GWB,./img/Partitions/Axons/MetalStuds_Axon_MS02_16_Emb_MinWool_MFB.png,MS - Emb 16 OC w/ Min Wool & GWB
+ms24MinWoolMFB,Metal Stud,20.57,24 OC w/ Mineral Wool & GWB,./img/Partitions/Axons/MetalStuds_Axon_MS03_24_MinWool_MFB.png,MS - 24 OC w/ Min Wool & GWB
+msCut24MinWoolMFB,Metal Stud,20.2,Cut-out 24 OC w/ Mineral Wool & GWB,./img/Partitions/Axons/MetalStuds_Axon_MS04_24_Cut_MinWool_MFB.png,MS - Cut-out 24 OC w/ Min Wool & GWB
+ms16MinWoolEcosmart,Metal Stud,21.29,16 OC w/ Mineral Wool & Low Carbon GWB,./img/Partitions/Axons/MetalStuds_Axon_MS05_16_MinWool_Ecosmart.png,MS - 16 OC w/ Min Wool & Low CO2 GWB
+msEmb24MinWoolMFB,Metal Stud,19.2,Embossed 24 OC w/ Mineral Wool & GWB,./img/Partitions/Axons/MetalStuds_Axon_MS06_24_Emb_MinWool_MFB.png,MS - Emb 24 OC w/ Min Wool & GWB
+ms16GlassWoolMFB,Metal Stud,18.16,16 OC w/ Glass Wool & GWB,./img/Partitions/Axons/MetalStuds_Axon_MS07_16_GlassWool_MFB.png,MS - 16 OC w/ Glass Wool & GWB
+ms16MFB,Metal Stud,16.93,16 OC & GWB,./img/Partitions/Axons/MetalStuds_Axon_MS08_16_NoIns_MFB.png,MS - 16 OC & GWB
+ms16CelluloselMFB,Metal Stud,30.35,16 OC w/ Cellulose & GWB,./img/Partitions/Axons/MetalStuds_Axon_MS09_16_Cellulose_MFB.png,MS - 16 OC w/ Cellulose & GWB
+msIndustryBest,Metal Stud,14.65,Industry Best: Embossed 16 OC w/ Glass Wool & Low Carbon GWB,./img/Partitions/Axons/MetalStuds_Axon_MS10_BEST_16_Emb_GlassWool_Ecosmart.png,MS - Industry Best
+ms16MinWoolMDF,Metal Stud,30.84,16 OC w/ Mineral Wool & MDF,./img/Partitions/Axons/MetalStuds_Axon_MS11_16_MinWool_MDF.png,MS - 16 OC w/ Min Wool & MDF
+msReimagined,Metal Stud,34.91,Reimagined: Embossed 24 OC w/ Cellulose & MDF,./img/Partitions/Axons/MetalStuds_Axon_MS12_Reimagined_24_Emb_Cellulose_MDF.png,MS - Reimagined
+ws24MinWoolMFB,Wood Stud,16.8,24 OC w/ Mineral Wool & GWB,./img/Partitions/Axons/WoodStuds_Axon_WS01_24_MinWool_MFB.png,WS - 24 OC w/ Min Wool & GWB
+ws16MinWoolMFB,Wood Stud,17.09,16 OC w/ Mineral Wool & GWB,./img/Partitions/Axons/WoodStuds_Axon_WS02_16_MinWool_MFB.png,WS - 16 OC w/ Min Wool & GWB
+ws16MinWoolEcosmart,Wood Stud,15.64,16 OC w/ Mineral Wool & Low Carbon GWB,./img/Partitions/Axons/WoodStuds_Axon_WS03_16_MinWool_Ecosmart.png,WS - 16 OC w/ Min Wool & Low CO2 GWB
+ws16GlassWoolMFB,Wood Stud,12.51,16 OC w/ Glass Wool & GWB,./img/Partitions/Axons/WoodStuds_Axon_WS04_16_GlassWool_MFB.png,WS - 16 OC w/ Glass Wool & GWB
+ws16MFB,Wood Stud,11.28,16 OC & GWB,./img/Partitions/Axons/WoodStuds_Axon_WS05_16_NoIns_MFB.png,WS - 16 OC & GWB
+ws16CelluloseMFB,Wood Stud,24.7,16 OC w/ Cellulose & GWB,./img/Partitions/Axons/WoodStuds_Axon_WS06_16_Cellulose_MFB.png,WS - 16 OC w/ Cellulose & GWB
+wsIndustryBest,Wood Stud,11.06,Industry Best: 16 OC w/ Glass Wool & Low Carbon GWB,./img/Partitions/Axons/WoodStuds_Axon_WS07_BEST_16_GlassWool_Ecosmart.png,WS - Industry Best
+ws16MinWoolMDF,Wood Stud,25.19,16 OC w/ Mineral Wool & MDF,./img/Partitions/Axons/WoodStuds_Axon_WS09_16_MinWool_MDF.png,WS - 16 OC w/ Min Wool & MDF
+wsReimagined,Wood Stud,37.14,Reimagined: 16 OC w/ Cellulose & MDF,./img/Partitions/Axons/WoodStuds_Axon_WS10_Reimagined_16_Cellulose_MDF.png,WS - Reimagined
