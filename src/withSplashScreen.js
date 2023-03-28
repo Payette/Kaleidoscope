@@ -220,7 +220,7 @@ function withSplashScreen(WrappedComponent) {
 
 
 
-      if (type == 0 || type == 1) { //envelope
+      if (type == 0 || type == 1 || type == 2 || type == 3) { //envelope
         this.setState({ loading: false, currentItem: type });
         if (type == 0) {
           this.setState({
@@ -249,6 +249,41 @@ function withSplashScreen(WrappedComponent) {
               "RLimestone",
               "RSteel",
               "RWood"
+            ]
+          })
+        }
+        if (type == 3) {
+          this.setState({
+            selectedMaterials: [
+              "gButtGlazed",
+              "gHollowMetalFrame",
+              "gWoodFrame",
+              "cFurredOutMFB",
+              "cFurredOutEcosmart",
+              "cPaintedBlock",
+              "cJandris",
+              "cFurredOutMDF",
+              "ms16MinWoolMFB",
+              "msEmb16MinWoolMFB",
+              "ms24MinWoolMFB",
+              "msCut24MinWoolMFB",
+              "ms16MinWoolEcosmart",
+              "msEmb24MinWoolMFB",
+              "ms16GlassWoolMFB",
+              "ms16MFB",
+              "ms16CelluloselMFB",
+              "MSIndustryBest",
+              "ms16MinWoolMDF",
+              "msReimagined",
+              "ws24MinWoolMFB",
+              "ws16MinWoolMFB",
+              "ws16MinWoolEcosmart",
+              "ws16GlassWoolMFB",
+              "ws16MFB",
+              "ws16CelluloseMFB",
+              "wsIndustryBest",
+              "ws16MinWoolMDF",
+              "wsReimagined"
             ]
           })
         }

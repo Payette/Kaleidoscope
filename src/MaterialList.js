@@ -71,9 +71,22 @@ export default class MaterialList extends PureComponent {
   }
 
   handleSelectAll(e) {
-    this.setState({ selectedItems: this.props.materials });
+    this.setState({ selectedItems: this.props.materials});
     this.props.updateSelectedMaterials(this.props.materials);
   }
+
+
+
+  // componentDidMount() {
+  //   const isSelectAllClicked = localStorage.getItem('isSelectAllClicked');
+  //   if (isSelectAllClicked === 'true') {
+  //     this.setState({ isSelectAllClicked: true }, () => {
+  //       const selectAllButton = document.querySelector('.select-all-button');
+  //       selectAllButton.click();
+  //     });
+  //   }
+  // }
+
 
   getNextValue(value) {
     const { selectedItems } = this.state;
@@ -274,6 +287,7 @@ export default class MaterialList extends PureComponent {
           </>}
           <div>
             <h3 style={{ display: "inline-block", marginBottom: "0.5em", textTransform: "uppercase" }}>{this.props.title}</h3>
+            {/* <button className={styles.mButton+ ' select-all-btn'} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button> */}
             <button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
             <button className={styles.mButton} onClick={e => this.reRreshSelect.bind(this)(e)}>Clear</button>
             <div className={styles.sansserif} style={{ fontWeight: "bold", marginBottom: "0.75em", fontSize: "0.9em" }}>Click on type name below for additional details</div>

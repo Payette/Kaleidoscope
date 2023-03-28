@@ -293,7 +293,7 @@ class App extends Component {
       let mBiogenicCarbon = s.get("biogenicCarbon")
 
       if (mSystem == null) {
-        mSystem = "0_1_2_3_4_5_6_7_8_9_10_11_12_13_14_15_16_17_18_19_20_21_22_23_"
+        mSystem = "0_1_2_3_4_5_6_7_8_9_10_11_12_13_14_15_16_17_18_19_20_21_22_23_24_25_26_27_28_29_30"
       }
       if (type == null) {
         type = 0
@@ -325,6 +325,18 @@ class App extends Component {
         let names = mSystem.split("_")
 
         names.pop()
+
+        // let allSystems = materialListEnvelope.map(m => m.value);
+        // let urlSelectedMaterials = [];
+        // let counter = 0; // add a counter
+      
+        // for (let i = 0; i < names.length; i++) {
+        //   if (counter >= 50) { // if the material list lager than 50, change this!
+        //     break;
+        //   }
+        //   urlSelectedMaterials.push(allSystems[parseInt(names[i])]);
+        //   counter++;
+        // }
 
         let allSystems = materialListEnvelope.map(m => m.value)
         let urlSelectedMaterials = []
@@ -382,6 +394,7 @@ class App extends Component {
         let names = mSystem.split("_")
 
         names.pop()
+
 
         let allSystems = materialListPartitions.map(m => m.value)
         let urlSelectedMaterials = []
@@ -485,7 +498,7 @@ class App extends Component {
           ceilings_selectedMaterials: urlSelectedMaterials
         }
       )
-    } else if (type == 2) { //partitions
+    } else if (type == 3) { //partitions
       let names = this.state.systemString.split("_")
 
       names.pop()
