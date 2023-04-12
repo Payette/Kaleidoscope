@@ -320,7 +320,7 @@ function withSplashScreen(WrappedComponent) {
           {/* <Button href="#" color="primary" variant="outlined">
                 Login
               </Button> */}
-          <Container maxWidth={1200} component="main" data-step="1" data-intro="Select Assembly">
+          <Container maxWidth={1200} component="main" data-step="1" data-intro="Select Assembly" disableInteraction={true} pointer-events="none">
             <Grid container spacing={4} alignItems="flex-end" justifyContent="center" >
               {/* Split Tour botton set */}
 

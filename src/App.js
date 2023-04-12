@@ -34,7 +34,8 @@ import './css/introjs-modern copy.css';
 import {BitlyClient} from "bitly-react";    
 
 //Bitly api access token code from https://app.bitly.com/settings/api/, account:ywang@payette.com,paaword:Payette285
-const bitly = new BitlyClient("2adf276fd8524843749be7859808e975f5132714",{});
+const bitly = new BitlyClient("6d67caa16b327805d37c1bb89083138d44856c01",{});
+//const bitly = new BitlyClient("2adf276fd8524843749be7859808e975f5132714",{});
 let receivedShortUrl = "";
 
 let footer = <div style={{ paddingTop: 0, top: 0, marginTop: 0, marginLeft: 0,marginRight: '3%'}}>

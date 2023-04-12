@@ -2,11 +2,11 @@ material,type,name,img,label,mat1,mat2,mat3,mat4,mat5,mat6,mat7,mat8,mat9,mat10,
 gButtGlazed,Glass,Butt-Glazed,./img/Partitions/Axons/Glass_Axon_G01_ButtGlazed.png,G - Butt-Glazed,3.29,0,0,0,20.91,0,0,0,0,0,0,0.15,0,0,0,0,5.92,88.54,0,0,2.89,0
 gHollowMetalFrame,Glass,Aluminum Frame,./img/Partitions/Axons/Glass_Axon_G02_HollowMetalFrame.png,G - Aluminum Frame,3.29,0,0,0,40.78,0,0,0,0,0,0,0,0,0,0,0,5.92,45.02,0,0,2.89,0
 gWoodFrame,Glass,Wood Frame,./img/Partitions/Axons/Glass_Axon_G03_WoodFrame.png,G - Wood Frame,3.29,0,0,0,0,5.73,0,0,0,0,0,0,0,0,0,0,5.92,45.02,0,0,2.89,0.79
-cFurredOutMFB,CMU,Furred GWB,./img/Partitions/Axons/CMU_Axon_C01_FurredOut_MFB.png,CMU - Furred GWB,0,0,17.79,0,0,0,1.98,0.8,2.07,3.59,2.36,0,0,0.07,0,0,22.82,0,0,0,11.15,0
-cFurredOutEcosmart,CMU,Furred Low Carbon GWB,./img/Partitions/Axons/CMU_Axon_C02_FurredOut_Ecosmart.png,CMU - Furred Low CO2 GWB,0,0,17.79,0,0,0,1.98,0.8,2.07,3.59,2.36,0,0,0.07,0,0,0,0,0,16.33,11.15,0
-cPaintedBlock,CMU,Painted,./img/Partitions/Axons/CMU_Axon_C03_PaintedBlock.png,CMU - Painted,0,0,17.79,0,0,0,1.98,0.8,2.07,0,2.36,0,0,0.07,0,0,0,0,0,0,11.15,0
-cJandris,CMU,Painted Low Carbon Block,./img/Partitions/Axons/CMU_Axon_C04_Jandris.png,CMU - Painted Low CO2 Block,0,0,0,15.67,0,0,1.98,0.8,2.07,0,2.36,0,0,0.07,0,0,0,0,0,0,11.15,0
-cFurredOutMDF,CMU,Furred MDF,./img/Partitions/Axons/CMU_Axon_C05_FurredOut_MDF.png,CMU - Furred MDF,0,0,17.79,0,0,0,1.98,0.8,2.07,3.59,2.36,0,0,0.07,0,0,0,0,9.72,0,11.15,0
+cFurredOutMFB,CMU,Furred GWB,./img/Partitions/Axons/CMU_Axon_C01_FurredOut_MFB.png,CMU - Furred GWB,0.00,0.00,17.79,0.00,0.00,0.00,1.98,7.35,2.07,3.59,2.36,0.00,0.00,0.07,0.00,0.00,22.82,0.00,0.00,0.00,11.15,0.00
+cFurredOutEcosmart,CMU,Furred Low Carbon GWB,./img/Partitions/Axons/CMU_Axon_C02_FurredOut_Ecosmart.png,CMU - Furred Low CO2 GWB,0.00,0.00,17.79,0.00,0.00,0.00,1.98,7.35,2.07,3.59,2.36,0.00,0.00,0.07,0.00,0.00,0.00,0.00,0.00,16.33,11.15,0.00
+cPaintedBlock,CMU,Painted,./img/Partitions/Axons/CMU_Axon_C03_PaintedBlock.png,CMU - Painted,0.00,0.00,17.79,0.00,0.00,0.00,1.98,7.35,2.07,0.00,2.36,0.00,0.00,0.07,0.00,0.00,0.00,0.00,0.00,0.00,11.15,0.00
+cJandris,CMU,Painted Low Carbon Block,./img/Partitions/Axons/CMU_Axon_C04_Jandris.png,CMU - Painted Low CO2 Block,0.00,0.00,0.00,15.67,0.00,0.00,1.98,7.35,2.07,0.00,2.36,0.00,0.00,0.07,0.00,0.00,0.00,0.00,0.00,0.00,11.15,0.00
+cFurredOutMDF,CMU,Furred MDF,./img/Partitions/Axons/CMU_Axon_C05_FurredOut_MDF.png,CMU - Furred MDF,0.00,0.00,17.79,0.00,0.00,0.00,1.98,7.35,2.07,3.59,2.36,0.00,0.00,0.07,0.00,0.00,0.00,0.00,9.72,0.00,11.15,0.00
 ms16MinWoolMFB,Metal Stud,16 OC w/ Mineral Wool & GWB,./img/Partitions/Axons/MetalStuds_Axon_MS01_16_MinWool_MFB.png,MS - 16 OC w/ Min Wool & GWB,12.69,0,0,0,0,0,0,0,0,0,0,0,11.34,0,0,0,22.82,0,0,0,11.15,0
 msEmb16MinWoolMFB,Metal Stud,Embossed 16 OC w/ Mineral Wool & GWB,./img/Partitions/Axons/MetalStuds_Axon_MS02_16_Emb_MinWool_MFB.png,MS - Emb 16 OC w/ Min Wool & GWB,8.68,0,0,0,0,0,0,0,0,0,0,0,11.34,0,0,0,22.82,0,0,0,11.15,0
 ms24MinWoolMFB,Metal Stud,24 OC w/ Mineral Wool & GWB,./img/Partitions/Axons/MetalStuds_Axon_MS03_24_MinWool_MFB.png,MS - 24 OC w/ Min Wool & GWB,8.46,0,0,0,0,0,0,0,0,0,0,0,11.34,0,0,0,22.82,0,0,0,11.15,0
@@ -16,15 +16,15 @@ msEmb24MinWoolMFB,Metal Stud,Embossed 24 OC w/ Mineral Wool & GWB,./img/Partitio
 ms16GlassWoolMFB,Metal Stud,16 OC w/ Glass Wool & GWB,./img/Partitions/Axons/MetalStuds_Axon_MS07_16_GlassWool_MFB.png,MS - 16 OC w/ Glass Wool & GWB,12.69,0,0,0,0,0,0,0,0,0,0,0,0,0,2.35,0,22.82,0,0,0,11.15,0
 ms16MFB,Metal Stud,16 OC & GWB,./img/Partitions/Axons/MetalStuds_Axon_MS08_16_NoIns_MFB.png,MS - 16 OC & GWB,12.69,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,22.82,0,0,0,11.15,0
 ms16CelluloselMFB,Metal Stud,16 OC w/ Cellulose & GWB,./img/Partitions/Axons/MetalStuds_Axon_MS09_16_Cellulose_MFB.png,MS - 16 OC w/ Cellulose & GWB,12.69,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6.2,22.82,0,0,0,11.15,0
-msIndustryBest,Metal Stud,Industry Best: Embossed 16 OC w/ Glass Wool & Low Carbon GWB,./img/Partitions/Axons/MetalStuds_Axon_MS10_BEST_16_Emb_GlassWool_Ecosmart.png,MS - Industry Best,8.68,0,0,0,0,0,0,0,0,0,0,0,0,0,2.35,0,0,0,0,16.33,11.15,0
+msIndustryBest,Metal Stud,Industry Best Combination,./img/Partitions/Axons/MetalStuds_Axon_MS10_BEST_16_Emb_GlassWool_Ecosmart.png,MS - Industry Best Combo,8.68,0,0,0,0,0,0,0,0,0,0,0,0,0,2.35,0,0,0,0,16.33,11.15,0
 ms16MinWoolMDF,Metal Stud,16 OC w/ Mineral Wool & MDF,./img/Partitions/Axons/MetalStuds_Axon_MS11_16_MinWool_MDF.png,MS - 16 OC w/ Min Wool & MDF,12.69,0,0,0,0,0,0,0,0,0,0,0,11.34,0,0,0,0,0,9.72,0,11.15,0
-msReimagined,Metal Stud,Reimagined: Embossed 24 OC w/ Cellulose & MDF,./img/Partitions/Axons/MetalStuds_Axon_MS12_Reimagined_24_Emb_Cellulose_MDF.png,MS - Reimagined,5.78,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6.2,0,0,9.72,0,11.15,0
+msReimagined,Metal Stud,Reimagined Combination,./img/Partitions/Axons/MetalStuds_Axon_MS12_Reimagined_24_Emb_Cellulose_MDF.png,MS - Reimagined Combo,5.78,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6.2,0,0,9.72,0,11.15,0
 ws24MinWoolMFB,Wood Stud,24 OC w/ Mineral Wool & GWB,./img/Partitions/Axons/WoodStuds_Axon_WS01_24_MinWool_MFB.png,WS - 24 OC w/ Min Wool & GWB,0,-3.38,0,0,0,0,0,0,0,0,0,0,11.34,0,0,0,22.82,0,0,0,11.15,0
 ws16MinWoolMFB,Wood Stud,16 OC w/ Mineral Wool & GWB,./img/Partitions/Axons/WoodStuds_Axon_WS02_16_MinWool_MFB.png,WS - 16 OC w/ Min Wool & GWB,0,-5.07,0,0,0,0,0,0,0,0,0,0,11.34,0,0,0,22.82,0,0,0,11.15,0
 ws16MinWoolEcosmart,Wood Stud,16 OC w/ Mineral Wool & Low Carbon GWB,./img/Partitions/Axons/WoodStuds_Axon_WS03_16_MinWool_Ecosmart.png,WS - 16 OC w/ Min Wool & Low CO2 GWB,0,-5.07,0,0,0,0,0,0,0,0,0,0,11.34,0,0,0,0,0,0,16.33,11.15,0
 ws16GlassWoolMFB,Wood Stud,16 OC w/ Glass Wool & GWB,./img/Partitions/Axons/WoodStuds_Axon_WS04_16_GlassWool_MFB.png,WS - 16 OC w/ Glass Wool & GWB,0,-5.07,0,0,0,0,0,0,0,0,0,0,0,0,2.35,0,22.82,0,0,0,11.15,0
 ws16MFB,Wood Stud,16 OC & GWB,./img/Partitions/Axons/WoodStuds_Axon_WS05_16_NoIns_MFB.png,WS - 16 OC & GWB,0,-5.07,0,0,0,0,0,0,0,0,0,0,0,0,0,0,22.82,0,0,0,11.15,0
 ws16CelluloseMFB,Wood Stud,16 OC w/ Cellulose & GWB,./img/Partitions/Axons/WoodStuds_Axon_WS06_16_Cellulose_MFB.png,WS - 16 OC w/ Cellulose & GWB,0,-5.07,0,0,0,0,0,0,0,0,0,0,0,0,0,6.2,22.82,0,0,0,11.15,0
-wsIndustryBest,Wood Stud,Industry Best: 16 OC w/ Glass Wool & Low Carbon GWB,./img/Partitions/Axons/WoodStuds_Axon_WS07_BEST_16_GlassWool_Ecosmart.png,WS - Industry Best,0,-5.07,0,0,0,0,0,0,0,0,0,0,0,0,2.35,0,0,0,0,16.33,11.15,0
+wsIndustryBest,Wood Stud,Industry Best Combination,./img/Partitions/Axons/WoodStuds_Axon_WS07_BEST_16_GlassWool_Ecosmart.png,WS - Industry Best Combo,0,-5.07,0,0,0,0,0,0,0,0,0,0,0,0,2.35,0,0,0,0,16.33,11.15,0
 ws16MinWoolMDF,Wood Stud,16 OC w/ Mineral Wool & MDF,./img/Partitions/Axons/WoodStuds_Axon_WS09_16_MinWool_MDF.png,WS - 16 OC w/ Min Wool & MDF,0,-5.07,0,0,0,0,0,0,0,0,0,0,11.34,0,0,0,0,0,9.72,0,11.15,0
-wsReimagined,Wood Stud,Reimagined: 16 OC w/ Cellulose & MDF,./img/Partitions/Axons/WoodStuds_Axon_WS10_Reimagined_16_Cellulose_MDF.png,WS - Reimagined,0,-5.07,0,0,0,0,0,0,0,0,0,0,0,0,0,6.2,0,0,12.15,0,11.15,0
+wsReimagined,Wood Stud,Reimagined Combination,./img/Partitions/Axons/WoodStuds_Axon_WS10_Reimagined_16_Cellulose_MDF.png,WS - Reimagined Combo,0,-5.07,0,0,0,0,0,0,0,0,0,0,0,0,0,6.2,0,0,12.15,0,11.15,0
