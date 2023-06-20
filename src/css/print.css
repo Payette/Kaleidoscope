@@ -1,8 +1,35 @@
-@media print { 
-  /* All your print styles go here */
 
 
-  button{
-    background-color: green !important;
+@media print {
+
+  @import url('path/to/print-styles.css');
+
+  body {
+    width: 100%;
+    padding: 2cm;
+    box-sizing: border-box;
   }
- }
+
+  input[type="checkbox"]:checked::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    
+  }
+
+
+  legend span.color-icon {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    
+  }
+
+
+  /* button {
+    background-color: green !important;
+  } */
+}

@@ -8,6 +8,7 @@ export default class Comparison extends React.Component {
     super(props);
     this.state = { rows: [], count: 1, vals: [], vals1: [], sum: 0, sum1: 0, radio: 1, allMaterials: [0], show: false };
     // this.handleInputChange = this.handleInputChange.bind(this);
+    // this.exportToCsv = this.exportToCsv.bind(this);
 
   }
   // static getDerivedStateFromProps(props, current_state) {
@@ -231,9 +232,6 @@ export default class Comparison extends React.Component {
   }
 
 
-
-
-
   appendRow(event) {
     var rel = event.target.getAttribute("rel");
     rel = parseInt(rel) + 1;
@@ -267,7 +265,7 @@ export default class Comparison extends React.Component {
       console.log(currentSelect);
       console.log(currentSelect.options[currentSelect.selectedIndex].value);
     }
-
+    
 
   }
 
@@ -284,6 +282,35 @@ export default class Comparison extends React.Component {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   }
 
+  // toCsv(data) {
+  //   const replacer = (key, value) => value === null ? '' : value;
+  //   const header = Object.keys(data[0]);
+  //   let csv = data.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
+  //   csv.unshift(header.join(','));
+  //   return csv.join('\r\n');
+  // }
+
+  // exportToCsv() {
+  //   const data = this.state.vals.map((val, i) => ({
+  //     MaterialValue: val,
+  //     SquareFeet: this.state.vals1[i]
+  //   }));
+    
+  //   const csv = this.toCsv(data);
+    
+  //   // Create a blob and download the file
+  //   const blob = new Blob([csv], { type: 'text/csv' });
+  //   const url = URL.createObjectURL(blob);
+  //   const a = document.createElement('a');
+  //   a.setAttribute('hidden', '');
+  //   a.setAttribute('href', url);
+  //   a.setAttribute('download', 'export.csv');
+  //   document.body.appendChild(a);
+  //   a.click();
+  //   document.body.removeChild(a);
+  // }  
+  
+
   render() {
 
     return (
@@ -297,50 +324,55 @@ export default class Comparison extends React.Component {
       <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
     </div> */}
 
+      {/* <button id="export-btn" onClick={this.exportToCsv}>
+        Export CSV
+      </button> */}
 
-        <table style={{ borderCollapse: "collapse", width: "100%", textAlign: "center" }}>
+      <table style={{ borderCollapse: "collapse", width: "100%", textAlign: "center" }}>
 
-          <thead>
-            <td colspan="3" style={{ textAlign: "left", height: "25px" }}>&nbsp;&nbsp;<strong>Option {this.props.name}</strong></td>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Type</td>
-              <td>Square Feet</td>
-              <td>GWP</td>
-            </tr>
-            <tr>
-              <td>
-                {/* <input type="text" id={`select-type` + rel} /> */}
-                <select id="mat" name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + `1`}>
-                  {this.props.materialList.map(m => <option value={m.value} key={m.value}>{m.label}</option>)}
-                </select>
-              </td>
-              <td>
-                <input type="number" onChange={this.handleChange.bind(this)} id={`select-position` + this.props.name + `1`} />
-              </td>
-              <td id={`displayGWP` + this.props.name + `1`}></td>
-            </tr>
-            {this.state.rows}</tbody>
-          <tr style={{ height: "35px" }}>
-            <td >
-              {/* Total: */}
-            </td>
-            <td >
-              <strong style={{ color: "#dc1a55", fontSize: "1.3em" }}>{this.state.sum1}</strong> ft<sup>2</sup>
+        <thead>
+          <td colspan="3" style={{ textAlign: "left", height: "25px" }}>&nbsp;&nbsp;<strong>Option {this.props.name}</strong></td>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Type</td>
+            <td>Square Feet</td>
+            <td>GWP</td>
+          </tr>
+          <tr>
+            <td>
+              {/* <input type="text" id={`select-type` + rel} /> */}
+              <select id="mat" name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + `1`}>
+                {this.props.materialList.map(m => <option value={m.value} key={m.value}>{m.label}</option>)}
+              </select>
             </td>
             <td>
-              <strong style={{ color: "#dc1a55", fontSize: "1.3em" }}>{this.state.sum}</strong> kgCO<sub>2</sub>eq
+              <input type="number" onChange={this.handleChange.bind(this)} id={`select-position` + this.props.name + `1`} />
             </td>
+            <td id={`displayGWP` + this.props.name + `1`}></td>
           </tr>
-        </table><br></br>
-        <button rel="1" onClick={this.appendRow.bind(this)}>
-          Add row
-        </button>&nbsp;
-        <button rel="1" onClick={this.removeRow.bind(this)}>
-          Remove row
-        </button>
-      </div>
+          {this.state.rows}</tbody>
+        <tr style={{ height: "35px" }}>
+          <td >
+            {/* Total: */}
+          </td>
+          <td >
+            <strong style={{ color: "#dc1a55", fontSize: "1.3em" }}>{this.state.sum1}</strong> ft<sup>2</sup>
+          </td>
+          <td>
+            <strong style={{ color: "#dc1a55", fontSize: "1.3em" }}>{this.state.sum}</strong> kgCO<sub>2</sub>eq
+          </td>
+        </tr>
+      </table><br></br>
+      <button rel="1" onClick={this.appendRow.bind(this)}>
+        Add row
+      </button>&nbsp;
+      <button rel="1" onClick={this.removeRow.bind(this)}>
+        Remove row
+      </button>
+    </div>
+
+      
     );
   }
 }

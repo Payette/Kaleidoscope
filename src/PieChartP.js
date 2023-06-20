@@ -136,7 +136,7 @@ export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdo
               // }
 
 
-              console.log(matsAbs[i].mUsageAbs)
+              //console.log(matsAbs[i].mUsageAbs)
 
               if ((matsAbs[i].mUsageAbs + 0) <= 0) {
                 strokeVal.push(2);

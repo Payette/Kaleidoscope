@@ -77,10 +77,10 @@ const tier0 = [
     title: 'WELCOME',
     subheader: 'Want A Tour?',
     price: '0',
-    img: "./img/QuestionMark.png",
-    buttonText: 'View Intro',
+    img: "./img/QuestionMark1.png",
+    buttonText: 'View Introduction',
     buttonVariant: 'text',
-    //item: 0,
+    item: 0,
     // disabled: true,
     id: 'startTour!'
   },
@@ -94,7 +94,7 @@ const tiers = [
     subheader: 'Exterior Assemblies',
     price: '0',
     description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
-    img: "./img/MV_Axon.png",
+    img: "./img/MV_Axon2.png",
     buttonText: 'View Envelopes',
     buttonVariant: 'contained',
     item: 0
@@ -109,7 +109,7 @@ const tiers = [
       'Help center access',
       'Priority email support',
     ],
-    img: "./img/FL_Axon-2.png",
+    img: "./img/FL_Axon-2-1.png",
     buttonText: 'View Flooring',
     buttonVariant: 'contained',
     item: 1
@@ -124,7 +124,7 @@ const tiers = [
       'Help center access',
       'Priority email support',
     ],
-    img: "./img/Ceilings/Axons/ceilingslandingpageaxon.png",
+    img: "./img/ceilingslandingpageaxon2.png",
     buttonText: 'View Ceilings',
     buttonVariant: 'contained',
     item: 2
@@ -139,61 +139,18 @@ const tiers = [
       'Help center access',
       'Phone & email support',
     ],
-    img: "./img/Partitions/Axons/MetalStuds_Axon_MS01_16_MinWool_MFB.png",
+    img: "./img/MetalStuds_Axon_MS01_16_MinWool_MFB2.png",
     buttonText: 'View Partitions',
     buttonVariant: 'contained',
     item: 3
   },
-  // {
-  //   title: 'OTHER',
-  //   subheader: 'Future Assemblies',
-  //   price: '30',
-  //   description: [
-  //     '50 users included',
-  //     '30 GB of storage',
-  //     'Help center access',
-  //     'Phone & email support',
-  //   ],
-  //   img: "./img/OtherBox.png",
-  //   buttonText: 'Coming soon',
-  //   buttonVariant: 'text',
-  //   disabled: true,
-  //   item: 3
-  // },
+
 ];
 
-// class App extends Component {
-//   //introJs().start();
-  
-//   startIntro() {    
-//     introJs(document.getElementById('startTour!')).setOption('doneLabel', 'Next page').oncomplete(function() {
-//       window.location.href = 'index.html?multipage=true';
-//     }).start();
-//   }
 
-//   // document.getElementById('startButton').onclick = function() {
-//   //   introJs().setOption('doneLabel', 'Next page').oncomplete(function() {
-//   //     window.location.href = 'second.html?multipage=true';
-//   //   }).start();
-//   // };
-//   render(){
-//     return (
-//       <div>
-//         <h4 style={{ position: "absolute", right: "210px", top: "60px" }}>
-//           <button onClick={this.startIntro.bind(this)} Id="pressme" style={{ borderRadius: "5px", padding: "5px" }}>Press Me!</button>
-//         </h4>
-
-//       </div>
-//     )
-//   }
-  
-// }
-
-
-
-// const classes = useStyles();
 
 let loading1 = true;
+
 
 
 
@@ -289,23 +246,7 @@ function withSplashScreen(WrappedComponent) {
         }
       }
 
-      //   try {
-      //     await auth0Client.loadSession();
 
-
-
-      // setTimeout(() => {
-      //   this.setState({
-      //     loading: false,
-      //   });
-      // }, 1500)
-
-      //   } catch (err) {
-      //     console.log(err);
-      //     this.setState({
-      //       loading: false,
-      //     });
-      //   }
     }
 
 
@@ -320,30 +261,27 @@ function withSplashScreen(WrappedComponent) {
           {/* <Button href="#" color="primary" variant="outlined">
                 Login
               </Button> */}
-          <Container maxWidth={1200} component="main" data-step="1" data-intro="Select Assembly" disableInteraction={true} pointer-events="none">
+          <Container maxWidth={1200} component="main" data-step="1" data-intro="Select Assembly" disableInteraction={true} pointer-events="none" style={{ display: 'flex', flexWrap: 'wrap' }}>
             <Grid container spacing={4} alignItems="flex-end" justifyContent="center" >
-              {/* Split Tour botton set */}
 
               {tier0.map((tier) => (
                 // Enterprise card is full width at sm breakpoint
-                <Grid item key={tier.title} xs={6} sm={tier.title === 'Enterprise' ? 12 : 6} md={2}>
-                  <Card >
+                <Grid item key={tier.title} xs={6} sm={6} md={2} >
+                  <Card style={{ minHeight: '100%', maxHeight: '100%' }}>
                     <CardHeader
                       title={tier.title}
                       subheader={tier.subheader}
                       titleTypographyProps={{ align: 'center' }}
                       subheaderTypographyProps={{ align: 'center' }}
-
                     />
-                    <CardContent>
-                      <div>
-                        <Typography variant="h6" color="textSecondary" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>                       
-                          <IconButton aria-label={tier.id}  
-                          onClick={() => {introJs().setOption('doneLabel', 'Next page').oncomplete(async function() {window.location.href = 'index.html?type=0';}).start(document.getElementById('startTour!'))
-                          sessionStorage.IntroKey=1}}>
-                          <img src={tier.img} alt="Start Intro" style={{ height: "215px", maxWidth: "200px", position: 'relative', margin: "0 auto", display: 'flex', justifyContent: 'center', alignItems: 'center' }}/>
-                          </IconButton>
-                        </Typography> 
+                    <CardContent style={{ display: 'flex', justifyContent: 'center' }}>
+                      <div >
+                        <IconButton aria-label={tier.id} onClick={() => {
+                          introJs().setOption('doneLabel', 'Next page').oncomplete(async function() {window.location.href = 'index.html?type=0';}).start(document.getElementById('startTour!'))
+                          sessionStorage.IntroKey=1
+                        }}>
+                          <img src={tier.img} alt="Start Intro" style={{ height: '100%', maxWidth: '100%', objectFit: 'contain' }}  />
+                        </IconButton>
                       </div>
                     </CardContent>
                     <CardActions>
@@ -371,8 +309,8 @@ function withSplashScreen(WrappedComponent) {
               
               {tiers.map((tier) => (
                 // Enterprise card is full width at sm breakpoint
-                <Grid item key={tier.title} xs={6} sm={tier.title === 'Enterprise' ? 12 : 6} md={2} >
-                  <Card>
+                <Grid item key={tier.title} xs={6} sm={6} md={2} >
+                  <Card style={{ minHeight: '100%', maxHeight: '100%' }}>
                     <CardHeader
                       title={tier.title}
                       subheader={tier.subheader}
@@ -389,7 +327,17 @@ function withSplashScreen(WrappedComponent) {
                         <Typography variant="h6" color="textSecondary">
                         
                           {/* For future, intent: images become links: <a href="#">*/}
-                            <img src={tier.img} style={{ height: "240px", maxWidth: "240px", position: 'relative', margin: "0 auto", display: 'flex', justifyContent: 'center', alignItems: 'center' }} 
+                            <img src={tier.img} 
+                            style={{ 
+                              height: '100%', 
+                              maxWidth: '100%', 
+                              objectFit: 'contain',
+                              position: 'relative', 
+                              margin: "0 auto", 
+                              display: 'flex', 
+                              justifyContent: 'center', 
+                              alignItems: 'center' 
+                            }} 
                             
                             /*onClick={() => {
                            this.setState({ loading: false, currentItem: tier.item, selectedMaterials: this.state.selectedMaterials });

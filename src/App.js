@@ -31,12 +31,12 @@ import './css/introjs-modern copy.css';
 //import './css/introjs-payette2.css';
 
 
-import {BitlyClient} from "bitly-react";    
+// import {BitlyClient} from "bitly-react";    
 
-//Bitly api access token code from https://app.bitly.com/settings/api/, account:ywang@payette.com,paaword:Payette285
-const bitly = new BitlyClient("6d67caa16b327805d37c1bb89083138d44856c01",{});
-//const bitly = new BitlyClient("2adf276fd8524843749be7859808e975f5132714",{});
-let receivedShortUrl = "";
+// //Bitly api access token code from https://app.bitly.com/settings/api/, account:ywang@payette.com,paaword:Payette285
+// const bitly = new BitlyClient("6d67caa16b327805d37c1bb89083138d44856c01",{});
+// //const bitly = new BitlyClient("2adf276fd8524843749be7859808e975f5132714",{});
+// let receivedShortUrl = "";
 
 let footer = <div style={{ paddingTop: 0, top: 0, marginTop: 0, marginLeft: 0,marginRight: '3%'}}>
   <p className={styles.serif} style={{ display: "inline-block" }}>
@@ -79,6 +79,10 @@ class App extends Component {
       lens: "0_0_0",
       shareableUrl: "https://www.payette.com/kaleidoscope/"
     };
+
+
+    this.exportToCsv = this.exportToCsv.bind(this);
+
 
     DATASET_NAMES.forEach(dataSetName => {
       this.state[dataSetName] = [];
@@ -592,10 +596,76 @@ class App extends Component {
     });
   }
 
+  // async constructURL() {
+  //   let urlVar = new URLSearchParams()
+  //   urlVar.set("type", this.state.value)
+  //   let selectedString = ""
+  //   if (this.state.value == 0) {
+  //     let allSystems = materialListEnvelope.map(m => m.value);
+  //     for (let i = 0; i < allSystems.length; i++) {
+  //       if (this.state.selectedMaterials.includes(allSystems[i])) {
+  //         selectedString += i + "_"
+  //       }
+  //     }
+  //   } else if (this.state.value == 1) {
+  //     let allSystems = materialListFlooring.map(m => m.value);
+  //     for (let i = 0; i < allSystems.length; i++) {
+  //       if (this.state.flooring_selectedMaterials.includes(allSystems[i])) {
+  //         selectedString += i + "_"
+  //       }
+  //     }
+  //   } else if (this.state.value == 2) {
+  //     let allSystems = materialListCeilings.map(m => m.value);
+  //     for (let i = 0; i < allSystems.length; i++) {
+  //       if (this.state.ceilings_selectedMaterials.includes(allSystems[i])) {
+  //         selectedString += i + "_"
+  //       }
+  //     }
+  //   } else if (this.state.value == 3) {
+  //     let allSystems = materialListPartitions.map(m => m.value);
+  //     for (let i = 0; i < allSystems.length; i++) {
+  //       if (this.state.partitions_selectedMaterials.includes(allSystems[i])) {
+  //         selectedString += i + "_"
+  //       }
+  //     }
+  //   }
+  //   urlVar.set("system", selectedString)
+  //   urlVar.set("chartType", this.state.chartType)
+  //   urlVar.set("lifespan", this.state.lifespan)
+  //   urlVar.set("biogenicCarbon", this.state.biogenicCarbon)
+  
+  //   await this.shortUrl("https://www.payette.com/kaleidoscope/?" + urlVar.toString())
+  //     this.setState({
+  //       shareableUrl:receivedShortUrl
+  //       }, () => {
+  //         console.log(this.state.shareableUrl); 
+  //         this.materialsDialogRef.show();
+  //       })
+    
+  // }
+
+
+  // async shortUrl(url){
+  //   console.log("copyshort")
+  //     receivedShortUrl = ""
+  //     let result =[]
+  //     try{
+  //       result =await bitly.shorten(url);
+  //     }catch (e){
+  //       throw e;
+  //     }
+  //     return new Promise(resolve => {
+  //       receivedShortUrl = result.url
+  //       resolve()
+  //     })
+
+  //  }
+
   async constructURL() {
-    let urlVar = new URLSearchParams()
-    urlVar.set("type", this.state.value)
-    let selectedString = ""
+    let urlVar = new URLSearchParams();
+    urlVar.set("type", this.state.value);
+    let selectedString = "";
+  
     if (this.state.value == 0) {
       let allSystems = materialListEnvelope.map(m => m.value);
       for (let i = 0; i < allSystems.length; i++) {
@@ -625,32 +695,43 @@ class App extends Component {
         }
       }
     }
-    urlVar.set("system", selectedString)
-    urlVar.set("chartType", this.state.chartType)
-    urlVar.set("lifespan", this.state.lifespan)
-    urlVar.set("biogenicCarbon", this.state.biogenicCarbon)
-    await this.shortUrl("https://www.payette.com/kaleidoscope/?" + urlVar.toString())
-      this.setState({
-        shareableUrl:receivedShortUrl
-        }, () => {
-          this.materialsDialogRef.show();
-        })
+  
+    urlVar.set("system", selectedString);
+    urlVar.set("chartType", this.state.chartType);
+    urlVar.set("lifespan", this.state.lifespan);
+    urlVar.set("biogenicCarbon", this.state.biogenicCarbon);
+  
+    const longUrl = "https://www.payette.com/kaleidoscope/?" + urlVar.toString();
+    const shortUrl = await this.shortUrl(longUrl);
+    this.setState({
+      shareableUrl: shortUrl,
+    }, () => {
+      console.log(this.state.shareableUrl);
+      this.materialsDialogRef.show();
+    });
   }
-
-  async shortUrl(url){
-    console.log("copyshort")
-      receivedShortUrl = ""
-      let result =[]
-      try{
-        result =await bitly.shorten(url);
-      }catch (e){
-        throw e;
-      }
-      return new Promise(resolve => {
-        receivedShortUrl = result.url
-        resolve()
-      })
+  
+  async shortUrl(longUrl) {
+    console.log("Generating short URL for", longUrl);
+    const response = await fetch('https://api-ssl.bitly.com/v4/shorten', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + '6d67caa16b327805d37c1bb89083138d44856c01' // Replace YOUR_BITLY_TOKEN with your actual token.
+      },
+      body: JSON.stringify({ long_url: longUrl }),
+    });
+  
+    if (!response.ok) {
+      console.error("Failed to shorten URL:", response.status, response.statusText);
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
+  
+    const data = await response.json();
+    console.log("Short URL is", data.id);
+    return data.id;
+  }
+  
 
 
 
@@ -745,6 +826,66 @@ class App extends Component {
     introJs(document.getElementById('root')).start();
     //introJs().addHints();
   }
+
+  printPDF = () => {
+    // Generate print content if needed
+  
+    // Call the print function
+    window.print();
+  }
+
+  handleChange(e) {
+
+    this.setState({ vals: this.state.vals });
+    this.setState({ vals1: this.state.vals1 });
+  
+    this.exportToCsv();
+  }
+  
+
+  toCsv(data) {
+    const replacer = (key, value) => value === null ? '' : value;
+    const header = Object.keys(data[0]);
+    let csv = data.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
+    csv.unshift(header.join(','));
+    return csv.join('\r\n');
+  }
+  
+  exportToCsv() {
+    const csvData = this.state.rows.map((row, idx) => {
+      const selectTypeElement = document.getElementById(`select-type${this.props.name}${idx + 1}`);
+      const selectPositionElement = document.getElementById(`select-position${this.props.name}${idx + 1}`);
+      const displayGWPElement = document.getElementById(`displayGWP${this.props.name}${idx + 1}`);
+  
+      const selectTypeValue = selectTypeElement ? selectTypeElement.value : '';
+      const selectPositionValue = selectPositionElement ? selectPositionElement.value : '';
+      const displayGWPValue = displayGWPElement ? displayGWPElement.innerHTML : '';
+  
+      return {
+        id: idx + 1,
+        selectType: selectTypeValue,
+        selectPosition: selectPositionValue,
+        displayGWP: displayGWPValue,
+      };
+    });
+  
+    const csv = this.toCsv(csvData);
+  
+    // Create a blob and download the file
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.setAttribute('hidden', '');
+    a.setAttribute('href', url);
+    a.setAttribute('download', 'export.csv');
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+  
+  
+  
+  
 
 
 
@@ -855,8 +996,11 @@ class App extends Component {
       alert("exit of introduction");
       
     });
-    
 
+
+
+    
+  
     
 
 
@@ -864,7 +1008,14 @@ class App extends Component {
       <div className="App" style={{ minHeight: sidebarHeight }}>
       
         <h4 style={{ position: "absolute", right: "85px", top: "60px" }}>
+          <span style={{ marginRight: "20px" }}>
+          <button onClick={this.printPDF} style={{ borderRadius: "5px", padding: "5px" }}>PDF</button>
+          </span>
+          <span style={{ marginRight: "20px" }}>
+          <button onClick={this.exportToCsv} style={{ borderRadius: "5px", padding: "5px" }}>Export CSV</button>
+          </span>
           <button onClick={this.constructURL.bind(this)} style={{ borderRadius: "5px", padding: "5px" }}>Share Link</button>
+
         </h4>
 
         <Dialog id="sharedialog"
@@ -916,7 +1067,7 @@ class App extends Component {
         
         <TabPanel  className={styles.tabPanel} value={this.state.value} index={TAB_INDEX_ENVELOPES} style={{marginLeft:'5%', marginRight:'5%'} } >
 
-          <h4 style={{ position: "absolute", right: "210px", top: "60px" }}>
+          <h4 style={{ position: "absolute", right: "395px", top: "60px" }}>
             <button Id='startTour2' onClick={this.startIntro.bind(this)} style={{ borderRadius: "5px", padding: "5px" }}>Start Tour</button>
           </h4>
           
@@ -1061,14 +1212,20 @@ class App extends Component {
                     )
                   })
                   }
+                  
                   <br></br>
 
-                  <button onClick={this.addRow}>
+                  <button onClick={this.addRow} >
                     Add Option
-                  </button>
+                  </button>&nbsp;
                   <button onClick={this.deleteRows}>
                     Delete Option
-                  </button>
+                  </button>&nbsp;
+                  {/* <button id="export-btn" onClick={this.exportToCsv}>
+                    Export CSV
+                  </button> */}
+
+
                 
 
                 </div>
@@ -1240,12 +1397,15 @@ class App extends Component {
                   }
                   <br></br>
 
-                  <button onClick={this.addRow}>
+                  <button onClick={this.addRow} >
                     Add Option
-                  </button>
+                  </button>&nbsp;
                   <button onClick={this.deleteRows}>
                     Delete Option
-                  </button>
+                  </button>&nbsp;
+                  {/* <button id="export-btn" onClick={this.exportToCsv}>
+                    Export CSV
+                  </button> */}
 
 
                   <br></br>
@@ -1412,12 +1572,15 @@ class App extends Component {
                   }
                   <br></br>
 
-                  <button onClick={this.addRow}>
+                  <button onClick={this.addRow} >
                     Add Option
-                  </button>
+                  </button>&nbsp;
                   <button onClick={this.deleteRows}>
                     Delete Option
-                  </button>
+                  </button>&nbsp;
+                  {/* <button id="export-btn" onClick={this.exportToCsv}>
+                    Export CSV
+                  </button> */}
 
 
                   <br></br>
@@ -1588,12 +1751,15 @@ class App extends Component {
 
                   <br></br>
 
-                  <button onClick={this.addRow}>
+                  <button onClick={this.addRow} >
                     Add Option
-                  </button>
+                  </button>&nbsp;
                   <button onClick={this.deleteRows}>
                     Delete Option
-                  </button>
+                  </button>&nbsp;
+                  {/* <button id="export-btn" onClick={this.exportToCsv}>
+                    Export CSV
+                  </button> */}
 
 
                   <br></br>
