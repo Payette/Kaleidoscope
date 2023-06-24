@@ -35,7 +35,7 @@
     "react-a11y-dialog": "^4.2.0",
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
-    "react-scripts": "3.3.1",
+    "react-scripts": "5.0.1",
     "styled-components": "^5.3.5"
   },
   "scripts": {
