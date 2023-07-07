@@ -5,6 +5,7 @@ import { GradientPinkBlue } from '@vx/gradient';
 import { letterFrequency, browserUsage } from '@vx/mock-data';
 import { localPoint } from '@vx/event';
 import { Pattern as CustomPattern, PatternLines, PatternCircles, PatternWaves } from '@vx/pattern';
+import { useEffect, useState } from 'react';
 
 let pointX = 0;
 let pointY = 0;
@@ -18,12 +19,38 @@ const usage = d => d.usage;
 const frequency = d => d.frequency;
 export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdown2, currentMat, tenYGWP, sixty1YGWP, sixty2YGWP, GWPSel, cols, materialNames, materialLabel }) => {
 
+  const [smallPop, setSmallPop] = useState(1);
+  const [screenWidth, setScreenWidth] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    setScreenWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (screenWidth < 699) {
+      setSmallPop(2.5);
+    } else if (screenWidth >= 699 && screenWidth <= 1200) {
+      setSmallPop(1.5);
+    } else {
+      setSmallPop(1);
+    }
+  }, [screenWidth]);
+  
   // this.state = { textToShow: ""};
   // this.handleInputChange = this.handleInputChange.bind(this);
 
-  const radius = Math.min(width, height) / 1.5;
-  const centerY = height / 2;
-  const centerX = width / 2;
+  const radius = Math.min(width, height) / 1.5/smallPop;
+  const centerY = height/smallPop / 2;
+  const centerX = width/smallPop / 2;
   // console.log(matBreakdown);
   // console.log(currentMat);
   let myGWP = 0.00;
@@ -101,15 +128,15 @@ export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdo
 
 
   return (
-    <svg width={width} height={height}>
+    <svg width={width/smallPop} height={height/smallPop}>
       {/* <GradientPinkBlue id="pie-gradients" /> */}
       <rect rx={14} width={width} height={height} fill="url('#pie-gradients')" />
       <Group top={centerY} left={centerX}>
         <Pie
           data={mats}
           pieValue={mUsage}
-          outerRadius={radius - 80}
-          innerRadius={radius - 170}
+          outerRadius={radius - 80/smallPop}
+          innerRadius={radius - 170/smallPop}
           cornerRadius={0}
           padAngle={0}
           pieSort={null}

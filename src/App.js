@@ -22,6 +22,7 @@ import ChartContainer from './ChartContainer';
 import ChartContainerP from './ChartContainerP';
 import './css/Main.scss';
 import styles from './css/App.module.scss';
+import copy from 'copy-to-clipboard';
 
 //introJS
 import introJs from 'intro.js';
@@ -67,6 +68,7 @@ class App extends Component {
       partitions_materials: [],
       partitions_selectedMaterials: [],
 
+
       currentRadio: 1,
       rows: [
         { value: 'row1', checked: false },
@@ -81,7 +83,6 @@ class App extends Component {
     };
 
 
-    this.exportToCsv = this.exportToCsv.bind(this);
 
 
     DATASET_NAMES.forEach(dataSetName => {
@@ -90,8 +91,11 @@ class App extends Component {
       this.state[`ceilings_${dataSetName}`] = [];
       this.state[`partitions_${dataSetName}`] = [];
     })
+    
 
     this.handleInputChange = this.handleInputChange.bind(this);
+
+
   }
 
   handleClick = (e) => {
@@ -160,21 +164,39 @@ class App extends Component {
     });
   }
 
-  addRow = () => {
-    const rows = [...this.state.rows,
-    { value: '', checked: false }
-    ];
-    this.setState({
-      rows,
-    });
-  }
+  // addRow = () => {
+  //   const rows = [...this.state.rows,
+  //   { value: '', checked: false }
+  //   ];
+  //   this.setState({
+  //     rows,
+  //   });
+  // }
 
-  deleteRows = () => {
-    let oh = this.state.rows.pop();
-    this.setState({
-      rows: this.state.rows
+  // deleteRows = () => {
+  //   let oh = this.state.rows.pop();
+  //   this.setState({
+  //     rows: this.state.rows
+  //   });
+  // }
+
+  addRow = () => {
+    this.setState(prevState => {
+      const updatedRows = [...prevState.rows, { value: '', checked: false }];
+      return { rows: updatedRows };
+      
     });
-  }
+  };
+  
+  deleteRows = () => {
+    this.setState(prevState => {
+      const updatedRows = [...prevState.rows];
+      updatedRows.pop();
+      return { rows: updatedRows };
+    });
+  };
+  
+  
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (!_.isEqual(prevState, this.state)) {
@@ -843,49 +865,35 @@ class App extends Component {
   }
   
 
-  toCsv(data) {
-    const replacer = (key, value) => value === null ? '' : value;
-    const header = Object.keys(data[0]);
-    let csv = data.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
-    csv.unshift(header.join(','));
-    return csv.join('\r\n');
-  }
+  // exportAllToCsv() {
+  //   let allData = [];
+    
+  //   // Assume this.state.calculators is an array of references to your Calculator components
+  //   this.state.calculators.forEach(calculator => {
+  //     const data = calculator.getData();
+  //     allData.push(...data);
+  //   });
   
-  exportToCsv() {
-    const csvData = this.state.rows.map((row, idx) => {
-      const selectTypeElement = document.getElementById(`select-type${this.props.name}${idx + 1}`);
-      const selectPositionElement = document.getElementById(`select-position${this.props.name}${idx + 1}`);
-      const displayGWPElement = document.getElementById(`displayGWP${this.props.name}${idx + 1}`);
+  //   // Convert data array to CSV string
+  //   let csv = this.toCsv(allData);
   
-      const selectTypeValue = selectTypeElement ? selectTypeElement.value : '';
-      const selectPositionValue = selectPositionElement ? selectPositionElement.value : '';
-      const displayGWPValue = displayGWPElement ? displayGWPElement.innerHTML : '';
-  
-      return {
-        id: idx + 1,
-        selectType: selectTypeValue,
-        selectPosition: selectPositionValue,
-        displayGWP: displayGWPValue,
-      };
-    });
-  
-    const csv = this.toCsv(csvData);
-  
-    // Create a blob and download the file
-    const blob = new Blob([csv], { type: 'text/csv' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.setAttribute('hidden', '');
-    a.setAttribute('href', url);
-    a.setAttribute('download', 'export.csv');
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  }
+  //   // Create a blob and download the file
+  //   const blob = new Blob([csv], { type: 'text/csv' });
+  //   const url = URL.createObjectURL(blob);
+  //   const a = document.createElement('a');
+  //   a.setAttribute('hidden', '');
+  //   a.setAttribute('href', url);
+  //   a.setAttribute('download', 'export_all.csv');
+  //   document.body.appendChild(a);
+  //   a.click();
+  //   document.body.removeChild(a);
+  // }  
   
   
   
-  
+  copyToClipboard = () => {
+    copy(this.state.shareableUrl);
+  };
 
 
 
@@ -997,26 +1005,13 @@ class App extends Component {
       
     });
 
+    this.comparisonRefs = [];
 
-
-    
-  
-    
 
 
     return (
       <div className="App" style={{ minHeight: sidebarHeight }}>
       
-        <h4 style={{ position: "absolute", right: "85px", top: "60px" }}>
-          <span style={{ marginRight: "20px" }}>
-          <button onClick={this.printPDF} style={{ borderRadius: "5px", padding: "5px" }}>PDF</button>
-          </span>
-          <span style={{ marginRight: "20px" }}>
-          <button onClick={this.exportToCsv} style={{ borderRadius: "5px", padding: "5px" }}>Export CSV</button>
-          </span>
-          <button onClick={this.constructURL.bind(this)} style={{ borderRadius: "5px", padding: "5px" }}>Share Link</button>
-
-        </h4>
 
         <Dialog id="sharedialog"
           appRoot="#root"
@@ -1036,7 +1031,7 @@ class App extends Component {
             <br></br>
             <h2 style={{ fontSize: "20px", textAlign: "center" }}>{this.state.shareableUrl}</h2>
             <br></br>
-            <button onClick={() => {navigator.clipboard.writeText(this.state.shareableUrl)}} style={{ borderRadius: "8px", padding: "8px" }}>Copy URL</button>
+            <button onClick={this.copyToClipboard} style={{ borderRadius: "8px", padding: "8px" }}>Copy URL</button>
           </span>
         </Dialog>  
 
@@ -1067,9 +1062,11 @@ class App extends Component {
         
         <TabPanel  className={styles.tabPanel} value={this.state.value} index={TAB_INDEX_ENVELOPES} style={{marginLeft:'5%', marginRight:'5%'} } >
 
-          <h4 style={{ position: "absolute", right: "395px", top: "60px" }}>
-            <button Id='startTour2' onClick={this.startIntro.bind(this)} style={{ borderRadius: "5px", padding: "5px" }}>Start Tour</button>
-          </h4>
+          <div style={{ display: 'flex', justifyContent: 'flex-end',marginTop: '8px' }}>
+            <button Id='startTour2' onClick={this.startIntro.bind(this)} class="mainButton">Start Tour</button>&nbsp;
+            <button onClick={this.printPDF} class="mainButton">PDF</button>&nbsp;
+            <button onClick={this.constructURL.bind(this)} class="mainButton">Share Link</button>&nbsp;
+          </div>
           
           <Helmet>
             <script type="text/javascript" src="loadBigfoot1.js"></script>
@@ -1185,11 +1182,14 @@ class App extends Component {
 
                   <div style={{ margin: "auto",display: "flex"  }}>
                     <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
-                    <label for="ten"> Initial Carbon (only Module A) &nbsp;&nbsp;</label>
+                    <label > Initial Carbon (only Module A) &nbsp;&nbsp;</label>
+                    {/* <label for="ten"> Initial Carbon (only Module A) &nbsp;&nbsp;</label> */}
                     <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
-                    <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
+                    <label > 60 Year (with Module D) &nbsp;&nbsp;</label>
+                    {/* <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label> */}
                     <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
-                    <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label>
+                    <label > 60 Year (no Module D) &nbsp;&nbsp;</label>
+                    {/* <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label> */}
                   </div><br></br>
 
                   {this.state.rows.map((row, idx) => {
@@ -1208,10 +1208,12 @@ class App extends Component {
                         divStyle={divStyle}
                         onChange={(e) => this.updateValue(e, idx)}
                         onChecked={() => this.onChecked(idx)}
+
                       />
                     )
                   })
                   }
+                  
                   
                   <br></br>
 
@@ -1221,8 +1223,8 @@ class App extends Component {
                   <button onClick={this.deleteRows}>
                     Delete Option
                   </button>&nbsp;
-                  {/* <button id="export-btn" onClick={this.exportToCsv}>
-                    Export CSV
+                  {/* <button id="export-btn" onClick={this.exportAllToCsv}>
+                    Export All CSV
                   </button> */}
 
 
@@ -1255,6 +1257,12 @@ class App extends Component {
 
         {/* FLOORING */}
         <TabPanel className={styles.tabPanel} value={this.state.value} index={TAB_INDEX_FLOORING} style={{marginLeft:'5%', marginRight:'5%'} }>
+
+          <div style={{ display: 'flex', justifyContent: 'flex-end' ,marginTop: '8px' }}>
+            <button onClick={this.printPDF} class="mainButton">PDF</button>&nbsp;
+            <button onClick={this.constructURL.bind(this)} class="mainButton">Share Link</button>&nbsp;
+          </div>
+
           <Helmet>
             <script type="text/javascript" src="loadBigfoot2.js"></script>
           </Helmet>
@@ -1262,7 +1270,7 @@ class App extends Component {
             <h1>FLOOR ASSEMBLIES</h1>
             <div className={styles.topcontrols}>
 
-              <div className={styles.inputgroup} style={{ minHeight: 195 }}>
+              <div className={styles.inputgroup} >
                 <h3>CHART TYPE</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="GWP" value="GWP" name="chartType" checked={this.state.chartType === "GWP"} onChange={this.handleInputChange} />
@@ -1290,7 +1298,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup} style={{ minHeight: 195 }}>
+              <div className={styles.inputgroup} >
                 <h3>LIFESPAN</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="tenY" name="lifespan" value="tenY" checked={this.state.lifespan === "tenY"} onChange={this.handleInputChange} />
@@ -1306,7 +1314,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup} style={{ minHeight: 195 }}>
+              <div className={styles.inputgroup} >
                 <h3>BIOGENIC CARBON</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked={this.state.biogenicCarbon === "yBio"} onChange={this.handleInputChange} />
@@ -1365,13 +1373,11 @@ class App extends Component {
 
                   <div style={{ margin: "auto",display: "flex"  }}>
                     <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
-                    <label for="ten"> Initial Carbon (only Module A) &nbsp;&nbsp;</label>
+                    <label > Initial Carbon (only Module A) &nbsp;&nbsp;</label>
                     <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
-                    <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
+                    <label > 60 Year (with Module D) &nbsp;&nbsp;</label>
                     <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
-                    <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label>
-
-
+                    <label > 60 Year (no Module D) &nbsp;&nbsp;</label>
 
                   </div><br></br>
 
@@ -1430,6 +1436,12 @@ class App extends Component {
 
         {/* CEILINGS */}
         <TabPanel className={styles.tabPanel} value={this.state.value} index={TAB_INDEX_CEILINGS} style={{marginLeft:'5%', marginRight:'5%'} }>
+
+          <div style={{ display: 'flex', justifyContent: 'flex-end',marginTop: '8px'  }}>
+            <button onClick={this.printPDF} class="mainButton">PDF</button>&nbsp;
+            <button onClick={this.constructURL.bind(this)} class="mainButton">Share Link</button>&nbsp;
+          </div>
+
           <Helmet>
             <script type="text/javascript" src="loadBigfoot3.js"></script>
           </Helmet>
@@ -1437,7 +1449,7 @@ class App extends Component {
             <h1>CEILING ASSEMBLIES</h1>
             <div className={styles.topcontrols}>
 
-              <div className={styles.inputgroup} style={{ minHeight: 195 }}>
+              <div className={styles.inputgroup} >
                 <h3>CHART TYPE</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="GWP" value="GWP" name="chartType" checked={this.state.chartType === "GWP"} onChange={this.handleInputChange} />
@@ -1465,7 +1477,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup} style={{ minHeight: 195 }}>
+              <div className={styles.inputgroup} >
                 <h3>LIFESPAN</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="tenY" name="lifespan" value="tenY" checked={this.state.lifespan === "tenY"} onChange={this.handleInputChange} />
@@ -1481,7 +1493,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup} style={{ minHeight: 195 }}>
+              <div className={styles.inputgroup} >
                 <h3>BIOGENIC CARBON</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked={this.state.biogenicCarbon === "yBio"} onChange={this.handleInputChange} />
@@ -1540,11 +1552,11 @@ class App extends Component {
 
                   <div style={{ margin: "auto",display: "flex"  }}>
                     <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
-                    <label for="ten"> Initial Carbon (only Module A) &nbsp;&nbsp;</label>
+                    <label > Initial Carbon (only Module A) &nbsp;&nbsp;</label>
                     <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
-                    <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
+                    <label > 60 Year (with Module D) &nbsp;&nbsp;</label>
                     <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
-                    <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label>
+                    <label > 60 Year (no Module D) &nbsp;&nbsp;</label>
 
 
 
@@ -1606,6 +1618,12 @@ class App extends Component {
 
         {/* PARTITIONS */}
         <TabPanel className={styles.tabPanel} value={this.state.value} index={TAB_INDEX_PARTITIONS} style={{marginLeft:'5%', marginRight:'5%'} }>
+
+          <div style={{ display: 'flex', justifyContent: 'flex-end' ,marginTop: '8px' }}>
+            <button onClick={this.printPDF} class="mainButton">PDF</button>&nbsp;
+            <button onClick={this.constructURL.bind(this)} class="mainButton">Share Link</button>&nbsp;
+          </div>
+
           <Helmet>
             <script type="text/javascript" src="loadBigfoot3.js"></script>
           </Helmet>
@@ -1613,7 +1631,7 @@ class App extends Component {
             <h1>PARTITIONS ASSEMBLIES</h1>
             <div className={styles.topcontrols}>
 
-              <div className={styles.inputgroup} style={{ minHeight: 195 }}>
+              <div className={styles.inputgroup} >
                 <h3>CHART TYPE</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="GWP" value="GWP" name="chartType" checked={this.state.chartType === "GWP"} onChange={this.handleInputChange} />
@@ -1641,7 +1659,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup} style={{ minHeight: 195 }}>
+              <div className={styles.inputgroup} >
                 <h3>LIFESPAN</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="tenY" name="lifespan" value="tenY" checked={this.state.lifespan === "tenY"} onChange={this.handleInputChange} />
@@ -1657,7 +1675,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup} style={{ minHeight: 195 }}>
+              <div className={styles.inputgroup} >
                 <h3>BIOGENIC CARBON</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked={this.state.biogenicCarbon === "yBio"} onChange={this.handleInputChange} />
@@ -1717,11 +1735,11 @@ class App extends Component {
 
                   <div style={{ margin: "auto",display: "flex"  }}>
                     <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
-                    <label for="ten"> Initial Carbon (only Module A) &nbsp;&nbsp;</label>
+                    <label > Initial Carbon (only Module A) &nbsp;&nbsp;</label>
                     <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
-                    <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
+                    <label > 60 Year (with Module D) &nbsp;&nbsp;</label>
                     <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
-                    <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label>
+                    <label > 60 Year (no Module D) &nbsp;&nbsp;</label>
                   </div>
                   <div>
                     <p className={styles.serif} style={{ display: "inline-block",fontWeight: "bold"}}>

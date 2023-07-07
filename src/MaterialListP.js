@@ -330,18 +330,18 @@ export default class MaterialList extends PureComponent {
 
             {this.props.type === SYSTEM_TYPE_ENVELOPES ?
               <>
-                <img style={{ maxWidth: "45%", top: "-70px", position: "relative", float: "right", objectFit: "cover", display: "block" }} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />
+                <img style={{ maxWidth: "40%", top: "-20%", position: "relative", float: "right", objectFit: "cover", display: "block" }} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />
                 <div style={{ maxWidth: "55%", float: "left", position: 'relative' }}>
                   <h4>Assumptions</h4>
-                  <ul style={{ lineHeight: '1.4em', fontSize: '16px', paddingLeft: '1em' }}>{listItems}</ul></div>
+                  <ul style={{ lineHeight: '1.4em', class:"Text16", paddingLeft: '1em' }}>{listItems}</ul></div>
               </> :
               <>
                 <img style={{ maxWidth: "45%", top: "-70px", position: "relative", float: "right", objectFit: "cover", display: "block" }} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />
                 <div style={{ maxWidth: "55%", float: "left", position: 'relative' }}>
                   <div style={{ display: "block" }}><h4>Assumptions</h4>
-                    <ul style={{ lineHeight: '1.4em', fontSize: '16px', paddingLeft: '1em' }}>{listItems}</ul></div>
+                    <ul style={{ lineHeight: '1.4em', class:"Text16", paddingLeft: '1em' }}>{listItems}</ul></div>
                   <div style={{ position: 'relative', display: 'block' }}><h4>Material Health</h4>
-                    <ul style={{ lineHeight: '1.4em', fontSize: '16px', paddingLeft: '1em' }}>{listItemsHealth}</ul></div>
+                    <ul style={{ lineHeight: '1.4em', class:"Text16", paddingLeft: '1em' }}>{listItemsHealth}</ul></div>
                 </div>
               </>}
 

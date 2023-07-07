@@ -12,7 +12,7 @@ import * as d3 from 'd3';
 import styles from './css/StackedBarChart.module.scss';
 import { GridRows, GridColumns } from '@vx/grid';
 import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_PARTITIONS, SYSTEM_TYPE_ENVELOPES } from './CommonUtil';
-
+import { useEffect, useState } from 'react';
 
 
 
@@ -41,6 +41,27 @@ export default withTooltip(({
   showTooltip,
   type
 }) => {
+
+  const [smallWindow,setSmallWindow] = useState(0);
+  const [longBar,setLongBar] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      if (screenWidth < 699) {
+        setSmallWindow(100);
+        setLongBar(1.3);
+      } else {
+        setSmallWindow(0);
+        setLongBar(1);
+      }
+    };
+
+    handleResize(); 
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   if (!selectedMaterials || !Array.isArray(selectedMaterials) || selectedMaterials.length === 0) {
     return <div>Select materials to show charts.</div>
   }
@@ -229,7 +250,7 @@ export default withTooltip(({
         }
 
         let width2 = Math.max(300, w) - 20;
-        const xMax = width2;
+        const xMax = width2*longBar;
         xScale.rangeRound([0, xMax - 250]);
         var previousY = 0;
         let whichArray = 0;
@@ -358,7 +379,7 @@ export default withTooltip(({
                                 barColor = metaData.materialHealth[bar.bar.data.material] || bar.color;
 
                               }
-                              return (<rect key={`barstack-horizontal-${barStack.index}-${bar.index}`} x={bar.x} y={bar.y} width={bar.width} height={bar.height} stroke={'#ffffff'} fill={barColor} onClick={event => {
+                              return (<rect key={`barstack-horizontal-${barStack.index}-${bar.index}`} x={bar.x-smallWindow} y={bar.y} width={bar.width} height={bar.height} stroke={'#ffffff'} fill={barColor} onClick={event => {
                                 if (!events)
                                   return;
                                 alert(`clicked: ${JSON.stringify(bar)}`);
@@ -387,8 +408,8 @@ export default withTooltip(({
                       
                       hideAxisLine={true} hideTicks={true} scale={yScale} /* tickFormat={formatDate} */
                       stroke={textColor} tickStroke={textColor}
-                      tickLabelProps={(value, index) => ({ fill: textColor, width: '180', fontSize: 14, textAnchor: 'end', dy: '0.33em' })}
-                      
+                      tickLabelProps={(value, index) => ({ fill: textColor, width: '180', class:"chartText14", textAnchor: 'end', dy: '0.33em' })}
+                      left={-smallWindow}
                     />
                     <Text
                       textAnchor="start"
@@ -396,9 +417,11 @@ export default withTooltip(({
                       fontSize={14}
                       width={50}
                       className={styles.myClass}
-                      x={-margin.left + margin.smallGap} y={(barHeight * sm.values.length) / 2 - 10}
+                      x={-margin.left + margin.smallGap} 
+                      y={(barHeight * sm.values.length) / 2 - 10}
+                      
                     >{sm.key + " " + myAbb}</Text>
-                    <line className={styles.groupLine} x1={xScale(0)} y1="0" x2={xScale(0)} y2={20 + (barHeight * sm.values.length)} stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
+                    <line className={styles.groupLine} x1={xScale(0)-smallWindow} y1="0" x2={xScale(0)-smallWindow} y2={20 + (barHeight * sm.values.length)} stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
                   </Group>
 
 
@@ -408,13 +431,14 @@ export default withTooltip(({
 
 
               <line className={styles.groupLine} x1={-margin.left + margin.smallGap} y1={previousY} x2={width2 - margin.left - 2 * margin.smallGap} y2={previousY} stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
-              <AxisBottom top={(previousY - 7)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({ fill: textColor, fontSize: 14, textAnchor: 'middle' })} labelProps={{
-                fontSize: 18,
+              <AxisBottom left={-smallWindow} top={(previousY - 7)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({ fill: textColor, class:"chartText14", textAnchor: 'middle' })} labelProps={{
+                class:"chartText18",
                 textAnchor: 'middle',
-                fill: textColor
+                fill: textColor,
+                
               }} />
-              <AxisTop top={(3)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({ fill: textColor, fontSize: 14, verticalAnchor: 'bottom', textAnchor: 'middle' })} labelProps={{
-                fontSize: 18,
+              <AxisTop left={-smallWindow} top={(3)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({ fill: textColor, class:"chartText14", verticalAnchor: 'bottom', textAnchor: 'middle' })} labelProps={{
+                class:"chartText18",
                 textAnchor: 'middle',
                 verticalAnchor: 'bottom',
                 fill: textColor,
@@ -441,15 +465,16 @@ export default withTooltip(({
                 border: '3px solid #ffd400',
                 boxShadow: "5px 5px rgba(200, 200, 200, .4)",
                 minWidth: 60,
-                height: toolTipHeight + 50,
-                width: toolTipWidth + 5,
+                height: toolTipHeight,
+                width: toolTipWidth,
                 backgroundColor: 'rgba(255,255,255,0.8)',
                 color: 'black',
                 borderRadius: '0px',
                 margin: 0,
                 padding: 0,
-                top: 15
-
+                top: 15,
+                left: '50%',
+                transform: 'translateX(-50%)',
               }}>
 
 
@@ -458,7 +483,7 @@ export default withTooltip(({
                     // textTransform: 'uppercase',
                     paddingBottom: 2,
                     lineHeight: "1.2em",
-                    fontSize: "20px",
+                    class:"chartText20",
                     fontWeight: 700,
                     color: "#dc1a55",
                     paddingBottom: ".5em"

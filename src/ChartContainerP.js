@@ -1,19 +1,46 @@
 import React from 'react';
-
+import { useState, useEffect } from 'react';
 import StackedBarChart from './StackedBarChartP';
 
 export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, selectedData, metaData }) => {
     if(ready !== true) {
         return null;
     }
-          
+
+
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    const [barHeight, setBarHeight] = useState(40); 
+  
+    useEffect(() => {
+      const handleResize = () => {
+        setScreenWidth(window.innerWidth);
+      };
+  
+      window.addEventListener('resize', handleResize);
+
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
+  
+    useEffect(() => {
+      if (screenWidth < 699) {
+        setBarHeight(15);
+      } else if (screenWidth > 700 && screenWidth < 1119) {
+        setBarHeight(25);
+      } else {
+        setBarHeight(40);
+      }
+    }, [screenWidth]);
+    
+    
     return <div style={{ width: "100%"}}>
       {/* GLOBAL WARMING POTENTIAL */}
       {chartType === "GWP" && data.gwpData.length > 0 && lifespan === "tenY" && biogenicCarbon === "nBio" && <StackedBarChart type={type}
         selectedMaterials={selectedData.gwpData}
         allMaterials={data.gwpData}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         colorBy="material"
         currentChart={chartType}
@@ -24,7 +51,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.allImpactsData}
         allMaterials={data.allImpactsData}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="Normalized % of Total"
         currentChart={chartType}
       />}
@@ -34,7 +61,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.lcsData}
         allMaterials={data.lcsData}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         currentChart={chartType}
       />}
@@ -44,7 +71,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.materialData}
         allMaterials={data.materialData}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         currentChart={chartType}
       />}
@@ -54,7 +81,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.gwpData1}
         allMaterials={data.gwpData1}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         colorBy="material"
         currentChart={chartType}
@@ -65,7 +92,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.allImpactsData1}
         allMaterials={data.allImpactsData1}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="Normalized % of Total"
         currentChart={chartType}
       />}
@@ -75,7 +102,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.lcsData1}
         allMaterials={data.lcsData1}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         currentChart={chartType}
       />}
@@ -85,7 +112,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.materialData1}
         allMaterials={data.materialData1}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         currentChart={chartType}
       />}
@@ -95,7 +122,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.gwpData2}
         allMaterials={data.gwpData2}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         colorBy="material"
         currentChart={chartType}
@@ -106,7 +133,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.allImpactsData2}
         allMaterials={data.allImpactsData2}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="Normalized % of Total"
         currentChart={chartType}
       />}
@@ -116,7 +143,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.lcsData2}
         allMaterials={data.lcsData2}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         currentChart={chartType}
       />}
@@ -126,7 +153,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.materialData2}
         allMaterials={data.materialData2}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         currentChart={chartType}
       />}
@@ -136,7 +163,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.gwpData3}
         allMaterials={data.gwpData3}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         colorBy="material"
         currentChart={chartType}
@@ -147,7 +174,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.allImpactsData3}
         allMaterials={data.allImpactsData3}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="Normalized % of Total"
         currentChart={chartType}
       />}
@@ -157,7 +184,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.lcsData3}
         allMaterials={data.lcsData3}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         currentChart={chartType}
       />}
@@ -167,7 +194,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.materialData3}
         allMaterials={data.materialData3}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         currentChart={chartType}
       />}
@@ -177,7 +204,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.gwpData4}
         allMaterials={data.gwpData4}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         colorBy="material"
         currentChart={chartType}
@@ -188,7 +215,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.allImpactsData4}
         allMaterials={data.allImpactsData4}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="Normalized % of Total"
         currentChart={chartType}
       />}
@@ -198,7 +225,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.lcsData4}
         allMaterials={data.lcsData4}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         currentChart={chartType}
       />}
@@ -208,7 +235,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.materialData4}
         allMaterials={data.materialData4}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         currentChart={chartType}
       />}
@@ -218,7 +245,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.gwpData5}
         allMaterials={data.gwpData5}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         colorBy="material"
         currentChart={chartType}
@@ -229,7 +256,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.allImpactsData5}
         allMaterials={data.allImpactsData5}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="Normalized % of Total"
         currentChart={chartType}
       />}
@@ -239,7 +266,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.lcsData5}
         allMaterials={data.lcsData5}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         currentChart={chartType}
       />}
@@ -249,7 +276,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.materialData5}
         allMaterials={data.materialData5}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         currentChart={chartType}
       />}
@@ -259,7 +286,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.gwpData}
         allMaterials={data.gwpData}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         colorBy="health"
         currentChart={chartType}
@@ -270,7 +297,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.gwpData1}
         allMaterials={data.gwpData1}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         colorBy="health"
         currentChart={chartType}
@@ -281,7 +308,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.gwpData2}
         allMaterials={data.gwpData2}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         colorBy="health"
         currentChart={chartType}
@@ -292,7 +319,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.gwpData3}
         allMaterials={data.gwpData3}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         colorBy="health"
         currentChart={chartType}
@@ -303,7 +330,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.gwpData4}
         allMaterials={data.gwpData4}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         colorBy="health"
         currentChart={chartType}
@@ -314,7 +341,7 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
         selectedMaterials={selectedData.gwpData5}
         allMaterials={data.gwpData5}
         metaData={metaData}
-        barHeight={40}
+        barHeight={barHeight}
         xAxisLabel="GWP (kgCO&#x2082;eq/lf)"
         colorBy="health"
         currentChart={chartType}

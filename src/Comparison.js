@@ -6,9 +6,11 @@ import styles from './css/Comp.module.scss';
 export default class Comparison extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { rows: [], count: 1, vals: [], vals1: [], sum: 0, sum1: 0, radio: 1, allMaterials: [0], show: false };
+    this.state = { rows: [], count: 1, vals: [], vals1: [], sum: 0, sum1: 0, radio: 1, allMaterials: [0], show: false, selectedMaterials: [], csvData:[], results:[]};
     // this.handleInputChange = this.handleInputChange.bind(this);
-    // this.exportToCsv = this.exportToCsv.bind(this);
+    this.exportToCsv = this.exportToCsv.bind(this);
+
+
 
   }
   // static getDerivedStateFromProps(props, current_state) {
@@ -31,17 +33,19 @@ export default class Comparison extends React.Component {
     }
   }
 
+
+
   radC(e) {
 
     let myMult = 0;
     let currentRadio = e;
 
     if (currentRadio == 1) {
-      this.state.allMaterials = this.props.tenY
+      this.setState({ allMaterials: this.props.tenY });
     } else if (currentRadio == 2) {
-      this.state.allMaterials = this.props.sixty1
+      this.setState({ allMaterials: this.props.sixty1 });
     } else {
-      this.state.allMaterials = this.props.sixty2
+      this.setState({ allMaterials: this.props.sixty2 });
     }
 
     for (let i = 0; i < this.state.count; i++) {
@@ -83,6 +87,9 @@ export default class Comparison extends React.Component {
     mRes = mRes.toFixed(2);
     this.setState({ sum: this.formatNumber(mRes) });
     this.setState({ sum1: this.formatNumber(mRes1) });
+
+    /////////////////////////////
+
     
   }
 
@@ -96,11 +103,11 @@ export default class Comparison extends React.Component {
     //   } 
 
     if (currentRadio == 1) {
-      this.state.allMaterials = this.props.tenY
+      this.setState({ allMaterials: this.props.tenY });
     } else if (currentRadio == 2) {
-      this.state.allMaterials = this.props.sixty1
+      this.setState({ allMaterials: this.props.sixty1 });
     } else {
-      this.state.allMaterials = this.props.sixty2
+      this.setState({ allMaterials: this.props.sixty2 });
     }
     // this.state.allMaterials = this.props.tenY
     let myStr = e.target.id;
@@ -150,6 +157,17 @@ export default class Comparison extends React.Component {
 
 
     // console.log(this.state.allMaterials)
+  
+    // Update the selected material
+    let theCurrentMatText = currentSelect.options[currentSelect.selectedIndex].text;
+    this.setState(prevState => {
+      let selectedMaterials = [...prevState.selectedMaterials];
+      selectedMaterials[myStr - 1] = theCurrentMatText;
+      return { selectedMaterials };
+    });
+
+    ///////////////////////////
+
   }
 
 
@@ -170,11 +188,11 @@ export default class Comparison extends React.Component {
     //   } 
 
     if (currentRadio == 1) {
-      this.state.allMaterials = this.props.tenY
+      this.setState({ allMaterials: this.props.tenY });
     } else if (currentRadio == 2) {
-      this.state.allMaterials = this.props.sixty1
+      this.setState({ allMaterials: this.props.sixty1 });
     } else {
-      this.state.allMaterials = this.props.sixty2
+      this.setState({ allMaterials: this.props.sixty2 });
     }
 
     // this.state.allMaterials = this.props.tenY
@@ -228,6 +246,16 @@ export default class Comparison extends React.Component {
     this.setState({ sum: this.formatNumber(mRes) });
     this.setState({ sum1: this.formatNumber(mRes1) });
     // console.log(this.props.allMaterials)
+  
+    // Update the selected material
+    let theCurrentMatText = currentSelect.options[currentSelect.selectedIndex].text;
+    this.setState(prevState => {
+      let selectedMaterials = [...prevState.selectedMaterials];
+      selectedMaterials[myStr - 1] = theCurrentMatText;
+      return { selectedMaterials };
+    });
+
+    /////////////////////////////
 
   }
 
@@ -266,6 +294,8 @@ export default class Comparison extends React.Component {
       console.log(currentSelect.options[currentSelect.selectedIndex].value);
     }
     
+    ////////////////////////
+
 
   }
 
@@ -282,38 +312,69 @@ export default class Comparison extends React.Component {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   }
 
-  // toCsv(data) {
-  //   const replacer = (key, value) => value === null ? '' : value;
-  //   const header = Object.keys(data[0]);
-  //   let csv = data.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
-  //   csv.unshift(header.join(','));
-  //   return csv.join('\r\n');
-  // }
 
-  // exportToCsv() {
-  //   const data = this.state.vals.map((val, i) => ({
-  //     MaterialValue: val,
-  //     SquareFeet: this.state.vals1[i]
-  //   }));
-    
-  //   const csv = this.toCsv(data);
-    
-  //   // Create a blob and download the file
-  //   const blob = new Blob([csv], { type: 'text/csv' });
-  //   const url = URL.createObjectURL(blob);
-  //   const a = document.createElement('a');
-  //   a.setAttribute('hidden', '');
-  //   a.setAttribute('href', url);
-  //   a.setAttribute('download', 'export.csv');
-  //   document.body.appendChild(a);
-  //   a.click();
-  //   document.body.removeChild(a);
-  // }  
+
+  toCsv(data) {
+    const replacer = (key, value) => value === null ? '' : value;
+    const header = Object.keys(data[0]);
+    let csv = data.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
+    csv.unshift(header.join(','));
+    return csv.join('\r\n');
+  }
+
+  generateCsvData() {
+    const data = this.state.vals.map((val, i) => {
+      const row = {
+        MaterialType: this.state.selectedMaterials[i] || 'Not selected',
+        Area: this.state.vals1[i],
+        GWP: val
+      };
+      return row;
+    });
+  
+    // Add the totals row
+    data.push({
+      MaterialType: 'Sum',
+      Area: `${this.state.sum1} ft2`,
+      GWP: `${this.state.sum} kgCO2eq`
+    });
+  
+    // Convert data array to CSV string
+    const csv = this.toCsv(data);
+    console.log('csv',csv)
+    // Return the CSV string
+    return csv;
+  }
+  
+  exportToCsv() {
+    // Generate the CSV data
+    const csv = this.generateCsvData();
+  
+    // Update the results array
+    this.setState(prevState => ({
+      results: [...prevState.results, csv]
+    }), () => {
+      console.log(this.state.results); // Print the results array
+    });
+  
+    // Create a blob and download the file
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.setAttribute('hidden', '');
+    a.setAttribute('href', url);
+    a.setAttribute('download', 'Calculator.csv');
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
   
 
   render() {
+    
 
     return (
+      
       <div className={styles.calculator}>
         {/* <div style={{margin:"auto", textAlign:"center"}}>
           <input type="radio" id="ten" name={"gender"+ this.props.name} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
@@ -323,10 +384,11 @@ export default class Comparison extends React.Component {
       <input type="radio" id="sixty2" name={"gender"+ this.props.name} value="3" onChange={this.radioChange.bind(this)}></input>
       <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
     </div> */}
+      {/* <button onClick={this.exportAllToCsv.bind(this)}>Export All</button> */}
 
-      {/* <button id="export-btn" onClick={this.exportToCsv}>
+      <button id="export-btn" onClick={this.exportToCsv}>
         Export CSV
-      </button> */}
+      </button>
 
       <table style={{ borderCollapse: "collapse", width: "100%", textAlign: "center" }}>
 
@@ -370,6 +432,8 @@ export default class Comparison extends React.Component {
       <button rel="1" onClick={this.removeRow.bind(this)}>
         Remove row
       </button>
+
+
     </div>
 
       

@@ -6,8 +6,10 @@ import styles from './css/Comp.module.scss';
 export default class ComparisonP extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { rows: [], count: 1, vals: [], vals1: [], sum: 0, sum1: 0, radio: 1, allMaterials: [0], show: false };
+    this.state = { rows: [], count: 1, vals: [], vals1: [], sum: 0, sum1: 0, radio: 1, allMaterials: [0], show: false, selectedMaterials: [], csvData:[], results:[]};
     // this.handleInputChange = this.handleInputChange.bind(this);
+    this.exportToCsv = this.exportToCsv.bind(this);
+
 
   }
   // static getDerivedStateFromProps(props, current_state) {
@@ -284,6 +286,64 @@ export default class ComparisonP extends React.Component {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
   }
 
+  
+
+  toCsv(data) {
+    const replacer = (key, value) => value === null ? '' : value;
+    const header = Object.keys(data[0]);
+    let csv = data.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
+    csv.unshift(header.join(','));
+    return csv.join('\r\n');
+  }
+
+  generateCsvData() {
+    const data = this.state.vals.map((val, i) => {
+      const row = {
+        MaterialType: this.state.selectedMaterials[i] || 'Not selected',
+        Area: this.state.vals1[i],
+        GWP: val
+      };
+      return row;
+    });
+  
+    // Add the totals row
+    data.push({
+      MaterialType: 'Sum',
+      Area: `${this.state.sum1} ft2`,
+      GWP: `${this.state.sum} kgCO2eq`
+    });
+  
+    // Convert data array to CSV string
+    const csv = this.toCsv(data);
+    console.log('csv',csv)
+    // Return the CSV string
+    return csv;
+  }
+  
+  exportToCsv() {
+    // Generate the CSV data
+    const csv = this.generateCsvData();
+  
+    // Update the results array
+    this.setState(prevState => ({
+      results: [...prevState.results, csv]
+    }), () => {
+      console.log(this.state.results); // Print the results array
+    });
+  
+    // Create a blob and download the file
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.setAttribute('hidden', '');
+    a.setAttribute('href', url);
+    a.setAttribute('download', 'Calculator.csv');
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+  
+
   render() {
 
     return (
@@ -296,6 +356,10 @@ export default class ComparisonP extends React.Component {
       <input type="radio" id="sixty2" name={"gender"+ this.props.name} value="3" onChange={this.radioChange.bind(this)}></input>
       <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
     </div> */}
+
+        <button id="export-btn" onClick={this.exportToCsv}>
+          Export CSV
+        </button>
 
 
         <table style={{ borderCollapse: "collapse", width: "100%", textAlign: "center" }}>
