@@ -25,11 +25,11 @@ export default ({ type, chartType, lifespan, biogenicCarbon, ready, data, select
   
     useEffect(() => {
       if (screenWidth < 699) {
-        setBarHeight(15);
+        setBarHeight(30);
       } else if (screenWidth > 700 && screenWidth < 1119) {
-        setBarHeight(25);
+        setBarHeight(30);
       } else {
-        setBarHeight(40);
+        setBarHeight(45);
       }
     }, [screenWidth]);
     

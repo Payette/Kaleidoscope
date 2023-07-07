@@ -50,7 +50,7 @@ export default withTooltip(({
       const screenWidth = window.innerWidth;
       if (screenWidth < 699) {
         setSmallWindow(100);
-        setLongBar(1.3);
+        setLongBar(1.35);
       } else {
         setSmallWindow(0);
         setLongBar(1);
@@ -408,7 +408,7 @@ export default withTooltip(({
                       
                       hideAxisLine={true} hideTicks={true} scale={yScale} /* tickFormat={formatDate} */
                       stroke={textColor} tickStroke={textColor}
-                      tickLabelProps={(value, index) => ({ fill: textColor, width: '180', class:"chartText14", textAnchor: 'end', dy: '0.33em' })}
+                      tickLabelProps={(value, index) => ({ fill: textColor, width: '120', class:"chartText14P", textAnchor: 'end', dy: '0.33em' })}
                       left={-smallWindow}
                     />
                     <Text

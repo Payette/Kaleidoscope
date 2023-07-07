@@ -50,7 +50,7 @@ export default withTooltip(({
       const screenWidth = window.innerWidth;
       if (screenWidth < 699) {
         setSmallWindow(100);
-        setLongBar(1.3);
+        setLongBar(1.35);
       } else {
         setSmallWindow(0);
         setLongBar(1);
