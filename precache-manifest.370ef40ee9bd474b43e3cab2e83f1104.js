@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fe7fed58323e761a3daf75a27f455fa8",
+    "revision": "61ec7c6dcc74e97687aab820283909ad",
     "url": "/Kaleidoscope/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Kaleidoscope/static/css/2.119f37bc.chunk.css"
   },
   {
-    "revision": "e215f38fa2a3dbcf15a1",
-    "url": "/Kaleidoscope/static/css/main.9c5660d5.chunk.css"
+    "revision": "817b865d104163e5e4c5",
+    "url": "/Kaleidoscope/static/css/main.991373c9.chunk.css"
   },
   {
     "revision": "146d8b9bd7d87114943e",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Kaleidoscope/static/js/2.c3657dc3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e215f38fa2a3dbcf15a1",
-    "url": "/Kaleidoscope/static/js/main.aa5c995c.chunk.js"
+    "revision": "817b865d104163e5e4c5",
+    "url": "/Kaleidoscope/static/js/main.5ae3f333.chunk.js"
   },
   {
     "revision": "eb66c269c395d9e31709",
