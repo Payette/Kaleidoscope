@@ -30,7 +30,8 @@ legend, .description, .invalid-feedback, select, option, button, table {
 button {
   color: black;
   background: none;
-  border: solid 1px #ccc;
+  //border: solid 1px #ccc;
+  border: none !important;
   border-radius: 2px;
 }
 table {
