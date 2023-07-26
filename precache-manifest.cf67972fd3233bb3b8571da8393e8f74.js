@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "61ec7c6dcc74e97687aab820283909ad",
+    "revision": "6510601624444df8303f70e875bd1e11",
     "url": "/Kaleidoscope/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Kaleidoscope/static/css/2.119f37bc.chunk.css"
   },
   {
-    "revision": "817b865d104163e5e4c5",
-    "url": "/Kaleidoscope/static/css/main.991373c9.chunk.css"
+    "revision": "87a42116144461c56024",
+    "url": "/Kaleidoscope/static/css/main.c8b54bbd.chunk.css"
   },
   {
     "revision": "146d8b9bd7d87114943e",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Kaleidoscope/static/js/2.c3657dc3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "817b865d104163e5e4c5",
-    "url": "/Kaleidoscope/static/js/main.5ae3f333.chunk.js"
+    "revision": "87a42116144461c56024",
+    "url": "/Kaleidoscope/static/js/main.db41a55d.chunk.js"
   },
   {
     "revision": "eb66c269c395d9e31709",
@@ -352,12 +352,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Kaleidoscope/static/media/material_10y_y-1.f1ced4e0.csv"
   },
   {
-    "revision": "54c779d91e145ff6f86b3c00e945a472",
-    "url": "/Kaleidoscope/static/media/material_60y_n-1.54c779d9.csv"
+    "revision": "4c98834b99c99f3c4bb44cdf02b9e1b5",
+    "url": "/Kaleidoscope/static/media/material_60y_n-1.4c98834b.csv"
   },
   {
-    "revision": "018e44457bdf5a8f929fa7fa77f9fb04",
-    "url": "/Kaleidoscope/static/media/material_60y_y-1.018e4445.csv"
+    "revision": "02b285eb5b4383f58c214d09c617bb0a",
+    "url": "/Kaleidoscope/static/media/material_60y_y-1.02b285eb.csv"
   },
   {
     "revision": "c34ca38d05a5199d938a84534c8f5409",
