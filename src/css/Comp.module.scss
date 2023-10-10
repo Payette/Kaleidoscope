@@ -49,3 +49,14 @@
   }
 }
 
+@media (max-width: 1300px) {
+  .calculator input,
+  .calculator button,
+  .calculator label,
+  .calculator select {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+

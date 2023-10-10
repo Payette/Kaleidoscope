@@ -99,7 +99,7 @@ label{
 @media (min-width: 1200px) {
   .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 5px;
     word-wrap: break-word;
   }
