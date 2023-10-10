@@ -435,7 +435,7 @@ export default withTooltip(({
                 class:"chartText18",
                 textAnchor: 'middle',
                 fill: textColor,
-
+                dy: '0.8em'
               }} />
               <AxisTop left={-smallWindow} top={(3)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({ fill: textColor, class:"chartText14", verticalAnchor: 'bottom', textAnchor: 'middle' })} labelProps={{
                 class:"chartText18",
