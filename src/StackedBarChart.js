@@ -362,7 +362,7 @@ export default withTooltip(({
                   <Group top={yOffset}>
 
 
-                    <line className={styles.groupLine} x1={-margin.left + margin.smallGap} y1="0" x2={width2 - margin.left - 2 * margin.smallGap} y2="0" stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
+                    <line className={styles.groupLine} x1={-margin.left + margin.smallGap} y1="0" x2={width2 - margin.left - 2 * margin.smallGap} y2="0" strokeWidth="3" strokeDasharray="0 6" strokeLinecap="round" />
                     <BarStackHorizontal data={sm.values} keys={keys} height={yMax} y={getName} xScale={xScale} yScale={yScale} color={color} offset={'diverging'}>
                       {
 
@@ -421,7 +421,7 @@ export default withTooltip(({
                       y={(barHeight * sm.values.length) / 2 - 10}
                       
                     >{sm.key + " " + myAbb}</Text>
-                    <line className={styles.groupLine} x1={xScale(0)-smallWindow} y1="0" x2={xScale(0)-smallWindow} y2={20 + (barHeight * sm.values.length)} stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
+                    <line className={styles.groupLine} x1={xScale(0)-smallWindow} y1="0" x2={xScale(0)-smallWindow} y2={20 + (barHeight * sm.values.length)} strokeWidth="3" strokeDasharray="0 6" strokeLinecap="round" />
                   </Group>
 
 
@@ -430,17 +430,18 @@ export default withTooltip(({
 
 
 
-              <line className={styles.groupLine} x1={-margin.left + margin.smallGap} y1={previousY} x2={width2 - margin.left - 2 * margin.smallGap} y2={previousY} stroke-width="3" stroke-dasharray="0 6" stroke-linecap="round" />
+              <line className={styles.groupLine} x1={-margin.left + margin.smallGap} y1={previousY} x2={width2 - margin.left - 2 * margin.smallGap} y2={previousY} strokeWidth="3" strokeDasharray="0 6" strokelinecap="round" />
               <AxisBottom left={-smallWindow} top={(previousY - 7)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({ fill: textColor, class:"chartText14", textAnchor: 'middle' })} labelProps={{
                 class:"chartText18",
                 textAnchor: 'middle',
                 fill: textColor,
                 dy: '0.8em'
               }} />
-              <AxisTop left={-smallWindow} top={(3)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({ fill: textColor, class:"chartText14", verticalAnchor: 'bottom', textAnchor: 'middle' })} labelProps={{
+              <AxisTop left={-smallWindow} top={(3)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({ fill: textColor, class:"chartText14", verticalAnchor: 'end', textAnchor: 'middle' })} labelProps={{
                 class:"chartText18",
                 textAnchor: 'middle',
-                verticalAnchor: 'bottom',
+                //verticalAnchor: 'bottom',
+                verticalAnchor: 'end',
                 fill: textColor,
                 lineHeight: "2em"
               }} />

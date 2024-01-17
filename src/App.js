@@ -79,7 +79,8 @@ class App extends Component {
       currentToolTip: null,
       systemString: "",
       lens: "0_0_0",
-      shareableUrl: "https://www.payette.com/kaleidoscope/"
+      shareableUrl: "https://www.payette.com/kaleidoscope/",
+      isCopied: false,
     };
 
 
@@ -891,9 +892,34 @@ class App extends Component {
   
   
   
+  // copyToClipboard = () => {
+  //   copy(this.state.shareableUrl);
+  // };
+
   copyToClipboard = () => {
-    copy(this.state.shareableUrl);
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(this.state.shareableUrl)
+        .then(() => {
+          this.setState({ isCopied: true });
+          setTimeout(() => this.setState({ isCopied: false }), 2000); // 2秒后重置
+        })
+        .catch(err => {
+          console.error("Could not copy text: ", err);
+        });
+    } else {
+      // 备选方案
+      const el = document.createElement('textarea');
+      el.value = this.state.shareableUrl;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      this.setState({ isCopied: true });
+      setTimeout(() => this.setState({ isCopied: false }), 2000); // 2秒后重置
+    }
   };
+  
+  
 
 
 
@@ -979,18 +1005,21 @@ class App extends Component {
     let calcWidth = 31
     let sidebarHeight = 0
 
-    if (sidebar1 && parentD && window.innerWidth > 1200) {
+    if (sidebar1 && parentD && window.innerWidth > 1300) {
       sidebarHeight = 300 + sidebar1.offsetHeight;
       calcWidth = (((window.innerWidth - 100) - (window.innerWidth / 25)) / 2) / window.innerWidth * 100
-    } else if (window.innerWidth <= 1200 && window.innerWidth > 800) {
+      console.log(window.innerWidth)
+    } else if (window.innerWidth <= 1300 && window.innerWidth > 800) {
       calcWidth = 48
+      console.log(window.innerWidth)
     } else {
       calcWidth = 98
+      console.log(window.innerWidth)
     }
 
     var divStyle = {
       width: calcWidth + '%',
-      // width: '50%',
+      //width: '70%',
       display: 'inline-block',
       marginRight: '1%',
       marginLeft: '1%',
@@ -1031,7 +1060,17 @@ class App extends Component {
             <br></br>
             <h2 style={{ fontSize: "20px", textAlign: "center" }}>{this.state.shareableUrl}</h2>
             <br></br>
-            <button onClick={this.copyToClipboard} style={{ borderRadius: "8px", padding: "8px" }}>Copy URL</button>
+            <button
+              onClick={this.copyToClipboard}
+              style={{
+                borderRadius: "8px",
+                padding: "8px",
+                backgroundColor: this.state.isCopied ? "#dc1a55" : "" ,
+                color: this.state.isCopied ? "white" : "" 
+              }}
+            >
+              {this.state.isCopied ? "Copied!" : "Copy URL"} 
+            </button>
           </span>
         </Dialog>  
 
@@ -1063,7 +1102,7 @@ class App extends Component {
         <TabPanel  className={styles.tabPanel} value={this.state.value} index={TAB_INDEX_ENVELOPES} style={{marginLeft:'5%', marginRight:'5%'} } >
 
           <div style={{ display: 'flex', justifyContent: 'flex-end',marginTop: '8px' }}>
-            <button Id='startTour2' onClick={this.startIntro.bind(this)} class="mainButton">Start Tour</button>&nbsp;
+            <button id='startTour2' onClick={this.startIntro.bind(this)} class="mainButton">Start Tour</button>&nbsp;
             <button onClick={this.printPDF} class="mainButton">PDF</button>&nbsp;
             <button onClick={this.constructURL.bind(this)} class="mainButton">Share Link</button>&nbsp;
           </div>
@@ -1369,7 +1408,7 @@ class App extends Component {
 
               <div style={{ display: "inline-block", width: "100%" }}>
                 <h1>FLOORING CALCULATOR</h1>
-                <div className={styles.calc} style={{ minHeight: '60px', display: "block" }}>
+                <div className={styles.calc} style={{ minHeight: '60px', width: '95%', display: "block" }}>
 
                   <div style={{ margin: "auto",display: "flex"  }}>
                     <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
@@ -1548,7 +1587,7 @@ class App extends Component {
 
               <div style={{ display: "inline-block", width: "100%" }}>
                 <h1>CEILINGS CALCULATOR</h1>
-                <div className={styles.calc} style={{ minHeight: '60px', display: "block" }}>
+                <div className={styles.calc} style={{ minHeight: '60px', width: '95%', display: "block" }}>
 
                   <div style={{ margin: "auto",display: "flex"  }}>
                     <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
@@ -1625,7 +1664,7 @@ class App extends Component {
           </div>
 
           <Helmet>
-            <script type="text/javascript" src="loadBigfoot3.js"></script>
+            <script type="text/javascript" src="loadBigfoot4.js"></script>
           </Helmet>
           <form>
             <h1>PARTITIONS ASSEMBLIES</h1>
@@ -1731,7 +1770,7 @@ class App extends Component {
 
               <div style={{ display: "inline-block", width: "100%" }}>
                 <h1>PARTITIONS CALCULATOR</h1>
-                <div className={styles.calc} style={{ minHeight: '60px', display: "block" }}>
+                <div className={styles.calc} style={{ minHeight: '60px', width: '95%', display: "block" }}>
 
                   <div style={{ margin: "auto",display: "flex"  }}>
                     <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
@@ -1779,7 +1818,7 @@ class App extends Component {
                     Export CSV
                   </button> */}
 
-
+                
                   <br></br>
 
 

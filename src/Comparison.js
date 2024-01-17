@@ -11,7 +11,6 @@ export default class Comparison extends React.Component {
     this.exportToCsv = this.exportToCsv.bind(this);
 
 
-
   }
   // static getDerivedStateFromProps(props, current_state) {
   //   if (current_state.radio !== props.radio) {
@@ -33,19 +32,17 @@ export default class Comparison extends React.Component {
     }
   }
 
-
-
   radC(e) {
 
     let myMult = 0;
     let currentRadio = e;
 
     if (currentRadio == 1) {
-      this.setState({ allMaterials: this.props.tenY });
+      this.state.allMaterials = this.props.tenY
     } else if (currentRadio == 2) {
-      this.setState({ allMaterials: this.props.sixty1 });
+      this.state.allMaterials = this.props.sixty1
     } else {
-      this.setState({ allMaterials: this.props.sixty2 });
+      this.state.allMaterials = this.props.sixty2
     }
 
     for (let i = 0; i < this.state.count; i++) {
@@ -57,6 +54,8 @@ export default class Comparison extends React.Component {
         if (this.state.allMaterials[j].material == theCurrentMat) {
           myMult = this.state.allMaterials[j].value
           let num = parseInt(currentPos.value) || 0;
+          let gwpDisplay = document.getElementById("displayGWP" + this.props.name + (i + 1).toString()); // change GWP
+          gwpDisplay.innerHTML = (Number(num) * myMult).toFixed(2); // change GWP
           this.state.vals[i] = num * myMult;
           this.state.vals1[i] = num;
         }
@@ -88,9 +87,6 @@ export default class Comparison extends React.Component {
     this.setState({ sum: this.formatNumber(mRes) });
     this.setState({ sum1: this.formatNumber(mRes1) });
 
-    /////////////////////////////
-
-    
   }
 
   selectChange(e) {
@@ -103,11 +99,11 @@ export default class Comparison extends React.Component {
     //   } 
 
     if (currentRadio == 1) {
-      this.setState({ allMaterials: this.props.tenY });
+      this.state.allMaterials = this.props.tenY
     } else if (currentRadio == 2) {
-      this.setState({ allMaterials: this.props.sixty1 });
+      this.state.allMaterials = this.props.sixty1
     } else {
-      this.setState({ allMaterials: this.props.sixty2 });
+      this.state.allMaterials = this.props.sixty2
     }
     // this.state.allMaterials = this.props.tenY
     let myStr = e.target.id;
@@ -188,11 +184,11 @@ export default class Comparison extends React.Component {
     //   } 
 
     if (currentRadio == 1) {
-      this.setState({ allMaterials: this.props.tenY });
+      this.state.allMaterials = this.props.tenY
     } else if (currentRadio == 2) {
-      this.setState({ allMaterials: this.props.sixty1 });
+      this.state.allMaterials = this.props.sixty1
     } else {
-      this.setState({ allMaterials: this.props.sixty2 });
+      this.state.allMaterials = this.props.sixty2
     }
 
     // this.state.allMaterials = this.props.tenY
@@ -272,7 +268,8 @@ export default class Comparison extends React.Component {
     var joined = this.state.rows.concat(
       <tr>
         <td>
-          <select id="mat" name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + this.state.count}>
+          {/* <select id="mat" name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + this.state.count}> */}
+          <select name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + this.state.count}>
             {this.props.materialList.map(m => <option value={m.value} key={m.value}>{m.label}</option>)}
           </select>
         </td>
@@ -293,8 +290,6 @@ export default class Comparison extends React.Component {
       console.log(currentSelect);
       console.log(currentSelect.options[currentSelect.selectedIndex].value);
     }
-    
-    ////////////////////////
 
 
   }
@@ -371,10 +366,8 @@ export default class Comparison extends React.Component {
   
 
   render() {
-    
 
-    return (
-      
+    return (  
       <div className={styles.calculator}>
         {/* <div style={{margin:"auto", textAlign:"center"}}>
           <input type="radio" id="ten" name={"gender"+ this.props.name} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
@@ -386,14 +379,14 @@ export default class Comparison extends React.Component {
     </div> */}
       {/* <button onClick={this.exportAllToCsv.bind(this)}>Export All</button> */}
 
-      <button id="export-btn" onClick={this.exportToCsv}>
+      {/* <button id="export-btn" onClick={this.exportToCsv}>
         Export CSV
-      </button>
+      </button> */}
 
       <table style={{ borderCollapse: "collapse", width: "100%", textAlign: "center" }}>
 
         <thead>
-          <td colspan="3" style={{ textAlign: "left", height: "25px" }}>&nbsp;&nbsp;<strong>Option {this.props.name}</strong></td>
+          <td colSpan="3" style={{ textAlign: "left", height: "25px" }}>&nbsp;&nbsp;<strong>Option {this.props.name}</strong></td>
         </thead>
         <tbody>
           <tr>
@@ -403,8 +396,9 @@ export default class Comparison extends React.Component {
           </tr>
           <tr>
             <td>
-              {/* <input type="text" id={`select-type` + rel} /> */}
-              <select id="mat" name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + `1`}>
+              {/* <input type="text" id={`select-type` + rel} /> 
+              <select id="mat" name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + `1`}>*/}
+              <select name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + `1`}>
                 {this.props.materialList.map(m => <option value={m.value} key={m.value}>{m.label}</option>)}
               </select>
             </td>
@@ -432,11 +426,7 @@ export default class Comparison extends React.Component {
       <button rel="1" onClick={this.removeRow.bind(this)}>
         Remove row
       </button>
-
-
-    </div>
-
-      
+    </div> 
     );
   }
 }

@@ -38,7 +38,7 @@ export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdo
   useEffect(() => {
     if (screenWidth < 699) {
       setSmallPop(2.5);
-    } else if (screenWidth >= 699 && screenWidth <= 1200) {
+    } else if (screenWidth >= 699 && screenWidth <= 1300) {
       setSmallPop(1.5);
     } else {
       setSmallPop(1);

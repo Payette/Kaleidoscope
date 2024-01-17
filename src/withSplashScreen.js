@@ -261,7 +261,7 @@ function withSplashScreen(WrappedComponent) {
           {/* <Button href="#" color="primary" variant="outlined">
                 Login
               </Button> */}
-          <Container maxWidth={1200} component="main" data-step="1" data-intro="Select Assembly" disableInteraction={true} pointer-events="none" style={{ display: 'flex', flexWrap: 'wrap' }}>
+          <Container component="main" data-step="1" data-intro="Select Assembly" disableInteraction={true} pointerEvents="none" style={{ display: 'flex', flexWrap: 'wrap' }}>
             <Grid container spacing={4} alignItems="flex-end" justifyContent="center" >
 
               {tier0.map((tier) => (

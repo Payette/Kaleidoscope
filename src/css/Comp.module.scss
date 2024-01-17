@@ -10,7 +10,7 @@
   }
   button{
     font-family: raleway,sans-serif;
-    font-size:13px
+    font-size:13px;
   }
   label{
     font-family: raleway,sans-serif;
@@ -22,7 +22,7 @@
     border: solid 1px #C9CDF2;
     border-radius: 2px;
     padding: 0.5rem 0rem 0.5rem 1rem;
-    // margin:1em;
+    //margin:1em;
   }
 
   td, th, tr{
@@ -49,9 +49,9 @@
   }
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 2300px) {
   .calculator input,
-  .calculator button,
+  //.calculator button,
   .calculator label,
   .calculator select {
     display: block;

@@ -54,6 +54,8 @@ export default class ComparisonP extends React.Component {
         if (this.state.allMaterials[j].material == theCurrentMat) {
           myMult = this.state.allMaterials[j].value
           let num = parseInt(currentPos.value) || 0;
+          let gwpDisplay = document.getElementById("displayGWP" + this.props.name + (i + 1).toString()); // change GWP
+          gwpDisplay.innerHTML = (Number(num) * myMult).toFixed(2); // change GWP
           this.state.vals[i] = num * myMult;
           this.state.vals1[i] = num;
         }
@@ -151,6 +153,17 @@ export default class ComparisonP extends React.Component {
 
 
     // console.log(this.state.allMaterials)
+      
+    // Update the selected material (don't have before2024.1)
+    let theCurrentMatText = currentSelect.options[currentSelect.selectedIndex].text;
+    this.setState(prevState => {
+      let selectedMaterials = [...prevState.selectedMaterials];
+      selectedMaterials[myStr - 1] = theCurrentMatText;
+      return { selectedMaterials };
+    });
+
+    ///////////////////////////
+
   }
 
 
@@ -230,10 +243,17 @@ export default class ComparisonP extends React.Component {
     this.setState({ sum1: this.formatNumber(mRes1) });
     // console.log(this.props.allMaterials)
 
+    // Update the selected material (don't have before2024.1)
+    let theCurrentMatText = currentSelect.options[currentSelect.selectedIndex].text;
+    this.setState(prevState => {
+      let selectedMaterials = [...prevState.selectedMaterials];
+      selectedMaterials[myStr - 1] = theCurrentMatText;
+      return { selectedMaterials };
+    });
+
+    /////////////////////////////
+
   }
-
-
-
 
 
   appendRow(event) {
@@ -248,7 +268,8 @@ export default class ComparisonP extends React.Component {
     var joined = this.state.rows.concat(
       <tr>
         <td>
-          <select id="mat" name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + this.state.count}>
+          {/* <select id="mat" name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + this.state.count}> */}
+          <select name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + this.state.count}>
             {this.props.materialList.map(m => <option value={m.value} key={m.value}>{m.label}</option>)}
           </select>
         </td>
@@ -356,16 +377,16 @@ export default class ComparisonP extends React.Component {
       <input type="radio" id="sixty2" name={"gender"+ this.props.name} value="3" onChange={this.radioChange.bind(this)}></input>
       <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label>
     </div> */}
+      {/* <button onClick={this.exportAllToCsv.bind(this)}>Export All</button> */}
 
-        <button id="export-btn" onClick={this.exportToCsv}>
+        {/* <button id="export-btn" onClick={this.exportToCsv}>
           Export CSV
-        </button>
-
+        </button> */}
 
         <table style={{ borderCollapse: "collapse", width: "100%", textAlign: "center" }}>
 
           <thead>
-            <td colspan="3" style={{ textAlign: "left", height: "25px" }}>&nbsp;&nbsp;<strong>Option {this.props.name}</strong></td>
+            <td colSpan="3" style={{ textAlign: "left", height: "25px" }}>&nbsp;&nbsp;<strong>Option {this.props.name}</strong></td>
           </thead>
           <tbody>
             <tr>
@@ -375,8 +396,9 @@ export default class ComparisonP extends React.Component {
             </tr>
             <tr>
               <td>
-                {/* <input type="text" id={`select-type` + rel} /> */}
-                <select id="mat" name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + `1`}>
+                {/* <input type="text" id={`select-type` + rel} /> 
+                <select id="mat" name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + `1`}>*/}
+                <select name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + `1`}>
                   {this.props.materialList.map(m => <option value={m.value} key={m.value}>{m.label}</option>)}
                 </select>
               </td>
