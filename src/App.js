@@ -731,6 +731,7 @@ class App extends Component {
     }, () => {
       console.log(this.state.shareableUrl);
       this.materialsDialogRef.show();
+      setTimeout(this.selectText, 100); 
     });
   }
   
@@ -915,9 +916,21 @@ class App extends Component {
       document.execCommand('copy');
       document.body.removeChild(el);
       this.setState({ isCopied: true });
-      setTimeout(() => this.setState({ isCopied: false }), 2000); // 2秒后重置
+      setTimeout(() => this.setState({ isCopied: false }), 2000); 
     }
   };
+
+  selectText = () => {
+    const textElement = document.getElementById('shareableUrlText');
+    if (textElement) {
+      const range = document.createRange();
+      range.selectNodeContents(textElement);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+  };
+  
   
   
 
@@ -1058,7 +1071,10 @@ class App extends Component {
           <span>
             {/* <h2 style={{ fontSize: "20px" }}>Copy Link Below to Share URL</h2> */}
             <br></br>
-            <h2 style={{ fontSize: "20px", textAlign: "center" }}>{this.state.shareableUrl}</h2>
+            <h2 id="shareableUrlText" style={{ fontSize: "20px", textAlign: "center" }}>
+              {this.state.shareableUrl}
+            </h2>
+
             <br></br>
             <button
               onClick={this.copyToClipboard}
@@ -1069,7 +1085,7 @@ class App extends Component {
                 color: this.state.isCopied ? "white" : "" 
               }}
             >
-              {this.state.isCopied ? "Copied!" : "Copy URL"} 
+              {this.state.isCopied ? "Copied!" : "Short URL"} 
             </button>
           </span>
         </Dialog>  
