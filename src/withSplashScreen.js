@@ -270,7 +270,19 @@ function withSplashScreen(WrappedComponent) {
                   <Card style={{ minHeight: '100%', maxHeight: '100%' }}>
                     <CardHeader
                       title={tier.title}
-                      subheader={tier.subheader}
+                      subheader={
+                        <div style={{
+                          display: '-webkit-box',
+                          WebkitBoxOrient: 'vertical',
+                          WebkitLineClamp: 2,
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          height: '3em', 
+                          lineHeight: '1.5em', 
+                        }}>
+                          {tier.subheader}
+                        </div>
+                      }
                       titleTypographyProps={{ align: 'center' }}
                       subheaderTypographyProps={{ align: 'center' }}
                     />
@@ -313,7 +325,19 @@ function withSplashScreen(WrappedComponent) {
                   <Card style={{ minHeight: '100%', maxHeight: '100%' }}>
                     <CardHeader
                       title={tier.title}
-                      subheader={tier.subheader}
+                      subheader={
+                        <div style={{
+                          display: '-webkit-box',
+                          WebkitBoxOrient: 'vertical',
+                          WebkitLineClamp: 2,
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          height: '3em', 
+                          lineHeight: '1.5em', 
+                        }}>
+                          {tier.subheader}
+                        </div>
+                      }
                       titleTypographyProps={{ align: 'center' }}
                       subheaderTypographyProps={{ align: 'center' }}
                     // action={tier.title === 'Pro' ? <StarIcon /> : null}

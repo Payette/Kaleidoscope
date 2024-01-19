@@ -295,13 +295,27 @@ export default class ComparisonP extends React.Component {
   }
 
   removeRow() {
-    let mArray = []
-    for (let i = 0; i < this.state.rows.length - 1; i++) {
-      mArray.push(this.state.rows[i]);
+    if (this.state.rows.length === 0) {
+      return; 
     }
-    this.setState({ rows: mArray });
-    this.state.count--;
+  
+    let newRows = this.state.rows.slice(0, -1);
+    let newVals = this.state.vals.slice(0, -1);
+    let newVals1 = this.state.vals1.slice(0, -1);
+  
+    let newSum = newVals.reduce((acc, val) => acc + val, 0);
+    let newSum1 = newVals1.reduce((acc, val) => acc + val, 0);
+  
+    this.setState({
+      rows: newRows,
+      vals: newVals,
+      vals1: newVals1,
+      sum: this.formatNumber(newSum.toFixed(2)),
+      sum1: this.formatNumber(newSum1.toFixed(2)),
+      count: this.state.count - 1
+    });
   }
+  
 
   formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
