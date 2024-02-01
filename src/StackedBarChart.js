@@ -11,7 +11,7 @@ import { localPoint } from '@vx/event';
 import * as d3 from 'd3';
 import styles from './css/StackedBarChart.module.scss';
 import { GridRows, GridColumns } from '@vx/grid';
-import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_PARTITIONS, SYSTEM_TYPE_ENVELOPES } from './CommonUtil';
+import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_PARTITIONS, SYSTEM_TYPE_ENVELOPES, SYSTEM_TYPE_WALL } from './CommonUtil';
 import { useEffect, useState } from 'react';
 
 
@@ -327,6 +327,21 @@ export default withTooltip(({
                     myAbb = "(MS)";
                   } else if (sm.key[0] === "W") {
                     myAbb = "(WS)";
+                  }
+                }
+                if (type === SYSTEM_TYPE_WALL) {
+                  if (sm.key[0] === "M") {
+                    myAbb = "(M)";
+                  } else if (sm.key[0] === "H") {
+                    myAbb = "(HC)";
+                  } else if (sm.key[0] === "C") {
+                    myAbb = "(C)";
+                  } else if (sm.key[0] === "L") {
+                    myAbb = "(LT)";
+                  } else if (sm.key[0] === "O") {
+                    myAbb = "(OC)";
+                  } else if (sm.key[0] === "W") {
+                    myAbb = "(W)";
                   }
                 }
       

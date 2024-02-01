@@ -2,22 +2,26 @@ import LoadData from './data/Envelopes_LoadData';
 import FlooringLoadData from './data/Flooring_LoadData';
 import CeilingsLoadData from './data/Ceilings_LoadData';
 import PartitionsLoadData from './data/Partitions_LoadData';
+import WallLoadData from './data/Wall_LoadData';
 
 export let TAB_INDEX_ENVELOPES = 0;
 export let TAB_INDEX_FLOORING = 1;
 export let TAB_INDEX_CEILINGS = 2;
 export let TAB_INDEX_PARTITIONS = 3;
+export let TAB_INDEX_WALL = 4;
 //export let TAB_INDEX_OTHER = 3;
 
 export let SYSTEM_TYPE_FLOORING = "flooring";
 export let SYSTEM_TYPE_CEILINGS = "ceilings";
 export let SYSTEM_TYPE_PARTITIONS = "partitions";
 export let SYSTEM_TYPE_ENVELOPES = "envelopes";
+export let SYSTEM_TYPE_WALL = "wall";
 
 export let CHART_TYPES_ENVELOPES = ["GWP","allImpacts","LCS","MB"]; // does not have material health
 export let CHART_TYPES_FLOORING = ["GWP","allImpacts","LCS","MB","MH"];
 export let CHART_TYPES_CEILINGS = ["GWP","allImpacts","LCS","MB","MH"];
 export let CHART_TYPES_PARTITIONS = ["GWP","allImpacts","LCS","MB","MH"];
+export let CHART_TYPES_WALL = ["GWP","allImpacts","LCS","MB","MH"];
 
 export let DATASET_NAMES = [
 'allImpactsData',
@@ -60,4 +64,8 @@ export let materialListCeilings = Object.keys(CeilingsLoadData.metaData.material
 
 export let materialListPartitions = Object.keys(PartitionsLoadData.metaData.materialType).map(variableName => {
   return { value: variableName, label: PartitionsLoadData.metaData.materialType[variableName] };
+});
+
+export let materialListWall = Object.keys(WallLoadData.metaData.materialType).map(variableName => {
+  return { value: variableName, label: WallLoadData.metaData.materialType[variableName] };
 });

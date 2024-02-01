@@ -4,6 +4,7 @@ import LoadData from './data/Envelopes_LoadData';
 import FlooringLoadData from './data/Flooring_LoadData';
 import CeilingsLoadData from './data/Ceilings_LoadData';
 import PartitionsLoadData from './data/Partitions_LoadData';
+import WallLoadData from './data/Wall_LoadData';
 import MaterialList from './MaterialList';
 import MaterialListP from './MaterialListP';
 import Row from "./Row";
@@ -13,9 +14,9 @@ import TabPanel from "./TabPanel";
 import withSplashScreen from './withSplashScreen';
 import Dialog from 'react-a11y-dialog';
 import {
-  SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_PARTITIONS, SYSTEM_TYPE_ENVELOPES, DATASET_NAMES, materialListEnvelope, materialListFlooring, materialListCeilings, materialListPartitions,
+  SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_PARTITIONS, SYSTEM_TYPE_WALL, SYSTEM_TYPE_ENVELOPES, DATASET_NAMES, materialListEnvelope, materialListFlooring, materialListCeilings, materialListPartitions, materialListWall,
   CHART_TYPES_ENVELOPES,
-  TAB_INDEX_ENVELOPES, TAB_INDEX_FLOORING, TAB_INDEX_CEILINGS,TAB_INDEX_PARTITIONS, TAB_INDEX_OTHER
+  TAB_INDEX_ENVELOPES, TAB_INDEX_FLOORING, TAB_INDEX_CEILINGS,TAB_INDEX_PARTITIONS,TAB_INDEX_WALL, TAB_INDEX_OTHER
 } from './CommonUtil';
 import { Helmet } from "react-helmet";
 import ChartContainer from './ChartContainer';
@@ -65,6 +66,9 @@ class App extends Component {
       ceilings_materials: [],
       ceilings_selectedMaterials: [],
 
+      wall_materials: [],
+      wall_selectedMaterials: [],
+
       partitions_materials: [],
       partitions_selectedMaterials: [],
 
@@ -91,6 +95,7 @@ class App extends Component {
       this.state[`flooring_${dataSetName}`] = [];
       this.state[`ceilings_${dataSetName}`] = [];
       this.state[`partitions_${dataSetName}`] = [];
+      this.state[`wall_${dataSetName}`] = [];
     })
     
 
@@ -143,6 +148,12 @@ class App extends Component {
     } else {
       this.setState({ value: newValue, partitions_selectedMaterials: this.state.partitions_materials });
     }
+
+    if (this.state.wall_selectedMaterials.length != 0) {
+      this.setState({ value: newValue, wall_selectedMaterials: this.state.wall_selectedMaterials });
+    } else {
+      this.setState({ value: newValue, wall_selectedMaterials: this.state.wall_materials });
+    } 
 
     let urlVar = new URLSearchParams()
     urlVar.set("type", newValue)
@@ -311,6 +322,32 @@ class App extends Component {
       }
       //-------------------------------------------------------------------
 
+      // WALL
+      //
+      // package all data into an array
+      let wall_dataEnvelopes = {};
+      let wall_selectedDataEnvelopes = {};
+      DATASET_NAMES.forEach(dataSetName => {
+        let wall_dataSetName = `wall_${dataSetName}`;
+        wall_dataEnvelopes[dataSetName] = this.state[wall_dataSetName] || [];
+        if (this.state.wall_selectedMaterials && this.state.wall_selectedMaterials.length > 0) {
+          wall_selectedDataEnvelopes[dataSetName] = wall_dataEnvelopes[dataSetName].filter(d => (this.state.wall_selectedMaterials).includes(d.material));
+        } else {
+          wall_selectedDataEnvelopes[dataSetName] = [];
+        }
+      });
+      // data set is ready if ALL datasets have loaded
+      let wall_dataEnvelopesReady = true;
+      DATASET_NAMES.forEach(dataSetName => {
+        wall_dataEnvelopesReady = wall_dataEnvelopesReady && (wall_dataEnvelopes[dataSetName] && wall_dataEnvelopes[dataSetName].length > 0);
+      });
+      if (wall_dataEnvelopesReady) {
+        this.setState({
+          wall_dataEnvelopes, wall_selectedDataEnvelopes, wall_dataEnvelopesReady
+        })
+      }
+      //-------------------------------------------------------------------
+
 
       let s = new URLSearchParams(window.location.search)
       let type = s.get("type")
@@ -438,6 +475,25 @@ class App extends Component {
             partitions_selectedMaterials: urlSelectedMaterials
           }
         )
+      }else if (type == 4) { //wall
+        let names = mSystem.split("_")
+
+        names.pop()
+
+        let allSystems = materialListWall.map(m => m.value)
+        let urlSelectedMaterials = []
+
+        for (let i = 0; i < names.length; i++) {
+          urlSelectedMaterials.push(allSystems[parseInt(names[i])])
+        }
+
+        this.setState(
+          {
+            value: 4,
+            systemString: mSystem,
+            wall_selectedMaterials: urlSelectedMaterials
+          }
+        )
       }
 
       let urlVar = new URLSearchParams()
@@ -545,6 +601,25 @@ class App extends Component {
           partitions_selectedMaterials: urlSelectedMaterials
         }
       )
+    } else if (type == 4) { //wall
+      let names = this.state.systemString.split("_")
+
+      names.pop()
+
+      let allSystems = materialListWall.map(m => m.value);
+      let urlSelectedMaterials = []
+
+      for (let i = 0; i < names.length; i++) {
+        urlSelectedMaterials.push(allSystems[parseInt(names[i])])
+      }
+
+      this.setState(
+        {
+          value: 2,
+          systemString: mSystem,
+          wall_selectedMaterials: urlSelectedMaterials
+        }
+      )
     }
 
     DATASET_NAMES.forEach((dataSetName, idx) => {
@@ -601,6 +676,20 @@ class App extends Component {
           });
         } else {
           this.setState({ [`partitions_${dataSetName}`]: data });
+        }
+      });
+
+      WallLoadData[dataSetName](data => {
+        if (idx === 0) {
+          const materials = data.map(d => d.material);
+          const names = data.map(d => d.name);
+          this.setState({
+            [`wall_${dataSetName}`]: data,
+            wall_materials: materials,
+            wall_names: names
+          });
+        } else {
+          this.setState({ [`wall_${dataSetName}`]: data });
         }
       });
 
@@ -714,6 +803,13 @@ class App extends Component {
       let allSystems = materialListPartitions.map(m => m.value);
       for (let i = 0; i < allSystems.length; i++) {
         if (this.state.partitions_selectedMaterials.includes(allSystems[i])) {
+          selectedString += i + "_"
+        }
+      }
+    } else if (this.state.value == 2) {
+      let allSystems = materialListWall.map(m => m.value);
+      for (let i = 0; i < allSystems.length; i++) {
+        if (this.state.wall_selectedMaterials.includes(allSystems[i])) {
           selectedString += i + "_"
         }
       }
@@ -834,6 +930,26 @@ class App extends Component {
     urlVar.set("type", this.state.value)
     this.setState({
       partitions_selectedMaterials: newSelectedMaterials
+    })
+    urlVar.set("system", selectedString)
+    window.history.replaceState({}, '', "?" + urlVar.toString())
+  }
+
+  updateSelectedWallMaterials(newSelectedMaterials) {
+    let selectedString = ""
+    let allSystems = materialListWall.map(m => m.value);
+    for (let i = 0; i < allSystems.length; i++) {
+      if (newSelectedMaterials.includes(allSystems[i])) {
+        selectedString += i + "_"
+      }
+    }
+
+    this.setState({ systemString: selectedString })
+
+    let urlVar = new URLSearchParams()
+    urlVar.set("type", this.state.value)
+    this.setState({
+      wall_selectedMaterials: newSelectedMaterials
     })
     urlVar.set("system", selectedString)
     window.history.replaceState({}, '', "?" + urlVar.toString())
@@ -997,6 +1113,19 @@ class App extends Component {
       }
     }
 
+    // WALL
+    //    
+    var wall_obj = {
+      "Material": "void"
+    };
+    if (this.state.wall_dataEnvelopesReady) {
+      for (let i = 0; i < this.state.wall_selectedDataEnvelopes.gwpData.length; i++) {
+        let myName = this.state.wall_selectedDataEnvelopes.gwpData[i].material;
+        let myVal = this.state.wall_selectedDataEnvelopes.gwpData[i].value;
+        wall_obj[myName] = myVal;
+      }
+    }
+
     let chartTitle = "";
 
     if (this.state.chartType === "GWP") {
@@ -1092,7 +1221,7 @@ class App extends Component {
 
 
         <div style={{display: 'flex', justifyContent: 'center'}}>
-          <AppBar position="static" style={{ background: 'white', color: 'black', boxShadow: "none", margintop:'5%', width:'700px'}} >
+          <AppBar position="static" style={{ background: 'white', color: 'black', boxShadow: "none", margintop:'5%', width:'1000px'}} >
             <div data-step="1" data-position="bottom" data-intro='Change Assembly' >            
               <Tabs value={this.state.value} indicatorColor="secondary" textColor="secondary" 
                 centered onChange={this.handleTabChange}  >               
@@ -1100,6 +1229,7 @@ class App extends Component {
                   <Tab label="FLOORING" />
                   <Tab label="CEILINGS" />
                   <Tab label="PARTITIONS" />
+                  <Tab label="WALL" />
                   {/* <Tab label="OTHER" disabled /> */}
               </Tabs>
             </div>
@@ -1854,6 +1984,189 @@ class App extends Component {
             </div>
           </div>
         </TabPanel>
+
+        {/* WALL */}
+        <TabPanel className={styles.tabPanel} value={this.state.value} index={TAB_INDEX_WALL} style={{marginLeft:'5%', marginRight:'5%'} }>
+
+          <div style={{ display: 'flex', justifyContent: 'flex-end',marginTop: '8px'  }}>
+            <button onClick={this.printPDF} class="mainButton">PDF</button>&nbsp;
+            <button onClick={this.constructURL.bind(this)} class="mainButton">Share Link</button>&nbsp;
+          </div>
+
+          <Helmet>
+            <script type="text/javascript" src="loadBigfoot3.js"></script>
+          </Helmet>
+          <form>
+            <h1>WALL ASSEMBLIES</h1>
+            <div className={styles.topcontrols}>
+
+              <div className={styles.inputgroup} >
+                <h3>CHART TYPE</h3>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="GWP" value="GWP" name="chartType" checked={this.state.chartType === "GWP"} onChange={this.handleInputChange} />
+                  <label htmlFor="fGWP">Global Warming Potential <sup id={"fnref:11"}><a href={"#fn:11"} rel="footnote"></a></sup></label>
+
+                </div>
+
+                <div className={styles.inputitem}>
+                  <input type="radio" id="allImpacts" name="chartType" value="allImpacts" checked={this.state.chartType === "allImpacts"} onChange={this.handleInputChange} />
+                  <label htmlFor="allImpacts">All Impacts <sup id={"fnref:" + this.state.clicks + "2"}><a href={"#fn:" + this.state.clicks + "2"} rel="footnote"></a></sup></label>
+
+
+                </div>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="LCS" value="LCS" name="chartType" checked={this.state.chartType === "LCS"} onChange={this.handleInputChange} />
+                  <label htmlFor="LCS">Life Cycle Stage</label> <sup id={"fnref:" + this.state.clicks + "3"}><a href={"#fn:" + this.state.clicks + "3"} rel="footnote"></a></sup>
+                </div>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="MB" value="MB" name="chartType" checked={this.state.chartType === "MB"} onChange={this.handleInputChange} />
+                  <label htmlFor="MB">Material Breakdown</label> <sup id={"fnref:" + this.state.clicks + "4"}><a href={"#fn:" + this.state.clicks + "4"} rel="footnote"></a></sup>
+                </div>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="MH" value="MH" name="chartType" checked={this.state.chartType === "MH"} onChange={this.handleInputChange} />
+                  <label htmlFor="MH">Material Health Impacts</label> <sup id="fnref:10"><a href="#fn:10" rel="footnote"></a></sup>
+                </div>
+              </div>
+
+              <div className={styles.inputgroup} >
+                <h3>LIFESPAN</h3>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="tenY" name="lifespan" value="tenY" checked={this.state.lifespan === "tenY"} onChange={this.handleInputChange} />
+                  <label htmlFor="tenY">Initial Carbon (only Module A)</label> <sup id={"fnref:" + this.state.clicks + "5"}><a href={"#fn:" + this.state.clicks + "5"} rel="footnote"></a></sup>
+                </div>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="sixty2" name="lifespan" value="sixty2" checked={this.state.lifespan === "sixty2"} onChange={this.handleInputChange} />
+                  <label htmlFor="sixty2">60 Year (With Module D)</label> <sup id={"fnref:" + this.state.clicks + "6"}><a href={"#fn:" + this.state.clicks + "6"} rel="footnote"></a></sup>
+                </div>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="sixty1" name="lifespan" value="sixty1" checked={this.state.lifespan === "sixty1"} onChange={this.handleInputChange} />
+                  <label htmlFor="sixty1">60 Year (No Module D)</label> <sup id={"fnref:" + this.state.clicks + "7"}><a href={"#fn:" + this.state.clicks + "7"} rel="footnote"></a></sup>
+                </div>
+              </div>
+
+              <div className={styles.inputgroup} >
+                <h3>BIOGENIC CARBON</h3>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked={this.state.biogenicCarbon === "yBio"} onChange={this.handleInputChange} />
+                  <label htmlFor="yBio">With Biogenic Carbon</label> <sup id={"fnref:" + this.state.clicks + "8"}><a href={"#fn:" + this.state.clicks + "8"} rel="footnote"></a></sup>
+                </div>
+                <div className={styles.inputitem}>
+                  <input type="radio" id="nBio" name="biogenicCarbon" value="nBio" checked={this.state.biogenicCarbon === "nBio"} onChange={this.handleInputChange} />
+                  <label htmlFor="nBio">No Biogenic Carbon</label> <sup id={"fnref:" + this.state.clicks + "9"}><a href={"#fn:" + this.state.clicks + "9"} rel="footnote"></a></sup>
+                </div>
+              </div>
+            </div>
+
+          </form>
+          <div id="parentDiv">
+
+            {this.state.wall_materials.length > 0 &&
+              <div className={styles.sidebar} id="sidebar123">
+                <MaterialList
+                  type={SYSTEM_TYPE_WALL}
+                  title={"Wall Type"}
+                  hasMaterialHealth={true}
+                  gwp={wall_obj}
+                  materials={this.state.wall_materials}
+                  names={this.state.wall_names}
+                  updateSelectedMaterials={this.updateSelectedWallMaterials.bind(this)}
+                  initialSelectedMaterials={this.state.wall_selectedMaterials}
+                  metaData={WallLoadData.metaData}
+                  currentSel={this.state.chartType}
+                  matBreakdown={this.state.wall_materialData1}
+                  matBreakdown1={this.state.wall_materialData3}
+                  matBreakdown2={this.state.wall_materialData5}
+                  tenYGWP={this.state.wall_gwpData1}
+                  sixty1YGWP={this.state.wall_gwpData3}
+                  sixty2YGWP={this.state.wall_gwpData5}
+                />
+              </div>
+            }
+            <div className={styles.chartContainer}>
+              <h2>{chartTitle}</h2>
+              {this.state.wall_dataEnvelopesReady && <ChartContainer
+                type={SYSTEM_TYPE_WALL}
+                chartTitle
+                chartType={this.state.chartType}
+                lifespan={this.state.lifespan}
+                biogenicCarbon={this.state.biogenicCarbon}
+                selectedMaterials={this.state.wall_selectedMaterials}
+                metaData={WallLoadData.metaData}
+                data={this.state.wall_dataEnvelopes || {}}
+                selectedData={this.state.wall_selectedDataEnvelopes || {}}
+                ready={this.state.wall_dataEnvelopesReady === true}
+              />}
+
+              <div style={{ display: "inline-block", width: "100%" }}>
+                <h1>WALL CALCULATOR</h1>
+                <div className={styles.calc} style={{ minHeight: '60px', width: '95%', display: "block" }}>
+
+                  <div style={{ margin: "auto",display: "flex"  }}>
+                    <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
+                    <label > Initial Carbon (only Module A) &nbsp;&nbsp;</label>
+                    <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
+                    <label > 60 Year (with Module D) &nbsp;&nbsp;</label>
+                    <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
+                    <label > 60 Year (no Module D) &nbsp;&nbsp;</label>
+
+
+
+                  </div><br></br>
+
+                  {this.state.rows.map((row, idx) => {
+                    return (
+                      <Row
+                        materialList={materialListWall}
+                        key={idx}
+                        value={row.value}
+                        checked={row.checked}
+                        name={idx + 1}
+                        count={0}
+                        tenY={this.state.wall_gwpData1}
+                        sixty1={this.state.wall_gwpData3}
+                        sixty2={this.state.wall_gwpData5}
+                        radio={this.state.currentRadio}
+                        divStyle={divStyle}
+                        onChange={(e) => this.updateValue(e, idx)}
+                        onChecked={() => this.onChecked(idx)}
+                      />
+                    )
+                  })
+                  }
+                  <br></br>
+
+                  <button onClick={this.addRow} >
+                    Add Option
+                  </button>&nbsp;
+                  <button onClick={this.deleteRows}>
+                    Delete Option
+                  </button>&nbsp;
+                  {/* <button id="export-btn" onClick={this.exportToCsv}>
+                    Export CSV
+                  </button> */}
+
+
+                  <br></br>
+
+
+                </div>
+
+
+                <br></br> 
+                <br></br>
+                <br></br>
+                <br></br>
+
+
+
+                {footer}
+              </div>
+
+            </div>
+          </div>
+        </TabPanel>
+
+
 
         {/* OTHER
         <TabPanel className={styles.tabPanel} value={this.state.value} index={TAB_INDEX_OTHER}>

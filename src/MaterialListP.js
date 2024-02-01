@@ -7,8 +7,9 @@ import legendGWP from './images/k-04.png'
 import legendMBEnvelope from './images/MaterialBreakdown-11.png'
 import legendMBFlooring from './images/System_Boundary-flooring_EDIT.png'
 import legendMBCelings from './images/ceilingslegendaxon.png'
+import legendMBWall from './images/walllegendaxon.png'
 import legendMBPartitions from './images/System_Boundary-partitions.png'
-import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_PARTITIONS, SYSTEM_TYPE_ENVELOPES } from './CommonUtil';
+import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_PARTITIONS, SYSTEM_TYPE_ENVELOPES, SYSTEM_TYPE_WALL } from './CommonUtil';
 import Checkbox from './Checkbox'
 import PieP from "./PieChartP";
 import 'pretty-checkbox'
@@ -32,6 +33,10 @@ let colsPartitions = [ "#666666","#666666","#89EFC0","#89EFC0","#C2EAA7","#89EFC
 let materialNamesPartitions = ["mat22", "mat21", "mat20", "mat19", "mat18", "mat17", "mat16", "mat15", "mat14", "mat13", "mat12", "mat11", "mat10", "mat9", "mat8", "mat7", "mat6", "mat5", "mat4", "mat3", "mat2", "mat1"]; 
 let materialLabelPartitions = {mat1:"Coated non-structural steel framing, ClarkDietrich, ProSTUD - EPD", mat2:"Domestic softwood, US, AWC - EPD", mat3:"Concrete masonry unit (CMU), hollow-core", mat4:"Jandris Block CarbonX Normal Weight - EPD", mat5:"Aluminum curtain wall system, YKK AP - EPD ", mat6:"White oak lumber, 2 inch", mat7:"Steel, reinforcing rod", mat8:"Thickset mortar", mat9:"Mortar type N", mat10:"Cold formed structural steel", mat11:"Galvanized steel", mat12:"Sealant, silicone", mat13:"Mineral wool, low density, NAIMA - EPD", mat14:"Polyurethane foam (PUR) rigid board", mat15:"Glass wool unfaced batt, Knauf, EcoBatt - EPD", mat16:"Cellulose insulation, boards", mat17:"Wall board, gypsum, fire-resistant (Type X)", mat18:"Glazing, monolithic sheet, tempered", mat19:"Medium density fiberboard (MDF), AWC - EPD", mat20:"EcoSmart Firecode X Gypsum - EPD", mat21:"Paint, interior acrylic latex", mat22:"Wood stain, water based, by area"}; 
 
+let colsWall = [ "#CCCCCC", "#666666", "#999999", "#666666", "#C2EAA7", "#C2EAA7", "#89EFC0", "#89EFC0", "#C2EAA7", "#FEE6BF", "#FCC05E", "#C2EAA7", "#89EFC0", "#89EFC0", "#89EFC0", "#89EFC0", "#C2EAA7", "#89EFC0", "#89EFC0", "#89EFC0", "#5CBDFF", "#00AAFF", "#4169E1", "#5CBDFF", "#000099" ];
+let materialNamesWall = ["mat25", "mat24", "mat23", "mat22", "mat21", "mat20", "mat19", "mat18", "mat17", "mat16", "mat15", "mat14", "mat13", "mat12", "mat11", "mat10", "mat9", "mat8", "mat7", "mat6", "mat5", "mat4", "mat3", "mat2", "mat1"]; 
+let materialLabelWall = { mat1: "Steel, cable", mat2: "Suspended grid", mat3: "Cold formed structural steel", mat4: "Fasteners, galvanized steel", mat5: "Galvanized steel", mat6: "Acoustic ceiling tile (ACT), fiberglass", mat7: "Acoustic ceiling tile (ACT), mineral fiber board", mat8: "Acoustic ceiling tile (ACT), perforated aluminum", mat9: "Aluminum extrusion, AEC - EPD", mat10: "Aluminum, formed", mat11: "Ceiling tile, aluminum", mat12: "K-13 Spray on System", mat13: "Tulipwood lumber, 1 inch", mat14: "Medium density fiberboard (MDF), AWC - EPD", mat15: "Adhesive, polyurethane", mat16: "Hardwood veneer, medium thickness", mat17: "Hard maple lumber, 1 inch", mat18: "Wall board, gypsum, moisture- and mold-resistant", mat19: "Wall board, gypsum, natural", mat20: "Walnut lumber, 1 inch", mat21: "Paint, interior acrylic latex", mat22: "Paint, enamel, solvent based", mat23: "Polyurethane top coat, water-based, for wood", mat24: "Powder coating, metal stock", mat25: "Wood stain, water based" }; 
+
 
 export default class MaterialList extends PureComponent {
   constructor(props) {
@@ -46,6 +51,9 @@ export default class MaterialList extends PureComponent {
     }
     if(props.type === SYSTEM_TYPE_PARTITIONS) {
       this.legendMB = legendMBPartitions;
+    }
+    if(props.type === SYSTEM_TYPE_WALL) {
+      this.legendMB = legendMBWall;
     }
 
     this.state = {
@@ -166,6 +174,9 @@ export default class MaterialList extends PureComponent {
     if(type === SYSTEM_TYPE_PARTITIONS) {
       return colsPartitions;
     }
+    if(type === SYSTEM_TYPE_WALL) {
+      return colsWall;
+    }
 
     return colsEnvelope;
   }
@@ -180,6 +191,9 @@ export default class MaterialList extends PureComponent {
     if(type === SYSTEM_TYPE_PARTITIONS) {
       return materialNamesPartitions;
     }
+    if(type === SYSTEM_TYPE_WALL) {
+      return materialNamesWall;
+    }
 
     return materialNamesEnvelope;    
   }
@@ -193,6 +207,9 @@ export default class MaterialList extends PureComponent {
     }
     if(type === SYSTEM_TYPE_PARTITIONS) {
       return materialLabelPartitions;
+    }
+    if(type === SYSTEM_TYPE_WALL) {
+      return materialLabelWall;
     }
 
     return materialLabelEnvelope;    
@@ -229,6 +246,14 @@ export default class MaterialList extends PureComponent {
           <img style={{ maxWidth: "320px" }} src={legend} />
             <p><span style={{ background: "#4169e1" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Support System </p>
             <p> <span style={{ background: "#fcc05e" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Insulation </p> 
+            <p className={styles.serif}> <span style={{ background: "#85e2bd" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Finish Material </p>
+            <p> <span style={{ background: "#cccccc" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Surface Treatment </p>
+        </div>
+      }
+      if (this.props.type === SYSTEM_TYPE_WALL) {
+        legendText = <div className={styles.serif}>
+          <img style={{ maxWidth: "320px" }} src={legend} />
+            <p><span style={{ background: "#4169e1" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Support System </p>
             <p className={styles.serif}> <span style={{ background: "#85e2bd" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Finish Material </p>
             <p> <span style={{ background: "#cccccc" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Surface Treatment </p>
         </div>

@@ -78,7 +78,7 @@ const tier0 = [
     subheader: 'Want A Tour?',
     price: '0',
     img: "./img/QuestionMark1.png",
-    buttonText: 'View Introduction',
+    buttonText: 'Introduction',
     buttonVariant: 'text',
     item: 0,
     // disabled: true,
@@ -144,6 +144,16 @@ const tiers = [
     buttonVariant: 'contained',
     item: 3
   },
+  {
+    title: 'WALL',
+    subheader: 'Wall Assemblies',
+    price: '40',
+    description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
+    img: "./img/wall_mainimg_holder.png",
+    buttonText: 'View Wall',
+    buttonVariant: 'contained',
+    item: 4
+  },
 
 ];
 
@@ -177,7 +187,7 @@ function withSplashScreen(WrappedComponent) {
 
 
 
-      if (type == 0 || type == 1 || type == 2 || type == 3) { //envelope
+      if (type == 0 || type == 1 || type == 2 || type == 3 || type == 4) { //envelope
         this.setState({ loading: false, currentItem: type });
         if (type == 0) {
           this.setState({
@@ -262,7 +272,7 @@ function withSplashScreen(WrappedComponent) {
                 Login
               </Button> */}
           <Container component="main" data-step="1" data-intro="Select Assembly" disableInteraction={true} pointerEvents="none" style={{ display: 'flex', flexWrap: 'wrap' }}>
-            <Grid container spacing={4} alignItems="flex-end" justifyContent="center" >
+            <Grid container spacing={5} alignItems="flex-end" justifyContent="center" >
 
               {tier0.map((tier) => (
                 // Enterprise card is full width at sm breakpoint
