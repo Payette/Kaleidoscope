@@ -97,10 +97,10 @@ label{
 }
 
 //important to change the outlet in ipad mini/air/pro material list layout
-@media  (min-width: 700px) and (max-width: 1800px) and (min-height: 700px) and (max-height: 1800px)  {
+@media  (min-width: 700px) and (min-height: 700px)  {
   .container {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 5px;
     word-wrap: break-word;
   }

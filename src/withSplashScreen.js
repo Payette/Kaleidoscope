@@ -144,16 +144,16 @@ const tiers = [
     buttonVariant: 'contained',
     item: 3
   },
-  {
-    title: 'WALL',
-    subheader: 'Wall Assemblies',
-    price: '40',
-    description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
-    img: "./img/wall_mainimg_holder.png",
-    buttonText: 'View Wall',
-    buttonVariant: 'contained',
-    item: 4
-  },
+  // {
+  //   title: 'WALL',
+  //   subheader: 'Wall Assemblies',
+  //   price: '40',
+  //   description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
+  //   img: "./img/wall_mainimg_holder.png",
+  //   buttonText: 'View Wall',
+  //   buttonVariant: 'contained',
+  //   item: 4
+  // },
 
 ];
 
