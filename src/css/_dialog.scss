@@ -114,7 +114,7 @@ dialog::backdrop {
   animation: appear 400ms 150ms 1 both;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 699px) {
   .dialog-content {
     padding: 2em;
   }
@@ -137,7 +137,7 @@ dialog::backdrop {
   @include closebutton;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 699px) {
   .dialog-close {
     top: 1em;
     right: 1em;

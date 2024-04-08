@@ -123,46 +123,47 @@
 
 }
 
-@media (max-width: 1119px) and (min-width: 700px) {
+// @media (max-width: 1119px) and (min-width: 700px) {
 
 
-  .topcontrols {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 1rem;
-  }
+//   .topcontrols {
+//     display: grid;
+//     grid-template-columns: 1fr 1fr 1fr;
+//     grid-gap: 1rem;
+//   }
 
-  .chartContainer {
-    width: 100%;
-    flex-grow: 2;
-  }
+//   .chartContainer {
+//     width: 100%;
+//     flex-grow: 2;
+//   }
 
-  .inputgroup {
-    height: 8rem;
-    border: solid 1px $highlight3;
-    border-radius: 2px;
-    // margin: 0 0 1rem 0;
-    padding: 0.5rem 0rem 0.5rem 1rem;
-    height: fit-content;
-    min-height: 135px;
+//   .inputgroup {
+//     height: 8rem;
+//     border: solid 1px $highlight3;
+//     border-radius: 2px;
+//     // margin: 0 0 1rem 0;
+//     padding: 0.5rem 0rem 0.5rem 1rem;
+//     height: fit-content;
+//     min-height: 135px;
   
-    h3 {
-      margin: 0 0 0.5rem 0;
-    }
-    .inputitem {
-      margin-bottom: 0.5rem;
-      label {
-        margin-left: 0.5rem;
-        display: inline-block;
+//     h3 {
+//       margin: 0 0 0.5rem 0;
+//     }
+//     .inputitem {
+//       margin-bottom: 0.5rem;
+//       label {
+//         margin-left: 0.5rem;
+//         display: inline-block;
   
-      }
-    }
-  }
+//       }
+//     }
+//   }
 
 
-}
+// }
 
-@media (min-width: 1300px) {
+//important to change the outlet in ipad mini/air/pro layout
+@media (min-width: 700px) and (max-width: 1800px) and (min-height: 700px) and (max-height: 1800px)  {
   .topcontrols {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -178,7 +179,7 @@
   //   margin-left: 1%;
   // }
   .chartContainer {
-    width: 100%;
+    width: 150%;
     flex-grow: 2;
   }
 
@@ -218,4 +219,3 @@
 
 
 }
-
