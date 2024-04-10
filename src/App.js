@@ -1151,13 +1151,13 @@ class App extends Component {
     if (sidebar1 && parentD && window.innerWidth > 1300) {
       sidebarHeight = 300 + sidebar1.offsetHeight;
       calcWidth = (((window.innerWidth - 100) - (window.innerWidth / 25)) / 2) / window.innerWidth * 100
-      console.log(window.innerWidth)
-    } else if (window.innerWidth <= 1300 && window.innerWidth > 800) {
+      //console.log(window.innerWidth)
+    } else if (window.innerWidth <= 1300 && window.innerWidth > 500) {
       calcWidth = 48
-      console.log(window.innerWidth)
+      //console.log(window.innerWidth)
     } else {
       calcWidth = 98
-      console.log(window.innerWidth)
+      //console.log(window.innerWidth)
     }
 
     var divStyle = {

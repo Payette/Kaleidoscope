@@ -19,7 +19,7 @@ label{
   cursor: pointer !important;
 }
 .material {
-  width: 15rem;
+  width: 10rem;
   display: inline-flex;
   float: left;
   margin: 0 1rem 1rem 0;
@@ -107,41 +107,6 @@ label{
 
 }
 
-// @media (min-width: 700px) and (max-width: 1119px) {
-//   .material {
-//     width: inherit;
-//     float: none;
-//     margin: 0 0 1rem 0;
-//     text-align: left;
-//   }
-//   .container {
-//     display: grid;
-//     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-//     column-gap: 5px;
-//     word-wrap: break-word;
-//   }
-
-//   label {
-//     font-size: 0.75em; 
-//   }
-
-//   .mLabel {
-//     font-size: 0.75em; 
-//   }
-
-//   .mainButton{
-//     margin-top: 2px;
-//     font-size: 0.75em;
-//     border-radius: 5px;
-//     padding: 5px;
-//     margin-right: 2px;
-//   }
-
-//   .Text16{
-//     font-size: 0.75em;
-//   }
-
-// }
 
 
 @media (max-width: 699px) and (min-width: 250px){

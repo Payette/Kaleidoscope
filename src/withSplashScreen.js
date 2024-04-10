@@ -75,10 +75,10 @@ const useStyles = makeStyles((theme) => ({
 const tier0 = [
   {
     title: 'WELCOME',
-    subheader: 'Want A Tour?',
+    subheader: <div dangerouslySetInnerHTML={{ __html: 'Want<br/>A Tour?' }} />,
     price: '0',
     img: "./img/QuestionMark1.png",
-    buttonText: 'Introduction',
+    buttonText: <div dangerouslySetInnerHTML={{ __html: 'Start<br/>Introduction' }} />,
     buttonVariant: 'text',
     item: 0,
     // disabled: true,
@@ -91,17 +91,17 @@ const tier0 = [
 const tiers = [
   {
     title: 'ENVELOPES',
-    subheader: 'Exterior Assemblies',
+    subheader: <div dangerouslySetInnerHTML={{ __html: 'Exterior<br/>Assemblies' }} />,
     price: '0',
     description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
     img: "./img/MV_Axon2.png",
-    buttonText: 'View Envelopes',
+    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View<br/>Envelopes' }} />,
     buttonVariant: 'contained',
     item: 0
   },
   {
     title: 'FLOORING',
-    subheader: 'Flooring Assemblies',
+    subheader: <div dangerouslySetInnerHTML={{ __html: 'Flooring<br/>Assemblies' }} />,
     price: '15',
     description: [
       '20 users included',
@@ -110,13 +110,13 @@ const tiers = [
       'Priority email support',
     ],
     img: "./img/FL_Axon-2-1.png",
-    buttonText: 'View Flooring',
+    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View<br/>Floorings' }} />,
     buttonVariant: 'contained',
     item: 1
   },
   {
     title: 'CEILINGS',
-    subheader: 'Ceiling Assemblies',
+    subheader: <div dangerouslySetInnerHTML={{ __html: 'Ceiling<br/>Assemblies' }} />,
     price: '20',
     description: [
       '20 users included',
@@ -125,13 +125,13 @@ const tiers = [
       'Priority email support',
     ],
     img: "./img/ceilingslandingpageaxon2.png",
-    buttonText: 'View Ceilings',
+    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View<br/>Ceilings' }} />,
     buttonVariant: 'contained',
     item: 2
   },
     {
     title: 'PARTITIONS',
-    subheader: 'Partitions Assemblies',
+    subheader: <div dangerouslySetInnerHTML={{ __html: 'Partition<br/>Assemblies' }} />,
     price: '30',
     description: [
       '50 users included',
@@ -140,20 +140,20 @@ const tiers = [
       'Phone & email support',
     ],
     img: "./img/MetalStuds_Axon_MS01_16_MinWool_MFB2.png",
-    buttonText: 'View Partitions',
+    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View<br/>Partitions' }} />,
     buttonVariant: 'contained',
     item: 3
   },
-  // {
-  //   title: 'WALL',
-  //   subheader: 'Wall Assemblies',
-  //   price: '40',
-  //   description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
-  //   img: "./img/wall_mainimg_holder.png",
-  //   buttonText: 'View Wall',
-  //   buttonVariant: 'contained',
-  //   item: 4
-  // },
+  {
+    title: 'WALL',
+    subheader: <div dangerouslySetInnerHTML={{ __html: 'Wall<br/>Assemblies' }} />,
+    price: '40',
+    description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
+    img: "./img/wall_mainimg_holder.png",
+    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View<br/>Walls' }} />,
+    buttonVariant: 'contained',
+    item: 4
+  },
 
 ];
 
@@ -276,7 +276,7 @@ function withSplashScreen(WrappedComponent) {
 
               {tier0.map((tier) => (
                 // Enterprise card is full width at sm breakpoint
-                <Grid item key={tier.title} xs={6} sm={6} md={2} >
+                <Grid item key={tier.title} xs={6} sm={6} md={3} >
                   <Card style={{ minHeight: '100%', maxHeight: '100%' }}>
                     <CardHeader
                       title={tier.title}
@@ -296,14 +296,44 @@ function withSplashScreen(WrappedComponent) {
                       titleTypographyProps={{ align: 'center' }}
                       subheaderTypographyProps={{ align: 'center' }}
                     />
-                    <CardContent style={{ display: 'flex', justifyContent: 'center' }}>
+                    {/* <CardContent style={{ display: 'flex', justifyContent: 'center' }}>
                       <div >
                         <IconButton aria-label={tier.id} onClick={() => {
                           introJs().setOption('doneLabel', 'Next page').oncomplete(async function() {window.location.href = 'index.html?type=0';}).start(document.getElementById('startTour!'))
                           sessionStorage.IntroKey=1
                         }}>
-                          <img src={tier.img} alt="Start Intro" style={{ height: '100%', maxWidth: '100%', objectFit: 'contain' }}  />
+                          <img src={tier.img} alt="Start Intro"                             
+                          style={{ 
+                              height: '100%', 
+                              maxWidth: '100%', 
+                              objectFit: 'contain',
+                              position: 'relative', 
+                              margin: "0 auto", 
+                              display: 'flex', 
+                              justifyContent: 'center', 
+                              alignItems: 'center',
+                          }} 
+                         />
                         </IconButton>
+                      </div>
+                    </CardContent> */}
+                    <CardContent>
+                      <div>
+                        <Typography variant="h6" color="textSecondary">                    
+                          {/* For future, intent: images become links: <a href="#">*/}
+                            <img src={tier.img} 
+                            style={{ 
+                              height: '100%', 
+                              maxWidth: '100%', 
+                              objectFit: 'contain',
+                              position: 'relative', 
+                              margin: "0 auto", 
+                              display: 'flex', 
+                              justifyContent: 'center', 
+                              alignItems: 'center' 
+                            }} 
+                        ></img>
+                       </Typography> 
                       </div>
                     </CardContent>
                     <CardActions>
@@ -331,7 +361,7 @@ function withSplashScreen(WrappedComponent) {
               
               {tiers.map((tier) => (
                 // Enterprise card is full width at sm breakpoint
-                <Grid item key={tier.title} xs={6} sm={6} md={2} >
+                <Grid item key={tier.title} xs={6} sm={6} md={3} >
                   <Card style={{ minHeight: '100%', maxHeight: '100%' }}>
                     <CardHeader
                       title={tier.title}
@@ -355,11 +385,7 @@ function withSplashScreen(WrappedComponent) {
                     />
                     <CardContent>
                       <div>
-                        {/* <Typography component="h2" variant="h3" color="textPrimary">
-                          ${tier.price}
-                        </Typography> */}
-                        <Typography variant="h6" color="textSecondary">
-                        
+                        <Typography variant="h6" color="textSecondary">                    
                           {/* For future, intent: images become links: <a href="#">*/}
                             <img src={tier.img} 
                             style={{ 
@@ -372,24 +398,9 @@ function withSplashScreen(WrappedComponent) {
                               justifyContent: 'center', 
                               alignItems: 'center' 
                             }} 
-                            
-                            /*onClick={() => {
-                           this.setState({ loading: false, currentItem: tier.item, selectedMaterials: this.state.selectedMaterials });
-                            let urlVar = new URLSearchParams()
-                            urlVar.set("type", tier.item)
-                            window.history.replaceState({}, '', "?" + urlVar.toString())
-                        }}</a>*/
-
                         ></img>
-                      </Typography> 
+                       </Typography> 
                       </div>
-                      {/* <ul>
-                        {tier.description.map((line) => (
-                          <Typography component="li" variant="subtitle1" align="center" key={line}>
-                            {line}
-                          </Typography>
-                        ))}
-                      </ul> */}
                     </CardContent>
                     <CardActions>
                       <Button fullWidth variant={tier.buttonVariant}
