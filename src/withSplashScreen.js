@@ -144,16 +144,16 @@ const tiers = [
     buttonVariant: 'contained',
     item: 3
   },
-  {
-    title: 'WALL',
-    subheader: <div dangerouslySetInnerHTML={{ __html: 'Wall<br/>Assemblies' }} />,
-    price: '40',
-    description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
-    img: "./img/wall_mainimg_holder.png",
-    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View<br/>Walls' }} />,
-    buttonVariant: 'contained',
-    item: 4
-  },
+  // {
+  //   title: 'WALL',
+  //   subheader: <div dangerouslySetInnerHTML={{ __html: 'Wall<br/>Assemblies' }} />,
+  //   price: '40',
+  //   description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
+  //   img: "./img/wall_mainimg_holder.png",
+  //   buttonText: <div dangerouslySetInnerHTML={{ __html: 'View<br/>Walls' }} />,
+  //   buttonVariant: 'contained',
+  //   item: 4
+  // },
 
 ];
 
@@ -276,7 +276,7 @@ function withSplashScreen(WrappedComponent) {
 
               {tier0.map((tier) => (
                 // Enterprise card is full width at sm breakpoint
-                <Grid item key={tier.title} xs={6} sm={6} md={3} >
+                <Grid item key={tier.title} xs={6} sm={6} md={2} >
                   <Card style={{ minHeight: '100%', maxHeight: '100%' }}>
                     <CardHeader
                       title={tier.title}
@@ -361,7 +361,7 @@ function withSplashScreen(WrappedComponent) {
               
               {tiers.map((tier) => (
                 // Enterprise card is full width at sm breakpoint
-                <Grid item key={tier.title} xs={6} sm={6} md={3} >
+                <Grid item key={tier.title} xs={6} sm={6} md={2} >
                   <Card style={{ minHeight: '100%', maxHeight: '100%' }}>
                     <CardHeader
                       title={tier.title}

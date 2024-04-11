@@ -47,16 +47,21 @@
   input[type=number]::-webkit-inner-spin-button {
     opacity: 1;
   }
-}
 
-@media (max-width: 2300px) {
-  .calculator input,
-  //.calculator button,
-  .calculator label,
-  .calculator select {
+  select {
     display: block;
     width: 100%;
-    margin-bottom: 10px;
   }
 }
+
+// @media (min-width: 150px) and (max-width: 2300px) {
+//   .calculator input,
+//   //.calculator button,
+//   .calculator label,
+//   .calculator select {
+//     display: block;
+//     width: 100%;
+//     margin-bottom: 10px;
+//   }
+// }
 

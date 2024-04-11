@@ -969,9 +969,29 @@ class App extends Component {
   }
 
   printPDF = () => {
-    // Generate print content if needed
-  
-    // Call the print function
+
+    let scale;
+    const screenWidth = window.screen.width;
+    const screenHeight = window.screen.height;
+
+    // 根据屏幕尺寸确定缩放比例
+    if (screenWidth <= 1100 && screenHeight <= 1100) {
+      scale = 60;
+    } else if (screenWidth <= 1200 && screenHeight <= 1200) {
+      scale = 55;
+    } else if (screenWidth <= 1370 && screenHeight <= 1370) {
+      scale = 50;
+    } else if (screenWidth <= 1700 && screenHeight <= 900) {
+      scale = 45;
+    } else {
+      scale = 27;
+    }
+
+    // 设置打印时的缩放比例
+    const style = document.createElement('style');
+    style.textContent = `@media print { body { zoom: ${scale}%; } }`;
+    document.head.appendChild(style);
+
     window.print();
   }
 
@@ -981,6 +1001,24 @@ class App extends Component {
     this.setState({ vals1: this.state.vals1 });
   
     this.exportToCsv();
+  }
+
+  getPrintScale = () => {
+    const screenWidth = window.screen.width;
+    const screenHeight = window.screen.height;
+  
+    let scale;
+  
+
+    if (screenWidth <= 1024 && screenHeight <= 768) { 
+      scale = 45;
+    } else if (screenWidth <= 1440 && screenHeight <= 900) {
+      scale = 50; 
+    } else {
+      scale = 40;
+    }
+  
+    return scale;
   }
   
 
@@ -1220,7 +1258,7 @@ class App extends Component {
           </span>
         </Dialog>  
 
-
+        
         <div style={{display: 'flex', justifyContent: 'center'}}>
           <AppBar position="static" style={{ background: 'white', color: 'black', boxShadow: "none", margintop:'5%', width:'1000px'}} >
             <div data-step="1" data-position="bottom" data-intro='Change Assembly' >            
@@ -1230,7 +1268,7 @@ class App extends Component {
                   <Tab label="FLOORING" />
                   <Tab label="CEILINGS" />
                   <Tab label="PARTITIONS" />
-                  <Tab label="WALL" />
+                  {/* <Tab label="WALL" /> */}
                   {/* <Tab label="OTHER" disabled /> */}
               </Tabs>
             </div>
@@ -1987,6 +2025,7 @@ class App extends Component {
         </TabPanel>
 
         {/* WALL */}
+
         <TabPanel className={styles.tabPanel} value={this.state.value} index={TAB_INDEX_WALL} style={{marginLeft:'5%', marginRight:'5%'} }>
 
           <div style={{ display: 'flex', justifyContent: 'flex-end',marginTop: '8px'  }}>
@@ -2165,7 +2204,7 @@ class App extends Component {
 
             </div>
           </div>
-        </TabPanel>
+        </TabPanel>  
 
 
 

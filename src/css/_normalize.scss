@@ -184,9 +184,24 @@ input { /* 1 */
  */
 
 button,
-select { /* 1 */
+select {
   text-transform: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 3px; 
+  padding-right: 30px; 
+  background-image: url('../arrow.png');
+  background-position: right 4px center;
+  background-repeat: no-repeat; 
+  background-size: auto 12px; 
 }
+
+/* 禁止默认的浏览器下拉箭头 */
+select::-ms-expand {
+  display: none;
+}
+
 
 /**
  * Correct the inability to style clickable types in iOS and Safari.

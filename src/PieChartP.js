@@ -130,7 +130,8 @@ export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdo
   return (
     <svg width={width/smallPop} height={height/smallPop}>
       {/* <GradientPinkBlue id="pie-gradients" /> */}
-      <rect rx={14} width={width} height={height} fill="url('#pie-gradients')" />
+      {/* <rect rx={14} width={width} height={height} fill="url('#pie-gradients')" /> */}
+      <rect rx={14} width={width} height={height} fill="white" />
       <Group top={centerY} left={centerX}>
         <Pie
           data={mats}

@@ -411,7 +411,7 @@ export default class Comparison extends React.Component {
             <td>
               {/* <input type="text" id={`select-type` + rel} /> 
               <select id="mat" name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + `1`}>*/}
-              <select name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + `1`}>
+              <select name="mat" onChange={this.selectChange.bind(this)} id={`select-type` + this.props.name + `1`} className="calculator select">
                 {this.props.materialList.map(m => <option value={m.value} key={m.value}>{m.label}</option>)}
               </select>
             </td>
