@@ -298,9 +298,11 @@ export default class MaterialList extends PureComponent {
             </span>
           </>}
           <div>
-            <h3 style={{ display: "inline-block", marginBottom: "0.5em", textTransform: "uppercase" }}>{this.props.title}</h3>
-            <button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
-            <button className={styles.mButton} onClick={e => this.reRreshSelect.bind(this)(e)}>Clear</button>
+            <div style={{ whiteSpace: 'nowrap' }}>
+              <h3 style={{ display: "inline-block", marginBottom: "0.5em", textTransform: "uppercase" }}>{this.props.title}</h3>
+              <button className={styles.mButton} onClick={e => this.handleSelectAll.bind(this)(e)}>Select All</button>
+              <button className={styles.mButton} onClick={e => this.reRreshSelect.bind(this)(e)}>Clear</button>
+            </div>
             <div className={styles.sansserif} style={{ fontWeight: "bold", marginBottom: "0.75em", fontSize: "0.9em" }}>Click on type name below for additional details</div>
           </div>
 

@@ -445,7 +445,7 @@ export default withTooltip(({
 
 
 
-              <line className={styles.groupLine} x1={-margin.left + margin.smallGap} y1={previousY} x2={width2 - margin.left - 2 * margin.smallGap} y2={previousY} strokeWidth="3" strokeDasharray="0 6" strokelinecap="round" />
+              <line className={styles.groupLine} x1={-margin.left + margin.smallGap} y1={previousY} x2={width2 - margin.left - 2 * margin.smallGap} y2={previousY} strokeWidth="3" strokeDasharray="0 6" strokeLinecap="round" />
               <AxisBottom left={-smallWindow} top={(previousY - 7)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({ fill: textColor, class:"chartText14", textAnchor: 'middle' })} labelProps={{
                 class:"chartText18",
                 textAnchor: 'middle',

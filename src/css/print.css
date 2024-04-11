@@ -4,6 +4,11 @@
 
   @import url('path/to/print-styles.css');
 
+  /* 设置页面为 Letter 尺寸 */
+  @page {
+    size: A0;
+  }
+
   body {
     width: 100%;
     padding: 2cm;
