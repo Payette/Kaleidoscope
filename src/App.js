@@ -1052,20 +1052,27 @@ class App extends Component {
     } else if (screenWidth > 1400) {
       scale = 1.9;
     } else if (screenWidth > 1025) {
-      scale = 2.6;
+      scale = 2.3;
     } else if (screenWidth > 700) {
       scale = 3;
     } else {
       scale = 1;
     }
   
+    const linkElements = document.querySelectorAll('link');
+    linkElements.forEach(link => {
+      if (link.href && link.href.includes('intro.css')) {
+        link.remove();
+      }
+    });
+  
     html2canvas(document.body, { 
       scale: scale
     }).then(canvas => {
       const imgData = canvas.toDataURL('image/jpeg');
-      
+  
       pdf.addImage(imgData, 'JPEG', 0, 0);
-
+  
       pdf.autoPrint();
   
       const blob = pdf.output('blob');
@@ -1080,7 +1087,6 @@ class App extends Component {
       }, 1000);
     });
   };
-  
   
 
   handleChange(e) {
