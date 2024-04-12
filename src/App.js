@@ -1000,94 +1000,116 @@ class App extends Component {
   // }
 
 
+
   // printPDF = () => {
-  //   const screenWidth = window.screen.width;
-  //   let scale;
-  
-  //   // if (screenWidth <= 1100) {
-  //   //   scale = 0.6; 
-  //   // } else if (screenWidth <= 1200) {
-  //   //   scale = 0.55; 
-  //   // } else if (screenWidth <= 1370) {
-  //   //   scale = 0.5; 
-  //   // } else if (screenWidth <= 1700) {
-  //   //   scale = 0.45; 
-  //   // } else {
-  //   //   scale = 0.4; 
-  //   // }
-  
-  //   const dpi = window.devicePixelRatio * 5; 
-  //   html2canvas(document.body, { 
-  //     scale: 1,
-  //     dpi: dpi
-  //   }).then(canvas => {
-  //     const imageUrl = canvas.toDataURL();
-  //     this.setState({ imageUrl }, () => {
-  //       this.printImage();
-  //     });
+  //   // 创建新的 PDF 对象
+  //   const pdf = new jsPDF({
+  //     unit: 'in',  
+  //     format: 'a0'
   //   });
-  // };
-
-
-  // printImage = () => {
-  //   const image = new Image();
-  //   image.src = this.state.imageUrl;
-  //   image.onload = () => {
-  //     const printWindow = window.open('', '_blank');
-  //     printWindow.document.write('<img src="' + this.state.imageUrl + '" />');
-  //     printWindow.print();
-  //   };
+  
+  //   const screenWidth = window.screen.width;
+  
+  //   let scale;
+  //   if (screenWidth > 2500) {
+  //     scale = 1.2;
+  //   } else if (screenWidth > 1400) {
+  //     scale = 1.9;
+  //   } else if (screenWidth > 1025) {
+  //     scale = 2.6;
+  //   } else if (screenWidth > 700) {
+  //     scale = 3;
+  //   } else {
+  //     scale = 1;
+  //   }
+  
+  //   // 移除外部样式表引用
+  //   const linkElements = document.querySelectorAll('link');
+  //   linkElements.forEach(link => {
+  //     if (link.href && link.href.includes('intro.css')) {
+  //       link.remove();
+  //     }
+  //   });
+  
+  //   // 使用 html2canvas 将网页内容转换为图像
+  //   html2canvas(document.body, { 
+  //     scale: scale
+  //   }).then(canvas => {
+  //     const imgData = canvas.toDataURL('image/jpeg');
+  
+  //     pdf.addImage(imgData, 'JPEG', 0, 0);
+  
+  //     pdf.autoPrint();
+  
+  //     const blob = pdf.output('blob');
+  //     const url = URL.createObjectURL(blob);
+  //     const iframe = document.createElement('iframe');
+  //     iframe.style.display = 'none';
+  //     iframe.src = url;
+  //     document.body.appendChild(iframe);
+  
+  //     setTimeout(() => {
+  //       iframe.contentWindow.print();
+  //     }, 1000);
+  //   });
   // };
   printPDF = () => {
     const pdf = new jsPDF({
       unit: 'in',  
       format: 'a0'
     });
-  
+
     const screenWidth = window.screen.width;
-  
+
     let scale;
     if (screenWidth > 2500) {
       scale = 1.2;
     } else if (screenWidth > 1400) {
       scale = 1.9;
     } else if (screenWidth > 1025) {
-      scale = 2.3;
+      scale = 2.6;
     } else if (screenWidth > 700) {
       scale = 3;
     } else {
       scale = 1;
     }
-  
-    const linkElements = document.querySelectorAll('link');
-    linkElements.forEach(link => {
-      if (link.href && link.href.includes('intro.css')) {
-        link.remove();
-      }
-    });
-  
+
     html2canvas(document.body, { 
       scale: scale
     }).then(canvas => {
       const imgData = canvas.toDataURL('image/jpeg');
-  
+
+      // 将图片添加到 PDF 中
       pdf.addImage(imgData, 'JPEG', 0, 0);
-  
-      pdf.autoPrint();
-  
-      const blob = pdf.output('blob');
-      const url = URL.createObjectURL(blob);
-      const iframe = document.createElement('iframe');
-      iframe.style.display = 'none';
-      iframe.src = url;
-      document.body.appendChild(iframe);
-  
-      setTimeout(() => {
-        iframe.contentWindow.print();
-      }, 1000);
+
+      // 生成 PDF 文件
+      const pdfData = pdf.output('blob');
+
+      // 创建 URL
+      const pdfURL = URL.createObjectURL(pdfData);
+
+      // 打开新页面并导航到 PDF 文件
+      const newWindow = window.open(pdfURL, '_blank');
+      if (newWindow) {
+        newWindow.document.title = 'PDF Preview';
+      } else {
+        alert('Please allow pop-ups to view PDF');
+      }
     });
   };
   
+
+  // 将 Data URI 转换为 Blob 对象
+  dataURItoBlob = (dataURI) => {
+    const byteString = atob(dataURI.split(',')[1]);
+    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const uint8Array = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+      uint8Array[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([arrayBuffer], { type: mimeString });
+  };
 
   handleChange(e) {
 
