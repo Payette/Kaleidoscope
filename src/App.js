@@ -1038,7 +1038,6 @@ class App extends Component {
   //     printWindow.print();
   //   };
   // };
-
   printPDF = () => {
     const pdf = new jsPDF({
       unit: 'in',  
@@ -1066,9 +1065,19 @@ class App extends Component {
       const imgData = canvas.toDataURL('image/jpeg');
       
       pdf.addImage(imgData, 'JPEG', 0, 0);
-      const pdfData = pdf.output('blob');
+
+      pdf.autoPrint();
   
-      const newWindow = window.open(URL.createObjectURL(pdfData), '_blank');
+      const blob = pdf.output('blob');
+      const url = URL.createObjectURL(blob);
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = url;
+      document.body.appendChild(iframe);
+  
+      setTimeout(() => {
+        iframe.contentWindow.print();
+      }, 1000);
     });
   };
   
