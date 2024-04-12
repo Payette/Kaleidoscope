@@ -980,7 +980,6 @@ class App extends Component {
   //   const screenWidth = window.screen.width;
   //   const screenHeight = window.screen.height;
 
-  //   // 根据屏幕尺寸确定缩放比例
   //   if (screenWidth <= 1100 && screenHeight <= 1100) {
   //     scale = 60;
   //   } else if (screenWidth <= 1200 && screenHeight <= 1200) {
@@ -993,7 +992,6 @@ class App extends Component {
   //     scale = 27;
   //   }
 
-  //   // 设置打印时的缩放比例
   //   const style = document.createElement('style');
   //   style.textContent = `@media print { body { zoom: ${scale}%; } }`;
   //   document.head.appendChild(style);
@@ -1018,9 +1016,7 @@ class App extends Component {
   //   //   scale = 0.4; 
   //   // }
   
-  //   // 增加dpi参数来提高图片清晰度
-  //   const dpi = window.devicePixelRatio * 5; // 根据设备的dpi来设置，这里乘以2是因为常见的Retina屏幕通常为2倍
-  
+  //   const dpi = window.devicePixelRatio * 5; 
   //   html2canvas(document.body, { 
   //     scale: 1,
   //     dpi: dpi
@@ -1032,59 +1028,50 @@ class App extends Component {
   //   });
   // };
 
-  // // 打印图片
+
   // printImage = () => {
-  //   // 创建一个新的图片元素
   //   const image = new Image();
   //   image.src = this.state.imageUrl;
-  //   // 等待图片加载完成后再执行打印操作
   //   image.onload = () => {
-  //     // 创建一个新的窗口并将图片添加到窗口中
   //     const printWindow = window.open('', '_blank');
   //     printWindow.document.write('<img src="' + this.state.imageUrl + '" />');
-  //     // 打印窗口中的图片
   //     printWindow.print();
   //   };
   // };
 
   printPDF = () => {
-    // 创建新的 PDF 对象
     const pdf = new jsPDF({
-      unit: 'in',  // 设置单位为英寸
-      format: 'a0' // 设置页面尺寸为 A2
+      unit: 'in',  
+      format: 'a0'
     });
   
-    // 获取当前屏幕宽度
     const screenWidth = window.screen.width;
   
-    // 根据屏幕宽度设置缩放比例
     let scale;
     if (screenWidth > 2500) {
       scale = 1.2;
     } else if (screenWidth > 1400) {
-      scale = 2.1;
+      scale = 1.9;
     } else if (screenWidth > 1025) {
       scale = 2.6;
     } else if (screenWidth > 700) {
       scale = 3;
     } else {
-      scale = 1; // 默认缩放比例
+      scale = 1;
     }
   
-    // 使用 html2canvas 将网页内容转换为图像
     html2canvas(document.body, { 
       scale: scale
     }).then(canvas => {
-      // 将 canvas 转换为图像数据 URL
       const imgData = canvas.toDataURL('image/jpeg');
-  
-      // 将图像添加到 PDF 中
+      
       pdf.addImage(imgData, 'JPEG', 0, 0);
+      const pdfData = pdf.output('blob');
   
-      // 保存或者打印 PDF
-      pdf.save('Kaleidoscope.pdf');
+      const newWindow = window.open(URL.createObjectURL(pdfData), '_blank');
     });
   };
+  
   
 
   handleChange(e) {
