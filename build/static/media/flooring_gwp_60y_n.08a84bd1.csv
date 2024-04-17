@@ -1,0 +1,18 @@
+material,type,value,name,img
+sGranite,Stone / Ceramic,4.85,Granite,./img/Axon_Stone.png
+sSlate,Stone / Ceramic,4.42,Slate,./img/Axon_Stone.png
+sCeramic,Stone / Ceramic,1.20,Porcelain,./img/Axon_Stone.png
+rRubber,Resilient,3.03,Rubber,./img/Axon_Resilient.png
+rVinyl,Resilient,2.80,Vinyl,./img/Axon_Resilient.png
+rLinoTile,Resilient,1.96,Linoleum,./img/Axon_Resilient.png
+mConcrete,Misc.,2.01,Concrete Topper,./img/Axon_Misc.png
+mTerrazzo,Misc.,2.56,Thin-Set Terrazzo,./img/Axon_Misc.png
+mEpoxy,Misc.,2.68,Epoxy,./img/Axon_Misc.png
+cHigh,Carpet,10.41,High Pile,./img/Axon_Carpet.png
+cMedium,Carpet,8.47,Medium Pile,./img/Axon_Carpet.png
+cLow,Carpet,5.63,Low Pile,./img/Axon_Carpet.png
+wEngineered,Wood,2.00,Engineered,./img/Axon_Wood.png
+wBamboo,Wood,5.84,Bamboo,./img/Axon_Wood.png
+wCork,Wood,2.25,Cork,./img/Axon_Wood.png
+wSoftwood,Wood,3.38,Softwood Plank,./img/Axon_Wood.png
+wHardwood,Wood,5.63,Hardwood Plank,./img/Axon_Wood.png
