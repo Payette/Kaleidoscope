@@ -1,5 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components';
+
 
 const CheckboxContainer = styled.div`
   display: inline-block;
@@ -11,6 +12,19 @@ const Icon = styled.svg`
   fill: none;
   stroke: white;
   strokeWidth: 2px;
+
+
+  @media print {
+    ${props =>
+      props.caseStudyColor
+        ? css`
+            stroke: ${props.caseStudyColor};
+          `
+        : css`
+            stroke: #4d4d4f;
+          `}
+    stroke-width: 5px;
+  }
 `
 // Hide checkbox visually but remain accessible to screen readers.
 // Source: https://polished.js.org/docs/#hidevisually
@@ -44,18 +58,21 @@ const StyledCheckbox = styled.div`
   box-shadow: ${(props) => '0 0 0 3px ' + props.caseStudyColor};
   border: 2px solid #fff;
 
-
+  @media print {
+    box-shadow: ${(props) => '0 0 0 5px ' + props.caseStudyColor};
+  }
 
   ${Icon} {
     visibility: ${(props) => (props.checked ? 'visible' : 'hidden')}
   }
+
 `
 
 const Checkbox = ({ className, checked, caseStudyColor, ...props }) => (
   <CheckboxContainer className={className}>
     <HiddenCheckbox checked={checked} {...props} />
     <StyledCheckbox checked={checked} caseStudyColor={caseStudyColor}>
-      <Icon viewBox="0 0 24 24">
+      <Icon viewBox="0 0 24 24" checked={checked} caseStudyColor={caseStudyColor}>
         <polyline points="20 6 9 17 4 12" />
       </Icon>
     </StyledCheckbox>

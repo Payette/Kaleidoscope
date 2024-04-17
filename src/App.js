@@ -35,6 +35,8 @@ import './css/introjs-modern copy.css';
 import html2canvas from 'html2canvas';
 import './css/print.css';
 import jsPDF from 'jspdf';
+import Checkbox from './Checkbox';
+
 
 
 
@@ -92,7 +94,9 @@ class App extends Component {
       isCopied: false,
 
       imageUrl: null, 
+      checkme: false,
     };
+    
 
 
 
@@ -974,35 +978,47 @@ class App extends Component {
     //introJs().addHints();
   }
 
+  printPDF = () => {
+    
+
+    const printStyle = document.createElement('link');
+    printStyle.rel = 'stylesheet';
+    printStyle.type = 'text/css';
+    printStyle.href = './css/print.css'; 
+    document.head.appendChild(printStyle);
+
+    let scale;
+    const screenWidth = window.screen.width;
+    const screenHeight = window.screen.height;
+
+    if (screenWidth > 1700) {
+      scale = 25;
+    } else if (screenWidth > 1400) {
+      scale = 40;
+    } else if (screenWidth > 1200) {
+      scale = 45;
+    } else if (screenWidth > 1025) {
+      scale = 50;
+    } else if (screenWidth > 850) {
+      scale = 55;
+    } else if (screenWidth > 700) {
+      scale = 60;
+    } else if (screenWidth > 550) {
+      scale = 65;
+    } else {
+      scale = 100;
+    }
+
+    const style = document.createElement('style');
+    style.textContent = `@media print { body { zoom: ${scale}%; } }`;
+    document.head.appendChild(style);
+
+
+    window.print();
+  }
+
+
   // printPDF = () => {
-
-  //   let scale;
-  //   const screenWidth = window.screen.width;
-  //   const screenHeight = window.screen.height;
-
-  //   if (screenWidth <= 1100 && screenHeight <= 1100) {
-  //     scale = 60;
-  //   } else if (screenWidth <= 1200 && screenHeight <= 1200) {
-  //     scale = 55;
-  //   } else if (screenWidth <= 1370 && screenHeight <= 1370) {
-  //     scale = 50;
-  //   } else if (screenWidth <= 1700 && screenHeight <= 900) {
-  //     scale = 45;
-  //   } else {
-  //     scale = 27;
-  //   }
-
-  //   const style = document.createElement('style');
-  //   style.textContent = `@media print { body { zoom: ${scale}%; } }`;
-  //   document.head.appendChild(style);
-
-  //   window.print();
-  // }
-
-
-
-  // printPDF = () => {
-  //   // 创建新的 PDF 对象
   //   const pdf = new jsPDF({
   //     unit: 'in',  
   //     format: 'a0'
@@ -1023,7 +1039,6 @@ class App extends Component {
   //     scale = 1;
   //   }
   
-  //   // 移除外部样式表引用
   //   const linkElements = document.querySelectorAll('link');
   //   linkElements.forEach(link => {
   //     if (link.href && link.href.includes('intro.css')) {
@@ -1031,7 +1046,6 @@ class App extends Component {
   //     }
   //   });
   
-  //   // 使用 html2canvas 将网页内容转换为图像
   //   html2canvas(document.body, { 
   //     scale: scale
   //   }).then(canvas => {
@@ -1053,63 +1067,8 @@ class App extends Component {
   //     }, 1000);
   //   });
   // };
-  printPDF = () => {
-    const pdf = new jsPDF({
-      unit: 'in',  
-      format: 'a0'
-    });
 
-    const screenWidth = window.screen.width;
-
-    let scale;
-    if (screenWidth > 2500) {
-      scale = 1.2;
-    } else if (screenWidth > 1400) {
-      scale = 1.9;
-    } else if (screenWidth > 1025) {
-      scale = 2.6;
-    } else if (screenWidth > 700) {
-      scale = 3;
-    } else {
-      scale = 1;
-    }
-
-    html2canvas(document.body, { 
-      scale: scale
-    }).then(canvas => {
-      const imgData = canvas.toDataURL('image/jpeg');
-
-      // 将图片添加到 PDF 中
-      pdf.addImage(imgData, 'JPEG', 0, 0);
-
-      // 生成 PDF 文件
-      const pdfData = pdf.output('blob');
-
-      // 创建 URL
-      const pdfURL = URL.createObjectURL(pdfData);
-
-      // 打开新页面并导航到 PDF 文件
-      const newWindow = window.open(pdfURL, '_blank');
-      if (newWindow) {
-        newWindow.document.title = 'PDF Preview';
-      } else {
-        alert('Please allow pop-ups to view PDF');
-      }
-    });
-  };
   
-
-  // 将 Data URI 转换为 Blob 对象
-  dataURItoBlob = (dataURI) => {
-    const byteString = atob(dataURI.split(',')[1]);
-    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-    const arrayBuffer = new ArrayBuffer(byteString.length);
-    const uint8Array = new Uint8Array(arrayBuffer);
-    for (let i = 0; i < byteString.length; i++) {
-      uint8Array[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([arrayBuffer], { type: mimeString });
-  };
 
   handleChange(e) {
 

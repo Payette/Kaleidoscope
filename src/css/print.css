@@ -5,7 +5,7 @@
   @import url('path/to/print-styles.css');
 
   @page {
-    size: A0;
+    size: A4 !important;
   }
 
   body {
@@ -20,7 +20,6 @@
     width: 10px;
     height: 10px;
     background-color: black;
-    
   }
 
 
@@ -29,11 +28,7 @@
     width: 10px;
     height: 10px;
     background-color: red;
-    
+
   }
 
-
-  /* button {
-    background-color: green !important;
-  } */
 }
