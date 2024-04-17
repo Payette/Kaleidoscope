@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Kaleidoscope/precache-manifest.4c3671ee2aa289d303e66071f8c09e7d.js"
+  "/Kaleidoscope/precache-manifest.66855dddacdf6d46ac07eff40be5b90f.js"
 );
 
 self.addEventListener('message', (event) => {
