@@ -1,0 +1,20 @@
+material,type,impact1,impact2,impact3,impact4,name,img,label
+mBaffle,Metal,4.49,0.03,4.53,3.32,Baffle,./img/Ceilings/Axons/Axon_MetalBaffle.png,M - Baffle (Metal)
+mPan,Metal,2.76,0.01,2.77,2.03,Panel,./img/Ceilings/Axons/Axon_MetalPan.png,M -  Metal Pan
+mPerforatedPan,Metal,2.41,0.01,2.42,1.79,Perforated Panel,./img/Ceilings/Axons/Axon_MetalPanPerforated.png,M - Perf Metal Pan
+hcGypsum,Hard Ceiling,1.35,0.02,1.74,1.2,Gypsum,./img/Ceilings/Axons/Axon_Gypsum.png,HC - Gyp
+hcMoistureResistantGyp,Hard Ceiling,1.29,0.02,1.68,1.19,Moisture Resistant Gypsum,./img/Ceilings/Axons/Axon_Gypsum.png,HC - Moisture Resistant Gyp
+cFiberglassTrim,Cloud,1.86,0.01,1.88,1.15,Fiberglass (w/ Trim),./img/Ceilings/Axons/Axon_CloudwTrim.png,C - Fiberglass (w/ Trim)
+cFiberglass,Cloud,1.38,0,1.4,0.13,Fiberglass,./img/Ceilings/Axons/Axon_Cloud.png,C - Fiberglass
+ltFiberglass,Lay-In Tile,1.13,0,1.15,0.19,Fiberglass,./img/Ceilings/Axons/Axon_Lay-InTile.png,LT - Fiberglass
+ltMineralBoard,Lay-In Tile,0.92,0.01,0.95,0.2,Mineral Board,./img/Ceilings/Axons/Axon_Lay-InTile.png,LT - Mineral Board
+ocAcousticalSpray,Open Ceiling,0.08,0.04,0,0,Acoustical Spray,./img/Ceilings/Axons/Axon_OpenCeiling.png,OC - Acoustical Spray
+ocPaint,Open Ceiling,0.04,0,0.36,0,Paint,./img/Ceilings/Axons/Axon_OpenCeiling.png,OC - Paint
+wVeneerDense,Wood,2.83,0.06,3.74,1.64,Dense Grille (Veneer),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Veneer)
+wVeneerOpen,Wood,2.68,0.06,3.67,1.76,Grille (Veneer),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Grille (Veneer)
+wPoplarDense,Wood,1.15,0.03,1.73,1.12,Dense Grille (Poplar),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Poplar)
+wPoplarOpen,Wood,1.2,0.03,1.82,1.2,Grille (Poplar),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Grille (Poplar)
+wWalnutDense,Wood,1.48,0.04,2.25,1.42,Dense Grille (Walnut),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Walnut)
+wWalnutOpen,Wood,1.55,0.04,2.38,1.53,Grille (Walnut),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Grille (Walnut)
+wMapleDense,Wood,1.37,0.04,2.3,1.61,Dense Grille (Maple),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Maple)
+wMapleOpen,Wood,1.43,0.04,2.39,1.73,Grille (Maple),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Grille (Maple)
