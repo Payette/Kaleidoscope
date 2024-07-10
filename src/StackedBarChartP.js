@@ -330,20 +330,19 @@ export default withTooltip(({
                   }
                 }
                 if (type === SYSTEM_TYPE_WALL) {
-                  if (sm.key[0] === "M") {
-                    myAbb = "(M)";
-                  } else if (sm.key[0] === "H") {
-                    myAbb = "(HC)";
-                  } else if (sm.key[0] === "C") {
-                    myAbb = "(C)";
-                  } else if (sm.key[0] === "L") {
-                    myAbb = "(LT)";
-                  } else if (sm.key[0] === "O") {
-                    myAbb = "(OC)";
+                  if (sm.key[0] === "W" && sm.key[1] === "a") {
+                    myAbb = "(WP)";
                   } else if (sm.key[0] === "W") {
                     myAbb = "(W)";
+                  } else if (sm.key[0] === "S" && sm.key[1] === "o") {
+                    myAbb = "(SA)";
+                  } else if (sm.key[0] === "M") {
+                    myAbb = "(M)";
+                  } else if (sm.key[0] === "S") {
+                    myAbb = "(SC)";
                   }
                 }
+                
       
 
                 //  let ShallowCopy = _.cloneDeep(sm);

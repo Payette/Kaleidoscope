@@ -13,19 +13,20 @@ const Icon = styled.svg`
   stroke: white;
   strokeWidth: 2px;
 
-
-  @media print {
-    ${props =>
-      props.caseStudyColor
-        ? css`
-            stroke: ${props.caseStudyColor};
-          `
-        : css`
-            stroke: #4d4d4f;
-          `}
-    stroke-width: 5px;
-  }
 `
+  // @media print {
+  //   ${props =>
+  //     props.caseStudyColor
+  //       ? css`
+  //           stroke: ${props.caseStudyColor};
+  //         `
+  //       : css`
+  //           stroke: #4d4d4f;
+  //         `}
+  //   stroke-width: 5px;
+  // }
+
+
 // Hide checkbox visually but remain accessible to screen readers.
 // Source: https://polished.js.org/docs/#hidevisually
 const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
@@ -58,21 +59,21 @@ const StyledCheckbox = styled.div`
   box-shadow: ${(props) => '0 0 0 3px ' + props.caseStudyColor};
   border: 2px solid #fff;
 
-  @media print {
-    box-shadow: ${(props) => '0 0 0 5px ' + props.caseStudyColor};
-  }
+
 
   ${Icon} {
     visibility: ${(props) => (props.checked ? 'visible' : 'hidden')}
   }
 
 `
-
+  // @media print {
+  //   box-shadow: ${(props) => '0 0 0 5px ' + props.caseStudyColor};
+  // }
 const Checkbox = ({ className, checked, caseStudyColor, ...props }) => (
   <CheckboxContainer className={className}>
     <HiddenCheckbox checked={checked} {...props} />
     <StyledCheckbox checked={checked} caseStudyColor={caseStudyColor}>
-      <Icon viewBox="0 0 24 24" checked={checked} caseStudyColor={caseStudyColor}>
+      <Icon viewBox="0 0 24 24" >
         <polyline points="20 6 9 17 4 12" />
       </Icon>
     </StyledCheckbox>

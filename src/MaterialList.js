@@ -18,107 +18,11 @@ let myImg;
 let legend;
 let legendText = "hello";
 
-let colsEnvelope = [
-  "#c8e3b6",
-  "#74deb6", 
-  "#bfe6b1", 
-  "#74deb6", 
-  "#bfe6b1", 
-  "#74deb6", 
-  "#74deb6", 
-  "#74deb6", 
-  "#74deb6", 
-  "#74deb6", 
-  "#74deb6", 
-  "#74deb6", 
-  "#b6e6e9", 
-  "#bfe6b1", 
-  "#74deb6", 
-  "#93cee6", 
-  "#2461fa", 
-  "#2461fa", 
-  "#2461fa", 
-  "#74deb6", 
-  "#74deb6", 
-  "#bfe6b1", 
-  "#74deb6", 
-  "#bfe6b1", 
-  "#74deb6", 
-  "#93cee6", 
-  "#93cee6", 
-  "#b6e6e9", 
-  "#74deb6", 
-  "#74deb6", 
-  "#bfe6b1", 
-  "#bfe6b1", 
-  "#bfe6b1", 
-  "#93cee6", 
-  "#0087fb", 
-  "#2461fa", 
-  "#2461fa", 
-  "#00177b", 
-  "#ffe2b9", 
-  "#ffb65b", 
-  "#ffb65b", 
-  "#ffb65b", 
-  "#c5c5c5", 
-  "#aaaaaa", 
-  "#c5c5c5", 
-  "#aaaaaa", 
-  "#8e8e8e", 
-  "#5b5b5b", 
-  "#2d2d2d"]
+
+let colsEnvelope = ["#c8e3b6", "#74deb6", "#bfe6b1", "#74deb6", "#bfe6b1", "#74deb6", "#74deb6", "#74deb6", "#74deb6", "#74deb6", "#74deb6", "#74deb6", "#b6e6e9", "#bfe6b1", "#74deb6", "#93cee6", "#2461fa", "#2461fa", "#2461fa", "#74deb6", "#74deb6", "#bfe6b1", "#74deb6", "#bfe6b1", "#74deb6", "#93cee6", "#93cee6", "#b6e6e9", "#74deb6", "#74deb6", "#bfe6b1", "#bfe6b1", "#bfe6b1", "#93cee6", "#0087fb", "#2461fa", "#2461fa", "#00177b", "#ffe2b9", "#ffb65b", "#ffb65b", "#ffb65b", "#c5c5c5", "#aaaaaa", "#c5c5c5", "#aaaaaa", "#8e8e8e", "#5b5b5b", "#2d2d2d"]
 const materialNamesEnvelope = ["mat49", "mat48", "mat47", "mat46", "mat45", "mat44", "mat43", "mat42", "mat41", "mat40", "mat39", "mat38", "mat37", "mat36", "mat35", "mat34", "mat33", "mat32", "mat31", "mat30", "mat29", "mat28", "mat27", "mat26", "mat25", "mat24", "mat23", "mat22", "mat21", "mat20", "mat19", "mat18", "mat17", "mat16", "mat15", "mat14", "mat13", "mat12", "mat11", "mat10", "mat9", "mat8", "mat7", "mat6", "mat5", "mat4", "mat3", "mat2", "mat1"];
-let materialLabelEnvelope = { 
-  mat1: "Paint, interior acrylic latex", 
-  mat2: "Wall board, gypsum, natural", 
-  mat3: "Cold formed structural steel", 
-  mat4: "Fiberglass mat gypsum sheathing board", 
-  mat5: "Self-adhering, polymer-modified asphalt sheet underlayment", 
-  mat6: "Aluminum Backpan", 
-  mat7: "Powder coating, metal stock", 
-  mat8: "Mineral wool, low density, NAIMA - EPD", 
-  mat9: "Spray polyurethane foal, closed cell, (HFO blowing agent)", 
-  mat10: "XPS insulation, Foamular average, Owens Corning - EPD", 
-  mat11: "Polyureathane foam (PUR) rigid board", 
-  mat12: "Adhesive, polychloroprene (neoprene)", 
-  mat13: "Galvanized steel", 
-  mat14: "Galvanized steel support", 
-  mat15: "Aluminum extrusion, AEC - EPD", 
-  mat16: "Fasteners, stainless steel", 
-  mat17: "Mortar type S", 
-  mat18: "Mortar type N", 
-  mat19: "Aluminum sheet", 
-  mat20: "Stone slab, granite", 
-  mat21: "Stone slab, limestone", 
-  mat22: "Cement bonded particle board", 
-  mat23: "Steel Sheet", 
-  mat24: "Zinc coating (galvanized) for stee G60", 
-  mat25: "Brick, generic", 
-  mat26: "Fluoropolymer coating, metal stock", 
-  mat27: "Steel insulated metal panel (IMP), MCA - EPD", 
-  mat28: "Glass fiber board, NAIMA - EPD", 
-  mat29: "Stucco synthetic", 
-  mat30: "Structural concrete, 5000 psi, 0% fly ash and slag", 
-  mat31: "Aluminum curtain wall system, YKK AP - EPD ", 
-  mat32: "Stainless steel, extruded chromium 18/8", 
-  mat33: "Glue laminated timber (Glulam), AWC - EPD", 
-  mat34: "Argon gas for IGU", 
-  mat35: "Glazing, monolithic sheet, tempered", 
-  mat36: "IGU spacer", 
-  mat37: "Low-e coating (for glazing)", 
-  mat38: "GFRC panel, Rieder, FibreC panel - EPD", 
-  mat39: "GFRC", 
-  mat40: "Aluminum-faced composite wall panel (ACM), MCA - EPD", 
-  mat41: "Terracotta", 
-  mat42: "Phenolic resin solid surfacing, sheet", 
-  mat43: "Fiber cement board", 
-  mat44: "Titanium zinc sheet, Rheinzink, prePATINA blue/graphite-grey - EPD", 
-  mat45: "Paint, enamel, solvent based", 
-  mat46: "Steel, sheet", 
-  mat47: "Wood stain, water based", 
-  mat48: "Tulipwood lumber, 1 inch", 
-  mat49: "Steel, welded wire mesh" };
+let materialLabelEnvelope = { mat1: "Paint, interior acrylic latex", mat2: "Wall board, gypsum, natural", mat3: "Cold formed structural steel", mat4: "Fiberglass mat gypsum sheathing board", mat5: "Self-adhering, polymer-modified asphalt sheet underlayment", mat6: "Aluminum Backpan", mat7: "Powder coating, metal stock", mat8: "Mineral wool, low density, NAIMA - EPD", mat9: "Spray polyurethane foal, closed cell, (HFO blowing agent)", mat10: "XPS insulation, Foamular average, Owens Corning - EPD", mat11: "Polyureathane foam (PUR) rigid board", mat12: "Adhesive, polychloroprene (neoprene)", mat13: "Galvanized steel", mat14: "Galvanized steel support", mat15: "Aluminum extrusion, AEC - EPD", mat16: "Fasteners, stainless steel", mat17: "Mortar type S", mat18: "Mortar type N", mat19: "Aluminum sheet", mat20: "Stone slab, granite", mat21: "Stone slab, limestone", mat22: "Cement bonded particle board", mat23: "Steel Sheet", mat24: "Zinc coating (galvanized) for stee G60", mat25: "Brick, generic", mat26: "Fluoropolymer coating, metal stock", mat27: "Steel insulated metal panel (IMP), MCA - EPD", mat28: "Glass fiber board, NAIMA - EPD", mat29: "Stucco synthetic", mat30: "Structural concrete, 5000 psi, 0% fly ash and slag", mat31: "Aluminum curtain wall system, YKK AP - EPD ", mat32: "Stainless steel, extruded chromium 18/8", mat33: "Glue laminated timber (Glulam), AWC - EPD", mat34: "Argon gas for IGU", mat35: "Glazing, monolithic sheet, tempered", mat36: "IGU spacer", mat37: "Low-e coating (for glazing)", mat38: "GFRC panel, Rieder, FibreC panel - EPD", mat39: "GFRC", mat40: "Aluminum-faced composite wall panel (ACM), MCA - EPD", mat41: "Terracotta", mat42: "Phenolic resin solid surfacing, sheet", mat43: "Fiber cement board", mat44: "Titanium zinc sheet, Rheinzink, prePATINA blue/graphite-grey - EPD", mat45: "Paint, enamel, solvent based", mat46: "Steel, sheet", mat47: "Wood stain, water based", mat48: "Tulipwood lumber, 1 inch", mat49: "Steel, welded wire mesh" };
+
 
 let colsFlooring = ["#c7e9b7", "#c7e9b7", "#b5e2bd", "#85E2BD", "#85E2BD", "#85E2BD", "#85E2BD", "#85E2BD", "#89EFC0", "#85E2BD", "#85E2BD", "#85E2BD", "#85E2BD", "#85E2BD", "#85E2BD", "#85E2BD", "#85E2BD", "#85E2BD", "#0090ff", "#0090ff", "#0090ff", "#B3B3B3", "#B3B3B3", "#cccccc", "#cccccc", "#999999", "#666666"]
 const materialNamesFlooring = ["mat27", "mat26", "mat25", "mat24", "mat23", "mat22", "mat21", "mat20", "mat19", "mat18", "mat17", "mat16", "mat15", "mat14", "mat13", "mat12", "mat11", "mat10", "mat9", "mat8", "mat7", "mat6", "mat5", "mat4", "mat3", "mat2", "mat1"];
@@ -133,9 +37,10 @@ let materialNamesPartitions = ["mat22", "mat21", "mat20", "mat19", "mat18", "mat
 let materialLabelPartitions = {mat1:"Coated non-structural steel framing, ClarkDietrich, ProSTUD - EPD", mat2:"Domestic softwood, US, AWC - EPD", mat3:"Concrete masonry unit (CMU), hollow-core", mat4:"Jandris Block CarbonX Normal Weight - EPD", mat5:"Aluminum curtain wall system, YKK AP - EPD ", mat6:"White oak lumber, 2 inch", mat7:"Steel, reinforcing rod", mat8:"Thickset mortar", mat9:"Mortar type N", mat10:"Cold formed structural steel", mat11:"Galvanized steel", mat12:"Sealant, silicone", mat13:"Mineral wool, low density, NAIMA - EPD", mat14:"Polyurethane foam (PUR) rigid board", mat15:"Glass wool unfaced batt, Knauf, EcoBatt - EPD", mat16:"Cellulose insulation, boards", mat17:"Wall board, gypsum, fire-resistant (Type X)", mat18:"Glazing, monolithic sheet, tempered", mat19:"Medium density fiberboard (MDF), AWC - EPD", mat20:"EcoSmart Firecode X Gypsum - EPD", mat21:"Paint, interior acrylic latex", mat22:"Wood stain, water based, by area"}; 
 
 
-let colsWall = [ "#CCCCCC", "#666666", "#999999", "#666666", "#C2EAA7", "#C2EAA7", "#89EFC0", "#89EFC0", "#C2EAA7", "#FEE6BF", "#FCC05E", "#C2EAA7", "#89EFC0", "#89EFC0", "#89EFC0", "#89EFC0", "#C2EAA7", "#89EFC0", "#89EFC0", "#89EFC0", "#5CBDFF", "#00AAFF", "#4169E1", "#5CBDFF", "#000099" ];
-let materialNamesWall = ["mat25", "mat24", "mat23", "mat22", "mat21", "mat20", "mat19", "mat18", "mat17", "mat16", "mat15", "mat14", "mat13", "mat12", "mat11", "mat10", "mat9", "mat8", "mat7", "mat6", "mat5", "mat4", "mat3", "mat2", "mat1"]; 
-let materialLabelWall = { mat1: "Steel, cable", mat2: "Suspended grid", mat3: "Cold formed structural steel", mat4: "Fasteners, galvanized steel", mat5: "Galvanized steel", mat6: "Acoustic ceiling tile (ACT), fiberglass", mat7: "Acoustic ceiling tile (ACT), mineral fiber board", mat8: "Acoustic ceiling tile (ACT), perforated aluminum", mat9: "Aluminum extrusion, AEC - EPD", mat10: "Aluminum, formed", mat11: "Ceiling tile, aluminum", mat12: "K-13 Spray on System", mat13: "Tulipwood lumber, 1 inch", mat14: "Medium density fiberboard (MDF), AWC - EPD", mat15: "Adhesive, polyurethane", mat16: "Hardwood veneer, medium thickness", mat17: "Hard maple lumber, 1 inch", mat18: "Wall board, gypsum, moisture- and mold-resistant", mat19: "Wall board, gypsum, natural", mat20: "Walnut lumber, 1 inch", mat21: "Paint, interior acrylic latex", mat22: "Paint, enamel, solvent based", mat23: "Polyurethane top coat, water-based, for wood", mat24: "Powder coating, metal stock", mat25: "Wood stain, water based" }; 
+let colsWall = [ "#999999","#999999","#CCCCCC","#F59E46","#F59E46","#FEE6BF","#89EFC0","#89EFC0","#89EFC0","#FBC05D","#FBC05D","#89EFC0","#C2EAA7","#C2EAA7","#C2EAA7","#70BF51","#89EFC0","#89EFC0","#89EFC0","#89EFC0","#89EFC0","#89EFC0","#89EFC0","#C2EAA7","#89EFC0","#89EFC0","#89EFC0","#89EFC0","#89EFC0","#89EFC0","#89EFC0","#89EFC0","#89EFC0","#000099","#000099","#000099","#000099","#4169E1","#000099"];
+let materialNamesWall = ["mat39", "mat38", "mat37", "mat36", "mat35", "mat34", "mat33", "mat32", "mat31", "mat30", "mat29", "mat28", "mat27", "mat26", "mat25", "mat24", "mat23", "mat22", "mat21", "mat20", "mat19", "mat18", "mat17", "mat16", "mat15", "mat14", "mat13", "mat12", "mat11", "mat10", "mat9", "mat8", "mat7", "mat6", "mat5", "mat4", "mat3", "mat2", "mat1"]; 
+let materialLabelWall = {mat1: "Interior grade plywood, US, AWC - EPD",mat2: "Aluminum, cast",mat3: "Cement mortar, Latricrete - EPD",mat4: "Cement mortar, TCNA - EPD",mat5: "Domestic softwood, US, AWC - EPD",mat6: "Underlayment, fibrous",mat7: "Acrylic solid surface (acrylic polymer and ATH)",mat8: "Anodized aluminum, sheet",mat9: "Bamboo plank",mat10: "Cork tile",mat11: "Paint, interior acrylic latex",mat12: "Porcelain ceramic tile, glazed",mat13: "Stainless steel sheet, Chromium 18/8",mat14: "Wall covering, wallpaper",mat15: "Wall covering, textile",mat16: "Cement grout, TCNA - EPD",mat17: "Aluminum, sheet",mat18: "Tectum Ceiling+Wall Panels - EPD",mat19: "Wallcoverings on Non-Woven Base - EPD",mat20: "Archisonic  Acoustic PET  Panel, 12 mm",mat21: 'Acrovyn Wall Covering Sheet, 0.060" - EPD',mat22: "Wall covering, vinyl",mat23: "Cosentino Dekton - EPD",mat24: "Tulipwood lumber, 2 inch",mat25: "Interior grade plywood, US, AWC - EPD",mat26: "Particleboard, AWC - EPD",mat27: "Medium density fiberboard (MDF), AWC - EPD",mat28: "Armstrong WoodWorks ACGI Flat Panels: SS1, SS2, SS3, SS4 - EPD",vmat29: "Adhesive, latex",mat30: "Adhesive, polychloroprene (neoprene)",mat31: "Steel, sheet",mat32: "High pressure laminate (HPL)",mat33: "Hardwood veneer, medium thickness",mat34: "Adhesive, polyurethane",mat35: "Tulipwood lumber, 1 inch",mat36: "Polycarbonate, cellular, sheet good",mat37: "Wood stain, water based",mat38: "Powder coating, metal stock",mat39: "Polyurethane top coat, water-based, for wood" }; 
+
 
 export default class MaterialList extends PureComponent {
 

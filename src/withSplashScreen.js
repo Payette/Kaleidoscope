@@ -144,16 +144,16 @@ const tiers = [
     buttonVariant: 'contained',
     item: 3
   },
-  // {
-  //   title: 'WALL',
-  //   subheader: <div dangerouslySetInnerHTML={{ __html: 'Wall<br/>Assemblies' }} />,
-  //   price: '40',
-  //   description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
-  //   img: "./img/wall_mainimg_holder.png",
-  //   buttonText: <div dangerouslySetInnerHTML={{ __html: 'View<br/>Walls' }} />,
-  //   buttonVariant: 'contained',
-  //   item: 4
-  // },
+  {
+    title: 'WALL',
+    subheader: <div dangerouslySetInnerHTML={{ __html: 'Wall Finishes<br/>Assemblies' }} />,
+    price: '40',
+    description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
+    img: "./img/Misc_Axon_M01_MetalVeneer.png",
+    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View<br/>Walls' }} />,
+    buttonVariant: 'contained',
+    item: 4
+  },
 
 ];
 

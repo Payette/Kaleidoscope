@@ -978,45 +978,45 @@ class App extends Component {
     //introJs().addHints();
   }
 
-  printPDF = () => {
+  printPDF() {
+    if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))) {
+      const printStyle = document.createElement('link');
+      printStyle.rel = 'stylesheet';
+      printStyle.type = 'text/css';
+      printStyle.href = './css/print.css'; 
+      document.head.appendChild(printStyle);
     
-
-    const printStyle = document.createElement('link');
-    printStyle.rel = 'stylesheet';
-    printStyle.type = 'text/css';
-    printStyle.href = './css/print.css'; 
-    document.head.appendChild(printStyle);
-
-    let scale;
-    const screenWidth = window.screen.width;
-    const screenHeight = window.screen.height;
-
-    if (screenWidth > 1700) {
-      scale = 25;
-    } else if (screenWidth > 1400) {
-      scale = 40;
-    } else if (screenWidth > 1200) {
-      scale = 45;
-    } else if (screenWidth > 1025) {
-      scale = 50;
-    } else if (screenWidth > 850) {
-      scale = 55;
-    } else if (screenWidth > 700) {
-      scale = 60;
-    } else if (screenWidth > 550) {
-      scale = 65;
-    } else {
-      scale = 100;
+      let scale;
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+    
+      if (screenWidth > 2500) {
+        scale = 27;
+      } else if (screenWidth > 1700) {
+        scale = 30;
+      } else if (screenWidth > 1400) {
+        scale = 40;
+      } else if (screenWidth > 1200) {
+        scale = 45;
+      } else if (screenWidth > 1020) {
+        scale = 49;
+      } else if (screenWidth > 850) {
+        scale = 55;
+      } else if (screenWidth > 700) {
+        scale = 60;
+      } else if (screenWidth > 550) {
+        scale = 65;
+      } else {
+        scale = 100;
+      }
+    
+      const style = document.createElement('style');
+      style.textContent = `@media print { body { zoom: ${scale}%; } }`;
+      document.head.appendChild(style);
     }
-
-    const style = document.createElement('style');
-    style.textContent = `@media print { body { zoom: ${scale}%; } }`;
-    document.head.appendChild(style);
-
-
+    
     window.print();
   }
-
 
   // printPDF = () => {
   //   const pdf = new jsPDF({
@@ -1150,6 +1150,8 @@ class App extends Component {
 
 
   render() {
+
+
     const open = Boolean(this.state.anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
@@ -1326,7 +1328,7 @@ class App extends Component {
                   <Tab label="FLOORING" />
                   <Tab label="CEILINGS" />
                   <Tab label="PARTITIONS" />
-                  {/* <Tab label="WALL" /> */}
+                  <Tab label="WALL" />
                   {/* <Tab label="OTHER" disabled /> */}
               </Tabs>
             </div>
@@ -2162,7 +2164,7 @@ class App extends Component {
               <div className={styles.sidebar} id="sidebar123">
                 <MaterialList
                   type={SYSTEM_TYPE_WALL}
-                  title={"Wall Type"}
+                  title={"Wall Finish Type"}
                   hasMaterialHealth={true}
                   gwp={wall_obj}
                   materials={this.state.wall_materials}
@@ -2196,7 +2198,7 @@ class App extends Component {
               />}
 
               <div style={{ display: "inline-block", width: "100%" }}>
-                <h1>WALL CALCULATOR</h1>
+                <h1>WALL FINISH CALCULATOR</h1>
                 <div className={styles.calc} style={{ minHeight: '60px', width: '95%', display: "block" }}>
 
                   <div style={{ margin: "auto",display: "flex"  }}>

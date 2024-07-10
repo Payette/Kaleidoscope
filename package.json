@@ -41,6 +41,7 @@
     "puppeteer": "^22.6.4",
     "react": "^16.14.0",
     "react-a11y-dialog": "^4.2.0",
+    "react-capture": "^0.3.5",
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
     "react-pdf": "^7.7.1",

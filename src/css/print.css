@@ -5,7 +5,7 @@
   @import url('path/to/print-styles.css');
 
   @page {
-    size: A4 !important;
+    size: Letter !important;
   }
 
   body {
