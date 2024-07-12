@@ -145,8 +145,8 @@ const tiers = [
     item: 3
   },
   {
-    title: 'WALL',
-    subheader: <div dangerouslySetInnerHTML={{ __html: 'Wall Finishes<br/>Assemblies' }} />,
+    title: 'WALLS',
+    subheader: <div dangerouslySetInnerHTML={{ __html: 'Wall Finish<br/>Assemblies' }} />,
     price: '40',
     description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
     img: "./img/Misc_Axon_M01_MetalVeneer.png",

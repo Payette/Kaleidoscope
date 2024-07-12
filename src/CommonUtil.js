@@ -15,7 +15,7 @@ export let SYSTEM_TYPE_FLOORING = "flooring";
 export let SYSTEM_TYPE_CEILINGS = "ceilings";
 export let SYSTEM_TYPE_PARTITIONS = "partitions";
 export let SYSTEM_TYPE_ENVELOPES = "envelopes";
-export let SYSTEM_TYPE_WALL = "wall";
+export let SYSTEM_TYPE_WALL = "walls";
 
 export let CHART_TYPES_ENVELOPES = ["GWP","allImpacts","LCS","MB"]; // does not have material health
 export let CHART_TYPES_FLOORING = ["GWP","allImpacts","LCS","MB","MH"];

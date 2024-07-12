@@ -435,6 +435,7 @@ export default withTooltip(({
                       
                     >{sm.key + " " + myAbb}</Text>
                     <line className={styles.groupLine} x1={xScale(0)-smallWindow} y1="0" x2={xScale(0)-smallWindow} y2={20 + (barHeight * sm.values.length)} strokeWidth="3" strokeDasharray="0 6" strokeLinecap="round" />
+                  
                   </Group>
 
 

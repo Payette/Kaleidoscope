@@ -49,8 +49,8 @@ import Checkbox from './Checkbox';
 
 let footer = <div style={{ paddingTop: 0, top: 0, marginTop: 0, marginLeft: 0,marginRight: '3%'}}>
   <p className={styles.serif} style={{ display: "inline-block" }}>
-    Last updated March 2023<br></br>
-    Credit: <i>Data analysis run using Tally version 2022.04.08.01 by Building Transparency and KT Innovations, thinkstep, and Autodesk using industry representative LCI data unless otherwise noted</i><br></br>
+    Last updated July 2024<br></br>
+    Credit: <i>Data analysis run using TallyLCA version 2022.04.08.01 by Building Transparency and KT Innovations, thinkstep, and Autodesk using industry representative LCI data unless otherwise noted</i><br></br>
     For questions or comments: <h5 style={{ display: "inline-block" }}>tools@payette.com</h5>, Source code: <h5 style={{ display: "inline-block" }}><a href="https://github.com/Payette/Kaleidoscope">github.com/Payette/Kaleidoscope</a></h5>
   </p>
 </div>
@@ -1328,7 +1328,7 @@ class App extends Component {
                   <Tab label="FLOORING" />
                   <Tab label="CEILINGS" />
                   <Tab label="PARTITIONS" />
-                  <Tab label="WALL" />
+                  <Tab label="WALLS" />
                   {/* <Tab label="OTHER" disabled /> */}
               </Tabs>
             </div>
@@ -1442,7 +1442,7 @@ class App extends Component {
             
             <div  className={styles.chartContainer}>
               <div >
-                <h2>{chartTitle}</h2>
+                <h1>{chartTitle}</h1>
                 <div data-step="5" data-position="right" data-intro='Hover on graph for details' >
                 {this.state.dataEnvelopesReady && <ChartContainer
                   type={SYSTEM_TYPE_ENVELOPES}
@@ -1466,15 +1466,17 @@ class App extends Component {
 
                   <div style={{ margin: "auto",display: "flex"  }}>
                     <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
-                    <label > Initial Carbon (only Module A) &nbsp;&nbsp;</label>
+                    <label > Initial Carbon (Module A w/ biogenic CO2) &nbsp;&nbsp;</label>
                     {/* <label for="ten"> Initial Carbon (only Module A) &nbsp;&nbsp;</label> */}
                     <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
-                    <label > 60 Year (with Module D) &nbsp;&nbsp;</label>
+                    <label > 60 Year (w/ Module D & biogenic CO2) &nbsp;&nbsp;</label>
                     {/* <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label> */}
                     <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
-                    <label > 60 Year (no Module D) &nbsp;&nbsp;</label>
+                    <label > 60 Year (no Module D & no biogenic CO2) &nbsp;&nbsp;</label>
                     {/* <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label> */}
                   </div><br></br>
+                  
+
 
                   {this.state.rows.map((row, idx) => {
                     return (
@@ -1511,6 +1513,14 @@ class App extends Component {
                     Export All CSV
                   </button> */}
 
+                  {/* Inserted Image, Title and Description */}
+                  <div style={{ display: "flex", alignItems: "center", marginTop: "20px" }}>
+                    <img src={require('./images/MaterialBreakdown-11.png')} alt="Material Breakdown" style={{ marginRight: "40px", width: "400px" }} />
+                    <div style={{ maxWidth: "600px", marginLeft: "20px" }}>
+                      <h3 style={{ fontWeight: "normal" }}>ENVELOPE SYSTEM BOUNDARY</h3>
+                      <p>The envelope system boundary accounts for apples-to-apples by using the same module (4’x14’), structure (not included, except if additional steel is needed, such as a shelf angle for masonry veneer systems), wall backup from interior drywall to air/vapor barrier, detailing strategy using thermal breaks, and most importantly the same R-value (IBC code minimum R-15.625). THERM was used to verify the R-value of each system.</p>
+                    </div>
+                  </div>
 
                 
 
@@ -1637,7 +1647,7 @@ class App extends Component {
               </div>
             }
             <div className={styles.chartContainer}>
-              <h2>{chartTitle}</h2>
+              <h1>{chartTitle}</h1>
               {this.state.flooring_dataEnvelopesReady && <ChartContainer
                 type={SYSTEM_TYPE_FLOORING}
                 chartTitle
@@ -1657,12 +1667,14 @@ class App extends Component {
 
                   <div style={{ margin: "auto",display: "flex"  }}>
                     <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
-                    <label > Initial Carbon (only Module A) &nbsp;&nbsp;</label>
+                    <label > Initial Carbon (Module A w/ biogenic CO2) &nbsp;&nbsp;</label>
+                    {/* <label for="ten"> Initial Carbon (only Module A) &nbsp;&nbsp;</label> */}
                     <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
-                    <label > 60 Year (with Module D) &nbsp;&nbsp;</label>
+                    <label > 60 Year (w/ Module D & biogenic CO2) &nbsp;&nbsp;</label>
+                    {/* <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label> */}
                     <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
-                    <label > 60 Year (no Module D) &nbsp;&nbsp;</label>
-
+                    <label > 60 Year (no Module D & no biogenic CO2) &nbsp;&nbsp;</label>
+                    {/* <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label> */}
                   </div><br></br>
 
                   {this.state.rows.map((row, idx) => {
@@ -1700,6 +1712,14 @@ class App extends Component {
 
                   <br></br>
 
+                  {/* Inserted Image, Title and Description */}
+                  <div style={{ display: "flex", alignItems: "center", marginTop: "20px" }}>
+                    <img src={require('./images/System_Boundary-flooring_EDIT.png')} alt="Material Breakdown" style={{ marginRight: "40px", width: "400px" }} />
+                    <div style={{ maxWidth: "600px", marginLeft: "20px" }}>
+                    <h3 style={{ fontWeight: "normal" }}>FLOORING SYSTEM BOUNDARY</h3>
+                      <p>All flooring assemblies use a 10’x10′ system boundary, and includes the floor finish and any underlayments if necessary. It does not include the structural floor slab. An additional lens is provided to view the data based on compliance with PAYETTE’s Material Health Policy. </p>
+                    </div>
+                  </div>
 
                 </div>
 
@@ -1816,7 +1836,7 @@ class App extends Component {
               </div>
             }
             <div className={styles.chartContainer}>
-              <h2>{chartTitle}</h2>
+              <h1>{chartTitle}</h1>
               {this.state.ceilings_dataEnvelopesReady && <ChartContainer
                 type={SYSTEM_TYPE_CEILINGS}
                 chartTitle
@@ -1836,14 +1856,14 @@ class App extends Component {
 
                   <div style={{ margin: "auto",display: "flex"  }}>
                     <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
-                    <label > Initial Carbon (only Module A) &nbsp;&nbsp;</label>
+                    <label > Initial Carbon (Module A w/ biogenic CO2) &nbsp;&nbsp;</label>
+                    {/* <label for="ten"> Initial Carbon (only Module A) &nbsp;&nbsp;</label> */}
                     <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
-                    <label > 60 Year (with Module D) &nbsp;&nbsp;</label>
+                    <label > 60 Year (w/ Module D & biogenic CO2) &nbsp;&nbsp;</label>
+                    {/* <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label> */}
                     <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
-                    <label > 60 Year (no Module D) &nbsp;&nbsp;</label>
-
-
-
+                    <label > 60 Year (no Module D & no biogenic CO2) &nbsp;&nbsp;</label>
+                    {/* <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label> */}
                   </div><br></br>
 
                   {this.state.rows.map((row, idx) => {
@@ -1881,6 +1901,14 @@ class App extends Component {
 
                   <br></br>
 
+                  {/* Inserted Image, Title and Description */}
+                  <div style={{ display: "flex", alignItems: "center", marginTop: "20px" }}>
+                    <img src={require('./images/ceilingslegendaxon.png')} alt="Material Breakdown" style={{ marginRight: "40px", width: "400px" }} />
+                    <div style={{ maxWidth: "600px", marginLeft: "20px" }}>
+                    <h3 style={{ fontWeight: "normal" }}>CEILING SYSTEM BOUNDARY</h3>
+                      <p>All ceiling assemblies use a 4′ x4′ system boundary, studied from the center of the ceiling module. It includes the finish materials and all support systems. It does not include the structural slab. An additional lens is provided to view the data based on compliance with PAYETTE’s Material Health Policy.  </p>
+                    </div>
+                  </div>
 
                 </div>
 
@@ -1999,7 +2027,7 @@ class App extends Component {
               </div>
             }
             <div className={styles.chartContainer}>
-              <h2>{chartTitle}</h2>
+              <h1>{chartTitle}</h1>
               {this.state.partitions_dataEnvelopesReady && <ChartContainerP
                 type={SYSTEM_TYPE_PARTITIONS}
                 chartTitle
@@ -2019,12 +2047,15 @@ class App extends Component {
 
                   <div style={{ margin: "auto",display: "flex"  }}>
                     <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
-                    <label > Initial Carbon (only Module A) &nbsp;&nbsp;</label>
+                    <label > Initial Carbon (only Module A with biogenic carbon) &nbsp;&nbsp;</label>
+                    {/* <label for="ten"> Initial Carbon (only Module A) &nbsp;&nbsp;</label> */}
                     <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
-                    <label > 60 Year (with Module D) &nbsp;&nbsp;</label>
+                    <label > 60 year lifespan (with Module D and biogenic carbon) &nbsp;&nbsp;</label>
+                    {/* <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label> */}
                     <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
-                    <label > 60 Year (no Module D) &nbsp;&nbsp;</label>
-                  </div>
+                    <label > 60 year lifespan (no Module D and no biogenic carbon) &nbsp;&nbsp;</label>
+                    {/* <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label> */}
+                  </div><br></br>
                   <div>
                     <p className={styles.serif} style={{ display: "inline-block",fontWeight: "bold"}}>
                     For Partition Height of 13' - 6"
@@ -2065,7 +2096,14 @@ class App extends Component {
 
                 
                   <br></br>
-
+                  {/* Inserted Image, Title and Description */}
+                  <div style={{ display: "flex", alignItems: "center", marginTop: "20px" }}>
+                    <img src={require('./images/System_Boundary-partitions.png')} alt="Material Breakdown" style={{ marginRight: "40px", width: "400px" }} />
+                    <div style={{ maxWidth: "600px", marginLeft: "20px" }}>
+                    <h3 style={{ fontWeight: "normal" }}>PARTITION SYSTEM BOUNDARY</h3>
+                      <p>All partition assemblies use a 10’ x 13’-6”  system boundary, studied from the center of the partition module, and does not include structure except where steel is needed for connections (such as a staggered angle for CMU walls). It includes the finish materials and all support systems. It does not include the structural slab. Data is presented in linear feet for a 13′-6″ partition. An additional lens is provided to view the data based on compliance with PAYETTE’s Material Health Policy.   </p>
+                    </div>
+                  </div>
 
                 </div>
 
@@ -2097,7 +2135,7 @@ class App extends Component {
             <script type="text/javascript" src="loadBigfoot3.js"></script>
           </Helmet>
           <form>
-            <h1>WALL ASSEMBLIES</h1>
+            <h1>WALLS ASSEMBLIES</h1>
             <div className={styles.topcontrols}>
 
               <div className={styles.inputgroup} >
@@ -2183,7 +2221,7 @@ class App extends Component {
               </div>
             }
             <div className={styles.chartContainer}>
-              <h2>{chartTitle}</h2>
+              <h1>{chartTitle}</h1>
               {this.state.wall_dataEnvelopesReady && <ChartContainer
                 type={SYSTEM_TYPE_WALL}
                 chartTitle
@@ -2203,14 +2241,14 @@ class App extends Component {
 
                   <div style={{ margin: "auto",display: "flex"  }}>
                     <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
-                    <label > Initial Carbon (only Module A) &nbsp;&nbsp;</label>
+                    <label > Initial Carbon (Module A w/ biogenic CO2) &nbsp;&nbsp;</label>
+                    {/* <label for="ten"> Initial Carbon (only Module A) &nbsp;&nbsp;</label> */}
                     <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
-                    <label > 60 Year (with Module D) &nbsp;&nbsp;</label>
+                    <label > 60 Year (w/ Module D & biogenic CO2) &nbsp;&nbsp;</label>
+                    {/* <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label> */}
                     <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
-                    <label > 60 Year (no Module D) &nbsp;&nbsp;</label>
-
-
-
+                    <label > 60 Year (no Module D & no biogenic CO2) &nbsp;&nbsp;</label>
+                    {/* <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label> */}
                   </div><br></br>
 
                   {this.state.rows.map((row, idx) => {
@@ -2248,7 +2286,14 @@ class App extends Component {
 
                   <br></br>
 
-
+                  {/* Inserted Image, Title and Description */}
+                  <div style={{ display: "flex", alignItems: "center", marginTop: "20px" }}>
+                    <img src={require('./images/System_Boundary-wallfinishes.png')} alt="Material Breakdown" style={{ marginRight: "40px", width: "400px" }} />
+                    <div style={{ maxWidth: "600px", marginLeft: "20px" }}>
+                    <h3 style={{ fontWeight: "normal" }}>WALL SYSTEM BOUNDARY</h3>
+                      <p>All wall finish assemblies use an 8’ x 8’ system boundary to account for standard panel sizes (4'x8'). The system boundary includes any surface treatments, finish materials and some necessary support systems. It does not include the partition. See assumptions in assembly details for more information. Data is presented in square feet. An additional lens is provided to view the data based on compliance with PAYETTE’s Material Health Policy.</p>
+                    </div>
+                  </div>
                 </div>
 
 

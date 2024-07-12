@@ -7,8 +7,8 @@ import legendGWP from './images/k-04.png'
 import legendMBEnvelope from './images/MaterialBreakdown-11.png'
 import legendMBFlooring from './images/System_Boundary-flooring_EDIT.png'
 import legendMBCelings from './images/ceilingslegendaxon.png'
-import legendMBWall from './images/walllegendaxon.png'
 import legendMBPartitions from './images/System_Boundary-partitions.png'
+import legendMBWall from './images/System_Boundary-wallfinishes.png'
 import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_PARTITIONS, SYSTEM_TYPE_ENVELOPES, SYSTEM_TYPE_WALL } from './CommonUtil';
 import Checkbox from './Checkbox'
 import PieP from "./PieChartP";
@@ -326,9 +326,9 @@ export default class MaterialList extends PureComponent {
           <span>
             <h2 style={{ fontSize: "40px" }}>{this.props.metaData.materialName2[this.state.materialPopup.name]}</h2>
             <select id="pie1" name="pie1" onChange={this.selectChange.bind(this)}>
-              <option value="tenYGWP">Initial Carbon (only Module A)</option>
-              <option value="sixty2YGWP">60 year lifespan with Module D and biogenic carbon</option>
-              <option value="sixty1YGWP">60 year lifespan with biogenic carbon</option>
+              <option value="tenYGWP">Initial Carbon (Module A w/ biogenic CO2)</option>
+              <option value="sixty2YGWP">60 Year (w/ Module D & biogenic CO2)</option>
+              <option value="sixty1YGWP">60 Year (no Module D & no biogenic CO2)</option>
 
             </select>
             <p id="textLabel" style={{ display: "block", width: "100%", position: "relative", textAlign: "left", }}>Hover over chart to see data</p>
