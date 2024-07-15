@@ -267,13 +267,21 @@ const metaData = {
     impact5: "#a2d3eb",
   },
 
+  // iColors: {
+  //   i1: "#87cde8",
+  //   i2: "#6d91cb",
+  //   i3: "#fbc05d",
+  //   i4: "#4686c6",
+  //   i5: "#90d0b6",
+  //   i6: "#4154a5"
+  // },
   iColors: {
-    i1: "#87cde8",
-    i2: "#6d91cb",
-    i3: "#fbc05d",
-    i4: "#4686c6",
-    i5: "#90d0b6",
-    i6: "#4154a5"
+    i1: "#87cde9",
+    i2: "#6495ed",
+    i3: "#fcc05e",
+    i4: "#0090ff",
+    i5: "#85e2bd",
+    i6: "#283cdc"
   },
 
   matColors: {
