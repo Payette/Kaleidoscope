@@ -1,0 +1,25 @@
+material,type,impact1,impact2,name,img
+MVGranite,Masonry Veneer,18.28514101,0.351365021,Granite,./img/mvgranite.png
+MVLimestone,Masonry Veneer,11.54573152,0.329121005,Limestone,./img/mvlimestone.png
+MVBrick,Masonry Veneer,8.629073875,0.204327931,Brick,./img/mvbrick.png
+MVTBrick,Masonry Veneer,5.789686279,0.087256861,Thin Brick,./img/mvtbrick.png
+MInsMePanel,Misc,13.36560877,0.072705647,Insulated Metal Panel,./img/minsmepanel.png
+MEIFS,Misc,13.06159705,0.051625675,EIFS (XPS),./img/mefis.png
+MPrecast,Misc,9.540902617,0.095679974,Precast Concrete,./img/mprecast.png
+MMinWool,Misc,3.216098568,0.044426722,EIFS (Min Wool),./img/mminwool.png
+CSpandrelAlumB,Curtain Wall,14.14635887,0.197835797,Spandrel (Alum w/ Backpan),./img/cspandrelalumb.png
+CSpandrelSteel,Curtain Wall,13.42098049,0.210382362,Spandrel (Steel),./img/cspandrelsteel.png
+CSpandrelAlum,Curtain Wall,11.42740653,0.196599237,Spandrel (Alum),./img/cspandrelalum.png
+CSpandrelWood,Curtain Wall,7.407788183,0.220137904,Spandrel (Wood),./img/cspandrelwood.png
+RGFRC,Rainscreen,14.82169032,0.142281649,Glass Fiber Reinforced Concrete (GFRC),./img/rgfrc.png
+RACM,Rainscreen,11.01207335,0.076208259,Aluminum Composite Material (ACM),./img/racm.png
+RTerracotta,Rainscreen,7.944242668,0.337850404,Terracotta,./img/rterracotta.png
+RPhenResin,Rainscreen,8.329502156,0.107372006,Phenolic Resin,./img/rphenresin.png
+RFiberCement,Rainscreen,8.011816751,0.079200164,Fiber Cement,./img/rfibercement.png
+RZinc,Rainscreen,6.715241878,0.07024631,Formed Zinc Panel,./img/rzinc.png
+RUHPC,Rainscreen,6.616353871,0.081559021,UHPC (fibreC),./img/ruhpc.png
+RGranite,Rainscreen,6.467368561,0.074136529,Granite,./img/rgranite.png
+RTBrick,Rainscreen,6.188950555,0.092845371,Thin Brick,./img/rtbrick.png
+RLimestone,Rainscreen,6.116328864,0.074296871,Limestone,./img/rlimestone.png
+RSteel,Rainscreen,4.681451005,0.058068737,Formed Steel Panel,./img/rsteel.png
+RWood,Rainscreen,4.812880692,0.072405975,Wood,./img/rwood.png

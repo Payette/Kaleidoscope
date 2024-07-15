@@ -1,0 +1,22 @@
+material,type,value,name,img,label
+wpAluminumPanelA,Wall Protection,8.732146842,Aluminum Panel (Anodized),./img/WallFinishes/Axons/WallProtection_Axon_WP01_AlumPlateAnodized.png,WP - Aluminum Panel (Anodized)
+wpAluminumPanelPC,Wall Protection,7.294721975,Aluminum Panel (Powder Coated),./img/WallFinishes/Axons/WallProtection_Axon_WP02_AlumPlatePowderCoat.png,WP - Aluminum Panel (Powder Coated)
+wpStainlessSteelSheet,Wall Protection,5.619357152,Stainless Steel Sheet,./img/WallFinishes/Axons/WallProtection_Axon_WP03_StainlessStlSheet.png,WP - Stainless Steel Sheet
+wpPVCFreeRigidSheet,Wall Protection,0.773605948,PVC-Free Rigid Sheet ,./img/WallFinishes/Axons/WallProtection_Axon_WP04_PVCFreeRSWP.png,WP - PVC-Free Rigid Sheet 
+wpVinylRigidSheet,Wall Protection,0.625454069,Vinyl Rigid Sheet,./img/WallFinishes/Axons/WallProtection_Axon_WP05_RSWP.png,WP - Vinyl Rigid Sheet 
+sSolidSurface,Stone / Ceramic,6.002552128,Solid Surface,./img/WallFinishes/Axons/StoneCeramic_Axon_SC01_SolidSurface.png,SC - Solid Surface
+sSinteredStone,Stone / Ceramic,1.834940528,Sintered Stone,./img/WallFinishes/Axons/StoneCeramic_Axon_SC02_SinteredStone.png,SC - Sintered Stone
+sPorcelainTile,Stone / Ceramic,0.688018029,Porcelain Tile,./img/WallFinishes/Axons/StoneCeramic_Axon_SC03_PorcelainTile.png,SC - Porcelain Tile
+mMetalVeneerPanel,Misc.,3.59153059,Metal Veneer Panel,./img/WallFinishes/Axons/Misc_Axon_M01_MetalVeneer.png,M - Metal Veneer Panel
+mTextile,Misc.,0.68682634,Textile,./img/WallFinishes/Axons/Misc_Axon_M02_Textile.png,M - Textile
+mPaint,Misc.,0.044177371,Paint,./img/WallFinishes/Axons/Misc_Axon_M03_Paint.png,M - Paint
+mWallpaperNW,Misc.,0.02314217,Wallpaper (Non-Woven),./img/WallFinishes/Axons/Misc_Axon_M04_NonWovenWallpaper.png,M - Wallpaper (Non-Woven)
+mWallpaperPaper,Misc.,0.012391826,Wallpaper (Paper),./img/WallFinishes/Axons/Misc_Axon_M05_PaperWallpaper.png,M - Wallpaper (Paper)
+mPlasticLaminate,Misc.,0.929559048,Plastic Laminate,./img/WallFinishes/Axons/Misc_Axon_M06_PlasticLaminate.png,M - Plastic Laminate
+saCemWdPanel,Sound-Absorbing,1.450317983,Cementitious Wood Panel,./img/WallFinishes/Axons/SoundAbsorbing_Axon_SA01_CementitiousWoodPanel.png,SA - Cementitious Wood Panel
+saAcousticWoodPanel,Sound-Absorbing,4.927130933,Acoustic Wood Panel,./img/WallFinishes/Axons/SoundAbsorbing_Axon_SA02_AcousticWoodPanel.png,SA - Acoustic Wood Panel
+saPETFeltPanel,Sound-Absorbing,0.943,PET Felt Panel,./img/WallFinishes/Axons/SoundAbsorbing_Axon_SA03_PET.png,SA - PET Felt Panel
+saCorkTile,Sound-Absorbing,0.367159686,Cork Tile,./img/WallFinishes/Axons/SoundAbsorbing_Axon_SA04_CorkTile.png,SA - Cork Tile
+wBambooPanel,Wood,1.159573347,Bamboo Panel,./img/WallFinishes/Axons/Wood_Axon_W01_BambooPanel.png,W - Bamboo Panel
+wVeneerMDF,Wood,1.312974372,Veneer (on MDF),./img/WallFinishes/Axons/Wood_Axon_W02_VeneeronMDF.png,W - Veneer (on MDF)
+wVeneerParticleBoard,Wood,0.947237051,Veneer (on Particle Board),./img/WallFinishes/Axons/Wood_Axon_W03_VeneeronParticleBoard.png,W - Veneer (on Particle Board)
