@@ -66,8 +66,8 @@ export default withTooltip(({
     return <div>Select materials to show charts.</div>
   }
 
-  const toolTipWidth = 320;
-  const toolTipHeight = 300;
+  const toolTipWidth = 365;
+  const toolTipHeight = 320;
 
   const selectedMaterialsGroupedByType = d3.nest()
     .key(function (d) { return d.type })

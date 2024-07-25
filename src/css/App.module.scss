@@ -126,11 +126,7 @@
 
 //important to change the outlet in ipad mini/air/pro layout
 @media (min-width: 700px) and (min-height: 700px) {
-  .topcontrols {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 1.5rem;
-  }
+
 
   :global(#parentDiv) {
     display: flex;
@@ -153,7 +149,12 @@
   //   margin-right: 1%;
   //   margin-left: 1%;
   // }
-
+  .topcontrols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1.5rem;
+    
+  }
   .inputgroup {
     height: 8rem;
     border: solid 1px $highlight3;

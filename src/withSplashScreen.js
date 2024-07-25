@@ -75,10 +75,10 @@ const useStyles = makeStyles((theme) => ({
 const tier0 = [
   {
     title: 'WELCOME',
-    subheader: <div dangerouslySetInnerHTML={{ __html: 'Want<br/>A Tour?' }} />,
+    subheader: <div dangerouslySetInnerHTML={{ __html: 'Want A Tour?' }} />,
     price: '0',
     img: "./img/QuestionMark1.png",
-    buttonText: <div dangerouslySetInnerHTML={{ __html: 'Start<br/>Introduction' }} />,
+    buttonText: <div dangerouslySetInnerHTML={{ __html: 'Start Introduction' }} />,
     buttonVariant: 'text',
     item: 0,
     // disabled: true,
@@ -91,17 +91,17 @@ const tier0 = [
 const tiers = [
   {
     title: 'ENVELOPES',
-    subheader: <div dangerouslySetInnerHTML={{ __html: 'Exterior<br/>Assemblies' }} />,
+    subheader: <div dangerouslySetInnerHTML={{ __html: 'Exterior Assemblies' }} />,
     price: '0',
     description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
     img: "./img/MV_Axon2.png",
-    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View<br/>Envelopes' }} />,
+    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View Envelopes' }} />,
     buttonVariant: 'contained',
     item: 0
   },
   {
     title: 'FLOORING',
-    subheader: <div dangerouslySetInnerHTML={{ __html: 'Flooring<br/>Assemblies' }} />,
+    subheader: <div dangerouslySetInnerHTML={{ __html: 'Flooring Assemblies' }} />,
     price: '15',
     description: [
       '20 users included',
@@ -110,13 +110,13 @@ const tiers = [
       'Priority email support',
     ],
     img: "./img/FL_Axon-2-1.png",
-    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View<br/>Floorings' }} />,
+    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View Floorings' }} />,
     buttonVariant: 'contained',
     item: 1
   },
   {
     title: 'CEILINGS',
-    subheader: <div dangerouslySetInnerHTML={{ __html: 'Ceiling<br/>Assemblies' }} />,
+    subheader: <div dangerouslySetInnerHTML={{ __html: 'Ceiling Assemblies' }} />,
     price: '20',
     description: [
       '20 users included',
@@ -125,13 +125,13 @@ const tiers = [
       'Priority email support',
     ],
     img: "./img/ceilingslandingpageaxon2.png",
-    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View<br/>Ceilings' }} />,
+    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View Ceilings' }} />,
     buttonVariant: 'contained',
     item: 2
   },
     {
     title: 'PARTITIONS',
-    subheader: <div dangerouslySetInnerHTML={{ __html: 'Partition<br/>Assemblies' }} />,
+    subheader: <div dangerouslySetInnerHTML={{ __html: 'Partition Assemblies' }} />,
     price: '30',
     description: [
       '50 users included',
@@ -140,17 +140,17 @@ const tiers = [
       'Phone & email support',
     ],
     img: "./img/MetalStuds_Axon_MS01_16_MinWool_MFB2.png",
-    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View<br/>Partitions' }} />,
+    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View Partitions' }} />,
     buttonVariant: 'contained',
     item: 3
   },
   {
     title: 'WALLS',
-    subheader: <div dangerouslySetInnerHTML={{ __html: 'Wall Finish<br/>Assemblies' }} />,
+    subheader: <div dangerouslySetInnerHTML={{ __html: 'Wall Finish Assemblies' }} />,
     price: '40',
     description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
     img: "./img/Misc_Axon_M01_MetalVeneer.png",
-    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View<br/>Walls' }} />,
+    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View Walls' }} />,
     buttonVariant: 'contained',
     item: 4
   },
@@ -276,155 +276,158 @@ function withSplashScreen(WrappedComponent) {
 
               {tier0.map((tier) => (
                 // Enterprise card is full width at sm breakpoint
-                <Grid item key={tier.title} xs={6} sm={6} md={2} >
-                  <Card style={{ minHeight: '100%', maxHeight: '100%' }}>
-                    <CardHeader
-                      title={tier.title}
-                      subheader={
-                        <div style={{
-                          display: '-webkit-box',
-                          WebkitBoxOrient: 'vertical',
-                          WebkitLineClamp: 2,
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
-                          height: '3em', 
-                          lineHeight: '1.5em', 
-                        }}>
-                          {tier.subheader}
-                        </div>
-                      }
-                      titleTypographyProps={{ align: 'center' }}
-                      subheaderTypographyProps={{ align: 'center' }}
-                    />
-                    {/* <CardContent style={{ display: 'flex', justifyContent: 'center' }}>
-                      <div >
-                        <IconButton aria-label={tier.id} onClick={() => {
-                          introJs().setOption('doneLabel', 'Next page').oncomplete(async function() {window.location.href = 'index.html?type=0';}).start(document.getElementById('startTour!'))
-                          sessionStorage.IntroKey=1
-                        }}>
-                          <img src={tier.img} alt="Start Intro"                             
-                          style={{ 
-                              height: '100%', 
-                              maxWidth: '100%', 
-                              objectFit: 'contain',
-                              position: 'relative', 
-                              margin: "0 auto", 
-                              display: 'flex', 
-                              justifyContent: 'center', 
-                              alignItems: 'center',
-                          }} 
-                         />
-                        </IconButton>
-                      </div>
-                    </CardContent> */}
-                    <CardContent>
-                      <div>
-                        <Typography variant="h6" color="textSecondary">                    
-                          {/* For future, intent: images become links: <a href="#">*/}
-                            <img src={tier.img} 
+                <Grid item key={tier.title} xs={12} sm={6} md={4} >
+                  <div style={{ maxWidth: '280px', margin: 'auto' }}> 
+                    <Card style={{  minHeight: '100%', maxHeight: '100%' }}>
+                      <CardHeader
+                        title={tier.title}
+                        subheader={
+                          <div style={{
+                            display: '-webkit-box',
+                            WebkitBoxOrient: 'vertical',
+                            WebkitLineClamp: 2,
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            height: '3em', 
+                            lineHeight: '1.5em', 
+                          }}>
+                            {tier.subheader}
+                          </div>
+                        }
+                        titleTypographyProps={{ align: 'center' }}
+                        subheaderTypographyProps={{ align: 'center' }}
+                      />
+                      {/* <CardContent style={{ display: 'flex', justifyContent: 'center' }}>
+                        <div >
+                          <IconButton aria-label={tier.id} onClick={() => {
+                            introJs().setOption('doneLabel', 'Next page').oncomplete(async function() {window.location.href = 'index.html?type=0';}).start(document.getElementById('startTour!'))
+                            sessionStorage.IntroKey=1
+                          }}>
+                            <img src={tier.img} alt="Start Intro"                             
                             style={{ 
-                              height: '100%', 
-                              maxWidth: '100%', 
-                              objectFit: 'contain',
-                              position: 'relative', 
-                              margin: "0 auto", 
-                              display: 'flex', 
-                              justifyContent: 'center', 
-                              alignItems: 'center' 
+                                height: '100%', 
+                                maxWidth: '100%', 
+                                objectFit: 'contain',
+                                position: 'relative', 
+                                margin: "0 auto", 
+                                display: 'flex', 
+                                justifyContent: 'center', 
+                                alignItems: 'center',
                             }} 
-                        ></img>
-                       </Typography> 
-                      </div>
-                    </CardContent>
-                    <CardActions>
-                      <Button fullWidth variant={tier.buttonVariant}
-                        disabled={tier.disabled}
-                        color="secondary"
-                        onClick={() => {
-                          introJs().setOption('doneLabel', 'Next page').oncomplete(async function() {window.location.href = 'index.html?type=0';}).start(document.getElementById('startTour!'))
-                          //localStorage.setItem(IntroKey,"1");
-                          sessionStorage.IntroKey=1
-                          // this.setState({ loading: false, currentItem: tier.item, selectedMaterials: this.state.selectedMaterials });
-                          // let urlVar = new URLSearchParams()
-                          // urlVar.set("type", tier.item)                        
-                          // window.history.replaceState({}, '', "?" + urlVar.toString())
-                        }}
-                        >
+                          />
+                          </IconButton>
+                        </div>
+                      </CardContent> */}
+                      <CardContent>
+                        <div>
+                          <Typography variant="h6" color="textSecondary">                    
+                            {/* For future, intent: images become links: <a href="#">*/}
+                              <img src={tier.img} 
+                              style={{ 
+                                height: '100%', 
+                                maxWidth: '100%', 
+                                objectFit: 'contain',
+                                position: 'relative', 
+                                margin: "0 auto", 
+                                display: 'flex', 
+                                justifyContent: 'center', 
+                                alignItems: 'center' 
+                              }} 
+                          ></img>
+                        </Typography> 
+                        </div>
+                      </CardContent>
+                      <CardActions>
+                        <Button fullWidth variant={tier.buttonVariant}
+                          disabled={tier.disabled}
+                          color="secondary"
+                          onClick={() => {
+                            introJs().setOption('doneLabel', 'Next page').oncomplete(async function() {window.location.href = 'index.html?type=0';}).start(document.getElementById('startTour!'))
+                            //localStorage.setItem(IntroKey,"1");
+                            sessionStorage.IntroKey=1
+                            // this.setState({ loading: false, currentItem: tier.item, selectedMaterials: this.state.selectedMaterials });
+                            // let urlVar = new URLSearchParams()
+                            // urlVar.set("type", tier.item)                        
+                            // window.history.replaceState({}, '', "?" + urlVar.toString())
+                          }}
+                          >
 
-                        {tier.buttonText}
-                      </Button>                    
-                    </CardActions>
-                  </Card>
+                          {tier.buttonText}
+                        </Button>                    
+                      </CardActions>
+                    </Card>
+                  </div>  
                 </Grid>
               ))}
 
               
               {tiers.map((tier) => (
                 // Enterprise card is full width at sm breakpoint
-                <Grid item key={tier.title} xs={6} sm={6} md={2} >
-                  <Card style={{ minHeight: '100%', maxHeight: '100%' }}>
-                    <CardHeader
-                      title={tier.title}
-                      subheader={
-                        <div style={{
-                          display: '-webkit-box',
-                          WebkitBoxOrient: 'vertical',
-                          WebkitLineClamp: 2,
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
-                          height: '3em', 
-                          lineHeight: '1.5em', 
-                        }}>
-                          {tier.subheader}
+                <Grid item key={tier.title} xs={12} sm={6} md={4} >
+                  <div style={{ maxWidth: '280px', margin: 'auto' }}> 
+                    <Card style={{  minHeight: '100%', maxHeight: '100%' }}>
+                      <CardHeader
+                        title={tier.title}
+                        subheader={
+                          <div style={{
+                            display: '-webkit-box',
+                            WebkitBoxOrient: 'vertical',
+                            WebkitLineClamp: 2,
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            height: '3em', 
+                            lineHeight: '1.5em', 
+                          }}>
+                            {tier.subheader}
+                          </div>
+                        }
+                        titleTypographyProps={{ align: 'center' }}
+                        subheaderTypographyProps={{ align: 'center' }}
+                      // action={tier.title === 'Pro' ? <StarIcon /> : null}
+                      // className={classes.cardHeader}
+                      />
+                      <CardContent>
+                        <div>
+                          <Typography variant="h6" color="textSecondary">                    
+                            {/* For future, intent: images become links: <a href="#">*/}
+                              <img src={tier.img} 
+                              style={{ 
+                                height: '100%', 
+                                maxWidth: '100%', 
+                                objectFit: 'contain',
+                                position: 'relative', 
+                                margin: "0 auto", 
+                                display: 'flex', 
+                                justifyContent: 'center', 
+                                alignItems: 'center' 
+                              }} 
+                          ></img>
+                        </Typography> 
                         </div>
-                      }
-                      titleTypographyProps={{ align: 'center' }}
-                      subheaderTypographyProps={{ align: 'center' }}
-                    // action={tier.title === 'Pro' ? <StarIcon /> : null}
-                    // className={classes.cardHeader}
-                    />
-                    <CardContent>
-                      <div>
-                        <Typography variant="h6" color="textSecondary">                    
-                          {/* For future, intent: images become links: <a href="#">*/}
-                            <img src={tier.img} 
-                            style={{ 
-                              height: '100%', 
-                              maxWidth: '100%', 
-                              objectFit: 'contain',
-                              position: 'relative', 
-                              margin: "0 auto", 
-                              display: 'flex', 
-                              justifyContent: 'center', 
-                              alignItems: 'center' 
-                            }} 
-                        ></img>
-                       </Typography> 
-                      </div>
-                    </CardContent>
-                    <CardActions>
-                      <Button fullWidth variant={tier.buttonVariant}
-                        disabled={tier.disabled}
-                        color="secondary"
-                        onClick={() => {
+                      </CardContent>
+                      <CardActions>
+                        <Button fullWidth variant={tier.buttonVariant}
+                          disabled={tier.disabled}
+                          color="secondary"
+                          onClick={() => {
 
-                          //introJs().setOption('doneLabel', 'Next page').oncomplete(function() {window.location.href = 'index.html?multipage=true';}).start(document.getElementById('startTour!'))
-                          this.setState({ loading: false, currentItem: tier.item, selectedMaterials: this.state.selectedMaterials });
-                          let urlVar = new URLSearchParams()
-                          urlVar.set("type", tier.item)
-                          sessionStorage.IntroKey=2                        
-                          // urlVar.set("system", this.state.systemString)
-                          // console.log(this.state.selectedMaterials)
-                          // console.log(s.get("system"))
-                          window.history.replaceState({}, '', "?" + urlVar.toString())
-                        }}
-                        >
+                            //introJs().setOption('doneLabel', 'Next page').oncomplete(function() {window.location.href = 'index.html?multipage=true';}).start(document.getElementById('startTour!'))
+                            this.setState({ loading: false, currentItem: tier.item, selectedMaterials: this.state.selectedMaterials });
+                            let urlVar = new URLSearchParams()
+                            urlVar.set("type", tier.item)
+                            sessionStorage.IntroKey=2                        
+                            // urlVar.set("system", this.state.systemString)
+                            // console.log(this.state.selectedMaterials)
+                            // console.log(s.get("system"))
+                            window.history.replaceState({}, '', "?" + urlVar.toString())
+                          }}
+                          >
 
-                        {tier.buttonText}
-                      </Button>                    
-                    </CardActions>
-                  </Card>
-                  
+                          {tier.buttonText}
+                        </Button>                    
+                      </CardActions>
+                    </Card>
+                  </div>
                 </Grid>
               ))}
 

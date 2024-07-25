@@ -13,10 +13,10 @@ mPaint,Misc.,0.41,Paint,./img/WallFinishes/Axons/Misc_Axon_M03_Paint.png,M - Pai
 mWallpaperNW,Misc.,0.14,Wallpaper (Non-Woven),./img/WallFinishes/Axons/Misc_Axon_M04_NonWovenWallpaper.png,M - Wallpaper (Non-Woven)
 mWallpaperPaper,Misc.,0.2,Wallpaper (Paper),./img/WallFinishes/Axons/Misc_Axon_M05_PaperWallpaper.png,M - Wallpaper (Paper)
 mPlasticLaminate,Misc.,0.15,Plastic Laminate,./img/WallFinishes/Axons/Misc_Axon_M06_PlasticLaminate.png,M - Plastic Laminate
-saCemWdPanel,Sound-Absorbing,2.84,Cementitious Wood Panel,./img/WallFinishes/Axons/SoundAbsorbing_Axon_SA01_CementitiousWoodPanel.png,SA - Cementitious Wood Panel
-saAcousticWoodPanel,Sound-Absorbing,4.71,Acoustic Wood Panel,./img/WallFinishes/Axons/SoundAbsorbing_Axon_SA02_AcousticWoodPanel.png,SA - Acoustic Wood Panel
-saPETFeltPanel,Sound-Absorbing,1.96,PET Felt Panel,./img/WallFinishes/Axons/SoundAbsorbing_Axon_SA03_PET.png,SA - PET Felt Panel
-saCorkTile,Sound-Absorbing,-1.53,Cork Tile,./img/WallFinishes/Axons/SoundAbsorbing_Axon_SA04_CorkTile.png,SA - Cork Tile
+saCemWdPanel,Sound Absorbing,2.84,Cementitious Wood Panel,./img/WallFinishes/Axons/SoundAbsorbing_Axon_SA01_CementitiousWoodPanel.png,SA - Cementitious Wood Panel
+saAcousticWoodPanel,Sound Absorbing,4.71,Acoustic Wood Panel,./img/WallFinishes/Axons/SoundAbsorbing_Axon_SA02_AcousticWoodPanel.png,SA - Acoustic Wood Panel
+saPETFeltPanel,Sound Absorbing,1.96,PET Felt Panel,./img/WallFinishes/Axons/SoundAbsorbing_Axon_SA03_PET.png,SA - PET Felt Panel
+saCorkTile,Sound Absorbing,-1.53,Cork Tile,./img/WallFinishes/Axons/SoundAbsorbing_Axon_SA04_CorkTile.png,SA - Cork Tile
 wBambooPanel,Wood,2.35,Bamboo Panel,./img/WallFinishes/Axons/Wood_Axon_W01_BambooPanel.png,W - Bamboo Panel
 wVeneerMDF,Wood,1.32,Veneer (on MDF),./img/WallFinishes/Axons/Wood_Axon_W02_VeneeronMDF.png,W - Veneer (on MDF)
 wVeneerParticleBoard,Wood,0.33,Veneer (on Particle Board),./img/WallFinishes/Axons/Wood_Axon_W03_VeneeronParticleBoard.png,W - Veneer (on Particle Board)

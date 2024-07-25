@@ -1433,7 +1433,7 @@ class App extends Component {
                       matBreakdown1={this.state.materialData3}
                       matBreakdown2={this.state.materialData5}
                       tenYGWP={this.state.gwpData1}
-                      sixty1YGWP={this.state.gwpData3}
+                      sixty1YGWP={this.state.gwpData2}
                       sixty2YGWP={this.state.gwpData5} 
                     />}
                   </div>
@@ -1488,7 +1488,7 @@ class App extends Component {
                         name={idx + 1}
                         count={0}
                         tenY={this.state.gwpData1}
-                        sixty1={this.state.gwpData3}
+                        sixty1={this.state.gwpData2}
                         sixty2={this.state.gwpData5}
                         radio={this.state.currentRadio}
                         divStyle={divStyle}
@@ -1515,8 +1515,8 @@ class App extends Component {
 
                   {/* Inserted Image, Title and Description */}
                   <div style={{ display: "flex", alignItems: "center", marginTop: "20px" }}>
-                    <img src={require('./images/MaterialBreakdown-11.png')} alt="Material Breakdown" style={{ marginRight: "40px", width: "400px" }} />
-                    <div style={{ maxWidth: "600px", marginLeft: "20px" }}>
+                    <img src={require('./images/System_Boundary-envelopes.png')} alt="Material Breakdown" style={{ marginRight: "30px", width: "600px" }} />
+                    <div style={{ maxWidth: "400px", marginLeft: "20px" }}>
                       <h3 style={{ fontWeight: "normal" }}>ENVELOPE SYSTEM BOUNDARY</h3>
                       <p>The envelope system boundary accounts for apples-to-apples by using the same module (4’x14’), structure (not included, except if additional steel is needed, such as a shelf angle for masonry veneer systems), wall backup from interior drywall to air/vapor barrier, detailing strategy using thermal breaks, and most importantly the same R-value (IBC code minimum R-15.625). THERM was used to verify the R-value of each system.</p>
                     </div>
@@ -1592,7 +1592,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup} >
+              <div className={styles.inputgroup} style={{ minHeight: '161px' }}>
                 <h3>LIFESPAN</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="tenY" name="lifespan" value="tenY" checked={this.state.lifespan === "tenY"} onChange={this.handleInputChange} />
@@ -1608,7 +1608,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup} >
+              <div className={styles.inputgroup} style={{ minHeight: '161px' }}>
                 <h3>BIOGENIC CARBON</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked={this.state.biogenicCarbon === "yBio"} onChange={this.handleInputChange} />
@@ -1641,7 +1641,7 @@ class App extends Component {
                   matBreakdown1={this.state.flooring_materialData3}
                   matBreakdown2={this.state.flooring_materialData5}
                   tenYGWP={this.state.flooring_gwpData1}
-                  sixty1YGWP={this.state.flooring_gwpData3}
+                  sixty1YGWP={this.state.flooring_gwpData2}
                   sixty2YGWP={this.state.flooring_gwpData5}
                 />
               </div>
@@ -1687,7 +1687,7 @@ class App extends Component {
                         name={idx + 1}
                         count={0}
                         tenY={this.state.flooring_gwpData1}
-                        sixty1={this.state.flooring_gwpData3}
+                        sixty1={this.state.flooring_gwpData2}
                         sixty2={this.state.flooring_gwpData5}
                         radio={this.state.currentRadio}
                         divStyle={divStyle}
@@ -1714,10 +1714,10 @@ class App extends Component {
 
                   {/* Inserted Image, Title and Description */}
                   <div style={{ display: "flex", alignItems: "center", marginTop: "20px" }}>
-                    <img src={require('./images/System_Boundary-flooring_EDIT.png')} alt="Material Breakdown" style={{ marginRight: "40px", width: "400px" }} />
-                    <div style={{ maxWidth: "600px", marginLeft: "20px" }}>
+                    <img src={require('./images/System_Boundary-flooring.png')} alt="Material Breakdown" style={{ marginRight: "30px", width: "600px" }} />
+                    <div style={{ maxWidth: "400px", marginLeft: "20px" }}>
                     <h3 style={{ fontWeight: "normal" }}>FLOORING SYSTEM BOUNDARY</h3>
-                      <p>All flooring assemblies use a 10’x10′ system boundary, and includes the floor finish and any underlayments if necessary. It does not include the structural floor slab. An additional lens is provided to view the data based on compliance with PAYETTE’s Material Health Policy. </p>
+                      <p>All flooring assemblies use a 10’x10′ system boundary, and includes the floor finish and any underlayments if necessary. It does not include the structural floor slab. An additional lens is provided to view the data based on compliance with Payette’s Material Health Policy. </p>
                     </div>
                   </div>
 
@@ -1781,7 +1781,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup} >
+              <div className={styles.inputgroup} style={{ minHeight: '161px' }}>
                 <h3>LIFESPAN</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="tenY" name="lifespan" value="tenY" checked={this.state.lifespan === "tenY"} onChange={this.handleInputChange} />
@@ -1797,7 +1797,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup} >
+              <div className={styles.inputgroup} style={{ minHeight: '161px' }}>
                 <h3>BIOGENIC CARBON</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked={this.state.biogenicCarbon === "yBio"} onChange={this.handleInputChange} />
@@ -1830,7 +1830,7 @@ class App extends Component {
                   matBreakdown1={this.state.ceilings_materialData3}
                   matBreakdown2={this.state.ceilings_materialData5}
                   tenYGWP={this.state.ceilings_gwpData1}
-                  sixty1YGWP={this.state.ceilings_gwpData3}
+                  sixty1YGWP={this.state.ceilings_gwpData2}
                   sixty2YGWP={this.state.ceilings_gwpData5}
                 />
               </div>
@@ -1876,7 +1876,7 @@ class App extends Component {
                         name={idx + 1}
                         count={0}
                         tenY={this.state.ceilings_gwpData1}
-                        sixty1={this.state.ceilings_gwpData3}
+                        sixty1={this.state.ceilings_gwpData2}
                         sixty2={this.state.ceilings_gwpData5}
                         radio={this.state.currentRadio}
                         divStyle={divStyle}
@@ -1903,10 +1903,10 @@ class App extends Component {
 
                   {/* Inserted Image, Title and Description */}
                   <div style={{ display: "flex", alignItems: "center", marginTop: "20px" }}>
-                    <img src={require('./images/ceilingslegendaxon.png')} alt="Material Breakdown" style={{ marginRight: "40px", width: "400px" }} />
-                    <div style={{ maxWidth: "600px", marginLeft: "20px" }}>
+                    <img src={require('./images/System_Boundary-ceilings.png')} alt="Material Breakdown" style={{ marginRight: "30px", width: "600px" }} />
+                    <div style={{ maxWidth: "400px", marginLeft: "20px" }}>
                     <h3 style={{ fontWeight: "normal" }}>CEILING SYSTEM BOUNDARY</h3>
-                      <p>All ceiling assemblies use a 4′ x4′ system boundary, studied from the center of the ceiling module. It includes the finish materials and all support systems. It does not include the structural slab. An additional lens is provided to view the data based on compliance with PAYETTE’s Material Health Policy.  </p>
+                      <p>All ceiling assemblies use a 4′ x4′ system boundary, studied from the center of the ceiling module. It includes the finish materials and all support systems. It does not include the structural slab. An additional lens is provided to view the data based on compliance with Payette’s Material Health Policy.  </p>
                     </div>
                   </div>
 
@@ -1971,7 +1971,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup} >
+              <div className={styles.inputgroup} style={{ minHeight: '161px' }} >
                 <h3>LIFESPAN</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="tenY" name="lifespan" value="tenY" checked={this.state.lifespan === "tenY"} onChange={this.handleInputChange} />
@@ -1987,7 +1987,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup} >
+              <div className={styles.inputgroup} style={{ minHeight: '161px' }}>
                 <h3>BIOGENIC CARBON</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked={this.state.biogenicCarbon === "yBio"} onChange={this.handleInputChange} />
@@ -2021,7 +2021,7 @@ class App extends Component {
                   matBreakdown1={this.state.partitions_materialData3}
                   matBreakdown2={this.state.partitions_materialData5}
                   tenYGWP={this.state.partitions_gwpData1}
-                  sixty1YGWP={this.state.partitions_gwpData3}
+                  sixty1YGWP={this.state.partitions_gwpData2}
                   sixty2YGWP={this.state.partitions_gwpData5}
                 />
               </div>
@@ -2071,7 +2071,7 @@ class App extends Component {
                         name={idx + 1}
                         count={0}
                         tenY={this.state.partitions_gwpData1}
-                        sixty1={this.state.partitions_gwpData3}
+                        sixty1={this.state.partitions_gwpData2}
                         sixty2={this.state.partitions_gwpData5}
                         radio={this.state.currentRadio}
                         divStyle={divStyle}
@@ -2098,10 +2098,10 @@ class App extends Component {
                   <br></br>
                   {/* Inserted Image, Title and Description */}
                   <div style={{ display: "flex", alignItems: "center", marginTop: "20px" }}>
-                    <img src={require('./images/System_Boundary-partitions.png')} alt="Material Breakdown" style={{ marginRight: "40px", width: "400px" }} />
-                    <div style={{ maxWidth: "600px", marginLeft: "20px" }}>
+                    <img src={require('./images/System_Boundary-partitions.png')} alt="Material Breakdown" style={{ marginRight: "30px", width: "600px" }} />
+                    <div style={{ maxWidth: "400px", marginLeft: "20px" }}>
                     <h3 style={{ fontWeight: "normal" }}>PARTITION SYSTEM BOUNDARY</h3>
-                      <p>All partition assemblies use a 10’ x 13’-6”  system boundary, studied from the center of the partition module, and does not include structure except where steel is needed for connections (such as a staggered angle for CMU walls). It includes the finish materials and all support systems. It does not include the structural slab. Data is presented in linear feet for a 13′-6″ partition. An additional lens is provided to view the data based on compliance with PAYETTE’s Material Health Policy.   </p>
+                      <p>All partition assemblies use a 10’ x 13’-6”  system boundary, studied from the center of the partition module, and does not include structure except where steel is needed for connections (such as a staggered angle for CMU walls). It includes the finish materials and all support systems. It does not include the structural slab. Data is presented in linear feet for a 13′-6″ partition. An additional lens is provided to view the data based on compliance with Payette’s Material Health Policy.   </p>
                     </div>
                   </div>
 
@@ -2166,7 +2166,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup} >
+              <div className={styles.inputgroup} style={{ minHeight: '161px' }}>
                 <h3>LIFESPAN</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="tenY" name="lifespan" value="tenY" checked={this.state.lifespan === "tenY"} onChange={this.handleInputChange} />
@@ -2182,7 +2182,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup} >
+              <div className={styles.inputgroup} style={{ minHeight: '161px' }}>
                 <h3>BIOGENIC CARBON</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked={this.state.biogenicCarbon === "yBio"} onChange={this.handleInputChange} />
@@ -2215,7 +2215,7 @@ class App extends Component {
                   matBreakdown1={this.state.wall_materialData3}
                   matBreakdown2={this.state.wall_materialData5}
                   tenYGWP={this.state.wall_gwpData1}
-                  sixty1YGWP={this.state.wall_gwpData3}
+                  sixty1YGWP={this.state.wall_gwpData2}
                   sixty2YGWP={this.state.wall_gwpData5}
                 />
               </div>
@@ -2261,7 +2261,7 @@ class App extends Component {
                         name={idx + 1}
                         count={0}
                         tenY={this.state.wall_gwpData1}
-                        sixty1={this.state.wall_gwpData3}
+                        sixty1={this.state.wall_gwpData2}
                         sixty2={this.state.wall_gwpData5}
                         radio={this.state.currentRadio}
                         divStyle={divStyle}
@@ -2288,10 +2288,10 @@ class App extends Component {
 
                   {/* Inserted Image, Title and Description */}
                   <div style={{ display: "flex", alignItems: "center", marginTop: "20px" }}>
-                    <img src={require('./images/System_Boundary-wallfinishes.png')} alt="Material Breakdown" style={{ marginRight: "40px", width: "400px" }} />
-                    <div style={{ maxWidth: "600px", marginLeft: "20px" }}>
+                    <img src={require('./images/System_Boundary-wallfinishes.png')} alt="Material Breakdown" style={{ marginRight: "30px", width: "600px" }} />
+                    <div style={{ maxWidth: "400px", marginLeft: "20px" }}>
                     <h3 style={{ fontWeight: "normal" }}>WALL SYSTEM BOUNDARY</h3>
-                      <p>All wall finish assemblies use an 8’ x 8’ system boundary to account for standard panel sizes (4'x8'). The system boundary includes any surface treatments, finish materials and some necessary support systems. It does not include the partition. See assumptions in assembly details for more information. Data is presented in square feet. An additional lens is provided to view the data based on compliance with PAYETTE’s Material Health Policy.</p>
+                      <p>All wall finish assemblies use an 8’ x 8’ system boundary to account for standard panel sizes (4'x8'). The system boundary includes any surface treatments, finish materials and some necessary support systems. It does not include the partition. See assumptions in assembly details for more information. Data is presented in square feet. An additional lens is provided to view the data based on compliance with Payette’s Material Health Policy.</p>
                     </div>
                   </div>
                 </div>
