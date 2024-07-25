@@ -1526,16 +1526,8 @@ class App extends Component {
 
                 </div>
                   
-                    <br></br>
-
-
                   </div>
 
-
-                  <br></br> 
-                  <br></br>
-                  <br></br>
-                  <br></br>
 
                   {footer}
 
@@ -1722,15 +1714,6 @@ class App extends Component {
                   </div>
 
                 </div>
-
-
-                <br></br> 
-                <br></br>
-                <br></br>
-                <br></br>
-
-
-
                 {footer}
               </div>
             </div>
@@ -1911,15 +1894,6 @@ class App extends Component {
                   </div>
 
                 </div>
-
-
-                <br></br> 
-                <br></br>
-                <br></br>
-                <br></br>
-
-
-
                 {footer}
               </div>
 
@@ -2106,15 +2080,6 @@ class App extends Component {
                   </div>
 
                 </div>
-
-
-                <br></br> 
-                <br></br>
-                <br></br>
-                <br></br>
-
-
-
                 {footer}
               </div>
 
@@ -2295,14 +2260,6 @@ class App extends Component {
                     </div>
                   </div>
                 </div>
-
-
-                <br></br> 
-                <br></br>
-                <br></br>
-                <br></br>
-
-
 
                 {footer}
               </div>
