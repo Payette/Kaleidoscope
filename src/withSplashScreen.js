@@ -276,8 +276,8 @@ function withSplashScreen(WrappedComponent) {
 
               {tier0.map((tier) => (
                 // Enterprise card is full width at sm breakpoint
-                <Grid item key={tier.title} xs={12} sm={6} md={4} >
-                  <div style={{ maxWidth: '280px', margin: 'auto' }}> 
+                <Grid item key={tier.title} xs={6} sm={6} md={2} >
+                  <div style={{ minWidth: '200px', margin: 'auto' }}> 
                     <Card style={{  minHeight: '100%', maxHeight: '100%' }}>
                       <CardHeader
                         title={tier.title}
@@ -363,8 +363,8 @@ function withSplashScreen(WrappedComponent) {
               
               {tiers.map((tier) => (
                 // Enterprise card is full width at sm breakpoint
-                <Grid item key={tier.title} xs={12} sm={6} md={4} >
-                  <div style={{ maxWidth: '280px', margin: 'auto' }}> 
+                <Grid item key={tier.title} xs={6} sm={6} md={2} >
+                  <div style={{ minWidth: '200px', margin: 'auto' }}> 
                     <Card style={{  minHeight: '100%', maxHeight: '100%' }}>
                       <CardHeader
                         title={tier.title}
