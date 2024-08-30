@@ -2021,13 +2021,13 @@ class App extends Component {
 
                   <div style={{ margin: "auto",display: "flex"  }}>
                     <input type="radio" id="ten" name={"gender"} value="1" onChange={this.radioChange.bind(this)} defaultChecked></input>
-                    <label > Initial Carbon (only Module A with biogenic carbon) &nbsp;&nbsp;</label>
+                    <label > Initial Carbon (Module A w/ biogenic CO2) &nbsp;&nbsp;</label>
                     {/* <label for="ten"> Initial Carbon (only Module A) &nbsp;&nbsp;</label> */}
                     <input type="radio" id="sixty2" name={"gender"} value="3" onChange={this.radioChange.bind(this)} ></input>
-                    <label > 60 year lifespan (with Module D and biogenic carbon) &nbsp;&nbsp;</label>
+                    <label > 60 Year (w/ Module D & biogenic CO2) &nbsp;&nbsp;</label>
                     {/* <label for="sixty2"> 60 Year (with Module D) &nbsp;&nbsp;</label> */}
                     <input type="radio" id="sixty1" name={"gender"} value="2" onChange={this.radioChange.bind(this)} ></input>
-                    <label > 60 year lifespan (no Module D and no biogenic carbon) &nbsp;&nbsp;</label>
+                    <label > 60 Year (no Module D & no biogenic CO2) &nbsp;&nbsp;</label>
                     {/* <label for="sixty1"> 60 Year (no Module D) &nbsp;&nbsp;</label> */}
                   </div><br></br>
                   <div>

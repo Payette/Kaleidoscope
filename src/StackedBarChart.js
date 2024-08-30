@@ -369,97 +369,59 @@ export default withTooltip(({
 
                 // console.log(sm.values.length);
 
+
                 return (
-                  <Group top={yOffset} key={sm.key}>
+
+                  <Group top={yOffset}>
+
+
                     <line className={styles.groupLine} x1={-margin.left + margin.smallGap} y1="0" x2={width2 - margin.left - 2 * margin.smallGap} y2="0" strokeWidth="3" strokeDasharray="0 6" strokeLinecap="round" />
                     <BarStackHorizontal data={sm.values} keys={keys} height={yMax} y={getName} xScale={xScale} yScale={yScale} color={color} offset={'diverging'}>
-                      {barStacks => {
-                        return barStacks.map(barStack => {
-                          return barStack.bars.map(bar => {
-                            var barColor = bar.color;
+                      {
 
-                            if (colorBy === "material" && bar.bar && bar.bar.data && bar.bar.data.material) {
-                              barColor = metaData.materialColors[bar.bar.data.material] || bar.color;
-                            } else if (colorBy === "health" && bar.bar && bar.bar.data && bar.bar.data.material) {
-                              barColor = metaData.materialHealth[bar.bar.data.material] || bar.color;
-                            }
-                            return (
-                              <g key={`bar-group-${barStack.index}-${bar.index}`}>
-                                <rect
-                                  key={`barstack-horizontal-${barStack.index}-${bar.index}`}
-                                  x={bar.x}
-                                  y={bar.y}
-                                  width={bar.width}
-                                  height={bar.height}
-                                  stroke={'#ffffff'}
-                                  fill={barColor}
-                                  onClick={event => {
-                                    if (!events) return;
-                                    alert(`clicked: ${JSON.stringify(bar)}`);
-                                  }}
-                                  onMouseMove={event => {
-                                    if (tooltipTimeout) clearTimeout(tooltipTimeout);
-                                    const top = yOffset + bar.y + margin.top + barHeight + 10;
-                                    const left = bar.x + bar.width / 2 + margin.left - toolTipWidth / 2;
-                                    let myX = localPoint(event.target.ownerSVGElement, event).x;
-                                    let myY = localPoint(event.target.ownerSVGElement, event).y;
-                                    showTooltip({
-                                      tooltipData: bar,
-                                      tooltipTop: myY,
-                                      tooltipLeft: myX,
-                                    });
-                                  }}
-                                  onMouseLeave={event => {
-                                    tooltipTimeout = setTimeout(() => {
-                                      hideTooltip();
-                                    }, 300);
-                                  }}
-                                />
-                                {bar.width < 100 && (
-                                  <rect
-                                    x={bar.x - 100}
-                                    y={bar.y}
-                                    width={bar.width + 200}
-                                    height={bar.height}
-                                    fill="transparent"
-                                    onMouseMove={event => {
-                                      if (tooltipTimeout) clearTimeout(tooltipTimeout);
-                                      const top = yOffset + bar.y + margin.top + barHeight + 10;
-                                      const left = bar.x + bar.width / 2 + margin.left - toolTipWidth / 2;
-                                      let myX = localPoint(event.target.ownerSVGElement, event).x;
-                                      let myY = localPoint(event.target.ownerSVGElement, event).y;
-                                      showTooltip({
-                                        tooltipData: bar,
-                                        tooltipTop: myY,
-                                        tooltipLeft: myX,
-                                      });
-                                    }}
-                                    onMouseLeave={event => {
-                                      tooltipTimeout = setTimeout(() => {
-                                        hideTooltip();
-                                      }, 300);
-                                    }}
-                                  />
-                                )}
-                              </g>
-                            );
+
+                        barStacks => {
+                          return barStacks.map(barStack => {
+                            return barStack.bars.map(bar => {
+                              var barColor = bar.color;
+
+                              // console.log(bar.bar.data.mName)
+                              if (colorBy === "material" && bar.bar && bar.bar.data && bar.bar.data.material) {
+                                barColor = metaData.materialColors[bar.bar.data.material] || bar.color;
+                              } else if (colorBy === "health" && bar.bar && bar.bar.data && bar.bar.data.material) {
+                                barColor = metaData.materialHealth[bar.bar.data.material] || bar.color;
+
+                              }
+                              return (<rect key={`barstack-horizontal-${barStack.index}-${bar.index}`} x={bar.x-smallWindow} y={bar.y} width={bar.width} height={bar.height} stroke={'#ffffff'} fill={barColor} onClick={event => {
+                                if (!events)
+                                  return;
+                                alert(`clicked: ${JSON.stringify(bar)}`);
+                              }} onMouseLeave={event => {
+                                tooltipTimeout = setTimeout(() => {
+                                  hideTooltip();
+                                }, 300);
+                              }} onMouseMove={event => {
+                                if (tooltipTimeout)
+                                  clearTimeout(tooltipTimeout);
+                                const top = yOffset + bar.y + margin.top + barHeight + 10;
+                                const left = bar.x + bar.width / 2 + margin.left - toolTipWidth / 2;
+                                let myX = localPoint(event.target.ownerSVGElement, event).x;
+                                let myY = localPoint(event.target.ownerSVGElement, event).y;
+                                // console.log(localPoint(event.target.ownerSVGElement, event));
+                                // console.log(getImg(bar.data));
+                                showTooltip({ tooltipData: bar, tooltipTop: myY, tooltipLeft: myX });
+                              }} />);
+                            });
                           });
-                        });
-                      }}
+                        }
+                      }
+
                     </BarStackHorizontal>
                     <AxisLeft
-                      hideAxisLine={true}
-                      hideTicks={true}
-                      scale={yScale}
-                      stroke={textColor}
-                      tickStroke={textColor}
-                      tickLabelProps={(value, index) => ({
-                        fill: textColor,
-                        width: '180',
-                        class: "chartText14",
-                        textAnchor: 'end',
-                        dy: '0.33em'
-                      })}
+                      
+                      hideAxisLine={true} hideTicks={true} scale={yScale} /* tickFormat={formatDate} */
+                      stroke={textColor} tickStroke={textColor}
+                      tickLabelProps={(value, index) => ({ fill: textColor, width: '160', class:"chartText14P", textAnchor: 'end', dy: '0.33em' })}
                       left={-smallWindow}
                     />
                     <Text
@@ -468,35 +430,30 @@ export default withTooltip(({
                       fontSize={14}
                       width={50}
                       className={styles.myClass}
-                      x={-margin.left + margin.smallGap}
+                      x={-margin.left + margin.smallGap} 
                       y={(barHeight * sm.values.length) / 2 - 10}
-                    >
-                      {sm.key + " " + myAbb}
-                    </Text>
-                    <line className={styles.groupLine} x1={xScale(0) - smallWindow} y1="0" x2={xScale(0) - smallWindow} y2={20 + (barHeight * sm.values.length)} strokeWidth="3" strokeDasharray="0 6" strokeLinecap="round" />
+
+                    >{sm.key + " " + myAbb}</Text>
+                    <line className={styles.groupLine} x1={xScale(0)-smallWindow} y1="0" x2={xScale(0)-smallWindow} y2={20 + (barHeight * sm.values.length)} strokeWidth="3" strokeDasharray="0 6" strokeLinecap="round" />
                   </Group>
+
+
                 )
               })}
 
+
+
               <line className={styles.groupLine} x1={-margin.left + margin.smallGap} y1={previousY} x2={width2 - margin.left - 2 * margin.smallGap} y2={previousY} strokeWidth="3" strokeDasharray="0 6" strokeLinecap="round" />
-              <AxisBottom left={-smallWindow} top={(previousY - 7)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({
-                fill: textColor,
-                class: "chartText14",
-                textAnchor: 'middle'
-              })} labelProps={{
-                class: "chartText18",
+              <AxisBottom left={-smallWindow} top={(previousY - 7)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({ fill: textColor, class:"chartText14", textAnchor: 'middle' })} labelProps={{
+                class:"chartText18",
                 textAnchor: 'middle',
                 fill: textColor,
                 dy: '0.8em'
               }} />
-              <AxisTop left={-smallWindow} top={(3)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({
-                fill: textColor,
-                class: "chartText14",
-                verticalAnchor: 'end',
-                textAnchor: 'middle'
-              })} labelProps={{
-                class: "chartText18",
+              <AxisTop left={-smallWindow} top={(3)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({ fill: textColor, class:"chartText14", verticalAnchor: 'end', textAnchor: 'middle' })} labelProps={{
+                class:"chartText18",
                 textAnchor: 'middle',
+                //verticalAnchor: 'bottom',
                 verticalAnchor: 'end',
                 fill: textColor,
                 lineHeight: "2em"
@@ -504,8 +461,8 @@ export default withTooltip(({
             </Group>
           </svg>
 
-          {tooltipOpen && (
-            <Tooltip top={tooltipTop} left={tooltipLeft} key={Math.random()} style={{
+          {
+            tooltipOpen && (<Tooltip top={tooltipTop} left={tooltipLeft} key={Math.random()} style={{
               backgroundColor: 'rgba(255,255,255,0.0)',
               color: 'black',
               borderRadius: '0px',
@@ -514,7 +471,7 @@ export default withTooltip(({
               padding: 0
             }}>
               <span style={{ color: "red", margin: 0, padding: 0, top: 10 }}>
-                <img src={'./YellowTriangle2.png'} alt="Yellow Triangle" />
+                <img src={'./YellowTriangle2.png'}></img>
               </span>
 
               <div style={{
@@ -532,12 +489,17 @@ export default withTooltip(({
                 top: 15,
                 left: '50%',
                 transform: 'translateX(-50%)',
+
+
               }}>
+
+
                 <div className={styles.tooltipContainer}>
                   <div style={{
+                    // textTransform: 'uppercase',
                     paddingBottom: 2,
                     lineHeight: "1.2em",
-                    className: "chartText20",
+                    class:"chartText20",
                     fontWeight: 700,
                     color: "#dc1a55",
                     paddingBottom: ".5em"
@@ -547,16 +509,31 @@ export default withTooltip(({
                   <div><strong>{tooltipData.bar.data[tooltipData.key].toFixed(2)} </strong>
                     <small>{trail}</small></div>
                   <div className={styles.clearfix}>
-                    <img className={styles.img2} src={getImg(tooltipData.bar.data)} alt="Tooltip Image" />
+
+                    {/* <img className={styles.img2} src={'./Icon_FS.png'}></img> */}
+                    <img className={styles.img2} src={getImg(tooltipData.bar.data)}></img>
+
                     <small className={styles.imgText}>{metaData.materialTexts[tooltipData.bar.data.material]}</small>
                   </div>
+                  {/* <div >
+                  <small>4" granite veneer with knife edge</small>
+                  
+                
+                  
+                </div>
+                <img src={'./Icon_FS.png'} alt="material icon" className={styles.materialIcon}></img> */}
+
+
                 </div>
               </div>
-            </Tooltip>
-          )}
-        </div>
-      );
-    }}
-  </ParentSize>
-);
+            </Tooltip>)
+          }
+        </div>);
+      }
+    }
+
+  </ParentSize>);
+
+
+
 });
