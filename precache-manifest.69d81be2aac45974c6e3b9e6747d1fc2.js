@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "78317c0e571b2c97acae1ff0a2a85026",
+    "revision": "d97f96e227be27e7a8498cd2502f3caa",
     "url": "/Kaleidoscope/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Kaleidoscope/static/css/2.119f37bc.chunk.css"
   },
   {
-    "revision": "7c51ec930a835402097c",
+    "revision": "d90434931755e77774d8",
     "url": "/Kaleidoscope/static/css/main.56489204.chunk.css"
   },
   {
@@ -36,8 +36,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Kaleidoscope/static/js/4.427ef6f4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7c51ec930a835402097c",
-    "url": "/Kaleidoscope/static/js/main.8e198a15.chunk.js"
+    "revision": "d90434931755e77774d8",
+    "url": "/Kaleidoscope/static/js/main.19aef10f.chunk.js"
   },
   {
     "revision": "8e1c5ffe1b89ba97e4a8",
@@ -84,12 +84,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Kaleidoscope/static/media/allImpact_10y_y-1.1754212c.csv"
   },
   {
-    "revision": "3eadf22e3ca18803031369058549d61f",
-    "url": "/Kaleidoscope/static/media/allImpact_60y_n-1.3eadf22e.csv"
+    "revision": "105ed12ad6c2716d33749079b2f7f5e0",
+    "url": "/Kaleidoscope/static/media/allImpact_60y_n-1.105ed12a.csv"
   },
   {
-    "revision": "a60456fd747ef65bf3e5984545259125",
-    "url": "/Kaleidoscope/static/media/allImpact_60y_y-1.a60456fd.csv"
+    "revision": "f2325ff80da1027a33fdcc82f0d8556d",
+    "url": "/Kaleidoscope/static/media/allImpact_60y_y-1.f2325ff8.csv"
   },
   {
     "revision": "f99762bef13222824e7fd291f28e93ed",
@@ -108,12 +108,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Kaleidoscope/static/media/ceilings_allImpact_10y_y.0ba7501f.csv"
   },
   {
-    "revision": "917dd3db47de95a8572730e81d5bc988",
-    "url": "/Kaleidoscope/static/media/ceilings_allImpact_60y_n.917dd3db.csv"
+    "revision": "4a2796e0bce13df95fdb032118484141",
+    "url": "/Kaleidoscope/static/media/ceilings_allImpact_60y_n.4a2796e0.csv"
   },
   {
-    "revision": "26ffb3269e40b05bf9ff7a6ff3393108",
-    "url": "/Kaleidoscope/static/media/ceilings_allImpact_60y_y.26ffb326.csv"
+    "revision": "8ffd07794e53dddf0e6c3ad655cc9382",
+    "url": "/Kaleidoscope/static/media/ceilings_allImpact_60y_y.8ffd0779.csv"
   },
   {
     "revision": "a7823647c592b5822fa522baced93bce",
@@ -132,12 +132,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Kaleidoscope/static/media/ceilings_gwp_10y_y.a34fa97b.csv"
   },
   {
-    "revision": "e9ca70e0bb3f21e009cf729ab2953d99",
-    "url": "/Kaleidoscope/static/media/ceilings_gwp_60y_n.e9ca70e0.csv"
+    "revision": "c200b73cf0b094214a2f6a155e916bf8",
+    "url": "/Kaleidoscope/static/media/ceilings_gwp_60y_n.c200b73c.csv"
   },
   {
-    "revision": "387c591a6e036cb103940d6e0eb50809",
-    "url": "/Kaleidoscope/static/media/ceilings_gwp_60y_y.387c591a.csv"
+    "revision": "1fb82638224e4efac4d84461df307518",
+    "url": "/Kaleidoscope/static/media/ceilings_gwp_60y_y.1fb82638.csv"
   },
   {
     "revision": "8694df086df845af710dece99cab4aaf",
@@ -156,12 +156,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Kaleidoscope/static/media/ceilings_lcs_10y_y.8a5d01f8.csv"
   },
   {
-    "revision": "cca7017d07116d76b89c35f42648dea5",
-    "url": "/Kaleidoscope/static/media/ceilings_lcs_60y_n.cca7017d.csv"
+    "revision": "fc7a9967f5afa21fbc879562ca0b2bd4",
+    "url": "/Kaleidoscope/static/media/ceilings_lcs_60y_n.fc7a9967.csv"
   },
   {
-    "revision": "708f1c7740057da45da7f3e242e1f1d4",
-    "url": "/Kaleidoscope/static/media/ceilings_lcs_60y_y.708f1c77.csv"
+    "revision": "f6bfa1fc6f67fac1930ae1c9b8b30547",
+    "url": "/Kaleidoscope/static/media/ceilings_lcs_60y_y.f6bfa1fc.csv"
   },
   {
     "revision": "8e4b04e0886d1ae16266f6e600024b79",
@@ -180,12 +180,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Kaleidoscope/static/media/ceilings_material_10y_y.5c1555da.csv"
   },
   {
-    "revision": "944bf07759ceaeca812cba21ff003015",
-    "url": "/Kaleidoscope/static/media/ceilings_material_60y_n.944bf077.csv"
+    "revision": "18bf6437aa13aa98f3d7af40d57a188f",
+    "url": "/Kaleidoscope/static/media/ceilings_material_60y_n.18bf6437.csv"
   },
   {
-    "revision": "c350717c9f923f3aa30a229065139fce",
-    "url": "/Kaleidoscope/static/media/ceilings_material_60y_y.c350717c.csv"
+    "revision": "9bf78066036e1569d04d6781e54a2716",
+    "url": "/Kaleidoscope/static/media/ceilings_material_60y_y.9bf78066.csv"
   },
   {
     "revision": "8c99d207db52d69e48926d382a7ce559",
@@ -208,12 +208,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Kaleidoscope/static/media/flooring_allImpact_10y_y.51851373.csv"
   },
   {
-    "revision": "affb8bee03d4e49acec1b6cd62fc46cf",
-    "url": "/Kaleidoscope/static/media/flooring_allImpact_60y_n.affb8bee.csv"
+    "revision": "496a2622453c9574c221202e964ddb09",
+    "url": "/Kaleidoscope/static/media/flooring_allImpact_60y_n.496a2622.csv"
   },
   {
-    "revision": "57efbace784748d53b51cb8de5eeccf6",
-    "url": "/Kaleidoscope/static/media/flooring_allImpact_60y_y.57efbace.csv"
+    "revision": "28988b1ad0da34afb3094bb199f465bf",
+    "url": "/Kaleidoscope/static/media/flooring_allImpact_60y_y.28988b1a.csv"
   },
   {
     "revision": "364e693ef677df646aadbd2df983242a",
@@ -232,12 +232,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Kaleidoscope/static/media/flooring_gwp_10y_y.6d9fff93.csv"
   },
   {
-    "revision": "08a84bd15eb0a5f6bee0e7df75d40d92",
-    "url": "/Kaleidoscope/static/media/flooring_gwp_60y_n.08a84bd1.csv"
+    "revision": "50257f244b3de2c33e38b28435c6bd07",
+    "url": "/Kaleidoscope/static/media/flooring_gwp_60y_n.50257f24.csv"
   },
   {
-    "revision": "b371b82cfdc2d2b9c110cb94cce51840",
-    "url": "/Kaleidoscope/static/media/flooring_gwp_60y_y.b371b82c.csv"
+    "revision": "7b79935aee83ef081b47122a14f0013a",
+    "url": "/Kaleidoscope/static/media/flooring_gwp_60y_y.7b79935a.csv"
   },
   {
     "revision": "1e1d37e7ac7c77aa87878619865bb0d4",
@@ -256,12 +256,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Kaleidoscope/static/media/flooring_lcs_10y_y.930d9578.csv"
   },
   {
-    "revision": "30de8ab32293d9500bc6f7dc1705ff40",
-    "url": "/Kaleidoscope/static/media/flooring_lcs_60y_n.30de8ab3.csv"
+    "revision": "8a16627477e812d1ecc1924a833a0070",
+    "url": "/Kaleidoscope/static/media/flooring_lcs_60y_n.8a166274.csv"
   },
   {
-    "revision": "9af9a9130ba3d76af713d37c52361f50",
-    "url": "/Kaleidoscope/static/media/flooring_lcs_60y_y.9af9a913.csv"
+    "revision": "0a8f1c2ea3bfeebd82c72c12d785a85c",
+    "url": "/Kaleidoscope/static/media/flooring_lcs_60y_y.0a8f1c2e.csv"
   },
   {
     "revision": "46b8205235f378bb3e26e438f9085cc5",
@@ -280,12 +280,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Kaleidoscope/static/media/flooring_material_10y_y.51f858ee.csv"
   },
   {
-    "revision": "2356186c7220103ca3004658659baec0",
-    "url": "/Kaleidoscope/static/media/flooring_material_60y_n.2356186c.csv"
+    "revision": "fca80755c73e0a0ed830954fbd184fbf",
+    "url": "/Kaleidoscope/static/media/flooring_material_60y_n.fca80755.csv"
   },
   {
-    "revision": "5382840cc57f7ccbcf3652af498ebb44",
-    "url": "/Kaleidoscope/static/media/flooring_material_60y_y.5382840c.csv"
+    "revision": "8b533086cf3f1ef40606684db891efe4",
+    "url": "/Kaleidoscope/static/media/flooring_material_60y_y.8b533086.csv"
   },
   {
     "revision": "b84499d7babb7cdab514ef1bb881e6f0",
@@ -336,12 +336,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Kaleidoscope/static/media/gwp_10y_y-1.b392783c.csv"
   },
   {
-    "revision": "9058a0af40b5c15930be74e8a853b240",
-    "url": "/Kaleidoscope/static/media/gwp_60y_n-1.9058a0af.csv"
+    "revision": "992437e347f21fb3f563dda1faf61131",
+    "url": "/Kaleidoscope/static/media/gwp_60y_n-1.992437e3.csv"
   },
   {
-    "revision": "5a12e6741abd48fbbbd5cc3deaa8e4e9",
-    "url": "/Kaleidoscope/static/media/gwp_60y_y-1.5a12e674.csv"
+    "revision": "5100b4e42657574eac9a6313d5a6b34c",
+    "url": "/Kaleidoscope/static/media/gwp_60y_y-1.5100b4e4.csv"
   },
   {
     "revision": "326ce151d4d3f0d8add87579bb7bea0d",
@@ -360,12 +360,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Kaleidoscope/static/media/lcs_10y_y-1.a5539b5f.csv"
   },
   {
-    "revision": "249fa5e4d4e34348e7609178d6d66382",
-    "url": "/Kaleidoscope/static/media/lcs_60y_n-1.249fa5e4.csv"
+    "revision": "571c8c1dcdd09f950e62a48063f76ad4",
+    "url": "/Kaleidoscope/static/media/lcs_60y_n-1.571c8c1d.csv"
   },
   {
-    "revision": "1298a07c1a6d3837779358c3b511ded3",
-    "url": "/Kaleidoscope/static/media/lcs_60y_y-1.1298a07c.csv"
+    "revision": "1c6d712ac7cec092bbc36e13df6b6984",
+    "url": "/Kaleidoscope/static/media/lcs_60y_y-1.1c6d712a.csv"
   },
   {
     "revision": "307846911f6a4f8275b12c3aaec5c229",
@@ -384,12 +384,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Kaleidoscope/static/media/material_10y_y-1.f1ced4e0.csv"
   },
   {
-    "revision": "4c98834b99c99f3c4bb44cdf02b9e1b5",
-    "url": "/Kaleidoscope/static/media/material_60y_n-1.4c98834b.csv"
+    "revision": "6dd0afef669048e7dcff6cd2cf713f2e",
+    "url": "/Kaleidoscope/static/media/material_60y_n-1.6dd0afef.csv"
   },
   {
-    "revision": "02b285eb5b4383f58c214d09c617bb0a",
-    "url": "/Kaleidoscope/static/media/material_60y_y-1.02b285eb.csv"
+    "revision": "c6039f45c6827f0c1ecf7e99129b191a",
+    "url": "/Kaleidoscope/static/media/material_60y_y-1.c6039f45.csv"
   },
   {
     "revision": "c34ca38d05a5199d938a84534c8f5409",
