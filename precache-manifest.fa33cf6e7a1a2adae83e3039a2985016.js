@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d97f96e227be27e7a8498cd2502f3caa",
+    "revision": "beb16e07a7ae478f945d2b0d4b017fab",
     "url": "/Kaleidoscope/index.html"
   },
   {
