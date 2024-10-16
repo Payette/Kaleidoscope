@@ -1,0 +1,20 @@
+material,type,name,img,label,i1,i2,i3,i4,i5,i6
+mBaffle,Metal,Baffle,./img/Ceilings/Axons/Axon_MetalBaffle.png,M - Baffle (Metal),66,18,2,9,5,1
+mPan,Metal,Panel,./img/Ceilings/Axons/Axon_MetalPan.png,M -  Metal Pan,42,11,3,1,2,0
+mPerforatedPan,Metal,Perforated Panel,./img/Ceilings/Axons/Axon_MetalPanPerforated.png,M - Perf Metal Pan,35,10,1,1,2,0
+hcGypsum,Hard Ceiling,Gypsum,./img/Ceilings/Axons/Axon_Gypsum.png,HC - Gyp,23,7,1,1,1,1
+hcMoistureResistantGyp,Hard Ceiling,Moisture Resistant Gypsum,./img/Ceilings/Axons/Axon_Gypsum.png,HC - Moisture Resistant Gyp,22,7,2,1,1,1
+cFiberglassTrim,Cloud,Fiberglass (w/ Trim),./img/Ceilings/Axons/Axon_CloudwTrim.png,C - Fiberglass (w/ Trim),28,8,2,2,2,3
+cFiberglass,Cloud,Fiberglass,./img/Ceilings/Axons/Axon_Cloud.png,C - Fiberglass,28,9,2,2,2,5
+ltFiberglass,Lay-In Tile,Fiberglass,./img/Ceilings/Axons/Axon_Lay-InTile.png,LT - Fiberglass,22,7,1,1,2,4
+ltMineralBoard,Lay-In Tile,Mineral Board,./img/Ceilings/Axons/Axon_Lay-InTile.png,LT - Mineral Board,20,6,1,1,1,0
+ocAcousticalSpray,Open Ceiling,Acoustical Spray,./img/Ceilings/Axons/Axon_OpenCeiling.png,OC - Acoustical Spray,1,0,0,0,0,1
+ocPaint,Open Ceiling,Paint,./img/Ceilings/Axons/Axon_OpenCeiling.png,OC - Paint,5,2,0,0,0,0
+wVeneerDense,Wood,Dense Grille (Veneer),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Veneer),46,22,13,5,7,5
+wVeneerOpen,Wood,Grille (Veneer),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Grille (Veneer),41,21,13,5,7,4
+wPoplarDense,Wood,Dense Grille (Poplar),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Poplar),12,6,3,3,2,1
+wPoplarOpen,Wood,Grille (Poplar),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Grille (Poplar),12,6,3,3,2,1
+wWalnutDense,Wood,Dense Grille (Walnut),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Walnut),15,8,4,3,2,1
+wWalnutOpen,Wood,Grille (Walnut),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Grille (Walnut),15,8,4,4,3,1
+wMapleDense,Wood,Dense Grille (Maple),./img/Ceilings/Axons/Axon_DenseGrille.png,W - Dense Grille (Maple),11,7,3,3,2,1
+wMapleOpen,Wood,Grille (Maple),./img/Ceilings/Axons/Axon_OpenGrille.png,W - Grille (Maple),10,7,4,3,3,1
