@@ -1,5 +1,12 @@
 # Kaleidoscope
-Embodied Carbon Design Tool
+**Kaleidoscope** is an open-source embodied carbon design tool built for transparency, interoperability, and rapid prototyping in sustainable architecture workflows. It is designed with the following goals:
+
+- Modular, API-ready architecture for integration into firm-wide design tools
+- Public GitHub repository with full documentation and commit history
+- Supports both local deployment (`npm start`) and embedded deployment (`WordPress` and GitHub Pages)
+- Easy-to-customize interface and backend logic for decarbonization workflows
+
+Kaleidoscope is not just a standalone tool—it is a foundational module in a larger platform ecosystem currently under development, designed to integrate seamlessly with generative design engines, simulation dashboards, and interactive review tools.
 
 ## New Developer Setup
  * Install nodejs // only need to do this once (install the program; this is not a command)
