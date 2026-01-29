@@ -1,0 +1,18 @@
+material,type,value,name,img,label
+blSprayClosedHFC,Blown,0.28,Spray Foam (Closed Cell HFC),./img/Insulation/Axons/__Blown_Axon_SprayHFO.png,BL - Spray Foam (Closed Cell HFC)
+blSprayClosedHFO,Blown,0.06,Spray Foam (Closed Cell HFO),./img/Insulation/Axons/__Blown_Axon_SprayHFO.png,BL - Spray Foam (Closed Cell HFO)
+blSprayOpen,Blown,0.02,Spray Foam (Open Cell),./img/Insulation/Axons/__Blown_Axon_Sprayopencell.png,BL - Spray Foam (Open Cell)
+blCellulose,Blown,-0.03,Cellulose,./img/Insulation/Axons/__Blown_Axon_Cellulose.png,BL -  Cellulose
+bdXPSlegacy,Board,0.95,XPS (Legacy HFC),./img/Insulation/Axons/__Board_Axon_XPSLegacy30psi.png,BD - XPS (Legacy HFC)
+bdXPS60,Board,0.15,XPS 60 (Low GWP),./img/Insulation/Axons/__Board_Axon_XPSLegacy30psi.png,BD - XPS 60 (Low GWP)
+bdMinWoolHighDens,Board,0.13,Mineral Wool (High Density),./img/Insulation/Axons/__Board_Axon_MineralwoolHighdensityNAIMA.png,BD - Mineral Wool (High Density)
+bdXPS40,Board,0.12,XPS 40 (Low GWP),./img/Insulation/Axons/__Board_Axon_XPSLegacy30psi.png,BD - XPS 40 (Low GWP)
+bdXPS25,Board,0.11,XPS 25 (Low GWP),./img/Insulation/Axons/__Board_Axon_XPSLegacy30psi.png,BD - XPS 25 (Low GWP)
+bdEPS,Board,0.05,EPS,./img/Insulation/Axons/__Board_Axon_EPS.png,BD  - EPS
+bdPolyiso,Board,0.04,Polyiso (GRF Facer),./img/Insulation/Axons/__Board_Axon_PIR.png,BD - Polyiso (GRF Facer)
+btGlassWoolFoil,Batt,0.09,Glass Wool (Foil Faced),./img/Insulation/Axons/__Batt_Axon_Glassfiberfoilfaced.png,BT -  Glass Wool (Foil Faced)
+btSheepWool,Batt,0.05,Sheep's Wool,./img/Insulation/Axons/__Batt_Axon_Havelock.png,BT -  Sheep's Wool
+btMinWoolLowDens,Batt,0.04,Mineral Wool (Low Density),./img/Insulation/Axons/__Batt_Axon_MineralwoolLowdensity.png,BT -  Mineral Wool (Low Density)
+btGlassWoolPaper,Batt,0.02,Glass Wool (Paper Faced),./img/Insulation/Axons/__Batt_Axon_GlassfiberUnfaced.png,BT - Glass Wool (Paper Faced)
+btGlassWool,Batt,0.02,Glass Wool,./img/Insulation/Axons/__Batt_Axon_SheepwoolHavelock.png,BT - Glass Wool
+btGlassWoolLowGWP,Batt,0.01,Glass Wool (Low GWP),./img/Insulation/Axons/__Batt_Axon_SheepwoolHavelock.png,BT - Glass Wool (Low GWP)
