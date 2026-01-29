@@ -56,8 +56,8 @@ const DATASET_NAMES_INSULATION = DATASET_NAMES.filter(
 
 let footer = <div style={{ paddingTop: 0, top: 0, marginTop: 0, marginLeft: 0,marginRight: '3%'}}>
   <p className={styles.serif} style={{ display: "inline-block" }}>
-    Last updated February 2026<br></br>
-    Credit: <i>Data analysis run using TallyLCA version 2023.09.13.01 by Building Transparency and KT Innovations, thinkstep, and Autodesk using industry representative LCI data unless otherwise noted</i><br></br>
+    Last updated July 2024<br></br>
+    Credit: <i>Data analysis run using TallyLCA version 2022.04.08.01 by Building Transparency and KT Innovations, thinkstep, and Autodesk using industry representative LCI data unless otherwise noted</i><br></br>
     For questions or comments: <h5 style={{ display: "inline-block" }}>tools@payette.com</h5>, Source code: <h5 style={{ display: "inline-block" }}><a href="https://github.com/Payette/Kaleidoscope">github.com/Payette/Kaleidoscope</a></h5>
   </p>
 </div>
@@ -88,9 +88,6 @@ class App extends Component {
 
       insulation_materials: [],
       insulation_selectedMaterials: [],
-
-      insulation_rPerInchByMaterial: {},
-
 
 
 
@@ -130,8 +127,6 @@ class App extends Component {
 
 
   }
-
-  
 
   handleClick = (e) => {
     this.setAnchorEl(e.currentTarget);
@@ -201,8 +196,7 @@ class App extends Component {
 
     let urlVar = new URLSearchParams()
     urlVar.set("type", newValue)
-    window.history.pushState({}, '', "?" + urlVar.toString())
-
+    window.history.replaceState({}, '', "?" + urlVar.toString())
   };
 
   updateValue = (e, idx) => {
@@ -256,18 +250,6 @@ class App extends Component {
   
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-
-    // --- sync tab with URL (back/forward) ---
-    if (prevProps.item !== this.props.item) {
-      const next = parseInt(this.props.item, 10);
-      if (!Number.isNaN(next) && next !== this.state.value) {
-        this.setState({ value: next });
-        return; // 避免这一次 update 继续跑下面巨量的 setState 逻辑
-      }
-    }
-    // --- end sync ---
-
-
     if (!_.isEqual(prevState, this.state)) {
       //
       // ENVELOPES
@@ -516,13 +498,6 @@ class App extends Component {
 
     //Test
     //introJs().start();
-    InsulationLoadData.rValuesData((rows) => {
-      const lookup = {};
-      rows.forEach(r => {
-        if (r.material) lookup[r.material] = r.rperinch;
-      });
-      this.setState({ insulation_rPerInchByMaterial: lookup });
-    });
 
 
     var valueLocal = sessionStorage.getItem("IntroKey");
@@ -673,11 +648,9 @@ class App extends Component {
                 ? prev.selectedMaterials
                 : materials
           }));
-        } else {
-          this.setState({ [dataSetName]: data });
         }
-      });
 
+      });
 
       FlooringLoadData[dataSetName](data => {
         if (idx === 0) {
@@ -854,16 +827,13 @@ class App extends Component {
   
     const longUrl = "https://www.payette.com/kaleidoscope/?" + urlVar.toString();
     const shortUrl = await this.shortUrl(longUrl);
-    this.setState({ shareableUrl: shortUrl, isCopied: false }, () => {
+    this.setState({
+      shareableUrl: shortUrl,
+    }, () => {
+      console.log(this.state.shareableUrl);
       this.materialsDialogRef.show();
-
-      setTimeout(() => {
-        this.selectText();
-        this.copyToClipboard(shortUrl); 
-      }, 80);
+      setTimeout(this.selectText, 100); 
     });
-
-
   }
   
   async shortUrl(longUrl) {
@@ -1156,34 +1126,28 @@ class App extends Component {
   //   copy(this.state.shareableUrl);
   // };
 
-  copyToClipboard = async (text = this.state.shareableUrl) => {
-    const value = (text || "").trim();
-    if (!value) return;
-
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(value);
-      } else {
-        const el = document.createElement("textarea");
-        el.value = value;
-        el.setAttribute("readonly", "");
-        el.style.position = "fixed";
-        el.style.left = "-9999px";
-        el.style.top = "0";
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand("copy");
-        document.body.removeChild(el);
-      }
-
-
+  copyToClipboard = () => {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(this.state.shareableUrl)
+        .then(() => {
+          this.setState({ isCopied: true });
+          setTimeout(() => this.setState({ isCopied: false }), 2000); // 2秒后重置
+        })
+        .catch(err => {
+          console.error("Could not copy text: ", err);
+        });
+    } else {
+      // 备选方案
+      const el = document.createElement('textarea');
+      el.value = this.state.shareableUrl;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
       this.setState({ isCopied: true });
-    } catch (err) {
-      console.error("Could not copy text: ", err);
+      setTimeout(() => this.setState({ isCopied: false }), 2000); 
     }
   };
-
-
 
   selectText = () => {
     const textElement = document.getElementById('shareableUrlText');
@@ -1372,16 +1336,16 @@ class App extends Component {
 
             <br></br>
             <button
-              onClick={() => this.copyToClipboard()}
+              onClick={this.copyToClipboard}
               style={{
                 borderRadius: "8px",
                 padding: "8px",
-                color: "#00d362"
+                backgroundColor: this.state.isCopied ? "#dc1a55" : "" ,
+                color: this.state.isCopied ? "white" : "" 
               }}
             >
-              {this.state.isCopied ? "Short URL Copied √" : "Short URL"}
+              {this.state.isCopied ? "Copied!" : "Short URL"} 
             </button>
-
           </span>
         </Dialog>  
 
@@ -1418,7 +1382,7 @@ class App extends Component {
           </div>
           
           <Helmet>
-            <script type="text/javascript" src="loadBigfoot0.js"></script>
+            <script type="text/javascript" src="loadBigfoot1.js"></script>
           </Helmet>
           <div  >
             <form  >
@@ -1526,7 +1490,7 @@ class App extends Component {
 
               {/* Envelope Calculator */}
               <div  style={{ display: "inline-block", width: "100%" }}>
-                <h1 style={{ color: "#dc1a55" }}>ENVELOPE CALCULATOR</h1>
+                <h1>ENVELOPE CALCULATOR</h1>
                 <div className={styles.calc} style={{ minHeight: '60px', width: '95%', display: "block" }} data-step="6" data-position="right" data-intro='Calculate carbon impact of design options' >
 
                   <div style={{ margin: "auto",display: "flex"  }}>
@@ -1546,7 +1510,6 @@ class App extends Component {
                   {this.state.rows.map((row, idx) => {
                     return (
                       <Row 
-                        units={unitsForType(SYSTEM_TYPE_ENVELOPES)}
                         materialList={materialListEnvelope}
                         key={idx}
                         value={row.value}
@@ -1615,7 +1578,7 @@ class App extends Component {
           </div>
 
           <Helmet>
-            <script type="text/javascript" src="loadBigfoot1.js"></script>
+            <script type="text/javascript" src="loadBigfoot3.js"></script>
           </Helmet>
           <form>
             <h1>INSULATION ASSEMBLIES</h1>
@@ -1645,7 +1608,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup}>
+              <div className={styles.inputgroup} style={{ minHeight: '161px' }}>
                 <h3>LIFESPAN</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="tenY" name="lifespan" value="tenY" checked={this.state.lifespan === "tenY"} onChange={this.handleInputChange} />
@@ -1661,7 +1624,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup}>
+              <div className={styles.inputgroup} style={{ minHeight: '161px' }}>
                 <h3>BIOGENIC CARBON</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked={this.state.biogenicCarbon === "yBio"} onChange={this.handleInputChange} />
@@ -1717,7 +1680,7 @@ class App extends Component {
               )}
 
               <div style={{ display: "inline-block", width: "100%" }}>
-                <h1 style={{ color: "#dc1a55" }}>INSULATION CALCULATOR</h1>
+                <h1>INSULATION CALCULATOR</h1>
                 <div className={styles.calc} style={{ minHeight: '60px', width: '95%', display: "block" }}>
 
                   <div style={{ margin: "auto",display: "flex"  }}>
@@ -1735,10 +1698,7 @@ class App extends Component {
                   {this.state.rows.map((row, idx) => {
                     return (
                       <Row
-                        units={unitsForType(SYSTEM_TYPE_INSULATION)}
                         materialList={materialListInsulation}
-                        rPerInchByMaterial={this.state.insulation_rPerInchByMaterial}
-                        isInsulation={true}
                         key={idx}
                         value={row.value}
                         checked={row.checked}
@@ -1775,7 +1735,7 @@ class App extends Component {
                     <img src={require('./images/System_Boundary-insulation.png')} alt="Material Breakdown" style={{ marginRight: "30px", width: "600px" }} />
                     <div style={{ maxWidth: "400px", marginLeft: "20px" }}>
                     <h3 style={{ fontWeight: "normal" }}>INSULATION SYSTEM BOUNDARY</h3>
-                      <p>All insulation types use a 5’ x 5’ system boundary with the thickness adjusted for each to have the same R-value of R-1. It does not include any additional envelope, partition, roof, or foundation assembly materials. See assumptions in assembly details for more information. Data is presented in square feet per R-1. An additional lens is provided to view the data based on compliance with Payette’s Material Health Policy.</p>
+                      <p>--------------------------</p>
                     </div>
                   </div>
 
@@ -1796,7 +1756,7 @@ class App extends Component {
           </div>
 
           <Helmet>
-            <script type="text/javascript" src="loadBigfoot2.js"></script>
+            <script type="text/javascript" src="loadBigfoot4.js"></script>
           </Helmet>
           <form>
             <h1>PARTITIONS ASSEMBLIES</h1>
@@ -1830,7 +1790,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup}>
+              <div className={styles.inputgroup} style={{ minHeight: '161px' }} >
                 <h3>LIFESPAN</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="tenY" name="lifespan" value="tenY" checked={this.state.lifespan === "tenY"} onChange={this.handleInputChange} />
@@ -1846,7 +1806,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup}>
+              <div className={styles.inputgroup} style={{ minHeight: '161px' }}>
                 <h3>BIOGENIC CARBON</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked={this.state.biogenicCarbon === "yBio"} onChange={this.handleInputChange} />
@@ -1903,7 +1863,7 @@ class App extends Component {
               />)}
 
               <div style={{ display: "inline-block", width: "100%" }}>
-                <h1 style={{ color: "#dc1a55" }}>PARTITIONS CALCULATOR</h1>
+                <h1>PARTITIONS CALCULATOR</h1>
                 <div className={styles.calc} style={{ minHeight: '60px', width: '95%', display: "block" }}>
 
                   <div style={{ margin: "auto",display: "flex"  }}>
@@ -2019,7 +1979,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup}>
+              <div className={styles.inputgroup} style={{ minHeight: '161px' }}>
                 <h3>LIFESPAN</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="tenY" name="lifespan" value="tenY" checked={this.state.lifespan === "tenY"} onChange={this.handleInputChange} />
@@ -2035,7 +1995,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup}>
+              <div className={styles.inputgroup} style={{ minHeight: '161px' }}>
                 <h3>BIOGENIC CARBON</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked={this.state.biogenicCarbon === "yBio"} onChange={this.handleInputChange} />
@@ -2089,7 +2049,7 @@ class App extends Component {
               />}
 
               <div style={{ display: "inline-block", width: "100%" }}>
-                <h1 style={{ color: "#dc1a55" }}>WALL FINISH CALCULATOR</h1>
+                <h1>WALL FINISH CALCULATOR</h1>
                 <div className={styles.calc} style={{ minHeight: '60px', width: '95%', display: "block" }}>
 
                   <div style={{ margin: "auto",display: "flex"  }}>
@@ -2107,7 +2067,6 @@ class App extends Component {
                   {this.state.rows.map((row, idx) => {
                     return (
                       <Row
-                        units={unitsForType(SYSTEM_TYPE_WALL)}
                         materialList={materialListWall}
                         key={idx}
                         value={row.value}
@@ -2166,7 +2125,7 @@ class App extends Component {
           </div>
 
           <Helmet>
-            <script type="text/javascript" src="loadBigfoot4.js"></script>
+            <script type="text/javascript" src="loadBigfoot3.js"></script>
           </Helmet>
           <form>
             <h1>CEILING ASSEMBLIES</h1>
@@ -2200,7 +2159,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup}>
+              <div className={styles.inputgroup} style={{ minHeight: '161px' }}>
                 <h3>LIFESPAN</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="tenY" name="lifespan" value="tenY" checked={this.state.lifespan === "tenY"} onChange={this.handleInputChange} />
@@ -2216,7 +2175,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup}>
+              <div className={styles.inputgroup} style={{ minHeight: '161px' }}>
                 <h3>BIOGENIC CARBON</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked={this.state.biogenicCarbon === "yBio"} onChange={this.handleInputChange} />
@@ -2270,7 +2229,7 @@ class App extends Component {
               />}
 
               <div style={{ display: "inline-block", width: "100%" }}>
-                <h1 style={{ color: "#dc1a55" }}>CEILINGS CALCULATOR</h1>
+                <h1>CEILINGS CALCULATOR</h1>
                 <div className={styles.calc} style={{ minHeight: '60px', width: '95%', display: "block" }}>
 
                   <div style={{ margin: "auto",display: "flex"  }}>
@@ -2288,7 +2247,6 @@ class App extends Component {
                   {this.state.rows.map((row, idx) => {
                     return (
                       <Row
-                        units={unitsForType(SYSTEM_TYPE_CEILINGS)}
                         materialList={materialListCeilings}
                         key={idx}
                         value={row.value}
@@ -2347,7 +2305,7 @@ class App extends Component {
           </div>
 
           <Helmet>
-            <script type="text/javascript" src="loadBigfoot5.js"></script>
+            <script type="text/javascript" src="loadBigfoot2.js"></script>
           </Helmet>
           <form>
             <h1>FLOOR ASSEMBLIES</h1>
@@ -2381,7 +2339,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup}>
+              <div className={styles.inputgroup} style={{ minHeight: '161px' }}>
                 <h3>LIFESPAN</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="tenY" name="lifespan" value="tenY" checked={this.state.lifespan === "tenY"} onChange={this.handleInputChange} />
@@ -2397,7 +2355,7 @@ class App extends Component {
                 </div>
               </div>
 
-              <div className={styles.inputgroup}>
+              <div className={styles.inputgroup} style={{ minHeight: '161px' }}>
                 <h3>BIOGENIC CARBON</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="yBio" name="biogenicCarbon" value="yBio" checked={this.state.biogenicCarbon === "yBio"} onChange={this.handleInputChange} />
@@ -2451,7 +2409,7 @@ class App extends Component {
               />}
 
               <div style={{ display: "inline-block", width: "100%" }}>
-                <h1 style={{ color: "#dc1a55" }}>FLOORING CALCULATOR</h1>
+                <h1>FLOORING CALCULATOR</h1>
                 <div className={styles.calc} style={{ minHeight: '60px', width: '95%', display: "block" }}>
 
                   <div style={{ margin: "auto",display: "flex"  }}>
@@ -2469,7 +2427,6 @@ class App extends Component {
                   {this.state.rows.map((row, idx) => {
                     return (
                       <Row
-                        units={unitsForType(SYSTEM_TYPE_FLOORING)}
                         materialList={materialListFlooring}
                         key={idx}
                         value={row.value}

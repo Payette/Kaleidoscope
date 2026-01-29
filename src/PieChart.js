@@ -17,7 +17,7 @@ const NO_PATTERN = 'transparent';
 const white = '#fff';
 const usage = d => d.usage;
 const frequency = d => d.frequency;
-export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdown2, currentMat, tenYGWP, sixty1YGWP, sixty2YGWP, GWPSel, cols, materialNames, materialLabel }) => {
+export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdown2, currentMat, tenYGWP, sixty1YGWP, sixty2YGWP, GWPSel, cols, materialNames, materialLabel,gwpUnit = "kgCO₂eq/sf", }) => {
 
   const [smallPop, setSmallPop] = useState(1);
   const [screenWidth, setScreenWidth] = useState(0);
@@ -194,7 +194,7 @@ export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdo
                     pointY = point.y;
                     // console.log(point);
                     // console.log(arc.data.label)
-                    textToShow = arc.data.label + ": " + matsAbs[i].mUsageAbs.toFixed(2) + " kgCO₂eq/sf";
+                    textToShow = arc.data.label + ": " + matsAbs[i].mUsageAbs.toFixed(2) + " " + gwpUnit;
                     document.getElementById("textLabel").innerHTML = textToShow
                     // myText = textToShow;
                     displayText = 1;
@@ -249,7 +249,7 @@ export default ({ width, height, margin, matBreakdown, matBreakdown1, matBreakdo
         fontWeight={300}
         pointerEvents="none"
       >
-        kgCO₂eq/sf
+        {gwpUnit}
       </text>
       <text
         textAnchor="middle"

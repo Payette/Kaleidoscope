@@ -11,7 +11,7 @@ import { localPoint } from '@vx/event';
 import * as d3 from 'd3';
 import styles from './css/StackedBarChart.module.scss';
 import { GridRows, GridColumns } from '@vx/grid';
-import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_PARTITIONS, SYSTEM_TYPE_ENVELOPES, SYSTEM_TYPE_WALL } from './CommonUtil';
+import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_PARTITIONS, SYSTEM_TYPE_ENVELOPES, SYSTEM_TYPE_WALL,SYSTEM_TYPE_INSULATION } from './CommonUtil';
 import { useEffect, useState } from 'react';
 
 
@@ -25,6 +25,7 @@ export default withTooltip(({
   allMaterials,
   xAxisLabel,
   currentChart,
+  unitTrail,
   events = false,
   margin = {
     top: 40,
@@ -97,10 +98,10 @@ export default withTooltip(({
   const keys = Object.keys(selectedMaterials[0]).filter(d => d !== 'material' && d !== 'type' && d !== 'name' && d !== 'img');
 
 
-  const allMaterialTotals = allMaterials.reduce((ret, cur) => {
+  const materialTotals = selectedMaterials.reduce((ret, cur) => {
     const t = keys.reduce((dailyTotal, k) => {
       if (Math.abs(cur[k]) == (cur[k])) {
-        dailyTotal += + Math.abs(cur[k]);
+        dailyTotal += +Math.abs(cur[k]);
       }
       return dailyTotal;
     }, 0);
@@ -112,7 +113,7 @@ export default withTooltip(({
   // console.log(selectedMaterials)
 
   let currentBiggest = 1;
-  let trail = "(kgCO2eq/sf)";
+  let trail = unitTrail ?? "(kgCO2eq/sf)";
 
 
   for (let i = 0; i < selectedMaterials.length; i++) {
@@ -138,10 +139,14 @@ export default withTooltip(({
 
 
 
-  let multiplier = 100.0 / currentBiggest;
+  let multiplier = 1;
+  if (currentChart !== "allImpacts") {
+    multiplier = 100.0 / currentBiggest;
+  }
+
   // console.log(multiplier);
 
-  const allMaterialTotalsMin = allMaterials.reduce((ret, cur) => {
+  const materialTotalsMin = selectedMaterials.reduce((ret, cur) => {
     const t = keys.reduce((dailyTotal, k) => {
       if (Math.abs(cur[k]) != (cur[k])) {
         dailyTotal -= Math.abs(cur[k]);
@@ -197,8 +202,8 @@ export default withTooltip(({
 
   let xScale = scaleLinear({
     domain: [
-      Math.min(...allMaterialTotalsMin),
-      Math.max(...allMaterialTotals)
+      Math.min(...materialTotalsMin),
+      Math.max(...materialTotals)
     ],
     nice: true
   });
@@ -230,8 +235,8 @@ export default withTooltip(({
 
     xScale = scaleLinear({
       domain: [
-        Math.min(...allMaterialTotalsMin),
-        100
+        Math.min(...materialTotalsMin),
+        Math.max(...materialTotals)
       ],
       nice: true
     });
@@ -342,7 +347,15 @@ export default withTooltip(({
                     myAbb = "(SC)";
                   }
                 }
-      
+                if (type === SYSTEM_TYPE_INSULATION) {
+                  if (sm.key[0] === "B" && sm.key[1] === "l") {
+                    myAbb = "(BL)";
+                  } else if (sm.key[0] === "B"&& sm.key[1] === "o") {
+                    myAbb = "(BD)";
+                  } else if (sm.key[0] === "B" && sm.key[1] === "a") {
+                    myAbb = "(BT)";
+                  }
+                }
 
                 //  let ShallowCopy = _.cloneDeep(sm);
                 //  let odashCloneDeep = 
@@ -444,13 +457,13 @@ export default withTooltip(({
 
 
               <line className={styles.groupLine} x1={-margin.left + margin.smallGap} y1={previousY} x2={width2 - margin.left - 2 * margin.smallGap} y2={previousY} strokeWidth="3" strokeDasharray="0 6" strokeLinecap="round" />
-              <AxisBottom left={-smallWindow} top={(previousY - 7)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({ fill: textColor, class:"chartText14", textAnchor: 'middle' })} labelProps={{
+              <AxisBottom left={-smallWindow} top={(previousY - 7)} scale={xScale} tickFormat={(v) => Number(v).toFixed(1)} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({ fill: textColor, class:"chartText14", textAnchor: 'middle' })} labelProps={{
                 class:"chartText18",
                 textAnchor: 'middle',
                 fill: textColor,
                 dy: '0.8em'
               }} />
-              <AxisTop left={-smallWindow} top={(3)} scale={xScale} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({ fill: textColor, class:"chartText14", verticalAnchor: 'end', textAnchor: 'middle' })} labelProps={{
+              <AxisTop left={-smallWindow} top={(3)} scale={xScale} tickFormat={(v) => Number(v).toFixed(1)} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({ fill: textColor, class:"chartText14", verticalAnchor: 'end', textAnchor: 'middle' })} labelProps={{
                 class:"chartText18",
                 textAnchor: 'middle',
                 //verticalAnchor: 'bottom',

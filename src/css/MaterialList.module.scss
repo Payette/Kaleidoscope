@@ -56,6 +56,40 @@ label{
   // display: block;
 }
 
+.inlineOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0.75rem 0 1rem 0;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  font-weight: 400;
+  color: #000;
+  cursor: pointer;
+
+  input[type="radio"] {
+    margin: 0;
+  }
+
+  input[type="radio"]:checked + & {
+    font-weight: 700;
+  }
+}
+
+
+
+
+.assumptions {
+  margin-top: 16px;
+  font-size: 13px;
+}
+
+
 
 .mLabel{
   white-space:pre-line;
@@ -97,7 +131,7 @@ label{
 }
 
 //important to change the outlet in ipad mini/air/pro material list layout
-@media  (min-width: 700px) and (min-height: 700px)  {
+@media  (min-width: 700px) and (min-height: 650px)  {
   .container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -191,3 +225,223 @@ label{
 
 }
 
+.clickableName{
+  cursor: pointer;
+  display: inline-block;
+  padding-bottom: 2px;
+}
+
+.moreInformationButton:hover .clickableName,
+.moreInformationButton:focus-visible .clickableName{
+  text-decoration: underline;
+  text-decoration-color: #fcd04b;     
+  text-decoration-thickness: 3px;
+  text-underline-offset: 3px;
+}
+
+
+/* 用于定位的包裹层 */
+.dialogBody {
+  position: relative;
+  overflow: visible;
+}
+
+/* 左右箭头通用样式：固定在视口中部，不受 dialog 内容高度影响 */
+.dialogNavBtn {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100000; /* 压过弹窗内容 */
+
+  width: 88px;
+  height: 88px;
+  border: none;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 88px;
+  line-height: 1;
+  font-weight: 700;
+
+  cursor: pointer;
+  user-select: none;
+
+  background: rgba(255, 255, 255, 0.0);
+  color: rgba(0, 0, 0, 0.45);
+}
+
+/* 放在弹窗“外侧”的左右两边（靠近窗口中部） */
+.dialogNavLeft {
+  left: -100px;
+}
+
+.dialogNavRight {
+  right: -120px;
+}
+
+/* 小屏幕适配 */
+@media (max-width: 900px) {
+  .dialogNavBtn {
+    width: 64px;
+    height: 64px;
+    font-size: 64px;
+  }
+  .dialogNavLeft { left: -12px; }
+  .dialogNavRight { right: -12px; }
+}
+
+/* ========= Hover / Focus 效果 ========= */
+
+.dialogNavBtn {
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+/* 鼠标 hover */
+.dialogNavBtn:hover {
+  color: rgba(0, 0, 0, 0.8);            /* 箭头更深 */
+  transform: translateY(-50%) scale(1.08);
+
+}
+
+/* 键盘 focus（无障碍 + 顺便更专业） */
+.dialogNavBtn:focus-visible {
+  outline: none;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+
+.dialogShell {
+  position: relative;
+}
+
+.dialogBody {
+  position: relative;
+  padding: 24px 32px;
+}
+
+.dialogTitle {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.hoverHint {
+  margin: 8px 0 16px;
+  font-size: 14px;
+}
+
+.dialogMain {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* 让 dialog 内容允许溢出，否则箭头放到外侧会被裁掉 */
+:global(.dialog),
+:global(.dialog-content) {
+  position: relative;
+  overflow: visible !important;
+}
+
+:global(.dialog-overlay) {
+  overflow: visible !important;
+}
+
+/* 所有弹窗整体缩小 20%：优先用 zoom（会改变布局尺寸） */
+:global(.dialog-content--scaled) {
+  transform-origin: top center;
+}
+
+@supports (zoom: 1){
+  :global(.dialog-content--scaled){ zoom: 0.6; }
+
+  @media (min-width: 2200px) and (min-height: 950px){
+    :global(.dialog-content--scaled){ zoom: 0.7; }
+  }
+
+  @media (min-width: 2800px) and (min-height: 1200px){
+    :global(.dialog-content--scaled){ zoom: 0.8; }
+  }
+}
+
+@supports not (zoom: 1){
+  :global(.dialog-content--scaled){
+    transform: scale(0.6);
+    transform-origin: top left;
+  }
+}
+
+
+
+/* 让“外层”不要把内容垂直居中 */
+:global(.dialog--compact) {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  box-sizing: border-box;
+}
+
+
+
+:global(.dialog-content--compact) {
+  height: auto !important;
+  max-height: 0 !important; /* 给上下留边 */
+  overflow: visible !important;              /* 你说不想滚轴 */
+}
+
+
+
+:global(.dialog-close) {
+  /* 更大的点击热区 */
+  width: 44px;
+  height: 44px;
+
+  /* 视觉大小 */
+  font-size: 50px;
+  line-height: 2;
+
+  /* 更好点的按钮外观 */
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  user-select: none;
+
+  color: rgba(0, 0, 0, 0.45);
+
+  transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+:global(.dialog-close:hover) {
+  color: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.04);
+  transform: scale(1.06);
+}
+
+:global(.dialog-close:focus-visible) {
+  outline: 2px solid rgba(0, 0, 0, 0.25);
+  outline-offset: 2px;
+}
+
+
+.inlineOptions{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.inlineOptions > h4{
+  flex: 0 0 100%;
+  margin: 0 0 10px 0;
+}
