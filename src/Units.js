@@ -37,3 +37,4 @@ export const unitsForType = (type) => {
     if (type === SYSTEM_TYPE_INSULATION) return UNIT_PRESETS.R_SF;
   return UNIT_PRESETS.SF;
 };
+
