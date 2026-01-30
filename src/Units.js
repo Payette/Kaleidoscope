@@ -5,8 +5,8 @@ import { SYSTEM_TYPE_INSULATION } from "./CommonUtil";
 export const UNIT_PRESETS = {
   SF: {
     qtyLabel: "Square Feet",
-    qtyTotalHtml: "sf²",
-    qtyCsv: "sf²",
+    qtyTotalHtml: "sf",
+    qtyCsv: "sf",
     gwpUnit: "kgCO₂eq/sf",
     gwpAxisHtml: "kgCO₂eq/sf",
     gwpTrail: "(kgCO2eq/sf)",
@@ -23,8 +23,8 @@ export const UNIT_PRESETS = {
   },
   R_SF: {
     qtyLabel: "Square Feet",
-    qtyTotalHtml: "sf²",
-    qtyCsv: "sf²",
+    qtyTotalHtml: "sf",
+    qtyCsv: "sf",
     gwpUnit: "kgCO₂eq/sf per R-1",
     gwpAxisHtml: "kgCO₂eq/sf per R-1",
     gwpTrail: "(kgCO2eq/sf per R-1)",
