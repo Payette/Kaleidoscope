@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Kaleidoscope/static/css/main.31b53bc0.chunk.css",
-    "main.js": "/Kaleidoscope/static/js/main.fc73da8d.chunk.js",
-    "main.js.map": "/Kaleidoscope/static/js/main.fc73da8d.chunk.js.map",
+    "main.js": "/Kaleidoscope/static/js/main.3ba6db92.chunk.js",
+    "main.js.map": "/Kaleidoscope/static/js/main.3ba6db92.chunk.js.map",
     "runtime-main.js": "/Kaleidoscope/static/js/runtime-main.341e727f.js",
     "runtime-main.js.map": "/Kaleidoscope/static/js/runtime-main.341e727f.js.map",
     "static/css/2.119f37bc.chunk.css": "/Kaleidoscope/static/css/2.119f37bc.chunk.css",
@@ -13,7 +13,7 @@
     "static/js/4.c1e6b86d.chunk.js": "/Kaleidoscope/static/js/4.c1e6b86d.chunk.js",
     "static/js/4.c1e6b86d.chunk.js.map": "/Kaleidoscope/static/js/4.c1e6b86d.chunk.js.map",
     "index.html": "/Kaleidoscope/index.html",
-    "precache-manifest.a9b5f11e715ecad40679e2e484e2e8f5.js": "/Kaleidoscope/precache-manifest.a9b5f11e715ecad40679e2e484e2e8f5.js",
+    "precache-manifest.0618af5caa26af743440e15c34318016.js": "/Kaleidoscope/precache-manifest.0618af5caa26af743440e15c34318016.js",
     "service-worker.js": "/Kaleidoscope/service-worker.js",
     "static/css/2.119f37bc.chunk.css.map": "/Kaleidoscope/static/css/2.119f37bc.chunk.css.map",
     "static/css/main.31b53bc0.chunk.css.map": "/Kaleidoscope/static/css/main.31b53bc0.chunk.css.map",
@@ -176,6 +176,6 @@
     "static/css/2.119f37bc.chunk.css",
     "static/js/2.4537c971.chunk.js",
     "static/css/main.31b53bc0.chunk.css",
-    "static/js/main.fc73da8d.chunk.js"
+    "static/js/main.3ba6db92.chunk.js"
   ]
 }
