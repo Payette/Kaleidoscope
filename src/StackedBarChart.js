@@ -235,24 +235,34 @@ export default withTooltip(({
 
     xScale = scaleLinear({
       domain: [
-        Math.min(...materialTotalsMin),
-        Math.max(...materialTotals)
+        Math.min(...materialTotalsMin), // 如果你 allImpacts 也有负数，就保留它
+        100                              // 正向固定 100%
       ],
-      nice: true
+      nice: false
     });
   }
+
 
 
   let tooltipTimeout;
 
 
   return (<ParentSize>
+
+
     {
       ({ width: w }) => {
         if(w === 0) {
           // not initialized yet...
           return null;
         }
+
+
+        // allImpacts 不要小数；其它图表保留 1 位小数
+        const axisTickFormat = (v) =>
+          currentChart === "allImpacts"
+            ? String(Math.round(Number(v)))
+            : Number(v).toFixed(1);
 
         let width2 = Math.max(300, w) - 20;
         const xMax = width2*longBar;
@@ -457,13 +467,13 @@ export default withTooltip(({
 
 
               <line className={styles.groupLine} x1={-margin.left + margin.smallGap} y1={previousY} x2={width2 - margin.left - 2 * margin.smallGap} y2={previousY} strokeWidth="3" strokeDasharray="0 6" strokeLinecap="round" />
-              <AxisBottom left={-smallWindow} top={(previousY - 7)} scale={xScale} tickFormat={(v) => Number(v).toFixed(1)} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({ fill: textColor, class:"chartText14", textAnchor: 'middle' })} labelProps={{
+              <AxisBottom left={-smallWindow} top={(previousY - 7)} scale={xScale} tickFormat={axisTickFormat} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({ fill: textColor, class:"chartText14", textAnchor: 'middle' })} labelProps={{
                 class:"chartText18",
                 textAnchor: 'middle',
                 fill: textColor,
                 dy: '0.8em'
               }} />
-              <AxisTop left={-smallWindow} top={(3)} scale={xScale} tickFormat={(v) => Number(v).toFixed(1)} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({ fill: textColor, class:"chartText14", verticalAnchor: 'end', textAnchor: 'middle' })} labelProps={{
+              <AxisTop left={-smallWindow} top={(3)} scale={xScale} tickFormat={axisTickFormat} stroke={textColor} tickStroke={textColor} hideAxisLine={true} hideTicks={true} label={xAxisLabel} tickLabelProps={(value, index) => ({ fill: textColor, class:"chartText14", verticalAnchor: 'end', textAnchor: 'middle' })} labelProps={{
                 class:"chartText18",
                 textAnchor: 'middle',
                 //verticalAnchor: 'bottom',

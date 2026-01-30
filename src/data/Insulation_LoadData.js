@@ -102,63 +102,54 @@ const metaData = {
     ],
     blCellulose: [
         "Typically includes flame retardants",
-        "Use mineral wool to avoid these concerns",
-        "Could contain insecticides"
+        "Use mineral based instead of halogenated/organophosphate"
     ],
     bdXPSlegacy: [
         "Includes halogenated flame retardants",
-        "Can also contain PFAS as a blowing agent",
-        "Potential off-gassing hazard during installation and beyond"
+        "Can also contain PFAS as a blowing agent"
     ],
     bdXPS60: [
         "Includes halogenated flame retardants",
-        "Can also contain PFAS as a blowing agent",
-        "Potential off-gassing hazard during installation and beyond"
+        "Can also contain PFAS as a blowing agent"
     ],
     bdMinWoolHighDens: [
-        "Inert, generally safe"
+        "Specify formaldehyde-free insulation"
     ],
     bdXPS40: [
         "Includes halogenated flame retardants",
-        "Can also contain PFAS as a blowing agent",
-        "Potential off-gassing hazard during installation and beyond"
+        "Can also contain PFAS as a blowing agent"
     ],
     bdXPS25: [
         "Includes halogenated flame retardants",
-        "Can also contain PFAS as a blowing agent",
-        "Potential off-gassing hazard during installation and beyond"
+        "Can also contain PFAS as a blowing agent"
     ],
     bdEPS: [
         "Includes halogenated flame retardants",
         "Could contain insecticides"
     ],
     bdPolyiso: [
-        "Often includes halogenated flame retardants",
-        "Potential off-gassing hazard during installation and beyond"
+        "Typically Includes halogenated flame retardants",
+        "Specify halogen-free boards 'NH'"
     ],
     btGlassWoolFoil: [
-        "Typically contains flame retardants in the adhesive and foil facer",
-        "Glass fibers can be irritating to skin and lungs"
+        "Specify formaldehyde-free insulation",
+        "Faced products may contain flame retardants"
     ],
     btSheepWool: [
-        "Inert, generally safe",
-        "Could contain insecticides"
+        "Typically includes mineral based flame retardants"
     ],
     btMinWoolLowDens: [
-        "Inert, generally safe",
-        "Potential skin/lung irritation from mineral fibers"
+        "Specify formaldehyde-free insulation"
     ],
     btGlassWoolPaper: [
-        "Typically contains flame retardants in the adhesive and paper facer",
-        "Glass fibers can be irritating to skin and lungs"
+        "Specify formaldehyde-free insulation",
+        "Faced products may contain flame retardants"
     ],
     btGlassWool: [
-        "Inert, generally safe",
-        "Glass fibers can be irritating to skin and lungs"
+        "Specify formaldehyde-free insulation"
     ],
     btGlassWoolLowGWP: [
-        "Inert, generally safe",
-        "Glass fibers can be irritating to skin and lungs"
+        "Specify formaldehyde-free insulation"
     ]
   },
 
@@ -169,20 +160,22 @@ const metaData = {
     blSprayClosedHFO: "closed cell HFO spray polyurethane (PU) foam, 0.16 inches thick for R-1",
     blSprayOpen: "open cell spray polyurethane (PU) foam, 0.28 inches thick for R-1",
     blCellulose: "blown cellulose, 0.27 inches thick for R-1",
-    bdXPSlegacy: "XPS/extruded polystyrene, legacy HFC blowing agent, 0.20 inches thick for R-1",
-    bdXPS60: "XPS/extruded polystyrene, HFO blowing agent, 0.20 inches thick for R-1",
-    bdMinWoolHighDens: "rigid mineral wool board insulation, 0.26 inches thick for R-1",
-    bdXPS40: "XPS/extruded polystyrene, HFO blowing agent, 0.20 inches thick for R-1",
-    bdXPS25: "XPS/extruded polystyrene, HFO blowing agent, 0.20 inches thick for R-1",
-    bdEPS: "expanded polystyrene (EPS), 0.26 inches thick for R-1",
-    bdPolyiso: "polyiso/polyisocyanurate rigid board insulation, 0.17 inches thick for R-1",
-    btGlassWoolFoil: "glass wool batt, foil faced, 0.29 inches thick for R-1",
-    btSheepWool: "sheep wool batt insulation, 0.23 inches thick for R-1",
-    btMinWoolLowDens: "mineral wool batt insulation, 0.26 inches thick for R-1",
-    btGlassWoolPaper: "glass wool batt, paper faced, 0.29 inches thick for R-1",
-    btGlassWool: "glass wool batt insulation, 0.29 inches thick for R-1",
-    btGlassWoolLowGWP: "glass wool batt insulation, low GWP, 0.29 inches thick for R-1",
+    bdXPSlegacy: "XPS/extruded polystyrene, legacy HFC blowing agents, 30 psi, 0.20 inches thick for R-1",
+    bdXPS60: "XPS/extruded polystyrene with low GWP blowing agents, 60 psi, 0.20 inches thick for R-1 (EPD specific)",
+    bdMinWoolHighDens: "high density mineral wool board, 0.24 inches thick for R-1",
+    bdXPS40: "XPS/extruded polystyrene with low GWP blowing agents, 40 psi, 0.20 inches thick for R-1 (EPD specific)",
+    bdXPS25: "XPS/extruded polystyrene with low GWP blowing agents, 25 psi, 0.20 inches thick for R-1 (EPD specific)",
+    bdEPS: "EPS/expanded polystyrene, 0.25 inches thick for R-1",
+    bdPolyiso: "polyiso/polyisocyanurate with glass fiber reinforced facer, 0.17 inches thick for R-1",
+    btGlassWoolFoil: "foil faced glass wool, 0.32 inches thick for R-1",
+    btSheepWool: "sheep's wool, 0.28 inches thick for R-1 (EPD specific)",
+    btMinWoolLowDens: "low density mineral wool board, 0.27 inches thick for R-1",
+    btGlassWoolPaper: "paper faced glass wool, 0.32 inches thick for R-1",
+    btGlassWool: "unfaced glass wool, 0.32 inches thick for R-1",
+    btGlassWoolLowGWP: "unfaced low carbon glass wool, 0.32 inches thick for R-1",
   },
+
+
 
   // modal popup text
   materialNotes: {
@@ -217,93 +210,109 @@ const metaData = {
     bdXPSlegacy: [
       "Data in square feet per R-1 at 0.20 inches thick",
       "Insulation R-5 per inch",
+      "Compressive strength 30 psi",
+      "Check your jurisdiction to see if the use of HFC-134a blowing agents are banned", 
       "The rest of any assembly is not included in LCA calculations",
       "Service life set to Tally default of 75 years",
-      "If assembly gets replaced consider B4 impacts",
+      "If assembly gets replaced consider B4 impacts"
     ],
     bdXPS60: [
       "Data in square feet per R-1 at 0.20 inches thick",
       "Insulation R-5 per inch",
+      "Compressive strength 60 psi",
+      "Low GWP blowing agents free of HFC-134a",
       "The rest of any assembly is not included in LCA calculations",
-      "Service life set to Tally default of 75 years",
+      "Service life set to EPD 75 years",
       "If assembly gets replaced consider B4 impacts",
+      "Data from product-specific EPD: Foamular NGX XPS Insulation, Date of issue: January 1, 2021"
     ],
     bdMinWoolHighDens: [
-      "Data in square feet per R-1 at 0.26 inches thick",
-      "Insulation R-3.8 per inch",
+      "Data in square feet per R-1 at 0.24 inches thick",
+      "Insulation R-4.2 per inch",
       "The rest of any assembly is not included in LCA calculations",
       "Service life set to Tally default of 75 years",
-      "If assembly gets replaced consider B4 impacts",
+      "If assembly gets replaced consider B4 impacts"
     ],
     bdXPS40: [
       "Data in square feet per R-1 at 0.20 inches thick",
       "Insulation R-5 per inch",
+      "Compressive strength 40 psi",
+      "Low GWP blowing agents free of HFC-134a",
       "The rest of any assembly is not included in LCA calculations",
-      "Service life set to Tally default of 75 years",
+      "Service life set to EPD of 75 years",
       "If assembly gets replaced consider B4 impacts",
+      "Data from product-specific EPD: Foamular NGX XPS Insulation, Date of issue: January 1, 2021"
     ],
     bdXPS25: [
       "Data in square feet per R-1 at 0.20 inches thick",
       "Insulation R-5 per inch",
+      "Compressive strength 25 psi",
+      "Low GWP blowing agents free of HFC-134a",
       "The rest of any assembly is not included in LCA calculations",
-      "Service life set to Tally default of 75 years",
+      "Service life set to EPD of 75 years",
       "If assembly gets replaced consider B4 impacts",
+      "Data from product-specific EPD: Foamular NGX XPS Insulation, Date of issue: January 1, 2021"
     ],
     bdEPS: [
-      "Data in square feet per R-1 at 0.26 inches thick",
-      "Insulation R-3.8 per inch",
+      "Data in square feet per R-1 at 0.25 inches thick",
+      "Insulation R-4 per inch",
       "The rest of any assembly is not included in LCA calculations",
       "Service life set to Tally default of 75 years",
-      "If assembly gets replaced consider B4 impacts",
+      "If assembly gets replaced consider B4 impacts"
     ],
     bdPolyiso: [
       "Data in square feet per R-1 at 0.17 inches thick",
       "Insulation R-5.8 per inch",
+      "R-value varies slightly with thickness due to facer, but is negligible in LCA scope",
       "The rest of any assembly is not included in LCA calculations",
       "Service life set to Tally default of 75 years",
-      "If assembly gets replaced consider B4 impacts",
+      "If assembly gets replaced consider B4 impacts"
     ],
     btGlassWoolFoil: [
-      "Data in square feet per R-1 at 0.29 inches thick",
-      "Insulation R-3.4 per inch",
+      "Data in square feet per R-1 at 0.32 inches thick",
+      "Insulation R-3.14 per inch",
+      "R-value varies slightly with thickness due to facer, but is negligible in LCA scope",
       "The rest of any assembly is not included in LCA calculations",
       "Service life set to Tally default of 75 years",
-      "If assembly gets replaced consider B4 impacts",
+      "If assembly gets replaced consider B4 impacts"
     ],
     btSheepWool: [
-      "Data in square feet per R-1 at 0.23 inches thick",
-      "Insulation R-4.4 per inch",
+      "Data in square feet per R-1 at 0.28 inches thick",
+      "Insulation R-3.62 per inch",
       "The rest of any assembly is not included in LCA calculations",
-      "Service life set to Tally default of 75 years",
+      "Service life set to EPD of 60 years",
       "If assembly gets replaced consider B4 impacts",
+      "Data from product-specific EPD: Havelock Wool Batt and Loose-Fill Insulation, Date of issue: June 5, 2020"
     ],
     btMinWoolLowDens: [
-      "Data in square feet per R-1 at 0.26 inches thick",
-      "Insulation R-3.8 per inch",
+      "Data in square feet per R-1 at 0.27 inches thick",
+      "Insulation R-3.7 per inch",
       "The rest of any assembly is not included in LCA calculations",
       "Service life set to Tally default of 75 years",
-      "If assembly gets replaced consider B4 impacts",
+      "If assembly gets replaced consider B4 impacts"
     ],
     btGlassWoolPaper: [
-      "Data in square feet per R-1 at 0.29 inches thick",
-      "Insulation R-3.4 per inch",
+      "Data in square feet per R-1 at 0.32 inches thick",
+      "Insulation R-3.14 per inch",
+      "R-value varies slightly with thickness due to facer, but is negligible in LCA scope",
       "The rest of any assembly is not included in LCA calculations",
       "Service life set to Tally default of 75 years",
-      "If assembly gets replaced consider B4 impacts",
+      "If assembly gets replaced consider B4 impacts"
     ],
     btGlassWool: [
-      "Data in square feet per R-1 at 0.29 inches thick",
-      "Insulation R-3.4 per inch",
+      "Data in square feet per R-1 at 0.32 inches thick",
+      "Insulation R-3.14 per inch",
       "The rest of any assembly is not included in LCA calculations",
       "Service life set to Tally default of 75 years",
-      "If assembly gets replaced consider B4 impacts",
+      "If assembly gets replaced consider B4 impacts"
     ],
     btGlassWoolLowGWP: [
-      "Data in square feet per R-1 at 0.29 inches thick",
-      "Insulation R-3.4 per inch",
+      "Data in square feet per R-1 at 0.32 inches thick",
+      "Insulation R-3.1 per inch",
       "The rest of any assembly is not included in LCA calculations",
       "Service life set to Tally default of 75 years",
       "If assembly gets replaced consider B4 impacts",
+      "Data from Tally based on Knauf EcoBatt"
     ],
   },
 

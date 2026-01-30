@@ -150,6 +150,10 @@ class App extends Component {
   }
 
   handleTabChange = (event, newValue) => {
+    if (newValue === TAB_INDEX_INSULATION && this.state.chartType === "MB") {
+      this.setState({ chartType: "GWP" });
+    }
+
     if (newValue === TAB_INDEX_ENVELOPES && !CHART_TYPES_ENVELOPES.includes(this.state.chartType)) {
       this.setState({ chartType: CHART_TYPES_ENVELOPES[0] })
     }
@@ -1430,7 +1434,7 @@ class App extends Component {
                   <h3>CHART TYPE</h3>
                   <div className={styles.inputitem}>
                     <input type="radio" id="GWP" value="GWP" name="chartType" checked={this.state.chartType === "GWP"} onChange={this.handleInputChange} />
-                    <label htmlFor="fGWP">Global Warming Potential <sup id="fnref:1"><a href="#fn:1" rel="footnote"></a></sup></label>
+                    <label htmlFor="GWP">Global Warming Potential <sup id="fnref:1"><a href="#fn:1" rel="footnote"></a></sup></label>
                   </div>
 
                   <div className={styles.inputitem}>
@@ -1524,6 +1528,14 @@ class App extends Component {
                 </div>
               </div>
 
+
+              
+
+            </div>
+            
+          </div>
+
+          <div className={styles.calcFullWidth}>
               {/* Envelope Calculator */}
               <div  style={{ display: "inline-block", width: "100%" }}>
                 <h1 style={{ color: "#dc1a55" }}>ENVELOPE CALCULATOR</h1>
@@ -1595,11 +1607,7 @@ class App extends Component {
                   </div>
 
 
-                  {footer}
-
-
-            </div>
-            
+                  {footer}            
           </div>
 
 
@@ -1625,7 +1633,7 @@ class App extends Component {
                 <h3>CHART TYPE</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="GWP" value="GWP" name="chartType" checked={this.state.chartType === "GWP"} onChange={this.handleInputChange} />
-                  <label htmlFor="fGWP">Global Warming Potential <sup id={"fnref:11"}><a href={"#fn:11"} rel="footnote"></a></sup></label>
+                  <label htmlFor="GWP">Global Warming Potential <sup id={"fnref:11"}><a href={"#fn:11"} rel="footnote"></a></sup></label>
 
                 </div>
 
@@ -1716,6 +1724,11 @@ class App extends Component {
                 />
               )}
 
+
+
+            </div>
+          </div>
+          <div className={styles.calcFullWidth}>
               <div style={{ display: "inline-block", width: "100%" }}>
                 <h1 style={{ color: "#dc1a55" }}>INSULATION CALCULATOR</h1>
                 <div className={styles.calc} style={{ minHeight: '60px', width: '95%', display: "block" }}>
@@ -1781,10 +1794,10 @@ class App extends Component {
 
                 </div>
                 {footer}
-              </div>
-
-            </div>
+              </div>            
           </div>
+
+
         </TabPanel>        
 
         {/* PARTITIONS */}
@@ -1806,7 +1819,7 @@ class App extends Component {
                 <h3>CHART TYPE</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="GWP" value="GWP" name="chartType" checked={this.state.chartType === "GWP"} onChange={this.handleInputChange} />
-                  <label htmlFor="fGWP">Global Warming Potential <sup id={"fnref:11"}><a href={"#fn:11"} rel="footnote"></a></sup></label>
+                  <label htmlFor="GWP">Global Warming Potential <sup id={"fnref:11"}><a href={"#fn:11"} rel="footnote"></a></sup></label>
 
                 </div>
 
@@ -1902,6 +1915,14 @@ class App extends Component {
                 ready={this.state.partitions_dataEnvelopesReady === true}
               />)}
 
+
+
+            </div>
+
+            
+          </div>
+
+          <div className={styles.calcFullWidth}>
               <div style={{ display: "inline-block", width: "100%" }}>
                 <h1 style={{ color: "#dc1a55" }}>PARTITIONS CALCULATOR</h1>
                 <div className={styles.calc} style={{ minHeight: '60px', width: '95%', display: "block" }}>
@@ -1969,9 +1990,7 @@ class App extends Component {
 
                 </div>
                 {footer}
-              </div>
-
-            </div>
+              </div>            
           </div>
         </TabPanel>
 
@@ -1995,7 +2014,7 @@ class App extends Component {
                 <h3>CHART TYPE</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="GWP" value="GWP" name="chartType" checked={this.state.chartType === "GWP"} onChange={this.handleInputChange} />
-                  <label htmlFor="fGWP">Global Warming Potential <sup id={"fnref:11"}><a href={"#fn:11"} rel="footnote"></a></sup></label>
+                  <label htmlFor="GWP">Global Warming Potential <sup id={"fnref:11"}><a href={"#fn:11"} rel="footnote"></a></sup></label>
 
                 </div>
 
@@ -2088,6 +2107,11 @@ class App extends Component {
                 ready={this.state.wall_dataEnvelopesReady === true}
               />}
 
+
+
+            </div>
+          </div>
+          <div className={styles.calcFullWidth}>
               <div style={{ display: "inline-block", width: "100%" }}>
                 <h1 style={{ color: "#dc1a55" }}>WALL FINISH CALCULATOR</h1>
                 <div className={styles.calc} style={{ minHeight: '60px', width: '95%', display: "block" }}>
@@ -2151,9 +2175,7 @@ class App extends Component {
                 </div>
 
                 {footer}
-              </div>
-
-            </div>
+              </div>            
           </div>
         </TabPanel>  
 
@@ -2176,7 +2198,7 @@ class App extends Component {
                 <h3>CHART TYPE</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="GWP" value="GWP" name="chartType" checked={this.state.chartType === "GWP"} onChange={this.handleInputChange} />
-                  <label htmlFor="fGWP">Global Warming Potential <sup id={"fnref:11"}><a href={"#fn:11"} rel="footnote"></a></sup></label>
+                  <label htmlFor="GWP">Global Warming Potential <sup id={"fnref:11"}><a href={"#fn:11"} rel="footnote"></a></sup></label>
 
                 </div>
 
@@ -2269,6 +2291,12 @@ class App extends Component {
                 ready={this.state.ceilings_dataEnvelopesReady === true}
               />}
 
+
+
+            </div>
+          </div>
+
+          <div className={styles.calcFullWidth}>
               <div style={{ display: "inline-block", width: "100%" }}>
                 <h1 style={{ color: "#dc1a55" }}>CEILINGS CALCULATOR</h1>
                 <div className={styles.calc} style={{ minHeight: '60px', width: '95%', display: "block" }}>
@@ -2332,9 +2360,7 @@ class App extends Component {
 
                 </div>
                 {footer}
-              </div>
-
-            </div>
+              </div>            
           </div>
         </TabPanel>
 
@@ -2357,7 +2383,7 @@ class App extends Component {
                 <h3>CHART TYPE</h3>
                 <div className={styles.inputitem}>
                   <input type="radio" id="GWP" value="GWP" name="chartType" checked={this.state.chartType === "GWP"} onChange={this.handleInputChange} />
-                  <label htmlFor="fGWP">Global Warming Potential <sup id={"fnref:11"}><a href={"#fn:11"} rel="footnote"></a></sup></label>
+                  <label htmlFor="GWP">Global Warming Potential <sup id={"fnref:11"}><a href={"#fn:11"} rel="footnote"></a></sup></label>
 
                 </div>
 
@@ -2450,6 +2476,11 @@ class App extends Component {
                 ready={this.state.flooring_dataEnvelopesReady === true}
               />}
 
+
+            </div>
+          </div>
+
+          <div className={styles.calcFullWidth}>
               <div style={{ display: "inline-block", width: "100%" }}>
                 <h1 style={{ color: "#dc1a55" }}>FLOORING CALCULATOR</h1>
                 <div className={styles.calc} style={{ minHeight: '60px', width: '95%', display: "block" }}>
@@ -2513,8 +2544,7 @@ class App extends Component {
 
                 </div>
                 {footer}
-              </div>
-            </div>
+              </div>            
           </div>
 
         </TabPanel>

@@ -436,7 +436,7 @@ export default class Comparison extends React.Component {
                 <tr>
                   <td>Type</td>
                   <td>R-value</td>
-                  <td>Thickness</td>
+                  <td>Thickness(in)</td>
                   <td>{units?.qtyLabel || "Square Feet"}</td>
                   <td>GWP</td>
                 </tr>

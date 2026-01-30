@@ -91,6 +91,14 @@ export default class MaterialList extends PureComponent {
 
   }
 
+  scrollDialogIntoView = () => {
+  requestAnimationFrame(() => {
+      const el = document.querySelector('#materialdetailsdialog .dialog-content');
+      if (el) el.scrollIntoView({ block: 'center', inline: 'nearest' });
+    });
+  };
+
+
   selectChange = (e) => {
     this.setState({ curSel: e.target.value });
   };
@@ -190,6 +198,7 @@ export default class MaterialList extends PureComponent {
       }
     }, () => {
       this.materialsDialogRef.show();
+      this.scrollDialogIntoView();
     })
   }
 
@@ -369,7 +378,7 @@ export default class MaterialList extends PureComponent {
       legendText = ""
     } else if (this.props.currentSel === "allImpacts") {
       legend = legendGWP;
-      legendText = <div className={styles.serif}><p> <span style={{ background: "#87cee9" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Global Warming Potential (kgCO<sub>2</sub>eq${units.allImpactsSuffix})</p> <p> <span style={{ background: "#6495ed" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Non-Renewable Energy Demand (MJ${units.allImpactsSuffix})</p><p> <span style={{ background: "#fcc05e" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Eutrophication Potential (kgNeq${units.allImpactsSuffix})</p> <p> <span style={{ background: "#0090ff" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Smog Formation Potential (kgO<sub>3</sub>eq${units.allImpactsSuffix})</p><p> <span style={{ background: "#85e2bd" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Acidification Potential (kgSO<sub>2</sub>eq${units.allImpactsSuffix})</p> <p> <span style={{ background: "#283cdc" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Ozone Depletion Potential (CFC-11eq${units.allImpactsSuffix})</p></div>
+      legendText = <div className={styles.serif}><p> <span style={{ background: "#87cee9" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Global Warming Potential (kgCO<sub>2</sub>eq{units.allImpactsSuffix})</p> <p> <span style={{ background: "#6495ed" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Non-Renewable Energy Demand (MJ{units.allImpactsSuffix})</p><p> <span style={{ background: "#fcc05e" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Eutrophication Potential (kgNeq{units.allImpactsSuffix})</p> <p> <span style={{ background: "#0090ff" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Smog Formation Potential (kgO<sub>3</sub>eq{units.allImpactsSuffix})</p><p> <span style={{ background: "#85e2bd" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Acidification Potential (kgSO<sub>2</sub>eq{units.allImpactsSuffix})</p> <p> <span style={{ background: "#283cdc" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Ozone Depletion Potential (CFC-11eq{units.allImpactsSuffix})</p></div>
     } else if (this.props.currentSel === "LCS") {
       legend = legendGWP;
       legendText = <div className={styles.serif}><p> <span style={{ background: "#85e2bd" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [A1 - A3] Product </p> <p> <span style={{ background: "#fcc05e" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [A4] Transportation </p><p> <span style={{ background: "#001489" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [B2 - B5] Maintenance and Replacement </p> <p> <span style={{ background: "#4095ee" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [C2 - C4] End of Life </p><p> <span style={{ background: "#a2d3eb" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [D] Module D </p> </div>
@@ -478,18 +487,13 @@ export default class MaterialList extends PureComponent {
           classNames={{
             overlay: "dialog-overlay",
             closeButton: "dialog-close",
-
-            // element = 内容盒子：统一缩小 20%
             element: isInsulationPopup
               ? "dialog-content dialog-content--compact dialog-content--scaled"
               : "dialog-content dialog-content--scaled",
-
-            // base = 外层盒子：不要再加 scaled（避免 transform 带来的定位错位）
-            base: isInsulationPopup
-              ? "dialog dialog--compact"
-              : "dialog"
+            base: isInsulationPopup ? "dialog dialog--compact" : "dialog"
           }}
         >
+
 
           {/* 外层包一层用于定位 */}
           <div className={styles.dialogBody}>
