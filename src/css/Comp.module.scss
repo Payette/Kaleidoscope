@@ -2,6 +2,10 @@
 @use 'constants' as *;
 
 .calculator {
+  .calcTitle{
+    color: #dc1a55; 
+  }
+
   font-family: raleway,sans-serif;
   input{
     font-family: raleway,sans-serif;

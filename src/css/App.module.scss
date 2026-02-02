@@ -49,13 +49,21 @@
 
   h3 {
     margin: 0 0 0.5rem 0;
+    color: #dc1a55;       
+    font-weight: 700;     
   }
+
   .inputitem {
-    margin-bottom: 0.5rem;
     label {
+      font-family: $headline-font;
       margin-left: 0.5rem;
       display: inline-block;
+      font-weight: 400;   
+      color: #000;      
+    }
 
+    input[type="radio"]:checked + label {
+      font-weight: 800;  
     }
   }
 }
@@ -70,6 +78,7 @@
   display: inline-block;
   margin-right: 1%;
   margin-left: 1%;
+  
 }
 
 .tabPanel {
@@ -77,6 +86,9 @@
   overflow-x: hidden;
 }
 
+.calcTitle{
+  color: #dc1a55; 
+}
 
 
 
@@ -87,9 +99,16 @@
   
 
 
+
   .chartContainer {
     width: 100%;
     height: 500px;
+    h1:first-of-type {
+      color: #000;
+    }
+    .calcTitle{
+      color: #dc1a55; 
+    }
   }
 
   // .calc {
@@ -109,13 +128,21 @@
     min-height: 60px;
     h3 {
       margin: 0 0 0.5rem 0;
+      color: #dc1a55;       
+      font-weight: 700;     
     }
+  
     .inputitem {
-      margin-bottom: 0.5rem;
       label {
+        font-family: $headline-font;
         margin-left: 0.5rem;
         display: inline-block;
+        font-weight: 400;   
+        color: #000;      
+      }
   
+      input[type="radio"]:checked + label {
+        font-weight: 800;  
       }
     }
   }
@@ -125,8 +152,11 @@
 
 
 //important to change the outlet in ipad mini/air/pro layout
-@media (min-width: 700px) and (min-height: 700px) {
+@media (min-width: 700px) and (min-height: 650px) {
 
+  .calcTitle{
+    color: #dc1a55; 
+  }
 
   :global(#parentDiv) {
     display: flex;
@@ -136,6 +166,12 @@
   .chartContainer {
     width: 100%;
     flex-grow: 2;
+    h1:first-of-type {
+      color: #000;
+    }
+    .calcTitle{
+      color: #dc1a55; 
+    }
   }
 
   // .calc {
@@ -166,16 +202,25 @@
   
     h3 {
       margin: 0 0 0.5rem 0;
+      color: #dc1a55;      
+      font-weight: 700;     
     }
+  
     .inputitem {
-      margin-bottom: 0.5rem;
       label {
+        font-family: $headline-font;
         margin-left: 0.5rem;
         display: inline-block;
+        font-weight: 400;   
+        color: #000;      
+      }
   
+      input[type="radio"]:checked + label {
+        font-weight: 800;  
       }
     }
   }
 
 
 }
+

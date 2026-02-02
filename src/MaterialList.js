@@ -9,10 +9,13 @@ import legendMBFlooring from './images/System_Boundary-flooring_EDIT.png'
 import legendMBCelings from './images/ceilingslegendaxon.png'
 import legendMBPartitions from './images/System_Boundary-partitions.png'
 import legendMBWall from './images/System_Boundary-wallfinishes.png' 
-import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_PARTITIONS, SYSTEM_TYPE_ENVELOPES, SYSTEM_TYPE_WALL } from './CommonUtil';
+import legendMBInsulation from './images/System_Boundary-wallfinishes.png' 
+import { SYSTEM_TYPE_FLOORING, SYSTEM_TYPE_CEILINGS, SYSTEM_TYPE_PARTITIONS, SYSTEM_TYPE_ENVELOPES, SYSTEM_TYPE_WALL, SYSTEM_TYPE_INSULATION } from './CommonUtil';
 import Checkbox from './Checkbox'
 import Pie from "./PieChart";
 import 'pretty-checkbox'
+import { UNIT_PRESETS } from "./Units";
+
 
 let myImg;
 let legend;
@@ -42,6 +45,11 @@ let materialNamesWall = ["mat39", "mat38", "mat37", "mat36", "mat35", "mat34", "
 let materialLabelWall = {mat1: "Interior grade plywood, US, AWC - EPD",mat2: "Aluminum, cast",mat3: "Cement mortar, Latricrete - EPD",mat4: "Cement mortar, TCNA - EPD",mat5: "Domestic softwood, US, AWC - EPD",mat6: "Underlayment, fibrous",mat7: "Acrylic solid surface (acrylic polymer and ATH)",mat8: "Anodized aluminum, sheet",mat9: "Bamboo plank",mat10: "Cork tile",mat11: "Paint, interior acrylic latex",mat12: "Porcelain ceramic tile, glazed",mat13: "Stainless steel sheet, Chromium 18/8",mat14: "Wall covering, wallpaper",mat15: "Wall covering, textile",mat16: "Cement grout, TCNA - EPD",mat17: "Aluminum, sheet",mat18: "Tectum Ceiling+Wall Panels - EPD",mat19: "Wallcoverings on Non-Woven Base - EPD",mat20: "Archisonic  Acoustic PET  Panel, 12 mm",mat21: 'Acrovyn Wall Covering Sheet, 0.060" - EPD',mat22: "Wall covering, vinyl",mat23: "Cosentino Dekton - EPD",mat24: "Tulipwood lumber, 2 inch",mat25: "Interior grade plywood, US, AWC - EPD",mat26: "Particleboard, AWC - EPD",mat27: "Medium density fiberboard (MDF), AWC - EPD",mat28: "Armstrong WoodWorks ACGI Flat Panels: SS1, SS2, SS3, SS4 - EPD",vmat29: "Adhesive, latex",mat30: "Adhesive, polychloroprene (neoprene)",mat31: "Steel, sheet",mat32: "High pressure laminate (HPL)",mat33: "Hardwood veneer, medium thickness",mat34: "Adhesive, polyurethane",mat35: "Tulipwood lumber, 1 inch",mat36: "Polycarbonate, cellular, sheet good",mat37: "Wood stain, water based",mat38: "Powder coating, metal stock",mat39: "Polyurethane top coat, water-based, for wood" }; 
 
 
+let colsInsulation = [ "#89EFC0","#C2EAA7","#89EFC0","#89EFC0","#89EFC0","#89EFC0","#89EFC0","#89EFC0","#89EFC0","#89EFC0","#89EFC0","#000099","#000099","#000099","#000099","#4169E1","#000099"];
+let materialNamesInsulation = ["mat17", "mat16", "mat15", "mat14", "mat13", "mat12", "mat11", "mat10", "mat9", "mat8", "mat7", "mat6", "mat5", "mat4", "mat3", "mat2", "mat1"]; 
+let materialLabelInsulation = {mat1: "Interior grade plywood, US, AWC - EPD",mat2: "Aluminum, cast",mat3: "Cement mortar, Latricrete - EPD",mat4: "Cement mortar, TCNA - EPD",mat5: "Domestic softwood, US, AWC - EPD",mat6: "Underlayment, fibrous",mat7: "Acrylic solid surface (acrylic polymer and ATH)",mat8: "Anodized aluminum, sheet",mat9: "Bamboo plank",mat10: "Cork tile",mat11: "Paint, interior acrylic latex",mat12: "Porcelain ceramic tile, glazed",mat13: "Stainless steel sheet, Chromium 18/8",mat14: "Wall covering, wallpaper",mat15: "Wall covering, textile",mat16: "Cement grout, TCNA - EPD",mat17: "Aluminum, sheet" };
+
+
 export default class MaterialList extends PureComponent {
 
   constructor(props) {
@@ -62,6 +70,9 @@ export default class MaterialList extends PureComponent {
     if(props.type === SYSTEM_TYPE_WALL) {
       this.legendMB = legendMBWall;
     }
+    if(props.type === SYSTEM_TYPE_INSULATION) {
+      this.legendMB = legendMBInsulation;
+    }
 
     this.state = {
       items: props.materials.map(material => { return { label: material, id: material } }),
@@ -75,7 +86,22 @@ export default class MaterialList extends PureComponent {
 
     this.listEl = null;
     this.handleSelectItem = this.handleSelectItem.bind(this);
+    this.navigateMaterial = this.navigateMaterial.bind(this);
+    this.getNavList = this.getNavList.bind(this);
+
   }
+
+  scrollDialogIntoView = () => {
+  requestAnimationFrame(() => {
+      const el = document.querySelector('#materialdetailsdialog .dialog-content');
+      if (el) el.scrollIntoView({ block: 'center', inline: 'nearest' });
+    });
+  };
+
+
+  selectChange = (e) => {
+    this.setState({ curSel: e.target.value });
+  };
 
 
   handleSelectItem(e) {
@@ -102,6 +128,47 @@ export default class MaterialList extends PureComponent {
   //     });
   //   }
   // }
+
+  componentDidMount() {
+    this._onDialogOverlayMouseDown = (e) => {
+      // - 点击弹窗外任意位置关闭
+      // - 但点击 Tab 切换、左右切换箭头、关闭按钮 不触发关闭
+
+      const dialogEl = document.getElementById("materialdetailsdialog");
+      if (!dialogEl) return;
+
+      // react-a11y-dialog 用 aria-hidden 标记开/关（不同版本可能是 true/false 或字符串）
+      const ariaHidden = dialogEl.getAttribute("aria-hidden");
+      const isOpen = ariaHidden === null || ariaHidden === "false";
+      if (!isOpen) return;
+
+      // 1) 弹窗内容内部的任何点击都不关闭
+      //    注意：不同版本里 id 可能挂在 base 或 overlay 上，所以这里优先找 .dialog-content
+      const contentEl = dialogEl.querySelector(".dialog-content") || dialogEl;
+      if (contentEl.contains(e.target)) return;
+
+      // 2) 左右切换按钮、关闭按钮都不算“外部点击”
+      if (e.target.closest(`.${styles.dialogNavBtn}`)) return;
+      if (e.target.closest(".dialog-close")) return;
+      if (e.target.closest("[data-a11y-dialog-hide]")) return; // 保险：a11y-dialog 的 close 通常带这个属性
+
+      // 3) Tabs 切换区域也不算“外部点击”
+      if (e.target.closest(".MuiTabs-root")) return;
+      if (e.target.closest(".MuiTab-root")) return;
+      if (e.target.closest('[role="tablist"]')) return;
+      if (e.target.closest('[role="tab"]')) return;
+
+      // 4) 其余任何地方 -> 关闭
+      if (this.materialsDialogRef) this.materialsDialogRef.hide();
+    };
+
+    // capture=true：保证我们能先拿到事件；pointerdown 同时覆盖 mouse + touch
+    document.addEventListener("pointerdown", this._onDialogOverlayMouseDown, true);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("pointerdown", this._onDialogOverlayMouseDown, true);
+  }
 
 
   getNextValue(value) {
@@ -131,6 +198,7 @@ export default class MaterialList extends PureComponent {
       }
     }, () => {
       this.materialsDialogRef.show();
+      this.scrollDialogIntoView();
     })
   }
 
@@ -140,6 +208,8 @@ export default class MaterialList extends PureComponent {
 
 
   renderItems() {
+
+
     
     const { items, selectedItems } = this.state;
     return items.map(item => {
@@ -172,7 +242,15 @@ export default class MaterialList extends PureComponent {
           </label>
 
 
-          <button className={styles.moreInformationButton} onClick={event => this.showMaterialsPopup.bind(this)(event, item)}><label className={styles.mLabel} htmlFor={`item-${id}`}>{materialType}</label></button>
+          <button className={styles.moreInformationButton} onClick={event => this.showMaterialsPopup.bind(this)(event, item)}>
+          <label
+            className={`${styles.mLabel} ${styles.clickableName}`}
+            htmlFor={`item-${id}`}
+            title="Click for details"
+          >
+            {materialType}
+          </label>
+          </button>
         </li>
       );
     });
@@ -183,6 +261,42 @@ export default class MaterialList extends PureComponent {
     this.setState({ curSel: e.target.value })
 
   }
+
+  getNavList() {
+    // 只在“已勾选的材料”里切换
+    const list = (this.state.selectedItems && this.state.selectedItems.length > 0)
+      ? this.state.selectedItems
+      : this.props.materials;
+  
+    // 如果你想“全材料都能切换”，就用这一行替换上面 list 逻辑：
+    // const list = this.props.materials;
+  
+    // 去重 + 过滤空值，避免偶发 bug
+    return Array.from(new Set(list)).filter(Boolean);
+  }
+  
+  navigateMaterial(step) {
+    const list = this.getNavList();
+    if (!list.length) return;
+  
+    const cur = this.state.materialPopup?.name;
+    let idx = list.indexOf(cur);
+  
+    // 如果当前不在列表里，就从 0 开始
+    if (idx === -1) idx = 0;
+  
+    const nextIdx = (idx + step + list.length) % list.length;
+    const nextName = list[nextIdx];
+  
+    this.setState(
+      { materialPopup: { name: nextName } },
+      () => {
+        // 弹窗通常已经开着，但加这一句不影响，反而更保险
+        if (this.materialsDialogRef) this.materialsDialogRef.show();
+      }
+    );
+  }
+  
 
   colsForType(type) {
     if(type === SYSTEM_TYPE_FLOORING){
@@ -197,7 +311,9 @@ export default class MaterialList extends PureComponent {
     if(type === SYSTEM_TYPE_WALL) {
       return colsWall;
     }
-
+    if(type === SYSTEM_TYPE_INSULATION) {
+      return colsInsulation;
+    }
     return colsEnvelope;
   }
 
@@ -213,6 +329,9 @@ export default class MaterialList extends PureComponent {
     }
     if(type === SYSTEM_TYPE_WALL) {
       return materialNamesWall;
+    }
+    if(type === SYSTEM_TYPE_INSULATION) {
+      return materialNamesInsulation;
     }
 
     return materialNamesEnvelope;    
@@ -231,11 +350,27 @@ export default class MaterialList extends PureComponent {
     if(type === SYSTEM_TYPE_WALL) {
       return materialLabelWall;
     }
+    if(type === SYSTEM_TYPE_INSULATION) {
+      return materialLabelInsulation;
+    }
 
     return materialLabelEnvelope;    
   }
 
   render() {
+    const units = this.props.units || UNIT_PRESETS.SF;
+    const isInsulationPopup = this.props.type === SYSTEM_TYPE_INSULATION;
+
+    const isInsulation = this.props.type === SYSTEM_TYPE_INSULATION;
+
+    const sectionIcons = (this.props.metaData && this.props.metaData.sectionIcons) ? this.props.metaData.sectionIcons : {};
+
+
+    const notes = (this.props.metaData?.materialNotes?.[this.state.materialPopup?.name]) || [];
+    const healthNotes = (this.props.metaData?.materialHealthNotes?.[this.state.materialPopup?.name]) || [];
+
+
+
     // console.log(this.props.currentSel);
 
     if (this.props.currentSel === "GWP") {
@@ -243,7 +378,7 @@ export default class MaterialList extends PureComponent {
       legendText = ""
     } else if (this.props.currentSel === "allImpacts") {
       legend = legendGWP;
-      legendText = <div className={styles.serif}><p> <span style={{ background: "#87cee9" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Global Warming Potential (kgCO<sub>2</sub>eq/sf)</p> <p> <span style={{ background: "#6495ed" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Non-Renewable Energy Demand (MJ/sf)</p><p> <span style={{ background: "#fcc05e" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Eutrophication Potential (kgNeq/sf)</p> <p> <span style={{ background: "#0090ff" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Smog Formation Potential (kgO<sub>3</sub>eq/sf)</p><p> <span style={{ background: "#85e2bd" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Acidification Potential (kgSO<sub>2</sub>eq/sf)</p> <p> <span style={{ background: "#283cdc" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Ozone Depletion Potential (CFC-11eq/sf)</p></div>
+      legendText = <div className={styles.serif} style={{fontSize: "0.95em" } }><p> <span style={{ background: "#87cee9" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Global Warming Potential (kgCO<sub>2</sub>eq{units.allImpactsSuffix})</p> <p> <span style={{ background: "#6495ed" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Non-Renewable Energy Demand (MJ{units.allImpactsSuffix})</p><p> <span style={{ background: "#fcc05e" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Eutrophication Potential (kgNeq{units.allImpactsSuffix})</p> <p> <span style={{ background: "#0090ff" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Smog Formation Potential (kgO<sub>3</sub>eq{units.allImpactsSuffix})</p><p> <span style={{ background: "#85e2bd" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Acidification Potential (kgSO<sub>2</sub>eq{units.allImpactsSuffix})</p> <p> <span style={{ background: "#283cdc" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Ozone Depletion Potential (CFC-11eq{units.allImpactsSuffix})</p></div>
     } else if (this.props.currentSel === "LCS") {
       legend = legendGWP;
       legendText = <div className={styles.serif}><p> <span style={{ background: "#85e2bd" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [A1 - A3] Product </p> <p> <span style={{ background: "#fcc05e" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [A4] Transportation </p><p> <span style={{ background: "#001489" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [B2 - B5] Maintenance and Replacement </p> <p> <span style={{ background: "#4095ee" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [C2 - C4] End of Life </p><p> <span style={{ background: "#a2d3eb" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; [D] Module D </p> </div>
@@ -278,9 +413,17 @@ export default class MaterialList extends PureComponent {
             <p> <span style={{ background: "#cccccc" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Surface Treatment </p>
         </div>
       }
+      if (this.props.type === SYSTEM_TYPE_INSULATION) {
+        legendText = <div className={styles.serif}>
+          <img style={{ maxWidth: "320px" }} src={legend} />
+            <p><span style={{ background: "#4169e1" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Support System </p>
+            <p className={styles.serif}> <span style={{ background: "#85e2bd" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Finish Material </p>
+            <p> <span style={{ background: "#cccccc" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Surface Treatment </p>
+        </div>
+      }      
     } else if (this.props.currentSel === "MH") {
       legend = this.legendMB;
-      legendText = <div className={styles.serif}>
+      legendText = <div className={styles.serif} style={{fontSize: "0.90em" } }>
       <p> <span style={{ background: "#00a558" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Meets Payette Material Health Policy </p>
       <p> <span style={{ background: "#8cc672" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Meets Payette Material Health Policy with Requests </p> 
       <p> <span style={{ background: "#FEBE10" }}> &nbsp; &nbsp; &nbsp; </span> &nbsp; Meets some of Payette Material Health Policy </p>
@@ -307,6 +450,11 @@ export default class MaterialList extends PureComponent {
       }
     }
 
+    const pieW = Math.min(520, Math.round(window.innerWidth * 0.4));
+    const pieH = Math.round(pieW * 0.8);
+    
+
+
     return (
       <>
         <div>
@@ -331,71 +479,196 @@ export default class MaterialList extends PureComponent {
           </ul>
         </div>
         
-        <Dialog id="materialdetailsdialog"
+        <Dialog
+          id="materialdetailsdialog"
           appRoot="#root"
           dialogRoot="#dialog-root"
           dialogRef={(dialog) => (this.materialsDialogRef = dialog)}
-          // title={this.state.materialPopup.name}
           classNames={{
             overlay: "dialog-overlay",
             closeButton: "dialog-close",
-            element: "dialog-content",
-            base: "dialog"
+            element: isInsulationPopup
+              ? "dialog-content dialog-content--compact dialog-content--scaled"
+              : "dialog-content dialog-content--scaled",
+            base: isInsulationPopup ? "dialog dialog--compact" : "dialog"
           }}
         >
-          <span>
-            <h2 style={{ fontSize: "40px" }}>{this.props.metaData.materialName2[this.state.materialPopup.name]}</h2>
-            <select id="pie1" name="pie1" onChange={this.selectChange.bind(this)}>
-              <option value="tenYGWP">Initial Carbon (Module A w/ biogenic CO2)</option>
-              <option value="sixty2YGWP">60 Year (w/ Module D & biogenic CO2)</option>
-              <option value="sixty1YGWP">60 Year (no Module D & no biogenic CO2)</option>
-              
-            </select>
-            <p id="textLabel" style={{ display: "block", width: "100%", position: "relative", textAlign: "left", }}>Hover over chart to see data</p>
-            <br></br>
-            <div style={{ width: "30%", float: "left", position: "relative", textAlign: "center" }}>
-              <Pie
-                style={
-                  this.props.type === SYSTEM_TYPE_ENVELOPES ? { width: "100%", transform: "scaleX(-1)", zIndex: "-1", marginLeft: "3em" } :
-                    { width: "100%", transform: "scaleX(-1)", zIndex: "-1", marginLeft: "3em", position: "absolute" }
-                }
-                width={600}
-                height={400}
-                matBreakdown={this.props.matBreakdown}
-                matBreakdown1={this.props.matBreakdown1}
-                matBreakdown2={this.props.matBreakdown2}
-                currentMat={this.state.materialPopup.name}
-                tenYGWP={this.props.tenYGWP}
-                sixty1YGWP={this.props.sixty1YGWP}
-                sixty2YGWP={this.props.sixty2YGWP}
-                GWPSel={this.state.curSel}
-                cols={this.colsForType(this.props.type)}
-                materialNames={this.namesForType(this.props.type)}
-                materialLabel={this.labelForType(this.props.type)}
-              />
 
-            </div>
 
-            {this.props.type === SYSTEM_TYPE_ENVELOPES ?
-              <>
-                <img style={{ maxWidth: "40%", top: "-20%", position: "relative", float: "right", objectFit: "cover", display: "block" }} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />
-                <div style={{ maxWidth: "55%", float: "left", position: 'relative' }}>
-                  <h4>Assumptions</h4>
-                  <ul style={{ lineHeight: '1.4em', class:"Text16", paddingLeft: '1em' }}>{listItems}</ul></div>
-              </> :
-              <>
-                <img style={{ maxWidth: "45%", top: "-70px", position: "relative", float: "right", objectFit: "cover", display: "block" }} src={sectionImg} alt={`${this.state.materialPopup.name} facade diagram`} />
-                <div style={{ maxWidth: "55%", float: "left", position: 'relative' }}>
-                  <div style={{ display: "block" }}><h4>Assumptions</h4>
-                    <ul style={{ lineHeight: '1.4em', class:"Text16", paddingLeft: '1em' }}>{listItems}</ul></div>
-                  <div style={{ position: 'relative', display: 'block' }}><h4>Material Health</h4>
-                    <ul style={{ lineHeight: '1.4em', class:"Text16", paddingLeft: '1em' }}>{listItemsHealth}</ul></div>
+          {/* 外层包一层用于定位 */}
+          <div className={styles.dialogBody}>
+
+            {/* 不占布局，用 absolute 悬浮 */}
+            <button
+              type="button"
+              className={`${styles.dialogNavBtn} ${styles.dialogNavLeft}`}
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); this.navigateMaterial(-1); }}
+              aria-label="Previous material"
+              title="Previous"
+            >
+              ‹
+            </button>
+
+            <button
+              type="button"
+              className={`${styles.dialogNavBtn} ${styles.dialogNavRight}`}
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); this.navigateMaterial(1); }}
+              aria-label="Next material"
+              title="Next"
+            >
+              ›
+            </button>
+            <span>
+              <h2 style={{ fontSize: "40px" }}>
+                {this.props.metaData.materialName2[this.state.materialPopup.name]}
+              </h2>
+
+              {isInsulationPopup ? (
+                //  INSULATION：只显示文字（不显示 radio / hover / pie / section 图）
+                <div style={{ maxWidth: "100%", position: "relative" }}>
+                  {this.state.materialPopup.name !== "Material" && (
+                    <>
+                      <div style={{ display: "block" }}>
+                        <h4>Assumptions</h4>
+                        <ul style={{ lineHeight: "1.4em", paddingLeft: "1em" }}>
+                          {listItems}
+                        </ul>
+                      </div>
+
+                      {this.props.hasMaterialHealth && (
+                        <div style={{ position: "relative", display: "block" }}>
+                          <h4>Material Health</h4>
+                          <ul style={{ lineHeight: "1.4em", paddingLeft: "1em" }}>
+                            {listItemsHealth}
+                          </ul>
+                        </div>
+                      )}
+                    </>
+                  )}
                 </div>
-              </>}
+              ) : (
+                //  其他系统：保留你原来的完整弹窗
+                <>
+                  {!isInsulation && (
 
-          </span>
+                    <div className={styles.inlineOptions}>
 
-          {this.props.type === SYSTEM_TYPE_FLOORING ? <div style={{ height: "700px" }}>
+                      <h4 >CHART TYPE</h4>
+
+                      <label>
+                        <input
+                          type="radio"
+                          name="lifeSpanModal"
+                          value="tenYGWP"
+                          checked={this.state.curSel === "tenYGWP"}
+                          onChange={this.selectChange.bind(this)}
+                        />
+                        <span>Initial Carbon (Module A w/ biogenic CO2)</span>
+                      </label>
+
+                      <label>
+                        <input
+                          type="radio"
+                          name="lifeSpanModal"
+                          value="sixty2YGWP"
+                          checked={this.state.curSel === "sixty2YGWP"}
+                          onChange={this.selectChange.bind(this)}
+                        />
+                        <span>60 Year (w/ Module D &amp; biogenic CO2)</span>
+                      </label>
+
+                      <label>
+                        <input
+                          type="radio"
+                          name="lifeSpanModal"
+                          value="sixty1YGWP"
+                          checked={this.state.curSel === "sixty1YGWP"}
+                          onChange={this.selectChange.bind(this)}
+                        />
+                        <span>60 Year (no Module D &amp; no biogenic CO2)</span>
+                      </label>
+
+                    </div>
+                  )}
+
+
+
+                  <p
+                    id="textLabel"
+                    style={{
+                      display: "block",
+                      width: "100%",
+                      position: "relative",
+                      textAlign: "left",
+                    }}
+                  >
+                    Hover over chart to see data
+                  </p>
+                  <br />
+
+                  <div style={{ width: "30%", float: "left", position: "relative", textAlign: "center" }}>
+                    <Pie
+                      style={
+                        this.props.type === SYSTEM_TYPE_ENVELOPES
+                          ? { width: "100%", transform: "scaleX(-1)", zIndex: "-1", marginLeft: "3em" }
+                          : { width: "100%", transform: "scaleX(-1)", zIndex: "-1", marginLeft: "3em", position: "absolute" }
+                      }
+                      width={pieW}
+                      height={pieH}
+                      matBreakdown={this.props.matBreakdown}
+                      matBreakdown1={this.props.matBreakdown1}
+                      matBreakdown2={this.props.matBreakdown2}
+                      currentMat={this.state.materialPopup.name}
+                      tenYGWP={this.props.tenYGWP}
+                      sixty1YGWP={this.props.sixty1YGWP}
+                      sixty2YGWP={this.props.sixty2YGWP}
+                      GWPSel={this.state.curSel}
+                      cols={this.colsForType(this.props.type)}
+                      materialNames={this.namesForType(this.props.type)}
+                      materialLabel={this.labelForType(this.props.type)}
+                      gwpUnit={units.gwpUnit}
+                    />
+                  </div>
+
+                  {this.props.type === SYSTEM_TYPE_ENVELOPES ? (
+                    <>
+                      <img
+                        style={{ maxWidth: "40%", top: "-20%", position: "relative", float: "right", objectFit: "cover", display: "block" }}
+                        src={sectionImg}
+                        alt={`${this.state.materialPopup.name} facade diagram`}
+                      />
+                      <div style={{ maxWidth: "55%", float: "left", position: "relative" }}>
+                        <h4>Assumptions</h4>
+                        <ul style={{ lineHeight: "1.4em", paddingLeft: "1em" }}>{listItems}</ul>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <img
+                        style={{ maxWidth: "45%", top: "-70px", position: "relative", float: "right", objectFit: "cover", display: "block" }}
+                        src={sectionImg}
+                        alt={`${this.state.materialPopup.name} facade diagram`}
+                      />
+                      <div style={{ maxWidth: "55%", float: "left", position: "relative" }}>
+                        <div style={{ display: "block" }}>
+                          <h4>Assumptions</h4>
+                          <ul style={{ lineHeight: "1.4em", paddingLeft: "1em" }}>{listItems}</ul>
+                        </div>
+                        <div style={{ position: "relative", display: "block" }}>
+                          <h4>Material Health</h4>
+                          <ul style={{ lineHeight: "1.4em", paddingLeft: "1em" }}>{listItemsHealth}</ul>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </>
+              )}
+
+
+            </span>
+          </div>
+
+            {this.props.type === SYSTEM_TYPE_FLOORING ? <div style={{ height: "700px" }}>
 
           </div> : null}
         </Dialog>

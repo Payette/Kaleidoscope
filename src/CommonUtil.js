@@ -3,12 +3,14 @@ import FlooringLoadData from './data/Flooring_LoadData';
 import CeilingsLoadData from './data/Ceilings_LoadData';
 import PartitionsLoadData from './data/Partitions_LoadData';
 import WallLoadData from './data/Wall_LoadData';
+import InsulationLoadData from './data/Insulation_LoadData';
 
 export let TAB_INDEX_ENVELOPES = 0;
-export let TAB_INDEX_FLOORING = 1;
-export let TAB_INDEX_CEILINGS = 2;
-export let TAB_INDEX_PARTITIONS = 3;
-export let TAB_INDEX_WALL = 4;
+export let TAB_INDEX_FLOORING = 5;
+export let TAB_INDEX_CEILINGS = 4;
+export let TAB_INDEX_PARTITIONS = 2;
+export let TAB_INDEX_WALL = 3;
+export let TAB_INDEX_INSULATION = 1;
 //export let TAB_INDEX_OTHER = 3;
 
 export let SYSTEM_TYPE_FLOORING = "flooring";
@@ -16,12 +18,14 @@ export let SYSTEM_TYPE_CEILINGS = "ceilings";
 export let SYSTEM_TYPE_PARTITIONS = "partitions";
 export let SYSTEM_TYPE_ENVELOPES = "envelopes";
 export let SYSTEM_TYPE_WALL = "walls";
+export let SYSTEM_TYPE_INSULATION = "insulation";
 
 export let CHART_TYPES_ENVELOPES = ["GWP","allImpacts","LCS","MB"]; // does not have material health
 export let CHART_TYPES_FLOORING = ["GWP","allImpacts","LCS","MB","MH"];
 export let CHART_TYPES_CEILINGS = ["GWP","allImpacts","LCS","MB","MH"];
 export let CHART_TYPES_PARTITIONS = ["GWP","allImpacts","LCS","MB","MH"];
 export let CHART_TYPES_WALL = ["GWP","allImpacts","LCS","MB","MH"];
+export let CHART_TYPES_INSULATION = ["GWP","allImpacts","LCS","MH"];
 
 export let DATASET_NAMES = [
 'allImpactsData',
@@ -68,4 +72,8 @@ export let materialListPartitions = Object.keys(PartitionsLoadData.metaData.mate
 
 export let materialListWall = Object.keys(WallLoadData.metaData.materialType).map(variableName => {
   return { value: variableName, label: WallLoadData.metaData.materialType[variableName] };
+});
+
+export let materialListInsulation = Object.keys(InsulationLoadData.metaData.materialType).map(variableName => {
+  return { value: variableName, label: InsulationLoadData.metaData.materialType[variableName] };
 });

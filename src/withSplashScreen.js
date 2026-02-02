@@ -93,69 +93,64 @@ const tiers = [
     title: 'ENVELOPES',
     subheader: <div dangerouslySetInnerHTML={{ __html: 'Exterior Assemblies' }} />,
     price: '0',
-    description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
     img: "./img/MV_Axon2.png",
     buttonText: <div dangerouslySetInnerHTML={{ __html: 'View Envelopes' }} />,
     buttonVariant: 'contained',
-    item: 0
+    item: 0,
   },
+
+  // ✅ NEW: INSULATION
   {
-    title: 'FLOORING',
-    subheader: <div dangerouslySetInnerHTML={{ __html: 'Flooring Assemblies' }} />,
-    price: '15',
-    description: [
-      '20 users included',
-      '10 GB of storage',
-      'Help center access',
-      'Priority email support',
-    ],
-    img: "./img/FL_Axon-2-1.png",
-    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View Floorings' }} />,
+    title: 'INSULATION',
+    subheader: <div dangerouslySetInnerHTML={{ __html: 'Insulation Types' }} />,
+    price: '0',
+    img: "./img/insulation.png", // 你把图片放到 public/img 里，文件名按这个即可
+    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View Insulation' }} />,
     buttonVariant: 'contained',
-    item: 1
+    item: 1,
   },
+
   {
-    title: 'CEILINGS',
-    subheader: <div dangerouslySetInnerHTML={{ __html: 'Ceiling Assemblies' }} />,
-    price: '20',
-    description: [
-      '20 users included',
-      '10 GB of storage',
-      'Help center access',
-      'Priority email support',
-    ],
-    img: "./img/ceilingslandingpageaxon2.png",
-    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View Ceilings' }} />,
-    buttonVariant: 'contained',
-    item: 2
-  },
-    {
     title: 'PARTITIONS',
     subheader: <div dangerouslySetInnerHTML={{ __html: 'Partition Assemblies' }} />,
     price: '30',
-    description: [
-      '50 users included',
-      '30 GB of storage',
-      'Help center access',
-      'Phone & email support',
-    ],
     img: "./img/MetalStuds_Axon_MS01_16_MinWool_MFB2.png",
     buttonText: <div dangerouslySetInnerHTML={{ __html: 'View Partitions' }} />,
     buttonVariant: 'contained',
-    item: 3
+    item: 2,
   },
+
   {
     title: 'WALLS',
     subheader: <div dangerouslySetInnerHTML={{ __html: 'Wall Finish Assemblies' }} />,
     price: '40',
-    description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
     img: "./img/Misc_Axon_M01_MetalVeneer.png",
     buttonText: <div dangerouslySetInnerHTML={{ __html: 'View Walls' }} />,
     buttonVariant: 'contained',
-    item: 4
+    item: 3,
   },
 
+  {
+    title: 'CEILINGS',
+    subheader: <div dangerouslySetInnerHTML={{ __html: 'Ceiling Assemblies' }} />,
+    price: '20',
+    img: "./img/ceilingslandingpageaxon2.png",
+    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View Ceilings' }} />,
+    buttonVariant: 'contained',
+    item: 4,
+  },
+
+  {
+    title: 'FLOORING',
+    subheader: <div dangerouslySetInnerHTML={{ __html: 'Flooring Assemblies' }} />,
+    price: '15',
+    img: "./img/FL_Axon-2-1.png",
+    buttonText: <div dangerouslySetInnerHTML={{ __html: 'View Floorings' }} />,
+    buttonVariant: 'contained',
+    item: 5,
+  },
 ];
+
 
 
 
@@ -178,86 +173,34 @@ function withSplashScreen(WrappedComponent) {
       };
     }
 
-    async componentDidMount() {
-
-      let s = new URLSearchParams(window.location.search)
-
-
-      let type = s.get("type")
-
-
-
-      if (type == 0 || type == 1 || type == 2 || type == 3 || type == 4) { //envelope
-        this.setState({ loading: false, currentItem: type });
-        if (type == 0) {
-          this.setState({
-            selectedMaterials: [
-              "MVGranite",
-              "MVLimestone",
-              "MVBrick",
-              "MVTBrick",
-              "MInsMePanel",
-              "MEIFS",
-              "MPrecast",
-              "MMinWool",
-              "CSpandrelAlumB",
-              "CSpandrelSteel",
-              "CSpandrelAlum",
-              "CSpandrelWood",
-              "RGFRC",
-              "RACM",
-              "RTerracotta",
-              "RPhenResin",
-              "RFiberCement",
-              "RZinc",
-              "RUHPC",
-              "RGranite",
-              "RTBrick",
-              "RLimestone",
-              "RSteel",
-              "RWood"
-            ]
-          })
-        }
-        if (type == 3) {
-          this.setState({
-            selectedMaterials: [
-              "gButtGlazed",
-              "gHollowMetalFrame",
-              "gWoodFrame",
-              "cFurredOutMFB",
-              "cFurredOutEcosmart",
-              "cPaintedBlock",
-              "cJandris",
-              "cFurredOutMDF",
-              "ms16MinWoolMFB",
-              "msEmb16MinWoolMFB",
-              "ms24MinWoolMFB",
-              "msCut24MinWoolMFB",
-              "ms16MinWoolEcosmart",
-              "msEmb24MinWoolMFB",
-              "ms16GlassWoolMFB",
-              "ms16MFB",
-              "ms16CelluloselMFB",
-              "MSIndustryBest",
-              "ms16MinWoolMDF",
-              "msReimagined",
-              "ws24MinWoolMFB",
-              "ws16MinWoolMFB",
-              "ws16MinWoolEcosmart",
-              "ws16GlassWoolMFB",
-              "ws16MFB",
-              "ws16CelluloseMFB",
-              "wsIndustryBest",
-              "ws16MinWoolMDF",
-              "wsReimagined"
-            ]
-          })
-        }
+      componentDidMount() {
+        this.syncFromUrl();
+        window.addEventListener("popstate", this.syncFromUrl);
       }
 
+      componentWillUnmount() {
+        window.removeEventListener("popstate", this.syncFromUrl);
+      }
 
-    }
+      syncFromUrl = () => {
+        const s = new URLSearchParams(window.location.search);
+        const type = s.get("type");
+
+        const isValidType = ["0", "1", "2", "3", "4", "5"].includes(type);
+
+        if (isValidType) {
+          this.setState({
+            loading: false,                 // 显示 App
+            currentItem: parseInt(type, 10)  // 把 item 传给 App
+          });
+        } else {
+          this.setState({
+            loading: true,  // 显示主页（LoadingMessage 实际就是你的 landing page）
+            currentItem: 0
+          });
+        }
+      };
+
 
 
 
@@ -272,167 +215,147 @@ function withSplashScreen(WrappedComponent) {
                 Login
               </Button> */}
           <Container component="main" data-step="1" data-intro="Select Assembly" disableInteraction={true} pointerEvents="none" style={{ display: 'flex', flexWrap: 'wrap' }}>
-            <Grid container spacing={5} alignItems="flex-end" justifyContent="center" >
-
+            <div className="tierGrid8">
               {tier0.map((tier) => (
-                // Enterprise card is full width at sm breakpoint
-                <Grid item key={tier.title} xs={6} sm={6} md={2} >
-                  <div style={{ minWidth: '200px', margin: 'auto' }}> 
-                    <Card style={{  minHeight: '100%', maxHeight: '100%' }}>
+                <div key={tier.title} className="tierCell">
+                  <div style={{ width: "100%", maxWidth: 200, margin: "0 auto", transform: "scale(0.9)", transformOrigin: "center top"}}>
+                    <Card style={{ minHeight: "100%", maxHeight: 400 }}>
                       <CardHeader
                         title={tier.title}
                         subheader={
-                          <div style={{
-                            display: '-webkit-box',
-                            WebkitBoxOrient: 'vertical',
-                            WebkitLineClamp: 2,
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            height: '3em', 
-                            lineHeight: '1.5em', 
-                          }}>
+                          <div
+                            style={{
+                              display: "-webkit-box",
+                              WebkitBoxOrient: "vertical",
+                              WebkitLineClamp: 2,
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
+                              height: "2.5em",
+                              lineHeight: "1.5em",
+                            }}
+                          >
                             {tier.subheader}
                           </div>
                         }
-                        titleTypographyProps={{ align: 'center' }}
-                        subheaderTypographyProps={{ align: 'center' }}
-                      />
-                      {/* <CardContent style={{ display: 'flex', justifyContent: 'center' }}>
-                        <div >
-                          <IconButton aria-label={tier.id} onClick={() => {
-                            introJs().setOption('doneLabel', 'Next page').oncomplete(async function() {window.location.href = 'index.html?type=0';}).start(document.getElementById('startTour!'))
-                            sessionStorage.IntroKey=1
-                          }}>
-                            <img src={tier.img} alt="Start Intro"                             
-                            style={{ 
-                                height: '100%', 
-                                maxWidth: '100%', 
-                                objectFit: 'contain',
-                                position: 'relative', 
-                                margin: "0 auto", 
-                                display: 'flex', 
-                                justifyContent: 'center', 
-                                alignItems: 'center',
-                            }} 
-                          />
-                          </IconButton>
-                        </div>
-                      </CardContent> */}
-                      <CardContent>
-                        <div>
-                          <Typography variant="h6" color="textSecondary">                    
-                            {/* For future, intent: images become links: <a href="#">*/}
-                              <img src={tier.img} 
-                              style={{ 
-                                height: '100%', 
-                                maxWidth: '100%', 
-                                objectFit: 'contain',
-                                position: 'relative', 
-                                margin: "0 auto", 
-                                display: 'flex', 
-                                justifyContent: 'center', 
-                                alignItems: 'center' 
-                              }} 
-                          ></img>
-                        </Typography> 
-                        </div>
-                      </CardContent>
-                      <CardActions>
-                        <Button fullWidth variant={tier.buttonVariant}
-                          disabled={tier.disabled}
-                          color="secondary"
-                          onClick={() => {
-                            introJs().setOption('doneLabel', 'Next page').oncomplete(async function() {window.location.href = 'index.html?type=0';}).start(document.getElementById('startTour!'))
-                            //localStorage.setItem(IntroKey,"1");
-                            sessionStorage.IntroKey=1
-                            // this.setState({ loading: false, currentItem: tier.item, selectedMaterials: this.state.selectedMaterials });
-                            // let urlVar = new URLSearchParams()
-                            // urlVar.set("type", tier.item)                        
-                            // window.history.replaceState({}, '', "?" + urlVar.toString())
-                          }}
-                          >
-
-                          {tier.buttonText}
-                        </Button>                    
-                      </CardActions>
-                    </Card>
-                  </div>  
-                </Grid>
-              ))}
-
-              
-              {tiers.map((tier) => (
-                // Enterprise card is full width at sm breakpoint
-                <Grid item key={tier.title} xs={6} sm={6} md={2} >
-                  <div style={{ minWidth: '200px', margin: 'auto' }}> 
-                    <Card style={{  minHeight: '100%', maxHeight: '100%' }}>
-                      <CardHeader
-                        title={tier.title}
-                        subheader={
-                          <div style={{
-                            display: '-webkit-box',
-                            WebkitBoxOrient: 'vertical',
-                            WebkitLineClamp: 2,
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            height: '3em', 
-                            lineHeight: '1.5em', 
-                          }}>
-                            {tier.subheader}
-                          </div>
-                        }
-                        titleTypographyProps={{ align: 'center' }}
-                        subheaderTypographyProps={{ align: 'center' }}
-                      // action={tier.title === 'Pro' ? <StarIcon /> : null}
-                      // className={classes.cardHeader}
+                        titleTypographyProps={{ align: "center" }}
+                        subheaderTypographyProps={{ align: "center" }}
                       />
                       <CardContent>
                         <div>
-                          <Typography variant="h6" color="textSecondary">                    
-                            {/* For future, intent: images become links: <a href="#">*/}
-                              <img src={tier.img} 
-                              style={{ 
-                                height: '100%', 
-                                maxWidth: '100%', 
-                                objectFit: 'contain',
-                                position: 'relative', 
-                                margin: "0 auto", 
-                                display: 'flex', 
-                                justifyContent: 'center', 
-                                alignItems: 'center' 
-                              }} 
-                          ></img>
-                        </Typography> 
+                          <Typography variant="h6" color="textSecondary">
+                            <img
+                              src={tier.img}
+                              style={{
+                                height: "100%",
+                                maxWidth: "100%",
+                                objectFit: "contain",
+                                position: "relative",
+                                margin: "0 auto",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                              }}
+                              alt=""
+                            />
+                          </Typography>
                         </div>
                       </CardContent>
                       <CardActions>
-                        <Button fullWidth variant={tier.buttonVariant}
+                        <Button
+                          fullWidth
+                          variant={tier.buttonVariant}
                           disabled={tier.disabled}
                           color="secondary"
                           onClick={() => {
-
-                            //introJs().setOption('doneLabel', 'Next page').oncomplete(function() {window.location.href = 'index.html?multipage=true';}).start(document.getElementById('startTour!'))
-                            this.setState({ loading: false, currentItem: tier.item, selectedMaterials: this.state.selectedMaterials });
-                            let urlVar = new URLSearchParams()
-                            urlVar.set("type", tier.item)
-                            sessionStorage.IntroKey=2                        
-                            // urlVar.set("system", this.state.systemString)
-                            // console.log(this.state.selectedMaterials)
-                            // console.log(s.get("system"))
-                            window.history.replaceState({}, '', "?" + urlVar.toString())
+                            introJs()
+                              .setOption("doneLabel", "Next page")
+                              .oncomplete(async function () {
+                                window.location.href = "index.html?type=0";
+                              })
+                              .start(document.getElementById("startTour!"));
+                            sessionStorage.IntroKey = 1;
                           }}
-                          >
-
+                        >
                           {tier.buttonText}
-                        </Button>                    
+                        </Button>
                       </CardActions>
                     </Card>
                   </div>
-                </Grid>
+                </div>
               ))}
 
-              
-            </Grid>
+              {tiers.map((tier) => (
+                <div key={tier.title} className="tierCell">
+                  <div style={{ width: "100%", maxWidth: 200, margin: "0 auto", transform: "scale(0.9)", transformOrigin: "center top" }}>
+                    <Card style={{ minHeight: "100%", maxHeight: 400 }}>
+                      <CardHeader
+                        title={tier.title}
+                        subheader={
+                          <div
+                            style={{
+                              display: "-webkit-box",
+                              WebkitBoxOrient: "vertical",
+                              WebkitLineClamp: 2,
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
+                              height: "2.5em",
+                              lineHeight: "1.5em",
+                            }}
+                          >
+                            {tier.subheader}
+                          </div>
+                        }
+                        titleTypographyProps={{ align: "center" }}
+                        subheaderTypographyProps={{ align: "center" }}
+                      />
+                      <CardContent>
+                        <div>
+                          <Typography variant="h6" color="textSecondary">
+                            <img
+                              src={tier.img}
+                              style={{
+                                height: "100%",
+                                maxWidth: "100%",
+                                objectFit: "contain",
+                                position: "relative",
+                                margin: "0 auto",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                              }}
+                              alt=""
+                            />
+                          </Typography>
+                        </div>
+                      </CardContent>
+                      <CardActions>
+                        <Button
+                          fullWidth
+                          variant={tier.buttonVariant}
+                          disabled={tier.disabled}
+                          color="secondary"
+                          onClick={() => {
+                            this.setState({
+                              loading: false,
+                              currentItem: tier.item,
+                              selectedMaterials: this.state.selectedMaterials,
+                            });
+                            let urlVar = new URLSearchParams();
+                            urlVar.set("type", tier.item);
+                            sessionStorage.IntroKey = 2;
+                            window.history.pushState({}, "", "?" + urlVar.toString());
+
+                          }}
+                        >
+                          {tier.buttonText}
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </div>
+                </div>
+              ))}
+            </div>
+
             <br></br><br></br>
           </Container>
           {/* <Pricing loading={loading1}></Pricing> */}
@@ -454,12 +377,12 @@ function withSplashScreen(WrappedComponent) {
       // }
 
       // while checking user session, show "loading" message
-      if (!loading1) {
-        this.setState({
-          loading: false,
-        });
-        // this.props.loading = 1
-      }
+      // if (!loading1) {
+      //   this.setState({
+      //     loading: false,
+      //   });
+      //   // this.props.loading = 1
+      // }
 
       if (this.state.loading) return this.LoadingMessage();
 

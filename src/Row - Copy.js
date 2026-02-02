@@ -7,7 +7,7 @@ const Row = function (props) {
   const { checked, value, onChange, onChecked, name, count, tenY, sixty1, sixty2, radio, divStyle } = props;
   return (
     <div style={divStyle}>
-      <Comparison name={name} count={count} tenY={tenY} sixty1={sixty1} sixty2={sixty2} radio={radio} materialList={props.materialList} units={props.units} isInsulation={props.isInsulation} rPerInchByMaterial={props.rPerInchByMaterial}/>
+      <Comparison name={name} count={count} tenY={tenY} sixty1={sixty1} sixty2={sixty2} radio={radio} materialList={props.materialList} units={props.units} />
     </div>
   );
 }
