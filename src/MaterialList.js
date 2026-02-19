@@ -198,7 +198,10 @@ export default class MaterialList extends PureComponent {
       }
     }, () => {
       this.materialsDialogRef.show();
-      this.scrollDialogIntoView();
+      const isInIframe = window.self !== window.top;
+      if (!isInIframe) {
+        this.scrollDialogIntoView();
+      }
     })
   }
 

@@ -367,25 +367,29 @@ label{
   position: relative;
 }
 
-/* overlay 覆盖整个 app 区域，而不是覆盖整个浏览器窗口 */
 :global(.dialog-overlay){
-  position: absolute;
+  position: fixed;
   inset: 0;
   overflow: visible !important;
-  /* 可选：如果你要暗背景就加这一句，不要就删掉 */
   background: rgba(255,255,255,0.0);
 }
 
-/* base 也用 absolute，占满 app 区域，然后用 flex 做居中 */
 :global(.dialog){
-  position: absolute;
+  position: fixed;
   inset: 0;
   display: flex;
-  align-items: center;     /* 居中（相对 app 区域） */
+  align-items: center;     
   justify-content: center;
   overflow: visible !important;
-  pointer-events: none;     /* 关键：避免遮罩挡住页面（由内容再开回 pointer-events） */
+  pointer-events: none;
 }
+
+/* ✅重要：Dialog 关闭时完全隐藏（否则会出现“空框”） */
+:global(.dialog-overlay[aria-hidden="true"]),
+:global(.dialog[aria-hidden="true"]) {
+  display: none !important;
+}
+
 
 /* 内容本体允许点击 */
 :global(.dialog-content){
@@ -410,13 +414,26 @@ label{
 }
 
 :global(.dialog-content--compact){
+  /* ✅强制贴内容：把所有可能撑高的规则都干掉 */
   height: auto !important;
+  min-height: 0 !important;
   max-height: none !important;
-  overflow: visible !important;
-  padding: 24px 32px;                 /* 让内容更舒服 */
-  width: min(960px, calc(100% - 32px)); /* 窗口更宽一点（你要的） */
-}
 
+  /* 有些全局会给 height/min-height，用 unset 更狠 */
+  height: unset !important;
+  min-height: unset !important;
+  max-height: unset !important;
+
+  overflow: visible !important;  /* ✅不出现滚轴 */
+
+  padding: 24px 32px;
+  width: min(960px, calc(100% - 32px));
+  box-sizing: border-box;
+
+  /* ✅避免 flex/grid 布局把它拉伸 */
+  align-self: flex-start !important;
+  justify-self: start !important;
+}
 
 
 .inlineOptions{
