@@ -1,0 +1,25 @@
+material,type,name,img,i1,i2,i3,i4,i5,i6
+MVGranite,Masonry Veneer,Granite,./img/mvgranite.png,50.57,23.28,8.60,9.12,7.82,0.03
+MVLimestone,Masonry Veneer,Limestone,./img/mvlimestone.png,33.30,15.87,6.78,7.64,6.35,0.03
+MVBrick,Masonry Veneer,Brick,./img/mvbrick.png,25.21,13.12,2.14,1.55,1.51,0.03
+MVTBrick,Masonry Veneer,Thin Brick,./img/mvtbrick.png,16.32,8.21,3.64,1.12,1.14,0.02
+MInsMePanel,Misc,Insulated Metal Panel,./img/minsmepanel.png,64.78,18.99,4.30,1.99,2.11,0.27
+MEIFS,Misc,EIFS (XPS),./img/mefis.png,70.37,9.25,4.48,0.95,0.91,5.21
+MPrecast,Misc,Precast Concrete,./img/mprecast.png,28.94,10.77,2.56,1.95,1.47,0.01
+MMinWool,Misc,EIFS (Min Wool),./img/mminwool.png,12.54,7.64,1.32,0.83,0.99,0.03
+CSpandrelAlumB,Curtain Wall,Spandrel (Alum w/ Backpan),./img/cspandrelalumb.png,51.05,22.17,5.41,4.42,5.90,0.01
+CSpandrelSteel,Curtain Wall,Spandrel (Steel),./img/cspandrelsteel.png,50.36,23.46,14.34,4.76,6.88,0.20
+CSpandrelAlum,Curtain Wall,Spandrel (Alum),./img/cspandrelalum.png,46.04,20.66,5.29,4.20,5.23,0.02
+CSpandrelWood,Curtain Wall,Spandrel (Wood),./img/cspandrelwood.png,32.71,16.73,7.18,3.64,4.37,0.05
+RGFRC,Rainscreen,Glass Fiber Reinforced Concrete (GFRC),./img/rgfrc.png,39.94,18.05,4.40,3.51,3.58,0.11
+RACM,Rainscreen,Aluminum Composite Material (ACM),./img/racm.png,28.91,15.25,2.50,1.99,2.89,0.22
+RTerracotta,Rainscreen,Terracotta,./img/rterracotta.png,23.14,11.04,2.12,1.67,2.00,0.02
+RPhenResin,Rainscreen,Phenolic Resin,./img/rphenresin.png,37.15,19.36,6.27,2.89,3.70,0.03
+RFiberCement,Rainscreen,Fiber Cement,./img/rfibercement.png,35.76,15.95,5.91,2.71,3.59,0.03
+RZinc,Rainscreen,Formed Zinc Panel,./img/rzinc.png,19.07,9.79,2.41,1.91,1.77,0.22
+RUHPC,Rainscreen,UHPC (fibreC),./img/ruhpc.png,19.04,9.49,1.82,1.36,1.42,0.04
+RGranite,Rainscreen,Granite,./img/rgranite.png,18.60,8.95,2.23,1.61,1.92,0.03
+RTBrick,Rainscreen,Thin Brick,./img/rtbrick.png,18.11,9.10,1.71,1.23,1.25,0.03
+RLimestone,Rainscreen,Limestone,./img/rlimestone.png,17.71,8.57,2.16,1.56,1.86,0.03
+RSteel,Rainscreen,Formed Steel Panel,./img/rsteel.png,20.33,10.71,2.31,2.11,1.79,0.05
+RWood,Rainscreen,Wood,./img/rwood.png,17.45,10.94,2.84,1.96,2.06,0.03
