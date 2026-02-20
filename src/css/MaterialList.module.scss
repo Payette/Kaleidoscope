@@ -362,26 +362,22 @@ label{
   }
 }
 /* 让 dialog 内容允许溢出，否则箭头放到外侧会被裁掉 */
-/* 让 dialog-root 成为定位参照：弹窗只在你的 app 区域内居中 */
-:global(#dialog-root){
-  position: relative;
-}
-
-:global(.dialog-overlay){
-  position: fixed;
-  inset: 0;
-  overflow: visible !important;
-  background: rgba(255,255,255,0.0);
-}
 
 :global(.dialog){
-  position: fixed;
+  position: absolute; /* ✅ 改为 absolute */
   inset: 0;
   display: flex;
-  align-items: center;     
+  align-items: flex-start; /* ✅ 关键：取消原来的 center 垂直居中，改为靠顶部对齐(flex-start) */
   justify-content: center;
   overflow: visible !important;
   pointer-events: none;
+}
+
+:global(.dialog-overlay){
+  position: absolute; /* ✅ 建议也改为 absolute */
+  inset: 0;
+  overflow: visible !important;
+  background: rgba(255,255,255,0.0);
 }
 
 /* ✅重要：Dialog 关闭时完全隐藏（否则会出现“空框”） */
