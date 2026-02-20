@@ -192,9 +192,20 @@ export default class MaterialList extends PureComponent {
     event.preventDefault();
     event.stopPropagation();
 
-    // ✅ 获取点击时相对于整个文档顶部的绝对 Y 坐标
-    // event.pageY 在拉长的 iframe 中极其准确
-    const clickY = event.pageY || (event.currentTarget.getBoundingClientRect().top + window.scrollY);
+    // --- 修改开始 ---
+    let targetTop = 100; // 给个默认保底值
+
+    if (this.listEl) {
+      const rect = this.listEl.getBoundingClientRect();
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      // 计算列表顶部的绝对 Y 坐标
+      // 减去 50px 是为了留一点呼吸空间，让它比列表稍微高一点点
+      targetTop = rect.top + scrollTop - 50;
+    }
+    
+    // 防止计算出负数（比如页面刚加载时）
+    targetTop = Math.max(20, targetTop);
+    // --- 修改结束 ---
 
     myImg = 'https://raw.githubusercontent.com/Payette/LCA-Dashboard/master/public/images/' + material.id.toLowerCase() + '.png';
 
@@ -202,15 +213,9 @@ export default class MaterialList extends PureComponent {
       materialPopup: {
         name: material.label
       },
-      // ✅ 减去 80px，让弹窗出现在鼠标点击位置的稍微偏上一点，避免挡住视线
-      dialogTop: Math.max(20, clickY - 80)
+      dialogTop: targetTop // 将计算好的“列表顶部位置”存入状态
     }, () => {
       this.materialsDialogRef.show();
-      // 注释掉之前的滚动逻辑，不需要强行滚动了
-      // const isInIframe = window.self !== window.top;
-      // if (!isInIframe) {
-      //   this.scrollDialogIntoView();
-      // }
     })
   }
 
@@ -509,33 +514,40 @@ export default class MaterialList extends PureComponent {
             {/* ✅ 终极坐标锁定代码：将动态计算的高度注入，并解除所有被绑架的坐标系 */}
           <style>
             {`
-              /* 1. 解放坐标系：强制取消 root 的相对定位，让坐标老老实实从 iframe 最顶端 0px 开始算 */
+              /* 1. 强制重置根容器 */
               #dialog-root {
                 position: static !important; 
               }
 
-              /* 2. 弹窗外框：绝对定位，覆盖整个拉长后的文档流，强行靠上对齐 (flex-start) */
+              /* 2. 弹窗外框：取消 Flex 居中，改为块级布局，确保坐标完全由我们控制 */
               #materialdetailsdialog.dialog {
                 position: absolute !important;
                 top: 0 !important;
                 left: 0 !important;
                 right: 0 !important;
                 bottom: 0 !important;
-                display: flex !important;
-                align-items: flex-start !important; 
-                justify-content: center !important;
+                display: block !important; /* 改为 block，不再用 flex */
+                pointer-events: none;
               }
 
-              /* 3. 背景遮罩：绝对定位铺满 */
+              /* 3. 背景遮罩 */
               #materialdetailsdialog .dialog-overlay {
                 position: absolute !important;
                 inset: 0 !important;
+                background: rgba(255,255,255,0.0); /* 保持透明或半透明 */
               }
 
-              /* 4. 弹窗本体：根据鼠标点击的准确高度向下偏移，展现出跟随鼠标弹出的效果 */
+              /* 4. 弹窗本体：使用 top 进行绝对定位 */
               #materialdetailsdialog .dialog-content {
-                margin-top: ${this.state.dialogTop}px !important;
-                position: relative !important;
+                position: absolute !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important; /* 水平居中 */
+                
+                /* 核心：使用我们在 showMaterialsPopup 里计算出的“列表顶部”高度 */
+                top: ${this.state.dialogTop}px !important; 
+                margin: 0 !important; /* 清除默认 margin */
+                
+                pointer-events: auto;
               }
             `}
           </style>
